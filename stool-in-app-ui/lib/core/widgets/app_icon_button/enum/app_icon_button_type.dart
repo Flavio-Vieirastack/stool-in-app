@@ -1,0 +1,5 @@
+
+enum AppIconButtonType {
+  sucess,
+  error,
+}
