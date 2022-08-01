@@ -10,21 +10,17 @@ class _Secondary extends StatelessWidget with ResponsiveHelperMixin {
       builder: (context, constraints) {
         return Container(
           decoration: BoxDecoration(
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
-            ],
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              stops: const [0.0, 1.0],
-              colors: [
-                AppColors.buttonRightGradientColor,
-                AppColors.buttonLeftGradientColor,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.greyScaleDark,
+                  offset: const Offset(0, 4),
+                  blurRadius: 5.0,
+                )
               ],
-            ),
-            borderRadius: BorderRadius.circular(20),
-          ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: AppColors.buttonLeftGradientColor,
+              )),
           child: ElevatedButton(
             style: ButtonStyle(
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
