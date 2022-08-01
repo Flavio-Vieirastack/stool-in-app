@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/colors/app_colors.dart';
 import 'package:stool_in_app_ui/core/constants/assets_constants.dart';
+
+import '../../../../core/helpers/theme/colors/app_colors.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
