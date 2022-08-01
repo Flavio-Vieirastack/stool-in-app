@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
+part of '../app_button.dart';
 
-import '../../helpers/theme/colors/app_colors.dart';
-
-class Primary extends StatelessWidget with ResponsiveHelperMixin {
-  const Primary({Key? key}) : super(key: key);
+class _Primary extends StatelessWidget with ResponsiveHelperMixin {
+  const _Primary({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

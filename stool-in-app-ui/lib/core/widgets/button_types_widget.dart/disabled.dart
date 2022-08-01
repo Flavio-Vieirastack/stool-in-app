@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 
-import '../../helpers/theme/colors/app_colors.dart';
 
-class Disabled extends StatelessWidget with ResponsiveHelperMixin {
+part of '../app_button.dart';
+class _Disabled extends StatelessWidget with ResponsiveHelperMixin {
 
-  const Disabled({ Key? key }) : super(key: key);
+  const _Disabled({ Key? key }) : super(key: key);
 
    @override
    Widget build(BuildContext context) {

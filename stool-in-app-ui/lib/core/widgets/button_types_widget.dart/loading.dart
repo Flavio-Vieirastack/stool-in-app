@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 
-import '../../helpers/theme/colors/app_colors.dart';
+part of '../app_button.dart';
+class _Loading extends StatelessWidget with ResponsiveHelperMixin {
 
-class Loading extends StatelessWidget with ResponsiveHelperMixin {
-
-  const Loading({ Key? key }) : super(key: key);
+  const _Loading({ Key? key }) : super(key: key);
 
    @override
    Widget build(BuildContext context) {
