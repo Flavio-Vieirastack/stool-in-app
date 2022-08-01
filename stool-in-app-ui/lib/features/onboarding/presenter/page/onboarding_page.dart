@@ -15,18 +15,22 @@ class OnboardingPage extends StatelessWidget {
         centerText:
             'Contrate os melhores profissionais para realizar os mais variados tipos de serviços, sem precisar sair do conforto da sua casa.',
       ),
-      Container(
-        color: Colors.blue,
+      OnboardingPages(
+        backgroundImageAsset: AssetsConstants.onboardingSecondImage,
+        centerText:
+            'Busque oportunidades para mostrar o seu trabalho para milhares de pessoas em sua região, ganhando aquela renda extra.',
       ),
-      Container(
-        color: Colors.green,
+      OnboardingPages(
+        backgroundImageAsset: AssetsConstants.onboardingLastImage,
+        centerText:
+            'Deseja contratar um profissional más não sabe onde encontra-lo? Ou deseja mostrar o seu talento e ainda ganhar uma renda extra?',
       ),
     ];
     return LiquidSwipe(
       pages: pages,
       enableSideReveal: true,
       slideIconWidget: const Icon(Icons.arrow_back_ios),
-      waveType: WaveType.liquidReveal,
+      waveType: WaveType.circularReveal,
       fullTransitionValue: 880,
       enableLoop: false,
       ignoreUserGestureWhileAnimating: true,
