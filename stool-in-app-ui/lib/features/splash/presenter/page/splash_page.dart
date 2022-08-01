@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in_app_ui/core/constants/assets_constants.dart';
+import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/features/splash/presenter/cubit/splash_cubit.dart';
 
 import '../../../../core/helpers/theme/colors/app_colors.dart';
@@ -25,7 +26,9 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is SplashGoToOnBoardingPage) {
-          
+          Navigator.of(context).pushReplacementNamed(
+            RoutesConstants.onBoardingRoute,
+          );
         }
       },
       child: Scaffold(
