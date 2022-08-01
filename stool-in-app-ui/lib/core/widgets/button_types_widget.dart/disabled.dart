@@ -26,7 +26,7 @@ class _Disabled extends StatelessWidget with ResponsiveHelperMixin {
                   blurRadius: 5.0,
                 )
               ],
-              color: AppColors.grey,
+              color: AppColors.greyDisabled,
               borderRadius: BorderRadius.circular(20),
             ),
             child: ElevatedButton(
@@ -38,7 +38,6 @@ class _Disabled extends StatelessWidget with ResponsiveHelperMixin {
                 ),
                 minimumSize: MaterialStateProperty.all(const Size(50, 50)),
                 backgroundColor: MaterialStateProperty.all(Colors.transparent),
-                // elevation: MaterialStateProperty.all(3),
                 shadowColor: MaterialStateProperty.all(Colors.transparent),
               ),
               onPressed: () {},

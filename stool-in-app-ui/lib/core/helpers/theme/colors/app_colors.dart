@@ -9,5 +9,6 @@ class AppColors {
   static Color black = const Color(0xff060606);
   static Color white = const Color(0xffffffff);
   static Color grey = const Color(0xff969696);
+  static Color greyDisabled = const Color.fromARGB(255, 95, 95, 95);
   static Color blackInnedRadial = const Color(0xff333132);
 }

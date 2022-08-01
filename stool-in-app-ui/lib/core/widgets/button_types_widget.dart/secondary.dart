@@ -38,7 +38,6 @@ class _Secondary extends StatelessWidget with ResponsiveHelperMixin {
               ),
               minimumSize: MaterialStateProperty.all(const Size(50, 50)),
               backgroundColor: MaterialStateProperty.all(Colors.transparent),
-              // elevation: MaterialStateProperty.all(3),
               shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),
             onPressed: () {},
