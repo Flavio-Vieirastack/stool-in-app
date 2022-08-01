@@ -1,7 +1,13 @@
 part of '../app_button.dart';
 
 class _Primary extends StatelessWidget with ResponsiveHelperMixin {
-  const _Primary({Key? key}) : super(key: key);
+  final String buttonText;
+  final VoidCallback onPressed;
+  const _Primary({
+    Key? key,
+    required this.buttonText,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +52,9 @@ class _Primary extends StatelessWidget with ResponsiveHelperMixin {
               backgroundColor: MaterialStateProperty.all(Colors.transparent),
               shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),
-            onPressed: () {},
+            onPressed: onPressed,
             child: Text(
-              'buttonText',
+              buttonText,
               style: AppTextStyles.headLine1,
             ),
           ),

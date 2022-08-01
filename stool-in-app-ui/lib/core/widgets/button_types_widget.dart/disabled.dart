@@ -1,7 +1,11 @@
 part of '../app_button.dart';
 
 class _Disabled extends StatelessWidget with ResponsiveHelperMixin {
-  const _Disabled({Key? key}) : super(key: key);
+  final String buttonText;
+  const _Disabled({
+    Key? key,
+    required this.buttonText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,7 @@ class _Disabled extends StatelessWidget with ResponsiveHelperMixin {
               ),
               onPressed: () {},
               child: Text(
-                'buttonText',
+                buttonText,
                 style: AppTextStyles.headLine1,
               ),
             ),
