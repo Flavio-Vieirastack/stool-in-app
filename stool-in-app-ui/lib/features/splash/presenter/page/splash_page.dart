@@ -28,8 +28,26 @@ class SplashPage extends StatelessWidget {
             height: 50,
           ),
           Center(
+            child: AppButton(buttonTypes: ButtonTypes.primary),
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          Center(
+            child: AppButton(buttonTypes: ButtonTypes.loading),
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          Center(
             child: AppButton(buttonTypes: ButtonTypes.secondary),
-          )
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          Center(
+            child: AppButton(buttonTypes: ButtonTypes.disabled),
+          ),
         ],
       ),
     );
