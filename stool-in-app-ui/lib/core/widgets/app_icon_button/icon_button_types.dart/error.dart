@@ -14,6 +14,7 @@ class _Error extends StatelessWidget {
       icon: const Icon(
         Icons.close,
         color: Colors.red,
+        size: 30,
       ),
     );
   }

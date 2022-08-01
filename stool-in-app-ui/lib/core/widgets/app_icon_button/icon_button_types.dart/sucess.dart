@@ -14,6 +14,7 @@ class _Sucess extends StatelessWidget {
       icon: const Icon(
         Icons.check,
         color: Colors.green,
+        size: 30,
       ),
     );
   }

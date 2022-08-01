@@ -13,15 +13,15 @@ class SplashPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // const Spacer(),
-          // Image.asset(AssetsConstants.logoWhite),
-          // const Spacer(),
-          // const CircularProgressIndicator.adaptive(
-          //   backgroundColor: Colors.white,
-          // ),
-          // const SizedBox(
-          //    height: 100,
-          // ),
+          const Spacer(),
+          Image.asset(AssetsConstants.logoWhite),
+          const Spacer(),
+          const CircularProgressIndicator.adaptive(
+            backgroundColor: Colors.white,
+          ),
+          const SizedBox(
+             height: 100,
+          ),
         ],
       ),
     );
