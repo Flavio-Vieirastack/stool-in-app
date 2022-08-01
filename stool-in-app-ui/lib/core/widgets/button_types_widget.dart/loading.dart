@@ -5,10 +5,17 @@ class _Loading extends StatelessWidget with ResponsiveHelperMixin {
 
   @override
   Widget build(BuildContext context) {
-    const defaultMobileWidth = 0.74;
+    const maxWidth = 0.9;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
+          width: constraints.maxWidth *
+              responsiveWidth(
+                defaultMobileWidth: maxWidth,
+                defaultMobileSmallSizeWidth: 0.2,
+                defaultTabletWidth: 0.2,
+                constraints: constraints,
+              ),
           decoration: BoxDecoration(
             boxShadow: const [
               BoxShadow(
@@ -40,18 +47,9 @@ class _Loading extends StatelessWidget with ResponsiveHelperMixin {
               shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),
             onPressed: () {},
-            child: SizedBox(
-              width: constraints.maxWidth *
-                  responsiveWidth(
-                    defaultMobileWidth: defaultMobileWidth,
-                    defaultMobileSmallSizeWidth: 0.2,
-                    defaultTabletWidth: 0.2,
-                    constraints: constraints,
-                  ),
-              child: Center(
-                child: CircularProgressIndicator.adaptive(
-                  backgroundColor: AppColors.black,
-                ),
+            child: Center(
+              child: CircularProgressIndicator.adaptive(
+                backgroundColor: AppColors.black,
               ),
             ),
           ),
