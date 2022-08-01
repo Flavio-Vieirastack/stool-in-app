@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:stool_in_app_ui/core/constants/assets_constants.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/features/splash/presenter/cubit/splash_cubit.dart';
@@ -18,7 +17,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    context.read<SplashCubit>().goToOnBoardingPage();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await context.read<SplashCubit>().goToOnBoardingPage();
+    });
   }
 
   @override
@@ -32,7 +33,6 @@ class _SplashPageState extends State<SplashPage> {
         }
       },
       child: Scaffold(
-        backgroundColor: AppColors.greyScaleDark,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
