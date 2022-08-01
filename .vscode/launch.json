@@ -1,0 +1,48 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "stool-in-app-ui",
+            "cwd": "stool-in-app-ui",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "stool-in-app-ui (profile mode)",
+            "cwd": "stool-in-app-ui",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "stool-in-app-ui (release mode)",
+            "cwd": "stool-in-app-ui",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "stool_in_app_logic",
+            "cwd": "stool_in_app_logic",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "stool_in_app_logic (profile mode)",
+            "cwd": "stool_in_app_logic",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "stool_in_app_logic (release mode)",
+            "cwd": "stool_in_app_logic",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
