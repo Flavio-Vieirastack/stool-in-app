@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:stool_in_app_ui/core/constants/assets_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
+import 'package:stool_in_app_ui/core/widgets/app_button/app_button.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 
 class OnboardingPages extends StatelessWidget with ResponsiveHelperMixin {
   final String backgroundImageAsset;
   final String centerText;
+  final bool showButton;
   const OnboardingPages({
     Key? key,
     required this.backgroundImageAsset,
     required this.centerText,
+    this.showButton = false,
   }) : super(key: key);
 
   @override
@@ -62,6 +65,15 @@ class OnboardingPages extends StatelessWidget with ResponsiveHelperMixin {
                     textAlign: TextAlign.center,
                     style: AppTextStyles.headLine1,
                   ),
+                ),
+              ),
+            ),
+            Visibility(
+              visible: showButton,
+              child: const Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 650),
+                  child: AppButton(buttonText: 'Eu quero'),
                 ),
               ),
             )

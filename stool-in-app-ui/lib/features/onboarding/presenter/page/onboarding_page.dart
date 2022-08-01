@@ -23,7 +23,8 @@ class OnboardingPage extends StatelessWidget {
       OnboardingPages(
         backgroundImageAsset: AssetsConstants.onboardingLastImage,
         centerText:
-            'Deseja contratar um profissional más não sabe onde encontra-lo? Ou deseja mostrar o seu talento e ainda ganhar uma renda extra?',
+            'Deseja contratar um profissional más não sabe onde encontra-lo? Ou deseja mostrar o seu talento e ainda ganhar aquele dinheiro extra?',
+        showButton: true,
       ),
     ];
     return LiquidSwipe(
