@@ -12,7 +12,10 @@ class _Primary extends StatelessWidget with ResponsiveHelperMixin {
           decoration: BoxDecoration(
             boxShadow: const [
               BoxShadow(
-                  color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
+                color: Colors.black26,
+                offset: Offset(0, 4),
+                blurRadius: 5.0,
+              )
             ],
             gradient: LinearGradient(
               begin: Alignment.topLeft,
