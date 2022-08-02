@@ -1,6 +1,6 @@
 
 class RoutesConstants {
   RoutesConstants._();
-  static String splashRoute = '/login';
-  static String onBoardingRoute = '/onboarding';
+  static const String splashRoute = '/login';
+  static const  String onBoardingRoute = '/onboarding';
 }

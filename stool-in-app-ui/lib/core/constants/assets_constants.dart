@@ -1,7 +1,7 @@
 class AssetsConstants {
   AssetsConstants._();
-  static String logoWhite = 'assets/images/logos_white.png';
-  static String onboardingFirstImage = 'assets/images/woman_1.jpeg';
-  static String onboardingSecondImage = 'assets/images/man_1.jpeg';
-  static String onboardingLastImage = 'assets/images/woman_2.jpeg';
+  static const String logoWhite = 'assets/images/logos_white.png';
+  static const String onboardingFirstImage = 'assets/images/woman_1.jpeg';
+  static const String onboardingSecondImage = 'assets/images/man_1.jpeg';
+  static const String onboardingLastImage = 'assets/images/woman_2.jpeg';
 }

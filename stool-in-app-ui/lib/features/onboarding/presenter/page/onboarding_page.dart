@@ -10,12 +10,12 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pages = [
-      OnboardingPages(
+      const OnboardingPages(
         backgroundImageAsset: AssetsConstants.onboardingFirstImage,
         centerText:
             'Contrate os melhores profissionais para realizar os mais variados tipos de serviços, sem precisar sair do conforto da sua casa.',
       ),
-      OnboardingPages(
+      const OnboardingPages(
         backgroundImageAsset: AssetsConstants.onboardingSecondImage,
         centerText:
             'Busque oportunidades para mostrar o seu trabalho para milhares de pessoas em sua região, ganhando aquela renda extra.',
