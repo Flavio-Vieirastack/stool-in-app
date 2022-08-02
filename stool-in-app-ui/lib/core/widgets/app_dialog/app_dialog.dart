@@ -26,7 +26,7 @@ class AppDialog extends Dialog {
                     height: 20,
                   ),
                   if(dailogTypes == DailogTypes.sucess)
-                  DialogSucess().sucess()
+                  DialogSucess().sucess(message: 'Mensagem')
                 ],
               ),
             ),
