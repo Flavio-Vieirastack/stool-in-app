@@ -29,7 +29,7 @@ class AppTextStyles {
   );
   static TextStyle headLine4 = TextStyle(
     color: AppColors.white,
-    fontFamily: GoogleFonts.prata().fontFamily,
+    fontFamily: GoogleFonts.openSans().fontFamily,
     fontSize: 14,
   );
   static TextStyle headLine4Gray = TextStyle(

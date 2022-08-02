@@ -11,8 +11,7 @@ class ServiceProviderCards extends StatelessWidget {
       borderRadius: BorderRadius.circular(30),
       child: Card(
         child: Container(
-          height: 150,
-          width: 350,
+          constraints: const BoxConstraints(maxHeight: 160, maxWidth: 350),
           decoration: BoxDecoration(
             gradient: RadialGradient(
               radius: 1.5,
