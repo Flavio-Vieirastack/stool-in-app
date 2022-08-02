@@ -8,9 +8,9 @@ enum SnackBarType {
 Color getSnackBarColor(SnackBarType type) {
   switch (type) {
     case SnackBarType.success:
-      return Colors.green;
+      return Colors.green.shade400;
     case SnackBarType.error:
-      return Colors.red;
+      return Colors.red.shade400;
   }
 }
 
