@@ -7,6 +7,7 @@ import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.d
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
 
 import '../../constants/lottie_constants.dart';
+import '../dialog_button/dialog_button.dart';
 part './widgets/dialog_sucess.dart';
 part './widgets/dialog_error.dart';
 part './widgets/dialog_no_connection.dart';

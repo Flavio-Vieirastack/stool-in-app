@@ -7,34 +7,16 @@ class _DialogInfo {
   }) {
     return Column(
       children: [
-        ElevatedButton(
+        DialogButton(
           onPressed: yesOnPressed,
-          style: ElevatedButton.styleFrom(
-            primary: Colors.green,
-            fixedSize: const Size(150, 20),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
-          child: Text(
-            'Sim',
-            style: AppTextStyles.headLine2,
-          ),
+          dialogButtonType: DialogButtonType.yes,
+          buttonText: 'Sim',
         ),
-        ElevatedButton(
+        DialogButton(
           onPressed: noOnPressed,
-          style: ElevatedButton.styleFrom(
-            primary: Colors.red,
-            fixedSize: const Size(150, 20),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
-          child: Text(
-            'Não',
-            style: AppTextStyles.headLine2,
-          ),
-        ),
+          dialogButtonType: DialogButtonType.no,
+          buttonText: 'Não',
+        )
       ],
     );
   }
