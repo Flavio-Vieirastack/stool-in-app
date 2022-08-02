@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in_app_ui/core/widgets/app_button/app_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,7 +10,14 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: Container(),
+      body: Column(
+        children: [
+          AppButton(
+            buttonText: 'dialog',
+            onPressed: () {},
+          ),
+        ],
+      ),
     );
   }
 }
