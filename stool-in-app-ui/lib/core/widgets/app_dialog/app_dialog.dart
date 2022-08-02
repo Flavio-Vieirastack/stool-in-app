@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:lottie/lottie.dart';
@@ -8,19 +6,24 @@ import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
 
 import '../../constants/lottie_constants.dart';
 import '../dialog_button/dialog_button.dart';
-part './widgets/dialog_sucess.dart';
-part './widgets/dialog_error.dart';
-part './widgets/dialog_no_connection.dart';
-part './widgets/dialog_info.dart';
-part './widgets/dialog_waiting.dart';
+
 part './widgets/dialog_blocked.dart';
+part './widgets/dialog_error.dart';
+part './widgets/dialog_info.dart';
+part './widgets/dialog_no_connection.dart';
+part './widgets/dialog_sucess.dart';
 part './widgets/dialog_vote.dart';
+part './widgets/dialog_waiting.dart';
 
 class AppDialog extends Dialog {
   final DialogTypes dailogTypes;
+  final VoidCallback? yesCallBack;
+  final VoidCallback? noCallBack;
   AppDialog({
     Key? key,
     this.dailogTypes = DialogTypes.sucess,
+    this.yesCallBack,
+    this.noCallBack,
   }) : super(
           key: key,
           shape: RoundedRectangleBorder(
@@ -45,13 +48,19 @@ class AppDialog extends Dialog {
                 else if (dailogTypes == DialogTypes.noConnection)
                   _DialogNoConnection().noConnection(message: 'message')
                 else if (dailogTypes == DialogTypes.info)
-                  _DialogInfo().info(yesOnPressed: () {}, noOnPressed: () {})
+                  _DialogInfo().info(
+                    yesOnPressed: yesCallBack ?? () {},
+                    noOnPressed: noCallBack ?? () {},
+                  )
                 else if (dailogTypes == DialogTypes.waiting)
                   _DialogWaiting().waiting(message: 'message')
                 else if (dailogTypes == DialogTypes.blocked)
                   _DialogBlocked().blocked(message: 'message')
                 else if (dailogTypes == DialogTypes.voteRatting)
-                  const _DialogVote()
+                  _DialogVote(
+                    yesCallBack: yesCallBack ?? () {},
+                    noCallBack: noCallBack ?? () {},
+                  )
               ],
             ),
           ),
