@@ -5,11 +5,13 @@ import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
 
 import '../../constants/lottie_constants.dart';
 part './widgets/dialog_sucess.dart';
+part './widgets/dialog_error.dart';
+
 class AppDialog extends Dialog {
-  final DailogTypes dailogTypes;
+  final DialogTypes dailogTypes;
   AppDialog({
     Key? key,
-    this.dailogTypes = DailogTypes.sucess,
+    this.dailogTypes = DialogTypes.sucess,
   }) : super(
           key: key,
           shape: RoundedRectangleBorder(
@@ -27,8 +29,10 @@ class AppDialog extends Dialog {
                 const SizedBox(
                   height: 20,
                 ),
-                if(dailogTypes == DailogTypes.sucess)
-                _DialogSucess().sucess(message: 'Mensagem')
+                if (dailogTypes == DialogTypes.sucess)
+                  _DialogSucess().sucess(message: 'Mensagem')
+                else if (dailogTypes == DialogTypes.error)
+                  _DialogError().error(message: 'message')
               ],
             ),
           ),

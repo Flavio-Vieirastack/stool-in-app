@@ -1,4 +1,4 @@
-enum DailogTypes {
+enum DialogTypes {
   error,
   sucess,
   noConnection,
