@@ -7,6 +7,7 @@ class DialogSucess {
     return Column(
       children: [
         LottieBuilder.asset(
+          width: 100,
           LottieConstants.lottieSucess,
         ),
         const SizedBox(

@@ -15,20 +15,19 @@ class AppDialog extends Dialog {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8),
-            child: SizedBox(
-              child: Column(
-                children: [
-                  Text(
-                    'Título',
-                    style: AppTextStyles.headLine0,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  if(dailogTypes == DailogTypes.sucess)
-                  DialogSucess().sucess(message: 'Mensagem')
-                ],
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Título',
+                  style: AppTextStyles.headLine0,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                if(dailogTypes == DailogTypes.sucess)
+                DialogSucess().sucess(message: 'Mensagem')
+              ],
             ),
           ),
         );
