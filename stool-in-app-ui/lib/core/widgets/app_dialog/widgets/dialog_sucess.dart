@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:stool_in_app_ui/core/constants/lottie_constants.dart';
+part of '../app_dialog.dart';
 
-class DialogSucess {
+class _DialogSucess {
   Widget sucess({required String message}) {
     return Column(
       children: [

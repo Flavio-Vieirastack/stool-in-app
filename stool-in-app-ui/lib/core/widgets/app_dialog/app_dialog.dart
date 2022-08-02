@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
-import 'package:stool_in_app_ui/core/widgets/app_dialog/widgets/dialog_sucess.dart';
 
+import '../../constants/lottie_constants.dart';
+part './widgets/dialog_sucess.dart';
 class AppDialog extends Dialog {
   final DailogTypes dailogTypes;
   AppDialog({
@@ -26,7 +28,7 @@ class AppDialog extends Dialog {
                   height: 20,
                 ),
                 if(dailogTypes == DailogTypes.sucess)
-                DialogSucess().sucess(message: 'Mensagem')
+                _DialogSucess().sucess(message: 'Mensagem')
               ],
             ),
           ),
