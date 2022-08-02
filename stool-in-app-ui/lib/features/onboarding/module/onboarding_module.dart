@@ -8,7 +8,7 @@ class OnboardingModule extends AppModule {
   OnboardingModule()
       : super(
           dependencies: [
-            Provider(
+            Provider<OnboardingCubit>(
               create: (context) => OnboardingCubit(),
             )
           ],

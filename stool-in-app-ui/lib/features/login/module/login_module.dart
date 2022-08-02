@@ -8,7 +8,7 @@ class LoginModule extends AppModule {
   LoginModule()
       : super(
           dependencies: [
-            Provider(
+            Provider<LoginCubit>(
               create: (context) => LoginCubit(),
             )
           ],
