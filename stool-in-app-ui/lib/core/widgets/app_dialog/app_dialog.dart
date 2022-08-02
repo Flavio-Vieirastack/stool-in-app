@@ -16,12 +16,12 @@ part './widgets/dialog_vote.dart';
 part './widgets/dialog_waiting.dart';
 
 class AppDialog extends Dialog {
-  final DialogTypes dailogTypes;
+  final DialogTypes dialogTypes;
   final VoidCallback? yesCallBack;
   final VoidCallback? noCallBack;
   AppDialog({
     Key? key,
-    this.dailogTypes = DialogTypes.sucess,
+    this.dialogTypes = DialogTypes.sucess,
     this.yesCallBack,
     this.noCallBack,
   }) : super(
@@ -41,22 +41,22 @@ class AppDialog extends Dialog {
                 const SizedBox(
                   height: 20,
                 ),
-                if (dailogTypes == DialogTypes.sucess)
+                if (dialogTypes == DialogTypes.sucess)
                   _DialogSucess().sucess(message: 'Mensagem')
-                else if (dailogTypes == DialogTypes.error)
+                else if (dialogTypes == DialogTypes.error)
                   _DialogError().error(message: 'message')
-                else if (dailogTypes == DialogTypes.noConnection)
+                else if (dialogTypes == DialogTypes.noConnection)
                   _DialogNoConnection().noConnection(message: 'message')
-                else if (dailogTypes == DialogTypes.info)
+                else if (dialogTypes == DialogTypes.info)
                   _DialogInfo().info(
                     yesOnPressed: yesCallBack ?? () {},
                     noOnPressed: noCallBack ?? () {},
                   )
-                else if (dailogTypes == DialogTypes.waiting)
+                else if (dialogTypes == DialogTypes.waiting)
                   _DialogWaiting().waiting(message: 'message')
-                else if (dailogTypes == DialogTypes.blocked)
+                else if (dialogTypes == DialogTypes.blocked)
                   _DialogBlocked().blocked(message: 'message')
-                else if (dailogTypes == DialogTypes.voteRatting)
+                else if (dialogTypes == DialogTypes.voteRatting)
                   _DialogVote(
                     yesCallBack: yesCallBack ?? () {},
                     noCallBack: noCallBack ?? () {},

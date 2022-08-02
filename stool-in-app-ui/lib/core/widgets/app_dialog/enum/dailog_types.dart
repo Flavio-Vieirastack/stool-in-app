@@ -3,7 +3,7 @@ enum DialogTypes {
   sucess,
   noConnection,
   info,
-  voteRatting, // TODO
+  voteRatting,
   waiting,
   blocked,
 }
