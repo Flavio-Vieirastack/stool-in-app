@@ -4,7 +4,6 @@ import 'package:stool_in_app_ui/core/constants/assets_constants.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/features/splash/presenter/cubit/splash_cubit.dart';
 
-
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -29,6 +28,9 @@ class _SplashPageState extends State<SplashPage> {
           Navigator.of(context).pushReplacementNamed(
             RoutesConstants.onBoardingRoute,
           );
+        } else if (state is SplashGoToLoginPage) {
+          Navigator.of(context)
+              .pushReplacementNamed(RoutesConstants.loginRoute);
         }
       },
       child: Scaffold(

@@ -9,7 +9,7 @@ class OnboardingCubit extends Cubit<OnboardingState>
     with SharedPreferencesHelper {
   OnboardingCubit() : super(OnboardingInitial());
 
-  Future<void> gotToLoginPageAndSaveOnBoardingFlow() async {
+  void gotToLoginPageAndSaveOnBoardingFlow() {
     saveBool(key: KeysConstants.onboardingFlowKey, value: true);
     emit(OnBoardingGoToLoginPage());
   }

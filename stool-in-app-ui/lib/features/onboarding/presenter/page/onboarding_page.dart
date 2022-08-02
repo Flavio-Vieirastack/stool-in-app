@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
+import 'package:stool_in_app_ui/features/onboarding/presenter/cubit/onboarding_cubit.dart';
 import 'package:stool_in_app_ui/features/onboarding/presenter/page/widgets/onboarding_pages.dart';
 
 import '../../../../core/constants/assets_constants.dart';
@@ -9,6 +12,7 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<OnboardingCubit>();
     final pages = [
       const OnboardingPages(
         backgroundImageAsset: AssetsConstants.onboardingFirstImage,
@@ -25,19 +29,28 @@ class OnboardingPage extends StatelessWidget {
         centerText:
             'Deseja contratar um profissional más não sabe onde encontra-lo? Ou deseja mostrar o seu talento e ainda ganhar aquele dinheiro extra?',
         showButton: true,
-        onPressed: (){
-          //Navegar e salvar no preferences
-        },
+        onPressed: () => cubit.gotToLoginPageAndSaveOnBoardingFlow(),
       ),
     ];
-    return LiquidSwipe(
-      pages: pages,
-      enableSideReveal: true,
-      slideIconWidget: const Icon(Icons.arrow_back_ios),
-      waveType: WaveType.circularReveal,
-      fullTransitionValue: 880,
-      enableLoop: false,
-      ignoreUserGestureWhileAnimating: true,
+    return BlocListener<OnboardingCubit, OnboardingState>(
+      listener: (context, state) {
+        if (state is OnBoardingGoToLoginPage) {
+          Navigator.of(context).pushReplacementNamed(
+            RoutesConstants.loginRoute,
+          );
+        }
+      },
+      child: LiquidSwipe(
+        pages: pages,
+        enableSideReveal: true,
+        slideIconWidget: const Icon(
+          Icons.arrow_back_ios,
+        ),
+        waveType: WaveType.circularReveal,
+        fullTransitionValue: 880,
+        enableLoop: false,
+        ignoreUserGestureWhileAnimating: true,
+      ),
     );
   }
 }
