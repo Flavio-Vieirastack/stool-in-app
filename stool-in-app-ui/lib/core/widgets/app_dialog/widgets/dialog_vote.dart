@@ -28,7 +28,7 @@ class _DialogVoteState extends State<_DialogVote> {
               });
             },
             starCount: 5,
-            starSize: 20,
+            starSize: 40,
             valueLabelColor: const Color(0xff9b9b9b),
             valueLabelTextStyle: const TextStyle(
               color: Colors.white,
@@ -39,8 +39,8 @@ class _DialogVoteState extends State<_DialogVote> {
             valueLabelRadius: 10,
             maxValue: 5,
             starSpacing: 2,
-            maxValueVisibility: true,
-            valueLabelVisibility: true,
+            maxValueVisibility: false,
+            valueLabelVisibility: false,
             animationDuration: const Duration(milliseconds: 1000),
             valueLabelPadding:
                 const EdgeInsets.symmetric(vertical: 1, horizontal: 8),
