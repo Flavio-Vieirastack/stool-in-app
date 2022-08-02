@@ -33,7 +33,7 @@ class AppRattingStars extends StatelessWidget {
       valueLabelPadding: const EdgeInsets.symmetric(vertical: 1, horizontal: 8),
       valueLabelMargin: const EdgeInsets.only(right: 8),
       starOffColor: const Color(0xffe7e8ea),
-      starColor: Colors.yellow,
+      starColor: const Color.fromARGB(219, 255, 235, 59),
     );
   }
 }

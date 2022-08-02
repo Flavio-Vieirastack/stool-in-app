@@ -20,11 +20,15 @@ class AppDialog extends Dialog {
   final DialogTypes dialogTypes;
   final VoidCallback? yesCallBack;
   final VoidCallback? noCallBack;
+  final dynamic Function(double)? onValueChanged;
+  final double value;
   AppDialog({
     Key? key,
     this.dialogTypes = DialogTypes.sucess,
     this.yesCallBack,
     this.noCallBack,
+    this.onValueChanged,
+    this.value = 0,
   }) : super(
           key: key,
           shape: RoundedRectangleBorder(
@@ -61,6 +65,8 @@ class AppDialog extends Dialog {
                   _DialogVote(
                     yesCallBack: yesCallBack ?? () {},
                     noCallBack: noCallBack ?? () {},
+                    onValueChanged: onValueChanged,
+                    value: value,
                   )
               ],
             ),

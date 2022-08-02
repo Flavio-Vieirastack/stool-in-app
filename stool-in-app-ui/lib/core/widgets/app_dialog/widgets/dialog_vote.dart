@@ -3,10 +3,14 @@ part of '../app_dialog.dart';
 class _DialogVote extends StatefulWidget {
   final VoidCallback yesCallBack;
   final VoidCallback noCallBack;
+  final dynamic Function(double)? onValueChanged;
+  final double value;
   const _DialogVote({
     Key? key,
     required this.noCallBack,
     required this.yesCallBack,
+    required this.onValueChanged,
+    required this.value
   }) : super(key: key);
 
   @override
@@ -14,19 +18,14 @@ class _DialogVote extends StatefulWidget {
 }
 
 class _DialogVoteState extends State<_DialogVote> {
-  double value = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Center(
           child: AppRattingStars(
-            value: value,
-            onValueChanged: (v) {
-              setState(() {
-                value = v;
-              });
-            },
+            value: widget.value,
+            onValueChanged: widget.onValueChanged,
           ),
         ),
         const SizedBox(
