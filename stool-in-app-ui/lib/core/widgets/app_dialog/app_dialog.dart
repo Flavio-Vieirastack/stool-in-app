@@ -6,6 +6,7 @@ import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
 import '../../constants/lottie_constants.dart';
 part './widgets/dialog_sucess.dart';
 part './widgets/dialog_error.dart';
+part './widgets/dialog_no_connection.dart';
 
 class AppDialog extends Dialog {
   final DialogTypes dailogTypes;
@@ -33,6 +34,8 @@ class AppDialog extends Dialog {
                   _DialogSucess().sucess(message: 'Mensagem')
                 else if (dailogTypes == DialogTypes.error)
                   _DialogError().error(message: 'message')
+                else if (dailogTypes == DialogTypes.noConnection)
+                _DialogNoConnection().noConnection(message: 'message')
               ],
             ),
           ),
