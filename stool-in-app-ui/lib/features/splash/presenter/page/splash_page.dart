@@ -4,7 +4,6 @@ import 'package:stool_in_app_ui/core/constants/assets_constants.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/features/splash/presenter/cubit/splash_cubit.dart';
 
-import '../../../../core/helpers/theme/colors/app_colors.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

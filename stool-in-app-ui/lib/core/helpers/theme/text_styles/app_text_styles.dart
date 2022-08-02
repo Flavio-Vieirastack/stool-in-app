@@ -5,6 +5,12 @@ import '../colors/app_colors.dart';
 
 class AppTextStyles {
   AppTextStyles._();
+  static TextStyle headLine0 = TextStyle(
+    color: AppColors.white,
+    fontWeight: FontWeight.bold,
+    fontFamily: GoogleFonts.exo2().fontFamily,
+    fontSize: 32,
+  );
   static TextStyle headLine1 = TextStyle(
     color: AppColors.white,
     fontWeight: FontWeight.bold,

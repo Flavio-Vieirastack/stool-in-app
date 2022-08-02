@@ -10,11 +10,13 @@ class OnboardingPages extends StatelessWidget with ResponsiveHelperMixin {
   final String backgroundImageAsset;
   final String centerText;
   final bool showButton;
+  final VoidCallback? onPressed;
   const OnboardingPages({
     Key? key,
     required this.backgroundImageAsset,
     required this.centerText,
     this.showButton = false,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -70,10 +72,13 @@ class OnboardingPages extends StatelessWidget with ResponsiveHelperMixin {
             ),
             Visibility(
               visible: showButton,
-              child: const Center(
+              child: Center(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 650),
-                  child: AppButton(buttonText: 'Eu quero'),
+                  padding: const EdgeInsets.only(top: 650),
+                  child: AppButton(
+                    buttonText: 'Eu quero',
+                    onPressed: onPressed,
+                  ),
                 ),
               ),
             )
