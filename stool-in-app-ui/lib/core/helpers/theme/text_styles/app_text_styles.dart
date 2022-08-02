@@ -32,4 +32,9 @@ class AppTextStyles {
     fontFamily: GoogleFonts.prata().fontFamily,
     fontSize: 14,
   );
+  static TextStyle headLine4Gray = TextStyle(
+    color: AppColors.grey,
+    fontFamily: GoogleFonts.prata().fontFamily,
+    fontSize: 14,
+  );
 }

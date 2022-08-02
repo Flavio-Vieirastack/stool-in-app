@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/widgets/app_button/app_button.dart';
-import 'package:stool_in_app_ui/core/widgets/app_dialog/app_dialog.dart';
-import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
+import 'package:stool_in_app_ui/core/widgets/app_text_form_field/app_text_form_field.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,18 +11,12 @@ class LoginPage extends StatelessWidget {
         title: const Text('Login'),
       ),
       body: Column(
-        children: [
-          AppButton(
-            buttonText: 'dialog',
-            onPressed: () => showDialog(
-              context: context,
-              builder: (context) {
-                return AppDialog(
-                  dialogTypes: DialogTypes.voteRatting,
-                  title: 'Titulo',
-                );
-              },
-            ),
+        children: const [
+          const SizedBox(
+             height: 20,
+          ),
+          Center(
+            child: AppTextFormField(),
           ),
         ],
       ),
