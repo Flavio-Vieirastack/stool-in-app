@@ -19,7 +19,10 @@ class LoginPage extends StatelessWidget {
             onPressed: () => showDialog(
               context: context,
               builder: (context) {
-                return AppDialog(dialogTypes: DialogTypes.voteRatting,);
+                return AppDialog(
+                  dialogTypes: DialogTypes.voteRatting,
+                  title: 'Titulo',
+                );
               },
             ),
           ),
