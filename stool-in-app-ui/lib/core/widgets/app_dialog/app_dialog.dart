@@ -3,6 +3,7 @@ import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
+import 'package:stool_in_app_ui/core/widgets/ratting_stars/app_ratting_stars.dart';
 
 import '../../constants/lottie_constants.dart';
 import '../dialog_button/dialog_button.dart';
