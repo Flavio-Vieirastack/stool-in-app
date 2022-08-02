@@ -9,5 +9,10 @@ class RoutesConstants {
   static const String homeRoute = '/home';
   static const String serviceProviderOnBoardingRoute =
       '/service-provider-onboarding';
-  static const String serviceProviderRoute = '/service-provider';
+  static const String serviceProviderRegisterRoute =
+      '/service-provider-register';
+  static const String servicesTodoRoute = '/services-todo';
+  static const String userServicesContractedRoute = '/services-contracted';
+  static const String serviceProviderDetailRoute = '/service-provider-detail';
+  static const String userProfileRoute = '/user-profile';
 }
