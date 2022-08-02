@@ -9,6 +9,7 @@ part './widgets/dialog_error.dart';
 part './widgets/dialog_no_connection.dart';
 part './widgets/dialog_info.dart';
 part './widgets/dialog_waiting.dart';
+part './widgets/dialog_blocked.dart';
 
 class AppDialog extends Dialog {
   final DialogTypes dailogTypes;
@@ -37,11 +38,13 @@ class AppDialog extends Dialog {
                 else if (dailogTypes == DialogTypes.error)
                   _DialogError().error(message: 'message')
                 else if (dailogTypes == DialogTypes.noConnection)
-                _DialogNoConnection().noConnection(message: 'message')
+                  _DialogNoConnection().noConnection(message: 'message')
                 else if (dailogTypes == DialogTypes.info)
-                _DialogInfo().info(yesOnPressed: (){}, noOnPressed: (){})
+                  _DialogInfo().info(yesOnPressed: () {}, noOnPressed: () {})
                 else if (dailogTypes == DialogTypes.waiting)
-                _DialogWaiting().waiting(message: 'message')
+                  _DialogWaiting().waiting(message: 'message')
+                else if (dailogTypes == DialogTypes.blocked)
+                  _DialogBlocked().blocked(message: 'message')
               ],
             ),
           ),
