@@ -5,7 +5,7 @@ class _DialogNoConnection {
     return Column(
       children: [
         LottieBuilder.asset(
-          width: 100,
+          width: 150,
           LottieConstants.lottieNoConnection,
         ),
         const SizedBox(
