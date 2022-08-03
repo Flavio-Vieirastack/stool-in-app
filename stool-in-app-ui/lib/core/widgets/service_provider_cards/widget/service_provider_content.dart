@@ -24,18 +24,17 @@ class ServiceProviderContent extends StatelessWidget {
                   'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',
                 ),
               ),
-              const SizedBox(
-                width: 2,
-              ),
-              SizedBox(
-                width: 200,
-                child: AutoSizeText(
-                  'Nome do usuário',
-                  maxLines: 1,
-                  maxFontSize: 16,
-                  minFontSize: 15,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.headLine3,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: AutoSizeText(
+                    'Nome do usuário: five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                    maxLines: 1,
+                    maxFontSize: 16,
+                    minFontSize: 15,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.headLine1,
+                  ),
                 ),
               ),
               AppRattingStars(
@@ -48,16 +47,23 @@ class ServiceProviderContent extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
+          Text(
+            'Serviços:',
+            style: TextStyle(
+              decoration: TextDecoration.underline,
+              color: AppColors.buttonLeftGradientColor,
+            ),
+          ),
           SizedBox(
             width: 350,
             child: AutoSizeText(
-              'Serviços executados: five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+              'five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
               textAlign: TextAlign.left,
               maxLines: 3,
-              maxFontSize: 14,
-              minFontSize: 13,
+              maxFontSize: 15,
+              minFontSize: 14,
               overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.headLine4,
+              style: AppTextStyles.headLine2,
             ),
           ),
           const SizedBox(

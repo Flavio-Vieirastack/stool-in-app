@@ -7,21 +7,23 @@ class ServiceProviderCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
-      child: Card(
-        child: Container(
-          constraints: const BoxConstraints(maxHeight: 160, maxWidth: 350),
-          decoration: BoxDecoration(
-            gradient: RadialGradient(
-              radius: 1.5,
-              colors: [
-                AppColors.grey.withOpacity(0.2),
-                AppColors.black.withOpacity(0.2),
-              ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Card(
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: RadialGradient(
+                radius: 1.5,
+                colors: [
+                  AppColors.grey.withOpacity(0.2),
+                  AppColors.black.withOpacity(0.2),
+                ],
+              ),
             ),
+            child: const ServiceProviderContent(),
           ),
-          child: const ServiceProviderContent(),
         ),
       ),
     );
