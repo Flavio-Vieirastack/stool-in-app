@@ -58,9 +58,11 @@ class ShcedulingContent extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Text(
-            'Descrição:',
-            style: AppTextStyles.headLine4Gold,
+          Center(
+            child: Text(
+              'Descrição:',
+              style: AppTextStyles.headLine4Gold,
+            ),
           ),
           const SizedBox(
             height: 2,
@@ -69,26 +71,35 @@ class ShcedulingContent extends StatelessWidget {
             'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
             style: AppTextStyles.headLine4,
           ),
+          Visibility(
+            visible: true,
+            child: Column(
+              children: [
+                Divider(
+                  color: AppColors.black,
+                ),
+                Text(
+                  'Comentário:',
+                  style: AppTextStyles.headLine4Gold,
+                ),
+                const SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                  style: AppTextStyles.headLine4,
+                ),
+              ],
+            ),
+          ),
           Divider(
             color: AppColors.black,
           ),
-          Text(
-            'Comentário:',
-            style: AppTextStyles.headLine4Gold,
-          ),
-          const SizedBox(
-            height: 2,
-          ),
-          Text(
-            'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-            style: AppTextStyles.headLine4,
-          ),
-          Divider(
-            color: AppColors.black,
-          ),
-          Text(
-            'Serviços a fazer:',
-            style: AppTextStyles.headLine4Gold,
+          Center(
+            child: Text(
+              'Serviços a fazer:',
+              style: AppTextStyles.headLine4Gold,
+            ),
           ),
           const SizedBox(
             height: 2,
