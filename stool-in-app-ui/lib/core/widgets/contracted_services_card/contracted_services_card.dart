@@ -3,8 +3,33 @@ import 'package:flutter/material.dart';
 import '../../helpers/theme/colors/app_colors.dart';
 import '../../helpers/theme/text_styles/app_text_styles.dart';
 part './widgets/contracted_services_content.dart';
+
 class ContractedServicesCard extends StatelessWidget {
-  const ContractedServicesCard({Key? key}) : super(key: key);
+  final String total;
+  final String status;
+  final String description;
+  final String date;
+  final String hour;
+  final String userComent;
+  final String serviceTodo;
+  final String serviceProviderImageUrl;
+  final String serviceProviderName;
+  final bool showUserProviderData;
+  final VoidCallback showUserProviderDataCallBack;
+  const ContractedServicesCard(
+      {Key? key,
+      required this.date,
+      required this.description,
+      required this.hour,
+      required this.serviceProviderImageUrl,
+      required this.serviceProviderName,
+      required this.serviceTodo,
+      required this.status,
+      required this.total,
+      required this.userComent,
+      this.showUserProviderData = false,
+      required this.showUserProviderDataCallBack})
+      : super(key: key);
   //! Esse e o card de serviços que o cliente agendou
   @override
   Widget build(BuildContext context) {
@@ -24,7 +49,19 @@ class ContractedServicesCard extends StatelessWidget {
           ],
         ),
       ),
-      child: const _ContractedServicesContent(),
+      child: _ContractedServicesContent(
+        date: date,
+        description: description,
+        hour: hour,
+        serviceProviderImageUrl: serviceProviderImageUrl,
+        serviceProviderName: serviceProviderName,
+        serviceTodo: serviceTodo,
+        showUserProviderData: showUserProviderData,
+        showUserProviderDataCallBack: showUserProviderDataCallBack,
+        status: status,
+        total: total,
+        userComent: userComent,
+      ),
     );
   }
 }

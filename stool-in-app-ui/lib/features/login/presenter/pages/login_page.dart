@@ -13,10 +13,9 @@ class LoginPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: const [
-             SizedBox(
-               height: 20,
+            SizedBox(
+              height: 20,
             ),
-            Center(child: ContractedServicesCard())
           ],
         ),
       ),

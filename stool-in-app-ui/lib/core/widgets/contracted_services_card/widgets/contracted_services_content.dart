@@ -1,7 +1,31 @@
 part of '../contracted_services_card.dart';
 
 class _ContractedServicesContent extends StatelessWidget {
-  const _ContractedServicesContent({Key? key}) : super(key: key);
+  final String total;
+  final String status;
+  final String description;
+  final String date;
+  final String hour;
+  final String userComent;
+  final String serviceTodo;
+  final String serviceProviderImageUrl;
+  final String serviceProviderName;
+  final bool showUserProviderData;
+  final VoidCallback showUserProviderDataCallBack;
+  const _ContractedServicesContent({
+    Key? key,
+    required this.total,
+    required this.status,
+    required this.description,
+    required this.date,
+    required this.hour,
+    required this.userComent,
+    required this.serviceTodo,
+    required this.serviceProviderImageUrl,
+    required this.serviceProviderName,
+    required this.showUserProviderData,
+    required this.showUserProviderDataCallBack,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +46,7 @@ class _ContractedServicesContent extends StatelessWidget {
                     style: AppTextStyles.headLine2,
                     children: <TextSpan>[
                       TextSpan(
-                        text: 'R\$ 255',
+                        text: 'R\$ $total',
                         style: AppTextStyles.headLine1Gold,
                       ),
                     ],
@@ -37,12 +61,11 @@ class _ContractedServicesContent extends StatelessWidget {
                     style: AppTextStyles.headLine2,
                     children: <TextSpan>[
                       TextSpan(
-                        text: 'ATIVO',
+                        text: status,
                         style: AppTextStyles.headLine2.copyWith(
-                          color: Colors.green,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold
-                        ),
+                            color: Colors.green,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -60,7 +83,7 @@ class _ContractedServicesContent extends StatelessWidget {
             ),
           ),
           Text(
-            'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            description,
             style: AppTextStyles.headLine4,
             textAlign: TextAlign.justify,
           ),
@@ -73,7 +96,7 @@ class _ContractedServicesContent extends StatelessWidget {
               style: AppTextStyles.headLine2,
               children: <TextSpan>[
                 TextSpan(
-                  text: '05/07/2022',
+                  text: date,
                   style: AppTextStyles.headLine4Gold,
                 ),
               ],
@@ -85,7 +108,7 @@ class _ContractedServicesContent extends StatelessWidget {
               style: AppTextStyles.headLine2,
               children: <TextSpan>[
                 TextSpan(
-                  text: '17:00',
+                  text: hour,
                   style: AppTextStyles.headLine4Gold,
                 ),
               ],
@@ -101,7 +124,7 @@ class _ContractedServicesContent extends StatelessWidget {
             ),
           ),
           Text(
-            'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            userComent,
             style: AppTextStyles.headLine4,
             textAlign: TextAlign.justify,
           ),
@@ -115,7 +138,7 @@ class _ContractedServicesContent extends StatelessWidget {
             ),
           ),
           Text(
-            'when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+            serviceTodo,
             style: AppTextStyles.headLine4,
             textAlign: TextAlign.justify,
           ),
@@ -123,32 +146,32 @@ class _ContractedServicesContent extends StatelessWidget {
             color: AppColors.black,
           ),
           Visibility(
-            visible: true,
+            visible: showUserProviderData,
             replacement: const Center(
               child: CircularProgressIndicator.adaptive(),
             ),
             child: Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: showUserProviderDataCallBack,
                 child: const Text('Prestador do serviço'),
               ),
             ),
           ),
           Visibility(
-            visible: true,
+            visible: showUserProviderData,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircleAvatar(
+                CircleAvatar(
                   backgroundImage: NetworkImage(
-                    'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
+                    serviceProviderImageUrl,
                   ),
                 ),
                 const SizedBox(
-                   width: 10,
+                  width: 10,
                 ),
                 Text(
-                  'User Name',
+                  serviceProviderName,
                   style: AppTextStyles.headLine1,
                 ),
               ],
