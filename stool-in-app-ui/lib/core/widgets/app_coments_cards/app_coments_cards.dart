@@ -5,7 +5,17 @@ import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.d
 import 'package:stool_in_app_ui/core/widgets/ratting_stars/app_ratting_stars.dart';
 
 class AppComentsCards extends StatelessWidget {
-  const AppComentsCards({Key? key}) : super(key: key);
+  final String userUrlImage;
+  final String userName;
+  final String userComent;
+  final double votes;
+  const AppComentsCards({
+    Key? key,
+    required this.userUrlImage,
+    required this.userName,
+    required this.userComent,
+    required this.votes,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +40,9 @@ class AppComentsCards extends StatelessWidget {
           children: [
             Row(
               children: [
-                const CircleAvatar(
+                 CircleAvatar(
                   backgroundImage: NetworkImage(
-                    'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
+                    userUrlImage,
                   ),
                 ),
                 const SizedBox(
@@ -40,7 +50,7 @@ class AppComentsCards extends StatelessWidget {
                 ),
                 Expanded(
                   child: AutoSizeText(
-                    'José pereira nogueira de oliveira silva filho',
+                    userName,
                     style: AppTextStyles.headLine1,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -56,15 +66,14 @@ class AppComentsCards extends StatelessWidget {
             Text(
               'Comentário:',
               style: TextStyle(
-                color: AppColors.buttonLeftGradientColor,
-                decoration: TextDecoration.underline
-              ),
+                  color: AppColors.buttonLeftGradientColor,
+                  decoration: TextDecoration.underline),
             ),
             const SizedBox(
               height: 5,
             ),
             Text(
-              'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+              userComent,
               style: AppTextStyles.headLine2,
               textAlign: TextAlign.justify,
             ),
@@ -74,7 +83,7 @@ class AppComentsCards extends StatelessWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: AppRattingStars(
-                value: 3,
+                value: votes,
                 onValueChanged: (v) {},
                 size: 10,
               ),
