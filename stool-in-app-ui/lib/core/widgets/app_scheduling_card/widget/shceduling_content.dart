@@ -1,12 +1,40 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in_app_ui/core/widgets/dialog_button/dialog_button.dart';
+part of '../app_scheduling_card.dart';
 
-import '../../../helpers/theme/text_styles/app_text_styles.dart';
+class _ShcedulingContent extends StatelessWidget {
+  final String userUrlImage;
+  final String userName;
+  final String jobDate;
+  final String jobHour;
+  final String totalPrice;
+  final String serviceDescription;
+  final String userComentary;
+  final bool userComentaryVisible;
+  final String servicesTodo;
+  final String street;
+  final String city;
+  final String houseNumber;
+  final String district;
+  final String referencePoint;
+  final VoidCallback cancelOnPressed;
 
-class ShcedulingContent extends StatelessWidget {
-  const ShcedulingContent({Key? key}) : super(key: key);
+  const _ShcedulingContent({
+    Key? key,
+    required this.userUrlImage,
+    required this.userName,
+    required this.jobDate,
+    required this.jobHour,
+    required this.totalPrice,
+    required this.serviceDescription,
+    required this.userComentary,
+    required this.userComentaryVisible,
+    required this.servicesTodo,
+    required this.street,
+    required this.city,
+    required this.houseNumber,
+    required this.district,
+    required this.referencePoint,
+    required this.cancelOnPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +46,9 @@ class ShcedulingContent extends StatelessWidget {
         children: [
           Row(
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 backgroundImage: NetworkImage(
-                  'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
+                  userUrlImage,
                 ),
               ),
               const SizedBox(
@@ -28,7 +56,7 @@ class ShcedulingContent extends StatelessWidget {
               ),
               Expanded(
                 child: AutoSizeText(
-                  'userName userName userName userName userName',
+                  userName,
                   style: AppTextStyles.headLine1,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -40,7 +68,7 @@ class ShcedulingContent extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                '05/07/2022 as 14:00',
+                '$jobDate as $jobHour',
                 style: AppTextStyles.headLine4Gold,
               ),
             ],
@@ -51,7 +79,7 @@ class ShcedulingContent extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: Text(
-              'Total: 255 R\$',
+              'Total: R\$ $totalPrice',
               style: AppTextStyles.headLine1Gold,
             ),
           ),
@@ -68,7 +96,7 @@ class ShcedulingContent extends StatelessWidget {
             height: 2,
           ),
           Text(
-            'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            serviceDescription,
             style: AppTextStyles.headLine4,
           ),
           Visibility(
@@ -86,7 +114,7 @@ class ShcedulingContent extends StatelessWidget {
                   height: 2,
                 ),
                 Text(
-                  'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                  userComentary,
                   style: AppTextStyles.headLine4,
                 ),
               ],
@@ -105,7 +133,7 @@ class ShcedulingContent extends StatelessWidget {
             height: 2,
           ),
           Text(
-            'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            servicesTodo,
             style: AppTextStyles.headLine4,
           ),
           Divider(
@@ -121,7 +149,7 @@ class ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine2,
               children: <TextSpan>[
                 TextSpan(
-                  text: 'Rua x',
+                  text: street,
                   style: AppTextStyles.headLine4,
                 ),
               ],
@@ -133,7 +161,7 @@ class ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine2,
               children: <TextSpan>[
                 TextSpan(
-                  text: 'Cidade x',
+                  text: city,
                   style: AppTextStyles.headLine4,
                 ),
               ],
@@ -145,7 +173,7 @@ class ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine2,
               children: <TextSpan>[
                 TextSpan(
-                  text: '255',
+                  text: houseNumber,
                   style: AppTextStyles.headLine4,
                 ),
               ],
@@ -157,7 +185,7 @@ class ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine2,
               children: <TextSpan>[
                 TextSpan(
-                  text: 'Bairro x',
+                  text: district,
                   style: AppTextStyles.headLine4,
                 ),
               ],
@@ -169,7 +197,7 @@ class ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine2,
               children: <TextSpan>[
                 TextSpan(
-                  text: 'Ponto x',
+                  text: referencePoint,
                   style: AppTextStyles.headLine4,
                 ),
               ],
@@ -180,7 +208,7 @@ class ShcedulingContent extends StatelessWidget {
           ),
           Center(
             child: DialogButton(
-              onPressed: () {},
+              onPressed: cancelOnPressed,
               dialogButtonType: DialogButtonType.no,
               buttonText: 'Cancelar',
             ),

@@ -1,10 +1,45 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/widgets/app_scheduling_card/widget/shceduling_content.dart';
 
 import '../../helpers/theme/colors/app_colors.dart';
+import '../../helpers/theme/text_styles/app_text_styles.dart';
+import '../dialog_button/dialog_button.dart';
+part './widget/shceduling_content.dart';
 
 class AppSchedulingCard extends StatelessWidget {
-  const AppSchedulingCard({Key? key}) : super(key: key);
+  final String userUrlImage;
+  final String userName;
+  final String jobDate;
+  final String jobHour;
+  final String totalPrice;
+  final String serviceDescription;
+  final String userComentary;
+  final bool userComentaryVisible;
+  final String servicesTodo;
+  final String street;
+  final String city;
+  final String houseNumber;
+  final String district;
+  final String referencePoint;
+  final VoidCallback cancelOnPressed;
+  const AppSchedulingCard({
+    Key? key,
+    required this.cancelOnPressed,
+    required this.city,
+    required this.district,
+    required this.houseNumber,
+    required this.jobDate,
+    required this.jobHour,
+    required this.referencePoint,
+    required this.serviceDescription,
+    required this.servicesTodo,
+    required this.street,
+    required this.totalPrice,
+    required this.userComentary,
+    required this.userComentaryVisible,
+    required this.userName,
+    required this.userUrlImage,
+  }) : super(key: key);
   // Esse card vai ser usado para o prestador de serviço ver os serviços que ele tem que executar
   @override
   Widget build(BuildContext context) {
@@ -22,7 +57,23 @@ class AppSchedulingCard extends StatelessWidget {
           ],
         ),
       ),
-      child: const ShcedulingContent(),
+      child: _ShcedulingContent(
+        cancelOnPressed: cancelOnPressed,
+        city: city,
+        district: district,
+        houseNumber: houseNumber,
+        jobDate: jobDate,
+        jobHour: jobHour,
+        referencePoint: referencePoint,
+        serviceDescription: serviceDescription,
+        servicesTodo: servicesTodo,
+        street: street,
+        totalPrice: totalPrice,
+        userComentary: userComentary,
+        userComentaryVisible: userComentaryVisible,
+        userName: userName,
+        userUrlImage: userUrlImage,
+      ),
     );
   }
 }
