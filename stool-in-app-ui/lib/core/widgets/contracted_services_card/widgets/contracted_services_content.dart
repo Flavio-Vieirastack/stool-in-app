@@ -11,20 +11,45 @@ class _ContractedServicesContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Align(
-            alignment: Alignment.bottomRight,
-            child: RichText(
-              text: TextSpan(
-                text: 'Total: ',
-                style: AppTextStyles.headLine2,
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'R\$ 255',
-                    style: AppTextStyles.headLine1Gold,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Align(
+                alignment: Alignment.bottomRight,
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Total: ',
+                    style: AppTextStyles.headLine2,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'R\$ 255',
+                        style: AppTextStyles.headLine1Gold,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Status: ',
+                    style: AppTextStyles.headLine2,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'ATIVO',
+                        style: AppTextStyles.headLine2.copyWith(
+                          color: Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
           ),
           Center(
             child: Text(
@@ -79,23 +104,34 @@ class _ContractedServicesContent extends StatelessWidget {
           Divider(
             color: AppColors.black,
           ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: RichText(
-              text: TextSpan(
-                text: 'Status: ',
-                style: AppTextStyles.headLine2,
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'ATIVO',
-                    style: AppTextStyles.headLine2.copyWith(
-                      color: Colors.green,
-                    ),
-                  ),
-                ],
+          Visibility(
+            visible: true,
+            replacement: const Center(
+              child: CircularProgressIndicator.adaptive(),
+            ),
+            child: Center(
+              child: TextButton(
+                onPressed: () {},
+                child: const Text('Prestador do serviço'),
               ),
             ),
           ),
+          Row(
+            children: [
+              const CircleAvatar(
+                backgroundImage: NetworkImage(
+                  'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
+                ),
+              ),
+              const SizedBox(
+                 width: 5,
+              ),
+              Text(
+                'User Name',
+                style: AppTextStyles.headLine1,
+              ),
+            ],
+          ), // Terminar esse card
         ],
       ),
     );
