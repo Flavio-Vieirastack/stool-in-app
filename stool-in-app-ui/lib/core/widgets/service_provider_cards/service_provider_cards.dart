@@ -12,41 +12,46 @@ class ServiceProviderCards extends StatelessWidget {
   final String userVotes;
   final String userServicesExecuted;
   final String userDistance;
-  const ServiceProviderCards({
-    Key? key,
-    required this.userDistance,
-    required this.userName,
-    required this.userServicesExecuted,
-    required this.userUrlImage,
-    required this.userVotes,
-  }) : super(key: key);
+  final VoidCallback onPressed;
+  const ServiceProviderCards(
+      {Key? key,
+      required this.userDistance,
+      required this.userName,
+      required this.userServicesExecuted,
+      required this.userUrlImage,
+      required this.userVotes,
+      required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: AppColors.buttonLeftGradientColor.withOpacity(0.2),
+    return InkWell(
+      onTap: onPressed,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: AppColors.buttonLeftGradientColor.withOpacity(0.2),
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20),
+            ),
+            gradient: RadialGradient(
+              radius: 2,
+              colors: [
+                AppColors.grey.withOpacity(0.5),
+                AppColors.black.withOpacity(0.3),
+              ],
+            ),
           ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(20),
+          child: _ServiceProviderContent(
+            userDistance: userDistance,
+            userName: userName,
+            userServicesExecuted: userServicesExecuted,
+            userUrlImage: userUrlImage,
+            userVotes: userVotes,
           ),
-          gradient: RadialGradient(
-            radius: 2,
-            colors: [
-              AppColors.grey.withOpacity(0.5),
-              AppColors.black.withOpacity(0.3),
-            ],
-          ),
-        ),
-        child: _ServiceProviderContent(
-          userDistance: userDistance,
-          userName: userName,
-          userServicesExecuted: userServicesExecuted,
-          userUrlImage: userUrlImage,
-          userVotes: userVotes,
         ),
       ),
     );

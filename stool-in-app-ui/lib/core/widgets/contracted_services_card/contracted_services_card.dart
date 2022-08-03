@@ -4,7 +4,7 @@ import '../../helpers/theme/colors/app_colors.dart';
 part './widgets/contracted_services_content.dart';
 class ContractedServicesCard extends StatelessWidget {
   const ContractedServicesCard({Key? key}) : super(key: key);
-
+  //! Esse e o card de serviços que o cliente agendou
   @override
   Widget build(BuildContext context) {
     return Container(

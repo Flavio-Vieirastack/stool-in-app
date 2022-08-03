@@ -40,7 +40,7 @@ class AppSchedulingCard extends StatelessWidget {
     required this.userName,
     required this.userUrlImage,
   }) : super(key: key);
-  // Esse card vai ser usado para o prestador de serviço ver os serviços que ele tem que executar
+  //! Esse card vai ser usado para o prestador de serviço ver os serviços que ele tem que executar
   @override
   Widget build(BuildContext context) {
     return Container(
