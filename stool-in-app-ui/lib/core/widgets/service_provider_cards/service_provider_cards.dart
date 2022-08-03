@@ -9,22 +9,23 @@ class ServiceProviderCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Card(
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: RadialGradient(
-                radius: 1.5,
-                colors: [
-                  AppColors.grey.withOpacity(0.2),
-                  AppColors.black.withOpacity(0.2),
-                ],
-              ),
-            ),
-            child: const ServiceProviderContent(),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColors.buttonLeftGradientColor.withOpacity(0.2),
+          ),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
+          ),
+          gradient: RadialGradient(
+            radius: 2,
+            colors: [
+              AppColors.grey.withOpacity(0.5),
+              AppColors.black.withOpacity(0.3),
+            ],
           ),
         ),
+        child: const ServiceProviderContent(),
       ),
     );
   }
