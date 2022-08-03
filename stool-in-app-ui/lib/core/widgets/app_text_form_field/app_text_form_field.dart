@@ -34,6 +34,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
               ),
           child: TextFormField(
             expands: expands,
+            maxLines: expands ? null : 1,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: validator,
             obscureText: obscureText,
