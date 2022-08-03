@@ -40,6 +40,8 @@ class _ContractedServicesContent extends StatelessWidget {
                         text: 'ATIVO',
                         style: AppTextStyles.headLine2.copyWith(
                           color: Colors.green,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
                         ),
                       ),
                     ],
@@ -60,6 +62,7 @@ class _ContractedServicesContent extends StatelessWidget {
           Text(
             'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
             style: AppTextStyles.headLine4,
+            textAlign: TextAlign.justify,
           ),
           Divider(
             color: AppColors.black,
@@ -100,6 +103,21 @@ class _ContractedServicesContent extends StatelessWidget {
           Text(
             'when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
             style: AppTextStyles.headLine4,
+            textAlign: TextAlign.justify,
+          ),
+          Divider(
+            color: AppColors.black,
+          ),
+          Center(
+            child: Text(
+              'Serviço a fazer:',
+              style: AppTextStyles.headLine4Gold,
+            ),
+          ),
+          Text(
+            'when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+            style: AppTextStyles.headLine4,
+            textAlign: TextAlign.justify,
           ),
           Divider(
             color: AppColors.black,
@@ -116,22 +134,26 @@ class _ContractedServicesContent extends StatelessWidget {
               ),
             ),
           ),
-          Row(
-            children: [
-              const CircleAvatar(
-                backgroundImage: NetworkImage(
-                  'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
+          Visibility(
+            visible: true,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
+                  ),
                 ),
-              ),
-              const SizedBox(
-                 width: 5,
-              ),
-              Text(
-                'User Name',
-                style: AppTextStyles.headLine1,
-              ),
-            ],
-          ), // Terminar esse card
+                const SizedBox(
+                   width: 10,
+                ),
+                Text(
+                  'User Name',
+                  style: AppTextStyles.headLine1,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
