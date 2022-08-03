@@ -7,12 +7,14 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool obscureText;
+  final bool expands;
   final String label;
   final String hint;
   const AppTextFormField({
     Key? key,
     this.validator,
     this.obscureText = false,
+    this.expands = false,
     this.controller,
     this.label = 'Label',
     this.hint = 'Hint',
@@ -31,6 +33,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
                 constraints: constraints,
               ),
           child: TextFormField(
+            expands: expands,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             validator: validator,
             obscureText: obscureText,
