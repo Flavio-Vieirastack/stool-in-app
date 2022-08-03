@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../helpers/theme/colors/app_colors.dart';
+import '../../helpers/theme/text_styles/app_text_styles.dart';
 part './widgets/contracted_services_content.dart';
 class ContractedServicesCard extends StatelessWidget {
   const ContractedServicesCard({Key? key}) : super(key: key);
