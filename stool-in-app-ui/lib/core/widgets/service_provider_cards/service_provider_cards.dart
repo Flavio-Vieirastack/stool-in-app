@@ -1,9 +1,25 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in_app_ui/core/widgets/service_provider_cards/widget/service_provider_content.dart';
+
+import '../../helpers/theme/text_styles/app_text_styles.dart';
+import '../ratting_stars/app_ratting_stars.dart';
+part './widget/service_provider_content.dart';
 
 class ServiceProviderCards extends StatelessWidget {
-  const ServiceProviderCards({Key? key}) : super(key: key);
+  final String userUrlImage;
+  final String userName;
+  final String userVotes;
+  final String userServicesExecuted;
+  final String userDistance;
+  const ServiceProviderCards({
+    Key? key,
+    required this.userDistance,
+    required this.userName,
+    required this.userServicesExecuted,
+    required this.userUrlImage,
+    required this.userVotes,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +41,13 @@ class ServiceProviderCards extends StatelessWidget {
             ],
           ),
         ),
-        child: const ServiceProviderContent(),
+        child: _ServiceProviderContent(
+          userDistance: userDistance,
+          userName: userName,
+          userServicesExecuted: userServicesExecuted,
+          userUrlImage: userUrlImage,
+          userVotes: userVotes,
+        ),
       ),
     );
   }

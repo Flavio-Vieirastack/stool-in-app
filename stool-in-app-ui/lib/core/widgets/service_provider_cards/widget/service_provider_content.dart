@@ -1,11 +1,19 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
-import 'package:stool_in_app_ui/core/widgets/ratting_stars/app_ratting_stars.dart';
+part of '../service_provider_cards.dart';
 
-class ServiceProviderContent extends StatelessWidget {
-  const ServiceProviderContent({Key? key}) : super(key: key);
+class _ServiceProviderContent extends StatelessWidget {
+  final String userUrlImage;
+  final String userName;
+  final String userVotes;
+  final String userServicesExecuted;
+  final String userDistance;
+  const _ServiceProviderContent({
+    Key? key,
+    required this.userUrlImage,
+    required this.userName,
+    required this.userVotes,
+    required this.userServicesExecuted,
+    required this.userDistance,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +26,17 @@ class ServiceProviderContent extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 25,
                 backgroundImage: NetworkImage(
-                  'https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg',
+                  userUrlImage,
                 ),
               ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: AutoSizeText(
-                    'Nome do usuário: five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                    userName,
                     maxLines: 1,
                     maxFontSize: 16,
                     minFontSize: 15,
@@ -57,7 +65,7 @@ class ServiceProviderContent extends StatelessWidget {
           SizedBox(
             width: 350,
             child: AutoSizeText(
-              'five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+              userServicesExecuted,
               textAlign: TextAlign.left,
               maxLines: 3,
               maxFontSize: 15,
@@ -72,7 +80,7 @@ class ServiceProviderContent extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: Text(
-              'Distância: 20km',
+              'Distância: $userDistance',
               style: TextStyle(color: AppColors.buttonLeftGradientColor),
             ),
           )

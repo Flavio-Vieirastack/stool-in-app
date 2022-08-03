@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/widgets/service_provider_cards/service_provider_cards.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,9 +14,7 @@ class LoginPage extends StatelessWidget {
            SizedBox(
              height: 20,
           ),
-          Center(
-            child: ServiceProviderCards(),
-          ),
+          
         ],
       ),
     );
