@@ -17,10 +17,23 @@ class AppTextStyles {
     fontFamily: GoogleFonts.exo2().fontFamily,
     fontSize: 18,
   );
+  static TextStyle headLine1Gold = TextStyle(
+    color: AppColors.buttonLeftGradientColor,
+    fontWeight: FontWeight.bold,
+    fontFamily: GoogleFonts.exo2().fontFamily,
+    fontSize: 18,
+    decoration: TextDecoration.underline
+  );
   static TextStyle headLine2 = TextStyle(
     color: AppColors.white,
     fontFamily: GoogleFonts.exo2().fontFamily,
     fontSize: 17,
+  );
+  static TextStyle headLine2UnderLine = TextStyle(
+    color: AppColors.white,
+    fontFamily: GoogleFonts.exo2().fontFamily,
+    fontSize: 17,
+    decoration: TextDecoration.underline
   );
   static TextStyle headLine3 = TextStyle(
     color: AppColors.white,
@@ -36,5 +49,11 @@ class AppTextStyles {
     color: AppColors.grey,
     fontFamily: GoogleFonts.prata().fontFamily,
     fontSize: 14,
+  );
+  static TextStyle headLine4Gold = TextStyle(
+    color: AppColors.buttonLeftGradientColor,
+    fontFamily: GoogleFonts.openSans().fontFamily,
+    fontSize: 14,
+    decoration: TextDecoration.underline
   );
 }

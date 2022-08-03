@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in_app_ui/core/widgets/app_scheduling_card/app_scheduling_card.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,12 +10,15 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: Column(
-        children: const [
-           SizedBox(
-             height: 20,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+             SizedBox(
+               height: 20,
+            ),
+            Center(child: AppSchedulingCard())
+          ],
+        ),
       ),
     );
   }
