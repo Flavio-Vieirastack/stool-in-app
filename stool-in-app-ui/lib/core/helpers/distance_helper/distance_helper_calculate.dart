@@ -15,10 +15,18 @@ class DistanceHelperCalculate {
     final secondLoaction = secondLocation;
     final result =
         haversineDistance.haversine(fistLocation, secondLoaction, Unit.KM);
-    final resultFormat = '${result.toString().substring(0, 4)} Km'.replaceAll(
-      '.',
-      ',',
-    );
-    return resultFormat;
+    if (result >= 1) {
+      final resultFormat = '${result.toString().substring(0, 4)} Km'.replaceAll(
+        '.',
+        ',',
+      );
+      return resultFormat;
+    } else {
+      final result =
+          haversineDistance.haversine(fistLocation, secondLoaction, Unit.METER);
+      final resultFormat =
+          '${result.toString().substring(0, 4)} Metros'.replaceAll('.', '');
+      return resultFormat;
+    }
   }
 }

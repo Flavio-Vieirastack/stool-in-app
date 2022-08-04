@@ -18,4 +18,15 @@ void main() {
     );
     expect(sut, '1,04 Km');
   });
+  test('deve calcular a distância correta em Metros', () {
+    final firstLocation = Location(-7.2380874453854, -39.41323305981678);
+    final secondLocation = Location(-7.23429501176811, -39.41228026263391);
+    final sut = DistanceHelperCalculate(
+      haversineDistance: haversineDistance,
+    ).caculateDistance(
+      firstLocation: firstLocation,
+      secondLocation: secondLocation,
+    );
+    expect(sut, '434 Metros');
+  });
 }
