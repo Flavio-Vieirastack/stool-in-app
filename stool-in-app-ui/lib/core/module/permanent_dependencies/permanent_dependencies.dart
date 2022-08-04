@@ -7,7 +7,7 @@ import 'package:stool_in_app_ui/core/shared/module/dependencies/permanent_module
 class PermanentDependencies {
   static List<SingleChildWidget> init() {
     final providers = [
-      ...RestClientModule().restClientInject(),
+      ...RestClientModule().inject(),
       ...PermanentModules().dependencies(),
       ...PermanentCubits().cubits(),
     ];

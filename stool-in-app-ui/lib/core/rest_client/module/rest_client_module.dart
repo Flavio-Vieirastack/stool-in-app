@@ -1,10 +1,12 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:stool_in_app_ui/core/module/permanent_dependencies/permanent_module.dart';
 import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in_app_ui/core/rest_client/rest_client_mehods.dart';
 
-class RestClientModule {
-  List<SingleChildWidget> restClientInject() {
+class RestClientModule implements PermanentModule {
+  @override
+  List<SingleChildWidget> inject() {
     return [
       Provider<RestClientRequest>(
         create: (context) => RestClientResquestImpl(),
