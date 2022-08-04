@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
-import 'package:stool_in_app_ui/core/widgets/contracted_services_card/contracted_services_card.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);

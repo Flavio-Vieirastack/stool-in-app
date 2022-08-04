@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
+import 'package:stool_in_app_ui/core/widgets/app_text_form_field/app_text_form_field.dart';
 import 'package:stool_in_app_ui/core/widgets/ratting_stars/app_ratting_stars.dart';
+import 'package:validatorless/validatorless.dart';
 
 import '../../constants/lottie_constants.dart';
 import '../dialog_button/dialog_button.dart';
@@ -23,6 +25,7 @@ class AppDialog extends Dialog {
   final double value;
   final String title;
   final String message;
+  final TextEditingController? rattingController;
   AppDialog({
     Key? key,
     this.dialogTypes = DialogTypes.sucess,
@@ -31,6 +34,7 @@ class AppDialog extends Dialog {
     this.onValueChanged,
     this.value = 0,
     this.message = '',
+    this.rattingController,
     required this.title,
   }) : super(
           key: key,
@@ -70,6 +74,7 @@ class AppDialog extends Dialog {
                     noCallBack: noCallBack ?? () {},
                     onValueChanged: onValueChanged,
                     value: value,
+                    rattingController: rattingController,
                   )
               ],
             ),

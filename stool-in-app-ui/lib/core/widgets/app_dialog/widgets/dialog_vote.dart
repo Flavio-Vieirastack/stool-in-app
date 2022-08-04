@@ -3,6 +3,7 @@ part of '../app_dialog.dart';
 class _DialogVote extends StatefulWidget {
   final VoidCallback yesCallBack;
   final VoidCallback noCallBack;
+  final TextEditingController? rattingController;
   final dynamic Function(double)? onValueChanged;
   final double value;
   const _DialogVote({
@@ -10,7 +11,8 @@ class _DialogVote extends StatefulWidget {
     required this.noCallBack,
     required this.yesCallBack,
     required this.onValueChanged,
-    required this.value
+    required this.value,
+    this.rattingController,
   }) : super(key: key);
 
   @override
@@ -26,6 +28,22 @@ class _DialogVoteState extends State<_DialogVote> {
           child: AppRattingStars(
             value: widget.value,
             onValueChanged: widget.onValueChanged,
+          ),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        AppTextFormField(
+          expands: true,
+          hint: 'Ex: Profissional de qualidade, serviço excelente.',
+          label: 'Comentário',
+          controller: widget.rattingController,
+          validator: Validatorless.multiple(
+            [
+              Validatorless.required(
+                'Esse campo não pode ficar vazio',
+              ),
+            ],
           ),
         ),
         const SizedBox(
