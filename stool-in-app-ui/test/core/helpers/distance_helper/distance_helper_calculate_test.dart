@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:haversine_distance/haversine_distance.dart';
-import 'package:stool_in_app_logic/core/helpers/distance_helper/distance_helper_calculate.dart';
+import 'package:stool_in_app_ui/core/helpers/distance_helper/distance_helper_calculate.dart';
 
 void main() {
   late HaversineDistance haversineDistance;
