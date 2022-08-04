@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/colors/app_colors.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
+import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in_app_ui/core/widgets/ratting_stars/app_ratting_stars.dart';
 
 class AppComentsCards extends StatelessWidget {
@@ -40,11 +41,7 @@ class AppComentsCards extends StatelessWidget {
           children: [
             Row(
               children: [
-                 CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    userUrlImage,
-                  ),
-                ),
+                 AppAvatar(urlImage: userUrlImage),
                 const SizedBox(
                   width: 5,
                 ),

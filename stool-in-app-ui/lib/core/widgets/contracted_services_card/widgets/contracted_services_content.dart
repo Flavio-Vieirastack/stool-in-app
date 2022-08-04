@@ -162,11 +162,7 @@ class _ContractedServicesContent extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    serviceProviderImageUrl,
-                  ),
-                ),
+                AppAvatar(urlImage: serviceProviderImageUrl),
                 const SizedBox(
                   width: 10,
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
 
 import '../../helpers/theme/colors/app_colors.dart';
 import '../../helpers/theme/text_styles/app_text_styles.dart';

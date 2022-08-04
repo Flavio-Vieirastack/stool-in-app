@@ -17,6 +17,7 @@ class AppRattingStars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO colocar text form field de comentario
     return RatingStars(
       value: value,
       onValueChanged: onValueChanged,

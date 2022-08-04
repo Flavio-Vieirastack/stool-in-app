@@ -46,11 +46,7 @@ class _ShcedulingContent extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                backgroundImage: NetworkImage(
-                  userUrlImage,
-                ),
-              ),
+              AppAvatar(urlImage: userUrlImage),
               const SizedBox(
                 width: 5,
               ),

@@ -26,12 +26,7 @@ class _ServiceProviderContent extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              CircleAvatar(
-                radius: 25,
-                backgroundImage: NetworkImage(
-                  userUrlImage,
-                ),
-              ),
+              AppAvatar(urlImage: userUrlImage),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
