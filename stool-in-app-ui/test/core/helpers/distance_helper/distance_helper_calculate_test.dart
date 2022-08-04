@@ -40,4 +40,15 @@ void main() {
     );
     expect(sut, '434 Metros');
   });
+  test('deve calcular a distância correta em Metros segunda rota', () {
+    final firstLocation = Location(-7.2380874453854, -39.41323305981678);
+    final secondLocation = Location(-7.237008668833001, -39.41508950386095);
+    final sut = DistanceHelperCalculate(
+      haversineDistance: haversineDistance,
+    ).caculateDistance(
+      firstLocation: firstLocation,
+      secondLocation: secondLocation,
+    );
+    expect(sut, '237 Metros');
+  });
 }
