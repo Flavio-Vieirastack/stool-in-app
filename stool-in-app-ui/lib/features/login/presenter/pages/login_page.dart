@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in_app_ui/core/widgets/contracted_services_card/contracted_services_card.dart';
 
 class LoginPage extends StatelessWidget {
@@ -16,6 +17,10 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
+            AppAvatar(
+              urlImage:
+                  'https://super.abril.com.br/wp-content/uploads/2018/05/filhotes-de-cachorro-alcanc3a7am-o-c3a1pice-de-fofura-com-8-semanas1.png',
+            )
           ],
         ),
       ),
