@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
 
 enum SnackBarType {
   success,
@@ -37,9 +38,7 @@ mixin AppSnackBar {
             Expanded(
               child: Text(
                 message,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
+                style: AppTextStyles.headLine4,
               ),
             ),
             Icon(
