@@ -33,17 +33,24 @@ class _DialogVoteState extends State<_DialogVote> {
         const SizedBox(
           height: 30,
         ),
-        AppTextFormField(
-          expands: true,
-          hint: 'Ex: Profissional de qualidade, serviço excelente.',
-          label: 'Comentário',
-          controller: widget.rattingController,
-          validator: Validatorless.multiple(
-            [
-              Validatorless.required(
-                'Esse campo não pode ficar vazio',
-              ),
-            ],
+        Container(
+          constraints: const BoxConstraints(
+            maxHeight: 100,
+            minWidth: 300,
+            maxWidth: 400,
+          ),
+          child: AppTextFormField(
+            expands: true,
+            hint: 'Ex: Profissional de qualidade, serviço excelente.',
+            label: 'Comentário',
+            controller: widget.rattingController,
+            validator: Validatorless.multiple(
+              [
+                Validatorless.required(
+                  'Esse campo não pode ficar vazio',
+                ),
+              ],
+            ),
           ),
         ),
         const SizedBox(
