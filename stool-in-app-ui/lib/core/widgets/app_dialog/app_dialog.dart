@@ -7,6 +7,7 @@ import 'package:stool_in_app_ui/core/widgets/ratting_stars/app_ratting_stars.dar
 import 'package:validatorless/validatorless.dart';
 
 import '../../constants/lottie_constants.dart';
+import '../../helpers/internet_helper/dialog_button_internet_checker.dart';
 import '../dialog_button/dialog_button.dart';
 
 part './widgets/dialog_blocked.dart';
@@ -25,18 +26,20 @@ class AppDialog extends Dialog {
   final double value;
   final String title;
   final String message;
+  final BuildContext context;
   final TextEditingController? rattingController;
-  AppDialog({
-    Key? key,
-    this.dialogTypes = DialogTypes.sucess,
-    this.yesCallBack,
-    this.noCallBack,
-    this.onValueChanged,
-    this.value = 0,
-    this.message = '',
-    this.rattingController,
-    required this.title,
-  }) : super(
+  AppDialog(
+      {Key? key,
+      this.dialogTypes = DialogTypes.sucess,
+      this.yesCallBack,
+      this.noCallBack,
+      this.onValueChanged,
+      this.value = 0,
+      this.message = '',
+      this.rattingController,
+      required this.title,
+      required this.context})
+      : super(
           key: key,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
@@ -58,7 +61,7 @@ class AppDialog extends Dialog {
                 else if (dialogTypes == DialogTypes.error)
                   _DialogError().error(message: message)
                 else if (dialogTypes == DialogTypes.noConnection)
-                  _DialogNoConnection().noConnection(message: message)
+                  _DialogNoConnection().noConnection(context: context)
                 else if (dialogTypes == DialogTypes.info)
                   _DialogInfo().info(
                     yesOnPressed: yesCallBack ?? () {},
