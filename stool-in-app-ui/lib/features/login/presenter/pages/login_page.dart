@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
-import 'package:stool_in_app_ui/core/widgets/app_dialog/app_dialog.dart';
-import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,11 +11,11 @@ class LoginPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [
+          children: const [
             SizedBox(
               height: 20,
             ),
-            TextButton(onPressed: () => showDialog(context: context, builder: (context) => AppDialog(title: 'title', dialogTypes: DialogTypes.voteRatting,)), child: Text('data'))
+            
           ],
         ),
       ),
