@@ -8,7 +8,7 @@ class PermanentModules {
   List<SingleChildWidget> dependencies() {
     return [
       ...SecureStorageModule().secureStorageInject(),
-      ...DistanceHelperModule().module(),
+      ...DistanceHelperModule().inject(),
       ...VoteRattingModule().voteInject(),
     ];
   }
