@@ -7,7 +7,7 @@ import 'package:stool_in_app_ui/core/helpers/vote_ratting/module/vote_ratting_mo
 class PermanentModules {
   List<SingleChildWidget> dependencies() {
     return [
-      ...SecureStorageModule().secureStorageInject(),
+      ...SecureStorageModule().inject(),
       ...DistanceHelperModule().inject(),
       ...VoteRattingModule().voteInject(),
     ];
