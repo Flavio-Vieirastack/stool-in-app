@@ -12,7 +12,7 @@ class _DialogNoConnection {
         const SizedBox(
           height: 10,
         ),
-        const Text('Ops!'),
+        const Text('Você não tem conexão'),
         const SizedBox(
           height: 10,
         ),
