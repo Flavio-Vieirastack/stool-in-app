@@ -9,7 +9,7 @@ class PermanentModules {
     return [
       ...SecureStorageModule().inject(),
       ...DistanceHelperModule().inject(),
-      ...VoteRattingModule().voteInject(),
+      ...VoteRattingModule().inject(),
     ];
   }
 }
