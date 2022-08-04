@@ -38,7 +38,6 @@ dependencies:
   flutter_security_checker: ^1.0.1
   flutter_bloc: ^8.0.1
   lottie: ^1.4.0
-  internet_connection_checker: ^0.0.1+4
   flutter_rating_stars: ^1.0.3+4
   validatorless: ^1.2.1
   haversine_distance: ^1.2.1
