@@ -3,8 +3,12 @@ import 'package:collection/collection.dart';
 
 class VoteRattingCalculate {
   int calculateVotes({required Iterable<int> votes}) {
-    final allvotes = votes.sum;
-    final result = allvotes / votes.length;
-    return result.ceil();
+    if (votes.isNotEmpty) {
+      final allvotes = votes.sum;
+      final result = allvotes / votes.length;
+      return result.ceil();
+    } else {
+      return 0;
+    }
   }
 }

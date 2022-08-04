@@ -22,4 +22,34 @@ void main() {
       expect(result, 5);
     },
   );
+  test(
+    'deve retornar o calculo correto de números quebrados ale atórios',
+    () {
+      final caculate = VoteRattingCalculate();
+
+      final result = caculate.calculateVotes(votes: [1, 5, 4, 3, 2]);
+
+      expect(result, 3);
+    },
+  );
+  test(
+    'deve retornar 0 quando a lista for vazia',
+    () {
+      final caculate = VoteRattingCalculate();
+
+      final result = caculate.calculateVotes(votes: []);
+
+      expect(result, 0);
+    },
+  );
+  test(
+    'deve retornar 0 com lista de 0',
+    () {
+      final caculate = VoteRattingCalculate();
+
+      final result = caculate.calculateVotes(votes: [0,0,0,0,0]);
+
+      expect(result, 0);
+    },
+  );
 }
