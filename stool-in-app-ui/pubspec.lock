@@ -525,6 +525,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
+  stool_in_app_logic:
+    dependency: "direct main"
+    description:
+      path: "../stool_in_app_logic"
+      relative: true
+    source: path
+    version: "0.0.1"
   stream_channel:
     dependency: transitive
     description:
