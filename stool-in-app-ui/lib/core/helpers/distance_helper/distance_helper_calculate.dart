@@ -16,7 +16,7 @@ class DistanceHelperCalculate {
     final result =
         haversineDistance.haversine(fistLocation, secondLoaction, Unit.KM);
     if (result >= 1) {
-      final resultFormat = '${result.toString().substring(0, 4)} Km'.replaceAll(
+      final resultFormat = '${result.round().toString()} Km'.replaceAll(
         '.',
         ',',
       );
