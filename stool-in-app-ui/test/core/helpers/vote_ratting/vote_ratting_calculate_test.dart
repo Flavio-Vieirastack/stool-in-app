@@ -43,6 +43,26 @@ void main() {
     },
   );
   test(
+    'deve retornar votos quando a lista tiver apenas um número',
+    () {
+      final caculate = VoteRattingCalculate();
+
+      final result = caculate.calculateVotes(votes: [0]);
+
+      expect(result, 0);
+    },
+  );
+  test(
+    'deve retornar votos quando a lista tiver apenas um número segundo numero',
+    () {
+      final caculate = VoteRattingCalculate();
+
+      final result = caculate.calculateVotes(votes: [5]);
+
+      expect(result, 5);
+    },
+  );
+  test(
     'deve retornar 0 com lista de 0',
     () {
       final caculate = VoteRattingCalculate();
