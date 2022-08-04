@@ -2,20 +2,23 @@ import 'package:haversine_distance/haversine_distance.dart';
 
 class DistanceHelperCalculate {
   final HaversineDistance haversineDistance;
-  final Location firstLocation;
-  final Location secondLocation;
+
   DistanceHelperCalculate({
-    required this.firstLocation,
-    required this.secondLocation,
     required this.haversineDistance,
   });
 
-  String caculateDistance() {
+  String caculateDistance({
+    required Location firstLocation,
+    required Location secondLocation,
+  }) {
     final fistLocation = firstLocation;
     final secondLoaction = secondLocation;
     final result =
         haversineDistance.haversine(fistLocation, secondLoaction, Unit.KM);
-    final resultFormat = '$result Km';
+    final resultFormat = '${result.toString().substring(0, 4)} Km'.replaceAll(
+      '.',
+      ',',
+    );
     return resultFormat;
   }
 }
