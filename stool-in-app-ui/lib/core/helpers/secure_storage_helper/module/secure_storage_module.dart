@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_methos.dart';
-
+@immutable
 class SecureStorageModule {
   List<SingleChildWidget> secureStorageInject() {
     return [
