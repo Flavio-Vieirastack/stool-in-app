@@ -32,6 +32,10 @@ mixin SharedPreferencesHelper {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getInt(key);
   }
+  Future<double?> getDouble({required String key}) async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getDouble(key);
+  }
 
   Future<String?> getString({required String key}) async {
     final prefs = await SharedPreferences.getInstance();
