@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/helpers/responsive/app_sizes_constants.dart';
+import 'package:stool_in_app_logic/core/helpers/responsive/app_sizes_constants.dart';
 
 mixin ResponsiveHelperMixin {
   num responsiveHeight({
