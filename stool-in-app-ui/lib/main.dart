@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
-import 'package:stool_in_app_ui/features/login/module/login_module.dart';
 import 'package:stool_in_app_ui/features/onboarding/module/onboarding_module.dart';
 import 'package:stool_in_app_ui/features/splash/module/splash_module.dart';
 
 import 'core/module/permanent_dependencies/permanent_dependencies.dart';
+import 'features/auth/login/module/login_module.dart';
 
 void main() {
   runApp(const MyApp());
