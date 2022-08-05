@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:stool_in_app_logic/features/auth/domain/entity/auth_entity.dart';
-import 'package:stool_in_app_logic/features/auth/domain/entity/password_reset_entity.dart';
 import 'package:stool_in_app_logic/features/auth/domain/error/firebase_auth_error.dart';
 import 'package:stool_in_app_logic/features/auth/domain/error/api_auth_error.dart';
 import 'package:stool_in_app_logic/features/auth/domain/repository/login/login_repository.dart';
@@ -51,17 +50,17 @@ class AuthUsecaseImpl implements AuthUseCase {
 
   @override
   Future<Either<ApiAuthError, void>> apiPasswordReset({
-    required PasswordResetEntity passwordResetEntity,
+    required AuthEntity authEntity,
   }) {
     return _passwordResetRepository.apiPasswordReset(
-        passwordResetEntity: passwordResetEntity);
+        authEntity: authEntity);
   }
 
   @override
   Future<Either<FirebaseAuthError, void>> firebasePasswordReset({
-    required PasswordResetEntity passwordResetEntity,
+    required AuthEntity authEntity,
   }) {
     return _passwordResetRepository.firebasePasswordReset(
-        passwordResetEntity: passwordResetEntity);
+        authEntity: authEntity);
   }
 }
