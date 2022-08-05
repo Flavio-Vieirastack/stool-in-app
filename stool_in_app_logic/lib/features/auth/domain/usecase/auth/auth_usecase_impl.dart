@@ -12,16 +12,16 @@ import 'package:stool_in_app_logic/features/auth/domain/repository/user_data/use
 import 'auth_use_case.dart';
 
 class AuthUsecaseImpl implements AuthUseCase {
-  final LoginRepository _authRepository;
+  final LoginRepository _loginRepository;
   final SignInRepository _signInRepository;
   final PasswordResetRepository _passwordResetRepository;
   final UserDataSignInRepository _userDataSignInRepository;
   AuthUsecaseImpl({
-    required LoginRepository authRepository,
+    required LoginRepository loginRepository,
     required SignInRepository signInRepository,
     required PasswordResetRepository passwordResetRepository,
     required UserDataSignInRepository userDataSignInRepository,
-  })  : _authRepository = authRepository,
+  })  : _loginRepository = loginRepository,
         _userDataSignInRepository = userDataSignInRepository,
         _passwordResetRepository = passwordResetRepository,
         _signInRepository = signInRepository;
@@ -30,14 +30,14 @@ class AuthUsecaseImpl implements AuthUseCase {
   Future<Either<ApiAuthError, void>> apiLogin({
     required AuthEntity authEntity,
   }) {
-    return _authRepository.apiLogin(authEntity: authEntity);
+    return _loginRepository.apiLogin(authEntity: authEntity);
   }
 
   @override
   Future<Either<FirebaseAuthError, void>> firebaseLogin({
     required AuthEntity authEntity,
   }) {
-    return _authRepository.firebaseLogin(authEntity: authEntity);
+    return _loginRepository.firebaseLogin(authEntity: authEntity);
   }
 
   @override
