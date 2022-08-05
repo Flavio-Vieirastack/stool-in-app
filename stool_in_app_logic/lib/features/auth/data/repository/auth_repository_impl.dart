@@ -48,9 +48,27 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<FirebaseAuthError, void>> firebaseAuth(
-      {required AuthEntity authEntity}) {
-    // TODO: implement firebaseAuth
-    throw UnimplementedError();
+  Future<Either<FirebaseAuthError, void>> firebaseAuth({
+    required AuthEntity authEntity,
+  }) async {
+    try {
+      final result = await _authDatasource.firebaseAuth(
+        authModel: AuthModel.fromEntity(
+          authEntity,
+        ),
+      );
+      return Right(result);// TODO adicionar firebase aqui
+    } on FirebaseAuthError catch (e, s) {
+      log(
+        'Erro ao fazer login no firebase',
+        error: e,
+        stackTrace: s,
+      );
+      return Left(
+        FirebaseAuthError(
+          message: e.message,
+        ),
+      );
+    }
   }
-}
+} 
