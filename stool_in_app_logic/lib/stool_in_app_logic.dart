@@ -4,7 +4,7 @@ export 'package:google_fonts/google_fonts.dart';
 export 'package:haversine_distance/haversine_distance.dart' hide Unit;
 export 'package:dartz/dartz_streaming.dart';
 export 'package:dartz/dartz_unsafe.dart';
-export 'package:dartz/dartz.dart';
+export 'package:dartz/dartz.dart' hide State;
 export 'package:flutter_bloc/flutter_bloc.dart';
 export './core/helpers/distance_helper/distance_helper_calculate.dart';
 export 'package:internet_connection_checker/internet_connection_checker.dart';
