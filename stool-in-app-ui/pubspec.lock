@@ -332,7 +332,7 @@ packages:
     source: hosted
     version: "4.0.1"
   internet_connection_checker:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: internet_connection_checker
       url: "https://pub.dartlang.org"
