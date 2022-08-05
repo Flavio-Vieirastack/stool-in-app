@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
+import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/features/login/module/login_module.dart';
 import 'package:stool_in_app_ui/features/onboarding/module/onboarding_module.dart';
 import 'package:stool_in_app_ui/features/splash/module/splash_module.dart';
