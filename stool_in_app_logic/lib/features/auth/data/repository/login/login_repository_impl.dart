@@ -1,17 +1,17 @@
 import 'dart:developer';
 
-import 'package:stool_in_app_logic/features/auth/data/datasource/login/auth_datasource.dart';
+import 'package:stool_in_app_logic/features/auth/data/datasource/login/login_datasource.dart';
 import 'package:stool_in_app_logic/features/auth/data/model/auth_model.dart';
 import 'package:stool_in_app_logic/features/auth/domain/error/firebase_auth_error.dart';
 import 'package:stool_in_app_logic/features/auth/domain/error/api_auth_error.dart';
 import 'package:stool_in_app_logic/features/auth/domain/entity/auth_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in_app_logic/features/auth/domain/repository/login/auth_repository.dart';
+import 'package:stool_in_app_logic/features/auth/domain/repository/login/login_repository.dart';
 
-class AuthRepositoryImpl implements AuthRepository {
-  final AuthDatasource _authDatasource;
-  AuthRepositoryImpl({
-    required AuthDatasource authDatasource,
+class LoginRepositoryImpl implements LoginRepository {
+  final LoginDatasource _authDatasource;
+  LoginRepositoryImpl({
+    required LoginDatasource authDatasource,
   }) : _authDatasource = authDatasource;
   @override
   Future<Either<ApiAuthError, void>> apiLogin({
