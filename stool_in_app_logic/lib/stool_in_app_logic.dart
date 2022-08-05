@@ -10,3 +10,4 @@ export './core/constants/assets_constants.dart';
 export './core/constants/keys_constants.dart';
 export './core/constants/lottie_constants.dart';
 export './core/constants/routes_constants.dart';
+export './core/enum/service_status.dart';
