@@ -40,7 +40,6 @@ dependencies:
   internet_connection_checker: ^0.0.1+4
   flutter_rating_stars: ^1.0.3+4
   validatorless: ^1.2.1
-  haversine_distance: ^1.2.1
   shared_preferences: ^2.0.15
   equatable: ^2.0.3
   liquid_swipe: ^3.0.0

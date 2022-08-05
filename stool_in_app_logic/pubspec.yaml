@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^3.0.1
+  haversine_distance: ^1.2.1
   
 
 dev_dependencies:
