@@ -3,6 +3,8 @@ import 'package:stool_in_app_logic/features/auth/domain/error/firebase_auth_erro
 import 'package:stool_in_app_logic/stool_in_app_logic.dart';
 
 import '../../entity/auth_entity.dart';
+import '../../entity/user_data_entity.dart';
+import '../../error/user_data_error.dart';
 
 abstract class AuthUseCase {
   Future<Either<FirebaseAuthError, void>> firebaseLogin({
@@ -22,5 +24,8 @@ abstract class AuthUseCase {
   });
   Future<Either<ApiAuthError, void>> apiPasswordReset({
     required AuthEntity authEntity,
+  });
+  Future<Either<UserDataError, UserDataEntity>> call({
+    required UserDataEntity userDataEntity,
   });
 }
