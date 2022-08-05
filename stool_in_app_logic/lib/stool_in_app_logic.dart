@@ -5,6 +5,7 @@ export 'package:haversine_distance/haversine_distance.dart' hide Unit;
 export 'package:dartz/dartz_streaming.dart';
 export 'package:dartz/dartz_unsafe.dart';
 export 'package:dartz/dartz.dart';
+export 'package:flutter_bloc/flutter_bloc.dart';
 export './core/helpers/distance_helper/distance_helper_calculate.dart';
 export 'package:internet_connection_checker/internet_connection_checker.dart';
 export './core/helpers/internet_helper/dialog_button_internet_checker.dart';

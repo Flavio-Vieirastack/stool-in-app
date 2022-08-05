@@ -33,7 +33,6 @@ dependencies:
   cached_network_image: ^3.2.1
   flutter_secure_storage: ^5.0.2
   flutter_security_checker: ^1.0.1
-  flutter_bloc: ^8.0.1
   lottie: ^1.4.0
   flutter_rating_stars: ^1.0.3+4
   validatorless: ^1.2.1
