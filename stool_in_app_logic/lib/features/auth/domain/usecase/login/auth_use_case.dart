@@ -16,7 +16,7 @@ abstract class AuthUseCase {
   Future<Either<FirebaseAuthError, void>> firebaseSignIn({
     required AuthEntity authEntity,
   });
-  Future<Either<FirebaseAuthError, void>> apiSignIn({
+  Future<Either<ApiAuthError, void>> apiSignIn({
     required AuthEntity authEntity,
   });
 }

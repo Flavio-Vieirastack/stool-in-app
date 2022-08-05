@@ -31,7 +31,7 @@ class AuthUsecaseImpl implements AuthUseCase {
   }
 
   @override
-  Future<Either<FirebaseAuthError, void>> apiSignIn({
+  Future<Either<ApiAuthError, void>> apiSignIn({
     required AuthEntity authEntity,
   }) {
     return _signInRepository.apiSignIn(authEntity: authEntity);
