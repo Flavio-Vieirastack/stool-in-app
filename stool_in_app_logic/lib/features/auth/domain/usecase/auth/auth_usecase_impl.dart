@@ -53,7 +53,8 @@ class AuthUsecaseImpl implements AuthUseCase {
     required AuthEntity authEntity,
   }) {
     return _passwordResetRepository.apiPasswordReset(
-        authEntity: authEntity);
+      authEntity: authEntity,
+    );
   }
 
   @override
@@ -61,6 +62,7 @@ class AuthUsecaseImpl implements AuthUseCase {
     required AuthEntity authEntity,
   }) {
     return _passwordResetRepository.firebasePasswordReset(
-        authEntity: authEntity);
+      authEntity: authEntity,
+    );
   }
 }
