@@ -1,7 +1,8 @@
 
 
-import 'package:stool_in_app_ui/core/rest_client/rest_client_mehods.dart';
-import 'package:stool_in_app_ui/core/rest_client/rest_client_response.dart';
+
+import 'package:stool_in_app_logic/core/rest_client/rest_client_mehods.dart';
+import 'package:stool_in_app_logic/core/rest_client/rest_client_response.dart';
 
 abstract class DioRestClient extends RestClientOptions {
   DioRestClient auth();
