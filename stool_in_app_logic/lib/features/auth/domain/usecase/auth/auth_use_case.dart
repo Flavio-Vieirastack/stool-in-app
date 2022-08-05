@@ -25,7 +25,7 @@ abstract class AuthUseCase {
   Future<Either<ApiAuthError, void>> apiPasswordReset({
     required AuthEntity authEntity,
   });
-  Future<Either<UserDataError, UserDataEntity>> call({
+  Future<Either<UserDataError, UserDataEntity>> sendUserData({
     required UserDataEntity userDataEntity,
   });
 }
