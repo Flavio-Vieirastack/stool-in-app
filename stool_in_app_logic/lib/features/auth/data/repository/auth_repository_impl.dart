@@ -14,11 +14,11 @@ class AuthRepositoryImpl implements AuthRepository {
     required AuthDatasource authDatasource,
   }) : _authDatasource = authDatasource;
   @override
-  Future<Either<ApiAuthError, void>> apiAuth({
+  Future<Either<ApiAuthError, void>> apiLogin({
     required AuthEntity authEntity,
   }) async {
     try {
-      final result = await _authDatasource.apiAuth(
+      final result = await _authDatasource.apiLogin(
         authModel: AuthModel.fromEntity(authEntity),
       );
       return Right(result);
@@ -48,16 +48,16 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<FirebaseAuthError, void>> firebaseAuth({
+  Future<Either<FirebaseAuthError, void>> firebaseLogin({
     required AuthEntity authEntity,
   }) async {
     try {
-      final result = await _authDatasource.firebaseAuth(
+      final result = await _authDatasource.firebaseLogin(
         authModel: AuthModel.fromEntity(
           authEntity,
         ),
       );
-      return Right(result);// TODO adicionar firebase aqui
+      return Right(result); // TODO adicionar firebase aqui
     } on FirebaseAuthError catch (e, s) {
       log(
         'Erro ao fazer login no firebase',
@@ -71,4 +71,4 @@ class AuthRepositoryImpl implements AuthRepository {
       );
     }
   }
-} 
+}

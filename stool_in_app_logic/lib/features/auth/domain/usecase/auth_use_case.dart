@@ -4,8 +4,12 @@ import 'package:stool_in_app_logic/stool_in_app_logic.dart';
 
 import '../entity/auth_entity.dart';
 
+
 abstract class AuthUseCase {
-  Future<Either<FirebaseAuthError, void>> firebaseAuth(
-      {required AuthEntity authEntity});
-  Future<Either<ApiAuthError, void>> apiAuth({required AuthEntity authEntity});
+  Future<Either<FirebaseAuthError, void>> firebaseLogin({
+    required AuthEntity authEntity,
+  });
+  Future<Either<ApiAuthError, void>> apiLogin({
+    required AuthEntity authEntity,
+  });
 }

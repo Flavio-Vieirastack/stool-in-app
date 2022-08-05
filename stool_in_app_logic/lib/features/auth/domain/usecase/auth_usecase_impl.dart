@@ -12,16 +12,16 @@ class AuthUsecaseImpl implements AuthUseCase {
   }) : _authRepository = authRepository;
 
   @override
-  Future<Either<ApiAuthError, void>> apiAuth({
+  Future<Either<ApiAuthError, void>> apiLogin({
     required AuthEntity authEntity,
   }) {
-    return _authRepository.apiAuth(authEntity: authEntity);
+    return _authRepository.apiLogin(authEntity: authEntity);
   }
 
   @override
-  Future<Either<FirebaseAuthError, void>> firebaseAuth({
+  Future<Either<FirebaseAuthError, void>> firebaseLogin({
     required AuthEntity authEntity,
   }) {
-    return _authRepository.firebaseAuth(authEntity: authEntity);
+    return _authRepository.firebaseLogin(authEntity: authEntity);
   }
 }

@@ -5,7 +5,7 @@ import '../error/api_auth_error.dart';
 import '../error/firebase_auth_error.dart';
 
 abstract class AuthRepository {
-  Future<Either<FirebaseAuthError, void>> firebaseAuth(
+  Future<Either<FirebaseAuthError, void>> firebaseLogin(
       {required AuthEntity authEntity});
-  Future<Either<ApiAuthError, void>> apiAuth({required AuthEntity authEntity});
+  Future<Either<ApiAuthError, void>> apiLogin({required AuthEntity authEntity});
 }
