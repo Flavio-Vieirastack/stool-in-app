@@ -76,6 +76,8 @@ class AuthUsecaseImpl implements AuthUseCase {
   Future<Either<UserDataError, UserDataEntity>> call({
     required UserDataEntity userDataEntity,
   }) {
-    return _userDataSignInRepository.call(userDataEntity: userDataEntity);
+    return _userDataSignInRepository.sendUserData(
+      userDataEntity: userDataEntity,
+    );
   }
 }
