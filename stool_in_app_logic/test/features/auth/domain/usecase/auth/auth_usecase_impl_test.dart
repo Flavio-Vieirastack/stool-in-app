@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in_app_logic/features/auth/domain/entity/user_data_entity.dart';
+import 'package:stool_in_app_logic/features/auth/domain/error/user_data_error.dart';
 import 'package:stool_in_app_logic/features/auth/domain/repository/login/login_repository.dart';
 import 'package:stool_in_app_logic/features/auth/domain/repository/password_reset/password_reset_repository.dart';
 import 'package:stool_in_app_logic/features/auth/domain/repository/sign_in/sign_in_repository.dart';
@@ -35,7 +36,25 @@ void main() {
     final sut = await useCaseMock.sendUserData(userDataEntity: entity);
     expect(sut, Right(entity));
   });
-  test('Deve chamar o repository ao ser chamado', () async {
+  test('Deve retornar um erro do tipo correto', () async {
+    final useCaseMock = AuthMock();
+    final entity = UserDataEntity();
+    when(
+      () => useCaseMock.sendUserData(userDataEntity: entity),
+    ).thenAnswer(
+      (_) async => Left(
+        UserDataError(message: ''),
+      ),
+    );
+    final sut = useCaseMock.sendUserData;
+    expect(
+      await sut(userDataEntity: entity),
+      Left(
+        UserDataError(message: ''),
+      ),
+    );
+  });
+  test('Deve chamar o repository quando o useCase for chamado', () async {
     final entity = UserDataEntity();
     final loginRepositoryMock = LoginRepositoryMock();
     final signInRepositoryMock = SignInRepositoryMock();
