@@ -2,8 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:stool_in_app_logic/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in_app_logic/features/auth/domain/error/firebase_auth_error.dart';
 import 'package:stool_in_app_logic/features/auth/domain/error/api_auth_error.dart';
-import 'package:stool_in_app_logic/features/auth/domain/repository/auth_repository.dart';
-import 'package:stool_in_app_logic/features/auth/domain/usecase/auth_use_case.dart';
+import 'package:stool_in_app_logic/features/auth/domain/repository/login/auth_repository.dart';
+
+import 'auth_use_case.dart';
 
 class AuthUsecaseImpl implements AuthUseCase {
   final AuthRepository _authRepository;
