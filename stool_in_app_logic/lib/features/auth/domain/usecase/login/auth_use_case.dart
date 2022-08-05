@@ -6,11 +6,17 @@ import '../../entity/auth_entity.dart';
 
 
 
-abstract class LoginUseCase {
+abstract class AuthUseCase {
   Future<Either<FirebaseAuthError, void>> firebaseLogin({
     required AuthEntity authEntity,
   });
   Future<Either<ApiAuthError, void>> apiLogin({
+    required AuthEntity authEntity,
+  });
+  Future<Either<FirebaseAuthError, void>> firebaseSignIn({
+    required AuthEntity authEntity,
+  });
+  Future<Either<FirebaseAuthError, void>> apiSignIn({
     required AuthEntity authEntity,
   });
 }
