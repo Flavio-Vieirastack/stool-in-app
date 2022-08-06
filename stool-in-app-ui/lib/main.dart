@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/features/auth/sign_in/module/sign_in_main_module.dart';
+import 'package:stool_in_app_ui/features/auth/sign_in_user_data/module/sign_in_main_data_module.dart';
 import 'package:stool_in_app_ui/features/onboarding/module/onboarding_module.dart';
 import 'package:stool_in_app_ui/features/splash/module/splash_module.dart';
 
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
           ...OnboardingModule().routers,
           ...LoginModule().routers,
           ...SignInMainModule().routers,
+          ...SignInMainDataModule().routers,
         },
       ),
     );

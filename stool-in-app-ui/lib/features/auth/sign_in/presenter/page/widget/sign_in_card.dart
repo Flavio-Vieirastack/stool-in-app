@@ -9,10 +9,12 @@ import '../../../../../../core/widgets/app_text_form_field/app_text_form_field.d
 class SignInCard extends StatelessWidget with ResponsiveHelperMixin {
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final VoidCallback signInCallBack;
   const SignInCard({
     Key? key,
     required this.emailController,
     required this.passwordController,
+    required this.signInCallBack
   }) : super(key: key);
 
   @override
@@ -124,7 +126,7 @@ class SignInCard extends StatelessWidget with ResponsiveHelperMixin {
               ),
               AppButton(
                 buttonText: 'Cadastrar',
-                onPressed: () {},
+                onPressed: signInCallBack,
               ),
               SizedBox(
                 height: constraints.maxHeight *
