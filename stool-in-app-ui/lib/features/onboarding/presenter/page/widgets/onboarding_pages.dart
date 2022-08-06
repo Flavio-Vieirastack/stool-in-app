@@ -74,7 +74,7 @@ class OnboardingPages extends StatelessWidget with ResponsiveHelperMixin {
               visible: showButton,
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 650),
+                  padding: const EdgeInsets.only(top: 600),
                   child: AppButton(
                     buttonText: 'Eu quero',
                     onPressed: onPressed,

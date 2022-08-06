@@ -18,7 +18,7 @@ class _Primary extends StatelessWidget with ResponsiveHelperMixin {
           width: constraints.maxWidth *
               responsiveWidth(
                 defaultMobileWidth: maxWidth,
-                defaultMobileSmallSizeWidth: 0.2,
+                defaultMobileSmallSizeWidth: 0.6,
                 defaultTabletWidth: 0.2,
                 constraints: constraints,
               ),
