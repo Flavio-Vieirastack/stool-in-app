@@ -9,7 +9,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
     return Container(
       height: constraints.maxHeight *
           responsiveHeight(
-            defaultMobileHeight: 0.5,
+            defaultMobileHeight: 0.45,
             defaultMobileSmallSizeHeight: 0.5,
             defaultTabletHeight: 0.5,
             constraints: constraints,
@@ -28,23 +28,80 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
         ),
       ),
       child: Column(
-        children: const [
-          SizedBox(
+        children: [
+          const SizedBox(
             height: 80,
           ),
-          AppTextFormField(
+          const AppTextFormField(
             label: 'Email',
             hint: 'Ex: email@email.com',
             color: Colors.transparent,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          AppTextFormField(
+          const AppTextFormField(
             label: 'Senha',
             hint: 'Ex: Abc@123456',
+            obscureText: true,
             color: Colors.transparent,
           ),
+          SizedBox(
+            height: constraints.maxHeight *
+                responsiveHeight(
+                  defaultMobileHeight: 0.02,
+                  defaultMobileSmallSizeHeight: 0.2,
+                  defaultTabletHeight: 0.2,
+                  constraints: constraints,
+                ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  'Esqueceu sua senha?',
+                  style: AppTextStyles.headLine4Italic,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: constraints.maxHeight *
+                responsiveHeight(
+                  defaultMobileHeight: 0.02,
+                  defaultMobileSmallSizeHeight: 0.2,
+                  defaultTabletHeight: 0.2,
+                  constraints: constraints,
+                ),
+          ),
+          AppButton(
+            buttonText: 'Login',
+            onPressed: () {},
+          ),
+          SizedBox(
+            height: constraints.maxHeight *
+                responsiveHeight(
+                  defaultMobileHeight: 0.03,
+                  defaultMobileSmallSizeHeight: 0.2,
+                  defaultTabletHeight: 0.2,
+                  constraints: constraints,
+                ),
+          ),
+          RichText(
+            text: TextSpan(
+              text: 'Ainda não tem uma conta? ',
+              style: AppTextStyles.headLine4,
+              children: [
+                TextSpan(
+                  text: 'Cadaste-se',
+                  style: AppTextStyles.headLine1,
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );

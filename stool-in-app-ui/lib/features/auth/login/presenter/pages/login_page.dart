@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stool_in_app_logic/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
+import 'package:stool_in_app_ui/core/widgets/app_button/app_button.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
