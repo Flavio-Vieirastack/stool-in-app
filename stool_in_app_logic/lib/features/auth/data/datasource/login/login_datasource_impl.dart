@@ -46,7 +46,7 @@ class LoginDatasourceImpl implements LoginDatasource {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
         email: authModel.email,
-        password: authModel.password,
+        password: authModel.password ?? '',
       );
     } on FirebaseAuthException catch (e, s) {
       log(

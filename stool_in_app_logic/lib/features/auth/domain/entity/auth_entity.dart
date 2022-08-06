@@ -1,6 +1,6 @@
 class AuthEntity {
   final String email;
-  final String password;
+  final String? password;
   final String? firebaseUuid;
   AuthEntity({
     required this.email,

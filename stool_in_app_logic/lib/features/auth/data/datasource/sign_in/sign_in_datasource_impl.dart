@@ -47,7 +47,7 @@ class SignInDatasourceImpl implements SignInDatasource {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: authModel.email,
-        password: authModel.password,
+        password: authModel.password ?? '',
       );
     } on FirebaseAuthException catch (e, s) {
       log(

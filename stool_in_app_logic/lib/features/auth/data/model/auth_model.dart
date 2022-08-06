@@ -3,7 +3,7 @@ import 'package:stool_in_app_logic/features/auth/domain/entity/auth_entity.dart'
 class AuthModel extends AuthEntity {
   AuthModel({
     required super.email,
-    required super.password,
+    super.password,
     super.firebaseUuid,
   });
 
@@ -11,7 +11,9 @@ class AuthModel extends AuthEntity {
     final result = <String, dynamic>{};
 
     result.addAll({'email': email});
-    result.addAll({'password': password});
+    if (password != null) {
+      result.addAll({'password': password});
+    }
     if (firebaseUuid != null) {
       result.addAll({'firebaseUuid': firebaseUuid});
     }
