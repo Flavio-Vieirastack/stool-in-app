@@ -8,7 +8,7 @@ import 'package:stool_in_app_logic/core/rest_client/rest_client_response.dart';
 class RestClientOptions {
   late Dio dio;
   final baseOptions = BaseOptions(
-    baseUrl: '',
+    baseUrl: 'http://192.168.0.6:3000',
     connectTimeout: 6000,
     receiveTimeout: 6000,
   );
