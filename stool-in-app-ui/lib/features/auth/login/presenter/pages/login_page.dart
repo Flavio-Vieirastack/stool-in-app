@@ -14,6 +14,7 @@ class LoginPage extends StatelessWidget with ResponsiveHelperMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.black,
       resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (context, constraints) {
