@@ -28,7 +28,7 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.black,
+      backgroundColor: AppColors.grey.withOpacity(0.1),
       resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -72,6 +72,9 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
                       ),
                       child: Center(
                         child: _LoginCard(
+                          loginCallback: () {},
+                          passwordResetCallback: () {},
+                          signInCallback: () {},
                           emailController: emailController,
                           passwordController: passwordController,
                           constraints: constraints,

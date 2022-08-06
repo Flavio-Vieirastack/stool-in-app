@@ -4,11 +4,17 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
   final BoxConstraints constraints;
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final VoidCallback loginCallback;
+  final VoidCallback passwordResetCallback;
+  final VoidCallback signInCallback;
   const _LoginCard({
     Key? key,
     required this.constraints,
     required this.emailController,
     required this.passwordController,
+    required this.loginCallback,
+    required this.passwordResetCallback,
+    required this.signInCallback,
   }) : super(key: key);
 
   @override
@@ -56,7 +62,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
           const SizedBox(
             height: 10,
           ),
-           AppTextFormField(
+          AppTextFormField(
             label: 'Senha',
             hint: 'Ex: Abc@123456',
             obscureText: true,
@@ -73,7 +79,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                 ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: passwordResetCallback,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Align(
@@ -96,7 +102,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
           ),
           AppButton(
             buttonText: 'Login',
-            onPressed: () {},
+            onPressed: loginCallback,
           ),
           SizedBox(
             height: constraints.maxHeight *
@@ -107,16 +113,19 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                   constraints: constraints,
                 ),
           ),
-          RichText(
-            text: TextSpan(
-              text: 'Ainda não tem uma conta? ',
-              style: AppTextStyles.headLine4,
-              children: [
-                TextSpan(
-                  text: 'Cadaste-se',
-                  style: AppTextStyles.headLine1,
-                ),
-              ],
+          InkWell(
+            onTap: signInCallback,
+            child: RichText(
+              text: TextSpan(
+                text: 'Ainda não tem uma conta? ',
+                style: AppTextStyles.headLine4,
+                children: [
+                  TextSpan(
+                    text: 'Cadaste-se',
+                    style: AppTextStyles.headLine1,
+                  ),
+                ],
+              ),
             ),
           )
         ],
