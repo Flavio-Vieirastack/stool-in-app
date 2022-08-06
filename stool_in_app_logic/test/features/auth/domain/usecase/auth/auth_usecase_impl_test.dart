@@ -8,7 +8,7 @@ import 'package:stool_in_app_logic/features/auth/domain/repository/sign_in/sign_
 import 'package:stool_in_app_logic/features/auth/domain/repository/user_data/user_data_sign_in_respository.dart';
 import 'package:stool_in_app_logic/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in_app_logic/features/auth/domain/usecase/auth/auth_usecase_impl.dart';
-import 'package:stool_in_app_logic/stool_in_app_logic.dart';
+import 'package:dartz/dartz.dart';
 
 class AuthMock extends Mock implements AuthUseCase {}
 
