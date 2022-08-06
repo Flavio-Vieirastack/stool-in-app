@@ -22,7 +22,7 @@ class SignInCard extends StatelessWidget with ResponsiveHelperMixin {
         return Container(
           height: constraints.maxHeight *
               responsiveHeight(
-                defaultMobileHeight: 0.4,
+                defaultMobileHeight: 0.5,
                 defaultMobileSmallSizeHeight: 0.5,
                 defaultTabletHeight: 0.5,
                 constraints: constraints,
@@ -76,6 +76,16 @@ class SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                 color: Colors.transparent,
                 controller: passwordController,
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              AppTextFormField(
+                label: 'Digite novamente sua senha',
+                hint: 'Ex: Abc@123456',
+                obscureText: true,
+                color: Colors.transparent,
+                controller: passwordController,
+              ),
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
@@ -95,7 +105,7 @@ class SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               AppButton(
-                buttonText: 'Login',
+                buttonText: 'Cadastrar',
                 onPressed: () {},
               ),
               SizedBox(
