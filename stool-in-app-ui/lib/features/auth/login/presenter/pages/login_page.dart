@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
 import 'package:stool_in_app_logic/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
@@ -74,7 +75,10 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
                         child: _LoginCard(
                           loginCallback: () {},
                           passwordResetCallback: () {},
-                          signInCallback: () {},
+                          signInCallback: () =>
+                              Navigator.of(context).pushReplacementNamed(
+                            RoutesConstants.signInMainRoute,
+                          ),
                           emailController: emailController,
                           passwordController: passwordController,
                           constraints: constraints,
