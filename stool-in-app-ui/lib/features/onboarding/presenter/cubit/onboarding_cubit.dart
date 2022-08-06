@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_logic/stool_in_app_logic.dart';
 import '../../../../core/helpers/shared_preferences/shared_preferences_helper.dart';
 

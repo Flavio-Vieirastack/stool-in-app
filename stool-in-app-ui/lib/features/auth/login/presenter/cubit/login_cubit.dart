@@ -1,7 +1,7 @@
 
 
 import 'package:equatable/equatable.dart';
-import 'package:stool_in_app_logic/stool_in_app_logic.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'login_state.dart';
 
