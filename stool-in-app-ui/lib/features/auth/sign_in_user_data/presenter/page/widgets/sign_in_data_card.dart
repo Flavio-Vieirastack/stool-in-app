@@ -1,15 +1,7 @@
-part of '../sign_in_main_page.dart';
+part of '../sign_in_main_data_page.dart';
 
-class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final VoidCallback signInCallBack;
-  const _SignInCard({
-    Key? key,
-    required this.emailController,
-    required this.passwordController,
-    required this.signInCallBack
-  }) : super(key: key);
+class SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
+  const SignInDataCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +10,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
         return Container(
           height: constraints.maxHeight *
               responsiveHeight(
-                defaultMobileHeight: 0.5,
+                defaultMobileHeight: 0.45,
                 defaultMobileSmallSizeHeight: 0.5,
                 defaultTabletHeight: 0.5,
                 constraints: constraints,
@@ -49,66 +41,33 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.025,
-                      defaultMobileSmallSizeHeight: 0.09,
-                      defaultTabletHeight: 0.09,
-                      constraints: constraints,
-                    ),
-              ),
-              Text(
-                'Informe seu email e senha',
-                style: AppTextStyles.headLine1,
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              AppTextFormField(
-                label: 'Email',
-                hint: 'Ex: email@email.com',
-                color: Colors.transparent,
-                controller: emailController,
-              ),
-              SizedBox(
-                height: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.02,
-                      defaultMobileSmallSizeHeight: 0.09,
-                      defaultTabletHeight: 0.09,
-                      constraints: constraints,
-                    ),
-              ),
-              AppTextFormField(
-                label: 'Senha',
-                hint: 'Ex: Abc@123456',
-                obscureText: true,
-                color: Colors.transparent,
-                controller: passwordController,
-              ),
-              SizedBox(
-                height: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.02,
-                      defaultMobileSmallSizeHeight: 0.09,
-                      defaultTabletHeight: 0.09,
-                      constraints: constraints,
-                    ),
-              ),
-              AppTextFormField(
-                label: 'Digite novamente sua senha',
-                hint: 'Ex: Abc@123456',
-                obscureText: true,
-                color: Colors.transparent,
-                controller: passwordController,
-              ),
-              SizedBox(
-                height: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.02,
+                      defaultMobileHeight: 0.09,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,
                     ),
               ),
+              const AppTextFormField(
+                label: 'Email',
+                hint: 'Ex: email@email.com',
+                color: Colors.transparent,
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.015,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
+            const  AppTextFormField(
+                label: 'Senha',
+                hint: 'Ex: Abc@123456',
+                obscureText: true,
+                color: Colors.transparent,
+              ),
+              
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
@@ -119,8 +78,8 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               AppButton(
-                buttonText: 'Cadastrar',
-                onPressed: signInCallBack,
+                buttonText: 'Login',
+                onPressed: (){},
               ),
               SizedBox(
                 height: constraints.maxHeight *
@@ -131,6 +90,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                       constraints: constraints,
                     ),
               ),
+              
             ],
           ),
         );

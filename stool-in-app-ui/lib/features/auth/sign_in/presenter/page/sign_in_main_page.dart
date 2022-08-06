@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
-import 'package:stool_in_app_ui/features/auth/sign_in/presenter/page/widget/sign_in_card.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
-
+import '../../../../../core/widgets/app_button/app_button.dart';
+import '../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
+part './widget/sign_in_card.dart';
 class SignInMainPage extends StatefulWidget {
   const SignInMainPage({Key? key}) : super(key: key);
 
@@ -70,7 +71,7 @@ class _SignInMainPageState extends State<SignInMainPage>
                             ),
                       ),
                       child: Center(
-                        child: SignInCard(
+                        child: _SignInCard(
                           signInCallBack: () => Navigator.of(context).pushReplacementNamed(RoutesConstants.signInDataRoute),
                           emailController: emailController,
                           passwordController: passwordController,

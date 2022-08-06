@@ -4,7 +4,9 @@ import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/widgets/app_avatar/app_avatar.dart';
-
+import '../../../../../core/widgets/app_button/app_button.dart';
+import '../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
+part './widgets/sign_in_data_card.dart';
 class SignInMainDataPage extends StatefulWidget {
   const SignInMainDataPage({Key? key}) : super(key: key);
 
@@ -59,7 +61,9 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               constraints: constraints,
                             ),
                       ),
-                      child: Center(child: Container()),
+                      child: const Center(
+                        child: SignInDataCard(),
+                      ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
