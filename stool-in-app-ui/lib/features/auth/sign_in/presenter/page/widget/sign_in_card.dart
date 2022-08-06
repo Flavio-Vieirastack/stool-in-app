@@ -50,8 +50,14 @@ class SignInCard extends StatelessWidget with ResponsiveHelperMixin {
           ),
           child: Column(
             children: [
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.025,
+                      defaultMobileSmallSizeHeight: 0.09,
+                      defaultTabletHeight: 0.09,
+                      constraints: constraints,
+                    ),
               ),
               Text(
                 'Informe seu email e senha',
@@ -66,8 +72,14 @@ class SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                 color: Colors.transparent,
                 controller: emailController,
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.02,
+                      defaultMobileSmallSizeHeight: 0.09,
+                      defaultTabletHeight: 0.09,
+                      constraints: constraints,
+                    ),
               ),
               AppTextFormField(
                 label: 'Senha',
@@ -76,8 +88,14 @@ class SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                 color: Colors.transparent,
                 controller: passwordController,
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.02,
+                      defaultMobileSmallSizeHeight: 0.09,
+                      defaultTabletHeight: 0.09,
+                      constraints: constraints,
+                    ),
               ),
               AppTextFormField(
                 label: 'Digite novamente sua senha',
