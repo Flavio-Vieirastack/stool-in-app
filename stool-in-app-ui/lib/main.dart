@@ -16,6 +16,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FireBaseNotifications().initializeFirebasePushServices();
+  await FireBaseNotifications().getTokenFirebase();
   runApp(const MyApp());
 }
 
