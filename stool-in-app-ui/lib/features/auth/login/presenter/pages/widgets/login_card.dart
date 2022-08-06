@@ -50,8 +50,14 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
       ),
       child: Column(
         children: [
-          const SizedBox(
-            height: 80,
+          SizedBox(
+            height: constraints.maxHeight *
+                responsiveHeight(
+                  defaultMobileHeight: 0.09,
+                  defaultMobileSmallSizeHeight: 0.2,
+                  defaultTabletHeight: 0.2,
+                  constraints: constraints,
+                ),
           ),
           AppTextFormField(
             label: 'Email',
@@ -59,8 +65,14 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
             color: Colors.transparent,
             controller: emailController,
           ),
-          const SizedBox(
-            height: 10,
+           SizedBox(
+            height: constraints.maxHeight *
+                responsiveHeight(
+                  defaultMobileHeight: 0.015,
+                  defaultMobileSmallSizeHeight: 0.2,
+                  defaultTabletHeight: 0.2,
+                  constraints: constraints,
+                ),
           ),
           AppTextFormField(
             label: 'Senha',
