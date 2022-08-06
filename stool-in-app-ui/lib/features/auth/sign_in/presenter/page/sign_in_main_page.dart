@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
-import 'package:stool_in_app_logic/core/helpers/responsive/responsive_helper_mixin.dart';
+import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/features/auth/sign_in/presenter/page/widget/sign_in_card.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
