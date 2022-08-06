@@ -40,6 +40,7 @@ dependencies:
   equatable: ^2.0.3
   liquid_swipe: ^3.0.0
   auto_size_text: ^3.0.0
+  google_fonts: ^3.0.1
   stool_in_app_logic:
     path: ../stool_in_app_logic
   #firebase_core: ^1.20.0

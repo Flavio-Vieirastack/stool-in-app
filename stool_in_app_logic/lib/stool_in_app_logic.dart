@@ -1,6 +1,5 @@
 library stool_in_app_logic;
 
-export 'package:google_fonts/google_fonts.dart';
 export 'package:haversine_distance/haversine_distance.dart' hide Unit;
 export 'package:dartz/dartz_streaming.dart';
 export 'package:dartz/dartz_unsafe.dart';

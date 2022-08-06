@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_logic/stool_in_app_logic.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../colors/app_colors.dart';
 
