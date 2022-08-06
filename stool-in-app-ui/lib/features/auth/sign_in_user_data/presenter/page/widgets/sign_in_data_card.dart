@@ -10,7 +10,7 @@ class SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
         return Container(
           height: constraints.maxHeight *
               responsiveHeight(
-                defaultMobileHeight: 0.45,
+                defaultMobileHeight: 0.8,
                 defaultMobileSmallSizeHeight: 0.5,
                 defaultTabletHeight: 0.5,
                 constraints: constraints,
@@ -41,9 +41,22 @@ class SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.09,
-                      defaultMobileSmallSizeHeight: 0.2,
-                      defaultTabletHeight: 0.2,
+                      defaultMobileHeight: 0.025,
+                      defaultMobileSmallSizeHeight: 0.09,
+                      defaultTabletHeight: 0.09,
+                      constraints: constraints,
+                    ),
+              ),
+              Text(
+                'Porfavor preencha seus dados.',
+                style: AppTextStyles.headLine1,
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.04,
+                      defaultMobileSmallSizeHeight: 0.025,
+                      defaultTabletHeight: 0.025,
                       constraints: constraints,
                     ),
               ),

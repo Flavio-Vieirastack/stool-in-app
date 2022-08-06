@@ -4,12 +4,12 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final VoidCallback signInCallBack;
-  const _SignInCard({
-    Key? key,
-    required this.emailController,
-    required this.passwordController,
-    required this.signInCallBack
-  }) : super(key: key);
+  const _SignInCard(
+      {Key? key,
+      required this.emailController,
+      required this.passwordController,
+      required this.signInCallBack})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +59,14 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                 'Informe seu email e senha',
                 style: AppTextStyles.headLine1,
               ),
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.04,
+                      defaultMobileSmallSizeHeight: 0.025,
+                      defaultTabletHeight: 0.025,
+                      constraints: constraints,
+                    ),
               ),
               AppTextFormField(
                 label: 'Email',

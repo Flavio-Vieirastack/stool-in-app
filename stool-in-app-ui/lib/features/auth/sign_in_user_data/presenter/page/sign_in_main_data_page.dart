@@ -25,63 +25,66 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
         builder: (context, constraints) {
           return ListView(
             children: [
-              SizedBox(
-                height: constraints.maxHeight,
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: constraints.maxHeight *
-                            responsiveHeight(
-                              defaultMobileHeight: 0.1,
-                              defaultMobileSmallSizeHeight: 0.2,
-                              defaultTabletHeight: 0.2,
-                              constraints: constraints,
-                            ),
-                        left: constraints.maxWidth *
-                            responsiveWidth(
-                              defaultMobileWidth: 0.05,
-                              defaultMobileSmallSizeWidth: 0.01,
-                              defaultTabletWidth: 0.01,
-                              constraints: constraints,
-                            ),
-                      ),
-                      child: Text(
-                        'Bem vindo(a)',
-                        style: AppTextStyles.headLine0,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: constraints.maxHeight *
-                            responsiveHeight(
-                              defaultMobileHeight: 0.05,
-                              defaultMobileSmallSizeHeight: 0.8,
-                              defaultTabletHeight: 0.8,
-                              constraints: constraints,
-                            ),
-                      ),
-                      child: const Center(
-                        child: SignInDataCard(),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: constraints.maxHeight *
-                            responsiveHeight(
-                              defaultMobileHeight: 0.5,
-                              defaultMobileSmallSizeHeight: 0.2,
-                              defaultTabletHeight: 0.2,
-                              constraints: constraints,
-                            ),
-                      ),
-                      child: const Center(
-                        child: AppAvatar(
-                          size: 100,
+              Padding(
+                padding: const EdgeInsets.only(top: 58.0),
+                child: SizedBox(
+                  height: constraints.maxHeight,
+                  child: Stack(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: constraints.maxHeight *
+                              responsiveHeight(
+                                defaultMobileHeight: 0.001,
+                                defaultMobileSmallSizeHeight: 0.2,
+                                defaultTabletHeight: 0.2,
+                                constraints: constraints,
+                              ),
+                          left: constraints.maxWidth *
+                              responsiveWidth(
+                                defaultMobileWidth: 0.05,
+                                defaultMobileSmallSizeWidth: 0.01,
+                                defaultTabletWidth: 0.01,
+                                constraints: constraints,
+                              ),
+                        ),
+                        child: Text(
+                          'Para finalizar,',
+                          style: AppTextStyles.headLine0,
                         ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: constraints.maxHeight *
+                              responsiveHeight(
+                                defaultMobileHeight: 0.08,
+                                defaultMobileSmallSizeHeight: 0.8,
+                                defaultTabletHeight: 0.8,
+                                constraints: constraints,
+                              ),
+                        ),
+                        child: const Center(
+                          child: SignInDataCard(),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          bottom: constraints.maxHeight *
+                              responsiveHeight(
+                                defaultMobileHeight: 0.73,
+                                defaultMobileSmallSizeHeight: 0.2,
+                                defaultTabletHeight: 0.2,
+                                constraints: constraints,
+                              ),
+                        ),
+                        child: const Center(
+                          child: AppAvatar(
+                            size: 100,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
