@@ -16,71 +16,72 @@ class LoginPage extends StatelessWidget with ResponsiveHelperMixin {
       resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (context, constraints) {
-          return SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: SizedBox(
-              height: constraints.maxHeight,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight: 0.1,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
-                      left: constraints.maxWidth *
-                          responsiveWidth(
-                            defaultMobileWidth: 0.05,
-                            defaultMobileSmallSizeWidth: 0.01,
-                            defaultTabletWidth: 0.01,
-                            constraints: constraints,
-                          ),
-                    ),
-                    child: Text(
-                      'Bem vindo(a)',
-                      style: AppTextStyles.headLine0,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight: 0.05,
-                            defaultMobileSmallSizeHeight: 0.8,
-                            defaultTabletHeight: 0.8,
-                            constraints: constraints,
-                          ),
-                    ),
-                    child: Center(
-                      child: _LoginCard(
-                        constraints: constraints,
+          return ListView(
+            children: [
+              SizedBox(
+                height: constraints.maxHeight,
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: constraints.maxHeight *
+                            responsiveHeight(
+                              defaultMobileHeight: 0.1,
+                              defaultMobileSmallSizeHeight: 0.2,
+                              defaultTabletHeight: 0.2,
+                              constraints: constraints,
+                            ),
+                        left: constraints.maxWidth *
+                            responsiveWidth(
+                              defaultMobileWidth: 0.05,
+                              defaultMobileSmallSizeWidth: 0.01,
+                              defaultTabletWidth: 0.01,
+                              constraints: constraints,
+                            ),
+                      ),
+                      child: Text(
+                        'Bem vindo(a)',
+                        style: AppTextStyles.headLine0,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      bottom: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight: 0.55,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
-                    ),
-                    child: const Center(
-                      child: AppAvatar(
-                        size: 100,
-                        urlImage:
-                            'https://static1.patasdacasa.com.br/articles/8/10/38/@/4864-o-cachorro-inteligente-mostra-essa-carac-articles_media_mobile-1.jpg',
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: constraints.maxHeight *
+                            responsiveHeight(
+                              defaultMobileHeight: 0.05,
+                              defaultMobileSmallSizeHeight: 0.8,
+                              defaultTabletHeight: 0.8,
+                              constraints: constraints,
+                            ),
+                      ),
+                      child: Center(
+                        child: _LoginCard(
+                          constraints: constraints,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: constraints.maxHeight *
+                            responsiveHeight(
+                              defaultMobileHeight: 0.55,
+                              defaultMobileSmallSizeHeight: 0.2,
+                              defaultTabletHeight: 0.2,
+                              constraints: constraints,
+                            ),
+                      ),
+                      child: const Center(
+                        child: AppAvatar(
+                          size: 100,
+                          urlImage:
+                              'https://static1.patasdacasa.com.br/articles/8/10/38/@/4864-o-cachorro-inteligente-mostra-essa-carac-articles_media_mobile-1.jpg',
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
+            ],
           );
         },
       ),
