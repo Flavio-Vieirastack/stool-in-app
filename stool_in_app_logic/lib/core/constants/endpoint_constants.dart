@@ -3,4 +3,5 @@ class EndpointConstants {
   static const signIn = '/user';
   static const login = '/login';
   static const passwordReset = '/user';
+  static const postUserData = '/user-data';
 }
