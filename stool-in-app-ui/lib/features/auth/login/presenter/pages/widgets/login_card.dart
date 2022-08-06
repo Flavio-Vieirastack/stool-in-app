@@ -37,7 +37,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
       decoration: BoxDecoration(
         color: AppColors.black,
         gradient: RadialGradient(
-          radius: 1.75,
+          radius: 1.9,
           center: const Alignment(0.9, -1.5),
           colors: <Color>[
             AppColors.grey.withOpacity(0.6),
