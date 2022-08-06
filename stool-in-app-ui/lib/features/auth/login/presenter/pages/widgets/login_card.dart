@@ -27,6 +27,26 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
           Radius.circular(30),
         ),
       ),
+      child: Column(
+        children: const [
+          SizedBox(
+            height: 80,
+          ),
+          AppTextFormField(
+            label: 'Email',
+            hint: 'Ex: email@email.com',
+            color: Colors.transparent,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          AppTextFormField(
+            label: 'Senha',
+            hint: 'Ex: Abc@123456',
+            color: Colors.transparent,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -10,6 +10,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
   final bool expands;
   final String label;
   final String hint;
+  final Color? color;
   const AppTextFormField({
     Key? key,
     this.validator,
@@ -18,6 +19,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
     this.controller,
     this.label = 'Label',
     this.hint = 'Hint',
+    this.color,
   }) : super(key: key);
 
   @override
@@ -51,7 +53,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
                   Radius.circular(15),
                 ),
               ),
-              fillColor: Colors.grey.withOpacity(0.7),
+              fillColor: color ?? Colors.grey.withOpacity(0.7),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: AppColors.grey, width: 2),
                 borderRadius: const BorderRadius.all(
