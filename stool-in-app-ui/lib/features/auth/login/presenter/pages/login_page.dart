@@ -3,11 +3,9 @@ import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
 import 'package:stool_in_app_logic/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
-import 'package:stool_in_app_ui/core/widgets/app_button/app_button.dart';
+import 'package:stool_in_app_ui/features/auth/login/presenter/pages/widgets/login_card.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
-import '../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
-part './widgets/login_card.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -72,7 +70,7 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
                             ),
                       ),
                       child: Center(
-                        child: _LoginCard(
+                        child: LoginCard(
                           loginCallback: () {},
                           passwordResetCallback: () {},
                           signInCallback: () =>
