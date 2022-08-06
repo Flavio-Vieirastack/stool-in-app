@@ -1,19 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:stool_in_app_logic/core/helpers/responsive/responsive_helper_mixin.dart';
+part of '../login_page.dart';
 
-import '../../../../../../core/helpers/theme/colors/app_colors.dart';
-import '../../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
-import '../../../../../../core/widgets/app_button/app_button.dart';
-import '../../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
-
-class LoginCard extends StatelessWidget with ResponsiveHelperMixin {
+class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
   final BoxConstraints constraints;
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final VoidCallback loginCallback;
   final VoidCallback passwordResetCallback;
   final VoidCallback signInCallback;
-  const LoginCard({
+  const _LoginCard({
     Key? key,
     required this.constraints,
     required this.emailController,

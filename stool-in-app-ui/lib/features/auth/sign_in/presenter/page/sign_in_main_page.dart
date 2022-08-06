@@ -3,8 +3,6 @@ import 'package:stool_in_app_logic/core/helpers/responsive/responsive_helper_mix
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
-import '../../../../../core/widgets/app_avatar/app_avatar.dart';
-import '../../../login/presenter/pages/widgets/login_card.dart';
 
 class SignInMainPage extends StatefulWidget {
   const SignInMainPage({Key? key}) : super(key: key);
@@ -70,14 +68,7 @@ class _SignInMainPageState extends State<SignInMainPage>
                             ),
                       ),
                       child: Center(
-                        child: LoginCard(
-                          loginCallback: () {},
-                          passwordResetCallback: () {},
-                          signInCallback: () {},
-                          emailController: emailController,
-                          passwordController: passwordController,
-                          constraints: constraints,
-                        ),
+                        child: Container()
                       ),
                     ),
                   ],
