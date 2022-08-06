@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget with ResponsiveHelperMixin {
                       padding: EdgeInsets.only(
                         bottom: constraints.maxHeight *
                             responsiveHeight(
-                              defaultMobileHeight: 0.55,
+                              defaultMobileHeight: 0.5,
                               defaultMobileSmallSizeHeight: 0.2,
                               defaultTabletHeight: 0.2,
                               constraints: constraints,

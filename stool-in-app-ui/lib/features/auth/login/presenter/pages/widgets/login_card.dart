@@ -23,6 +23,14 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
           ),
       decoration: BoxDecoration(
         color: AppColors.black,
+        gradient: RadialGradient(
+          radius: 0.98,
+          
+          colors: <Color>[
+            AppColors.greyScaleDark.withOpacity(0.2),
+            AppColors.black,
+          ],
+        ),
         borderRadius: const BorderRadius.all(
           Radius.circular(30),
         ),
