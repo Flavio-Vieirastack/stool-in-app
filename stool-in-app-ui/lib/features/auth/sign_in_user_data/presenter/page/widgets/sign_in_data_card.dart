@@ -61,6 +61,20 @@ class SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               const AppTextFormField(
+                label: 'Seu nome completo',
+                hint: 'Ex: Felipe soares silva',
+                color: Colors.transparent,
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.015,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
+              const AppTextFormField(
                 label: 'Email',
                 hint: 'Ex: email@email.com',
                 color: Colors.transparent,
@@ -74,13 +88,76 @@ class SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       constraints: constraints,
                     ),
               ),
-            const  AppTextFormField(
-                label: 'Senha',
-                hint: 'Ex: Abc@123456',
-                obscureText: true,
+              const AppTextFormField(
+                label: 'Email',
+                hint: 'Ex: email@email.com',
                 color: Colors.transparent,
               ),
-              
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.015,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
+              const AppTextFormField(
+                label: 'Email',
+                hint: 'Ex: email@email.com',
+                color: Colors.transparent,
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.015,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
+              const AppTextFormField(
+                label: 'Email',
+                hint: 'Ex: email@email.com',
+                color: Colors.transparent,
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.015,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
+              const AppTextFormField(
+                label: 'Email',
+                hint: 'Ex: email@email.com',
+                color: Colors.transparent,
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.015,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
+              const AppTextFormField(
+                label: 'Email',
+                hint: 'Ex: email@email.com',
+                color: Colors.transparent,
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.015,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
@@ -92,7 +169,7 @@ class SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               ),
               AppButton(
                 buttonText: 'Login',
-                onPressed: (){},
+                onPressed: () {},
               ),
               SizedBox(
                 height: constraints.maxHeight *
@@ -103,7 +180,6 @@ class SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       constraints: constraints,
                     ),
               ),
-              
             ],
           ),
         );
