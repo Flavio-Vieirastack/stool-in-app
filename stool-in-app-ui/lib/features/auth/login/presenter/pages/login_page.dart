@@ -8,8 +8,22 @@ import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
 part './widgets/login_card.dart';
 
-class LoginPage extends StatelessWidget with ResponsiveHelperMixin {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +72,8 @@ class LoginPage extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                       child: Center(
                         child: _LoginCard(
+                          emailController: emailController,
+                          passwordController: passwordController,
                           constraints: constraints,
                         ),
                       ),

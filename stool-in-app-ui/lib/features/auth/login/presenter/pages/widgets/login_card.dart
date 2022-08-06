@@ -2,7 +2,14 @@ part of '../login_page.dart';
 
 class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
   final BoxConstraints constraints;
-  const _LoginCard({Key? key, required this.constraints}) : super(key: key);
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  const _LoginCard({
+    Key? key,
+    required this.constraints,
+    required this.emailController,
+    required this.passwordController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
         color: AppColors.black,
         gradient: RadialGradient(
           radius: 1.75,
-          center: Alignment(0.9, -1.5),
+          center: const Alignment(0.9, -1.5),
           colors: <Color>[
             AppColors.grey.withOpacity(0.6),
             AppColors.black,
@@ -40,19 +47,21 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
           const SizedBox(
             height: 80,
           ),
-          const AppTextFormField(
+          AppTextFormField(
             label: 'Email',
             hint: 'Ex: email@email.com',
             color: Colors.transparent,
+            controller: emailController,
           ),
           const SizedBox(
             height: 10,
           ),
-          const AppTextFormField(
+           AppTextFormField(
             label: 'Senha',
             hint: 'Ex: Abc@123456',
             obscureText: true,
             color: Colors.transparent,
+            controller: passwordController,
           ),
           SizedBox(
             height: constraints.maxHeight *
