@@ -146,6 +146,29 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       constraints: constraints,
                     ),
               ),
+              DropdownButton<String>(
+                hint: const Text('Estado'),
+                onChanged: (estado) {
+                  log(estado ?? '');
+                },
+                items: Estados.listaEstadosSigla.map(
+                  (String regiao) {
+                    return DropdownMenuItem(
+                      value: regiao,
+                      child: Text(regiao),
+                    );
+                  },
+                ).toList(),
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.015,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
               const AppTextFormField(
                 label: 'Cep',
                 hint: 'Ex: 63100000',
