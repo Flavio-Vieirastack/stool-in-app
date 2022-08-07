@@ -3,20 +3,20 @@ import 'dart:convert';
 import 'package:stool_in_app_logic/features/auth/domain/entity/user_data_entity.dart';
 
 class UserDataModel extends UserDataEntity {
-  UserDataModel({
-    super.userName,
-    super.userPhotoUrl,
-    super.userFirebasePushToken,
-    super.userFirebaseUuid,
-    super.userLocationLatitude,
-    super.userLocationLongitude,
-    super.street,
-    super.city,
-    super.houseNumber,
-    super.district,
-    super.cep,
-    super.referencePoint,
-  });
+  UserDataModel(
+      {super.userName,
+      super.userPhotoUrl,
+      super.userFirebasePushToken,
+      super.userFirebaseUuid,
+      super.userLocationLatitude,
+      super.userLocationLongitude,
+      super.street,
+      super.city,
+      super.houseNumber,
+      super.district,
+      super.cep,
+      super.referencePoint,
+      super.userState});
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
@@ -57,6 +57,9 @@ class UserDataModel extends UserDataEntity {
     if (referencePoint != null) {
       result.addAll({'referencePoint': referencePoint});
     }
+    if (userState != null) {
+      result.addAll({'userState' : userState});
+    }
 
     return result;
   }
@@ -75,6 +78,7 @@ class UserDataModel extends UserDataEntity {
       district: map['district'],
       cep: map['cep'],
       referencePoint: map['referencePoint'],
+      userState: map['userState'],
     );
   }
   factory UserDataModel.fromEntity({required UserDataEntity userDataEntity}) {
@@ -91,6 +95,7 @@ class UserDataModel extends UserDataEntity {
       userLocationLongitude: userDataEntity.userLocationLongitude,
       userName: userDataEntity.userName,
       userPhotoUrl: userDataEntity.userPhotoUrl,
+      userState: userDataEntity.userState
     );
   }
 

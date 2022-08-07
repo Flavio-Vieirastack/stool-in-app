@@ -11,6 +11,7 @@ class UserDataEntity {
   final String? district;
   final String? cep;
   final String? referencePoint;
+  final String? userState;
   UserDataEntity({
     this.userName,
     this.userPhotoUrl,
@@ -24,7 +25,10 @@ class UserDataEntity {
     this.district,
     this.cep,
     this.referencePoint,
+    this.userState
   });
+
+  
 
   @override
   bool operator ==(Object other) {
@@ -42,7 +46,8 @@ class UserDataEntity {
       other.houseNumber == houseNumber &&
       other.district == district &&
       other.cep == cep &&
-      other.referencePoint == referencePoint;
+      other.referencePoint == referencePoint &&
+      other.userState == userState;
   }
 
   @override
@@ -58,6 +63,7 @@ class UserDataEntity {
       houseNumber.hashCode ^
       district.hashCode ^
       cep.hashCode ^
-      referencePoint.hashCode;
+      referencePoint.hashCode ^
+      userState.hashCode;
   }
 }
