@@ -20,6 +20,8 @@ import 'package:stool_in_app_logic/features/auth/domain/repository/sign_in/sign_
 import 'package:stool_in_app_logic/features/auth/domain/repository/user_data/user_data_sign_in_respository.dart';
 import 'package:stool_in_app_logic/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in_app_logic/features/auth/domain/usecase/auth/auth_usecase_impl.dart';
+import 'package:stool_in_app_ui/core/firebase/push_notifications/firebase_notifications.dart';
+import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in_app_ui/core/module/main_module/app_module.dart';
 import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
 import 'package:stool_in_app_ui/features/auth/sign_in/presenter/cubit/sign_in_cubit.dart';
@@ -86,6 +88,10 @@ class SignInMainModule extends AppModule {
             ),
             Provider<SignInCubit>(
               create: (context) => SignInCubit(
+                fireBaseNotifications:
+                    Inject<FireBaseNotifications>(context).get(),
+                writeLocalSecurityStorage:
+                    Inject<WriteLocalSecurityStorage>(context).get(),
                 firebaseAuth: Inject<FirebaseAuth>(context).get(),
                 authUseCase: Inject<AuthUseCase>(context).get(),
               ),
