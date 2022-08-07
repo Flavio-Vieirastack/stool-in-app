@@ -48,7 +48,6 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         saveString(
             key: KeysConstants.userPhotoUrl, value: sucess.userPhotoUrl ?? '');
         await _loginInToApi();
-        await _loginInToFirebase();
         final loginApiSucess =
             await getBool(key: KeysConstants.userPassLoginToApi);
         final loginFirebaseSucess =
@@ -87,6 +86,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
           value: sucess.token,
         );
         saveBool(key: KeysConstants.userPassLoginToApi, value: true);
+        await _loginInToFirebase();
         emit(SignInUserDataLoginApiSucess());
       },
     );
