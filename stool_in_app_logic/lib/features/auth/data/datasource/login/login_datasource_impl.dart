@@ -21,11 +21,16 @@ class LoginDatasourceImpl implements LoginDatasource {
         _firebaseAuth = firebaseAuth;
   @override
   Future<UserTokenEntity> apiLogin({required AuthModel authModel}) async {
+    String? errorMessage;
     try {
       final result = await _restClientPost.post(
         path: EndpointConstants.login,
         data: authModel.toMap(),
       );
+      if (result.statucCode == 401) {
+        //Unauthorized
+        errorMessage = result.data['message'];
+      }
       return UserTokenModel.fromJson(result.data);
     } on ApiAuthError catch (e, s) {
       log(
@@ -33,14 +38,16 @@ class LoginDatasourceImpl implements LoginDatasource {
         error: e,
         stackTrace: s,
       );
-      throw ApiAuthError(message: 'Erro ao fazer login, tente mais tarde');
+      throw ApiAuthError(
+          message: errorMessage ?? 'Erro ao fazer login, tente mais tarde');
     } catch (e, s) {
       log(
         'Erro desconhecido ao fazer login na api, no datasource impl',
         error: e,
         stackTrace: s,
       );
-      throw ApiAuthError(message: 'Erro no servidor tente mais tarde');
+      throw ApiAuthError(
+          message: errorMessage ?? 'Erro no servidor tente mais tarde');
     }
   }
 

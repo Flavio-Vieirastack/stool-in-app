@@ -20,7 +20,7 @@ class UserTokenModel extends UserTokenEntity {
 
   factory UserTokenModel.fromMap(Map<String, dynamic> map) {
     return UserTokenModel(
-      token: map['acess_token'] ?? '',
+      token: map['access_token'] ?? '',
     );
   }
 
