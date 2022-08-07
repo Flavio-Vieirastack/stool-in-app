@@ -1,4 +1,3 @@
-
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
@@ -51,117 +50,76 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
           return ListView(
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                  top: constraints.maxHeight *
-                      responsiveHeight(
-                        defaultMobileHeight: 0.01,
-                        defaultMobileSmallSizeHeight: 0.1,
-                        defaultTabletHeight: 0.1,
-                        constraints: constraints,
-                      ),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(
+                  'Para finalizar,',
+                  style: AppTextStyles.headLine0,
                 ),
-                child: SizedBox(
-                  height: constraints.maxHeight,
-                  child: Stack(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.001,
-                                defaultMobileSmallSizeHeight: 0.2,
-                                defaultTabletHeight: 0.2,
-                                constraints: constraints,
-                              ),
-                          left: constraints.maxWidth *
-                              responsiveWidth(
-                                defaultMobileWidth: 0.02,
-                                defaultMobileSmallSizeWidth: 0.01,
-                                defaultTabletWidth: 0.01,
-                                constraints: constraints,
-                              ),
-                        ),
-                        child: Text(
-                          'Para finalizar,',
-                          style: AppTextStyles.headLine0,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.1,
-                                defaultMobileSmallSizeHeight: 0.8,
-                                defaultTabletHeight: 0.8,
-                                constraints: constraints,
-                              ),
-                        ),
-                        child: Center(
-                          child: _SignInDataCard(
-                            statesDropDownLabel: 'Estado',
-                            onChanged: (value) {},
-                            cepController: cepController,
-                            cityController: cityController,
-                            districtController: districtController,
-                            houseNumberController: houseNumberController,
-                            referencePointController: referencePointController,
-                            streetController: streetController,
-                            userNameController: userNameController,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          bottom: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.79,
-                                defaultMobileSmallSizeHeight: 0.2,
-                                defaultTabletHeight: 0.2,
-                                constraints: constraints,
-                              ),
-                        ),
-                        child: const Center(
-                          child: AppAvatar(
-                            size: 100,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.06,
-                                defaultMobileSmallSizeHeight: 0.5,
-                                defaultTabletHeight: 0.5,
-                                constraints: constraints,
-                              ),
-                          left: constraints.maxWidth *
-                              responsiveWidth(
-                                defaultMobileWidth: 0.53,
-                                defaultMobileSmallSizeWidth: 0.5,
-                                defaultTabletWidth: 0.5,
-                                constraints: constraints,
-                              ),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.buttonLeftGradientColor,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(30),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              SizedBox(
+                height: constraints.maxHeight,
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: constraints.maxWidth *
+                            responsiveWidth(
+                              defaultMobileWidth: 0.03,
+                              defaultMobileSmallSizeWidth: 0.01,
+                              defaultTabletWidth: 0.01,
+                              constraints: constraints,
                             ),
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 30,
+                      ),
+                      child: _SignInDataCard(
+                        statesDropDownLabel: 'Estado',
+                        onChanged: (value) {},
+                        cepController: cepController,
+                        cityController: cityController,
+                        districtController: districtController,
+                        houseNumberController: houseNumberController,
+                        referencePointController: referencePointController,
+                        streetController: streetController,
+                        userNameController: userNameController,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: constraints.maxHeight *
+                            responsiveHeight(
+                              defaultMobileHeight: 0.06,
+                              defaultMobileSmallSizeHeight: 0.5,
+                              defaultTabletHeight: 0.5,
+                              constraints: constraints,
                             ),
+                        left: constraints.maxWidth *
+                            responsiveWidth(
+                              defaultMobileWidth: 0.53,
+                              defaultMobileSmallSizeWidth: 0.5,
+                              defaultTabletWidth: 0.5,
+                              constraints: constraints,
+                            ),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.buttonLeftGradientColor,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(30),
                           ),
                         ),
-                      )
-                    ],
-                  ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ],

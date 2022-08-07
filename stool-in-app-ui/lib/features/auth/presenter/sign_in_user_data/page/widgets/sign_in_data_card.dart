@@ -25,23 +25,10 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
 
   @override
   Widget build(BuildContext context) {
+    const componentsMobileDefaultDistance = 0.010;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
-          height: constraints.maxHeight *
-              responsiveHeight(
-                defaultMobileHeight: 0.99,
-                defaultMobileSmallSizeHeight: 0.5,
-                defaultTabletHeight: 0.5,
-                constraints: constraints,
-              ),
-          width: constraints.maxWidth *
-              responsiveWidth(
-                defaultMobileWidth: 0.9,
-                defaultMobileSmallSizeWidth: 0.8,
-                defaultTabletWidth: 0.8,
-                constraints: constraints,
-              ),
           decoration: BoxDecoration(
             color: AppColors.black,
             gradient: RadialGradient(
@@ -58,10 +45,18 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
           ),
           child: Column(
             children: [
+              const SizedBox(
+                 height: 10,
+              ),
+              const Center(
+                child: AppAvatar(
+                  size: 100,
+                ),
+              ),
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.025,
+                      defaultMobileHeight: 0.02,
                       defaultMobileSmallSizeHeight: 0.09,
                       defaultTabletHeight: 0.09,
                       constraints: constraints,
@@ -74,7 +69,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.04,
+                      defaultMobileHeight: 0.02,
                       defaultMobileSmallSizeHeight: 0.025,
                       defaultTabletHeight: 0.025,
                       constraints: constraints,
@@ -88,7 +83,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.015,
+                      defaultMobileHeight: componentsMobileDefaultDistance,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,
@@ -102,7 +97,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.015,
+                      defaultMobileHeight: componentsMobileDefaultDistance,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,
@@ -116,7 +111,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.015,
+                      defaultMobileHeight: componentsMobileDefaultDistance,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,
@@ -130,7 +125,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.015,
+                      defaultMobileHeight: componentsMobileDefaultDistance,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,
@@ -144,7 +139,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.015,
+                      defaultMobileHeight: componentsMobileDefaultDistance,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,
@@ -177,7 +172,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.015,
+                      defaultMobileHeight: componentsMobileDefaultDistance,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,
@@ -191,7 +186,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.015,
+                      defaultMobileHeight: componentsMobileDefaultDistance,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,
@@ -205,7 +200,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               SizedBox(
                 height: constraints.maxHeight *
                     responsiveHeight(
-                      defaultMobileHeight: 0.015,
+                      defaultMobileHeight: componentsMobileDefaultDistance,
                       defaultMobileSmallSizeHeight: 0.2,
                       defaultTabletHeight: 0.2,
                       constraints: constraints,

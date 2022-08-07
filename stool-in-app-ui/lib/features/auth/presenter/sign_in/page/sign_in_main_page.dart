@@ -127,14 +127,15 @@ class _SignInMainPageState extends State<SignInMainPage>
                         child: Center(
                           child: _SignInCard(
                             formKey: formKey,
-                            signInCallBack: () => cubit.makeSignIn(
-                              authEntity: AuthEntity(
-                                email: emailController.text.trim(),
-                                password: passwordController.text.trim(),
-                              ),
-                              timer: timer,
-                              formKey: formKey,
-                            ),
+                            signInCallBack: () => Navigator.of(context).pushNamed(RoutesConstants.signInDataRoute),
+                            // () => cubit.makeSignIn(
+                            //   authEntity: AuthEntity(
+                            //     email: emailController.text.trim(),
+                            //     password: passwordController.text.trim(),
+                            //   ),
+                            //   timer: timer,
+                            //   formKey: formKey,
+                            // ),
                             emailController: emailController,
                             passwordController: passwordController,
                           ),
