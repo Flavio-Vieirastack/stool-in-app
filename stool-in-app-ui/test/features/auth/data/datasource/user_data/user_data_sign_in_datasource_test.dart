@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in_app_logic/features/auth/data/datasource/user_data/user_data_sign_in_datasource.dart';
-import 'package:stool_in_app_logic/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in_app_logic/features/auth/domain/entity/user_data_entity.dart';
+import 'package:stool_in_app_ui/features/auth/data/datasource/user_data/user_data_sign_in_datasource.dart';
+import 'package:stool_in_app_ui/features/auth/data/model/user_data_model.dart';
+import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
 
 class UseDataSignInDataSourceMock extends Mock
     implements UserDataSignInDatasource {}
