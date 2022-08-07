@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
+import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_logic/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in_app_logic/features/auth/data/datasource/login/login_datasource.dart';
 import 'package:stool_in_app_logic/features/auth/data/datasource/login/login_datasource_impl.dart';

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
+import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/features/auth/password_reset/module/password_reset_module.dart';
 import 'package:stool_in_app_ui/features/auth/sign_in/module/sign_in_main_module.dart';
 import 'package:stool_in_app_ui/features/auth/sign_in_user_data/module/sign_in_main_data_module.dart';

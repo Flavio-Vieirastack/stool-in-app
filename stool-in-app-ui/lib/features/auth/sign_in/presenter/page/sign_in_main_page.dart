@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
 import 'package:stool_in_app_logic/features/auth/domain/entity/auth_entity.dart';
+import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/app_dialog.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
+import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/widgets/app_button/enum/button_types.dart';
 
