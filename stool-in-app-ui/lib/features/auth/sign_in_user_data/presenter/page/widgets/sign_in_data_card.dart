@@ -26,7 +26,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
         return Container(
           height: constraints.maxHeight *
               responsiveHeight(
-                defaultMobileHeight: 0.92,
+                defaultMobileHeight: 0.99,
                 defaultMobileSmallSizeHeight: 0.5,
                 defaultTabletHeight: 0.5,
                 constraints: constraints,
@@ -146,19 +146,31 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       constraints: constraints,
                     ),
               ),
-              DropdownButton<String>(
-                hint: const Text('Estado'),
-                onChanged: (estado) {
-                  log(estado ?? '');
-                },
-                items: Estados.listaEstadosSigla.map(
-                  (String regiao) {
-                    return DropdownMenuItem(
-                      value: regiao,
-                      child: Text(regiao),
-                    );
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: constraints.maxWidth *
+                      responsiveWidth(
+                        defaultMobileWidth: 0.05,
+                        defaultMobileSmallSizeWidth: 0.05,
+                        defaultTabletWidth: 0.05,
+                        constraints: constraints,
+                      ),
+                ),
+                child: DropdownButton<String>(
+                  hint: const Text('Estado'),
+                  isExpanded: true,
+                  onChanged: (estado) {
+                    log(estado ?? '');
                   },
-                ).toList(),
+                  items: Estados.listaEstadosSigla.map(
+                    (String regiao) {
+                      return DropdownMenuItem(
+                        value: regiao,
+                        child: Text(regiao),
+                      );
+                    },
+                  ).toList(),
+                ),
               ),
               SizedBox(
                 height: constraints.maxHeight *
