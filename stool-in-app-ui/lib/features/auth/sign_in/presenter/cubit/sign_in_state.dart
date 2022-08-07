@@ -1,5 +1,24 @@
 part of 'sign_in_cubit.dart';
 
-abstract class SignInState {}
+abstract class SignInState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
 
 class SignInInitial extends SignInState {}
+
+class SignInStateLoading extends SignInState {}
+
+class SignInStateEmailSended extends SignInState {}
+
+class SignInStateEmailAccepted extends SignInState {}
+
+class SignInStateError extends SignInState {
+  final String message;
+  SignInStateError({
+    required this.message,
+  });
+  @override
+  List<Object?> get props => [message];
+}
+class SignInSucess extends SignInState {}

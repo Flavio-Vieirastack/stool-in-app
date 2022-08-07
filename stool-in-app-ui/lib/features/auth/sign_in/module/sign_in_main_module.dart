@@ -60,7 +60,8 @@ class SignInMainModule extends AppModule {
             ),
             Provider<SignInRepository>(
               create: (context) => SignInRepositoryImpl(
-                  signInDatasource: Inject<SignInDatasource>(context).get()),
+                signInDatasource: Inject<SignInDatasource>(context).get(),
+              ),
             ),
             Provider<LoginDatasource>(
               create: (context) => LoginDatasourceImpl(
@@ -70,7 +71,8 @@ class SignInMainModule extends AppModule {
             ),
             Provider<LoginRepository>(
               create: (context) => LoginRepositoryImpl(
-                  loginDatasource: Inject<LoginDatasource>(context).get()),
+                loginDatasource: Inject<LoginDatasource>(context).get(),
+              ),
             ),
             Provider<AuthUseCase>(
               create: (context) => AuthUsecaseImpl(
@@ -84,6 +86,7 @@ class SignInMainModule extends AppModule {
             ),
             Provider<SignInCubit>(
               create: (context) => SignInCubit(
+                firebaseAuth: Inject<FirebaseAuth>(context).get(),
                 authUseCase: Inject<AuthUseCase>(context).get(),
               ),
             )
