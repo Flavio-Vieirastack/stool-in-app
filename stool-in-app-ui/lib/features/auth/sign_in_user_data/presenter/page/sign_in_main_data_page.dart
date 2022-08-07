@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
@@ -93,6 +94,40 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: constraints.maxHeight *
+                              responsiveHeight(
+                                defaultMobileHeight: 0.06,
+                                defaultMobileSmallSizeHeight: 0.5,
+                                defaultTabletHeight: 0.5,
+                                constraints: constraints,
+                              ),
+                          left: constraints.maxWidth *
+                              responsiveWidth(
+                                defaultMobileWidth: 0.53,
+                                defaultMobileSmallSizeWidth: 0.5,
+                                defaultTabletWidth: 0.5,
+                                constraints: constraints,
+                              ),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.buttonLeftGradientColor,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(30),
+                            ),
+                          ),
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),

@@ -182,7 +182,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               ),
               AppButton(
                 buttonText: 'Voltar',
-                onPressed: () {},
+                onPressed: () => Navigator.of(context)
+                    .pushReplacementNamed(RoutesConstants.signInMainRoute),
                 buttonTypes: ButtonTypes.secondary,
               ),
               SizedBox(
