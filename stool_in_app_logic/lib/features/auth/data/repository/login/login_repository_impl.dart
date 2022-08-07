@@ -11,16 +11,16 @@ import 'package:stool_in_app_logic/features/auth/domain/repository/login/login_r
 import '../../../domain/entity/user_token_entity.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
-  final LoginDatasource _authDatasource;
+  final LoginDatasource _loginDatasource;
   LoginRepositoryImpl({
-    required LoginDatasource authDatasource,
-  }) : _authDatasource = authDatasource;
+    required LoginDatasource loginDatasource,
+  }) : _loginDatasource = loginDatasource;
   @override
   Future<Either<ApiAuthError, UserTokenEntity>> apiLogin({
     required AuthEntity authEntity,
   }) async {
     try {
-      final result = await _authDatasource.apiLogin(
+      final result = await _loginDatasource.apiLogin(
         authModel: AuthModel.fromEntity(authEntity),
       );
       return Right(result);
@@ -54,7 +54,7 @@ class LoginRepositoryImpl implements LoginRepository {
     required AuthEntity authEntity,
   }) async {
     try {
-      final result = await _authDatasource.firebaseLogin(
+      final result = await _loginDatasource.firebaseLogin(
         authModel: AuthModel.fromEntity(
           authEntity,
         ),
