@@ -22,7 +22,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grey.withOpacity(0.1),
+      backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (context, constraints) {

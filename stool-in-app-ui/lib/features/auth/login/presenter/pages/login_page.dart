@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grey.withOpacity(0.1),
+      backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
                             ),
                       ),
                       child: Text(
-                        'Bem vindo(a)',
+                        'Bem vindo(a),',
                         style: AppTextStyles.headLine0,
                       ),
                     ),
