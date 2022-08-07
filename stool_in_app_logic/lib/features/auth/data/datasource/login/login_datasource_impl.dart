@@ -4,10 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stool_in_app_logic/core/constants/endpoint_constants.dart';
 import 'package:stool_in_app_logic/features/auth/data/datasource/login/login_datasource.dart';
 import 'package:stool_in_app_logic/features/auth/data/model/auth_model.dart';
+import 'package:stool_in_app_logic/features/auth/data/model/user_token_model.dart';
 import 'package:stool_in_app_logic/features/auth/domain/error/api_auth_error.dart';
 import 'package:stool_in_app_logic/features/auth/domain/error/firebase_auth_error.dart';
 
 import '../../../../../core/rest_client/rest_client_contracts.dart';
+import '../../../domain/entity/user_token_entity.dart';
 
 class LoginDatasourceImpl implements LoginDatasource {
   final RestClientPost _restClientPost;
@@ -18,12 +20,13 @@ class LoginDatasourceImpl implements LoginDatasource {
   })  : _restClientPost = restClientPost,
         _firebaseAuth = firebaseAuth;
   @override
-  Future<void> apiLogin({required AuthModel authModel}) async {
+  Future<UserTokenEntity> apiLogin({required AuthModel authModel}) async {
     try {
-      await _restClientPost.post(
+      final result = await _restClientPost.post(
         path: EndpointConstants.login,
         data: authModel.toMap(),
       );
+      return UserTokenModel.fromJson(result.data);
     } on ApiAuthError catch (e, s) {
       log(
         'Erro ao fazer login na api, no datasource impl',

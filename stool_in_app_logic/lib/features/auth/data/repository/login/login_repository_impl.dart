@@ -8,13 +8,15 @@ import 'package:stool_in_app_logic/features/auth/domain/entity/auth_entity.dart'
 import 'package:dartz/dartz.dart';
 import 'package:stool_in_app_logic/features/auth/domain/repository/login/login_repository.dart';
 
+import '../../../domain/entity/user_token_entity.dart';
+
 class LoginRepositoryImpl implements LoginRepository {
   final LoginDatasource _authDatasource;
   LoginRepositoryImpl({
     required LoginDatasource authDatasource,
   }) : _authDatasource = authDatasource;
   @override
-  Future<Either<ApiAuthError, void>> apiLogin({
+  Future<Either<ApiAuthError, UserTokenEntity>> apiLogin({
     required AuthEntity authEntity,
   }) async {
     try {

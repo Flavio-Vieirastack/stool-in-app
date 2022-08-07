@@ -9,6 +9,7 @@ import 'package:stool_in_app_logic/features/auth/domain/repository/password_rese
 import 'package:stool_in_app_logic/features/auth/domain/repository/sign_in/sign_in_repository.dart';
 import 'package:stool_in_app_logic/features/auth/domain/repository/user_data/user_data_sign_in_respository.dart';
 
+import '../../entity/user_token_entity.dart';
 import 'auth_use_case.dart';
 
 class AuthUsecaseImpl implements AuthUseCase {
@@ -27,7 +28,7 @@ class AuthUsecaseImpl implements AuthUseCase {
         _signInRepository = signInRepository;
 
   @override
-  Future<Either<ApiAuthError, void>> apiLogin({
+  Future<Either<ApiAuthError, UserTokenEntity>> apiLogin({
     required AuthEntity authEntity,
   }) {
     return _loginRepository.apiLogin(authEntity: authEntity);

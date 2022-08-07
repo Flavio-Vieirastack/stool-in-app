@@ -4,13 +4,14 @@ import 'package:dartz/dartz.dart';
 
 import '../../entity/auth_entity.dart';
 import '../../entity/user_data_entity.dart';
+import '../../entity/user_token_entity.dart';
 import '../../error/user_data_error.dart';
 
 abstract class AuthUseCase {
   Future<Either<FirebaseAuthError, void>> firebaseLogin({
     required AuthEntity authEntity,
   });
-  Future<Either<ApiAuthError, void>> apiLogin({
+  Future<Either<ApiAuthError, UserTokenEntity>> apiLogin({
     required AuthEntity authEntity,
   });
   Future<Either<FirebaseAuthError, void>> firebaseSignIn({
