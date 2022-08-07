@@ -21,4 +21,4 @@ class SignInStateError extends SignInState {
   @override
   List<Object?> get props => [message];
 }
-class SignInSucess extends SignInState {}
+class SignInStateSucess extends SignInState {}

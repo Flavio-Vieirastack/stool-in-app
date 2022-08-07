@@ -28,8 +28,10 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         _fireBaseNotifications = fireBaseNotifications,
         super(SignInInitial());
-  void makeSignIn(
-      {required AuthEntity authEntity, required Timer? timer}) async {
+  void makeSignIn({
+    required AuthEntity authEntity,
+    required Timer? timer,
+  }) async {
     emit(SignInStateLoading());
     final signIn = await _authUseCase.firebaseSignIn(authEntity: authEntity);
     signIn.fold(
@@ -41,13 +43,19 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         await sendVerificationEmail();
         timer = Timer.periodic(
           const Duration(seconds: 3),
-          (_) => _checkEmailVerified(timer),
+          (_) => _checkEmailVerifiedAndSaveUserInApi(
+            timer,
+            authEntity: authEntity,
+          ),
         );
       },
     );
   }
 
-  Future<void> _checkEmailVerified(Timer? timer) async {
+  Future<void> _checkEmailVerifiedAndSaveUserInApi(
+    Timer? timer, {
+    required AuthEntity authEntity,
+  }) async {
     await _firebaseAuth.currentUser?.reload();
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified!) {
@@ -70,6 +78,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       log('email verified canceled');
 
       emit(SignInStateEmailAccepted());
+      _makeSignInInApi(authEntity: authEntity);
       timer?.cancel();
     }
   }
@@ -79,5 +88,21 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     if (!emailVerified!) {
       await _firebaseAuth.currentUser?.sendEmailVerification();
     }
+  }
+
+  Future<void> _makeSignInInApi({required AuthEntity authEntity}) async {
+    final result = await _authUseCase.apiSignIn(authEntity: authEntity);
+    result.fold(
+      (error) async {
+        await _firebaseAuth.currentUser?.delete();
+        emit(
+          SignInStateError(message: error.message),
+        );
+      },
+      (sucess) async {
+        await Future.delayed(const Duration(seconds: 3));
+        emit(SignInStateSucess());
+      },
+    );
   }
 }
