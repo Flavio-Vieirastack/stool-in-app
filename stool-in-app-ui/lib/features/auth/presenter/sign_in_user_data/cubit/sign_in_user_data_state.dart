@@ -11,4 +11,6 @@ class SignInUserDataInitial extends SignInUserDataState {}
 class SignInUserDataLoading extends SignInUserDataState {}
 
 class SignInUserDataError extends SignInUserDataState {}
+class SignInUserDataLoginApiSucess extends SignInUserDataState {}
+class SignInUserDataLoginFirebaseSucess extends SignInUserDataState {}
 class SignInUserDataSucess extends SignInUserDataState {}

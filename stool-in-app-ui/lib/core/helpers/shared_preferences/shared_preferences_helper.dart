@@ -5,6 +5,10 @@ mixin SharedPreferencesHelper {
     final prefs = await SharedPreferences.getInstance();
     prefs.setInt(key, value);
   }
+  void saveDouble({required String key, required double value}) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setDouble(key, value);
+  }
 
   void saveString({required String key, required String value}) async {
     final prefs = await SharedPreferences.getInstance();

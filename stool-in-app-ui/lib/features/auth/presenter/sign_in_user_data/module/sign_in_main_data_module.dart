@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
+import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in_app_ui/core/module/main_module/app_module.dart';
 import 'package:stool_in_app_ui/features/auth/data/datasource/sign_in/sign_in_datasource_impl.dart';
 import 'package:stool_in_app_ui/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
@@ -87,6 +88,10 @@ class SignInMainDataModule extends AppModule {
             ),
             Provider(
               create: (context) => SignInUserDataCubit(
+                writeLocalSecurityStorage:
+                    Inject<WriteLocalSecurityStorage>(context).get(),
+                readLocalSecurityStorage:
+                    Inject<ReadLocalSecurityStorage>(context).get(),
                 authUseCase: Inject<AuthUseCase>(context).get(),
               ),
             )
