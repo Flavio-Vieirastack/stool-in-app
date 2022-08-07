@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_logic/core/constants/routes_constants.dart';
+import 'package:stool_in_app_logic/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/app_dialog.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
@@ -26,16 +29,19 @@ class _SignInMainPageState extends State<SignInMainPage>
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  Timer? timer;
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
     formKey.currentState?.dispose();
+    timer?.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<SignInCubit>();
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
@@ -121,7 +127,14 @@ class _SignInMainPageState extends State<SignInMainPage>
                         child: Center(
                           child: _SignInCard(
                             formKey: formKey,
-                            signInCallBack: () {},
+                            signInCallBack: () => cubit.makeSignIn(
+                              authEntity: AuthEntity(
+                                email: emailController.text.trim(),
+                                password: passwordController.text.trim(),
+                              ),
+                              timer: timer,
+                              formKey: formKey,
+                            ),
                             emailController: emailController,
                             passwordController: passwordController,
                           ),
