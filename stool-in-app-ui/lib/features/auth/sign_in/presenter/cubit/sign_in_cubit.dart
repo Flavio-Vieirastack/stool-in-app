@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_logic/core/constants/keys_constants.dart';
 import 'package:stool_in_app_logic/features/auth/domain/entity/auth_entity.dart';
@@ -31,25 +32,28 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
   void makeSignIn({
     required AuthEntity authEntity,
     required Timer? timer,
+    required GlobalKey<FormState> formKey,
   }) async {
-    emit(SignInStateLoading());
-    final signIn = await _authUseCase.firebaseSignIn(authEntity: authEntity);
-    signIn.fold(
-      (error) => emit(
-        SignInStateError(message: error.message),
-      ),
-      (sucess) async {
-        emit(SignInStateEmailSended());
-        await sendVerificationEmail();
-        timer = Timer.periodic(
-          const Duration(seconds: 3),
-          (_) => _checkEmailVerifiedAndSaveUserInApi(
-            timer,
-            authEntity: authEntity,
-          ),
-        );
-      },
-    );
+    if (formKey.currentState?.validate() ?? false) {
+      emit(SignInStateLoading());
+      final signIn = await _authUseCase.firebaseSignIn(authEntity: authEntity);
+      signIn.fold(
+        (error) => emit(
+          SignInStateError(message: error.message),
+        ),
+        (sucess) async {
+          emit(SignInStateEmailSended());
+          await sendVerificationEmail();
+          timer = Timer.periodic(
+            const Duration(seconds: 3),
+            (_) => _checkEmailVerifiedAndSaveUserInApi(
+              timer,
+              authEntity: authEntity,
+            ),
+          );
+        },
+      );
+    }
   }
 
   Future<void> _checkEmailVerifiedAndSaveUserInApi(

@@ -5,6 +5,7 @@ import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.
 import 'package:stool_in_app_ui/core/widgets/app_dialog/app_dialog.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
 import 'package:stool_in_app_ui/features/auth/sign_in/presenter/cubit/sign_in_cubit.dart';
+import 'package:validatorless/validatorless.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
@@ -24,11 +25,13 @@ class _SignInMainPageState extends State<SignInMainPage>
     with ResponsiveHelperMixin {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+    formKey.currentState?.dispose();
   }
 
   @override
@@ -117,9 +120,8 @@ class _SignInMainPageState extends State<SignInMainPage>
                         ),
                         child: Center(
                           child: _SignInCard(
-                            signInCallBack: () => Navigator.of(context)
-                                .pushReplacementNamed(
-                                    RoutesConstants.signInDataRoute),
+                            formKey: formKey,
+                            signInCallBack: () {},
                             emailController: emailController,
                             passwordController: passwordController,
                           ),
