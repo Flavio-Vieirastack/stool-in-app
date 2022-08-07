@@ -19,6 +19,26 @@ class SignInMainDataPage extends StatefulWidget {
 
 class _SignInMainDataPageState extends State<SignInMainDataPage>
     with ResponsiveHelperMixin {
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController streetController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
+  final TextEditingController houseNumberController = TextEditingController();
+  final TextEditingController districtController = TextEditingController();
+  final TextEditingController cepController = TextEditingController();
+  final TextEditingController referencePointController =
+      TextEditingController();
+  @override
+  void dispose() {
+    super.dispose();
+    userNameController.dispose();
+    streetController.dispose();
+    cityController.dispose();
+    houseNumberController.dispose();
+    districtController.dispose();
+    cepController.dispose();
+    referencePointController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,8 +94,16 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                 constraints: constraints,
                               ),
                         ),
-                        child: const Center(
-                          child: _SignInDataCard(),
+                        child: Center(
+                          child: _SignInDataCard(
+                            cepController: cepController,
+                            cityController: cityController,
+                            districtController: districtController,
+                            houseNumberController: houseNumberController,
+                            referencePointController: referencePointController,
+                            streetController: streetController,
+                            userNameController: userNameController,
+                          ),
                         ),
                       ),
                       Padding(

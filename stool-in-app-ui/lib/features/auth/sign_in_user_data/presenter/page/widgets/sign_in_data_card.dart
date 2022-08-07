@@ -1,7 +1,23 @@
 part of '../sign_in_main_data_page.dart';
 
 class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
-  const _SignInDataCard({Key? key}) : super(key: key);
+  final TextEditingController userNameController;
+  final TextEditingController streetController;
+  final TextEditingController cityController;
+  final TextEditingController houseNumberController;
+  final TextEditingController districtController;
+  final TextEditingController cepController;
+  final TextEditingController referencePointController;
+  const _SignInDataCard({
+    Key? key,
+    required this.userNameController,
+    required this.streetController,
+    required this.cityController,
+    required this.houseNumberController,
+    required this.districtController,
+    required this.cepController,
+    required this.referencePointController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

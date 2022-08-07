@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       providers: PermanentDependencies.init(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'StoolIn',
         theme: ThemeData.dark(),
         initialRoute: RoutesConstants.splashRoute,
         routes: {
