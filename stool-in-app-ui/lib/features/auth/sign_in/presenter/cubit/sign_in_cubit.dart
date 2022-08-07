@@ -78,7 +78,10 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       log('email verified canceled');
 
       emit(SignInStateEmailAccepted());
-      _makeSignInInApi(authEntity: authEntity);
+      _makeSignInInApi(
+        userEmail: authEntity.email,
+        userPassword: authEntity.password ?? '',
+      );
       timer?.cancel();
     }
   }
@@ -90,8 +93,15 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     }
   }
 
-  Future<void> _makeSignInInApi({required AuthEntity authEntity}) async {
-    final result = await _authUseCase.apiSignIn(authEntity: authEntity);
+  Future<void> _makeSignInInApi({
+    required String userEmail,
+    required String userPassword,
+  }) async {
+    final userUuid = _firebaseAuth.currentUser?.uid;
+    final result = await _authUseCase.apiSignIn(
+      authEntity: AuthEntity(
+          email: userEmail, password: userPassword, firebaseUuid: userUuid),
+    );
     result.fold(
       (error) async {
         await _firebaseAuth.currentUser?.delete();
