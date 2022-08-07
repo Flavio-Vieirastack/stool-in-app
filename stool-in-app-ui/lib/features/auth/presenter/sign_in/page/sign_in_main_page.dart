@@ -114,31 +114,19 @@ class _SignInMainPageState extends State<SignInMainPage>
                           style: AppTextStyles.headLine0,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          bottom: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.05,
-                                defaultMobileSmallSizeHeight: 0.8,
-                                defaultTabletHeight: 0.8,
-                                constraints: constraints,
-                              ),
-                        ),
-                        child: Center(
-                          child: _SignInCard(
+                      Center(
+                        child: _SignInCard(
+                          formKey: formKey,
+                          signInCallBack: () => cubit.makeSignIn(
+                            authEntity: AuthEntity(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                            ),
+                            timer: timer,
                             formKey: formKey,
-                            signInCallBack: () => Navigator.of(context).pushNamed(RoutesConstants.signInDataRoute),
-                            // () => cubit.makeSignIn(
-                            //   authEntity: AuthEntity(
-                            //     email: emailController.text.trim(),
-                            //     password: passwordController.text.trim(),
-                            //   ),
-                            //   timer: timer,
-                            //   formKey: formKey,
-                            // ),
-                            emailController: emailController,
-                            passwordController: passwordController,
                           ),
+                          emailController: emailController,
+                          passwordController: passwordController,
                         ),
                       ),
                     ],

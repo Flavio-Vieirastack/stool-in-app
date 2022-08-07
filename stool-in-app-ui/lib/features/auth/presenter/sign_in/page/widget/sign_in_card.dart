@@ -20,13 +20,15 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
         return Form(
           key: formKey,
           child: Container(
-            height: constraints.maxHeight *
-                responsiveHeight(
-                  defaultMobileHeight: 0.6,
-                  defaultMobileSmallSizeHeight: 0.5,
-                  defaultTabletHeight: 0.5,
-                  constraints: constraints,
-                ),
+            constraints: BoxConstraints(
+              maxHeight: constraints.maxHeight *
+                  responsiveHeight(
+                    defaultMobileHeight: 0.65,
+                    defaultMobileSmallSizeHeight: 0.5,
+                    defaultTabletHeight: 0.5,
+                    constraints: constraints,
+                  ),
+            ),
             width: constraints.maxWidth *
                 responsiveWidth(
                   defaultMobileWidth: 0.9,
@@ -49,6 +51,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
               ),
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
                   height: constraints.maxHeight *
@@ -119,15 +122,20 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                 ),
                 AppTextFormField(
-                  label: 'Digite novamente sua senha',
-                  hint: 'Ex: Abc@123456',
-                  obscureText: true,
-                  color: Colors.transparent,
-                  validator: Validatorless.compare(
-                    passwordController,
-                    'Senhas não conferem',
-                  ),
-                ),
+                    label: 'Digite novamente sua senha',
+                    hint: 'Ex: Abc@123456',
+                    obscureText: true,
+                    color: Colors.transparent,
+                    validator: Validatorless.multiple(
+                      [
+                        Validatorless.compare(
+                          passwordController,
+                          'Senhas não conferem',
+                        ),
+                        Validatorless.required(
+                            'Esse campo não pode ficar vazio')
+                      ],
+                    )),
                 SizedBox(
                   height: constraints.maxHeight *
                       responsiveHeight(
