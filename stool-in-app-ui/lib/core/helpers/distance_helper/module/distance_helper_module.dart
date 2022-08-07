@@ -5,6 +5,8 @@ import 'package:stool_in_app_logic/stool_in_app_logic.dart';
 import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
 import 'package:stool_in_app_ui/core/module/permanent_dependencies/permanent_module.dart';
 
+import '../distance_helper_calculate.dart';
+
 
 @immutable
 class DistanceHelperModule implements PermanentModule {

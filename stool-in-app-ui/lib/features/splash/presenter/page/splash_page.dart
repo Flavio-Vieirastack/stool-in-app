@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stool_in_app_logic/stool_in_app_logic.dart';
+import 'package:stool_in_app_ui/core/constants/assets_constants.dart';
+import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/features/splash/presenter/cubit/splash_cubit.dart';
 
 class SplashPage extends StatefulWidget {

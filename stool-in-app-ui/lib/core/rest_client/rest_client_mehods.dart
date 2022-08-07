@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:stool_in_app_logic/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in_app_logic/core/rest_client/rest_client_response.dart';
+import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
+import 'package:stool_in_app_ui/core/rest_client/rest_client_response.dart';
 
 class RestClientOptions {
   late Dio dio;
