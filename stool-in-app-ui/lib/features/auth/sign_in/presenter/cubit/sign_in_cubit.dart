@@ -79,6 +79,10 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         key: KeysConstants.userFirebaseToken,
         value: userFirebaseUuid ?? '',
       );
+      await _writeLocalSecurityStorage.write(
+        key: KeysConstants.userPassword,
+        value: authEntity.password ?? '',
+      );
       log('email verified canceled');
 
       emit(SignInStateEmailAccepted());
@@ -92,7 +96,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
 
   Future<void> sendVerificationEmail() async {
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
-    if (!emailVerified!) {
+    if (emailVerified == null || !emailVerified) {
       await _firebaseAuth.currentUser?.sendEmailVerification();
     }
   }

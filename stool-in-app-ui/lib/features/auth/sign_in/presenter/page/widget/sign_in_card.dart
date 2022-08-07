@@ -97,8 +97,16 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                   obscureText: true,
                   color: Colors.transparent,
                   controller: passwordController,
-                  validator: Validatorless.required(
-                    'Esse campo não pode ficar vazio',
+                  validator: Validatorless.multiple(
+                    [
+                      Validatorless.required(
+                        'Esse campo não pode ficar vazio',
+                      ),
+                      Validatorless.min(
+                        6,
+                        'A senha deve conter mais de 6 caractéres',
+                      )
+                    ],
                   ),
                 ),
                 SizedBox(
@@ -115,7 +123,6 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                   hint: 'Ex: Abc@123456',
                   obscureText: true,
                   color: Colors.transparent,
-                  controller: passwordController,
                   validator: Validatorless.compare(
                     passwordController,
                     'Senhas não conferem',
