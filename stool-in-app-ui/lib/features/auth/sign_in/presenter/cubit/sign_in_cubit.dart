@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,12 +18,12 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
   final FirebaseAuth _firebaseAuth;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
   final FireBaseNotifications _fireBaseNotifications;
-  SignInCubit({
-    required AuthUseCase authUseCase,
-    required FirebaseAuth firebaseAuth,
-    required WriteLocalSecurityStorage writeLocalSecurityStorage,
-    required FireBaseNotifications fireBaseNotifications
-  })  : _authUseCase = authUseCase,
+  SignInCubit(
+      {required AuthUseCase authUseCase,
+      required FirebaseAuth firebaseAuth,
+      required WriteLocalSecurityStorage writeLocalSecurityStorage,
+      required FireBaseNotifications fireBaseNotifications})
+      : _authUseCase = authUseCase,
         _firebaseAuth = firebaseAuth,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         _fireBaseNotifications = fireBaseNotifications,
@@ -35,8 +36,9 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       (error) => emit(
         SignInStateError(message: error.message),
       ),
-      (sucess) {
+      (sucess) async {
         emit(SignInStateEmailSended());
+        await sendVerificationEmail();
         timer = Timer.periodic(
           const Duration(seconds: 3),
           (_) => _checkEmailVerified(timer),
@@ -49,8 +51,33 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     await _firebaseAuth.currentUser?.reload();
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified!) {
-      emit(SignInStateEmailAccepted());
       saveBool(key: KeysConstants.userPassByDataPage, value: false);
+      final userPushToken = await _fireBaseNotifications.getTokenFirebase();
+      await _writeLocalSecurityStorage.write(
+        key: KeysConstants.userFirebasePushToken,
+        value: userPushToken ?? '',
+      );
+      final userEmail = _firebaseAuth.currentUser?.email;
+      await _writeLocalSecurityStorage.write(
+        key: KeysConstants.userEmail,
+        value: userEmail ?? '',
+      );
+      final userFirebaseUuid = _firebaseAuth.currentUser?.uid;
+      await _writeLocalSecurityStorage.write(
+        key: KeysConstants.userFirebaseToken,
+        value: userFirebaseUuid ?? '',
+      );
+      log('email verified canceled');
+
+      emit(SignInStateEmailAccepted());
+      timer?.cancel();
+    }
+  }
+
+  Future<void> sendVerificationEmail() async {
+    final emailVerified = _firebaseAuth.currentUser?.emailVerified;
+    if (!emailVerified!) {
+      await _firebaseAuth.currentUser?.sendEmailVerification();
     }
   }
 }

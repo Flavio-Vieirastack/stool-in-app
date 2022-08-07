@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
