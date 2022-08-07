@@ -74,7 +74,10 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
                       child: Center(
                         child: _LoginCard(
                           loginCallback: () {},
-                          passwordResetCallback: () {},
+                          passwordResetCallback: () =>
+                              Navigator.of(context).pushReplacementNamed(
+                            RoutesConstants.passwordRecoveryRoute,
+                          ),
                           signInCallback: () =>
                               Navigator.of(context).pushReplacementNamed(
                             RoutesConstants.signInMainRoute,
