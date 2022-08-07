@@ -99,6 +99,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                         ),
                         child: Center(
                           child: _SignInDataCard(
+                            statesDropDownLabel: 'Estado',
+                            onChanged: (value) {},
                             cepController: cepController,
                             cityController: cityController,
                             districtController: districtController,

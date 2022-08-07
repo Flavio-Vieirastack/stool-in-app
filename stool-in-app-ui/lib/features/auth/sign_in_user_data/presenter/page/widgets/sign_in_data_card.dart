@@ -8,6 +8,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
   final TextEditingController districtController;
   final TextEditingController cepController;
   final TextEditingController referencePointController;
+  final String statesDropDownLabel;
+  final void Function(String?)? onChanged;
   const _SignInDataCard({
     Key? key,
     required this.userNameController,
@@ -17,6 +19,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
     required this.districtController,
     required this.cepController,
     required this.referencePointController,
+    required this.statesDropDownLabel,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -157,16 +161,14 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                 ),
                 child: DropdownButton<String>(
-                  hint: const Text('Estado'),
+                  hint: Text(statesDropDownLabel),
                   isExpanded: true,
-                  onChanged: (estado) {
-                    log(estado ?? '');
-                  },
+                  onChanged: onChanged,
                   items: Estados.listaEstadosSigla.map(
-                    (String regiao) {
+                    (String state) {
                       return DropdownMenuItem(
-                        value: regiao,
-                        child: Text(regiao),
+                        value: state,
+                        child: Text(state),
                       );
                     },
                   ).toList(),
