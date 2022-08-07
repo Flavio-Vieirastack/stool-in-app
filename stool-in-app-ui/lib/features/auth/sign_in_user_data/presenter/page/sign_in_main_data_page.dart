@@ -64,7 +64,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               ),
                         ),
                         child: const Center(
-                          child: SignInDataCard(),
+                          child: _SignInDataCard(),
                         ),
                       ),
                       Padding(

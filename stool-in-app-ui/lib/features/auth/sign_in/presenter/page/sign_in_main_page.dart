@@ -5,6 +5,7 @@ import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/widgets/app_button/app_button.dart';
+import '../../../../../core/widgets/app_button/enum/button_types.dart';
 import '../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
 part './widget/sign_in_card.dart';
 class SignInMainPage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _SignInMainPageState extends State<SignInMainPage>
                       padding: EdgeInsets.only(
                         top: constraints.maxHeight *
                             responsiveHeight(
-                              defaultMobileHeight: 0.15,
+                              defaultMobileHeight: 0.1,
                               defaultMobileSmallSizeHeight: 0.2,
                               defaultTabletHeight: 0.2,
                               constraints: constraints,

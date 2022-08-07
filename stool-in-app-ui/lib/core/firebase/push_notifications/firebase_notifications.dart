@@ -58,7 +58,7 @@ class FireBaseNotifications {
     }
   }
 
-  Future<String?> getTokenFirebase() async {
+  Future<String?> getTokenFirebase() async { //TODO apagar em release
     final token = await FirebaseMessaging.instance.getToken();
     debugPrint(token);
     return token;

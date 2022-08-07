@@ -1,7 +1,7 @@
 part of '../sign_in_main_data_page.dart';
 
-class SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
-  const SignInDataCard({Key? key}) : super(key: key);
+class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
+  const _SignInDataCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

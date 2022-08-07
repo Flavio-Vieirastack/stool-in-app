@@ -18,7 +18,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
         return Container(
           height: constraints.maxHeight *
               responsiveHeight(
-                defaultMobileHeight: 0.5,
+                defaultMobileHeight: 0.6,
                 defaultMobileSmallSizeHeight: 0.5,
                 defaultTabletHeight: 0.5,
                 constraints: constraints,
@@ -127,6 +127,20 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
               AppButton(
                 buttonText: 'Cadastrar',
                 onPressed: signInCallBack,
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.02,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
+              AppButton(
+                buttonText: 'Voltar',
+                onPressed: () => Navigator.of(context).pushReplacementNamed(RoutesConstants.loginRoute),
+                buttonTypes: ButtonTypes.secondary,
               ),
               SizedBox(
                 height: constraints.maxHeight *

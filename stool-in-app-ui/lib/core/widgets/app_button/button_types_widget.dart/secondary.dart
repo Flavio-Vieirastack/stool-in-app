@@ -32,7 +32,7 @@ class _Secondary extends StatelessWidget with ResponsiveHelperMixin {
             ],
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: AppColors.buttonLeftGradientColor,
+              color: AppColors.textFormFieldBackgroundColor,
             ),
           ),
           child: ElevatedButton(
