@@ -18,12 +18,12 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
   final FirebaseAuth _firebaseAuth;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
   final FireBaseNotifications _fireBaseNotifications;
-  SignInCubit(
-      {required AuthUseCase authUseCase,
-      required FirebaseAuth firebaseAuth,
-      required WriteLocalSecurityStorage writeLocalSecurityStorage,
-      required FireBaseNotifications fireBaseNotifications})
-      : _authUseCase = authUseCase,
+  SignInCubit({
+    required AuthUseCase authUseCase,
+    required FirebaseAuth firebaseAuth,
+    required WriteLocalSecurityStorage writeLocalSecurityStorage,
+    required FireBaseNotifications fireBaseNotifications,
+  })  : _authUseCase = authUseCase,
         _firebaseAuth = firebaseAuth,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         _fireBaseNotifications = fireBaseNotifications,
