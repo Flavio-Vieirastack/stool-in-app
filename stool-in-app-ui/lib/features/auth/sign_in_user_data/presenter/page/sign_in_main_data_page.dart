@@ -5,8 +5,10 @@ import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/widgets/app_avatar/app_avatar.dart';
 import '../../../../../core/widgets/app_button/app_button.dart';
+import '../../../../../core/widgets/app_button/enum/button_types.dart';
 import '../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
 part './widgets/sign_in_data_card.dart';
+
 class SignInMainDataPage extends StatefulWidget {
   const SignInMainDataPage({Key? key}) : super(key: key);
 
@@ -26,7 +28,15 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
           return ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 58.0),
+                padding: EdgeInsets.only(
+                  top: constraints.maxHeight *
+                      responsiveHeight(
+                        defaultMobileHeight: 0.01,
+                        defaultMobileSmallSizeHeight: 0.1,
+                        defaultTabletHeight: 0.1,
+                        constraints: constraints,
+                      ),
+                ),
                 child: SizedBox(
                   height: constraints.maxHeight,
                   child: Stack(
@@ -42,7 +52,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               ),
                           left: constraints.maxWidth *
                               responsiveWidth(
-                                defaultMobileWidth: 0.05,
+                                defaultMobileWidth: 0.02,
                                 defaultMobileSmallSizeWidth: 0.01,
                                 defaultTabletWidth: 0.01,
                                 constraints: constraints,
@@ -57,7 +67,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                         padding: EdgeInsets.only(
                           top: constraints.maxHeight *
                               responsiveHeight(
-                                defaultMobileHeight: 0.08,
+                                defaultMobileHeight: 0.1,
                                 defaultMobileSmallSizeHeight: 0.8,
                                 defaultTabletHeight: 0.8,
                                 constraints: constraints,
@@ -71,7 +81,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                         padding: EdgeInsets.only(
                           bottom: constraints.maxHeight *
                               responsiveHeight(
-                                defaultMobileHeight: 0.73,
+                                defaultMobileHeight: 0.79,
                                 defaultMobileSmallSizeHeight: 0.2,
                                 defaultTabletHeight: 0.2,
                                 constraints: constraints,

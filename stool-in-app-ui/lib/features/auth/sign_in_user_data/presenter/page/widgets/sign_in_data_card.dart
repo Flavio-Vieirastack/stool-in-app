@@ -10,7 +10,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
         return Container(
           height: constraints.maxHeight *
               responsiveHeight(
-                defaultMobileHeight: 0.8,
+                defaultMobileHeight: 0.92,
                 defaultMobileSmallSizeHeight: 0.5,
                 defaultTabletHeight: 0.5,
                 constraints: constraints,
@@ -26,7 +26,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
             color: AppColors.black,
             gradient: RadialGradient(
               radius: 1.9,
-              center: const Alignment(0.9, -1.5),
+              center: const Alignment(0.9, -1.0),
               colors: <Color>[
                 AppColors.grey.withOpacity(0.6),
                 AppColors.black,
@@ -75,8 +75,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               const AppTextFormField(
-                label: 'Email',
-                hint: 'Ex: email@email.com',
+                label: 'Rua',
+                hint: 'Ex: Rua aparecida',
                 color: Colors.transparent,
               ),
               SizedBox(
@@ -89,8 +89,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               const AppTextFormField(
-                label: 'Email',
-                hint: 'Ex: email@email.com',
+                label: 'Cidade',
+                hint: 'Ex: São paulo',
                 color: Colors.transparent,
               ),
               SizedBox(
@@ -103,8 +103,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               const AppTextFormField(
-                label: 'Email',
-                hint: 'Ex: email@email.com',
+                label: 'Número da casa',
+                hint: 'Ex: 985',
                 color: Colors.transparent,
               ),
               SizedBox(
@@ -117,8 +117,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               const AppTextFormField(
-                label: 'Email',
-                hint: 'Ex: email@email.com',
+                label: 'Bairro',
+                hint: 'Ex: Campo belo',
                 color: Colors.transparent,
               ),
               SizedBox(
@@ -131,8 +131,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               const AppTextFormField(
-                label: 'Email',
-                hint: 'Ex: email@email.com',
+                label: 'Cep',
+                hint: 'Ex: 63100000',
                 color: Colors.transparent,
               ),
               SizedBox(
@@ -145,8 +145,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               const AppTextFormField(
-                label: 'Email',
-                hint: 'Ex: email@email.com',
+                label: 'Ponto de referência',
+                hint: 'Ex: Próximo ao posto de saúde X',
                 color: Colors.transparent,
               ),
               SizedBox(
@@ -168,8 +168,22 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
               ),
               AppButton(
-                buttonText: 'Login',
+                buttonText: 'Cadastrar',
                 onPressed: () {},
+              ),
+              SizedBox(
+                height: constraints.maxHeight *
+                    responsiveHeight(
+                      defaultMobileHeight: 0.02,
+                      defaultMobileSmallSizeHeight: 0.2,
+                      defaultTabletHeight: 0.2,
+                      constraints: constraints,
+                    ),
+              ),
+              AppButton(
+                buttonText: 'Voltar',
+                onPressed: () {},
+                buttonTypes: ButtonTypes.secondary,
               ),
               SizedBox(
                 height: constraints.maxHeight *
