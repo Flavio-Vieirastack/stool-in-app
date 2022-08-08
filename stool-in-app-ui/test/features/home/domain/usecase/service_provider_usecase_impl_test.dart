@@ -51,7 +51,7 @@ void main() {
           endDisponibleTime: 'endDisponibleTime',
           disponibleDays: 'disponibleDays',
           createdAt: DateTime.now(),
-          userDataId: '1',
+          userDataId: 1,
           executionServices: [executionServicesEntityMock],
           servicesToExecute: [servicesToExecuteEntityMock],
           coments: [comentsEntityMock],

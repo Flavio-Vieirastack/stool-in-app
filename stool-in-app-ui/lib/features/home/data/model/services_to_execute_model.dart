@@ -2,9 +2,7 @@ import 'dart:convert';
 
 import 'package:stool_in_app_ui/features/home/domain/entity/services_to_execute_entity.dart';
 
-
 class ServicesToExecuteModel extends ServicesToExecuteEntity {
-  
   ServicesToExecuteModel({
     required super.id,
     required super.serviceDescription,
@@ -33,7 +31,7 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
-  
+
     result.addAll({'id': id});
     result.addAll({'serviceDescription': serviceDescription});
     result.addAll({'serviceDate': serviceDate.millisecondsSinceEpoch});
@@ -57,18 +55,19 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
     result.addAll({'total': total});
     result.addAll({'serviceProviderId': serviceProviderId});
     result.addAll({'userDataId': userDataId});
-  
+
     return result;
   }
 
   factory ServicesToExecuteModel.fromMap(Map<String, dynamic> map) {
-    final serviceDate = DateTime.parse(map['serviceDate']);
-    final serviceHour = DateTime.parse(map['serviceHour']);
+    final serviceDate = DateTime.tryParse(map['serviceDate']);
+    final serviceHour = DateTime.tryParse(map['serviceHour']);
+    final total = double.tryParse(map['total']);
     return ServicesToExecuteModel(
       id: map['id']?.toInt() ?? 0,
       serviceDescription: map['serviceDescription'] ?? '',
-      serviceDate: serviceDate,
-      serviceHour: serviceHour,
+      serviceDate: serviceDate ?? DateTime.now(),
+      serviceHour: serviceHour ?? DateTime.now(),
       userComent: map['userComent'] ?? '',
       status: map['status'] ?? '',
       userName: map['userName'] ?? '',
@@ -85,7 +84,7 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
       cep: map['cep'] ?? '',
       referencePoint: map['referencePoint'] ?? '',
       servicesTodo: map['servicesTodo'] ?? '',
-      total: map['total']?.toDouble() ?? 0.0,
+      total: total ?? 0.0,
       serviceProviderId: map['serviceProviderId']?.toInt() ?? 0,
       userDataId: map['userDataId']?.toInt() ?? 0,
     );
@@ -93,5 +92,6 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory ServicesToExecuteModel.fromJson(String source) => ServicesToExecuteModel.fromMap(json.decode(source));
+  factory ServicesToExecuteModel.fromJson(String source) =>
+      ServicesToExecuteModel.fromMap(json.decode(source));
 }

@@ -12,7 +12,7 @@ class ServiceProviderEntity {
   final String endDisponibleTime;
   final String disponibleDays;
   final DateTime createdAt;
-  final String userDataId;
+  final int userDataId;
   final List<ExecutionServicesEntity> executionServices;
   final List<ServicesToExecuteEntity> servicesToExecute;
   final List<ComentsEntity> coments;
