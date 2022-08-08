@@ -12,7 +12,7 @@ class ServiceProviderUsecaseImpl implements ServiceProviderUsecase {
   @override
   Future<Either<ServiceProviderError, List<ServiceProviderEntity>>> call({
     required int pageQuantity,
-  }) {
-    return _serviceProviderRepository.call(pageQuantity: pageQuantity);
+  }) async {
+    return await _serviceProviderRepository.call(pageQuantity: pageQuantity);
   }
 }

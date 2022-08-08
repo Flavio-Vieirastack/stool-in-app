@@ -31,36 +31,36 @@ class AuthUsecaseImpl implements AuthUseCase {
   @override
   Future<Either<ApiAuthError, UserTokenEntity>> apiLogin({
     required AuthEntity authEntity,
-  }) {
-    return _loginRepository.apiLogin(authEntity: authEntity);
+  }) async {
+    return await _loginRepository.apiLogin(authEntity: authEntity);
   }
 
   @override
   Future<Either<FirebaseAuthError, void>> firebaseLogin({
     required AuthEntity authEntity,
-  }) {
-    return _loginRepository.firebaseLogin(authEntity: authEntity);
+  }) async {
+    return await _loginRepository.firebaseLogin(authEntity: authEntity);
   }
 
   @override
   Future<Either<ApiAuthError, void>> apiSignIn({
     required AuthEntity authEntity,
-  }) {
-    return _signInRepository.apiSignIn(authEntity: authEntity);
+  }) async {
+    return await _signInRepository.apiSignIn(authEntity: authEntity);
   }
 
   @override
   Future<Either<FirebaseAuthError, void>> firebaseSignIn({
     required AuthEntity authEntity,
-  }) {
-    return _signInRepository.firebaseSignIn(authEntity: authEntity);
+  }) async {
+    return await _signInRepository.firebaseSignIn(authEntity: authEntity);
   }
 
   @override
   Future<Either<ApiAuthError, void>> apiPasswordReset({
     required AuthEntity authEntity,
-  }) {
-    return _passwordResetRepository.apiPasswordReset(
+  }) async {
+    return await _passwordResetRepository.apiPasswordReset(
       authEntity: authEntity,
     );
   }
@@ -68,8 +68,8 @@ class AuthUsecaseImpl implements AuthUseCase {
   @override
   Future<Either<FirebaseAuthError, void>> firebasePasswordReset({
     required AuthEntity authEntity,
-  }) {
-    return _passwordResetRepository.firebasePasswordReset(
+  }) async {
+    return await _passwordResetRepository.firebasePasswordReset(
       authEntity: authEntity,
     );
   }
@@ -77,8 +77,8 @@ class AuthUsecaseImpl implements AuthUseCase {
   @override
   Future<Either<UserDataError, UserDataEntity>> sendUserData({
     required UserDataEntity userDataEntity,
-  }) {
-    return _userDataSignInRepository.sendUserData(
+  }) async {
+    return await _userDataSignInRepository.sendUserData(
       userDataEntity: userDataEntity,
     );
   }
