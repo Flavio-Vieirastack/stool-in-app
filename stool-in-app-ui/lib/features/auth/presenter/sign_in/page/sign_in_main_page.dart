@@ -1,12 +1,18 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
+import 'package:stool_in_app_ui/core/firebase/push_notifications/firebase_notifications.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
+import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
+import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/app_dialog.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
+import 'package:stool_in_app_ui/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
+import 'package:stool_in_app_ui/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in_app_ui/features/auth/presenter/sign_in/cubit/sign_in_cubit.dart';
 import 'package:validatorless/validatorless.dart';
 
@@ -25,7 +31,7 @@ class SignInMainPage extends StatefulWidget {
 }
 
 class _SignInMainPageState extends State<SignInMainPage>
-    with ResponsiveHelperMixin {
+    with ResponsiveHelperMixin, AppSnackBar {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -61,14 +67,10 @@ class _SignInMainPageState extends State<SignInMainPage>
                 );
               } else if (state is SignInStateError) {
                 Navigator.of(context).pop();
-                showDialog(
+                showAppSnackbar(
+                  message: state.message,
                   context: context,
-                  builder: (context) => AppDialog(
-                    title: 'Ops!',
-                    message: 'Tente novamente mais tarde',
-                    context: context,
-                    dialogTypes: DialogTypes.error,
-                  ),
+                  type: SnackBarType.error,
                 );
               } else if (state is SignInStateEmailAccepted) {
                 Navigator.of(context).pop();
@@ -114,19 +116,30 @@ class _SignInMainPageState extends State<SignInMainPage>
                           style: AppTextStyles.headLine0,
                         ),
                       ),
-                      Center(
-                        child: _SignInCard(
-                          formKey: formKey,
-                          signInCallBack: () => cubit.makeSignIn(
-                            authEntity: AuthEntity(
-                              email: emailController.text.trim(),
-                              password: passwordController.text.trim(),
-                            ),
-                            timer: timer,
+                      BlocProvider(
+                        create: (context) => SignInCubit(
+                          authUseCase: Inject<AuthUseCase>(context).get(),
+                          fireBaseNotifications:
+                              Inject<FireBaseNotifications>(context).get(),
+                          firebaseAuth: Inject<FirebaseAuth>(context).get(),
+                          writeLocalSecurityStorage:
+                              Inject<WriteLocalSecurityStorage>(context)
+                                  .get(),
+                        ),
+                        child: Center(
+                          child: _SignInCard(
                             formKey: formKey,
+                            signInCallBack: () => cubit.makeSignIn(
+                              authEntity: AuthEntity(
+                                email: emailController.text.trim(),
+                                password: passwordController.text.trim(),
+                              ),
+                              timer: timer,
+                              formKey: formKey,
+                            ),
+                            emailController: emailController,
+                            passwordController: passwordController,
                           ),
-                          emailController: emailController,
-                          passwordController: passwordController,
                         ),
                       ),
                     ],

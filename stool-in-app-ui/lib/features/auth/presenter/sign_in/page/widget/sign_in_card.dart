@@ -154,9 +154,21 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                         constraints: constraints,
                       ),
                 ),
-                AppButton(
-                  buttonText: 'Cadastrar',
-                  onPressed: signInCallBack,
+                BlocBuilder<SignInCubit, SignInState>(
+                  builder: (context, state) {
+                    if (state is SignInStateLoading) {
+                      return AppButton(
+                        buttonText: 'Cadastrar',
+                        onPressed: (){},
+                        buttonTypes: ButtonTypes.loading,
+                      );
+                    } else {
+                      return AppButton(
+                        buttonText: 'Cadastrar',
+                        onPressed: signInCallBack,
+                      );
+                    }
+                  },
                 ),
                 SizedBox(
                   height: constraints.maxHeight *

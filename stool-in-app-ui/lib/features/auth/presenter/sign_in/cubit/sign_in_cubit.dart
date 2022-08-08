@@ -42,8 +42,8 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
           SignInStateError(message: error.message),
         ),
         (sucess) async {
-          emit(SignInStateEmailSended());
           await sendVerificationEmail();
+          emit(SignInStateEmailSended());
           timer = Timer.periodic(
             const Duration(seconds: 3),
             (_) => _checkEmailVerifiedAndSaveUserInApi(
@@ -83,7 +83,6 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         key: KeysConstants.userPassword,
         value: authEntity.password ?? '',
       );
-      log('email verified canceled');
 
       emit(SignInStateEmailAccepted());
       await _makeSignInInApi(
@@ -91,6 +90,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         userPassword: authEntity.password ?? '',
       );
       timer?.cancel();
+      log('email verified canceled');
     }
   }
 
