@@ -34,48 +34,46 @@ class ServiceProviderModel extends ServiceProviderEntity {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'ida': id});
-    result.addAll({'serviceProviderDescriptiona': serviceProviderDescription});
-    result.addAll({'statusa': status});
-    result.addAll({'initialDisponibleTimea': initialDisponibleTime});
-    result.addAll({'endDisponibleTimea': endDisponibleTime});
-    result.addAll({'disponibleDaysa': disponibleDays});
-    result.addAll({'createdAta': createdAt.millisecondsSinceEpoch});
-    result.addAll({'userDataIda': userDataId});
+    result.addAll({'id': id});
+    result.addAll({'userDescription': serviceProviderDescription});
+    result.addAll({'status': status});
+    result.addAll({'initialDisponibleTime': initialDisponibleTime});
+    result.addAll({'endDisponibleTime': endDisponibleTime});
+    result.addAll({'disponibleDays': disponibleDays});
     result.addAll({
-      'executionServicesa':
+      'executionServices':
           executionServicesModel.map((x) => x.toMap()).toList()
     });
     result.addAll({
-      'servicesToExecutea':
+      'servicesToExecute':
           servicesToExecuteModel.map((x) => x.toMap()).toList()
     });
-    result.addAll({'comentsa': comentsModel.map((x) => x.toMap()).toList()});
-    result.addAll({'userDataa': userDataModel.map((x) => x.toMap()).toList()});
+    result.addAll({'coments': comentsModel.map((x) => x.toMap()).toList()});
+    result.addAll({'UserData': userDataModel.map((x) => x.toMap()).toList()});
 
     return result;
   }
 
   factory ServiceProviderModel.fromMap(Map<String, dynamic> map) {
     return ServiceProviderModel(
-      id: map['ida']?.toInt() ?? 0,
-      serviceProviderDescription: map['serviceProviderDescriptiona'] ?? '',
-      status: map['statusa'] ?? '',
-      initialDisponibleTime: map['initialDisponibleTimea'] ?? '',
-      endDisponibleTime: map['endDisponibleTimea'] ?? '',
-      disponibleDays: map['disponibleDaysa'] ?? '',
-      createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAta']),
-      userDataId: map['userDataIda'] ?? '',
+      id: map['id']?.toInt() ?? 0,
+      serviceProviderDescription: map['userDescription'] ?? '',
+      status: map['status'] ?? '',
+      initialDisponibleTime: map['initialDisponibleTime'] ?? '',
+      endDisponibleTime: map['endDisponibleTime'] ?? '',
+      disponibleDays: map['disponibleDays'] ?? '',
+      createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt']),
+      userDataId: map['userDataId'] ?? '',
       executionServicesModel: List<ExecutionServicesModel>.from(
-          map['executionServicesa']
+          map['executionServices']
               ?.map((x) => ExecutionServicesModel.fromMap(x))),
       servicesToExecuteModel: List<ServicesToExecuteModel>.from(
-          map['servicesToExecutea']
+          map['servicesToExecute']
               ?.map((x) => ServicesToExecuteModel.fromMap(x))),
       comentsModel: List<ComentsModel>.from(
-          map['comentsa']?.map((x) => ComentsModel.fromMap(x))),
+          map['coments']?.map((x) => ComentsModel.fromMap(x))),
       userDataModel: List<UserDataModel>.from(
-          map['userDataa']?.map((x) => UserDataModel.fromMap(x))),
+          map['UserData']?.map((x) => UserDataModel.fromMap(x))),
     );
   }
 
