@@ -2,7 +2,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:dartz/dartz.dart';
+import 'package:stool_in_app_ui/features/auth/data/datasource/login/login_datasource.dart';
+import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
+import 'package:stool_in_app_ui/features/auth/domain/entity/user_token_entity.dart';
+import 'package:stool_in_app_ui/features/auth/domain/error/api_auth_error.dart';
 import 'package:stool_in_app_ui/features/auth/domain/error/user_data_error.dart';
 import 'package:stool_in_app_ui/features/auth/domain/repository/login/login_repository.dart';
 import 'package:stool_in_app_ui/features/auth/domain/repository/password_reset/password_reset_repository.dart';
@@ -23,6 +27,8 @@ class PasswordRepositoryMock extends Mock implements PasswordResetRepository {}
 
 class UserDataSignInMock extends Mock implements UserDataSignInRepository {}
 
+class UserLoginMock extends Mock implements LoginDatasource {}
+
 void main() {
   test('Deve retornar a entidade correta ao ser chamado', () async {
     final useCaseMock = AuthMock();
@@ -36,6 +42,20 @@ void main() {
     );
     final sut = await useCaseMock.sendUserData(userDataEntity: entity);
     expect(sut, Right(entity));
+  });
+  test('Deve retornar a entidade correta ao chamar metodo de login', () async {
+    final useCaseMock = AuthMock();
+    final token = UserTokenEntity(token: '');
+    final entity = AuthEntity(email: 'email', password: 'password');
+    when(
+      () => useCaseMock.apiLogin(authEntity: entity),
+    ).thenAnswer(
+      (_) async => Right(
+        UserTokenEntity(token: ''),
+      ),
+    );
+    final sut = await useCaseMock.apiLogin(authEntity: entity);
+    expect(sut, Right(token));
   });
   test('Deve retornar um erro do tipo correto', () async {
     final useCaseMock = AuthMock();
@@ -54,6 +74,50 @@ void main() {
         UserDataError(message: ''),
       ),
     );
+  });
+  test('Deve retornar um erro do tipo correto ao chamar login', () async {
+    final useCaseMock = AuthMock();
+    final entity = AuthEntity(email: '', password: '');
+    when(
+      () => useCaseMock.apiLogin(authEntity: entity),
+    ).thenAnswer(
+      (_) async => Left(
+        ApiAuthError(message: ''),
+      ),
+    );
+    final sut = useCaseMock.apiLogin;
+    expect(
+      await sut(authEntity: entity),
+      Left(
+        ApiAuthError(message: ''),
+      ),
+    );
+  });
+  test('Deve chamar o repository quando o useCase for chamado durante login',
+      () async {
+    final entity = AuthEntity(email: '', password: '');
+    final token = UserTokenEntity(token: '');
+    final loginRepositoryMock = LoginRepositoryMock();
+    final signInRepositoryMock = SignInRepositoryMock();
+    final passwordResetRepository = PasswordRepositoryMock();
+    final userDataSignInMock = UserDataSignInMock();
+    final useCaseImpl = AuthUsecaseImpl(
+        loginRepository: loginRepositoryMock,
+        signInRepository: signInRepositoryMock,
+        passwordResetRepository: passwordResetRepository,
+        userDataSignInRepository: userDataSignInMock);
+    when(
+      () => loginRepositoryMock.apiLogin(authEntity: entity),
+    ).thenAnswer(
+      (_) async => Right(
+        token,
+      ),
+    );
+    final sut = await useCaseImpl.apiLogin(authEntity: entity);
+    verify(
+      () => loginRepositoryMock.apiLogin(authEntity: entity),
+    ).called(1);
+    expect(sut, Right(token));
   });
   test('Deve chamar o repository quando o useCase for chamado', () async {
     final entity = UserDataEntity();
