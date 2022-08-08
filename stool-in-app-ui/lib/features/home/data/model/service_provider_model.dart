@@ -41,12 +41,10 @@ class ServiceProviderModel extends ServiceProviderEntity {
     result.addAll({'endDisponibleTime': endDisponibleTime});
     result.addAll({'disponibleDays': disponibleDays});
     result.addAll({
-      'executionServices':
-          executionServicesModel.map((x) => x.toMap()).toList()
+      'executionServices': executionServicesModel.map((x) => x.toMap()).toList()
     });
     result.addAll({
-      'servicesToExecute':
-          servicesToExecuteModel.map((x) => x.toMap()).toList()
+      'servicesToExecute': servicesToExecuteModel.map((x) => x.toMap()).toList()
     });
     result.addAll({'coments': comentsModel.map((x) => x.toMap()).toList()});
     result.addAll({'UserData': userDataModel.map((x) => x.toMap()).toList()});
@@ -55,6 +53,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
   }
 
   factory ServiceProviderModel.fromMap(Map<String, dynamic> map) {
+    final createdAt = DateTime.parse(map['createdAt']);
     return ServiceProviderModel(
       id: map['id']?.toInt() ?? 0,
       serviceProviderDescription: map['userDescription'] ?? '',
@@ -62,7 +61,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
       initialDisponibleTime: map['initialDisponibleTime'] ?? '',
       endDisponibleTime: map['endDisponibleTime'] ?? '',
       disponibleDays: map['disponibleDays'] ?? '',
-      createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt']),
+      createdAt: createdAt,
       userDataId: map['userDataId'] ?? '',
       executionServicesModel: List<ExecutionServicesModel>.from(
           map['executionServices']

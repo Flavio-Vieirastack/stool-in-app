@@ -62,11 +62,13 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
   }
 
   factory ServicesToExecuteModel.fromMap(Map<String, dynamic> map) {
+    final serviceDate = DateTime.parse(map['serviceDate']);
+    final serviceHour = DateTime.parse(map['serviceHour']);
     return ServicesToExecuteModel(
       id: map['id']?.toInt() ?? 0,
       serviceDescription: map['serviceDescription'] ?? '',
-      serviceDate: DateTime.fromMillisecondsSinceEpoch(map['serviceDate']),
-      serviceHour: DateTime.fromMillisecondsSinceEpoch(map['serviceHour']),
+      serviceDate: serviceDate,
+      serviceHour: serviceHour,
       userComent: map['userComent'] ?? '',
       status: map['status'] ?? '',
       userName: map['userName'] ?? '',
