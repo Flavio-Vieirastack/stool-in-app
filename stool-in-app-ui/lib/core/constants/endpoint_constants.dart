@@ -4,4 +4,5 @@ class EndpointConstants {
   static const login = '/login';
   static const passwordReset = '/user';
   static const postUserData = '/user-data';
+  static const getServiceProvider = '/service-provider';
 }
