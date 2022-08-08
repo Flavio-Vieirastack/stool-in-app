@@ -73,7 +73,7 @@ void main() {
     },
   );
   test(
-    'Deve retornar um erro',
+    'Deve retornar um erro da instãncia correta',
     () async {
       when(
         () => usecaseMock.call(pageQuantity: 5),
@@ -90,7 +90,7 @@ void main() {
     },
   );
   test(
-    'Deve chamar o repository',
+    'Deve chamar o repository correto',
     () async {
       final useCaseImpl = ServiceProviderUsecaseImpl(
           serviceProviderRepository: serviceRepositoryMock);
