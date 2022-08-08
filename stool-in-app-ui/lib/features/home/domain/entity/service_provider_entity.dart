@@ -16,7 +16,7 @@ class ServiceProviderEntity {
   final List<ExecutionServicesEntity> executionServices;
   final List<ServicesToExecuteEntity> servicesToExecute;
   final List<ComentsEntity> coments;
-  final List<UserDataEntity> userData;
+  final UserDataEntity userData;
   ServiceProviderEntity({
     required this.id,
     required this.serviceProviderDescription,

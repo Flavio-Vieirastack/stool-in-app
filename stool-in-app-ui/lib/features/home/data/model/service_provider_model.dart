@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:stool_in_app_ui/features/auth/data/model/user_data_model.dart';
 import 'package:stool_in_app_ui/features/home/data/model/coments_model.dart';
 import 'package:stool_in_app_ui/features/home/data/model/execution_services_model.dart';
@@ -10,7 +11,6 @@ class ServiceProviderModel extends ServiceProviderEntity {
   final List<ExecutionServicesModel> executionServicesModel;
   final List<ServicesToExecuteModel> servicesToExecuteModel;
   final List<ComentsModel> comentsModel;
-  final List<UserDataModel> userDataModel;
   ServiceProviderModel({
     required super.id,
     required super.serviceProviderDescription,
@@ -23,12 +23,11 @@ class ServiceProviderModel extends ServiceProviderEntity {
     required this.executionServicesModel,
     required this.servicesToExecuteModel,
     required this.comentsModel,
-    required this.userDataModel,
+    required super.userData,
   }) : super(
           coments: comentsModel,
           executionServices: executionServicesModel,
           servicesToExecute: servicesToExecuteModel,
-          userData: userDataModel,
         );
 
   Map<String, dynamic> toMap() {
@@ -47,7 +46,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
       'servicesToExecute': servicesToExecuteModel.map((x) => x.toMap()).toList()
     });
     result.addAll({'coments': comentsModel.map((x) => x.toMap()).toList()});
-    result.addAll({'UserData': userDataModel.map((x) => x.toMap()).toList()});
+    result.addAll({'UserData': userData});
 
     return result;
   }
@@ -71,8 +70,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
               ?.map((x) => ServicesToExecuteModel.fromMap(x))),
       comentsModel: List<ComentsModel>.from(
           map['coments']?.map((x) => ComentsModel.fromMap(x))),
-      userDataModel: List<UserDataModel>.from(
-          map['UserData']?.map((x) => UserDataModel.fromMap(x))),
+      userData: UserDataModel.fromMap(map['UserData']),
     );
   }
 
@@ -80,4 +78,24 @@ class ServiceProviderModel extends ServiceProviderEntity {
 
   factory ServiceProviderModel.fromJson(String source) =>
       ServiceProviderModel.fromMap(json.decode(source));
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    final listEquals = const DeepCollectionEquality().equals;
+
+    return other is ServiceProviderModel &&
+        listEquals(other.executionServicesModel, executionServicesModel) &&
+        listEquals(other.servicesToExecuteModel, servicesToExecuteModel) &&
+        listEquals(other.comentsModel, comentsModel) &&
+        listEquals(other.userData, userData);
+  }
+
+  @override
+  int get hashCode {
+    return executionServicesModel.hashCode ^
+        servicesToExecuteModel.hashCode ^
+        comentsModel.hashCode ^
+        userData.hashCode;
+  }
 }

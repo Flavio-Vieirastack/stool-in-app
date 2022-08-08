@@ -55,7 +55,7 @@ void main() {
           executionServices: [executionServicesEntityMock],
           servicesToExecute: [servicesToExecuteEntityMock],
           coments: [comentsEntityMock],
-          userData: [userDataEntityMock],
+          userData: userDataEntityMock,
         ),
       ];
     },
