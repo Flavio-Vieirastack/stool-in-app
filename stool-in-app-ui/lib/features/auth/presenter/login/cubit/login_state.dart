@@ -9,6 +9,7 @@ class LoginInitial extends LoginState {}
 
 class LoginLoading extends LoginState {}
 class LoginSucess extends LoginState {}
+class LoginEnableApiPasswordReset extends LoginState{}
 
 class LoginError extends LoginState {
   final String message;

@@ -10,6 +10,6 @@ class PasswordResetInitial extends PasswordResetState {}
 class PasswordResetLoading extends PasswordResetState {}
 
 class PasswordResetError extends PasswordResetState {}
-class PasswordResetEnableApiReset extends PasswordResetState {}
+class PasswordResetRedirectToLogin extends PasswordResetState {}
 
 class PasswordResetSucess extends PasswordResetState {}

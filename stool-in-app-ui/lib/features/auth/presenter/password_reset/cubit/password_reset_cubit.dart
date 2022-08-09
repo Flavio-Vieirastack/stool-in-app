@@ -20,6 +20,7 @@ class PasswordResetCubit extends Cubit<PasswordResetState>
   Future<void> firebasePasswordReset({
     required AuthEntity authEntity,
   }) async {
+    emit(PasswordResetLoading());
     final result =
         await _authUseCase.firebasePasswordReset(authEntity: authEntity);
     result.fold(
@@ -28,25 +29,8 @@ class PasswordResetCubit extends Cubit<PasswordResetState>
         saveBool(
             key: KeysConstants.userMakePasswordResetSolicitation, value: true);
         emit(
-          PasswordResetEnableApiReset(),
+          PasswordResetRedirectToLogin(),
         );
-      },
-    );
-  }
-
-  Future<void> apiPasswordReset({
-    required AuthEntity authEntity,
-  }) async {
-    final result = await _authUseCase.apiPasswordReset(authEntity: authEntity);
-    result.fold(
-      (l) => emit(
-        PasswordResetError(),
-      ),
-      (r) async {
-        emit(
-          PasswordResetSucess(),
-        );
-        removeCache(key: KeysConstants.userMakePasswordResetSolicitation);
       },
     );
   }
