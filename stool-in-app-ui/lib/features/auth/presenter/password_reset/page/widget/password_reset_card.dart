@@ -82,7 +82,9 @@ class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
                       Validatorless.required(
                         'Esse campo não pode ficar vazio',
                       ),
-                      Validatorless.email('Email inválido')
+                      Validatorless.email(
+                        'Email inválido',
+                      )
                     ],
                   ),
                 ),

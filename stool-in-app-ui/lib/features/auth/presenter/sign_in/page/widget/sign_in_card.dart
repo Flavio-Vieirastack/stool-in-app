@@ -128,20 +128,21 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                         ),
                   ),
                   AppTextFormField(
-                      label: 'Digite novamente sua senha',
-                      hint: 'Ex: Abc@123456',
-                      obscureText: true,
-                      color: Colors.transparent,
-                      validator: Validatorless.multiple(
-                        [
-                          Validatorless.compare(
-                            passwordController,
-                            'Senhas não conferem',
-                          ),
-                          Validatorless.required(
-                              'Esse campo não pode ficar vazio')
-                        ],
-                      )),
+                    label: 'Digite novamente sua senha',
+                    hint: 'Ex: Abc@123456',
+                    obscureText: true,
+                    color: Colors.transparent,
+                    validator: Validatorless.multiple(
+                      [
+                        Validatorless.compare(
+                          passwordController,
+                          'Senhas não conferem',
+                        ),
+                        Validatorless.required(
+                            'Esse campo não pode ficar vazio')
+                      ],
+                    ),
+                  ),
                   SizedBox(
                     height: constraints.maxHeight *
                         responsiveHeight(
