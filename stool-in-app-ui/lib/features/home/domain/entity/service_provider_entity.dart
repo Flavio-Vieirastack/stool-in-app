@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in_app_ui/features/home/domain/entity/coments_entity.dart';

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+// ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:stool_in_app_ui/features/auth/data/model/user_data_model.dart';
 import 'package:stool_in_app_ui/features/home/data/model/coments_model.dart';
