@@ -48,7 +48,7 @@ class LoginDatasourceImpl implements LoginDatasource {
         stackTrace: s,
       );
       throw ApiAuthError(
-          message: errorMessage ?? 'Erro no servidor tente mais tarde');
+          message: errorMessage ?? 'Erro no servidor, tente mais tarde');
     }
   }
 
