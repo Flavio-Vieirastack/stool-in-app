@@ -83,10 +83,22 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                         constraints: constraints,
                       ),
                 ),
-                const AppTextFormField(
+                AppTextFormField(
                   label: 'Seu nome completo',
                   hint: 'Ex: Felipe soares silva',
+                  controller: userNameController,
                   color: Colors.transparent,
+                  validator: Validatorless.multiple(
+                    [
+                      Validatorless.required(
+                        'Esse campo não pode ser vazio',
+                      ),
+                      Validatorless.min(
+                        5,
+                        'Digite seu nome completo',
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: constraints.maxHeight *
@@ -97,10 +109,22 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                         constraints: constraints,
                       ),
                 ),
-                const AppTextFormField(
+                AppTextFormField(
                   label: 'Rua',
                   hint: 'Ex: Rua aparecida',
+                  controller: streetController,
                   color: Colors.transparent,
+                  validator: Validatorless.multiple(
+                    [
+                      Validatorless.required(
+                        'Esse campo não pode ser vazio',
+                      ),
+                      Validatorless.min(
+                        4,
+                        'Digite sua rua',
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: constraints.maxHeight *
@@ -111,10 +135,22 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                         constraints: constraints,
                       ),
                 ),
-                const AppTextFormField(
+                AppTextFormField(
                   label: 'Cidade',
                   hint: 'Ex: São paulo',
+                  controller: cityController,
                   color: Colors.transparent,
+                  validator: Validatorless.multiple(
+                    [
+                      Validatorless.required(
+                        'Esse campo não pode ser vazio',
+                      ),
+                      Validatorless.min(
+                        3,
+                        'Digite sua Ccidade',
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: constraints.maxHeight *
@@ -125,10 +161,18 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                         constraints: constraints,
                       ),
                 ),
-                const AppTextFormField(
+                AppTextFormField(
                   label: 'Número da casa',
                   hint: 'Ex: 985',
+                  controller: houseNumberController,
                   color: Colors.transparent,
+                  validator: Validatorless.multiple(
+                    [
+                      Validatorless.required(
+                        'Esse campo não pode ser vazio',
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: constraints.maxHeight *
@@ -139,10 +183,22 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                         constraints: constraints,
                       ),
                 ),
-                const AppTextFormField(
+                AppTextFormField(
                   label: 'Bairro',
                   hint: 'Ex: Campo belo',
+                  controller: districtController,
                   color: Colors.transparent,
+                  validator: Validatorless.multiple(
+                    [
+                      Validatorless.required(
+                        'Esse campo não pode ser vazio',
+                      ),
+                      Validatorless.min(
+                        3,
+                        'Digite seu bairro',
+                      )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: constraints.maxHeight *
@@ -186,10 +242,11 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                         constraints: constraints,
                       ),
                 ),
-                const AppTextFormField(
+                 AppTextFormField(
                   label: 'Cep',
                   hint: 'Ex: 63100000',
                   color: Colors.transparent,
+                  controller: cepController,
                 ),
                 SizedBox(
                   height: constraints.maxHeight *
@@ -200,10 +257,18 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                         constraints: constraints,
                       ),
                 ),
-                const AppTextFormField(
+                AppTextFormField(
                   label: 'Ponto de referência',
                   hint: 'Ex: Próximo ao posto de saúde X',
                   color: Colors.transparent,
+                  controller: referencePointController,
+                  validator: Validatorless.multiple(
+                    [
+                      Validatorless.required(
+                        'Esse campo não pode ser vazio',
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: constraints.maxHeight *

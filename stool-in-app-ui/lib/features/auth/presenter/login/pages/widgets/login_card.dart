@@ -76,6 +76,12 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                 hint: 'Ex: email@email.com',
                 color: Colors.transparent,
                 controller: emailController,
+                validator: Validatorless.multiple(
+                  [
+                    Validatorless.required('Esse campo não pode ser vazio'),
+                    Validatorless.email('Digite um email válido')
+                  ],
+                ),
               ),
               SizedBox(
                 height: constraints.maxHeight *
@@ -92,6 +98,9 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                 obscureText: true,
                 color: Colors.transparent,
                 controller: passwordController,
+                validator: Validatorless.required(
+                  'Esse campo não pode ficar vazio',
+                ),
               ),
               SizedBox(
                 height: constraints.maxHeight *

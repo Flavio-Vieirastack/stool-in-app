@@ -6,6 +6,7 @@ import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.
 import 'package:stool_in_app_ui/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in_app_ui/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
+import 'package:validatorless/validatorless.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';

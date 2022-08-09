@@ -5,6 +5,7 @@ import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.
 import 'package:stool_in_app_ui/core/widgets/app_button/enum/button_types.dart';
 import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in_app_ui/features/auth/presenter/password_reset/cubit/password_reset_cubit.dart';
+import 'package:validatorless/validatorless.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
@@ -91,6 +92,7 @@ class _PasswordResetPageState extends State<PasswordResetPage>
                                 ignoring: true,
                                 child: Center(
                                   child: _PasswordResetCard(
+                                    buttonTypes: ButtonTypes.loading,
                                     formKey: formKey,
                                     sendCallback: () {},
                                     emailController: emailController,
@@ -108,7 +110,6 @@ class _PasswordResetPageState extends State<PasswordResetPage>
                                       email: emailController.text.trim(),
                                     ),
                                   ),
-                                  buttonTypes: ButtonTypes.loading,
                                   emailController: emailController,
                                 ),
                               );

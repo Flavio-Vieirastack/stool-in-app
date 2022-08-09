@@ -60,7 +60,7 @@ class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                 ),
                 Text(
-                  'Nós enviaremos um link para você',
+                  'Nós enviaremos um link para você.',
                   style: AppTextStyles.headLine1,
                 ),
                 SizedBox(
@@ -77,6 +77,14 @@ class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
                   hint: 'Ex: email@email.com',
                   color: Colors.transparent,
                   controller: emailController,
+                  validator: Validatorless.multiple(
+                    [
+                      Validatorless.required(
+                        'Esse campo não pode ficar vazio',
+                      ),
+                      Validatorless.email('Email inválido')
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: constraints.maxHeight *

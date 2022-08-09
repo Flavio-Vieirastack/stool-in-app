@@ -8,6 +8,7 @@ import 'package:stool_in_app_ui/core/widgets/app_button/enum/button_types.dart';
 import 'package:stool_in_app_ui/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in_app_ui/features/auth/presenter/login/cubit/login_cubit.dart';
+import 'package:validatorless/validatorless.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/widgets/app_button/app_button.dart';
