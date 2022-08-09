@@ -25,11 +25,13 @@ class _LoginPageState extends State<LoginPage>
     with ResponsiveHelperMixin, AppSnackBar {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+    formKey.currentState?.dispose();
   }
 
   @override
@@ -109,10 +111,12 @@ class _LoginPageState extends State<LoginPage>
                             if (state is LoginLoading) {
                               return Center(
                                 child: _LoginCard(
+                                  formKey: formKey,
                                   ignorePointer: true,
                                   buttonTypes: ButtonTypes.loading,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.makeLogin(
+                                    formKey: formKey,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                       password: passwordController.text.trim(),
@@ -135,8 +139,10 @@ class _LoginPageState extends State<LoginPage>
                             } else if (state is LoginEnableApiPasswordReset) {
                               return Center(
                                 child: _LoginCard(
+                                  formKey: formKey,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.apiPasswordReset(
+                                    formKey: formKey,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                     ),
@@ -159,8 +165,10 @@ class _LoginPageState extends State<LoginPage>
                             } else {
                               return Center(
                                 child: _LoginCard(
+                                  formKey: formKey,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.makeLogin(
+                                    formKey: formKey,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                       password: passwordController.text.trim(),

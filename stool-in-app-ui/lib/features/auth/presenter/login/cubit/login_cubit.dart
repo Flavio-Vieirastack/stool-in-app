@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/keys_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
@@ -30,37 +31,44 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
 
   Future<void> makeLogin({
     required AuthEntity authEntity,
+    required GlobalKey<FormState> formKey,
   }) async {
-    emit(LoginLoading());
-    final result = await _authUseCase.firebaseLogin(
-      authEntity: authEntity,
-    );
-    result.fold(
-      (error) => emit(
-        LoginError(message: error.message),
-      ),
-      (sucess) async {
-        await _makeApiLogin(authEntity: authEntity);
-      },
-    );
+    if (formKey.currentState?.validate() ?? false) {
+      emit(LoginLoading());
+      final result = await _authUseCase.firebaseLogin(
+        authEntity: authEntity,
+      );
+      result.fold(
+        (error) => emit(
+          LoginError(message: error.message),
+        ),
+        (sucess) async {
+          await _makeApiLogin(authEntity: authEntity);
+        },
+      );
+    }
   }
 
   Future<void> apiPasswordReset({
     required AuthEntity authEntity,
+    required GlobalKey<FormState> formKey,
   }) async {
-    emit(LoginLoading());
-    final result = await _authUseCase.apiPasswordReset(authEntity: authEntity);
-    result.fold(
-      (error) => emit(
-        LoginError(message: error.message),
-      ),
-      (sucess) async {
-        emit(
-          LoginSucess(),
-        );
-        await _makeApiLogin(authEntity: authEntity);
-      },
-    );
+    if (formKey.currentState?.validate() ?? false) {
+      emit(LoginLoading());
+      final result =
+          await _authUseCase.apiPasswordReset(authEntity: authEntity);
+      result.fold(
+        (error) => emit(
+          LoginError(message: error.message),
+        ),
+        (sucess) async {
+          emit(
+            LoginSucess(),
+          );
+          await _makeApiLogin(authEntity: authEntity);
+        },
+      );
+    }
   }
 
   Future<void> _makeApiLogin({
