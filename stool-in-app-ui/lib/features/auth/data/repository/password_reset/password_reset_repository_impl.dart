@@ -51,7 +51,6 @@ class PasswordResetRepositoryImpl implements PasswordResetRepository {
       );
       return Right(result);
     } catch (e, s) {
-      // TODO adicionar firebase
       log(
         'Erro ao resetar senha no firebase',
         error: e,
@@ -59,7 +58,7 @@ class PasswordResetRepositoryImpl implements PasswordResetRepository {
       );
       return Left(
         FirebaseAuthError(
-          message: e.toString(),
+          message: 'Erro no servidor, tente mais tarde',
         ),
       );
     }
