@@ -3,10 +3,12 @@ part of '../password_reset_page.dart';
 class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
   final TextEditingController emailController;
   final VoidCallback sendCallback;
+  final ButtonTypes buttonTypes;
   const _PasswordResetCard({
     Key? key,
     required this.emailController,
     required this.sendCallback,
+    this.buttonTypes = ButtonTypes.primary,
   }) : super(key: key);
 
   @override
@@ -84,6 +86,7 @@ class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
               AppButton(
                 buttonText: 'Enviar',
                 onPressed: sendCallback,
+                buttonTypes: buttonTypes,
               ),
               SizedBox(
                 height: constraints.maxHeight *
