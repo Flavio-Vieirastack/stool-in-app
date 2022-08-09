@@ -116,31 +116,44 @@ class _SignInMainPageState extends State<SignInMainPage>
                           style: AppTextStyles.headLine0,
                         ),
                       ),
-                      BlocProvider(
-                        create: (context) => SignInCubit(
-                          authUseCase: Inject<AuthUseCase>(context).get(),
-                          fireBaseNotifications:
-                              Inject<FireBaseNotifications>(context).get(),
-                          firebaseAuth: Inject<FirebaseAuth>(context).get(),
-                          writeLocalSecurityStorage:
-                              Inject<WriteLocalSecurityStorage>(context)
-                                  .get(),
-                        ),
-                        child: Center(
-                          child: _SignInCard(
-                            formKey: formKey,
-                            signInCallBack: () => cubit.makeSignIn(
-                              authEntity: AuthEntity(
-                                email: emailController.text.trim(),
-                                password: passwordController.text.trim(),
+                      BlocBuilder<SignInCubit, SignInState>(
+                        builder: (context, state) {
+                          if (state is SignInStateLoading) {
+                            return Center(
+                              child: _SignInCard(
+                                ignorePointer: true,
+                                buttonTypes: ButtonTypes.loading,
+                                formKey: formKey,
+                                signInCallBack: () => cubit.makeSignIn(
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
+                                  timer: timer,
+                                  formKey: formKey,
+                                ),
+                                emailController: emailController,
+                                passwordController: passwordController,
                               ),
-                              timer: timer,
-                              formKey: formKey,
-                            ),
-                            emailController: emailController,
-                            passwordController: passwordController,
-                          ),
-                        ),
+                            );
+                          } else {
+                            return Center(
+                              child: _SignInCard(
+                                formKey: formKey,
+                                signInCallBack: () => cubit.makeSignIn(
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
+                                  timer: timer,
+                                  formKey: formKey,
+                                ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                              ),
+                            );
+                          }
+                        },
                       ),
                     ],
                   ),
