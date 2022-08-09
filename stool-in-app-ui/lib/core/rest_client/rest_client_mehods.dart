@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:stool_in_app_ui/core/rest_client/error/rest_client_exception.dart';
 import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in_app_ui/core/rest_client/rest_client_response.dart';
 
@@ -41,7 +41,10 @@ class RestClientPostImpl extends RestClientInitialize
       );
     } on DioError catch (e, s) {
       log('Erro ao fazer Post', error: e, stackTrace: s);
-      throw Left(Exception());
+      throw RestClientException<T>(
+        data: e.response?.data,
+        statusCode: e.response?.statusCode,
+      );
     }
   }
 }
@@ -63,7 +66,10 @@ class RestClientGetImpl extends RestClientInitialize implements RestClientGet {
       );
     } on DioError catch (e, s) {
       log('Erro ao fazer Post', error: e, stackTrace: s);
-      throw Left(Exception());
+      throw RestClientException<T>(
+        data: e.response?.data,
+        statusCode: e.response?.statusCode,
+      );
     }
   }
 }
@@ -88,7 +94,10 @@ class RestClientPutImpl extends RestClientInitialize implements RestClientPut {
       );
     } on DioError catch (e, s) {
       log('Erro ao fazer Post', error: e, stackTrace: s);
-      throw Left(Exception());
+      throw RestClientException<T>(
+        data: e.response?.data,
+        statusCode: e.response?.statusCode,
+      );
     }
   }
 }
@@ -114,7 +123,10 @@ class RestClientDeleteImpl extends RestClientInitialize
       );
     } on DioError catch (e, s) {
       log('Erro ao fazer Post', error: e, stackTrace: s);
-      throw Left(Exception());
+      throw RestClientException<T>(
+        data: e.response?.data,
+        statusCode: e.response?.statusCode,
+      );
     }
   }
 }
@@ -140,7 +152,10 @@ class RestClientPatchImpl extends RestClientInitialize
       );
     } on DioError catch (e, s) {
       log('Erro ao fazer Post', error: e, stackTrace: s);
-      throw Left(Exception());
+      throw RestClientException<T>(
+        data: e.response?.data,
+        statusCode: e.response?.statusCode,
+      );
     }
   }
 }
@@ -167,7 +182,10 @@ class RestClientResquestImpl extends RestClientInitialize
       );
     } on DioError catch (e, s) {
       log('Erro ao fazer Post', error: e, stackTrace: s);
-      throw Left(Exception());
+      throw RestClientException<T>(
+        data: e.response?.data,
+        statusCode: e.response?.statusCode,
+      );
     }
   }
 }
