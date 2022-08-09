@@ -60,4 +60,32 @@ void main() {
     final sut = model[0].executionServices;
     expect(sut[0].id, 1);
   });
+  test('Deve retornar o service name do execution services corretamente', () {
+    final model = serviceProviderPayload
+        .map((e) => ServiceProviderModel.fromMap(e))
+        .toList();
+    final sut = model[0].executionServices;
+    expect(sut[0].serviceName, "Serviço x");
+  });
+  test('Deve retornar o preço no execution services corretamente', () {
+    final model = serviceProviderPayload
+        .map((e) => ServiceProviderModel.fromMap(e))
+        .toList();
+    final sut = model[0].executionServices;
+    expect(sut[0].price, 50);
+  });
+  test('Deve retornar as horas no execution services corretamente', () {
+    final model = serviceProviderPayload
+        .map((e) => ServiceProviderModel.fromMap(e))
+        .toList();
+    final sut = model[0].executionServices;
+    expect(sut[0].estimatedHours, 1);
+  });
+  test('Deve retornar service provider id no execution services corretamente', () {
+    final model = serviceProviderPayload
+        .map((e) => ServiceProviderModel.fromMap(e))
+        .toList();
+    final sut = model[0].executionServices;
+    expect(sut[0].serviceProviderId, 1);
+  });
 }
