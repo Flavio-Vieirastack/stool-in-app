@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:stool_in_app_ui/core/rest_client/error/rest_client_exception.dart';
 import 'package:stool_in_app_ui/features/auth/data/datasource/sign_in/sign_in_datasource.dart';
 import 'package:stool_in_app_ui/features/auth/data/model/auth_model.dart';
@@ -47,10 +49,10 @@ class SignInRepositoryImpl implements SignInRepository {
         );
       }
       return Left(
-          ApiAuthError(
-            message: 'Erro desconhecido, tente novamente mais tarde',
-          ),
-        );
+        ApiAuthError(
+          message: 'Erro desconhecido, tente novamente mais tarde',
+        ),
+      );
     }
   }
 
@@ -62,17 +64,27 @@ class SignInRepositoryImpl implements SignInRepository {
       final result = await _signInDatasource.firebaseSignIn(
           authModel: AuthModel.fromEntity(authEntity));
       return Right(result);
-    } catch (e, s) {
-      // TODO adicionar firebase
+    } on FirebaseAuthException catch (e, s) {
       log(
-        'Erro desconhecido ao fazer cadastro na api',
+        'Erro desconhecido ao fazer cadastro no firebase',
         error: e,
         stackTrace: s,
       );
+      if (e.code == 'weak-password') {
+        return Left(
+          FirebaseAuthError(
+            message: 'Senha muito fraca',
+          ),
+        );
+      } else if (e.code == 'email-already-in-use') {
+        return Left(
+          FirebaseAuthError(
+            message: 'Email já existe',
+          ),
+        );
+      }
       return Left(
-        FirebaseAuthError(
-          message: e.toString(),
-        ),
+        FirebaseAuthError(message: 'Erro desconhecido, tente mais tarde'),
       );
     }
   }
