@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/firebase/push_notifications/firebase_notifications.dart';
-import 'package:stool_in_app_ui/core/helpers/form_key_helper/form_key.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
@@ -35,14 +34,14 @@ class _SignInMainPageState extends State<SignInMainPage>
     with ResponsiveHelperMixin, AppSnackBar {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final formKey = FormKey();
+  final formKey = GlobalKey<FormState>();
   Timer? timer;
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
-    formKey.get().currentState?.dispose();
+    formKey.currentState?.dispose();
     timer?.cancel();
   }
 

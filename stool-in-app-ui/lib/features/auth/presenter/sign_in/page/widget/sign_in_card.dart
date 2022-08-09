@@ -4,7 +4,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final VoidCallback signInCallBack;
-  final FormKey formKey;
+  final GlobalKey<FormState> formKey;
   final ButtonTypes buttonTypes;
   final bool ignorePointer;
   const _SignInCard({
@@ -24,7 +24,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Form(
-            key: formKey.get(),
+            key: formKey,
             child: Container(
               constraints: BoxConstraints(
                 maxHeight: constraints.maxHeight *
