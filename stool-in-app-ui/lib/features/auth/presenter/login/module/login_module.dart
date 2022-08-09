@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
+import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in_app_ui/core/module/main_module/app_module.dart';
 import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
 import 'package:stool_in_app_ui/features/auth/domain/usecase/auth/auth_use_case.dart';
@@ -26,7 +27,6 @@ import '../../../domain/repository/password_reset/password_reset_repository.dart
 import '../../../domain/repository/sign_in/sign_in_repository.dart';
 import '../../../domain/repository/user_data/user_data_sign_in_respository.dart';
 import '../../../domain/usecase/auth/auth_usecase_impl.dart';
-
 
 @immutable
 class LoginModule extends AppModule {
@@ -90,7 +90,9 @@ class LoginModule extends AppModule {
             ),
             Provider<LoginCubit>(
               create: (context) => LoginCubit(
-                authUseCase: Inject<AuthUseCase>(context).get()
+                writeLocalSecurityStorage:
+                    Inject<WriteLocalSecurityStorage>(context).get(),
+                authUseCase: Inject<AuthUseCase>(context).get(),
               ),
             )
           ],
