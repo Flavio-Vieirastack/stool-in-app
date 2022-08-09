@@ -16,7 +16,9 @@ class LoginCubit extends Cubit<LoginState> {
   })  : _authUseCase = authUseCase,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         super(LoginInitial());
-  Future<void> makeFirebaseLogin({required AuthEntity authEntity}) async {
+  Future<void> makeFirebaseLogin({
+    required AuthEntity authEntity,
+  }) async {
     emit(LoginLoading());
     final result = await _authUseCase.firebaseLogin(
       authEntity: authEntity,
@@ -31,7 +33,9 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
-  Future<void> _makeApiLogin({required AuthEntity authEntity}) async {
+  Future<void> _makeApiLogin({
+    required AuthEntity authEntity,
+  }) async {
     final result = await _authUseCase.apiLogin(
       authEntity: authEntity,
     );
