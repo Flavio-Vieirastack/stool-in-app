@@ -1,7 +1,9 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
+import 'package:stool_in_app_ui/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
@@ -63,27 +65,61 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                 height: constraints.maxHeight,
                 child: Stack(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: constraints.maxWidth *
-                            responsiveWidth(
-                              defaultMobileWidth: 0.03,
-                              defaultMobileSmallSizeWidth: 0.01,
-                              defaultTabletWidth: 0.01,
-                              constraints: constraints,
+                    BlocBuilder<SignInUserDataCubit, SignInUserDataState>(
+                      builder: (context, state) {
+                        if (state is SignInUserDataLoading) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: constraints.maxWidth *
+                                  responsiveWidth(
+                                    defaultMobileWidth: 0.03,
+                                    defaultMobileSmallSizeWidth: 0.01,
+                                    defaultTabletWidth: 0.01,
+                                    constraints: constraints,
+                                  ),
                             ),
-                      ),
-                      child: _SignInDataCard(
-                        statesDropDownLabel: 'Estado',
-                        onChanged: (value) {},
-                        cepController: cepController,
-                        cityController: cityController,
-                        districtController: districtController,
-                        houseNumberController: houseNumberController,
-                        referencePointController: referencePointController,
-                        streetController: streetController,
-                        userNameController: userNameController,
-                      ),
+                            child: _SignInDataCard(
+                              statesDropDownLabel: 'Estado',
+                              onChanged: (value) {},
+                              buttonTypes: ButtonTypes.loading,
+                              cepController: cepController,
+                              cityController: cityController,
+                              districtController: districtController,
+                              houseNumberController: houseNumberController,
+                              referencePointController:
+                                  referencePointController,
+                              streetController: streetController,
+                              userNameController: userNameController,
+                              signInCallBack: () {},
+                            ),
+                          );
+                        } else {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: constraints.maxWidth *
+                                  responsiveWidth(
+                                    defaultMobileWidth: 0.03,
+                                    defaultMobileSmallSizeWidth: 0.01,
+                                    defaultTabletWidth: 0.01,
+                                    constraints: constraints,
+                                  ),
+                            ),
+                            child: _SignInDataCard(
+                              statesDropDownLabel: 'Estado',
+                              onChanged: (value) {},
+                              cepController: cepController,
+                              cityController: cityController,
+                              districtController: districtController,
+                              houseNumberController: houseNumberController,
+                              referencePointController:
+                                  referencePointController,
+                              streetController: streetController,
+                              userNameController: userNameController,
+                              signInCallBack: () {},
+                            ),
+                          );
+                        }
+                      },
                     ),
                     Padding(
                       padding: EdgeInsets.only(

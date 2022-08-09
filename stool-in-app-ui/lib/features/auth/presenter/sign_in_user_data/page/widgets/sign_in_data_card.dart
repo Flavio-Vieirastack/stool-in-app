@@ -10,6 +10,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
   final TextEditingController referencePointController;
   final String statesDropDownLabel;
   final void Function(String?)? onChanged;
+  final VoidCallback signInCallBack;
+  final ButtonTypes buttonTypes;
   const _SignInDataCard({
     Key? key,
     required this.userNameController,
@@ -20,6 +22,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
     required this.cepController,
     required this.referencePointController,
     required this.statesDropDownLabel,
+    required this.signInCallBack,
+    this.buttonTypes = ButtonTypes.primary,
     this.onChanged,
   }) : super(key: key);
 
@@ -46,7 +50,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
           child: Column(
             children: [
               const SizedBox(
-                 height: 10,
+                height: 10,
               ),
               const Center(
                 child: AppAvatar(
@@ -217,7 +221,8 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
               ),
               AppButton(
                 buttonText: 'Cadastrar',
-                onPressed: () {},
+                onPressed: signInCallBack,
+                buttonTypes: buttonTypes,
               ),
               SizedBox(
                 height: constraints.maxHeight *
