@@ -28,7 +28,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     }
   }
 
-  Future<void> makeFirebaseLogin({
+  Future<void> makeLogin({
     required AuthEntity authEntity,
   }) async {
     emit(LoginLoading());

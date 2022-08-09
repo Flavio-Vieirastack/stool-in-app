@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
+import 'package:stool_in_app_ui/core/widgets/app_button/enum/button_types.dart';
+import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
+import 'package:stool_in_app_ui/features/auth/presenter/login/cubit/login_cubit.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/widgets/app_button/app_button.dart';
@@ -27,7 +31,16 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
   }
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<LoginCubit>().enableApiPasswordResetOnInit();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final cubit = context.read<LoginCubit>();
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
@@ -71,21 +84,81 @@ class _LoginPageState extends State<LoginPage> with ResponsiveHelperMixin {
                               constraints: constraints,
                             ),
                       ),
-                      child: Center(
-                        child: _LoginCard(
-                          loginCallback: () {},
-                          passwordResetCallback: () =>
-                              Navigator.of(context).pushReplacementNamed(
-                            RoutesConstants.passwordRecoveryRoute,
-                          ),
-                          signInCallback: () =>
-                              Navigator.of(context).pushReplacementNamed(
-                            RoutesConstants.signInMainRoute,
-                          ),
-                          emailController: emailController,
-                          passwordController: passwordController,
-                          constraints: constraints,
-                        ),
+                      child: BlocBuilder<LoginCubit, LoginState>(
+                        builder: (context, state) {
+                          if (state is LoginLoading) {
+                            return Center(
+                              child: _LoginCard(
+                                ignorePointer: true,
+                                buttonTypes: ButtonTypes.loading,
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.makeLogin(
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
+                                ),
+                                passwordResetCallback: () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
+                                ),
+                                signInCallback: () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                  RoutesConstants.signInMainRoute,
+                                ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
+                              ),
+                            );
+                          } else if (state is LoginEnableApiPasswordReset) {
+                            return Center(
+                              child: _LoginCard(
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.apiPasswordReset(
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                  ),
+                                ),
+                                buttonText: 'Login com nova senha',
+                                passwordResetCallback: () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
+                                ),
+                                signInCallback: () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                  RoutesConstants.signInMainRoute,
+                                ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
+                              ),
+                            );
+                          } else {
+                            return Center(
+                              child: _LoginCard(
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.makeLogin(
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
+                                ),
+                                passwordResetCallback: () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
+                                ),
+                                signInCallback: () =>
+                                    Navigator.of(context).pushReplacementNamed(
+                                  RoutesConstants.signInMainRoute,
+                                ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
+                              ),
+                            );
+                          }
+                        },
                       ),
                     ),
                     Padding(
