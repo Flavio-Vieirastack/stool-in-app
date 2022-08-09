@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/keys_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/shared_preferences/shared_preferences_helper.dart';
@@ -19,19 +20,23 @@ class PasswordResetCubit extends Cubit<PasswordResetState>
 
   Future<void> firebasePasswordReset({
     required AuthEntity authEntity,
+    required GlobalKey<FormState> formKey,
   }) async {
-    emit(PasswordResetLoading());
-    final result =
-        await _authUseCase.firebasePasswordReset(authEntity: authEntity);
-    result.fold(
-      (error) => emit(PasswordResetError()),
-      (sucess) async {
-        saveBool(
-            key: KeysConstants.userMakePasswordResetSolicitation, value: true);
-        emit(
-          PasswordResetRedirectToLogin(),
-        );
-      },
-    );
+    if (formKey.currentState?.validate() ?? false) {
+      emit(PasswordResetLoading());
+      final result =
+          await _authUseCase.firebasePasswordReset(authEntity: authEntity);
+      result.fold(
+        (error) => emit(PasswordResetError()),
+        (sucess) async {
+          saveBool(
+              key: KeysConstants.userMakePasswordResetSolicitation,
+              value: true);
+          emit(
+            PasswordResetRedirectToLogin(),
+          );
+        },
+      );
+    }
   }
 }

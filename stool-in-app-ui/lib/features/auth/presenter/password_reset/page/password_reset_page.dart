@@ -22,10 +22,12 @@ class PasswordResetPage extends StatefulWidget {
 class _PasswordResetPageState extends State<PasswordResetPage>
     with ResponsiveHelperMixin {
   final TextEditingController emailController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
+    formKey.currentState?.dispose();
   }
 
   @override
@@ -89,6 +91,7 @@ class _PasswordResetPageState extends State<PasswordResetPage>
                                 ignoring: true,
                                 child: Center(
                                   child: _PasswordResetCard(
+                                    formKey: formKey,
                                     sendCallback: () {},
                                     emailController: emailController,
                                   ),
@@ -97,8 +100,10 @@ class _PasswordResetPageState extends State<PasswordResetPage>
                             } else {
                               return Center(
                                 child: _PasswordResetCard(
+                                  formKey: formKey,
                                   sendCallback: () =>
                                       cubit.firebasePasswordReset(
+                                    formKey: formKey,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                     ),
