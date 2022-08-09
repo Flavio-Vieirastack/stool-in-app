@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stool_in_app_ui/core/firebase/push_notifications/firebase_notifications.dart';
 import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in_app_ui/core/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
@@ -16,20 +18,44 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
   final AuthUseCase _authUseCase;
   final ReadLocalSecurityStorage _readLocalSecurityStorage;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
+  final FirebaseAuth _firebaseAuth;
+  final FireBaseNotifications _fireBaseNotifications;
   SignInUserDataCubit({
     required AuthUseCase authUseCase,
     required ReadLocalSecurityStorage readLocalSecurityStorage,
     required WriteLocalSecurityStorage writeLocalSecurityStorage,
+    required FirebaseAuth firebaseAuth,
+    required FireBaseNotifications fireBaseNotifications,
   })  : _authUseCase = authUseCase,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
+        _fireBaseNotifications = fireBaseNotifications,
+        _firebaseAuth = firebaseAuth,
         _readLocalSecurityStorage = readLocalSecurityStorage,
         super(SignInUserDataInitial());
   Future<void> sendUserDataToApi({
     required UserDataEntity userDataEntity,
   }) async {
     emit(SignInUserDataLoading());
-    final result =
-        await _authUseCase.sendUserData(userDataEntity: userDataEntity);
+    final userFirebaseToken = _firebaseAuth.currentUser?.uid;
+    final userFirebasePushToken =
+        await _fireBaseNotifications.getTokenFirebase();
+    final result = await _authUseCase.sendUserData(
+      userDataEntity: UserDataEntity(
+        cep: userDataEntity.cep,
+        city: userDataEntity.city,
+        district: userDataEntity.district,
+        houseNumber: userDataEntity.houseNumber,
+        referencePoint: userDataEntity.referencePoint,
+        street: userDataEntity.street,
+        userFirebasePushToken: userFirebasePushToken,
+        userFirebaseUuid: userFirebaseToken,
+        userLocationLatitude: 5, //TODO
+        userLocationLongitude: 6, //TODO,
+        userName: userDataEntity.userName,
+        userPhotoUrl: userDataEntity.userPhotoUrl,
+        userState: userDataEntity.userState,
+      ),
+    );
     result.fold(
       (error) => emit(
         SignInUserDataError(),

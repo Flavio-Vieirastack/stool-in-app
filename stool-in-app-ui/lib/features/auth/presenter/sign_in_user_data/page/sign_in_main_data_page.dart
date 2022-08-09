@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
+import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in_app_ui/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
@@ -44,6 +45,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<SignInUserDataCubit>();
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
@@ -115,7 +117,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                   referencePointController,
                               streetController: streetController,
                               userNameController: userNameController,
-                              signInCallBack: () {},
+                              signInCallBack: () {}
                             ),
                           );
                         }
