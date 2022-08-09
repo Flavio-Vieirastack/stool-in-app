@@ -12,7 +12,12 @@ class SignInUserDataLoading extends SignInUserDataState {}
 
 class SignInUserDataStateNotSelected extends SignInUserDataState {}
 
-class SignInUserDataError extends SignInUserDataState {}
+class SignInUserDataError extends SignInUserDataState {
+  final String message;
+  SignInUserDataError({required this.message});
+  @override
+  List<Object?> get props => [message];
+}
 
 class SignInUserDataLoginApiSucess extends SignInUserDataState {}
 

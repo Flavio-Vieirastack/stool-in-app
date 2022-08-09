@@ -62,7 +62,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         );
         result.fold(
           (error) => emit(
-            SignInUserDataError(),
+            SignInUserDataError(message: error.message),
           ),
           (sucess) async {
             saveBool(key: KeysConstants.userPassByDataPage, value: true);
@@ -113,7 +113,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
       (error) {
         saveBool(key: KeysConstants.userPassLoginToApi, value: false);
         emit(
-          SignInUserDataError(),
+          SignInUserDataError(message: error.message),
         );
       },
       (sucess) async {
@@ -142,7 +142,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
     );
     result.fold(
       (error) {
-        emit(SignInUserDataError());
+        emit(SignInUserDataError(message: error.message));
         saveBool(key: KeysConstants.userPassLoginToFirebase, value: false);
       },
       (sucess) {
