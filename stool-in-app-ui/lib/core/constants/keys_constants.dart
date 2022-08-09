@@ -13,4 +13,5 @@ class KeysConstants {
   static const userPassword = 'user-password';
   static const userPassLoginToApi = 'user-pass-login';
   static const userPassLoginToFirebase = 'user-pass-firebase';
+  static const userMakePasswordResetSolicitation = 'user-pass-firebase';
 }
