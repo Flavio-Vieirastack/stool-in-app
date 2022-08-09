@@ -24,8 +24,8 @@ final List<Map<String, dynamic>> serviceProviderPayload = [
       {
         "id": 1,
         "serviceDescription": "Preciso de concerto no guarda roupa",
-        "serviceDate": "05/04/2022",
-        "serviceHour": "17:30",
+        "serviceDate": "2022-08-09 10:40:25.397291",
+        "serviceHour": "2022-08-09 10:40:25.397291",
         "userComent": "Chegar pontualmente",
         "status": "ATIVO",
         "userName": "Flavio emerson",

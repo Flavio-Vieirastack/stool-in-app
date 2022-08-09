@@ -43,15 +43,15 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
     result.addAll({'userFirebasePushToken': userFirebasePushToken});
     result.addAll({'userFirebaseUuid': userFirebaseUuid});
     result.addAll({'userLocationLatitude': userLocationLatitude});
-    result.addAll({'userLocationLongintude': userLocationLongintude});
+    result.addAll({'userLocationaLogintude': userLocationLongintude});
     result.addAll({'street': street});
-    result.addAll({'city': city});
+    result.addAll({'City': city});
     result.addAll({'userState': userState});
     result.addAll({'houseNumber': houseNumber});
     result.addAll({'district': district});
     result.addAll({'cep': cep});
     result.addAll({'referencePoint': referencePoint});
-    result.addAll({'servicesTodo': servicesTodo});
+    result.addAll({'servicesToDo': servicesTodo});
     result.addAll({'total': total});
     result.addAll({'serviceProviderId': serviceProviderId});
     result.addAll({'userDataId': userDataId});
@@ -75,15 +75,15 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
       userFirebasePushToken: map['userFirebasePushToken'] ?? '',
       userFirebaseUuid: map['userFirebaseUuid'] ?? '',
       userLocationLatitude: map['userLocationLatitude']?.toDouble() ?? 0.0,
-      userLocationLongintude: map['userLocationLongintude']?.toDouble() ?? 0.0,
+      userLocationLongintude: map['userLocationaLogintude']?.toDouble() ?? 0.0,
       street: map['street'] ?? '',
-      city: map['city'] ?? '',
+      city: map['City'] ?? '',
       userState: map['userState'] ?? '',
       houseNumber: map['houseNumber'] ?? '',
       district: map['district'] ?? '',
       cep: map['cep'] ?? '',
       referencePoint: map['referencePoint'] ?? '',
-      servicesTodo: map['servicesTodo'] ?? '',
+      servicesTodo: map['servicesToDo'] ?? '',
       total: total ?? 0.0,
       serviceProviderId: map['serviceProviderId']?.toInt() ?? 0,
       userDataId: map['userDataId']?.toInt() ?? 0,

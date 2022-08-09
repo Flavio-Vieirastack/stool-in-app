@@ -23,7 +23,7 @@ class ComentsModel extends ComentsEntity {
     result.addAll({'userName': userName});
     result.addAll({'userPhotoUrl': userPhotoUrl});
     result.addAll({'vote': vote});
-    result.addAll({'servicesExecuted': servicesExecuted});
+    result.addAll({'serviceExecuted': servicesExecuted});
     result.addAll({'serviceProviderId': serviceProviderId});
   
     return result;
@@ -36,7 +36,7 @@ class ComentsModel extends ComentsEntity {
       userName: map['userName'] ?? '',
       userPhotoUrl: map['userPhotoUrl'] ?? '',
       vote: map['vote']?.toInt() ?? 0,
-      servicesExecuted: map['servicesExecuted'] ?? '',
+      servicesExecuted: map['serviceExecuted'] ?? '',
       serviceProviderId: map['serviceProviderId']?.toInt() ?? 0,
     );
   }
