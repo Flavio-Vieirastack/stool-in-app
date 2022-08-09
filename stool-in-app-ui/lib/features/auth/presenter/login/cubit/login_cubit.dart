@@ -24,7 +24,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     if (userMakeResetSolicitation != null && userMakeResetSolicitation) {
       emit(
         LoginEnableApiPasswordReset(),
-      ); // TODO mostrar snackbar
+      );
     }
   }
 
