@@ -67,6 +67,9 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
               type: SnackBarType.error,
               context: context,
             );
+          } else if (state is SignInUserDataSucess) {
+            Navigator.of(context)
+                .pushReplacementNamed(RoutesConstants.homeRoute);
           }
         },
         child: LayoutBuilder(
