@@ -1,18 +1,13 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
-import 'package:stool_in_app_ui/core/firebase/push_notifications/firebase_notifications.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
-import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
-import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/app_dialog.dart';
 import 'package:stool_in_app_ui/core/widgets/app_dialog/enum/dailog_types.dart';
 import 'package:stool_in_app_ui/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
-import 'package:stool_in_app_ui/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in_app_ui/features/auth/presenter/sign_in/cubit/sign_in_cubit.dart';
 import 'package:validatorless/validatorless.dart';
 
@@ -130,7 +125,8 @@ class _SignInMainPageState extends State<SignInMainPage>
                                     password: passwordController.text.trim(),
                                   ),
                                   timer: timer,
-                                  formKey: formKey,
+                                  validate:
+                                      formKey.currentState?.validate() ?? false,
                                 ),
                                 emailController: emailController,
                                 passwordController: passwordController,
@@ -146,7 +142,8 @@ class _SignInMainPageState extends State<SignInMainPage>
                                     password: passwordController.text.trim(),
                                   ),
                                   timer: timer,
-                                  formKey: formKey,
+                                  validate:
+                                      formKey.currentState?.validate() ?? false,
                                 ),
                                 emailController: emailController,
                                 passwordController: passwordController,

@@ -105,7 +105,7 @@ class _PasswordResetPageState extends State<PasswordResetPage>
                                   formKey: formKey,
                                   sendCallback: () =>
                                       cubit.firebasePasswordReset(
-                                    formKey: formKey,
+                                    validate: formKey.currentState?.validate() ?? false,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                     ),

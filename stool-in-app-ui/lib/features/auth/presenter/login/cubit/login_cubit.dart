@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/keys_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
@@ -31,9 +30,9 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
 
   Future<void> makeLogin({
     required AuthEntity authEntity,
-    required GlobalKey<FormState> formKey,
+    required bool validate,
   }) async {
-    if (formKey.currentState?.validate() ?? false) {
+    if (validate) {
       emit(LoginLoading());
       final result = await _authUseCase.firebaseLogin(
         authEntity: authEntity,
@@ -51,9 +50,9 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
 
   Future<void> apiPasswordReset({
     required AuthEntity authEntity,
-    required GlobalKey<FormState> formKey,
+    required bool validate,
   }) async {
-    if (formKey.currentState?.validate() ?? false) {
+    if (validate) {
       emit(LoginLoading());
       final result =
           await _authUseCase.apiPasswordReset(authEntity: authEntity);

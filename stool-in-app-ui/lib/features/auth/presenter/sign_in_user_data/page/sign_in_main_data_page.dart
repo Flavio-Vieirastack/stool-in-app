@@ -153,7 +153,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                 streetController: streetController,
                                 userNameController: userNameController,
                                 signInCallBack: () => cubit.sendUserDataToApi(
-                                  formKey: formKey,
+                                  validate: formKey.currentState?.validate() ?? false,
                                   userState: stateInitialName,
                                   userDataEntity: UserDataEntity(
                                     cep: cepController.text.trim(),

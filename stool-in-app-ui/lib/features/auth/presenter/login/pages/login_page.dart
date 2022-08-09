@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage>
                                   buttonTypes: ButtonTypes.loading,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.makeLogin(
-                                    formKey: formKey,
+                                    validate: formKey.currentState?.validate() ?? false,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                       password: passwordController.text.trim(),
@@ -143,7 +143,7 @@ class _LoginPageState extends State<LoginPage>
                                   formKey: formKey,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.apiPasswordReset(
-                                    formKey: formKey,
+                                    validate: formKey.currentState?.validate() ?? false,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                     ),
@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage>
                                   formKey: formKey,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.makeLogin(
-                                    formKey: formKey,
+                                    validate: formKey.currentState?.validate() ?? false,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                       password: passwordController.text.trim(),

@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/keys_constants.dart';
 import 'package:stool_in_app_ui/core/firebase/push_notifications/firebase_notifications.dart';
@@ -32,9 +31,9 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
   void makeSignIn({
     required AuthEntity authEntity,
     required Timer? timer,
-    required GlobalKey<FormState> formKey,
+    required bool validate,
   }) async {
-    if (formKey.currentState?.validate() ?? false) {
+    if (validate) {
       emit(SignInStateLoading());
       final signIn = await _authUseCase.firebaseSignIn(authEntity: authEntity);
       signIn.fold(

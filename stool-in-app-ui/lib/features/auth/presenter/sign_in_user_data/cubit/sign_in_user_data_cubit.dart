@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/firebase/push_notifications/firebase_notifications.dart';
 import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
@@ -34,10 +33,10 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         super(SignInUserDataInitial());
   Future<void> sendUserDataToApi({
     required UserDataEntity userDataEntity,
-    required GlobalKey<FormState> formKey,
+    required bool validate,
     required String userState,
   }) async {
-    if (formKey.currentState?.validate() ?? false) {
+    if (validate) {
       if (userState != 'Estado') {
         emit(SignInUserDataLoading());
         final userFirebaseToken = _firebaseAuth.currentUser?.uid;
