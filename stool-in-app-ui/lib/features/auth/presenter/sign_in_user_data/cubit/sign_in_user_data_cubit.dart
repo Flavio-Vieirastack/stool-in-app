@@ -34,55 +34,65 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         super(SignInUserDataInitial());
   Future<void> sendUserDataToApi({
     required UserDataEntity userDataEntity,
+    required GlobalKey<FormState> formKey,
+    required String userState,
   }) async {
-    emit(SignInUserDataLoading());
-    final userFirebaseToken = _firebaseAuth.currentUser?.uid;
-    final userFirebasePushToken =
-        await _fireBaseNotifications.getTokenFirebase();
-    final result = await _authUseCase.sendUserData(
-      userDataEntity: UserDataEntity(
-        cep: userDataEntity.cep,
-        city: userDataEntity.city,
-        district: userDataEntity.district,
-        houseNumber: userDataEntity.houseNumber,
-        referencePoint: userDataEntity.referencePoint,
-        street: userDataEntity.street,
-        userFirebasePushToken: userFirebasePushToken,
-        userFirebaseUuid: userFirebaseToken,
-        userLocationLatitude: 5, //TODO
-        userLocationLongitude: 6, //TODO,
-        userName: userDataEntity.userName,
-        userPhotoUrl: userDataEntity.userPhotoUrl,
-        userState: userDataEntity.userState,
-      ),
-    );
-    result.fold(
-      (error) => emit(
-        SignInUserDataError(),
-      ),
-      (sucess) async {
-        saveBool(key: KeysConstants.userPassByDataPage, value: true);
-        saveString(key: KeysConstants.userName, value: sucess.userName ?? '');
-        saveDouble(
-          key: KeysConstants.userLocationLatitude,
-          value: sucess.userLocationLatitude ?? 0.0,
+    if (formKey.currentState?.validate() ?? false) {
+      if (userState != 'Estado') {
+        emit(SignInUserDataLoading());
+        final userFirebaseToken = _firebaseAuth.currentUser?.uid;
+        final userFirebasePushToken =
+            await _fireBaseNotifications.getTokenFirebase();
+        final result = await _authUseCase.sendUserData(
+          userDataEntity: UserDataEntity(
+            cep: userDataEntity.cep,
+            city: userDataEntity.city,
+            district: userDataEntity.district,
+            houseNumber: userDataEntity.houseNumber,
+            referencePoint: userDataEntity.referencePoint,
+            street: userDataEntity.street,
+            userFirebasePushToken: userFirebasePushToken,
+            userFirebaseUuid: userFirebaseToken,
+            userLocationLatitude: 5, //TODO
+            userLocationLongitude: 6, //TODO,
+            userName: userDataEntity.userName,
+            userPhotoUrl: '', //TODO
+            userState: userDataEntity.userState,
+          ),
         );
-        saveDouble(
-          key: KeysConstants.userLocationaLogintude,
-          value: sucess.userLocationLongitude ?? 0.0,
+        result.fold(
+          (error) => emit(
+            SignInUserDataError(),
+          ),
+          (sucess) async {
+            saveBool(key: KeysConstants.userPassByDataPage, value: true);
+            saveString(
+                key: KeysConstants.userName, value: sucess.userName ?? '');
+            saveDouble(
+              key: KeysConstants.userLocationLatitude,
+              value: sucess.userLocationLatitude ?? 0.0,
+            );
+            saveDouble(
+              key: KeysConstants.userLocationaLogintude,
+              value: sucess.userLocationLongitude ?? 0.0,
+            );
+            saveString(
+                key: KeysConstants.userPhotoUrl,
+                value: sucess.userPhotoUrl ?? '');
+            await _loginInToApi();
+            final loginApiSucess =
+                await getBool(key: KeysConstants.userPassLoginToApi);
+            final loginFirebaseSucess =
+                await getBool(key: KeysConstants.userPassLoginToFirebase);
+            if (loginApiSucess! && loginFirebaseSucess!) {
+              emit(SignInUserDataSucess());
+            }
+          },
         );
-        saveString(
-            key: KeysConstants.userPhotoUrl, value: sucess.userPhotoUrl ?? '');
-        await _loginInToApi();
-        final loginApiSucess =
-            await getBool(key: KeysConstants.userPassLoginToApi);
-        final loginFirebaseSucess =
-            await getBool(key: KeysConstants.userPassLoginToFirebase);
-        if (loginApiSucess! && loginFirebaseSucess!) {
-          emit(SignInUserDataSucess());
-        }
-      },
-    );
+      } else {
+        emit(SignInUserDataStateNotSelected());
+      }
+    }
   }
 
   Future<void> _loginInToApi() async {

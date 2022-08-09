@@ -31,6 +31,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
   final TextEditingController cepController = TextEditingController();
   final TextEditingController referencePointController =
       TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   void dispose() {
     super.dispose();
@@ -41,11 +42,13 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
     districtController.dispose();
     cepController.dispose();
     referencePointController.dispose();
+    formKey.currentState?.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignInUserDataCubit>();
+    String stateInitialName = 'Estado';
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
@@ -81,7 +84,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                   ),
                             ),
                             child: _SignInDataCard(
-                              statesDropDownLabel: 'Estado',
+                              formKey: formKey,
+                              statesDropDownLabel: stateInitialName,
                               onChanged: (value) {},
                               buttonTypes: ButtonTypes.loading,
                               cepController: cepController,
@@ -107,8 +111,15 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                   ),
                             ),
                             child: _SignInDataCard(
-                              statesDropDownLabel: 'Estado',
-                              onChanged: (value) {},
+                              formKey: formKey,
+                              statesDropDownLabel: stateInitialName,
+                              onChanged: (value) {
+                                if (value != null) {
+                                  setState(() {
+                                    stateInitialName = value;
+                                  });
+                                }
+                              },
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -117,7 +128,22 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                   referencePointController,
                               streetController: streetController,
                               userNameController: userNameController,
-                              signInCallBack: () {}
+                              signInCallBack: () => cubit.sendUserDataToApi(
+                                formKey: formKey,
+                                userState: stateInitialName,
+                                userDataEntity: UserDataEntity(
+                                  cep: cepController.text.trim(),
+                                  city: cityController.text.trim(),
+                                  district: districtController.text.trim(),
+                                  houseNumber:
+                                      houseNumberController.text.trim(),
+                                  referencePoint:
+                                      referencePointController.text.trim(),
+                                  street: streetController.text.trim(),
+                                  userName: userNameController.text.trim(),
+                                  userState: stateInitialName,
+                                ),
+                              ),
                             ),
                           );
                         }
