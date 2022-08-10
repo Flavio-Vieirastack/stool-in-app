@@ -32,13 +32,6 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
       child: Form(
         key: formKey,
         child: Container(
-          height: constraints.maxHeight *
-              responsiveHeight(
-                defaultMobileHeight: 0.45,
-                defaultMobileSmallSizeHeight: 0.5,
-                defaultTabletHeight: 0.5,
-                constraints: constraints,
-              ),
           width: constraints.maxWidth *
               responsiveWidth(
                 defaultMobileWidth: 0.9,
@@ -61,6 +54,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
             ),
           ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
                 height: constraints.maxHeight *
@@ -147,18 +141,21 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                       constraints: constraints,
                     ),
               ),
-              InkWell(
-                onTap: signInCallback,
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Ainda não tem uma conta? ',
-                    style: AppTextStyles.headLine4,
-                    children: [
-                      TextSpan(
-                        text: 'Cadaste-se',
-                        style: AppTextStyles.headLine1,
-                      ),
-                    ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: InkWell(
+                  onTap: signInCallback,
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Ainda não tem uma conta? ',
+                      style: AppTextStyles.headLine4,
+                      children: [
+                        TextSpan(
+                          text: 'Cadaste-se',
+                          style: AppTextStyles.headLine1,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )
