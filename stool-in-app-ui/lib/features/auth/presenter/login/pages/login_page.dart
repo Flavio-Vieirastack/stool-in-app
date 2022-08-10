@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
 import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
+import 'package:stool_in_app_ui/core/shared/module/cubit/geo_locator_cubit.dart';
 import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in_app_ui/core/widgets/app_button/enum/button_types.dart';
 import 'package:stool_in_app_ui/core/widgets/app_snackbar/app_snackbar.dart';
@@ -40,6 +41,7 @@ class _LoginPageState extends State<LoginPage>
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<LoginCubit>().enableApiPasswordResetOnInit();
+      context.read<GeoLocatorCubit>().getCurrentPosition();
     });
   }
 

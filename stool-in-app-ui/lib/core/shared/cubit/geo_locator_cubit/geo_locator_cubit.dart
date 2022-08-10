@@ -3,10 +3,13 @@ import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:stool_in_app_ui/core/constants/keys_constants.dart';
+import 'package:stool_in_app_ui/core/helpers/shared_preferences/shared_preferences_helper.dart';
 
 part 'geo_locator_state.dart';
 
-class GeoLocatorCubit extends Cubit<GeoLocatorState> {
+class GeoLocatorCubit extends Cubit<GeoLocatorState>
+    with SharedPreferencesHelper {
   GeoLocatorCubit() : super(GeoLocatorInitial());
   Future<bool> isServiceEnabled() async {
     final active = await Geolocator.isLocationServiceEnabled();
@@ -41,7 +44,7 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState> {
     }
   }
 
-  Future<Position?> getCurrentPosition() async {
+  Future<void> getCurrentPosition() async {
     final isServiceEnabledFromUser = await isServiceEnabled();
     final isGeoLocatorAcepted = await isGeoLocatorPermited();
     if (isServiceEnabledFromUser && isGeoLocatorAcepted) {
@@ -51,8 +54,14 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState> {
       log(
         'User position latitude ${position.latitude}, longitude ${position.longitude}',
       );
-      return position;
+      saveDouble(
+        key: KeysConstants.userLocationLatitude,
+        value: position.latitude,
+      );
+      saveDouble(
+        key: KeysConstants.userLocationaLogintude,
+        value: position.longitude,
+      );
     }
-    return null;
   }
 }
