@@ -45,7 +45,9 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState> {
     final isServiceEnabledFromUser = await isServiceEnabled();
     final isGeoLocatorAcepted = await isGeoLocatorPermited();
     if (isServiceEnabledFromUser && isGeoLocatorAcepted) {
-      final position = await Geolocator.getCurrentPosition();
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
       log(
         'User position latitude ${position.latitude}, longitude ${position.longitude}',
       );
