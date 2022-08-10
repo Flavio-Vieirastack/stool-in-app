@@ -25,6 +25,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
     required this.servicesToExecuteModel,
     required this.comentsModel,
     required super.userData,
+    required super.distance,
   }) : super(
           coments: comentsModel,
           executionServices: executionServicesModel,
@@ -52,7 +53,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
     return result;
   }
 
-  factory ServiceProviderModel.fromMap(Map<String, dynamic> map) {
+  factory ServiceProviderModel.fromMap(Map<String, dynamic> map, {required double distance}) {
     final createdAt = DateTime.parse(map['createdAt']);
     return ServiceProviderModel(
       id: map['id']?.toInt() ?? 0,
@@ -72,13 +73,9 @@ class ServiceProviderModel extends ServiceProviderEntity {
       comentsModel: List<ComentsModel>.from(
           map['coments']?.map((x) => ComentsModel.fromMap(x))),
       userData: UserDataModel.fromMap(map['UserData']),
+      distance: distance,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory ServiceProviderModel.fromJson(String source) =>
-      ServiceProviderModel.fromMap(json.decode(source));
 
   @override
   bool operator ==(Object other) {

@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
+import 'package:stool_in_app_ui/core/helpers/distance_helper/distance_helper_calculate.dart';
 import 'package:stool_in_app_ui/core/module/main_module/app_module.dart';
 import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
 import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
@@ -18,6 +19,8 @@ class HomeModule extends AppModule {
           dependencies: [
             Provider<ServiceProviderDatasource>(
               create: (context) => ServiceProviderDatasourceImpl(
+                distanceHelperCalculate:
+                    Inject<DistanceHelperCalculate>(context).get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),

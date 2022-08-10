@@ -14,12 +14,14 @@ class ServiceProviderEntity {
   final String disponibleDays;
   final DateTime createdAt;
   final int userDataId;
+  final double distance;
   final List<ExecutionServicesEntity> executionServices;
   final List<ServicesToExecuteEntity> servicesToExecute;
   final List<ComentsEntity> coments;
   final UserDataEntity userData;
   ServiceProviderEntity({
     required this.id,
+    required this.distance,
     required this.serviceProviderDescription,
     required this.status,
     required this.initialDisponibleTime,
@@ -33,41 +35,39 @@ class ServiceProviderEntity {
     required this.userData,
   });
 
- 
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
-  
+
     return other is ServiceProviderEntity &&
-      other.id == id &&
-      other.serviceProviderDescription == serviceProviderDescription &&
-      other.status == status &&
-      other.initialDisponibleTime == initialDisponibleTime &&
-      other.endDisponibleTime == endDisponibleTime &&
-      other.disponibleDays == disponibleDays &&
-      other.createdAt == createdAt &&
-      other.userDataId == userDataId &&
-      listEquals(other.executionServices, executionServices) &&
-      listEquals(other.servicesToExecute, servicesToExecute) &&
-      listEquals(other.coments, coments) &&
-      listEquals(other.userData, userData);
+        other.id == id &&
+        other.serviceProviderDescription == serviceProviderDescription &&
+        other.status == status &&
+        other.initialDisponibleTime == initialDisponibleTime &&
+        other.endDisponibleTime == endDisponibleTime &&
+        other.disponibleDays == disponibleDays &&
+        other.createdAt == createdAt &&
+        other.userDataId == userDataId &&
+        listEquals(other.executionServices, executionServices) &&
+        listEquals(other.servicesToExecute, servicesToExecute) &&
+        listEquals(other.coments, coments) &&
+        listEquals(other.userData, userData);
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      serviceProviderDescription.hashCode ^
-      status.hashCode ^
-      initialDisponibleTime.hashCode ^
-      endDisponibleTime.hashCode ^
-      disponibleDays.hashCode ^
-      createdAt.hashCode ^
-      userDataId.hashCode ^
-      executionServices.hashCode ^
-      servicesToExecute.hashCode ^
-      coments.hashCode ^
-      userData.hashCode;
+        serviceProviderDescription.hashCode ^
+        status.hashCode ^
+        initialDisponibleTime.hashCode ^
+        endDisponibleTime.hashCode ^
+        disponibleDays.hashCode ^
+        createdAt.hashCode ^
+        userDataId.hashCode ^
+        executionServices.hashCode ^
+        servicesToExecute.hashCode ^
+        coments.hashCode ^
+        userData.hashCode;
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in_app_ui/features/home/data/datasource/service_provider_datasource.dart';
 import 'package:stool_in_app_ui/features/home/data/repository/service_provider_repository_impl.dart';
+import 'package:stool_in_app_ui/features/home/domain/entity/get_service_providers_params.dart';
 import 'package:stool_in_app_ui/features/home/domain/entity/service_provider_entity.dart';
 import 'package:stool_in_app_ui/features/home/domain/error/service_provider_error.dart';
 import 'package:stool_in_app_ui/features/home/domain/repository/service_provider_repository.dart';
@@ -20,8 +21,13 @@ void main() {
   late List<ServiceProviderEntityMock> serviceProviderEntityMock;
   late ServiceProviderDataSourceMock serviceProviderDatasourceMock;
   late ServiceProviderRepositoryImpl serviceProviderRepositoryImpl;
+  late GetServiceProvidersParams params;
   setUp(
     () {
+      params = GetServiceProvidersParams(
+          pageQuantity: 5,
+          currentUserLocationLatitude: 50.0,
+          currentUserLocationLongitude: 50.0);
       serviceProviderrepositoryMock = ServiceProviderRepositoryMock();
       serviceProviderEntityMock = [ServiceProviderEntityMock()];
       serviceProviderDatasourceMock = ServiceProviderDataSourceMock();
@@ -31,9 +37,9 @@ void main() {
   );
   test('Deve retornar uma entidade corretamente', () async {
     when(
-      () => serviceProviderrepositoryMock.call(pageQuantity: 5),
+      () => serviceProviderrepositoryMock.call(providersParams: params),
     ).thenAnswer((_) async => Right(serviceProviderEntityMock));
-    final sut = await serviceProviderrepositoryMock.call(pageQuantity: 5);
+    final sut = await serviceProviderrepositoryMock.call(providersParams: params);
     expect(
       sut,
       Right(serviceProviderEntityMock),
@@ -41,11 +47,11 @@ void main() {
   });
   test('Deve retornar um erro da instância correta', () async {
     when(
-      () => serviceProviderrepositoryMock.call(pageQuantity: 5),
+      () => serviceProviderrepositoryMock.call(providersParams: params),
     ).thenAnswer((_) async => Left(ServiceProviderError(message: 'message')));
     final sut = serviceProviderrepositoryMock.call;
     expect(
-      await sut(pageQuantity: 5),
+      await sut(providersParams: params),
       Left(
         ServiceProviderError(message: 'message'),
       ),
@@ -53,12 +59,12 @@ void main() {
   });
   test('Deve chamar o datasource corretamente', () async {
     when(
-      () => serviceProviderDatasourceMock.call(pageQuantity: 5),
+      () => serviceProviderDatasourceMock.call(providersParams: params),
     ).thenAnswer((_) async => serviceProviderEntityMock);
-    final sut = await serviceProviderRepositoryImpl.call(pageQuantity: 5);
+    final sut = await serviceProviderRepositoryImpl.call(providersParams: params);
     expect(sut, Right(serviceProviderEntityMock));
     verify(
-      () => serviceProviderDatasourceMock.call(pageQuantity: 5),
+      () => serviceProviderDatasourceMock.call(providersParams: params),
     ).called(1);
   });
 }

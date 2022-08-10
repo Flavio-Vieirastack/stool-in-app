@@ -1,28 +1,35 @@
 import 'dart:developer';
 
+import 'package:haversine_distance/haversine_distance.dart';
 import 'package:stool_in_app_ui/core/constants/endpoint_constants.dart';
+import 'package:stool_in_app_ui/core/helpers/distance_helper/distance_helper_calculate.dart';
 import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in_app_ui/features/home/data/datasource/service_provider_datasource.dart';
 import 'package:stool_in_app_ui/features/home/data/model/service_provider_model.dart';
 import 'package:stool_in_app_ui/features/home/domain/entity/service_provider_entity.dart';
 import 'package:stool_in_app_ui/features/home/domain/error/service_provider_error.dart';
 
+import '../../domain/entity/get_service_providers_params.dart';
+
 class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
   final RestClientGet _restClientGet;
+  final DistanceHelperCalculate _distanceHelperCalculate;
   ServiceProviderDatasourceImpl({
     required RestClientGet restClientGet,
-  }) : _restClientGet = restClientGet;
+    required DistanceHelperCalculate distanceHelperCalculate,
+  })  : _restClientGet = restClientGet,
+        _distanceHelperCalculate = distanceHelperCalculate;
   @override
-  Future<List<ServiceProviderEntity>> call({required int pageQuantity}) async {
+  Future<List<ServiceProviderEntity>> call({required GetServiceProvidersParams providersParams}) async {
     try {
       final result = await _restClientGet.get<List>(
         path: EndpointConstants.getServiceProvider,
         queryParams: {
-          'pages': pageQuantity,
+          'pages': providersParams.pageQuantity,
         },
       );
       final serviceProviderData =
-          result.data?.map((e) => ServiceProviderModel.fromMap(e)).toList();
+          result.data?.map((e) => ServiceProviderModel.fromMap(e, distance: 50.0)).toList();
       return serviceProviderData ?? <ServiceProviderEntity>[];
     } on ServiceProviderError catch (e, s) {
       log('Erro ao pegar dados do prestador de serviço no datasource impl',

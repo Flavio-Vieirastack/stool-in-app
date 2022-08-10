@@ -4,6 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:stool_in_app_ui/features/home/domain/repository/service_provider_repository.dart';
 import 'package:stool_in_app_ui/features/home/domain/usecase/service_provider_usecase.dart';
 
+import '../entity/get_service_providers_params.dart';
+
 class ServiceProviderUsecaseImpl implements ServiceProviderUsecase {
   final ServiceProviderRepository _serviceProviderRepository;
   ServiceProviderUsecaseImpl({
@@ -11,8 +13,8 @@ class ServiceProviderUsecaseImpl implements ServiceProviderUsecase {
   }) : _serviceProviderRepository = serviceProviderRepository;
   @override
   Future<Either<ServiceProviderError, List<ServiceProviderEntity>>> call({
-    required int pageQuantity,
+    required GetServiceProvidersParams providersParams
   }) async {
-    return await _serviceProviderRepository.call(pageQuantity: pageQuantity);
+    return await _serviceProviderRepository.call(providersParams: providersParams);
   }
 }
