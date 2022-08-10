@@ -45,7 +45,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   firebase_core: ^1.20.0
   brasil_fields: ^1.4.5
-  #geolocator: ^9.0.1
+  geolocator: ^9.0.1
   firebase_auth: ^3.6.2
   #firebase_remote_config: ^2.0.13
   firebase_messaging: ^12.0.1
