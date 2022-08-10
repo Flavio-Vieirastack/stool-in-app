@@ -1,4 +1,3 @@
-
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:stool_in_app_ui/features/auth/data/model/user_data_model.dart';
@@ -52,8 +51,10 @@ class ServiceProviderModel extends ServiceProviderEntity {
     return result;
   }
 
-  factory ServiceProviderModel.fromMap(Map<String, dynamic> map,
-      {int? distance}) {
+  factory ServiceProviderModel.fromMap(
+    Map<String, dynamic> map, {
+    int? distance,
+  }) {
     final createdAt = DateTime.parse(map['createdAt']);
     return ServiceProviderModel(
       id: map['id']?.toInt() ?? 0,

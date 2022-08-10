@@ -71,7 +71,7 @@ void main() {
       firstLocation: firstLocation,
       secondLocation: secondLocation,
     );
-    expect(sut, 435);
+    expect(sut, -435);
   });
   test('deve calcular a distância correta em Metros segunda rota', () {
     final firstLocation = Location(-7.2380874453854, -39.41323305981678);

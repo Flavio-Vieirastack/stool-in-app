@@ -43,8 +43,9 @@ class DistanceHelperCalculate {
     } else {
       final result =
           haversineDistance.haversine(fistLocation, secondLoaction, Unit.METER);
-
-      return result.round();
+      final duplicateResult = result * 2;
+      final negativeResult = result - duplicateResult;
+      return negativeResult.round();
     }
   }
 }
