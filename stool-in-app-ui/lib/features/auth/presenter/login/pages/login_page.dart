@@ -95,11 +95,16 @@ class _LoginPageState extends State<LoginPage>
                 );
                 await Future.delayed(const Duration(seconds: 1));
                 await geoLocatorCubit.checkPermitions();
-              } else if(state is GeoLocatorDeniedForever) {
+              } else if (state is GeoLocatorDeniedForever) {
                 showAppSnackbar(
                   message: 'Habilite a sua localização nas suas preferências',
                   context: context,
                   type: SnackBarType.error,
+                );
+              } else if (state is GeoLocatorSucess) {
+                showAppSnackbar(
+                  message: 'Parabéns, conseguimos te localizar',
+                  context: context,
                 );
               }
             },

@@ -20,30 +20,29 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
   }
 
   Future<void> checkPermitions() async {
-    final permition = await Geolocator.checkPermission();
-    await _emitNotActiveStateOnInit();
-    await _requestPermition();
-    if (permition == LocationPermission.denied) {
-      emit(GeoLocatorDenied());
-    } else if (permition == LocationPermission.deniedForever) {
-      emit(GeoLocatorDeniedForever());
-      await _requestPermition();
+    try {
+      await requestPermition();
+    } catch (e) {
+      await _emitErrorStates();
     }
   }
 
-  Future<void> _requestPermition() async {
-    final permition = await Geolocator.requestPermission();
-    if (permition == LocationPermission.denied) {
-      await Geolocator.requestPermission();
-    } else {
-      await _getCurrentPosition();
-    }
+  Future<void> requestPermition() async {
+    await Geolocator.requestPermission();
+    await _getCurrentPosition();
   }
 
-  Future<void> _emitNotActiveStateOnInit() async {
+  Future<void> _emitErrorStates() async {
     final serviceEnabled = await isServiceEnabled();
+    final permistion = await Geolocator.checkPermission();
     if (!serviceEnabled) {
       emit(GeoLocatorNotEnabled());
+    } else if (permistion == LocationPermission.denied) {
+      emit(GeoLocatorDenied());
+    } else if (permistion == LocationPermission.deniedForever) {
+      emit(GeoLocatorDeniedForever());
+    } else {
+      emit(GeoLocatorSucess());
     }
   }
 

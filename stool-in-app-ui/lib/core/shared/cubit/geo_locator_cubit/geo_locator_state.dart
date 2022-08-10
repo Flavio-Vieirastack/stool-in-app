@@ -6,6 +6,7 @@ abstract class GeoLocatorState extends Equatable {
 }
 
 class GeoLocatorInitial extends GeoLocatorState {}
+class GeoLocatorSucess extends GeoLocatorState {}
 class GeoLocatorNotEnabled extends GeoLocatorState {}
 class GeoLocatorDenied extends GeoLocatorState {}
 class GeoLocatorDeniedForever extends GeoLocatorState {}
