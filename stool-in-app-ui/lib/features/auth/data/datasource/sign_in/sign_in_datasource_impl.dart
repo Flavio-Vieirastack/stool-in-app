@@ -30,7 +30,7 @@ class SignInDatasourceImpl implements SignInDatasource {
         error: e,
         stackTrace: s,
       );
-      throw ApiAuthError(message: 'Erro ao fazer cadastro');
+      throw ApiAuthError(message: 'Erro ao fazer cadastro, tente mais tarde.');
     } on RestClientException catch (e, s) {
       log(
         'Erro desconhecido ao postar dados na api, no datsource impl',
@@ -43,7 +43,7 @@ class SignInDatasourceImpl implements SignInDatasource {
         );
       } else if (e.statusCode == 500) {
         throw ApiAuthError(
-          message: 'Usuário cadastrado',
+          message: 'Usuário já cadastrado',
         );
       }
     }

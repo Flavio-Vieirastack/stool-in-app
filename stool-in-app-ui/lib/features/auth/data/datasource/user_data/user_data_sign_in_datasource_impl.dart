@@ -46,7 +46,7 @@ class UserDataSignInDatasourceImpl implements UserDataSignInDatasource {
         );
       }
       throw UserDataError(
-        message: 'Erro desconhecido ao fazer cadastro, tente mais tarde',
+        message: 'Erro ao fazer cadastro, tente mais tarde',
       );
     }
   }
