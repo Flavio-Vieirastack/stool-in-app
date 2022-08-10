@@ -1,11 +1,11 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
-import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
-import 'package:stool_in_app_ui/core/widgets/app_snackbar/app_snackbar.dart';
-import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
-import 'package:stool_in_app_ui/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
+import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/helpers/responsive/responsive_helper_mixin.dart';
+import 'package:stool_in/core/widgets/app_snackbar/app_snackbar.dart';
+import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
+import 'package:stool_in/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../../../../core/helpers/theme/colors/app_colors.dart';

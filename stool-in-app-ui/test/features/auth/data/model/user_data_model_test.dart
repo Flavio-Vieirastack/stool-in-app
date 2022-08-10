@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in_app_ui/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
+import 'package:stool_in/features/auth/data/model/user_data_model.dart';
+import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 
 void main() {
   group(

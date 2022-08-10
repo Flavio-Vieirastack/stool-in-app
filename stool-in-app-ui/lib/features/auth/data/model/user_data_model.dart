@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
+import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 
 
 class UserDataModel extends UserDataEntity {

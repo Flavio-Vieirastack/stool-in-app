@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/helpers/theme/colors/app_colors.dart';
+import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 
 class AppAvatar extends StatelessWidget {
   final String? urlImage;

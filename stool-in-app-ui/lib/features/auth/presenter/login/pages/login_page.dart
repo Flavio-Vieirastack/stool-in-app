@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
-import 'package:stool_in_app_ui/core/helpers/responsive/responsive_helper_mixin.dart';
-import 'package:stool_in_app_ui/core/helpers/theme/text_styles/app_text_styles.dart';
-import 'package:stool_in_app_ui/core/shared/module/cubit/geo_locator_cubit.dart';
-import 'package:stool_in_app_ui/core/widgets/app_avatar/app_avatar.dart';
-import 'package:stool_in_app_ui/core/widgets/app_button/enum/button_types.dart';
-import 'package:stool_in_app_ui/core/widgets/app_snackbar/app_snackbar.dart';
-import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
-import 'package:stool_in_app_ui/features/auth/presenter/login/cubit/login_cubit.dart';
+import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/shared/cubit/geo_locator_cubit/geo_locator_cubit.dart';
+import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
+import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
+import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
+import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
+
 import 'package:validatorless/validatorless.dart';
 
+import '../../../../../core/helpers/responsive/responsive_helper_mixin.dart';
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
+import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/widgets/app_button/app_button.dart';
+import '../../../../../core/widgets/app_snackbar/app_snackbar.dart';
 import '../../../../../core/widgets/app_text_form_field/app_text_form_field.dart';
 part './widgets/login_card.dart';
 
@@ -39,10 +40,13 @@ class _LoginPageState extends State<LoginPage>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<LoginCubit>().enableApiPasswordResetOnInit();
-      context.read<GeoLocatorCubit>().getCurrentPosition();
-    });
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) async {
+        await context.read<LoginCubit>().enableApiPasswordResetOnInit().then(
+              (_) async => context.read<GeoLocatorCubit>().checkPermitions(),
+            );
+      },
+    );
   }
 
   @override
@@ -119,7 +123,9 @@ class _LoginPageState extends State<LoginPage>
                                   buttonTypes: ButtonTypes.loading,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.makeLogin(
-                                    validate: formKey.currentState?.validate() ?? false,
+                                    validate:
+                                        formKey.currentState?.validate() ??
+                                            false,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                       password: passwordController.text.trim(),
@@ -145,7 +151,9 @@ class _LoginPageState extends State<LoginPage>
                                   formKey: formKey,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.apiPasswordReset(
-                                    validate: formKey.currentState?.validate() ?? false,
+                                    validate:
+                                        formKey.currentState?.validate() ??
+                                            false,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                     ),
@@ -171,7 +179,9 @@ class _LoginPageState extends State<LoginPage>
                                   formKey: formKey,
                                   loginOrPasswordResetCallback: () =>
                                       cubit.makeLogin(
-                                    validate: formKey.currentState?.validate() ?? false,
+                                    validate:
+                                        formKey.currentState?.validate() ??
+                                            false,
                                     authEntity: AuthEntity(
                                       email: emailController.text.trim(),
                                       password: passwordController.text.trim(),

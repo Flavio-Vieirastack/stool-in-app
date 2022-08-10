@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stool_in_app_ui/features/home/domain/entity/get_service_providers_params.dart';
-import 'package:stool_in_app_ui/features/home/domain/usecase/service_provider_usecase.dart';
+import 'package:stool_in/features/home/domain/entity/get_service_providers_params.dart';
+import 'package:stool_in/features/home/domain/usecase/service_provider_usecase.dart';
 
 import '../../domain/entity/service_provider_entity.dart';
 

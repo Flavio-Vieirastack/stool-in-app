@@ -1,6 +1,6 @@
 
 
-import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
+import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 
 class AuthModel extends AuthEntity {
   AuthModel({

@@ -1,10 +1,10 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import 'package:stool_in_app_ui/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in_app_ui/features/home/data/model/coments_model.dart';
-import 'package:stool_in_app_ui/features/home/data/model/execution_services_model.dart';
-import 'package:stool_in_app_ui/features/home/data/model/services_to_execute_model.dart';
-import 'package:stool_in_app_ui/features/home/domain/entity/service_provider_entity.dart';
+import 'package:stool_in/features/auth/data/model/user_data_model.dart';
+import 'package:stool_in/features/home/data/model/coments_model.dart';
+import 'package:stool_in/features/home/data/model/execution_services_model.dart';
+import 'package:stool_in/features/home/data/model/services_to_execute_model.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider_entity.dart';
 
 class ServiceProviderModel extends ServiceProviderEntity {
   final List<ExecutionServicesModel> executionServicesModel;

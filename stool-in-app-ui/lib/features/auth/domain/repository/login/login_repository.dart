@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
-import 'package:stool_in_app_ui/features/auth/domain/entity/user_token_entity.dart';
+import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
+import 'package:stool_in/features/auth/domain/entity/user_token_entity.dart';
 
 
 import '../../error/api_auth_error.dart';

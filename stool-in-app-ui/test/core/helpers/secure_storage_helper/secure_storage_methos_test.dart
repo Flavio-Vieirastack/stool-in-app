@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_methos.dart';
+import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_methos.dart';
 
 class MockReadSecureStorage extends Mock
     implements ReadLocalSecureStorageMethodImpl {}

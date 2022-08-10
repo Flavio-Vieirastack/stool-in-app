@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in_app_ui/features/auth/data/model/auth_model.dart';
+import 'package:stool_in/features/auth/data/model/auth_model.dart';
 
 void main() {
   test('deve retornar os valores do model corretamente com email', () {

@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stool_in_app_ui/core/constants/keys_constants.dart';
-import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
-import 'package:stool_in_app_ui/core/helpers/shared_preferences/shared_preferences_helper.dart';
-import 'package:stool_in_app_ui/features/auth/domain/entity/auth_entity.dart';
-import 'package:stool_in_app_ui/features/auth/domain/usecase/auth/auth_use_case.dart';
+import 'package:stool_in/core/constants/keys_constants.dart';
+import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
+import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
+import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 
 part 'login_state.dart';
 

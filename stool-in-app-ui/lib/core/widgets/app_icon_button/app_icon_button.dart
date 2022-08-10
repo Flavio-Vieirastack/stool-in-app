@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in_app_ui/core/widgets/app_icon_button/enum/app_icon_button_type.dart';
+import 'package:stool_in/core/widgets/app_icon_button/enum/app_icon_button_type.dart';
 part './icon_button_types.dart/error.dart';
 part './icon_button_types.dart/sucess.dart';
 

@@ -1,12 +1,12 @@
 import 'dart:developer';
 
-import 'package:stool_in_app_ui/core/constants/endpoint_constants.dart';
-import 'package:stool_in_app_ui/core/rest_client/error/rest_client_exception.dart';
-import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in_app_ui/features/auth/data/datasource/user_data/user_data_sign_in_datasource.dart';
-import 'package:stool_in_app_ui/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in_app_ui/features/auth/domain/entity/user_data_entity.dart';
-import 'package:stool_in_app_ui/features/auth/domain/error/user_data_error.dart';
+import 'package:stool_in/core/constants/endpoint_constants.dart';
+import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
+import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
+import 'package:stool_in/features/auth/data/datasource/user_data/user_data_sign_in_datasource.dart';
+import 'package:stool_in/features/auth/data/model/user_data_model.dart';
+import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
+import 'package:stool_in/features/auth/domain/error/user_data_error.dart';
 
 class UserDataSignInDatasourceImpl implements UserDataSignInDatasource {
   final RestClientPost _restClientPost;

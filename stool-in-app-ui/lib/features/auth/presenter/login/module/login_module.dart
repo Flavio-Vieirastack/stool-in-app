@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
-import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
-import 'package:stool_in_app_ui/core/module/main_module/app_module.dart';
-import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
-import 'package:stool_in_app_ui/features/auth/domain/usecase/auth/auth_use_case.dart';
-import 'package:stool_in_app_ui/features/auth/presenter/login/cubit/login_cubit.dart';
-import 'package:stool_in_app_ui/features/auth/presenter/login/pages/login_page.dart';
+import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
+import 'package:stool_in/core/module/main_module/app_module.dart';
+import 'package:stool_in/core/module/main_module/inject.dart';
+import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
+import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
+import 'package:stool_in/features/auth/presenter/login/pages/login_page.dart';
 
 import '../../../../../core/rest_client/rest_client_contracts.dart';
 import '../../../data/datasource/login/login_datasource.dart';

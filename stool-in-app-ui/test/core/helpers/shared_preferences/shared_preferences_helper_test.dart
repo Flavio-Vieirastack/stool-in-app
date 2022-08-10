@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in_app_ui/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 
 class PreferencesMock extends Mock implements SharedPreferencesHelper {}
 

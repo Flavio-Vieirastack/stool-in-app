@@ -1,10 +1,10 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in_app_ui/features/auth/data/datasource/login/login_datasource.dart';
-import 'package:stool_in_app_ui/features/auth/data/model/auth_model.dart';
-import 'package:stool_in_app_ui/features/auth/domain/entity/user_token_entity.dart';
-import 'package:stool_in_app_ui/features/auth/domain/error/api_auth_error.dart';
+import 'package:stool_in/features/auth/data/datasource/login/login_datasource.dart';
+import 'package:stool_in/features/auth/data/model/auth_model.dart';
+import 'package:stool_in/features/auth/domain/entity/user_token_entity.dart';
+import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
 
 class LoginDatasourceMock extends Mock implements LoginDatasource {}
 

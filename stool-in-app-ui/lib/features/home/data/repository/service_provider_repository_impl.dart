@@ -1,10 +1,10 @@
 import 'dart:developer';
 
-import 'package:stool_in_app_ui/features/home/data/datasource/service_provider_datasource.dart';
-import 'package:stool_in_app_ui/features/home/domain/error/service_provider_error.dart';
-import 'package:stool_in_app_ui/features/home/domain/entity/service_provider_entity.dart';
+import 'package:stool_in/features/home/data/datasource/service_provider_datasource.dart';
+import 'package:stool_in/features/home/domain/error/service_provider_error.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in_app_ui/features/home/domain/repository/service_provider_repository.dart';
+import 'package:stool_in/features/home/domain/repository/service_provider_repository.dart';
 
 import '../../domain/entity/get_service_providers_params.dart';
 

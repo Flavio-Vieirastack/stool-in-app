@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in_app_ui/core/constants/lottie_constants.dart';
+import 'package:stool_in/core/constants/lottie_constants.dart';
 
 void main() {
   test('Deve retornar o lottie para lottieSucess', () {

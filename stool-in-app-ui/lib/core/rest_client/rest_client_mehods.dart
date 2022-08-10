@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:stool_in_app_ui/core/rest_client/error/rest_client_exception.dart';
-import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in_app_ui/core/rest_client/rest_client_response.dart';
+import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
+import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
+import 'package:stool_in/core/rest_client/rest_client_response.dart';
 
 class RestClientOptions {
   late Dio dio;

@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
-import 'package:stool_in_app_ui/core/firebase/push_notifications/firebase_notifications.dart';
-import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
-import 'package:stool_in_app_ui/core/module/main_module/app_module.dart';
-import 'package:stool_in_app_ui/features/auth/data/datasource/sign_in/sign_in_datasource_impl.dart';
-import 'package:stool_in_app_ui/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
-import 'package:stool_in_app_ui/features/auth/presenter/sign_in_user_data/page/sign_in_main_data_page.dart';
+import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/firebase/push_notifications/firebase_notifications.dart';
+import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
+import 'package:stool_in/core/module/main_module/app_module.dart';
+import 'package:stool_in/features/auth/data/datasource/sign_in/sign_in_datasource_impl.dart';
+import 'package:stool_in/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
+import 'package:stool_in/features/auth/presenter/sign_in_user_data/page/sign_in_main_data_page.dart';
 
 import '../../../../../core/module/main_module/inject.dart';
 import '../../../../../core/rest_client/rest_client_contracts.dart';

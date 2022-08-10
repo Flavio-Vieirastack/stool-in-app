@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in_app_ui/features/home/data/model/service_provider_model.dart';
+import 'package:stool_in/features/home/data/model/service_provider_model.dart';
 
 import '../../../../mock/service_provider_payload.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:stool_in_app_ui/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
+import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 
 FlutterSecureStorage get _instance => const FlutterSecureStorage();
 

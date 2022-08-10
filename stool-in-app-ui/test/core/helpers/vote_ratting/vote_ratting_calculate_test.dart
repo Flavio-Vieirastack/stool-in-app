@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in_app_ui/core/helpers/vote_ratting/vote_ratting_calculate.dart';
+import 'package:stool_in/core/helpers/vote_ratting/vote_ratting_calculate.dart';
 
 void main() {
   test(

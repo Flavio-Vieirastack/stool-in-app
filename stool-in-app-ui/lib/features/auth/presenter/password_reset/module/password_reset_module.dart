@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in_app_ui/core/constants/routes_constants.dart';
-import 'package:stool_in_app_ui/core/module/main_module/app_module.dart';
-import 'package:stool_in_app_ui/core/module/main_module/inject.dart';
-import 'package:stool_in_app_ui/features/auth/domain/usecase/auth/auth_use_case.dart';
-import 'package:stool_in_app_ui/features/auth/presenter/password_reset/cubit/password_reset_cubit.dart';
-import 'package:stool_in_app_ui/features/auth/presenter/password_reset/page/password_reset_page.dart';
+import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/module/main_module/app_module.dart';
+import 'package:stool_in/core/module/main_module/inject.dart';
+import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
+import 'package:stool_in/features/auth/presenter/password_reset/cubit/password_reset_cubit.dart';
+import 'package:stool_in/features/auth/presenter/password_reset/page/password_reset_page.dart';
 
 import '../../../../../core/rest_client/rest_client_contracts.dart';
 import '../../../data/datasource/login/login_datasource.dart';

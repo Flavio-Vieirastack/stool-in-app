@@ -1,12 +1,12 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:stool_in_app_ui/core/constants/endpoint_constants.dart';
-import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in_app_ui/features/auth/data/datasource/password_reset/password_reset_datasource.dart';
-import 'package:stool_in_app_ui/features/auth/data/model/auth_model.dart';
-import 'package:stool_in_app_ui/features/auth/domain/error/api_auth_error.dart';
-import 'package:stool_in_app_ui/features/auth/domain/error/firebase_auth_error.dart';
+import 'package:stool_in/core/constants/endpoint_constants.dart';
+import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
+import 'package:stool_in/features/auth/data/datasource/password_reset/password_reset_datasource.dart';
+import 'package:stool_in/features/auth/data/model/auth_model.dart';
+import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
+import 'package:stool_in/features/auth/domain/error/firebase_auth_error.dart';
 
 
 class PasswordResetDatasourceImpl implements PasswordResetDatasource {

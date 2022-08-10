@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:stool_in_app_ui/core/constants/keys_constants.dart';
-import 'package:stool_in_app_ui/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/constants/keys_constants.dart';
+import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 
 part 'geo_locator_state.dart';
 
@@ -19,49 +19,50 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
     return false;
   }
 
-  Future<bool> isGeoLocatorPermited() async {
+  Future<bool> checkPermitions() async {
     final permition = await Geolocator.checkPermission();
+    await _emitNotActiveStateOnInit();
+    await _requestPermition();
     if (permition == LocationPermission.denied) {
       emit(GeoLocatorDenied());
       return false;
     } else if (permition == LocationPermission.deniedForever) {
       emit(GeoLocatorDeniedForever());
+      await _requestPermition();
     }
     return true;
   }
 
-  Future<void> requestPermition() async {
+  Future<void> _requestPermition() async {
     final permition = await Geolocator.requestPermission();
     if (permition == LocationPermission.denied) {
       await Geolocator.requestPermission();
+    } else {
+      await _getCurrentPosition();
     }
   }
 
-  Future<void> emitNotActiveStateOnInit() async {
+  Future<void> _emitNotActiveStateOnInit() async {
     final serviceEnabled = await isServiceEnabled();
     if (!serviceEnabled) {
       emit(GeoLocatorNotEnabled());
     }
   }
 
-  Future<void> getCurrentPosition() async {
-    final isServiceEnabledFromUser = await isServiceEnabled();
-    final isGeoLocatorAcepted = await isGeoLocatorPermited();
-    if (isServiceEnabledFromUser && isGeoLocatorAcepted) {
-      final position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
-      log(
-        'User position latitude ${position.latitude}, longitude ${position.longitude}',
-      );
-      saveDouble(
-        key: KeysConstants.userLocationLatitude,
-        value: position.latitude,
-      );
-      saveDouble(
-        key: KeysConstants.userLocationaLogintude,
-        value: position.longitude,
-      );
-    }
+  Future<void> _getCurrentPosition() async {
+    final position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    log(
+      'User position latitude ${position.latitude}, longitude ${position.longitude}',
+    );
+    saveDouble(
+      key: KeysConstants.userLocationLatitude,
+      value: position.latitude,
+    );
+    saveDouble(
+      key: KeysConstants.userLocationaLogintude,
+      value: position.longitude,
+    );
   }
 }
