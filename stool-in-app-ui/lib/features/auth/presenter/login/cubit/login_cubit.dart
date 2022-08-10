@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
@@ -100,11 +102,14 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   Future<void> goToSignInMainPage({
     required Function navigateToSignIn,
   }) async {
-    final isGeolocationEnabled = await _geoLocatorCubit.isServiceEnabled();
+    final isGeolocationEnabled = await _geoLocatorCubit.checkPermitions();
     if (isGeolocationEnabled) {
+      log('message');
       navigateToSignIn.call();
     } else {
       emit(LoginGeoLocatorNotEnabled());
+      await Future.delayed(const Duration(seconds: 1));
+      emit(LoginInitial());
     }
   }
 }

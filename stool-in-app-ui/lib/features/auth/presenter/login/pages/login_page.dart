@@ -53,6 +53,11 @@ class _LoginPageState extends State<LoginPage>
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
     final geoLocatorCubit = context.read<GeoLocatorCubit>();
+    final Function signInCallBack = () => cubit.goToSignInMainPage(
+          navigateToSignIn: () => Navigator.of(context).pushReplacementNamed(
+            RoutesConstants.signInMainRoute,
+          ),
+        );
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
