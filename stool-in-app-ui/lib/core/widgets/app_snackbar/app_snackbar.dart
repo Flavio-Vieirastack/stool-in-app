@@ -28,6 +28,7 @@ mixin AppSnackBar {
   showAppSnackbar({
     required String message,
     required BuildContext context,
+    int duration = 2,
     SnackBarType type = SnackBarType.success,
   }) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -50,7 +51,7 @@ mixin AppSnackBar {
           borderRadius: BorderRadius.circular(20),
         ),
         backgroundColor: getSnackBarColor(type),
-        duration: const Duration(seconds: 2),
+        duration: Duration(seconds: duration),
       ),
     );
   }

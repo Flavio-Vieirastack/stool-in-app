@@ -97,10 +97,12 @@ class _LoginPageState extends State<LoginPage>
                 await geoLocatorCubit.checkPermitions();
               } else if (state is GeoLocatorDeniedForever) {
                 showAppSnackbar(
-                  message: 'Habilite a sua localização nas suas preferências',
+                  message: 'Por favor, habilite a localização nas suas preferências, e reinicie o app',
                   context: context,
+                  duration: 4,
                   type: SnackBarType.error,
                 );
+                
               } else if (state is GeoLocatorSucess) {
                 showAppSnackbar(
                   message: 'Parabéns, conseguimos te localizar',
