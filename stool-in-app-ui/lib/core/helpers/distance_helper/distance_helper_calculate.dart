@@ -30,7 +30,7 @@ class DistanceHelperCalculate {
     }
   }
 
-  double caculateDistanceToDouble({
+  int caculateDistanceToDouble({
     required Location firstLocation,
     required Location secondLocation,
   }) {
@@ -39,12 +39,12 @@ class DistanceHelperCalculate {
     final result =
         haversineDistance.haversine(fistLocation, secondLoaction, Unit.KM);
     if (result >= 1) {
-      return result;
+      return result.round();
     } else {
       final result =
           haversineDistance.haversine(fistLocation, secondLoaction, Unit.METER);
 
-      return result;
+      return result.round();
     }
   }
 }

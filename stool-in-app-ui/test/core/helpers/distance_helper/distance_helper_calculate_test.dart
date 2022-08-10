@@ -18,6 +18,17 @@ void main() {
     );
     expect(sut, '1 Km');
   });
+  test('deve calcular a distância correta em Km retornarndo em double', () {
+    final firstLocation = Location(-7.2380874453854, -39.41323305981678);
+    final secondLocation = Location(-7.231148136572121, -39.40686133322621);
+    final sut = DistanceHelperCalculate(
+      haversineDistance: haversineDistance,
+    ).caculateDistanceToDouble(
+      firstLocation: firstLocation,
+      secondLocation: secondLocation,
+    );
+    expect(sut, 1.0);
+  });
   test('deve calcular a distância correta em Km segunda rota', () {
     final firstLocation = Location(-7.2380874453854, -39.41323305981678);
     final secondLocation = Location(-7.224163966512154, -39.31300769356471);

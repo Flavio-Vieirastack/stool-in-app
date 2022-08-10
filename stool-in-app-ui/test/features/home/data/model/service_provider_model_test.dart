@@ -4,9 +4,9 @@ import 'package:stool_in_app_ui/features/home/data/model/service_provider_model.
 import '../../../../mock/service_provider_payload.dart';
 
 void main() {
-  late double distance;
+  late int distance;
   setUp(
-    () => distance = 50.0,
+    () => distance = 50,
   );
   test('Deve retornar o id corretamente', () {
     final model = serviceProviderPayload

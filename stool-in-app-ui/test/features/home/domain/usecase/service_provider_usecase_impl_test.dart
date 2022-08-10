@@ -51,7 +51,7 @@ void main() {
       serviceProviderEntity = [
         ServiceProviderEntity(
           id: 1,
-          distance: 50.0,
+          distance: 50,
           serviceProviderDescription: 'serviceProviderDescription',
           status: 'status',
           initialDisponibleTime: 'initialDisponibleTime',

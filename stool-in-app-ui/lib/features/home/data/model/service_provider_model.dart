@@ -53,7 +53,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
   }
 
   factory ServiceProviderModel.fromMap(Map<String, dynamic> map,
-      {double? distance}) {
+      {int? distance}) {
     final createdAt = DateTime.parse(map['createdAt']);
     return ServiceProviderModel(
       id: map['id']?.toInt() ?? 0,
@@ -73,7 +73,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
       comentsModel: List<ComentsModel>.from(
           map['coments']?.map((x) => ComentsModel.fromMap(x))),
       userData: UserDataModel.fromMap(map['UserData']),
-      distance: distance ?? 0.0,
+      distance: distance ?? 0,
     );
   }
 

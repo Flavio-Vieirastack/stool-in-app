@@ -14,7 +14,7 @@ class ServiceProviderEntity {
   final String disponibleDays;
   final DateTime createdAt;
   final int userDataId;
-  final double distance;
+  final int distance;
   final List<ExecutionServicesEntity> executionServices;
   final List<ServicesToExecuteEntity> servicesToExecute;
   final List<ComentsEntity> coments;
