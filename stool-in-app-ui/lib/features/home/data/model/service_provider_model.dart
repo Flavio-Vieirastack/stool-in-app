@@ -51,7 +51,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
     return result;
   }
 
-  factory ServiceProviderModel.fromMap(
+  factory ServiceProviderModel.fromDataSource(
     Map<String, dynamic> map, {
     int? distance,
   }) {

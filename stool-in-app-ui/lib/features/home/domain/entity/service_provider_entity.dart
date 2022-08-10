@@ -35,39 +35,43 @@ class ServiceProviderEntity {
     required this.userData,
   });
 
+  
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
-
+  
     return other is ServiceProviderEntity &&
-        other.id == id &&
-        other.serviceProviderDescription == serviceProviderDescription &&
-        other.status == status &&
-        other.initialDisponibleTime == initialDisponibleTime &&
-        other.endDisponibleTime == endDisponibleTime &&
-        other.disponibleDays == disponibleDays &&
-        other.createdAt == createdAt &&
-        other.userDataId == userDataId &&
-        listEquals(other.executionServices, executionServices) &&
-        listEquals(other.servicesToExecute, servicesToExecute) &&
-        listEquals(other.coments, coments) &&
-        listEquals(other.userData, userData);
+      other.id == id &&
+      other.serviceProviderDescription == serviceProviderDescription &&
+      other.status == status &&
+      other.initialDisponibleTime == initialDisponibleTime &&
+      other.endDisponibleTime == endDisponibleTime &&
+      other.disponibleDays == disponibleDays &&
+      other.createdAt == createdAt &&
+      other.userDataId == userDataId &&
+      other.distance == distance &&
+      listEquals(other.executionServices, executionServices) &&
+      listEquals(other.servicesToExecute, servicesToExecute) &&
+      listEquals(other.coments, coments) &&
+      other.userData == userData;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-        serviceProviderDescription.hashCode ^
-        status.hashCode ^
-        initialDisponibleTime.hashCode ^
-        endDisponibleTime.hashCode ^
-        disponibleDays.hashCode ^
-        createdAt.hashCode ^
-        userDataId.hashCode ^
-        executionServices.hashCode ^
-        servicesToExecute.hashCode ^
-        coments.hashCode ^
-        userData.hashCode;
+      serviceProviderDescription.hashCode ^
+      status.hashCode ^
+      initialDisponibleTime.hashCode ^
+      endDisponibleTime.hashCode ^
+      disponibleDays.hashCode ^
+      createdAt.hashCode ^
+      userDataId.hashCode ^
+      distance.hashCode ^
+      executionServices.hashCode ^
+      servicesToExecute.hashCode ^
+      coments.hashCode ^
+      userData.hashCode;
   }
 }

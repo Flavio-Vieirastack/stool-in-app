@@ -36,7 +36,7 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
       );
       final serviceProvider = result.data
           ?.map(
-            (e) => ServiceProviderModel.fromMap(e, distance: distance),
+            (e) => ServiceProviderModel.fromDataSource(e, distance: distance),
           )
           .toList();
       return serviceProvider ?? <ServiceProviderEntity>[];
@@ -63,7 +63,7 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
   }) {
     final serviceProviderData = result.data
         ?.map(
-          (e) => ServiceProviderModel.fromMap(e),
+          (e) => ServiceProviderModel.fromDataSource(e),
         )
         .toList();
     final serviceProviderLatitude = serviceProviderData
