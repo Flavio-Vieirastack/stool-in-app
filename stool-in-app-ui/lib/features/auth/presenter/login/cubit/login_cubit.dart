@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/shared/cubit/geo_locator_cubit/geo_locator_cubit.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 
@@ -11,10 +12,13 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   final AuthUseCase _authUseCase;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
-  LoginCubit({
-    required AuthUseCase authUseCase,
-    required WriteLocalSecurityStorage writeLocalSecurityStorage,
-  })  : _authUseCase = authUseCase,
+  final GeoLocatorCubit _geoLocatorCubit;
+  LoginCubit(
+      {required AuthUseCase authUseCase,
+      required WriteLocalSecurityStorage writeLocalSecurityStorage,
+      required GeoLocatorCubit geoLocatorCubit})
+      : _authUseCase = authUseCase,
+        _geoLocatorCubit = geoLocatorCubit,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         super(LoginInitial());
 
@@ -91,5 +95,16 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
         emit(LoginSucess());
       },
     );
+  }
+
+  Future<void> goToSignInMainPage({
+    required Function navigateToSignIn,
+  }) async {
+    final isGeolocationEnabled = await _geoLocatorCubit.isServiceEnabled();
+    if (isGeolocationEnabled) {
+      navigateToSignIn.call();
+    } else {
+      emit(LoginGeoLocatorNotEnabled());
+    }
   }
 }

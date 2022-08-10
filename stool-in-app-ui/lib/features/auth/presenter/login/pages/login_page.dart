@@ -74,6 +74,13 @@ class _LoginPageState extends State<LoginPage>
               } else if (state is LoginSucess) {
                 Navigator.of(context)
                     .pushReplacementNamed(RoutesConstants.homeRoute);
+              } else if (state is LoginGeoLocatorNotEnabled) {
+                showAppSnackbar(
+                  message: 'Você deve habilitar sua localização para continuar',
+                  context: context,
+                  duration: 3,
+                  type: SnackBarType.error,
+                );
               }
             },
           ),
@@ -97,12 +104,12 @@ class _LoginPageState extends State<LoginPage>
                 await geoLocatorCubit.checkPermitions();
               } else if (state is GeoLocatorDeniedForever) {
                 showAppSnackbar(
-                  message: 'Por favor, habilite a localização nas suas preferências, e reinicie o app',
+                  message:
+                      'Por favor, habilite a localização nas suas preferências, e reinicie o app',
                   context: context,
                   duration: 4,
                   type: SnackBarType.error,
                 );
-                
               } else if (state is GeoLocatorSucess) {
                 showAppSnackbar(
                   message: 'Parabéns, conseguimos te localizar',
@@ -231,9 +238,13 @@ class _LoginPageState extends State<LoginPage>
                                           .pushReplacementNamed(
                                     RoutesConstants.passwordRecoveryRoute,
                                   ),
-                                  signInCallback: () => Navigator.of(context)
-                                      .pushReplacementNamed(
-                                    RoutesConstants.signInMainRoute,
+                                  signInCallback: () =>
+                                      cubit.goToSignInMainPage(
+                                    navigateToSignIn: () =>
+                                        Navigator.of(context)
+                                            .pushReplacementNamed(
+                                      RoutesConstants.signInMainRoute,
+                                    ),
                                   ),
                                   emailController: emailController,
                                   passwordController: passwordController,
