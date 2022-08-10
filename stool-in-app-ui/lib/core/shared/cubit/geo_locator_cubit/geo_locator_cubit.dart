@@ -19,18 +19,16 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
     return false;
   }
 
-  Future<bool> checkPermitions() async {
+  Future<void> checkPermitions() async {
     final permition = await Geolocator.checkPermission();
     await _emitNotActiveStateOnInit();
     await _requestPermition();
     if (permition == LocationPermission.denied) {
       emit(GeoLocatorDenied());
-      return false;
     } else if (permition == LocationPermission.deniedForever) {
       emit(GeoLocatorDeniedForever());
       await _requestPermition();
     }
-    return true;
   }
 
   Future<void> _requestPermition() async {
