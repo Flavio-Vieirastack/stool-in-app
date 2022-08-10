@@ -21,8 +21,9 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
   })  : _restClientGet = restClientGet,
         _distanceHelperCalculate = distanceHelperCalculate;
   @override
-  Future<List<ServiceProviderEntity>> call(
-      {required GetServiceProvidersParams providersParams}) async {
+  Future<List<ServiceProviderEntity>> call({
+    required GetServiceProvidersParams providersParams,
+  }) async {
     try {
       final result = await _restClientGet.get<List>(
         path: EndpointConstants.getServiceProvider,
