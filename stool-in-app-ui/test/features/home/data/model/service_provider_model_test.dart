@@ -168,14 +168,14 @@ void main() {
         .map((e) => ServiceProviderModel.fromMap(e, distance: distance))
         .toList();
     final sut = model[0].servicesToExecuteModel;
-    expect(sut[0].userLocationLatitude, 245789);
+    expect(sut[0].userLocationLatitude, -7.2380874453854);
   });
   test('Deve retornar o userLocationaLogintude no servicesToExecute', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromMap(e, distance: distance))
         .toList();
     final sut = model[0].servicesToExecuteModel;
-    expect(sut[0].userLocationLongintude, 54879);
+    expect(sut[0].userLocationLongintude, -39.41323305981678);
   });
   test('Deve retornar o street no servicesToExecute', () {
     final model = serviceProviderPayload
