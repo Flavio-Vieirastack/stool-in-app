@@ -3,7 +3,6 @@ import 'package:mocktail/mocktail.dart';
 import 'package:stool_in_app_ui/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in_app_ui/core/rest_client/rest_client_response.dart';
 import 'package:stool_in_app_ui/features/home/data/datasource/service_provider_datasource.dart';
-import 'package:stool_in_app_ui/features/home/data/model/service_provider_model.dart';
 import 'package:stool_in_app_ui/features/home/domain/entity/get_service_providers_params.dart';
 import 'package:stool_in_app_ui/features/home/domain/entity/service_provider_entity.dart';
 import 'package:stool_in_app_ui/features/home/domain/error/service_provider_error.dart';
