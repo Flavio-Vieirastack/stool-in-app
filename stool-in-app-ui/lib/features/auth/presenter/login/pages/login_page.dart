@@ -52,7 +52,6 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
-    final geoLocatorCubit = context.read<GeoLocatorCubit>();
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
@@ -186,9 +185,13 @@ class _LoginPageState extends State<LoginPage>
                                           .pushReplacementNamed(
                                     RoutesConstants.passwordRecoveryRoute,
                                   ),
-                                  signInCallback: () => Navigator.of(context)
-                                      .pushReplacementNamed(
-                                    RoutesConstants.signInMainRoute,
+                                  signInCallback: () =>
+                                      cubit.goToSignInMainPage(
+                                    navigateToSignIn: () =>
+                                        Navigator.of(context)
+                                            .pushReplacementNamed(
+                                      RoutesConstants.signInMainRoute,
+                                    ),
                                   ),
                                   emailController: emailController,
                                   passwordController: passwordController,
@@ -214,9 +217,13 @@ class _LoginPageState extends State<LoginPage>
                                           .pushReplacementNamed(
                                     RoutesConstants.passwordRecoveryRoute,
                                   ),
-                                  signInCallback: () => Navigator.of(context)
-                                      .pushReplacementNamed(
-                                    RoutesConstants.signInMainRoute,
+                                  signInCallback: () =>
+                                      cubit.goToSignInMainPage(
+                                    navigateToSignIn: () =>
+                                        Navigator.of(context)
+                                            .pushReplacementNamed(
+                                      RoutesConstants.signInMainRoute,
+                                    ),
                                   ),
                                   emailController: emailController,
                                   passwordController: passwordController,
