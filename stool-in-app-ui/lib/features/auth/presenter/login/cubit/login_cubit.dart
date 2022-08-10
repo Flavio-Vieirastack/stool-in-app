@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -104,10 +104,13 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   }) async {
     final isGeolocationEnabled = await _geoLocatorCubit.checkPermitions();
     if (isGeolocationEnabled) {
-      log('message');
       navigateToSignIn.call();
     } else {
-      emit(LoginGeoLocatorNotEnabled());
+      if (Platform.isIOS) {
+        emit(LoginGeoLocatorNotEnabledForever());
+      } else {
+        emit(LoginGeoLocatorNotEnabled());
+      }
       await Future.delayed(const Duration(seconds: 1));
       emit(LoginInitial());
     }

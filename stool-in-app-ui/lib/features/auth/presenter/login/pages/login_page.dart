@@ -81,6 +81,14 @@ class _LoginPageState extends State<LoginPage>
                   duration: 3,
                   type: SnackBarType.error,
                 );
+              } else if (state is LoginGeoLocatorNotEnabledForever) {
+                showAppSnackbar(
+                  message:
+                      'Por favor, habilite a localização nas suas preferências, e reinicie o app',
+                  context: context,
+                  duration: 3,
+                  type: SnackBarType.error,
+                );
               }
             },
           ),
@@ -92,16 +100,12 @@ class _LoginPageState extends State<LoginPage>
                   context: context,
                   type: SnackBarType.error,
                 );
-                await Future.delayed(const Duration(seconds: 1));
-                await geoLocatorCubit.checkPermitions();
               } else if (state is GeoLocatorDenied) {
                 showAppSnackbar(
                   message: 'Por favor, habilite a sua localização',
                   context: context,
                   type: SnackBarType.error,
                 );
-                await Future.delayed(const Duration(seconds: 1));
-                await geoLocatorCubit.checkPermitions();
               } else if (state is GeoLocatorDeniedForever) {
                 showAppSnackbar(
                   message:

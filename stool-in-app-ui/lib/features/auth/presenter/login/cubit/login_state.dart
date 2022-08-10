@@ -11,6 +11,7 @@ class LoginLoading extends LoginState {}
 class LoginSucess extends LoginState {}
 class LoginEnableApiPasswordReset extends LoginState{}
 class LoginGeoLocatorNotEnabled extends LoginState{}
+class LoginGeoLocatorNotEnabledForever extends LoginState{}
 class LoginError extends LoginState {
   final String message;
   LoginError({required this.message});

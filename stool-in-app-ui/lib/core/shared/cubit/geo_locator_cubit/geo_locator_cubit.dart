@@ -22,6 +22,7 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
   Future<bool> checkPermitions() async {
     try {
       await requestPermition();
+      emit(GeoLocatorSucess());
       return true;
     } catch (e) {
       await _emitErrorStates();
