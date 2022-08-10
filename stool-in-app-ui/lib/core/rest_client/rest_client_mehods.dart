@@ -44,6 +44,7 @@ class RestClientPostImpl extends RestClientInitialize
       throw RestClientException<T>(
         data: e.response?.data,
         statusCode: e.response?.statusCode,
+        message: e.message,
       );
     }
   }
@@ -69,6 +70,7 @@ class RestClientGetImpl extends RestClientInitialize implements RestClientGet {
       throw RestClientException<T>(
         data: e.response?.data,
         statusCode: e.response?.statusCode,
+        message: e.message,
       );
     }
   }
@@ -97,6 +99,7 @@ class RestClientPutImpl extends RestClientInitialize implements RestClientPut {
       throw RestClientException<T>(
         data: e.response?.data,
         statusCode: e.response?.statusCode,
+        message: e.message,
       );
     }
   }
@@ -126,6 +129,7 @@ class RestClientDeleteImpl extends RestClientInitialize
       throw RestClientException<T>(
         data: e.response?.data,
         statusCode: e.response?.statusCode,
+        message: e.message,
       );
     }
   }
@@ -155,6 +159,7 @@ class RestClientPatchImpl extends RestClientInitialize
       throw RestClientException<T>(
         data: e.response?.data,
         statusCode: e.response?.statusCode,
+        message: e.message,
       );
     }
   }
@@ -185,6 +190,7 @@ class RestClientResquestImpl extends RestClientInitialize
       throw RestClientException<T>(
         data: e.response?.data,
         statusCode: e.response?.statusCode,
+        message: e.message,
       );
     }
   }
