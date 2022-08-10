@@ -18,12 +18,12 @@ void main() {
     );
     expect(sut, '1 Km');
   });
-  test('deve calcular a distância correta em Km retornarndo em double', () {
+  test('deve calcular a distância correta em Km retornarndo em int', () {
     final firstLocation = Location(-7.2380874453854, -39.41323305981678);
     final secondLocation = Location(-7.231148136572121, -39.40686133322621);
     final sut = DistanceHelperCalculate(
       haversineDistance: haversineDistance,
-    ).caculateDistanceToDouble(
+    ).caculateDistanceToInt(
       firstLocation: firstLocation,
       secondLocation: secondLocation,
     );
@@ -61,6 +61,17 @@ void main() {
       secondLocation: secondLocation,
     );
     expect(sut, '434 Metros');
+  });
+  test('deve calcular a distância correta em Metros em int', () {
+    final firstLocation = Location(-7.2380874453854, -39.41323305981678);
+    final secondLocation = Location(-7.23429501176811, -39.41228026263391);
+    final sut = DistanceHelperCalculate(
+      haversineDistance: haversineDistance,
+    ).caculateDistanceToInt(
+      firstLocation: firstLocation,
+      secondLocation: secondLocation,
+    );
+    expect(sut, 435);
   });
   test('deve calcular a distância correta em Metros segunda rota', () {
     final firstLocation = Location(-7.2380874453854, -39.41323305981678);

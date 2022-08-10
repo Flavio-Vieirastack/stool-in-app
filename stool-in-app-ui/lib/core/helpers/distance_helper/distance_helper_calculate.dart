@@ -30,7 +30,7 @@ class DistanceHelperCalculate {
     }
   }
 
-  int caculateDistanceToDouble({
+  int caculateDistanceToInt({
     required Location firstLocation,
     required Location secondLocation,
   }) {
