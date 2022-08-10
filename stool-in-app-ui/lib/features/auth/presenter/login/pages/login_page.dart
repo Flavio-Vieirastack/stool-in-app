@@ -52,27 +52,59 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
+    final geoLocatorCubit = context.read<GeoLocatorCubit>();
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
-      body: BlocListener<LoginCubit, LoginState>(
-        listener: (context, state) {
-          if (state is LoginError) {
-            showAppSnackbar(
-              message: 'Ops! ${state.message}',
-              context: context,
-              type: SnackBarType.error,
-            );
-          } else if (state is LoginEnableApiPasswordReset) {
-            showAppSnackbar(
-              message: 'Faça login com sua nova senha',
-              context: context,
-            );
-          } else if (state is LoginSucess) {
-            Navigator.of(context)
-                .pushReplacementNamed(RoutesConstants.homeRoute);
-          }
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<LoginCubit, LoginState>(
+            listener: (context, state) {
+              if (state is LoginError) {
+                showAppSnackbar(
+                  message: 'Ops! ${state.message}',
+                  context: context,
+                  type: SnackBarType.error,
+                );
+              } else if (state is LoginEnableApiPasswordReset) {
+                showAppSnackbar(
+                  message: 'Faça login com sua nova senha',
+                  context: context,
+                );
+              } else if (state is LoginSucess) {
+                Navigator.of(context)
+                    .pushReplacementNamed(RoutesConstants.homeRoute);
+              }
+            },
+          ),
+          BlocListener<GeoLocatorCubit, GeoLocatorState>(
+            listener: (context, state) async {
+              if (state is GeoLocatorNotEnabled) {
+                showAppSnackbar(
+                  message: 'Por favor, habilite a sua localização',
+                  context: context,
+                  type: SnackBarType.error,
+                );
+                await Future.delayed(const Duration(seconds: 1));
+                await geoLocatorCubit.checkPermitions();
+              } else if (state is GeoLocatorDenied) {
+                showAppSnackbar(
+                  message: 'Por favor, habilite a sua localização',
+                  context: context,
+                  type: SnackBarType.error,
+                );
+                await Future.delayed(const Duration(seconds: 1));
+                await geoLocatorCubit.checkPermitions();
+              } else if(state is GeoLocatorDeniedForever) {
+                showAppSnackbar(
+                  message: 'Habilite a sua localização nas suas preferências',
+                  context: context,
+                  type: SnackBarType.error,
+                );
+              }
+            },
+          ),
+        ],
         child: LayoutBuilder(
           builder: (context, constraints) {
             return ListView(
