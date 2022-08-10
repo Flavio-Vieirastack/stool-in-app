@@ -52,13 +52,14 @@ class _LoginPageState extends State<LoginPage>
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<LoginCubit>();
+    final geolocatorCubit = context.read<GeoLocatorCubit>();
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
       body: MultiBlocListener(
         listeners: [
           BlocListener<LoginCubit, LoginState>(
-            listener: (context, state) {
+            listener: (context, state) async {
               if (state is LoginError) {
                 showAppSnackbar(
                   message: 'Ops! ${state.message}',
@@ -80,6 +81,8 @@ class _LoginPageState extends State<LoginPage>
                   duration: 3,
                   type: SnackBarType.error,
                 );
+                await Future.delayed(const Duration(seconds: 3));
+                await geolocatorCubit.requestPermition();
               } else if (state is LoginGeoLocatorNotEnabledForever) {
                 showAppSnackbar(
                   message:
@@ -99,12 +102,16 @@ class _LoginPageState extends State<LoginPage>
                   context: context,
                   type: SnackBarType.error,
                 );
+                await Future.delayed(const Duration(seconds: 3));
+                await geolocatorCubit.requestPermition();
               } else if (state is GeoLocatorDenied) {
                 showAppSnackbar(
                   message: 'Por favor, habilite a sua localização',
                   context: context,
                   type: SnackBarType.error,
                 );
+                await Future.delayed(const Duration(seconds: 3));
+                await geolocatorCubit.requestPermition();
               } else if (state is GeoLocatorDeniedForever) {
                 showAppSnackbar(
                   message:

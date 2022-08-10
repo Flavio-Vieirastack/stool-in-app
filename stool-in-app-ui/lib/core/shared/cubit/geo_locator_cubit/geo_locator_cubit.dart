@@ -32,7 +32,7 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
 
   Future<void> requestPermition() async {
     await Geolocator.requestPermission();
-    await _getCurrentPosition();
+    await _saveCurrentPositionInCache();
   }
 
   Future<void> _emitErrorStates() async {
@@ -49,7 +49,7 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
     }
   }
 
-  Future<void> _getCurrentPosition() async {
+  Future<void> _saveCurrentPositionInCache() async {
     final position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
