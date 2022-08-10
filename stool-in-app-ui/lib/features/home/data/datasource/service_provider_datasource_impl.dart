@@ -20,7 +20,8 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
   })  : _restClientGet = restClientGet,
         _distanceHelperCalculate = distanceHelperCalculate;
   @override
-  Future<List<ServiceProviderEntity>> call({required GetServiceProvidersParams providersParams}) async {
+  Future<List<ServiceProviderEntity>> call(
+      {required GetServiceProvidersParams providersParams}) async {
     try {
       final result = await _restClientGet.get<List>(
         path: EndpointConstants.getServiceProvider,
@@ -28,9 +29,34 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
           'pages': providersParams.pageQuantity,
         },
       );
-      final serviceProviderData =
-          result.data?.map((e) => ServiceProviderModel.fromMap(e, distance: 50.0)).toList();
-      return serviceProviderData ?? <ServiceProviderEntity>[];
+
+      final serviceProviderData = result.data
+          ?.map(
+            (e) => ServiceProviderModel.fromMap(e),
+          )
+          .toList();
+      final serviceProviderLatitude = serviceProviderData
+          ?.map((e) => e.userData.userLocationLatitude)
+          .toList()
+          .first;
+      final serviceProviderLongitude = serviceProviderData
+          ?.map((e) => e.userData.userLocationLongitude)
+          .toList()
+          .first;
+      final distance = _distanceHelperCalculate.caculateDistanceToDouble(
+        firstLocation: Location(
+            serviceProviderLatitude ?? 0, serviceProviderLongitude ?? 0),
+        secondLocation: Location(
+          providersParams.currentUserLocationLatitude,
+          providersParams.currentUserLocationLongitude,
+        ),
+      );
+      final serviceProvider = result.data
+          ?.map(
+            (e) => ServiceProviderModel.fromMap(e, distance: distance),
+          )
+          .toList();
+      return serviceProvider ?? <ServiceProviderEntity>[];
     } on ServiceProviderError catch (e, s) {
       log('Erro ao pegar dados do prestador de serviço no datasource impl',
           error: e, stackTrace: s);

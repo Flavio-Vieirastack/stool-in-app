@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
@@ -53,7 +52,8 @@ class ServiceProviderModel extends ServiceProviderEntity {
     return result;
   }
 
-  factory ServiceProviderModel.fromMap(Map<String, dynamic> map, {required double distance}) {
+  factory ServiceProviderModel.fromMap(Map<String, dynamic> map,
+      {double? distance}) {
     final createdAt = DateTime.parse(map['createdAt']);
     return ServiceProviderModel(
       id: map['id']?.toInt() ?? 0,
@@ -73,7 +73,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
       comentsModel: List<ComentsModel>.from(
           map['coments']?.map((x) => ComentsModel.fromMap(x))),
       userData: UserDataModel.fromMap(map['UserData']),
-      distance: distance,
+      distance: distance ?? 0.0,
     );
   }
 

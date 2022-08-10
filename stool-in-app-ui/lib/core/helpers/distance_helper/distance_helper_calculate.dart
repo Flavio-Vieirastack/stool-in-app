@@ -29,4 +29,22 @@ class DistanceHelperCalculate {
       return resultFormat;
     }
   }
+
+  double caculateDistanceToDouble({
+    required Location firstLocation,
+    required Location secondLocation,
+  }) {
+    final fistLocation = firstLocation;
+    final secondLoaction = secondLocation;
+    final result =
+        haversineDistance.haversine(fistLocation, secondLoaction, Unit.KM);
+    if (result >= 1) {
+      return result;
+    } else {
+      final result =
+          haversineDistance.haversine(fistLocation, secondLoaction, Unit.METER);
+
+      return result;
+    }
+  }
 }
