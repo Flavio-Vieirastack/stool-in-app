@@ -16,8 +16,13 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> getServiceProviders({required int pageQuantity}) async {
     emit(HomeLoading());
-    final result =
-        await _serviceProviderUsecase.call(providersParams: GetServiceProvidersParams(pageQuantity: pageQuantity, currentUserLocationLatitude: 50.0, currentUserLocationLongitude: 50.0));
+    final result = await _serviceProviderUsecase.call(
+      providersParams: GetServiceProvidersParams(
+        pageQuantity: pageQuantity,
+        currentUserLocationLatitude: 50.0,
+        currentUserLocationLongitude: 50.0,
+      ),
+    );
     result.fold(
       (error) => emit(
         HomeError(message: error.message),
