@@ -9,6 +9,7 @@ import 'package:stool_in_app_ui/features/home/data/model/service_provider_model.
 import 'package:stool_in_app_ui/features/home/domain/entity/service_provider_entity.dart';
 import 'package:stool_in_app_ui/features/home/domain/error/service_provider_error.dart';
 
+import '../../../../core/rest_client/rest_client_response.dart';
 import '../../domain/entity/get_service_providers_params.dart';
 
 class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
@@ -29,27 +30,9 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
           'pages': providersParams.pageQuantity,
         },
       );
-
-      final serviceProviderData = result.data
-          ?.map(
-            (e) => ServiceProviderModel.fromMap(e),
-          )
-          .toList();
-      final serviceProviderLatitude = serviceProviderData
-          ?.map((e) => e.userData.userLocationLatitude)
-          .toList()
-          .first;
-      final serviceProviderLongitude = serviceProviderData
-          ?.map((e) => e.userData.userLocationLongitude)
-          .toList()
-          .first;
-      final distance = _distanceHelperCalculate.caculateDistanceToInt(
-        firstLocation: Location(
-            serviceProviderLatitude ?? 0, serviceProviderLongitude ?? 0),
-        secondLocation: Location(
-          providersParams.currentUserLocationLatitude,
-          providersParams.currentUserLocationLongitude,
-        ),
+      final distance = calculateDistance(
+        result: result,
+        params: providersParams,
       );
       final serviceProvider = result.data
           ?.map(
@@ -71,5 +54,34 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
       throw ServiceProviderError(
           message: 'Erro desconhecido ao pegar dados do usuário');
     }
+  }
+
+  @override
+  int calculateDistance({
+    required RestClientResponse<List<dynamic>> result,
+    required GetServiceProvidersParams params,
+  }) {
+    final serviceProviderData = result.data
+        ?.map(
+          (e) => ServiceProviderModel.fromMap(e),
+        )
+        .toList();
+    final serviceProviderLatitude = serviceProviderData
+        ?.map((e) => e.userData.userLocationLatitude)
+        .toList()
+        .first;
+    final serviceProviderLongitude = serviceProviderData
+        ?.map((e) => e.userData.userLocationLongitude)
+        .toList()
+        .first;
+    final distance = _distanceHelperCalculate.caculateDistanceToInt(
+      firstLocation:
+          Location(serviceProviderLatitude ?? 0, serviceProviderLongitude ?? 0),
+      secondLocation: Location(
+        params.currentUserLocationLatitude,
+        params.currentUserLocationLongitude,
+      ),
+    );
+    return distance;
   }
 }

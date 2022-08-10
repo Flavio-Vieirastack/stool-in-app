@@ -396,4 +396,11 @@ void main() {
     final sut = model[0].userData;
     expect(sut.userState, 'CE');
   });
+  test('Deve retornar a distância correta', () {
+    final model = serviceProviderPayload
+        .map((e) => ServiceProviderModel.fromMap(e, distance: distance))
+        .toList();
+    final sut = model[0].distance;
+    expect(sut, 50);
+  });
 }
