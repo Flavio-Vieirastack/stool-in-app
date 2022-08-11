@@ -2,7 +2,9 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/helpers/pick_image_helper/pick_image_helper.dart';
 import 'package:stool_in/core/helpers/responsive/responsive_helper_mixin.dart';
+import 'package:stool_in/core/shared/cubit/firebase_storage/firebase_storage_cubit.dart';
 import 'package:stool_in/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
@@ -50,6 +52,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignInUserDataCubit>();
+    final firebaseStorageCubit = context.read<FirebaseStorageCubit>();
     String stateInitialName = 'Estado';
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
@@ -153,7 +156,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                 streetController: streetController,
                                 userNameController: userNameController,
                                 signInCallBack: () => cubit.sendUserDataToApi(
-                                  validate: formKey.currentState?.validate() ?? false,
+                                  validate:
+                                      formKey.currentState?.validate() ?? false,
                                   userState: stateInitialName,
                                   userDataEntity: UserDataEntity(
                                     cep: cepController.text.trim(),
@@ -198,7 +202,10 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                             ),
                           ),
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () async =>
+                                firebaseStorageCubit.pickAndUploadImage(
+                              imageFrom: ImageFrom.gallery,
+                            ),
                             icon: const Icon(
                               Icons.add,
                               color: Colors.white,
