@@ -1,7 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/shared/cubit/internet_connection_cubit/internet_connection_cubit.dart';
+import 'package:stool_in/core/widgets/app_dialog/app_dialog.dart';
+import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
 import 'package:stool_in/features/auth/presenter/login/module/login_module.dart';
 import 'package:stool_in/features/auth/presenter/password_reset/module/password_reset_module.dart';
 import 'package:stool_in/features/auth/presenter/sign_in/module/sign_in_main_module.dart';
@@ -30,20 +34,36 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: PermanentDependencies.init(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'StoolIn',
-        theme: ThemeData.dark(),
-        initialRoute: RoutesConstants.splashRoute,
-        routes: {
-          ...SplashModule().routers,
-          ...OnboardingModule().routers,
-          ...LoginModule().routers,
-          ...SignInMainModule().routers,
-          ...SignInMainDataModule().routers,
-          ...PasswordResetModule().routers,
-          ...HomeModule().routers,
+      child: BlocListener<InternetConnectionCubit, InternetConnectionState>(
+        listener: (context, state) {
+          if (state is InternetConnectionNoInternet) {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AppDialog(
+                  title: '',
+                  context: context,
+                  dialogTypes: DialogTypes.noConnection,
+                );
+              },
+            );
+          }
         },
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'StoolIn',
+          theme: ThemeData.dark(),
+          initialRoute: RoutesConstants.splashRoute,
+          routes: {
+            ...SplashModule().routers,
+            ...OnboardingModule().routers,
+            ...LoginModule().routers,
+            ...SignInMainModule().routers,
+            ...SignInMainDataModule().routers,
+            ...PasswordResetModule().routers,
+            ...HomeModule().routers,
+          },
+        ),
       ),
     );
   }
