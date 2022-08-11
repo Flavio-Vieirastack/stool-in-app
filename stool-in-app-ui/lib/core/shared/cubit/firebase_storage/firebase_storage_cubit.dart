@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stool_in/core/helpers/pick_image_helper/pick_image_helper.dart';
 import 'package:stool_in/core/helpers/storage_ref/user_storage_ref.dart';
@@ -26,14 +27,25 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState> {
   }) async {
     emit(FirebaseStorageLoading());
     File file = File(path);
+    final compressedFile = await _compressAndGetFile(file, file.path);
     try {
       String ref = await _userStorageRef.getRef();
-      await _firebaseStorage.ref(ref).putFile(file);
+      await _firebaseStorage.ref(ref).putFile(compressedFile ?? file);
       emit(FirebaseStorageSucess());
     } catch (e, s) {
       log('Erro ao fazer upload para o firebase', error: e, stackTrace: s);
       emit(FirebaseStorageError());
     }
+  }
+
+  Future<File?> _compressAndGetFile(File file, String targetPath) async {
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: 88,
+    );
+
+    return result;
   }
 
   Future<void> pickAndUploadImage({required ImageFrom imageFrom}) async {
