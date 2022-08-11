@@ -1,28 +1,25 @@
-import 'package:haversine_distance/haversine_distance.dart';
+import 'package:geolocator/geolocator.dart';
+
+class Location {
+  final double latitude;
+  final double longitude;
+  Location({
+    required this.latitude,
+    required this.longitude,
+  });
+}
 
 class DistanceHelperCalculate {
-  final HaversineDistance haversineDistance;
-
-  DistanceHelperCalculate({
-    required this.haversineDistance,
-  });
-
   int caculateDistanceToInt({
-    required Location firstLocation,
-    required Location secondLocation,
+    required Location currentUserLocation,
+    required Location serviceProviderLocation,
   }) {
-    final fistLocation = firstLocation;
-    final secondLoaction = secondLocation;
-    final result =
-        haversineDistance.haversine(fistLocation, secondLoaction, Unit.KM);
-    if (result >= 1) {
-      return result.round();
-    } else {
-      final result =
-          haversineDistance.haversine(fistLocation, secondLoaction, Unit.METER);
-      final duplicateResult = result * 2;
-      final negativeResult = result - duplicateResult;
-      return negativeResult.round();
-    }
+    final result = Geolocator.distanceBetween(
+      currentUserLocation.latitude,
+      currentUserLocation.longitude,
+      serviceProviderLocation.latitude,
+      serviceProviderLocation.longitude,
+    );
+    return result.round();
   }
 }

@@ -443,13 +443,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
-  haversine_distance:
-    dependency: "direct main"
-    description:
-      name: haversine_distance
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.1"
   http:
     dependency: transitive
     description:

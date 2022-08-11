@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:haversine_distance/haversine_distance.dart';
 import 'package:stool_in/core/constants/endpoint_constants.dart';
 import 'package:stool_in/core/helpers/distance_helper/distance_helper_calculate.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
@@ -37,7 +36,8 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
       );
       final serviceProvider = result.data
           ?.map(
-            (map) => ServiceProviderModel.fromDataSource(map, distance: distance),
+            (map) =>
+                ServiceProviderModel.fromDataSource(map, distance: distance),
           )
           .toList();
       return serviceProvider ?? <ServiceProviderEntity>[];
@@ -76,11 +76,13 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
         .toList()
         .first;
     final distance = _distanceHelperCalculate.caculateDistanceToInt(
-      firstLocation:
-          Location(serviceProviderLatitude ?? 0, serviceProviderLongitude ?? 0),
-      secondLocation: Location(
-        params.currentUserLocationLatitude,
-        params.currentUserLocationLongitude,
+      currentUserLocation: Location(
+        latitude: params.currentUserLocationLatitude,
+        longitude: params.currentUserLocationLongitude,
+      ),
+      serviceProviderLocation: Location(
+        latitude: serviceProviderLatitude ?? 0.0,
+        longitude: serviceProviderLongitude ?? 0.0,
       ),
     );
     return distance;
