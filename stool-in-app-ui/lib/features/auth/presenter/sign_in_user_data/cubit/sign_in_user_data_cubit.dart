@@ -49,6 +49,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             await getDouble(key: KeysConstants.userLocationaLogintude);
         final userFirebasePushToken =
             await _fireBaseNotifications.getTokenFirebase();
+        final userUrlImage = await getString(key: KeysConstants.userPhotoUrl);
         final result = await _authUseCase.sendUserData(
           userDataEntity: UserDataEntity(
             cep: userDataEntity.cep,
@@ -62,7 +63,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             userLocationLatitude: userLatitude,
             userLocationLongitude: userLogintude,
             userName: userDataEntity.userName,
-            userPhotoUrl: '', //TODO
+            userPhotoUrl: userUrlImage,
             userState: userDataEntity.userState,
           ),
         );
