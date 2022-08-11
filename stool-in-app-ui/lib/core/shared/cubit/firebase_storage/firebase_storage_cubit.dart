@@ -24,10 +24,12 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState> {
   Future<void> _uploadImage({
     required String path,
   }) async {
+    emit(FirebaseStorageLoading());
     File file = File(path);
     try {
       String ref = await _userStorageRef.getRef();
       await _firebaseStorage.ref(ref).putFile(file);
+      emit(FirebaseStorageSucess());
     } catch (e, s) {
       log('Erro ao fazer upload para o firebase', error: e, stackTrace: s);
       emit(FirebaseStorageError());

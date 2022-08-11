@@ -5,7 +5,13 @@ import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 class AppAvatar extends StatelessWidget {
   final String? urlImage;
   final double size;
-  const AppAvatar({Key? key, this.urlImage, this.size = 50}) : super(key: key);
+  final bool isLoading;
+  const AppAvatar({
+    Key? key,
+    this.urlImage,
+    this.size = 50,
+    this.isLoading = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +30,11 @@ class AppAvatar extends StatelessWidget {
               )
             : CircleAvatar(
                 backgroundColor: AppColors.grey,
-                child: Icon(
+                child: !isLoading ? Icon(
                   Icons.person,
                   size: 50,
                   color: AppColors.black,
-                ),
+                ) : const CircularProgressIndicator.adaptive()
               ),
       ),
     );
