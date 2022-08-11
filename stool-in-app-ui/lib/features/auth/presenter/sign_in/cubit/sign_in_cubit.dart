@@ -89,7 +89,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         userPassword: authEntity.password ?? '',
       );
       timer?.cancel();
-      log('email verified canceled');
+      log('function cancelled');
     }
   }
 
