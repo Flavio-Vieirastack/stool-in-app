@@ -15,11 +15,43 @@ class ComentsMock extends Mock implements ComentsEntity {}
 class UserDataMock extends Mock implements UserDataEntity {}
 
 void main() {
-  late ServiceProviderEntity serviceProviderEntity;
+  late ServiceProviderEntity serviceProviderEntityMeters;
+  late ServiceProviderEntity serviceProviderEntityKm;
+  late ServiceProviderEntity serviceProviderEntityKmDecimal;
   setUp(() {
-    serviceProviderEntity = ServiceProviderEntity(
+    serviceProviderEntityMeters = ServiceProviderEntity(
       id: 1,
-      distance: -435,
+      distance: 435,
+      serviceProviderDescription: 'serviceProviderDescription',
+      status: 'status',
+      initialDisponibleTime: 'initialDisponibleTime',
+      endDisponibleTime: 'endDisponibleTime',
+      disponibleDays: 'disponibleDays',
+      createdAt: DateTime.now(),
+      userDataId: 1,
+      executionServices: [ExectionServicesMock()],
+      servicesToExecute: [ServicesToExecuteMock()],
+      coments: [ComentsMock()],
+      userData: UserDataMock(),
+    );
+    serviceProviderEntityKm = ServiceProviderEntity(
+      id: 1,
+      distance: 1000,
+      serviceProviderDescription: 'serviceProviderDescription',
+      status: 'status',
+      initialDisponibleTime: 'initialDisponibleTime',
+      endDisponibleTime: 'endDisponibleTime',
+      disponibleDays: 'disponibleDays',
+      createdAt: DateTime.now(),
+      userDataId: 1,
+      executionServices: [ExectionServicesMock()],
+      servicesToExecute: [ServicesToExecuteMock()],
+      coments: [ComentsMock()],
+      userData: UserDataMock(),
+    );
+    serviceProviderEntityKmDecimal = ServiceProviderEntity(
+      id: 1,
+      distance: 10000,
       serviceProviderDescription: 'serviceProviderDescription',
       status: 'status',
       initialDisponibleTime: 'initialDisponibleTime',
@@ -34,13 +66,18 @@ void main() {
     );
   });
   test('Deve retornar a distância formatada corretamente em KM', () {
-    final result = serviceProviderEntity.distanceFormat();
+    final result = serviceProviderEntityMeters.distanceFormat();
     const matcher = '435 M';
     expect(result, matcher);
   });
   test('Deve retornar a distância formatada corretamente em Metros', () {
-    final result = serviceProviderEntity.distanceFormat();
-    const matcher = '435 M';
+    final result = serviceProviderEntityKm.distanceFormat();
+    const matcher = '1 KM';
+    expect(result, matcher);
+  });
+  test('Deve retornar a distância formatada corretamente em Metros', () {
+    final result = serviceProviderEntityKmDecimal.distanceFormat();
+    const matcher = '10 KM';
     expect(result, matcher);
   });
 }
