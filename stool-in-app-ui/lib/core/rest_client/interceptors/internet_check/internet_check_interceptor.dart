@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/shared/cubit/internet_connection_cubit/internet_connection_cubit.dart';
 
 class InternetCheckInterceptor
     with SharedPreferencesHelper
@@ -9,10 +9,8 @@ class InternetCheckInterceptor
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) async {
     bool result = await InternetConnectionChecker().hasConnection;
-    if (result == true) {
-      saveBool(key: KeysConstants.haveInternetConnection, value: true);
-    } else {
-      saveBool(key: KeysConstants.haveInternetConnection, value: false);
+    if (result == false) {
+      InternetConnectionCubit().emitNotConnectionState();
     }
   }
 
