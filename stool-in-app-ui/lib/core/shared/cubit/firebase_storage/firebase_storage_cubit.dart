@@ -4,20 +4,21 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/helpers/pick_image_helper/pick_image_helper.dart';
-import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/helpers/storage_ref/user_storage_ref.dart';
 
 part 'firebase_storage_state.dart';
 
-class FirebaseStorageCubit extends Cubit<FirebaseStorageState>
-    with SharedPreferencesHelper {
+class FirebaseStorageCubit extends Cubit<FirebaseStorageState> {
   final FirebaseStorage _firebaseStorage;
   final PickImageHelper _pickImageHelper;
+  final UserStorageRef _userStorageRef;
   FirebaseStorageCubit({
     required FirebaseStorage firebaseStorage,
     required PickImageHelper pickImageHelper,
+    required UserStorageRef userStorageRef,
   })  : _firebaseStorage = firebaseStorage,
+        _userStorageRef = userStorageRef,
         _pickImageHelper = pickImageHelper,
         super(FirebaseStorageInitial());
   Future<void> _uploadImage({
@@ -25,8 +26,7 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState>
   }) async {
     File file = File(path);
     try {
-      final userUuid = await getString(key: KeysConstants.userFirebaseToken);
-      String ref = 'image/profile-$userUuid.jpg';
+      String ref = await _userStorageRef.getRef();
       await _firebaseStorage.ref(ref).putFile(file);
     } catch (e, s) {
       log('Erro ao fazer upload para o firebase', error: e, stackTrace: s);
