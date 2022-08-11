@@ -86,15 +86,15 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             saveString(
                 key: KeysConstants.userPhotoUrl,
                 value: sucess.userPhotoUrl ?? '');
-            await _loginInToApi();
+            await _loginInToApiAndFirebase();
             final loginApiSucess =
                 await getBool(key: KeysConstants.userPassLoginToApi);
             final loginFirebaseSucess =
                 await getBool(key: KeysConstants.userPassLoginToFirebase);
             if (loginApiSucess! && loginFirebaseSucess!) {
               await _removeLocalSecurityStorage.delete(
-                  key: KeysConstants
-                      .userPassword); // TODO verificar essa necessidade
+                key: KeysConstants.userPassword,
+              ); // TODO verificar essa necessidade
               emit(SignInUserDataSucess());
             }
           },
@@ -105,7 +105,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
     }
   }
 
-  Future<void> _loginInToApi() async {
+  Future<void> _loginInToApiAndFirebase() async {
     final userEmail =
         await _readLocalSecurityStorage.read(key: KeysConstants.userEmail);
     final userPassword =
