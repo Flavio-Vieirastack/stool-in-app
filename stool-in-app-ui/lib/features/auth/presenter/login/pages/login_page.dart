@@ -193,8 +193,8 @@ class _LoginPageState extends State<LoginPage>
                                           .pushReplacementNamed(
                                     RoutesConstants.passwordRecoveryRoute,
                                   ),
-                                  signInCallback: () =>
-                                      cubit.goToSignInMainPage(
+                                  signInCallback: () => cubit
+                                      .goToSignInMainPageWithGeoLocationPermition(
                                     navigateToSignIn: () =>
                                         Navigator.of(context)
                                             .pushReplacementNamed(
@@ -225,8 +225,8 @@ class _LoginPageState extends State<LoginPage>
                                           .pushReplacementNamed(
                                     RoutesConstants.passwordRecoveryRoute,
                                   ),
-                                  signInCallback: () =>
-                                      cubit.goToSignInMainPage(
+                                  signInCallback: () => cubit
+                                      .goToSignInMainPageWithGeoLocationPermition(
                                     navigateToSignIn: () =>
                                         Navigator.of(context)
                                             .pushReplacementNamed(
@@ -257,8 +257,8 @@ class _LoginPageState extends State<LoginPage>
                                           .pushReplacementNamed(
                                     RoutesConstants.passwordRecoveryRoute,
                                   ),
-                                  signInCallback: () =>
-                                      cubit.goToSignInMainPage(
+                                  signInCallback: () => cubit
+                                      .goToSignInMainPageWithGeoLocationPermition(
                                     navigateToSignIn: () =>
                                         Navigator.of(context)
                                             .pushReplacementNamed(

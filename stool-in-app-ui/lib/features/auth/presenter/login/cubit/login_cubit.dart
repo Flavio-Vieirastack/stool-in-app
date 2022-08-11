@@ -15,11 +15,11 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   final AuthUseCase _authUseCase;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
   final GeoLocatorCubit _geoLocatorCubit;
-  LoginCubit(
-      {required AuthUseCase authUseCase,
-      required WriteLocalSecurityStorage writeLocalSecurityStorage,
-      required GeoLocatorCubit geoLocatorCubit})
-      : _authUseCase = authUseCase,
+  LoginCubit({
+    required AuthUseCase authUseCase,
+    required WriteLocalSecurityStorage writeLocalSecurityStorage,
+    required GeoLocatorCubit geoLocatorCubit,
+  })  : _authUseCase = authUseCase,
         _geoLocatorCubit = geoLocatorCubit,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         super(LoginInitial());
@@ -67,10 +67,10 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
           LoginError(message: error.message),
         ),
         (sucess) async {
+          await _makeApiLogin(authEntity: authEntity);
           emit(
             LoginSucess(),
           );
-          await _makeApiLogin(authEntity: authEntity);
         },
       );
     }
@@ -99,7 +99,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     );
   }
 
-  Future<void> goToSignInMainPage({
+  Future<void> goToSignInMainPageWithGeoLocationPermition({
     required Function navigateToSignIn,
   }) async {
     final isGeolocationEnabled = await _geoLocatorCubit.requestUserPermition();
