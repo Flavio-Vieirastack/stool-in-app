@@ -57,25 +57,45 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
-      body: BlocListener<SignInUserDataCubit, SignInUserDataState>(
-        listener: (context, state) {
-          if (state is SignInUserDataStateNotSelected) {
-            showAppSnackbar(
-              message: 'Selecione o seu estado',
-              type: SnackBarType.error,
-              context: context,
-            );
-          } else if (state is SignInUserDataError) {
-            showAppSnackbar(
-              message: state.message,
-              type: SnackBarType.error,
-              context: context,
-            );
-          } else if (state is SignInUserDataSucess) {
-            Navigator.of(context)
-                .pushReplacementNamed(RoutesConstants.homeRoute);
-          }
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<SignInUserDataCubit, SignInUserDataState>(
+            listener: (context, state) {
+              if (state is SignInUserDataStateNotSelected) {
+                showAppSnackbar(
+                  message: 'Selecione o seu estado',
+                  type: SnackBarType.error,
+                  context: context,
+                );
+              } else if (state is SignInUserDataError) {
+                showAppSnackbar(
+                  message: state.message,
+                  type: SnackBarType.error,
+                  context: context,
+                );
+              } else if (state is SignInUserDataSucess) {
+                Navigator.of(context)
+                    .pushReplacementNamed(RoutesConstants.homeRoute);
+              }
+            },
+          ),
+          BlocListener<FirebaseStorageCubit, FirebaseStorageState>(
+            listener: (context, state) {
+              if (state is FirebaseStorageError) {
+                showAppSnackbar(
+                  message: 'Ops! Ocorreu um erro ao salvar sua foto',
+                  type: SnackBarType.error,
+                  context: context,
+                );
+              } else if(state is FirebaseStorageSucess) {
+                showAppSnackbar(
+                  message: 'Sua imagem foi salva com sucesso!',
+                  context: context,
+                );
+              }
+            },
+          ),
+        ],
         child: LayoutBuilder(
           builder: (context, constraints) {
             return ListView(
