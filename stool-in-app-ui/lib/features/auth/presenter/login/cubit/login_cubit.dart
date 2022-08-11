@@ -25,11 +25,12 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
         super(LoginInitial());
 
   Future<void> enableApiPasswordResetOnInit() async {
+    final userImageUrl = await getString(key: KeysConstants.userPhotoUrl);
     final userMakeResetSolicitation =
         await getBool(key: KeysConstants.userMakePasswordResetSolicitation);
     if (userMakeResetSolicitation != null && userMakeResetSolicitation) {
       emit(
-        LoginEnableApiPasswordReset(),
+        LoginEnableApiPasswordReset(urlImage: userImageUrl),
       );
     }
   }
@@ -39,7 +40,8 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     required bool validate,
   }) async {
     if (validate) {
-      emit(LoginLoading());
+      final userImageUrl = await getString(key: KeysConstants.userPhotoUrl);
+      emit(LoginLoading(urlImage: userImageUrl));
       final result = await _authUseCase.firebaseLogin(
         authEntity: authEntity,
       );
@@ -59,7 +61,8 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     required bool validate,
   }) async {
     if (validate) {
-      emit(LoginLoading());
+      final userImageUrl = await getString(key: KeysConstants.userPhotoUrl);
+      emit(LoginLoading(urlImage: userImageUrl));
       final result =
           await _authUseCase.apiPasswordReset(authEntity: authEntity);
       result.fold(
@@ -79,12 +82,13 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   Future<void> _makeApiLogin({
     required AuthEntity authEntity,
   }) async {
+    final userImageUrl = await getString(key: KeysConstants.userPhotoUrl);
     final result = await _authUseCase.apiLogin(
       authEntity: authEntity,
     );
     result.fold(
       (error) => emit(
-        LoginError(message: error.message),
+        LoginError(message: error.message, urlImage: userImageUrl),
       ),
       (sucess) async {
         await _writeLocalSecurityStorage.write(
@@ -94,7 +98,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
         removeCache(
           key: KeysConstants.userMakePasswordResetSolicitation,
         );
-        emit(LoginSucess());
+        emit(LoginSucess(urlImage: userImageUrl));
       },
     );
   }
@@ -102,6 +106,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   Future<void> goToSignInMainPageWithGeoLocationPermition({
     required Function navigateToSignIn,
   }) async {
+    final userImageUrl = await getString(key: KeysConstants.userPhotoUrl);
     final isGeolocationEnabled = await _geoLocatorCubit.requestUserPermition();
     if (isGeolocationEnabled) {
       navigateToSignIn.call();
@@ -109,10 +114,10 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
       if (Platform.isIOS) {
         emit(LoginGeoLocatorNotEnabledForever());
       } else {
-        emit(LoginGeoLocatorNotEnabled());
+        emit(LoginGeoLocatorNotEnabled(urlImage: userImageUrl));
       }
       await Future.delayed(const Duration(seconds: 1));
-      emit(LoginInitial());
+      emit(LoginInitial(urlImage: userImageUrl));
     }
   }
 }

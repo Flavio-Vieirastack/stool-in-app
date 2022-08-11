@@ -5,16 +5,52 @@ abstract class LoginState extends Equatable {
   List<Object?> get props => [];
 }
 
-class LoginInitial extends LoginState {}
+class LoginInitial extends LoginState {
+  final String? urlImage;
+  LoginInitial({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
 
-class LoginLoading extends LoginState {}
-class LoginSucess extends LoginState {}
-class LoginEnableApiPasswordReset extends LoginState{}
-class LoginGeoLocatorNotEnabled extends LoginState{}
-class LoginGeoLocatorNotEnabledForever extends LoginState{}
+class LoginLoading extends LoginState {
+  final String? urlImage;
+  LoginLoading({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
+
+class LoginSucess extends LoginState {
+  final String? urlImage;
+  LoginSucess({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
+
+class LoginEnableApiPasswordReset extends LoginState {
+  final String? urlImage;
+  LoginEnableApiPasswordReset({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
+
+class LoginGeoLocatorNotEnabled extends LoginState {
+  final String? urlImage;
+  LoginGeoLocatorNotEnabled({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
+
+class LoginGeoLocatorNotEnabledForever extends LoginState {
+  final String? urlImage;
+  LoginGeoLocatorNotEnabledForever({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
+
 class LoginError extends LoginState {
   final String message;
-  LoginError({required this.message});
+  final String? urlImage;
+  LoginError({required this.message, this.urlImage});
   @override
-  List<Object?> get props => [message];
+  List<Object?> get props => [message, urlImage];
 }
