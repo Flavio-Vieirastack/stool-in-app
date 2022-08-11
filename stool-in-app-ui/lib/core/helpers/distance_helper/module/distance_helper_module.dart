@@ -10,7 +10,7 @@ class DistanceHelperModule implements PermanentModule {
   @override
   List<SingleChildWidget> inject() {
     return [
-      Provider(
+      Provider<DistanceHelperCalculate>(
         create: (context) => DistanceHelperCalculate(),
       )
     ];
