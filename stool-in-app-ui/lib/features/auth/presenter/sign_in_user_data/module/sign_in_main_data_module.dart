@@ -89,6 +89,8 @@ class SignInMainDataModule extends AppModule {
             ),
             Provider(
               create: (context) => SignInUserDataCubit(
+                removeLocalSecurityStorage:
+                    Inject<RemoveLocalSecurityStorage>(context).get(),
                 fireBaseNotifications:
                     Inject<FireBaseNotifications>(context).get(),
                 firebaseAuth: Inject<FirebaseAuth>(context).get(),

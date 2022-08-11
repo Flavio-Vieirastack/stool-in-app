@@ -16,6 +16,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
     with SharedPreferencesHelper {
   final AuthUseCase _authUseCase;
   final ReadLocalSecurityStorage _readLocalSecurityStorage;
+  final RemoveLocalSecurityStorage _removeLocalSecurityStorage;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
   final FirebaseAuth _firebaseAuth;
   final FireBaseNotifications _fireBaseNotifications;
@@ -25,8 +26,10 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
     required WriteLocalSecurityStorage writeLocalSecurityStorage,
     required FirebaseAuth firebaseAuth,
     required FireBaseNotifications fireBaseNotifications,
+    required RemoveLocalSecurityStorage removeLocalSecurityStorage,
   })  : _authUseCase = authUseCase,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
+        _removeLocalSecurityStorage = removeLocalSecurityStorage,
         _fireBaseNotifications = fireBaseNotifications,
         _firebaseAuth = firebaseAuth,
         _readLocalSecurityStorage = readLocalSecurityStorage,
@@ -40,6 +43,10 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
       if (userState != 'Estado') {
         emit(SignInUserDataLoading());
         final userFirebaseToken = _firebaseAuth.currentUser?.uid;
+        final userLatitude =
+            await getDouble(key: KeysConstants.userLocationLatitude);
+        final userLogintude =
+            await getDouble(key: KeysConstants.userLocationaLogintude);
         final userFirebasePushToken =
             await _fireBaseNotifications.getTokenFirebase();
         final result = await _authUseCase.sendUserData(
@@ -52,8 +59,8 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             street: userDataEntity.street,
             userFirebasePushToken: userFirebasePushToken,
             userFirebaseUuid: userFirebaseToken,
-            userLocationLatitude: 5, //TODO
-            userLocationLongitude: 6, //TODO,
+            userLocationLatitude: userLatitude,
+            userLocationLongitude: userLogintude,
             userName: userDataEntity.userName,
             userPhotoUrl: '', //TODO
             userState: userDataEntity.userState,
@@ -84,6 +91,9 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             final loginFirebaseSucess =
                 await getBool(key: KeysConstants.userPassLoginToFirebase);
             if (loginApiSucess! && loginFirebaseSucess!) {
+              await _removeLocalSecurityStorage.delete(
+                  key: KeysConstants
+                      .userPassword); // TODO verificar essa necessidade
               emit(SignInUserDataSucess());
             }
           },

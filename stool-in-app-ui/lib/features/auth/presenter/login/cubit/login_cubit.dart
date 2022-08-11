@@ -102,7 +102,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   Future<void> goToSignInMainPage({
     required Function navigateToSignIn,
   }) async {
-    final isGeolocationEnabled = await _geoLocatorCubit.checkPermitions();
+    final isGeolocationEnabled = await _geoLocatorCubit.requestUserPermition();
     if (isGeolocationEnabled) {
       navigateToSignIn.call();
     } else {

@@ -43,7 +43,8 @@ class _LoginPageState extends State<LoginPage>
     WidgetsBinding.instance.addPostFrameCallback(
       (_) async {
         await context.read<LoginCubit>().enableApiPasswordResetOnInit().then(
-              (_) async => context.read<GeoLocatorCubit>().checkPermitions(),
+              (_) async =>
+                  context.read<GeoLocatorCubit>().requestUserPermition(),
             );
       },
     );
