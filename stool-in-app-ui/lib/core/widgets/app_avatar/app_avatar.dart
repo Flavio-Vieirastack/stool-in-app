@@ -16,10 +16,10 @@ class AppAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(50)),
+      borderRadius: BorderRadius.all(Radius.circular(50.dp)),
       child: SizedBox(
-        height: size,
-        width: size,
+        height: size.dp,
+        width: size.dp,
         child: urlImage != null
             ? CachedNetworkImage(
                 imageUrl: urlImage ?? '',
