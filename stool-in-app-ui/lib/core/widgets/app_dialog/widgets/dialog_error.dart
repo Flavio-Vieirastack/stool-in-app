@@ -5,11 +5,11 @@ class _DialogError {
     return Column(
       children: [
         LottieBuilder.asset(
-          width: 100,
+          width: 100.w,
           LottieConstants.lottieError,
         ),
-        const SizedBox(
-          height: 10,
+         SizedBox(
+          height: 10.h,
         ),
         Text(message)
       ],

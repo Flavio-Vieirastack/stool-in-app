@@ -1,14 +1,15 @@
 part of '../app_dialog.dart';
+
 class _DialogWaiting {
-  Widget waiting ({required String message}){
+  Widget waiting({required String message}) {
     return Column(
       children: [
         LottieBuilder.asset(
-          width: 100,
+          width: 100.w,
           LottieConstants.lottieWaiting,
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 10.h,
         ),
         Text(message)
       ],

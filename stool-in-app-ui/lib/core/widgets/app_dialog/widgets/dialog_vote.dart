@@ -30,14 +30,14 @@ class _DialogVoteState extends State<_DialogVote> {
             onValueChanged: widget.onValueChanged,
           ),
         ),
-        const SizedBox(
-          height: 30,
+         SizedBox(
+          height: 30.h,
         ),
         Container(
-          constraints: const BoxConstraints(
-            maxHeight: 100,
-            minWidth: 300,
-            maxWidth: 400,
+          constraints: BoxConstraints(
+            maxHeight: 100.h,
+            minWidth: 300.w,
+            maxWidth: 400.w,
           ),
           child: AppTextFormField(
             expands: true,
@@ -53,8 +53,8 @@ class _DialogVoteState extends State<_DialogVote> {
             ),
           ),
         ),
-        const SizedBox(
-          height: 30,
+         SizedBox(
+          height: 30.h,
         ),
         Column(
           children: [
