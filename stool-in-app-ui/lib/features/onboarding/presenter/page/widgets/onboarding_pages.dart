@@ -47,9 +47,9 @@ class OnboardingPages extends StatelessWidget {
             Image.asset(AssetsConstants.logoWhite),
             Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 250.0.h),
+                padding: EdgeInsets.only(top: 30.h),
                 child: SizedBox(
-                  width: 10.h,
+                  width: 40.h,
                   child: Text(
                     centerText,
                     textAlign: TextAlign.center,
@@ -62,7 +62,7 @@ class OnboardingPages extends StatelessWidget {
               visible: showButton,
               child: Center(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 600.h),
+                  padding: EdgeInsets.only(top: 75.h),
                   child: AppButton(
                     buttonText: 'Eu quero',
                     onPressed: onPressed,
