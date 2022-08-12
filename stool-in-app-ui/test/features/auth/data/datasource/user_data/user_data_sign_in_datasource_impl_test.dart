@@ -1,15 +1,12 @@
-import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/constants/endpoint_constants.dart';
 import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
 import 'package:stool_in/features/auth/data/datasource/user_data/user_data_sign_in_datasource.dart';
 import 'package:stool_in/features/auth/data/datasource/user_data/user_data_sign_in_datasource_impl.dart';
 import 'package:stool_in/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in/features/auth/domain/error/user_data_error.dart';
 
 import '../../../../../mock/user_data_sign_in_mock.dart';
 

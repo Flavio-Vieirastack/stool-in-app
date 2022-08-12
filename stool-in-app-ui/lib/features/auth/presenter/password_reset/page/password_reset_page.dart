@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/presenter/password_reset/cubit/password_reset_cubit.dart';

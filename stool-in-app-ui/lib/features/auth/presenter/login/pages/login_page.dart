@@ -9,7 +9,6 @@ import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:validatorless/validatorless.dart';
 
-import '../../../../../core/helpers/responsive/responsive_helper_mixin.dart';
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/widgets/app_button/app_button.dart';
