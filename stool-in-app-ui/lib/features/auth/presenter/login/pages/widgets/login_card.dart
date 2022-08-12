@@ -95,7 +95,7 @@ class _LoginCard extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 5.h
+                height: 2.h
               ),
               AppButton(
                 buttonText: buttonText,
@@ -103,7 +103,7 @@ class _LoginCard extends StatelessWidget {
                 buttonTypes: buttonTypes,
               ),
               SizedBox(
-                height: 5.h
+                height: 2.h
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 5.h),
