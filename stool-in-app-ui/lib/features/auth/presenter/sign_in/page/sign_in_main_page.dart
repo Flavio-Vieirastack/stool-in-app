@@ -24,8 +24,7 @@ class SignInMainPage extends StatefulWidget {
   State<SignInMainPage> createState() => _SignInMainPageState();
 }
 
-class _SignInMainPageState extends State<SignInMainPage>
-    with AppSnackBar {
+class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -89,10 +88,7 @@ class _SignInMainPageState extends State<SignInMainPage>
                   child: Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(
-                          top: 10.h,
-                          left: 10.w
-                        ),
+                        padding: EdgeInsets.only(top: 10.h, left: 10.w),
                         child: Text(
                           'Vamos começar,',
                           style: AppTextStyles.headLine0,

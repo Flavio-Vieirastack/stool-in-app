@@ -108,7 +108,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                   ),
                 ),
                  SizedBox(
-                  height: 50.h,
+                  height: 10.h,
                 ),
                 SizedBox(
                   height: constraints.maxHeight,
@@ -117,44 +117,13 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                       BlocBuilder<SignInUserDataCubit, SignInUserDataState>(
                         builder: (context, state) {
                           if (state is SignInUserDataLoading) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 10.w,
-                              ),
-                              child: IgnorePointer(
-                                ignoring: true,
-                                child: _SignInDataCard(
-                                  formKey: formKey,
-                                  statesDropDownLabel: stateInitialName,
-                                  onChanged: (value) {},
-                                  buttonTypes: ButtonTypes.loading,
-                                  cepController: cepController,
-                                  cityController: cityController,
-                                  districtController: districtController,
-                                  houseNumberController: houseNumberController,
-                                  referencePointController:
-                                      referencePointController,
-                                  streetController: streetController,
-                                  userNameController: userNameController,
-                                  signInCallBack: () {},
-                                ),
-                              ),
-                            );
-                          } else {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 10.w
-                              ),
+                            return IgnorePointer(
+                              ignoring: true,
                               child: _SignInDataCard(
                                 formKey: formKey,
                                 statesDropDownLabel: stateInitialName,
-                                onChanged: (value) {
-                                  if (value != null) {
-                                    setState(() {
-                                      stateInitialName = value;
-                                    });
-                                  }
-                                },
+                                onChanged: (value) {},
+                                buttonTypes: ButtonTypes.loading,
                                 cepController: cepController,
                                 cityController: cityController,
                                 districtController: districtController,
@@ -163,22 +132,43 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                     referencePointController,
                                 streetController: streetController,
                                 userNameController: userNameController,
-                                signInCallBack: () => cubit.sendUserDataToApi(
-                                  validate:
-                                      formKey.currentState?.validate() ?? false,
+                                signInCallBack: () {},
+                              ),
+                            );
+                          } else {
+                            return _SignInDataCard(
+                              formKey: formKey,
+                              statesDropDownLabel: stateInitialName,
+                              onChanged: (value) {
+                                if (value != null) {
+                                  setState(() {
+                                    stateInitialName = value;
+                                  });
+                                }
+                              },
+                              cepController: cepController,
+                              cityController: cityController,
+                              districtController: districtController,
+                              houseNumberController: houseNumberController,
+                              referencePointController:
+                                  referencePointController,
+                              streetController: streetController,
+                              userNameController: userNameController,
+                              signInCallBack: () => cubit.sendUserDataToApi(
+                                validate:
+                                    formKey.currentState?.validate() ?? false,
+                                userState: stateInitialName,
+                                userDataEntity: UserDataEntity(
+                                  cep: cepController.text.trim(),
+                                  city: cityController.text.trim(),
+                                  district: districtController.text.trim(),
+                                  houseNumber:
+                                      houseNumberController.text.trim(),
+                                  referencePoint:
+                                      referencePointController.text.trim(),
+                                  street: streetController.text.trim(),
+                                  userName: userNameController.text.trim(),
                                   userState: stateInitialName,
-                                  userDataEntity: UserDataEntity(
-                                    cep: cepController.text.trim(),
-                                    city: cityController.text.trim(),
-                                    district: districtController.text.trim(),
-                                    houseNumber:
-                                        houseNumberController.text.trim(),
-                                    referencePoint:
-                                        referencePointController.text.trim(),
-                                    street: streetController.text.trim(),
-                                    userName: userNameController.text.trim(),
-                                    userState: stateInitialName,
-                                  ),
                                 ),
                               ),
                             );
@@ -187,8 +177,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: 10.w,
-                          left: Adaptive.w(50)
+                          top: 5.w,
+                          left: 55.w
                         ),
                         child: Container(
                           decoration: BoxDecoration(

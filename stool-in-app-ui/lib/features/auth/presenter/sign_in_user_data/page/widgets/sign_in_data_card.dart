@@ -31,7 +31,6 @@ class _SignInDataCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const componentsMobileDefaultDistance = 0.010;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Form(
@@ -56,31 +55,37 @@ class _SignInDataCard extends StatelessWidget {
                 return Column(
                   children: [
                      SizedBox(
-                      height: 10.h,
+                      height: 1.5.h,
                     ),
                     if (state is FirebaseStorageLoading)
                        Center(
                         child: AppAvatar(
-                          size: 100.dp,
+                          size: 80.dp,
                           isLoading: true,
+                        ),
+                      ),
+                    if (state is FirebaseStorageInitial)
+                       Center(
+                        child: AppAvatar(
+                          size: 80.dp,
                         ),
                       ),
                     if (state is FirebaseStorageSucess)
                       Center(
                         child: AppAvatar(
-                          size: 100.dp,
+                          size: 80.dp,
                           urlImage: state.userUrlImage,
                         ),
                       ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     Text(
                       'Por favor preencha seus dados.',
                       style: AppTextStyles.headLine1,
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     AppTextFormField(
                       label: 'Seu nome completo',
@@ -100,7 +105,7 @@ class _SignInDataCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     AppTextFormField(
                       label: 'Rua',
@@ -120,7 +125,7 @@ class _SignInDataCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     AppTextFormField(
                       label: 'Cidade',
@@ -140,7 +145,7 @@ class _SignInDataCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     AppTextFormField(
                       label: 'Número da casa',
@@ -156,7 +161,7 @@ class _SignInDataCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     AppTextFormField(
                       label: 'Bairro',
@@ -176,7 +181,7 @@ class _SignInDataCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -197,7 +202,7 @@ class _SignInDataCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     AppTextFormField(
                       label: 'Cep',
@@ -206,7 +211,7 @@ class _SignInDataCard extends StatelessWidget {
                       controller: cepController,
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.h
                     ),
                     AppTextFormField(
                       label: 'Ponto de referência',
@@ -222,10 +227,10 @@ class _SignInDataCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     AppButton(
                       buttonText: 'Cadastrar',
@@ -233,7 +238,7 @@ class _SignInDataCard extends StatelessWidget {
                       buttonTypes: buttonTypes,
                     ),
                     SizedBox(
-                      height: 10.h
+                      height: 1.5.h,
                     ),
                     AppButton(
                       buttonText: 'Voltar',
@@ -242,9 +247,7 @@ class _SignInDataCard extends StatelessWidget {
                               RoutesConstants.signInMainRoute),
                       buttonTypes: ButtonTypes.secondary,
                     ),
-                    SizedBox(
-                      height: 10.h
-                    ),
+                    
                   ],
                 );
               },
