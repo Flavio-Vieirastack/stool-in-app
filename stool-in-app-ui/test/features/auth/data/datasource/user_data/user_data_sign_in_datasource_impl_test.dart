@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/core/constants/endpoint_constants.dart';
+import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
 import 'package:stool_in/features/auth/data/datasource/user_data/user_data_sign_in_datasource.dart';
@@ -29,20 +30,20 @@ void main() {
   );
   test('Deve retornar uma entidade corretamente', () async {
     final model = UserDataModel(
-      cep: '63101220',
-      city: 'crato',
-      district: 'Pinto madeira',
-      houseNumber: '255',
-      referencePoint: 'Próximo a x',
-      street: 'Rua monsenhor esmeraldo',
-      userFirebasePushToken: 'push',
-      userFirebaseUuid: 'UUid',
-      userLocationLatitude: 2565,
-      userLocationLongitude: 58741,
-      userName: 'Flavio emerson 5689',
-      userPhotoUrl: 'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
-      userState: 'CE'
-    );
+        cep: '63101220',
+        city: 'crato',
+        district: 'Pinto madeira',
+        houseNumber: '255',
+        referencePoint: 'Próximo a x',
+        street: 'Rua monsenhor esmeraldo',
+        userFirebasePushToken: 'push',
+        userFirebaseUuid: 'UUid',
+        userLocationLatitude: 2565,
+        userLocationLongitude: 58741,
+        userName: 'Flavio emerson 5689',
+        userPhotoUrl:
+            'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
+        userState: 'CE');
 
     when(
       () => restClientPostMock.post(
@@ -60,13 +61,29 @@ void main() {
     expect(sut, model);
   });
   test('Deve retornar um erro corretamente', () async {
-    final datasourceMock = UserSignInDataSourceMock();
-    final model = UserDataModel();
+    final model = UserDataModel(
+        cep: '63101220',
+        city: 'crato',
+        district: 'Pinto madeira',
+        houseNumber: '255',
+        referencePoint: 'Próximo a x',
+        street: 'Rua monsenhor esmeraldo',
+        userFirebasePushToken: 'push',
+        userFirebaseUuid: 'UUid',
+        userLocationLatitude: 2565,
+        userLocationLongitude: 58741,
+        userName: 'Flavio emerson 5689',
+        userPhotoUrl:
+            'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png',
+        userState: 'CE');
 
     when(
-      () => datasourceMock.sendUserData(userDataModel: model),
+      () => restClientPostMock.post(
+        path: any(named: 'path'),
+        data: any(named: 'data'),
+      ),
     ).thenThrow(
-      UserDataError(message: 'message'),
+      RestClientException()
     );
     final sut = userDataSignInDatasource.sendUserData;
     expect(() async => sut(userDataModel: model), throwsException);
