@@ -4,7 +4,7 @@ import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/ratting_stars/app_ratting_stars.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 class AppComentsCards extends StatelessWidget {
   final String userUrlImage;
   final String userName;
@@ -23,8 +23,8 @@ class AppComentsCards extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           border: Border.all(color: AppColors.buttonLeftGradientColor),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(20),
+          borderRadius: BorderRadius.all(
+            Radius.circular(20.dp),
           ),
           gradient: RadialGradient(
             radius: 2,
@@ -34,7 +34,7 @@ class AppComentsCards extends StatelessWidget {
             ],
           )),
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: EdgeInsets.all(15.0.dp),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,8 +42,8 @@ class AppComentsCards extends StatelessWidget {
             Row(
               children: [
                  AppAvatar(urlImage: userUrlImage),
-                const SizedBox(
-                  width: 5,
+                 SizedBox(
+                  width: 5.w,
                 ),
                 Expanded(
                   child: AutoSizeText(
@@ -51,14 +51,14 @@ class AppComentsCards extends StatelessWidget {
                     style: AppTextStyles.headLine1,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    maxFontSize: 18,
-                    minFontSize: 17,
+                    maxFontSize: 18.dp,
+                    minFontSize: 17.dp,
                   ),
                 ),
               ],
             ),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
             Text(
               'Comentário:',
@@ -66,23 +66,23 @@ class AppComentsCards extends StatelessWidget {
                   color: AppColors.buttonLeftGradientColor,
                   decoration: TextDecoration.underline),
             ),
-            const SizedBox(
-              height: 5,
+             SizedBox(
+              height: 5.w,
             ),
             Text(
               userComent,
               style: AppTextStyles.headLine2,
               textAlign: TextAlign.justify,
             ),
-            const SizedBox(
-              height: 10,
+             SizedBox(
+              height: 10.h,
             ),
             Align(
               alignment: Alignment.bottomRight,
               child: AppRattingStars(
                 value: votes,
                 onValueChanged: (v) {},
-                size: 10,
+                size: 10.dp,
               ),
             ),
           ],
