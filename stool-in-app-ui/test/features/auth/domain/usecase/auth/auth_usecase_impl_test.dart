@@ -4,6 +4,8 @@ import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in/features/auth/domain/entity/user_token_entity.dart';
+import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
+import 'package:stool_in/features/auth/domain/error/user_data_error.dart';
 import 'package:stool_in/features/auth/domain/repository/login/login_repository.dart';
 import 'package:stool_in/features/auth/domain/repository/password_reset/password_reset_repository.dart';
 import 'package:stool_in/features/auth/domain/repository/sign_in/sign_in_repository.dart';
@@ -61,11 +63,62 @@ void main() {
     final sut = await authUseCaseIml.apiLogin(authEntity: authEntity);
     expect(sut, Right(userTokenEntity));
   });
+  test('Deve retornar um erro do tipo correto', () async {
+    when(
+      () => loginRepository.apiLogin(authEntity: authEntity),
+    ).thenAnswer((_) async => Left(ApiAuthError(message: 'message')));
+    final sut = authUseCaseIml.apiLogin;
+    expect(
+      await sut(authEntity: authEntity),
+      Left(
+        ApiAuthError(message: 'message'),
+      ),
+    );
+  });
   test('Deve retornar uma entidade de useDataEntity', () async {
     when(
-      () => userDataSignInRepository.sendUserData(userDataEntity: userDataEntity),
+      () =>
+          userDataSignInRepository.sendUserData(userDataEntity: userDataEntity),
     ).thenAnswer((_) async => Right(userDataEntity));
-    final sut = await authUseCaseIml.sendUserData(userDataEntity: userDataEntity);
+    final sut =
+        await authUseCaseIml.sendUserData(userDataEntity: userDataEntity);
     expect(sut, Right(userDataEntity));
+  });
+  test('Deve retornar chamar o userData sign in repository', () async {
+    when(
+      () =>
+          userDataSignInRepository.sendUserData(userDataEntity: userDataEntity),
+    ).thenAnswer((_) async => Right(userDataEntity));
+    final sut =
+        await authUseCaseIml.sendUserData(userDataEntity: userDataEntity);
+    expect(sut, Right(userDataEntity));
+    verify(
+      () =>
+          userDataSignInRepository.sendUserData(userDataEntity: userDataEntity),
+    ).called(1);
+  });
+  test('Deve retornar um erro do tipo correto para user data', () async {
+    when(
+      () =>
+          userDataSignInRepository.sendUserData(userDataEntity: userDataEntity),
+    ).thenAnswer(
+      (_) async => Left(
+        UserDataError(message: 'message'),
+      ),
+    );
+    final sut = authUseCaseIml.sendUserData;
+    expect(
+      await sut(userDataEntity: userDataEntity),
+      Left(
+        UserDataError(message: 'message'),
+      ),
+    );
+  });
+  test('Deve retornar uma instância de right', () async {
+    when(
+      () => signInRepository.apiSignIn(authEntity: authEntity),
+    ).thenAnswer((_) async => const Right(null));
+    final sut = await signInRepository.apiSignIn(authEntity: authEntity);
+    expect(sut, isA<Right>());
   });
 }
