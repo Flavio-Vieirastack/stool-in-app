@@ -11,10 +11,10 @@ class _Sucess extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: onPressed,
-      icon: const Icon(
+      icon: Icon(
         Icons.check,
         color: Colors.green,
-        size: 30,
+        size: 30.dp,
       ),
     );
   }

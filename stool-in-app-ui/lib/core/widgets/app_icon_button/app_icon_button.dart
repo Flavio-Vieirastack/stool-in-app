@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stool_in/core/widgets/app_icon_button/enum/app_icon_button_type.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 part './icon_button_types.dart/error.dart';
 part './icon_button_types.dart/sucess.dart';
 

@@ -11,10 +11,10 @@ class _Error extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: onPressed,
-      icon: const Icon(
+      icon: Icon(
         Icons.close,
         color: Colors.red,
-        size: 30,
+        size: 30.dp,
       ),
     );
   }
