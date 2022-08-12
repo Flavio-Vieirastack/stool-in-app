@@ -7,6 +7,7 @@ import 'package:stool_in/features/auth/data/datasource/login/login_datasource.da
 import 'package:stool_in/features/auth/data/datasource/login/login_datasource_impl.dart';
 import 'package:stool_in/features/auth/data/model/auth_model.dart';
 import 'package:stool_in/features/auth/domain/entity/user_token_entity.dart';
+import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
 
 class PostImplMock extends Mock implements RestClientPost {}
 
@@ -42,5 +43,30 @@ void main() {
         (_) async => RestClientResponse(data: response, statucCode: 200));
     final sut = await loginDatasource.apiLogin(authModel: authModel);
     expect(sut, userTokenEntity);
+  });
+  test('Deve retornar chamar o post corretamente', () async {
+    when(
+      () => postImplMock.post(
+        path: any(named: 'path'),
+        data: any(named: 'data'),
+      ),
+    ).thenAnswer(
+        (_) async => RestClientResponse(data: response, statucCode: 200));
+    final sut = await loginDatasource.apiLogin(authModel: authModel);
+    expect(sut, userTokenEntity);
+    verify(
+      () =>
+          postImplMock.post(path: any(named: 'path'), data: any(named: 'data')),
+    ).called(1);
+  });
+  test('Deve retornar uma erro corretamente', () async {
+    when(
+      () => postImplMock.post(
+        path: any(named: 'path'),
+        data: any(named: 'data'),
+      ),
+    ).thenThrow(ApiAuthError(message: 'Erro ao fazer login, tente mais tarde'));
+    final sut = loginDatasource.apiLogin;
+    expect(() async => sut(authModel: authModel), throwsException);
   });
 }
