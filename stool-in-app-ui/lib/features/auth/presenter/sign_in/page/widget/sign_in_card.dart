@@ -26,10 +26,8 @@ class _SignInCard extends StatelessWidget {
           return Form(
             key: formKey,
             child: Container(
-              constraints: BoxConstraints(
-                maxHeight:10.h
-              ),
-              width: 10.h,
+              padding: EdgeInsets.all(8.dp),
+              width: Adaptive.w(90),
               decoration: BoxDecoration(
                 color: AppColors.black,
                 gradient: RadialGradient(
@@ -47,16 +45,12 @@ class _SignInCard extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    height: 10.h
-                  ),
+                  SizedBox(height: 2.h),
                   Text(
                     'Informe seu email e senha',
                     style: AppTextStyles.headLine1,
                   ),
-                  SizedBox(
-                    height: 10.h
-                  ),
+                  SizedBox(height: 2.h),
                   AppTextFormField(
                     label: 'Email',
                     hint: 'Ex: email@email.com',
@@ -67,9 +61,7 @@ class _SignInCard extends StatelessWidget {
                       Validatorless.email('Informe um email válido'),
                     ]),
                   ),
-                  SizedBox(
-                    height: 10.h
-                  ),
+                  SizedBox(height: 2.h),
                   AppTextFormField(
                     label: 'Senha',
                     hint: 'Ex: Abc@123456',
@@ -88,9 +80,7 @@ class _SignInCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 10.h
-                  ),
+                  SizedBox(height: 2.h),
                   AppTextFormField(
                     label: 'Digite novamente sua senha',
                     hint: 'Ex: Abc@123456',
@@ -107,29 +97,21 @@ class _SignInCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 10.h
-                  ),
-                  SizedBox(
-                    height: 10.h
-                  ),
+                  SizedBox(height: 2.h),
+                  SizedBox(height: 2.h),
                   AppButton(
                     buttonText: 'Cadastrar',
                     onPressed: signInCallBack,
                     buttonTypes: buttonTypes,
                   ),
-                  SizedBox(
-                    height: 10.h
-                  ),
+                  SizedBox(height: 2.h),
                   AppButton(
                     buttonText: 'Voltar',
                     onPressed: () => Navigator.of(context)
                         .pushReplacementNamed(RoutesConstants.loginRoute),
                     buttonTypes: ButtonTypes.secondary,
                   ),
-                  SizedBox(
-                    height: 10.h
-                  ),
+                  SizedBox(height: 2.h),
                 ],
               ),
             ),
