@@ -1,12 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:stool_in/core/constants/assets_constants.dart';
-import 'package:stool_in/core/helpers/responsive/responsive_helper_mixin.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
-import 'package:stool_in/core/widgets/app_button/app_button.dart';
+part of '../onboarding_page.dart';
 
-import '../../../../../core/helpers/theme/colors/app_colors.dart';
-
-class OnboardingPages extends StatelessWidget with ResponsiveHelperMixin {
+class OnboardingPages extends StatelessWidget {
   final String backgroundImageAsset;
   final String centerText;
   final bool showButton;
@@ -53,15 +47,9 @@ class OnboardingPages extends StatelessWidget with ResponsiveHelperMixin {
             Image.asset(AssetsConstants.logoWhite),
             Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 250.0),
+                padding: EdgeInsets.only(top: 250.0.h),
                 child: SizedBox(
-                  width: constraints.maxWidth *
-                      responsiveWidth(
-                        defaultMobileWidth: 0.8,
-                        defaultMobileSmallSizeWidth: 0.8,
-                        defaultTabletWidth: 0.8,
-                        constraints: constraints,
-                      ),
+                  width: 10.h,
                   child: Text(
                     centerText,
                     textAlign: TextAlign.center,
@@ -74,7 +62,7 @@ class OnboardingPages extends StatelessWidget with ResponsiveHelperMixin {
               visible: showButton,
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 600), //!Small // TODO responsive
+                  padding: EdgeInsets.only(top: 600.h),
                   child: AppButton(
                     buttonText: 'Eu quero',
                     onPressed: onPressed,
