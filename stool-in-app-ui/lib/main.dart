@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/shared/cubit/internet_connection_cubit/internet_connection_cubit.dart';
@@ -49,19 +50,23 @@ class MyApp extends StatelessWidget {
             );
           }
         },
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'StoolIn',
-          theme: ThemeData.dark(),
-          initialRoute: RoutesConstants.splashRoute,
-          routes: {
-            ...SplashModule().routers,
-            ...OnboardingModule().routers,
-            ...LoginModule().routers,
-            ...SignInMainModule().routers,
-            ...SignInMainDataModule().routers,
-            ...PasswordResetModule().routers,
-            ...HomeModule().routers,
+        child: FlutterSizer(
+          builder: (context, orientation, screenType) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'StoolIn',
+              theme: ThemeData.dark(),
+              initialRoute: RoutesConstants.splashRoute,
+              routes: {
+                ...SplashModule().routers,
+                ...OnboardingModule().routers,
+                ...LoginModule().routers,
+                ...SignInMainModule().routers,
+                ...SignInMainDataModule().routers,
+                ...PasswordResetModule().routers,
+                ...HomeModule().routers,
+              },
+            );
           },
         ),
       ),
