@@ -276,24 +276,158 @@ class _LoginPageState extends State<LoginPage>
                       ),
                       BlocBuilder<LoginCubit, LoginState>(
                         builder: (context, state) {
-                          return Padding(
-                            padding: EdgeInsets.only(
-                              bottom: constraints.maxHeight *
-                                  responsiveHeight(
-                                    defaultMobileHeight: 0.5,
-                                    defaultMobileSmallSizeHeight: 0.2,
-                                    defaultTabletHeight: 0.2,
-                                    constraints: constraints,
-                                  ),
-                            ),
-                            child: const Center(
-                              child: AppAvatar(
-                                size: 100,
-                                urlImage:
-                                    'https://static1.patasdacasa.com.br/articles/8/10/38/@/4864-o-cachorro-inteligente-mostra-essa-carac-articles_media_mobile-1.jpg',
+                          if (state is LoginInitial) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: constraints.maxHeight *
+                                    responsiveHeight(
+                                      defaultMobileHeight: 0.5,
+                                      defaultMobileSmallSizeHeight: 0.2,
+                                      defaultTabletHeight: 0.2,
+                                      constraints: constraints,
+                                    ),
                               ),
-                            ),
-                          );
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 100,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginLoading) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: constraints.maxHeight *
+                                    responsiveHeight(
+                                      defaultMobileHeight: 0.5,
+                                      defaultMobileSmallSizeHeight: 0.2,
+                                      defaultTabletHeight: 0.2,
+                                      constraints: constraints,
+                                    ),
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  isLoading: true,
+                                  size: 100,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginSucess) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: constraints.maxHeight *
+                                    responsiveHeight(
+                                      defaultMobileHeight: 0.5,
+                                      defaultMobileSmallSizeHeight: 0.2,
+                                      defaultTabletHeight: 0.2,
+                                      constraints: constraints,
+                                    ),
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  isLoading: true,
+                                  size: 100,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginEnableApiPasswordReset) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: constraints.maxHeight *
+                                    responsiveHeight(
+                                      defaultMobileHeight: 0.5,
+                                      defaultMobileSmallSizeHeight: 0.2,
+                                      defaultTabletHeight: 0.2,
+                                      constraints: constraints,
+                                    ),
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  isLoading: true,
+                                  size: 100,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginGeoLocatorNotEnabled) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: constraints.maxHeight *
+                                    responsiveHeight(
+                                      defaultMobileHeight: 0.5,
+                                      defaultMobileSmallSizeHeight: 0.2,
+                                      defaultTabletHeight: 0.2,
+                                      constraints: constraints,
+                                    ),
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  isLoading: true,
+                                  size: 100,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state
+                              is LoginGeoLocatorNotEnabledForever) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: constraints.maxHeight *
+                                    responsiveHeight(
+                                      defaultMobileHeight: 0.5,
+                                      defaultMobileSmallSizeHeight: 0.2,
+                                      defaultTabletHeight: 0.2,
+                                      constraints: constraints,
+                                    ),
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  isLoading: true,
+                                  size: 100,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginError) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: constraints.maxHeight *
+                                    responsiveHeight(
+                                      defaultMobileHeight: 0.5,
+                                      defaultMobileSmallSizeHeight: 0.2,
+                                      defaultTabletHeight: 0.2,
+                                      constraints: constraints,
+                                    ),
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  isLoading: true,
+                                  size: 100,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: constraints.maxHeight *
+                                    responsiveHeight(
+                                      defaultMobileHeight: 0.5,
+                                      defaultMobileSmallSizeHeight: 0.2,
+                                      defaultTabletHeight: 0.2,
+                                      constraints: constraints,
+                                    ),
+                              ),
+                              child: const Center(
+                                child: AppAvatar(
+                                  isLoading: true,
+                                  size: 100,
+                                ),
+                              ),
+                            );
+                          }
                         },
                       ),
                     ],
