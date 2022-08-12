@@ -1,6 +1,6 @@
 part of '../login_page.dart';
 
-class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
+class _LoginCard extends StatelessWidget {
   final BoxConstraints constraints;
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -32,13 +32,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
       child: Form(
         key: formKey,
         child: Container(
-          width: constraints.maxWidth *
-              responsiveWidth(
-                defaultMobileWidth: 0.9,
-                defaultMobileSmallSizeWidth: 0.8,
-                defaultTabletWidth: 0.8,
-                constraints: constraints,
-              ),
+          width: Adaptive.w(90),
           decoration: BoxDecoration(
             color: AppColors.black,
             gradient: RadialGradient(
@@ -49,21 +43,15 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                 AppColors.black,
               ],
             ),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(30),
+            borderRadius: BorderRadius.all(
+              Radius.circular(30.dp),
             ),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.09,
-                      defaultMobileSmallSizeHeight: 0.2,
-                      defaultTabletHeight: 0.2,
-                      constraints: constraints,
-                    ),
+                height: Adaptive.w(90),
               ),
               AppTextFormField(
                 label: 'Email',
@@ -78,13 +66,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                 ),
               ),
               SizedBox(
-                height: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.015,
-                      defaultMobileSmallSizeHeight: 0.2,
-                      defaultTabletHeight: 0.2,
-                      constraints: constraints,
-                    ),
+                height: 10.h
               ),
               AppTextFormField(
                 label: 'Senha',
@@ -97,18 +79,12 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                 ),
               ),
               SizedBox(
-                height: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.02,
-                      defaultMobileSmallSizeHeight: 0.2,
-                      defaultTabletHeight: 0.2,
-                      constraints: constraints,
-                    ),
+                height: 10.h
               ),
               InkWell(
                 onTap: passwordResetCallback,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
                   child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
@@ -119,13 +95,7 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                 ),
               ),
               SizedBox(
-                height: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.02,
-                      defaultMobileSmallSizeHeight: 0.2,
-                      defaultTabletHeight: 0.2,
-                      constraints: constraints,
-                    ),
+                height: 20.h
               ),
               AppButton(
                 buttonText: buttonText,
@@ -133,16 +103,10 @@ class _LoginCard extends StatelessWidget with ResponsiveHelperMixin {
                 buttonTypes: buttonTypes,
               ),
               SizedBox(
-                height: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.03,
-                      defaultMobileSmallSizeHeight: 0.2,
-                      defaultTabletHeight: 0.2,
-                      constraints: constraints,
-                    ),
+                height: 30.h
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 20),
+                padding: EdgeInsets.only(bottom: 20.h),
                 child: InkWell(
                   onTap: signInCallback,
                   child: RichText(

@@ -6,7 +6,7 @@ import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../../../../../core/helpers/responsive/responsive_helper_mixin.dart';
@@ -24,8 +24,7 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>
-    with ResponsiveHelperMixin, AppSnackBar {
+class _LoginPageState extends State<LoginPage> with AppSnackBar {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -139,37 +138,14 @@ class _LoginPageState extends State<LoginPage>
                   child: Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(
-                          top: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.1,
-                                defaultMobileSmallSizeHeight: 0.2,
-                                defaultTabletHeight: 0.2,
-                                constraints: constraints,
-                              ),
-                          left: constraints.maxWidth *
-                              responsiveWidth(
-                                defaultMobileWidth: 0.05,
-                                defaultMobileSmallSizeWidth: 0.01,
-                                defaultTabletWidth: 0.01,
-                                constraints: constraints,
-                              ),
-                        ),
+                        padding: EdgeInsets.only(top: 10.h, left: 5.w),
                         child: Text(
                           'Bem vindo(a),',
                           style: AppTextStyles.headLine0,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(
-                          bottom: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.05,
-                                defaultMobileSmallSizeHeight: 0.8,
-                                defaultTabletHeight: 0.8,
-                                constraints: constraints,
-                              ),
-                        ),
+                        padding: EdgeInsets.only(bottom: 10.h),
                         child: BlocBuilder<LoginCubit, LoginState>(
                           builder: (context, state) {
                             if (state is LoginLoading) {
@@ -278,17 +254,11 @@ class _LoginPageState extends State<LoginPage>
                         builder: (context, state) {
                           return Padding(
                             padding: EdgeInsets.only(
-                              bottom: constraints.maxHeight *
-                                  responsiveHeight(
-                                    defaultMobileHeight: 0.5,
-                                    defaultMobileSmallSizeHeight: 0.2,
-                                    defaultTabletHeight: 0.2,
-                                    constraints: constraints,
-                                  ),
+                              bottom: 5.h,
                             ),
-                            child: const Center(
+                            child: Center(
                               child: AppAvatar(
-                                size: 100,
+                                size: 100.dp,
                                 urlImage:
                                     'https://static1.patasdacasa.com.br/articles/8/10/38/@/4864-o-cachorro-inteligente-mostra-essa-carac-articles_media_mobile-1.jpg',
                               ),
