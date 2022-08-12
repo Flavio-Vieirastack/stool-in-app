@@ -27,7 +27,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
     return LayoutBuilder(
       builder: (context, constraints) {
         return SizedBox(
-          width: Adaptive.w(90),
+          width: Adaptive.w(85),
           child: TextFormField(
             expands: expands,
             maxLines: expands ? null : 1,
@@ -49,7 +49,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
               ),
               fillColor: color ?? Colors.grey.withOpacity(0.7),
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: AppColors.grey, width: 2.w),
+                borderSide: BorderSide(color: AppColors.grey, width: 0.5.w),
                 borderRadius: BorderRadius.all(
                   Radius.circular(15.dp),
                 ),

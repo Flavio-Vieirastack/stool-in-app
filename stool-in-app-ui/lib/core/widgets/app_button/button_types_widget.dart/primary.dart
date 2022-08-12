@@ -14,7 +14,7 @@ class _Primary extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
-          width: Adaptive.w(90),
+          width: Adaptive.w(85),
           height: 6.h,
           decoration: BoxDecoration(
             boxShadow: const [

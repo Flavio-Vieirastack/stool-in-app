@@ -51,7 +51,7 @@ class _LoginCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                height: Adaptive.w(90),
+                height: 10.h,
               ),
               AppTextFormField(
                 label: 'Email',
@@ -66,7 +66,7 @@ class _LoginCard extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 10.h
+                height: 2.h
               ),
               AppTextFormField(
                 label: 'Senha',
@@ -79,7 +79,7 @@ class _LoginCard extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 10.h
+                height: 2.h
               ),
               InkWell(
                 onTap: passwordResetCallback,
@@ -95,7 +95,7 @@ class _LoginCard extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20.h
+                height: 5.h
               ),
               AppButton(
                 buttonText: buttonText,
@@ -103,10 +103,10 @@ class _LoginCard extends StatelessWidget {
                 buttonTypes: buttonTypes,
               ),
               SizedBox(
-                height: 30.h
+                height: 5.h
               ),
               Padding(
-                padding: EdgeInsets.only(bottom: 20.h),
+                padding: EdgeInsets.only(bottom: 5.h),
                 child: InkWell(
                   onTap: signInCallback,
                   child: RichText(

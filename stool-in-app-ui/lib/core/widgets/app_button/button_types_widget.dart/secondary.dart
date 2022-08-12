@@ -12,7 +12,7 @@ class _Secondary extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
-          width: Adaptive.w(90),
+          width: Adaptive.w(85),
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(

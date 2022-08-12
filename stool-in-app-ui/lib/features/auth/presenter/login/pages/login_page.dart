@@ -144,123 +144,118 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                           style: AppTextStyles.headLine0,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 10.h),
-                        child: BlocBuilder<LoginCubit, LoginState>(
-                          builder: (context, state) {
-                            if (state is LoginLoading) {
-                              return Center(
-                                child: _LoginCard(
-                                  formKey: formKey,
-                                  ignorePointer: true,
-                                  buttonTypes: ButtonTypes.loading,
-                                  loginOrPasswordResetCallback: () =>
-                                      cubit.makeLogin(
-                                    validate:
-                                        formKey.currentState?.validate() ??
-                                            false,
-                                    authEntity: AuthEntity(
-                                      email: emailController.text.trim(),
-                                      password: passwordController.text.trim(),
-                                    ),
+                      BlocBuilder<LoginCubit, LoginState>(
+                        builder: (context, state) {
+                          if (state is LoginLoading) {
+                            return Center(
+                              child: _LoginCard(
+                                formKey: formKey,
+                                ignorePointer: true,
+                                buttonTypes: ButtonTypes.loading,
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.makeLogin(
+                                  validate:
+                                      formKey.currentState?.validate() ??
+                                          false,
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
                                   ),
-                                  passwordResetCallback: () =>
+                                ),
+                                passwordResetCallback: () =>
+                                    Navigator.of(context)
+                                        .pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
+                                ),
+                                signInCallback: () => cubit
+                                    .goToSignInMainPageWithGeoLocationPermition(
+                                  navigateToSignIn: () =>
                                       Navigator.of(context)
                                           .pushReplacementNamed(
-                                    RoutesConstants.passwordRecoveryRoute,
+                                    RoutesConstants.signInMainRoute,
                                   ),
-                                  signInCallback: () => cubit
-                                      .goToSignInMainPageWithGeoLocationPermition(
-                                    navigateToSignIn: () =>
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                      RoutesConstants.signInMainRoute,
-                                    ),
-                                  ),
-                                  emailController: emailController,
-                                  passwordController: passwordController,
-                                  constraints: constraints,
                                 ),
-                              );
-                            } else if (state is LoginEnableApiPasswordReset) {
-                              return Center(
-                                child: _LoginCard(
-                                  formKey: formKey,
-                                  loginOrPasswordResetCallback: () =>
-                                      cubit.apiPasswordReset(
-                                    validate:
-                                        formKey.currentState?.validate() ??
-                                            false,
-                                    authEntity: AuthEntity(
-                                      email: emailController.text.trim(),
-                                    ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
+                              ),
+                            );
+                          } else if (state is LoginEnableApiPasswordReset) {
+                            return Center(
+                              child: _LoginCard(
+                                formKey: formKey,
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.apiPasswordReset(
+                                  validate:
+                                      formKey.currentState?.validate() ??
+                                          false,
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
                                   ),
-                                  buttonText: 'Login com nova senha',
-                                  passwordResetCallback: () =>
+                                ),
+                                buttonText: 'Login com nova senha',
+                                passwordResetCallback: () =>
+                                    Navigator.of(context)
+                                        .pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
+                                ),
+                                signInCallback: () => cubit
+                                    .goToSignInMainPageWithGeoLocationPermition(
+                                  navigateToSignIn: () =>
                                       Navigator.of(context)
                                           .pushReplacementNamed(
-                                    RoutesConstants.passwordRecoveryRoute,
+                                    RoutesConstants.signInMainRoute,
                                   ),
-                                  signInCallback: () => cubit
-                                      .goToSignInMainPageWithGeoLocationPermition(
-                                    navigateToSignIn: () =>
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                      RoutesConstants.signInMainRoute,
-                                    ),
-                                  ),
-                                  emailController: emailController,
-                                  passwordController: passwordController,
-                                  constraints: constraints,
                                 ),
-                              );
-                            } else {
-                              return Center(
-                                child: _LoginCard(
-                                  formKey: formKey,
-                                  loginOrPasswordResetCallback: () =>
-                                      cubit.makeLogin(
-                                    validate:
-                                        formKey.currentState?.validate() ??
-                                            false,
-                                    authEntity: AuthEntity(
-                                      email: emailController.text.trim(),
-                                      password: passwordController.text.trim(),
-                                    ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
+                              ),
+                            );
+                          } else {
+                            return Center(
+                              child: _LoginCard(
+                                formKey: formKey,
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.makeLogin(
+                                  validate:
+                                      formKey.currentState?.validate() ??
+                                          false,
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
                                   ),
-                                  passwordResetCallback: () =>
+                                ),
+                                passwordResetCallback: () =>
+                                    Navigator.of(context)
+                                        .pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
+                                ),
+                                signInCallback: () => cubit
+                                    .goToSignInMainPageWithGeoLocationPermition(
+                                  navigateToSignIn: () =>
                                       Navigator.of(context)
                                           .pushReplacementNamed(
-                                    RoutesConstants.passwordRecoveryRoute,
+                                    RoutesConstants.signInMainRoute,
                                   ),
-                                  signInCallback: () => cubit
-                                      .goToSignInMainPageWithGeoLocationPermition(
-                                    navigateToSignIn: () =>
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                      RoutesConstants.signInMainRoute,
-                                    ),
-                                  ),
-                                  emailController: emailController,
-                                  passwordController: passwordController,
-                                  constraints: constraints,
                                 ),
-                              );
-                            }
-                          },
-                        ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
+                              ),
+                            );
+                          }
+                        },
                       ),
                       BlocBuilder<LoginCubit, LoginState>(
                         builder: (context, state) {
                           return Padding(
                             padding: EdgeInsets.only(
-                              bottom: 5.h,
+                              bottom: 50.h,
                             ),
                             child: Center(
                               child: AppAvatar(
-                                size: 100.dp,
-                                urlImage:
-                                    'https://static1.patasdacasa.com.br/articles/8/10/38/@/4864-o-cachorro-inteligente-mostra-essa-carac-articles_media_mobile-1.jpg',
+                                size: 90.dp,
                               ),
                             ),
                           );
