@@ -20,8 +20,8 @@ class _PasswordResetCard extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Container(
-            height: 10.h,
             width: Adaptive.w(90),
+            height: 40.h,
             decoration: BoxDecoration(
               color: AppColors.black,
               gradient: RadialGradient(
@@ -39,14 +39,14 @@ class _PasswordResetCard extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: 10.h
+                  height: 4.h
                 ),
                 Text(
                   'Nós enviaremos um link para você.',
                   style: AppTextStyles.headLine1,
                 ),
                 SizedBox(
-                  height: 10.h
+                  height: 4.h
                 ),
                 AppTextFormField(
                   label: 'Email',
@@ -65,7 +65,7 @@ class _PasswordResetCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10.h
+                  height: 4.h
                 ),
                 AppButton(
                   buttonText: 'Enviar',
@@ -73,7 +73,7 @@ class _PasswordResetCard extends StatelessWidget {
                   buttonTypes: buttonTypes,
                 ),
                 SizedBox(
-                  height: 10.h
+                  height: 2.h
                 ),
                 AppButton(
                   buttonText: 'Voltar',

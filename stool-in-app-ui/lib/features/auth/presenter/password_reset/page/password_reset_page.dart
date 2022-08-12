@@ -53,7 +53,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                          top: 10.h,
+                          top: 20.h,
                           left: 5.w,
                         ),
                         child: Text(
@@ -61,45 +61,39 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                           style: AppTextStyles.headLine0,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          bottom: 10.h,
-                        ),
-                        child:
-                            BlocBuilder<PasswordResetCubit, PasswordResetState>(
+                      BlocBuilder<PasswordResetCubit, PasswordResetState>(
                           builder: (context, state) {
-                            if (state is PasswordResetLoading) {
-                              return IgnorePointer(
-                                ignoring: true,
-                                child: Center(
-                                  child: _PasswordResetCard(
-                                    buttonTypes: ButtonTypes.loading,
-                                    formKey: formKey,
-                                    sendCallback: () {},
-                                    emailController: emailController,
-                                  ),
-                                ),
-                              );
-                            } else {
-                              return Center(
-                                child: _PasswordResetCard(
-                                  formKey: formKey,
-                                  sendCallback: () =>
-                                      cubit.firebasePasswordReset(
-                                    validate:
-                                        formKey.currentState?.validate() ??
-                                            false,
-                                    authEntity: AuthEntity(
-                                      email: emailController.text.trim(),
-                                    ),
-                                  ),
-                                  emailController: emailController,
-                                ),
-                              );
-                            }
+                      if (state is PasswordResetLoading) {
+                        return IgnorePointer(
+                          ignoring: true,
+                          child: Center(
+                            child: _PasswordResetCard(
+                              buttonTypes: ButtonTypes.loading,
+                              formKey: formKey,
+                              sendCallback: () {},
+                              emailController: emailController,
+                            ),
+                          ),
+                        );
+                      } else {
+                        return Center(
+                          child: _PasswordResetCard(
+                            formKey: formKey,
+                            sendCallback: () =>
+                                cubit.firebasePasswordReset(
+                              validate:
+                                  formKey.currentState?.validate() ??
+                                      false,
+                              authEntity: AuthEntity(
+                                email: emailController.text.trim(),
+                              ),
+                            ),
+                            emailController: emailController,
+                          ),
+                        );
+                      }
                           },
                         ),
-                      ),
                     ],
                   ),
                 ),
