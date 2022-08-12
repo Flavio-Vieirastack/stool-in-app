@@ -14,7 +14,7 @@ class _Disabled extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Container(
-            width: Adaptive.w(50),
+            width: Adaptive.w(90),
             decoration: BoxDecoration(
               boxShadow: const [
                 BoxShadow(

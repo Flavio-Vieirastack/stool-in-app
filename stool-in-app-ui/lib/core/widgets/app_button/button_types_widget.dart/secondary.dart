@@ -1,27 +1,18 @@
 part of '../app_button.dart';
 
-class _Secondary extends StatelessWidget with ResponsiveHelperMixin {
+class _Secondary extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressed;
-  const _Secondary({
-    Key? key,
-    required this.buttonText,
-    required this.onPressed
-  }) : super(key: key);
+  const _Secondary(
+      {Key? key, required this.buttonText, required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const maxWidth = 0.9;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
-          width: constraints.maxWidth *
-              responsiveWidth(
-                defaultMobileWidth: maxWidth,
-                defaultMobileSmallSizeWidth: 0.2,
-                defaultTabletWidth: 0.2,
-                constraints: constraints,
-              ),
+          width: Adaptive.w(90),
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
@@ -30,7 +21,7 @@ class _Secondary extends StatelessWidget with ResponsiveHelperMixin {
                 blurRadius: 5.0,
               )
             ],
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.dp),
             border: Border.all(
               color: AppColors.textFormFieldBackgroundColor,
             ),
@@ -39,10 +30,10 @@ class _Secondary extends StatelessWidget with ResponsiveHelperMixin {
             style: ButtonStyle(
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.0.dp),
                 ),
               ),
-              minimumSize: MaterialStateProperty.all(const Size(50, 50)),
+              minimumSize: MaterialStateProperty.all(Size(50.w, 50.h)),
               backgroundColor: MaterialStateProperty.all(Colors.transparent),
               shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),

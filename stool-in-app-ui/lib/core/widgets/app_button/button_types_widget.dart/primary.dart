@@ -1,6 +1,6 @@
 part of '../app_button.dart';
 
-class _Primary extends StatelessWidget with ResponsiveHelperMixin {
+class _Primary extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressed;
   const _Primary({
@@ -11,17 +11,10 @@ class _Primary extends StatelessWidget with ResponsiveHelperMixin {
 
   @override
   Widget build(BuildContext context) {
-    const maxWidth = 0.9;
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
-          width: constraints.maxWidth *
-              responsiveWidth(
-                defaultMobileWidth: maxWidth,
-                defaultMobileSmallSizeWidth: 0.6,
-                defaultTabletWidth: 0.2,
-                constraints: constraints,
-              ),
+          width: Adaptive.w(90),
           decoration: BoxDecoration(
             boxShadow: const [
               BoxShadow(
@@ -39,16 +32,16 @@ class _Primary extends StatelessWidget with ResponsiveHelperMixin {
                 AppColors.buttonLeftGradientColor,
               ],
             ),
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.dp),
           ),
           child: ElevatedButton(
             style: ButtonStyle(
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(20.0.dp),
                 ),
               ),
-              minimumSize: MaterialStateProperty.all(const Size(50, 50)),
+              minimumSize: MaterialStateProperty.all( Size(50.w, 50.h)),
               backgroundColor: MaterialStateProperty.all(Colors.transparent),
               shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),
