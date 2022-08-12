@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await context.read<SplashCubit>().goToOnBoardingPage();
+      //await context.read<SplashCubit>().goToOnBoardingPage();
     });
   }
 
@@ -40,12 +40,15 @@ class _SplashPageState extends State<SplashPage> {
           children: [
             const Spacer(),
             Image.asset(AssetsConstants.logoWhite),
+            SizedBox(
+              height: 20.h,
+            ),
             const Spacer(),
             const CircularProgressIndicator.adaptive(
               backgroundColor: Colors.white,
             ),
             SizedBox(
-              height: 100.h,
+              height: 20.h,
             ),
           ],
         ),
