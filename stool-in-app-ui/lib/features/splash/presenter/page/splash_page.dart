@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      //await context.read<SplashCubit>().goToOnBoardingPage();
+      await context.read<SplashCubit>().goToOnBoardingPage();
     });
   }
 
