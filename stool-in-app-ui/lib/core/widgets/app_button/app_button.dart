@@ -4,6 +4,7 @@ import 'package:stool_in/core/helpers/responsive/responsive_helper_mixin.dart';
 import '../../helpers/theme/colors/app_colors.dart';
 import '../../helpers/theme/text_styles/app_text_styles.dart';
 import 'enum/button_types.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 part './button_types_widget.dart/disabled.dart';
 part './button_types_widget.dart/loading.dart';
 part './button_types_widget.dart/primary.dart';
