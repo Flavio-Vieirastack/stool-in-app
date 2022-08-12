@@ -176,6 +176,13 @@ void main() {
         () => loginRepository.firebaseLogin(authEntity: authEntity),
       ).called(1);
     });
+    test('Deve retornar o tipo void para firebaseLogin', () async {
+      when(
+        () => loginRepository.firebaseLogin(authEntity: authEntity),
+      ).thenAnswer((_) async => const Right(null));
+      final sut = await authUseCaseIml.firebaseLogin(authEntity: authEntity);
+      expect(sut, const Right(null));
+    });
     test('Deve chamar retornar um erro para firebaselogin corretamente',
         () async {
       when(
