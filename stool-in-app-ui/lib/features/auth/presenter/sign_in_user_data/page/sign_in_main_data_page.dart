@@ -9,7 +9,7 @@ import 'package:stool_in/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';
 import 'package:validatorless/validatorless.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/widgets/app_avatar/app_avatar.dart';
@@ -26,7 +26,7 @@ class SignInMainDataPage extends StatefulWidget {
 }
 
 class _SignInMainDataPageState extends State<SignInMainDataPage>
-    with ResponsiveHelperMixin, AppSnackBar {
+    with AppSnackBar {
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController streetController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
@@ -87,7 +87,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                   type: SnackBarType.error,
                   context: context,
                 );
-              } else if(state is FirebaseStorageSucess) {
+              } else if (state is FirebaseStorageSucess) {
                 showAppSnackbar(
                   message: 'Sua imagem foi salva com sucesso!',
                   context: context,
@@ -101,14 +101,14 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
             return ListView(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
                   child: Text(
                     'Para finalizar,',
                     style: AppTextStyles.headLine0,
                   ),
                 ),
-                const SizedBox(
-                  height: 50,
+                 SizedBox(
+                  height: 50.h,
                 ),
                 SizedBox(
                   height: constraints.maxHeight,
@@ -119,13 +119,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                           if (state is SignInUserDataLoading) {
                             return Padding(
                               padding: EdgeInsets.symmetric(
-                                horizontal: constraints.maxWidth *
-                                    responsiveWidth(
-                                      defaultMobileWidth: 0.03,
-                                      defaultMobileSmallSizeWidth: 0.01,
-                                      defaultTabletWidth: 0.01,
-                                      constraints: constraints,
-                                    ),
+                                horizontal: 10.w,
                               ),
                               child: IgnorePointer(
                                 ignoring: true,
@@ -149,13 +143,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                           } else {
                             return Padding(
                               padding: EdgeInsets.symmetric(
-                                horizontal: constraints.maxWidth *
-                                    responsiveWidth(
-                                      defaultMobileWidth: 0.03,
-                                      defaultMobileSmallSizeWidth: 0.01,
-                                      defaultTabletWidth: 0.01,
-                                      constraints: constraints,
-                                    ),
+                                horizontal: 10.w
                               ),
                               child: _SignInDataCard(
                                 formKey: formKey,
@@ -199,26 +187,14 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          top: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.06,
-                                defaultMobileSmallSizeHeight: 0.5,
-                                defaultTabletHeight: 0.5,
-                                constraints: constraints,
-                              ),
-                          left: constraints.maxWidth *
-                              responsiveWidth(
-                                defaultMobileWidth: 0.53,
-                                defaultMobileSmallSizeWidth: 0.5,
-                                defaultTabletWidth: 0.5,
-                                constraints: constraints,
-                              ),
+                          top: 10.w,
+                          left: Adaptive.w(50)
                         ),
                         child: Container(
                           decoration: BoxDecoration(
                             color: AppColors.buttonLeftGradientColor,
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(30),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30.dp),
                             ),
                           ),
                           child: IconButton(
@@ -226,10 +202,10 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                 firebaseStorageCubit.pickAndUploadImage(
                               imageFrom: ImageFrom.gallery,
                             ),
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.add,
                               color: Colors.white,
-                              size: 30,
+                              size: 30.dp,
                             ),
                           ),
                         ),

@@ -1,6 +1,6 @@
 part of '../sign_in_main_data_page.dart';
 
-class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
+class _SignInDataCard extends StatelessWidget {
   final TextEditingController userNameController;
   final TextEditingController streetController;
   final TextEditingController cityController;
@@ -40,59 +40,47 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
             decoration: BoxDecoration(
               color: AppColors.black,
               gradient: RadialGradient(
-                radius: 1.9,
+                radius: 1.9.dp,
                 center: const Alignment(0.9, -1.0),
                 colors: <Color>[
                   AppColors.grey.withOpacity(0.6),
                   AppColors.black,
                 ],
               ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(30),
+              borderRadius: BorderRadius.all(
+                Radius.circular(30.dp),
               ),
             ),
             child: BlocBuilder<FirebaseStorageCubit, FirebaseStorageState>(
               builder: (context, state) {
                 return Column(
                   children: [
-                    const SizedBox(
-                      height: 10,
+                     SizedBox(
+                      height: 10.h,
                     ),
                     if (state is FirebaseStorageLoading)
-                      const Center(
+                       Center(
                         child: AppAvatar(
-                          size: 100,
+                          size: 100.dp,
                           isLoading: true,
                         ),
                       ),
                     if (state is FirebaseStorageSucess)
                       Center(
                         child: AppAvatar(
-                          size: 100,
+                          size: 100.dp,
                           urlImage: state.userUrlImage,
                         ),
                       ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight: 0.02,
-                            defaultMobileSmallSizeHeight: 0.09,
-                            defaultTabletHeight: 0.09,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     Text(
                       'Por favor preencha seus dados.',
                       style: AppTextStyles.headLine1,
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight: 0.02,
-                            defaultMobileSmallSizeHeight: 0.025,
-                            defaultTabletHeight: 0.025,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppTextFormField(
                       label: 'Seu nome completo',
@@ -112,14 +100,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight:
-                                componentsMobileDefaultDistance,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppTextFormField(
                       label: 'Rua',
@@ -139,14 +120,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight:
-                                componentsMobileDefaultDistance,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppTextFormField(
                       label: 'Cidade',
@@ -166,14 +140,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight:
-                                componentsMobileDefaultDistance,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppTextFormField(
                       label: 'Número da casa',
@@ -189,14 +156,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight:
-                                componentsMobileDefaultDistance,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppTextFormField(
                       label: 'Bairro',
@@ -216,24 +176,11 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight:
-                                componentsMobileDefaultDistance,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: constraints.maxWidth *
-                            responsiveWidth(
-                              defaultMobileWidth: 0.05,
-                              defaultMobileSmallSizeWidth: 0.05,
-                              defaultTabletWidth: 0.05,
-                              constraints: constraints,
-                            ),
+                        horizontal: 20.w
                       ),
                       child: DropdownButton<String>(
                         hint: Text(statesDropDownLabel),
@@ -250,14 +197,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight:
-                                componentsMobileDefaultDistance,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppTextFormField(
                       label: 'Cep',
@@ -266,14 +206,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       controller: cepController,
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight:
-                                componentsMobileDefaultDistance,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppTextFormField(
                       label: 'Ponto de referência',
@@ -289,23 +222,10 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       ),
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight:
-                                componentsMobileDefaultDistance,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight: 0.02,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppButton(
                       buttonText: 'Cadastrar',
@@ -313,13 +233,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       buttonTypes: buttonTypes,
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight: 0.02,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                     AppButton(
                       buttonText: 'Voltar',
@@ -329,13 +243,7 @@ class _SignInDataCard extends StatelessWidget with ResponsiveHelperMixin {
                       buttonTypes: ButtonTypes.secondary,
                     ),
                     SizedBox(
-                      height: constraints.maxHeight *
-                          responsiveHeight(
-                            defaultMobileHeight: 0.03,
-                            defaultMobileSmallSizeHeight: 0.2,
-                            defaultTabletHeight: 0.2,
-                            constraints: constraints,
-                          ),
+                      height: 10.h
                     ),
                   ],
                 );

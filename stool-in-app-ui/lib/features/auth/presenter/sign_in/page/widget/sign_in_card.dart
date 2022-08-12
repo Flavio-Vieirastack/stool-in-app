@@ -1,6 +1,6 @@
 part of '../sign_in_main_page.dart';
 
-class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
+class _SignInCard extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final VoidCallback signInCallBack;
@@ -27,21 +27,9 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
             key: formKey,
             child: Container(
               constraints: BoxConstraints(
-                maxHeight: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.65,
-                      defaultMobileSmallSizeHeight: 0.5,
-                      defaultTabletHeight: 0.5,
-                      constraints: constraints,
-                    ),
+                maxHeight:10.h
               ),
-              width: constraints.maxWidth *
-                  responsiveWidth(
-                    defaultMobileWidth: 0.9,
-                    defaultMobileSmallSizeWidth: 0.8,
-                    defaultTabletWidth: 0.8,
-                    constraints: constraints,
-                  ),
+              width: 10.h,
               decoration: BoxDecoration(
                 color: AppColors.black,
                 gradient: RadialGradient(
@@ -60,26 +48,14 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.025,
-                          defaultMobileSmallSizeHeight: 0.09,
-                          defaultTabletHeight: 0.09,
-                          constraints: constraints,
-                        ),
+                    height: 10.h
                   ),
                   Text(
                     'Informe seu email e senha',
                     style: AppTextStyles.headLine1,
                   ),
                   SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.04,
-                          defaultMobileSmallSizeHeight: 0.025,
-                          defaultTabletHeight: 0.025,
-                          constraints: constraints,
-                        ),
+                    height: 10.h
                   ),
                   AppTextFormField(
                     label: 'Email',
@@ -92,13 +68,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                     ]),
                   ),
                   SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.09,
-                          defaultTabletHeight: 0.09,
-                          constraints: constraints,
-                        ),
+                    height: 10.h
                   ),
                   AppTextFormField(
                     label: 'Senha',
@@ -119,13 +89,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
                   ),
                   SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.09,
-                          defaultTabletHeight: 0.09,
-                          constraints: constraints,
-                        ),
+                    height: 10.h
                   ),
                   AppTextFormField(
                     label: 'Digite novamente sua senha',
@@ -144,22 +108,10 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                     ),
                   ),
                   SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.2,
-                          defaultTabletHeight: 0.2,
-                          constraints: constraints,
-                        ),
+                    height: 10.h
                   ),
                   SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.2,
-                          defaultTabletHeight: 0.2,
-                          constraints: constraints,
-                        ),
+                    height: 10.h
                   ),
                   AppButton(
                     buttonText: 'Cadastrar',
@@ -167,13 +119,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                     buttonTypes: buttonTypes,
                   ),
                   SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.2,
-                          defaultTabletHeight: 0.2,
-                          constraints: constraints,
-                        ),
+                    height: 10.h
                   ),
                   AppButton(
                     buttonText: 'Voltar',
@@ -182,13 +128,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                     buttonTypes: ButtonTypes.secondary,
                   ),
                   SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.03,
-                          defaultMobileSmallSizeHeight: 0.2,
-                          defaultTabletHeight: 0.2,
-                          constraints: constraints,
-                        ),
+                    height: 10.h
                   ),
                 ],
               ),
