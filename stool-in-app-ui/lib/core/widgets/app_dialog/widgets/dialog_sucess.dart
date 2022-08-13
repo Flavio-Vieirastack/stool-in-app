@@ -5,13 +5,13 @@ class _DialogSucess {
     return Column(
       children: [
         LottieBuilder.asset(
-          width: 100.w,
+          width: 50.w,
           LottieConstants.lottieSucess,
         ),
         SizedBox(
-          height: 10.h,
+          height: 2.h,
         ),
-        Text(message)
+        Text(message, style: AppTextStyles.headLine2,)
       ],
     );
   }
