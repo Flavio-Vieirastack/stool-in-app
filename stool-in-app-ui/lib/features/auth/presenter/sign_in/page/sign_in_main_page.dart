@@ -57,7 +57,9 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                     message: 'Verifique seu email',
                     context: context,
                     dialogTypes: DialogTypes.waiting,
-                    yesCallBack: () => cubit.sendVerificationEmail(),
+                    yesCallBack: () => cubit.sendVerificationEmail(
+                      timer: timer,
+                    ),
                   ),
                 );
               } else if (state is SignInStateError) {

@@ -45,7 +45,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
           SignInStateError(message: error.message),
         ),
         (sucess) async {
-          await sendVerificationEmail();
+          await sendVerificationEmail(timer: timer);
           if (state is SignInStateEmailSended) {
             timer = Timer.periodic(
               const Duration(seconds: 3),
@@ -99,7 +99,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     }
   }
 
-  Future<void> sendVerificationEmail() async {
+  Future<void> sendVerificationEmail({Timer? timer}) async {
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified == null || !emailVerified) {
       final result = await _sendVerificationEmailUsecase.call();
@@ -109,6 +109,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
             SignInStateSendVerificationEmailError(message: error.message),
           );
           await _firebaseAuth.currentUser?.delete();
+          timer?.cancel();
         },
         (sucess) {
           emit(SignInStateEmailSended());
