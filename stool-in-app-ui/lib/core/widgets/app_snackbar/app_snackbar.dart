@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 enum SnackBarType {
   success,
   error,
@@ -48,7 +48,7 @@ mixin AppSnackBar {
           ],
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.dp),
         ),
         backgroundColor: getSnackBarColor(type),
         duration: Duration(seconds: duration),

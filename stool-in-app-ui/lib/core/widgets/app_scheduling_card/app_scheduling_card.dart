@@ -5,6 +5,7 @@ import '../../helpers/theme/colors/app_colors.dart';
 import '../../helpers/theme/text_styles/app_text_styles.dart';
 import '../app_avatar/app_avatar.dart';
 import '../dialog_button/dialog_button.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 part './widget/shceduling_content.dart';
 
 class AppSchedulingCard extends StatelessWidget {
@@ -47,11 +48,11 @@ class AppSchedulingCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.buttonRightGradientColor),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
+        borderRadius: BorderRadius.all(
+          Radius.circular(20.dp),
         ),
         gradient: RadialGradient(
-          radius: 2,
+          radius: 2.dp,
           colors: [
             AppColors.grey.withOpacity(0.5),
             AppColors.black.withOpacity(0.2),

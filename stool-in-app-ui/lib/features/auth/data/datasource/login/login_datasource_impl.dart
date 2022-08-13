@@ -27,7 +27,7 @@ class LoginDatasourceImpl implements LoginDatasource {
         data: authModel.toMap(),
       );
 
-      return UserTokenModel.fromJson(result.data);
+      return UserTokenModel.fromMap(result.data);
     } on ApiAuthError catch (e, s) {
       log(
         'Erro ao fazer login na api, no datasource impl',

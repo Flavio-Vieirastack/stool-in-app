@@ -6,10 +6,9 @@ import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:validatorless/validatorless.dart';
 
-import '../../../../../core/helpers/responsive/responsive_helper_mixin.dart';
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/widgets/app_button/app_button.dart';
@@ -24,8 +23,7 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>
-    with ResponsiveHelperMixin, AppSnackBar {
+class _LoginPageState extends State<LoginPage> with AppSnackBar {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -139,295 +137,127 @@ class _LoginPageState extends State<LoginPage>
                   child: Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(
-                          top: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.1,
-                                defaultMobileSmallSizeHeight: 0.2,
-                                defaultTabletHeight: 0.2,
-                                constraints: constraints,
-                              ),
-                          left: constraints.maxWidth *
-                              responsiveWidth(
-                                defaultMobileWidth: 0.05,
-                                defaultMobileSmallSizeWidth: 0.01,
-                                defaultTabletWidth: 0.01,
-                                constraints: constraints,
-                              ),
-                        ),
+                        padding: EdgeInsets.only(top: 10.h, left: 5.w),
                         child: Text(
                           'Bem vindo(a),',
                           style: AppTextStyles.headLine0,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          bottom: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.05,
-                                defaultMobileSmallSizeHeight: 0.8,
-                                defaultTabletHeight: 0.8,
-                                constraints: constraints,
-                              ),
-                        ),
-                        child: BlocBuilder<LoginCubit, LoginState>(
-                          builder: (context, state) {
-                            if (state is LoginLoading) {
-                              return Center(
-                                child: _LoginCard(
-                                  formKey: formKey,
-                                  ignorePointer: true,
-                                  buttonTypes: ButtonTypes.loading,
-                                  loginOrPasswordResetCallback: () =>
-                                      cubit.makeLogin(
-                                    validate:
-                                        formKey.currentState?.validate() ??
-                                            false,
-                                    authEntity: AuthEntity(
-                                      email: emailController.text.trim(),
-                                      password: passwordController.text.trim(),
-                                    ),
-                                  ),
-                                  passwordResetCallback: () =>
-                                      Navigator.of(context)
-                                          .pushReplacementNamed(
-                                    RoutesConstants.passwordRecoveryRoute,
-                                  ),
-                                  signInCallback: () => cubit
-                                      .goToSignInMainPageWithGeoLocationPermition(
-                                    navigateToSignIn: () =>
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                      RoutesConstants.signInMainRoute,
-                                    ),
-                                  ),
-                                  emailController: emailController,
-                                  passwordController: passwordController,
-                                  constraints: constraints,
-                                ),
-                              );
-                            } else if (state is LoginEnableApiPasswordReset) {
-                              return Center(
-                                child: _LoginCard(
-                                  formKey: formKey,
-                                  loginOrPasswordResetCallback: () =>
-                                      cubit.apiPasswordReset(
-                                    validate:
-                                        formKey.currentState?.validate() ??
-                                            false,
-                                    authEntity: AuthEntity(
-                                      email: emailController.text.trim(),
-                                    ),
-                                  ),
-                                  buttonText: 'Login com nova senha',
-                                  passwordResetCallback: () =>
-                                      Navigator.of(context)
-                                          .pushReplacementNamed(
-                                    RoutesConstants.passwordRecoveryRoute,
-                                  ),
-                                  signInCallback: () => cubit
-                                      .goToSignInMainPageWithGeoLocationPermition(
-                                    navigateToSignIn: () =>
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                      RoutesConstants.signInMainRoute,
-                                    ),
-                                  ),
-                                  emailController: emailController,
-                                  passwordController: passwordController,
-                                  constraints: constraints,
-                                ),
-                              );
-                            } else {
-                              return Center(
-                                child: _LoginCard(
-                                  formKey: formKey,
-                                  loginOrPasswordResetCallback: () =>
-                                      cubit.makeLogin(
-                                    validate:
-                                        formKey.currentState?.validate() ??
-                                            false,
-                                    authEntity: AuthEntity(
-                                      email: emailController.text.trim(),
-                                      password: passwordController.text.trim(),
-                                    ),
-                                  ),
-                                  passwordResetCallback: () =>
-                                      Navigator.of(context)
-                                          .pushReplacementNamed(
-                                    RoutesConstants.passwordRecoveryRoute,
-                                  ),
-                                  signInCallback: () => cubit
-                                      .goToSignInMainPageWithGeoLocationPermition(
-                                    navigateToSignIn: () =>
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                      RoutesConstants.signInMainRoute,
-                                    ),
-                                  ),
-                                  emailController: emailController,
-                                  passwordController: passwordController,
-                                  constraints: constraints,
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                      ),
                       BlocBuilder<LoginCubit, LoginState>(
                         builder: (context, state) {
-                          if (state is LoginInitial) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                bottom: constraints.maxHeight *
-                                    responsiveHeight(
-                                      defaultMobileHeight: 0.5,
-                                      defaultMobileSmallSizeHeight: 0.2,
-                                      defaultTabletHeight: 0.2,
-                                      constraints: constraints,
-                                    ),
-                              ),
-                              child: Center(
-                                child: AppAvatar(
-                                  size: 100,
-                                  urlImage: state.urlImage,
+                          if (state is LoginLoading) {
+                            return Center(
+                              child: _LoginCard(
+                                formKey: formKey,
+                                ignorePointer: true,
+                                buttonTypes: ButtonTypes.loading,
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.makeLogin(
+                                  validate:
+                                      formKey.currentState?.validate() ??
+                                          false,
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
                                 ),
-                              ),
-                            );
-                          } else if (state is LoginLoading) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                bottom: constraints.maxHeight *
-                                    responsiveHeight(
-                                      defaultMobileHeight: 0.5,
-                                      defaultMobileSmallSizeHeight: 0.2,
-                                      defaultTabletHeight: 0.2,
-                                      constraints: constraints,
-                                    ),
-                              ),
-                              child: Center(
-                                child: AppAvatar(
-                                  isLoading: true,
-                                  size: 100,
-                                  urlImage: state.urlImage,
+                                passwordResetCallback: () =>
+                                    Navigator.of(context)
+                                        .pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
                                 ),
-                              ),
-                            );
-                          } else if (state is LoginSucess) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                bottom: constraints.maxHeight *
-                                    responsiveHeight(
-                                      defaultMobileHeight: 0.5,
-                                      defaultMobileSmallSizeHeight: 0.2,
-                                      defaultTabletHeight: 0.2,
-                                      constraints: constraints,
-                                    ),
-                              ),
-                              child: Center(
-                                child: AppAvatar(
-                                  isLoading: true,
-                                  size: 100,
-                                  urlImage: state.urlImage,
+                                signInCallback: () => cubit
+                                    .goToSignInMainPageWithGeoLocationPermition(
+                                  navigateToSignIn: () =>
+                                      Navigator.of(context)
+                                          .pushReplacementNamed(
+                                    RoutesConstants.signInMainRoute,
+                                  ),
                                 ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
                               ),
                             );
                           } else if (state is LoginEnableApiPasswordReset) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                bottom: constraints.maxHeight *
-                                    responsiveHeight(
-                                      defaultMobileHeight: 0.5,
-                                      defaultMobileSmallSizeHeight: 0.2,
-                                      defaultTabletHeight: 0.2,
-                                      constraints: constraints,
-                                    ),
-                              ),
-                              child: Center(
-                                child: AppAvatar(
-                                  isLoading: true,
-                                  size: 100,
-                                  urlImage: state.urlImage,
+                            return Center(
+                              child: _LoginCard(
+                                formKey: formKey,
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.apiPasswordReset(
+                                  validate:
+                                      formKey.currentState?.validate() ??
+                                          false,
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                  ),
                                 ),
-                              ),
-                            );
-                          } else if (state is LoginGeoLocatorNotEnabled) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                bottom: constraints.maxHeight *
-                                    responsiveHeight(
-                                      defaultMobileHeight: 0.5,
-                                      defaultMobileSmallSizeHeight: 0.2,
-                                      defaultTabletHeight: 0.2,
-                                      constraints: constraints,
-                                    ),
-                              ),
-                              child: Center(
-                                child: AppAvatar(
-                                  isLoading: true,
-                                  size: 100,
-                                  urlImage: state.urlImage,
+                                buttonText: 'Login com nova senha',
+                                passwordResetCallback: () =>
+                                    Navigator.of(context)
+                                        .pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
                                 ),
-                              ),
-                            );
-                          } else if (state
-                              is LoginGeoLocatorNotEnabledForever) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                bottom: constraints.maxHeight *
-                                    responsiveHeight(
-                                      defaultMobileHeight: 0.5,
-                                      defaultMobileSmallSizeHeight: 0.2,
-                                      defaultTabletHeight: 0.2,
-                                      constraints: constraints,
-                                    ),
-                              ),
-                              child: Center(
-                                child: AppAvatar(
-                                  isLoading: true,
-                                  size: 100,
-                                  urlImage: state.urlImage,
+                                signInCallback: () => cubit
+                                    .goToSignInMainPageWithGeoLocationPermition(
+                                  navigateToSignIn: () =>
+                                      Navigator.of(context)
+                                          .pushReplacementNamed(
+                                    RoutesConstants.signInMainRoute,
+                                  ),
                                 ),
-                              ),
-                            );
-                          } else if (state is LoginError) {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                bottom: constraints.maxHeight *
-                                    responsiveHeight(
-                                      defaultMobileHeight: 0.5,
-                                      defaultMobileSmallSizeHeight: 0.2,
-                                      defaultTabletHeight: 0.2,
-                                      constraints: constraints,
-                                    ),
-                              ),
-                              child: Center(
-                                child: AppAvatar(
-                                  isLoading: true,
-                                  size: 100,
-                                  urlImage: state.urlImage,
-                                ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
                               ),
                             );
                           } else {
-                            return Padding(
-                              padding: EdgeInsets.only(
-                                bottom: constraints.maxHeight *
-                                    responsiveHeight(
-                                      defaultMobileHeight: 0.5,
-                                      defaultMobileSmallSizeHeight: 0.2,
-                                      defaultTabletHeight: 0.2,
-                                      constraints: constraints,
-                                    ),
-                              ),
-                              child: const Center(
-                                child: AppAvatar(
-                                  isLoading: true,
-                                  size: 100,
+                            return Center(
+                              child: _LoginCard(
+                                formKey: formKey,
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.makeLogin(
+                                  validate:
+                                      formKey.currentState?.validate() ??
+                                          false,
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
                                 ),
+                                passwordResetCallback: () =>
+                                    Navigator.of(context)
+                                        .pushReplacementNamed(
+                                  RoutesConstants.passwordRecoveryRoute,
+                                ),
+                                signInCallback: () => cubit
+                                    .goToSignInMainPageWithGeoLocationPermition(
+                                  navigateToSignIn: () =>
+                                      Navigator.of(context)
+                                          .pushReplacementNamed(
+                                    RoutesConstants.signInMainRoute,
+                                  ),
+                                ),
+                                emailController: emailController,
+                                passwordController: passwordController,
+                                constraints: constraints,
                               ),
                             );
                           }
+                        },
+                      ),
+                      BlocBuilder<LoginCubit, LoginState>(
+                        builder: (context, state) {
+                          return Padding(
+                            padding: EdgeInsets.only(
+                              bottom: 50.h,
+                            ),
+                            child: Center(
+                              child: AppAvatar(
+                                size: 90.dp,
+                              ),
+                            ),
+                          );
                         },
                       ),
                     ],

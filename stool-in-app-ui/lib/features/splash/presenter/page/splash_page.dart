@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/assets_constants.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/features/splash/presenter/cubit/splash_cubit.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -39,12 +40,15 @@ class _SplashPageState extends State<SplashPage> {
           children: [
             const Spacer(),
             Image.asset(AssetsConstants.logoWhite),
+            SizedBox(
+              height: 20.h,
+            ),
             const Spacer(),
             const CircularProgressIndicator.adaptive(
               backgroundColor: Colors.white,
             ),
-            const SizedBox(
-              height: 100,
+            SizedBox(
+              height: 20.h,
             ),
           ],
         ),

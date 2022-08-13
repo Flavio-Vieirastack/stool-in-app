@@ -1,20 +1,19 @@
 part of '../app_dialog.dart';
 
 class _DialogNoConnection {
-  Widget noConnection(
-      {required BuildContext context}) {
+  Widget noConnection({required BuildContext context}) {
     return Column(
       children: [
         LottieBuilder.asset(
-          width: 150,
+          width: 150.w,
           LottieConstants.lottieNoConnection,
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 10.h,
         ),
         const Text('Você não tem conexão'),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 10.h,
         ),
         Center(
           child: DialogButton(

@@ -10,7 +10,7 @@ import 'package:stool_in/core/widgets/ratting_stars/app_ratting_stars.dart';
 import 'package:validatorless/validatorless.dart';
 
 import '../dialog_button/dialog_button.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 part './widgets/dialog_blocked.dart';
 part './widgets/dialog_error.dart';
 part './widgets/dialog_info.dart';

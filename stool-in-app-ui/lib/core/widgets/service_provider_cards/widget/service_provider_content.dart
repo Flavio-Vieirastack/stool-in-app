@@ -18,7 +18,7 @@ class _ServiceProviderContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(8.0.dp),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +29,7 @@ class _ServiceProviderContent extends StatelessWidget {
               AppAvatar(urlImage: userUrlImage),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(5.0.dp),
                   child: AutoSizeText(
                     userName,
                     maxLines: 1,
@@ -42,13 +42,13 @@ class _ServiceProviderContent extends StatelessWidget {
               ),
               AppRattingStars(
                 value: 3,
-                size: 10,
+                size: 10.dp,
                 onValueChanged: (value) {},
               )
             ],
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Text(
             'Serviços:',
@@ -58,19 +58,19 @@ class _ServiceProviderContent extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 350,
+            width: 350.w,
             child: AutoSizeText(
               userServicesExecuted,
               textAlign: TextAlign.left,
               maxLines: 3,
-              maxFontSize: 15,
-              minFontSize: 14,
+              maxFontSize: 15.dp,
+              minFontSize: 14.dp,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.headLine2,
             ),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Align(
             alignment: Alignment.bottomRight,

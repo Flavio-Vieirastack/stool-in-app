@@ -1,6 +1,6 @@
 part of '../sign_in_main_page.dart';
 
-class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
+class _SignInCard extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final VoidCallback signInCallBack;
@@ -26,22 +26,8 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
           return Form(
             key: formKey,
             child: Container(
-              constraints: BoxConstraints(
-                maxHeight: constraints.maxHeight *
-                    responsiveHeight(
-                      defaultMobileHeight: 0.65,
-                      defaultMobileSmallSizeHeight: 0.5,
-                      defaultTabletHeight: 0.5,
-                      constraints: constraints,
-                    ),
-              ),
-              width: constraints.maxWidth *
-                  responsiveWidth(
-                    defaultMobileWidth: 0.9,
-                    defaultMobileSmallSizeWidth: 0.8,
-                    defaultTabletWidth: 0.8,
-                    constraints: constraints,
-                  ),
+              padding: EdgeInsets.all(8.dp),
+              width: Adaptive.w(90),
               decoration: BoxDecoration(
                 color: AppColors.black,
                 gradient: RadialGradient(
@@ -59,28 +45,12 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.025,
-                          defaultMobileSmallSizeHeight: 0.09,
-                          defaultTabletHeight: 0.09,
-                          constraints: constraints,
-                        ),
-                  ),
+                  SizedBox(height: 2.h),
                   Text(
                     'Informe seu email e senha',
                     style: AppTextStyles.headLine1,
                   ),
-                  SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.04,
-                          defaultMobileSmallSizeHeight: 0.025,
-                          defaultTabletHeight: 0.025,
-                          constraints: constraints,
-                        ),
-                  ),
+                  SizedBox(height: 2.h),
                   AppTextFormField(
                     label: 'Email',
                     hint: 'Ex: email@email.com',
@@ -91,15 +61,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                       Validatorless.email('Informe um email válido'),
                     ]),
                   ),
-                  SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.09,
-                          defaultTabletHeight: 0.09,
-                          constraints: constraints,
-                        ),
-                  ),
+                  SizedBox(height: 2.h),
                   AppTextFormField(
                     label: 'Senha',
                     hint: 'Ex: Abc@123456',
@@ -118,15 +80,7 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.09,
-                          defaultTabletHeight: 0.09,
-                          constraints: constraints,
-                        ),
-                  ),
+                  SizedBox(height: 2.h),
                   AppTextFormField(
                     label: 'Digite novamente sua senha',
                     hint: 'Ex: Abc@123456',
@@ -143,53 +97,21 @@ class _SignInCard extends StatelessWidget with ResponsiveHelperMixin {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.2,
-                          defaultTabletHeight: 0.2,
-                          constraints: constraints,
-                        ),
-                  ),
-                  SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.2,
-                          defaultTabletHeight: 0.2,
-                          constraints: constraints,
-                        ),
-                  ),
+                  SizedBox(height: 2.h),
+                  SizedBox(height: 2.h),
                   AppButton(
                     buttonText: 'Cadastrar',
                     onPressed: signInCallBack,
                     buttonTypes: buttonTypes,
                   ),
-                  SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.02,
-                          defaultMobileSmallSizeHeight: 0.2,
-                          defaultTabletHeight: 0.2,
-                          constraints: constraints,
-                        ),
-                  ),
+                  SizedBox(height: 2.h),
                   AppButton(
                     buttonText: 'Voltar',
                     onPressed: () => Navigator.of(context)
                         .pushReplacementNamed(RoutesConstants.loginRoute),
                     buttonTypes: ButtonTypes.secondary,
                   ),
-                  SizedBox(
-                    height: constraints.maxHeight *
-                        responsiveHeight(
-                          defaultMobileHeight: 0.03,
-                          defaultMobileSmallSizeHeight: 0.2,
-                          defaultTabletHeight: 0.2,
-                          constraints: constraints,
-                        ),
-                  ),
+                  SizedBox(height: 2.h),
                 ],
               ),
             ),

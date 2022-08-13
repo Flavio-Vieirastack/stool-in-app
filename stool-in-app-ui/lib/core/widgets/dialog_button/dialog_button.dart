@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 import '../../helpers/theme/text_styles/app_text_styles.dart';
 
 enum DialogButtonType {
@@ -26,9 +26,9 @@ class DialogButton extends StatelessWidget {
         primary: dialogButtonType == DialogButtonType.yes
             ? Colors.green
             : Colors.red,
-        fixedSize: const Size(150, 20),
+        fixedSize: Size(150.w, 20.h),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.dp),
         ),
       ),
       child: Text(

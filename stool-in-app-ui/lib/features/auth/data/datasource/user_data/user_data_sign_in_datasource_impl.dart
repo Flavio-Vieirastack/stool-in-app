@@ -18,7 +18,7 @@ class UserDataSignInDatasourceImpl implements UserDataSignInDatasource {
     required UserDataModel userDataModel,
   }) async {
     try {
-      final result = await _restClientPost.post<Map<String, dynamic>>(
+      final result = await _restClientPost.post(
         path: EndpointConstants.postUserData,
         data: userDataModel.toMap(),
       );

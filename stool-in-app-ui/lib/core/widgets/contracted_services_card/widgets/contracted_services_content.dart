@@ -30,7 +30,7 @@ class _ContractedServicesContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(15.0.dp),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
@@ -64,7 +64,7 @@ class _ContractedServicesContent extends StatelessWidget {
                         text: status,
                         style: AppTextStyles.headLine2.copyWith(
                             color: Colors.green,
-                            fontSize: 20,
+                            fontSize: 20.dp,
                             fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -73,8 +73,8 @@ class _ContractedServicesContent extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Center(
             child: Text(
@@ -163,8 +163,8 @@ class _ContractedServicesContent extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AppAvatar(urlImage: serviceProviderImageUrl),
-                const SizedBox(
-                  width: 10,
+                SizedBox(
+                  width: 10.w,
                 ),
                 Text(
                   serviceProviderName,

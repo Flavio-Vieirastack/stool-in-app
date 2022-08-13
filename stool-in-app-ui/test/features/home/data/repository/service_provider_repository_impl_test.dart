@@ -39,7 +39,8 @@ void main() {
     when(
       () => serviceProviderrepositoryMock.call(providersParams: params),
     ).thenAnswer((_) async => Right(serviceProviderEntityMock));
-    final sut = await serviceProviderrepositoryMock.call(providersParams: params);
+    final sut =
+        await serviceProviderrepositoryMock.call(providersParams: params);
     expect(
       sut,
       Right(serviceProviderEntityMock),
@@ -61,7 +62,8 @@ void main() {
     when(
       () => serviceProviderDatasourceMock.call(providersParams: params),
     ).thenAnswer((_) async => serviceProviderEntityMock);
-    final sut = await serviceProviderRepositoryImpl.call(providersParams: params);
+    final sut =
+        await serviceProviderRepositoryImpl.call(providersParams: params);
     expect(sut, Right(serviceProviderEntityMock));
     verify(
       () => serviceProviderDatasourceMock.call(providersParams: params),

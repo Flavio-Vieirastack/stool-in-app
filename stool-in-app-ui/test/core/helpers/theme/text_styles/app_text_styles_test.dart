@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 
 void main() {
   test('Deve retornar o estilo correto para headLine0', () {
@@ -11,7 +12,7 @@ void main() {
       color: AppColors.white,
       fontWeight: FontWeight.bold,
       fontFamily: GoogleFonts.exo2().fontFamily,
-      fontSize: 32,
+      fontSize: 32.dp,
     );
     expect(sut, matcher);
   });

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 class AppAvatar extends StatelessWidget {
   final String? urlImage;
   final double size;
@@ -16,10 +16,10 @@ class AppAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(50)),
+      borderRadius: BorderRadius.all(Radius.circular(50.dp)),
       child: SizedBox(
-        height: size,
-        width: size,
+        height: size.dp,
+        width: size.dp,
         child: urlImage != null
             ? CachedNetworkImage(
                 imageUrl: urlImage ?? '',
@@ -32,7 +32,7 @@ class AppAvatar extends StatelessWidget {
                 backgroundColor: AppColors.grey,
                 child: !isLoading ? Icon(
                   Icons.person,
-                  size: 50,
+                  size: 50.dp,
                   color: AppColors.black,
                 ) : const CircularProgressIndicator.adaptive()
               ),

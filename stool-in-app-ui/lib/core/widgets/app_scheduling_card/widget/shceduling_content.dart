@@ -39,7 +39,7 @@ class _ShcedulingContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(15.0.dp),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,8 +47,8 @@ class _ShcedulingContent extends StatelessWidget {
           Row(
             children: [
               AppAvatar(urlImage: userUrlImage),
-              const SizedBox(
-                width: 5,
+              SizedBox(
+                width: 5.w,
               ),
               Expanded(
                 child: AutoSizeText(
@@ -56,12 +56,12 @@ class _ShcedulingContent extends StatelessWidget {
                   style: AppTextStyles.headLine1,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  maxFontSize: 18,
-                  minFontSize: 17,
+                  maxFontSize: 18.dp,
+                  minFontSize: 17.dp,
                 ),
               ),
-              const SizedBox(
-                width: 5,
+              SizedBox(
+                width: 5.w,
               ),
               Text(
                 '$jobDate as $jobHour',
@@ -69,8 +69,8 @@ class _ShcedulingContent extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Align(
             alignment: Alignment.bottomRight,
@@ -79,8 +79,8 @@ class _ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine1Gold,
             ),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Center(
             child: Text(
@@ -88,8 +88,8 @@ class _ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine4Gold,
             ),
           ),
-          const SizedBox(
-            height: 2,
+           SizedBox(
+            height: 2.h,
           ),
           Text(
             serviceDescription,
@@ -106,8 +106,8 @@ class _ShcedulingContent extends StatelessWidget {
                   'Comentário:',
                   style: AppTextStyles.headLine4Gold,
                 ),
-                const SizedBox(
-                  height: 2,
+                 SizedBox(
+                  height: 2.h,
                 ),
                 Text(
                   userComentary,
@@ -125,8 +125,8 @@ class _ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine4Gold,
             ),
           ),
-          const SizedBox(
-            height: 2,
+           SizedBox(
+            height: 2.h,
           ),
           Text(
             servicesTodo,
@@ -199,8 +199,8 @@ class _ShcedulingContent extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
+           SizedBox(
+            height: 10.h,
           ),
           Center(
             child: DialogButton(

@@ -1,6 +1,6 @@
 part of '../password_reset_page.dart';
 
-class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
+class _PasswordResetCard extends StatelessWidget {
   final TextEditingController emailController;
   final VoidCallback sendCallback;
   final ButtonTypes buttonTypes;
@@ -20,20 +20,8 @@ class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Container(
-            height: constraints.maxHeight *
-                responsiveHeight(
-                  defaultMobileHeight: 0.4,
-                  defaultMobileSmallSizeHeight: 0.5,
-                  defaultTabletHeight: 0.5,
-                  constraints: constraints,
-                ),
-            width: constraints.maxWidth *
-                responsiveWidth(
-                  defaultMobileWidth: 0.9,
-                  defaultMobileSmallSizeWidth: 0.8,
-                  defaultTabletWidth: 0.8,
-                  constraints: constraints,
-                ),
+            width: Adaptive.w(90),
+            height: 40.h,
             decoration: BoxDecoration(
               color: AppColors.black,
               gradient: RadialGradient(
@@ -44,33 +32,21 @@ class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
                   AppColors.black,
                 ],
               ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(30),
+              borderRadius: BorderRadius.all(
+                Radius.circular(30.dp),
               ),
             ),
             child: Column(
               children: [
                 SizedBox(
-                  height: constraints.maxHeight *
-                      responsiveHeight(
-                        defaultMobileHeight: 0.02,
-                        defaultMobileSmallSizeHeight: 0.2,
-                        defaultTabletHeight: 0.2,
-                        constraints: constraints,
-                      ),
+                  height: 4.h
                 ),
                 Text(
                   'Nós enviaremos um link para você.',
                   style: AppTextStyles.headLine1,
                 ),
                 SizedBox(
-                  height: constraints.maxHeight *
-                      responsiveHeight(
-                        defaultMobileHeight: 0.04,
-                        defaultMobileSmallSizeHeight: 0.2,
-                        defaultTabletHeight: 0.2,
-                        constraints: constraints,
-                      ),
+                  height: 4.h
                 ),
                 AppTextFormField(
                   label: 'Email',
@@ -89,13 +65,7 @@ class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
                   ),
                 ),
                 SizedBox(
-                  height: constraints.maxHeight *
-                      responsiveHeight(
-                        defaultMobileHeight: 0.04,
-                        defaultMobileSmallSizeHeight: 0.2,
-                        defaultTabletHeight: 0.2,
-                        constraints: constraints,
-                      ),
+                  height: 4.h
                 ),
                 AppButton(
                   buttonText: 'Enviar',
@@ -103,13 +73,7 @@ class _PasswordResetCard extends StatelessWidget with ResponsiveHelperMixin {
                   buttonTypes: buttonTypes,
                 ),
                 SizedBox(
-                  height: constraints.maxHeight *
-                      responsiveHeight(
-                        defaultMobileHeight: 0.02,
-                        defaultMobileSmallSizeHeight: 0.2,
-                        defaultTabletHeight: 0.2,
-                        constraints: constraints,
-                      ),
+                  height: 2.h
                 ),
                 AppButton(
                   buttonText: 'Voltar',

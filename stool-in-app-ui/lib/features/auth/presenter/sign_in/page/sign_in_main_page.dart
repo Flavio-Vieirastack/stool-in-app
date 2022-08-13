@@ -3,14 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/helpers/responsive/responsive_helper_mixin.dart';
 import 'package:stool_in/core/widgets/app_dialog/app_dialog.dart';
 import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
 import 'package:stool_in/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/presenter/sign_in/cubit/sign_in_cubit.dart';
 import 'package:validatorless/validatorless.dart';
-
+import 'package:flutter_sizer/flutter_sizer.dart';
 import '../../../../../core/helpers/theme/colors/app_colors.dart';
 import '../../../../../core/helpers/theme/text_styles/app_text_styles.dart';
 import '../../../../../core/widgets/app_button/app_button.dart';
@@ -25,8 +24,7 @@ class SignInMainPage extends StatefulWidget {
   State<SignInMainPage> createState() => _SignInMainPageState();
 }
 
-class _SignInMainPageState extends State<SignInMainPage>
-    with ResponsiveHelperMixin, AppSnackBar {
+class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -67,6 +65,8 @@ class _SignInMainPageState extends State<SignInMainPage>
                   context: context,
                   type: SnackBarType.error,
                 );
+                passwordController.clear();
+                emailController.clear();
               } else if (state is SignInStateEmailAccepted) {
                 Navigator.of(context).pop();
                 showDialog(
@@ -90,22 +90,7 @@ class _SignInMainPageState extends State<SignInMainPage>
                   child: Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(
-                          top: constraints.maxHeight *
-                              responsiveHeight(
-                                defaultMobileHeight: 0.1,
-                                defaultMobileSmallSizeHeight: 0.2,
-                                defaultTabletHeight: 0.2,
-                                constraints: constraints,
-                              ),
-                          left: constraints.maxWidth *
-                              responsiveWidth(
-                                defaultMobileWidth: 0.05,
-                                defaultMobileSmallSizeWidth: 0.01,
-                                defaultTabletWidth: 0.01,
-                                constraints: constraints,
-                              ),
-                        ),
+                        padding: EdgeInsets.only(top: 10.h, left: 10.w),
                         child: Text(
                           'Vamos começar,',
                           style: AppTextStyles.headLine0,

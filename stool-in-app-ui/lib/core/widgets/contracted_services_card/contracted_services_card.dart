@@ -3,6 +3,7 @@ import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 
 import '../../helpers/theme/colors/app_colors.dart';
 import '../../helpers/theme/text_styles/app_text_styles.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 part './widgets/contracted_services_content.dart';
 
 class ContractedServicesCard extends StatelessWidget {
@@ -39,11 +40,11 @@ class ContractedServicesCard extends StatelessWidget {
         border: Border.all(
           color: AppColors.buttonLeftGradientColor.withOpacity(0.2),
         ),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
+        borderRadius: BorderRadius.all(
+          Radius.circular(20.dp),
         ),
         gradient: RadialGradient(
-          radius: 2,
+          radius: 2.dp,
           colors: [
             AppColors.grey.withOpacity(0.5),
             AppColors.black.withOpacity(0.3),
