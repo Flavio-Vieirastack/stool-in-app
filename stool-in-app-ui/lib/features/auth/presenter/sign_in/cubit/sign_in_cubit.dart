@@ -114,7 +114,9 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     );
     result.fold(
       (error) async {
-        await _firebaseAuth.currentUser?.delete();
+        if (userUuid == null) {
+          await _firebaseAuth.currentUser?.delete();
+        }
         emit(
           SignInStateError(message: error.message),
         );

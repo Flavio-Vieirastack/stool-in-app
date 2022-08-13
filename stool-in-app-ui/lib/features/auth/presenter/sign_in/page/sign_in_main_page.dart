@@ -65,6 +65,8 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                   context: context,
                   type: SnackBarType.error,
                 );
+                passwordController.clear();
+                emailController.clear();
               } else if (state is SignInStateEmailAccepted) {
                 Navigator.of(context).pop();
                 showDialog(
