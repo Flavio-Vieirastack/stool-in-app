@@ -36,6 +36,7 @@ class _SignInDataCard extends StatelessWidget {
         return Form(
           key: formKey,
           child: Container(
+            width: Adaptive.w(90),
             decoration: BoxDecoration(
               color: AppColors.black,
               gradient: RadialGradient(
@@ -52,203 +53,207 @@ class _SignInDataCard extends StatelessWidget {
             ),
             child: BlocBuilder<FirebaseStorageCubit, FirebaseStorageState>(
               builder: (context, state) {
-                return Column(
-                  children: [
-                     SizedBox(
-                      height: 1.5.h,
-                    ),
-                    if (state is FirebaseStorageLoading)
-                       Center(
-                        child: AppAvatar(
-                          size: 80.dp,
-                          isLoading: true,
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 4.h),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                       SizedBox(
+                        height: 1.5.h,
+                      ),
+                      if (state is FirebaseStorageLoading)
+                         Center(
+                          child: AppAvatar(
+                            size: 80.dp,
+                            isLoading: true,
+                          ),
+                        ),
+                      if (state is FirebaseStorageInitial)
+                         Center(
+                          child: AppAvatar(
+                            size: 80.dp,
+                          ),
+                        ),
+                      if (state is FirebaseStorageSucess)
+                        Center(
+                          child: AppAvatar(
+                            size: 80.dp,
+                            urlImage: state.userUrlImage,
+                          ),
+                        ),
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                      Text(
+                        'Por favor preencha seus dados.',
+                        style: AppTextStyles.headLine1,
+                      ),
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                      AppTextFormField(
+                        label: 'Seu nome completo',
+                        hint: 'Ex: Felipe soares silva',
+                        controller: userNameController,
+                        color: Colors.transparent,
+                        validator: Validatorless.multiple(
+                          [
+                            Validatorless.required(
+                              'Esse campo não pode ser vazio',
+                            ),
+                            Validatorless.min(
+                              5,
+                              'Digite seu nome completo',
+                            )
+                          ],
                         ),
                       ),
-                    if (state is FirebaseStorageInitial)
-                       Center(
-                        child: AppAvatar(
-                          size: 80.dp,
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                      AppTextFormField(
+                        label: 'Rua',
+                        hint: 'Ex: Rua aparecida',
+                        controller: streetController,
+                        color: Colors.transparent,
+                        validator: Validatorless.multiple(
+                          [
+                            Validatorless.required(
+                              'Esse campo não pode ser vazio',
+                            ),
+                            Validatorless.min(
+                              4,
+                              'Digite sua rua',
+                            )
+                          ],
                         ),
                       ),
-                    if (state is FirebaseStorageSucess)
-                      Center(
-                        child: AppAvatar(
-                          size: 80.dp,
-                          urlImage: state.userUrlImage,
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                      AppTextFormField(
+                        label: 'Cidade',
+                        hint: 'Ex: São paulo',
+                        controller: cityController,
+                        color: Colors.transparent,
+                        validator: Validatorless.multiple(
+                          [
+                            Validatorless.required(
+                              'Esse campo não pode ser vazio',
+                            ),
+                            Validatorless.min(
+                              3,
+                              'Digite sua Ccidade',
+                            )
+                          ],
                         ),
                       ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    Text(
-                      'Por favor preencha seus dados.',
-                      style: AppTextStyles.headLine1,
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    AppTextFormField(
-                      label: 'Seu nome completo',
-                      hint: 'Ex: Felipe soares silva',
-                      controller: userNameController,
-                      color: Colors.transparent,
-                      validator: Validatorless.multiple(
-                        [
-                          Validatorless.required(
-                            'Esse campo não pode ser vazio',
-                          ),
-                          Validatorless.min(
-                            5,
-                            'Digite seu nome completo',
-                          )
-                        ],
+                      SizedBox(
+                        height: 1.5.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    AppTextFormField(
-                      label: 'Rua',
-                      hint: 'Ex: Rua aparecida',
-                      controller: streetController,
-                      color: Colors.transparent,
-                      validator: Validatorless.multiple(
-                        [
-                          Validatorless.required(
-                            'Esse campo não pode ser vazio',
-                          ),
-                          Validatorless.min(
-                            4,
-                            'Digite sua rua',
-                          )
-                        ],
+                      AppTextFormField(
+                        label: 'Número da casa',
+                        hint: 'Ex: 985',
+                        controller: houseNumberController,
+                        color: Colors.transparent,
+                        validator: Validatorless.multiple(
+                          [
+                            Validatorless.required(
+                              'Esse campo não pode ser vazio',
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    AppTextFormField(
-                      label: 'Cidade',
-                      hint: 'Ex: São paulo',
-                      controller: cityController,
-                      color: Colors.transparent,
-                      validator: Validatorless.multiple(
-                        [
-                          Validatorless.required(
-                            'Esse campo não pode ser vazio',
-                          ),
-                          Validatorless.min(
-                            3,
-                            'Digite sua Ccidade',
-                          )
-                        ],
+                      SizedBox(
+                        height: 1.5.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    AppTextFormField(
-                      label: 'Número da casa',
-                      hint: 'Ex: 985',
-                      controller: houseNumberController,
-                      color: Colors.transparent,
-                      validator: Validatorless.multiple(
-                        [
-                          Validatorless.required(
-                            'Esse campo não pode ser vazio',
-                          ),
-                        ],
+                      AppTextFormField(
+                        label: 'Bairro',
+                        hint: 'Ex: Campo belo',
+                        controller: districtController,
+                        color: Colors.transparent,
+                        validator: Validatorless.multiple(
+                          [
+                            Validatorless.required(
+                              'Esse campo não pode ser vazio',
+                            ),
+                            Validatorless.min(
+                              3,
+                              'Digite seu bairro',
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    AppTextFormField(
-                      label: 'Bairro',
-                      hint: 'Ex: Campo belo',
-                      controller: districtController,
-                      color: Colors.transparent,
-                      validator: Validatorless.multiple(
-                        [
-                          Validatorless.required(
-                            'Esse campo não pode ser vazio',
-                          ),
-                          Validatorless.min(
-                            3,
-                            'Digite seu bairro',
-                          )
-                        ],
+                      SizedBox(
+                        height: 1.5.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20.w
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.w
+                        ),
+                        child: DropdownButton<String>(
+                          hint: Text(statesDropDownLabel),
+                          isExpanded: true,
+                          onChanged: onChanged,
+                          items: Estados.listaEstadosSigla.map(
+                            (String state) {
+                              return DropdownMenuItem(
+                                value: state,
+                                child: Text(state),
+                              );
+                            },
+                          ).toList(),
+                        ),
                       ),
-                      child: DropdownButton<String>(
-                        hint: Text(statesDropDownLabel),
-                        isExpanded: true,
-                        onChanged: onChanged,
-                        items: Estados.listaEstadosSigla.map(
-                          (String state) {
-                            return DropdownMenuItem(
-                              value: state,
-                              child: Text(state),
-                            );
-                          },
-                        ).toList(),
+                      SizedBox(
+                        height: 1.5.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    AppTextFormField(
-                      label: 'Cep',
-                      hint: 'Ex: 63100000',
-                      color: Colors.transparent,
-                      controller: cepController,
-                    ),
-                    SizedBox(
-                      height: 1.h
-                    ),
-                    AppTextFormField(
-                      label: 'Ponto de referência',
-                      hint: 'Ex: Próximo ao posto de saúde X',
-                      color: Colors.transparent,
-                      controller: referencePointController,
-                      validator: Validatorless.multiple(
-                        [
-                          Validatorless.required(
-                            'Esse campo não pode ser vazio',
-                          ),
-                        ],
+                      AppTextFormField(
+                        label: 'Cep',
+                        hint: 'Ex: 63100000',
+                        color: Colors.transparent,
+                        controller: cepController,
                       ),
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    AppButton(
-                      buttonText: 'Cadastrar',
-                      onPressed: signInCallBack,
-                      buttonTypes: buttonTypes,
-                    ),
-                    SizedBox(
-                      height: 1.5.h,
-                    ),
-                    AppButton(
-                      buttonText: 'Voltar',
-                      onPressed: () => Navigator.of(context)
-                          .pushReplacementNamed(
-                              RoutesConstants.signInMainRoute),
-                      buttonTypes: ButtonTypes.secondary,
-                    ),
-                    
-                  ],
+                      SizedBox(
+                        height: 1.h
+                      ),
+                      AppTextFormField(
+                        label: 'Ponto de referência',
+                        hint: 'Ex: Próximo ao posto de saúde X',
+                        color: Colors.transparent,
+                        controller: referencePointController,
+                        validator: Validatorless.multiple(
+                          [
+                            Validatorless.required(
+                              'Esse campo não pode ser vazio',
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                      AppButton(
+                        buttonText: 'Cadastrar',
+                        onPressed: signInCallBack,
+                        buttonTypes: buttonTypes,
+                      ),
+                      SizedBox(
+                        height: 1.5.h,
+                      ),
+                      AppButton(
+                        buttonText: 'Voltar',
+                        onPressed: () => Navigator.of(context)
+                            .pushReplacementNamed(
+                                RoutesConstants.signInMainRoute),
+                        buttonTypes: ButtonTypes.secondary,
+                      ),
+                      
+                    ],
+                  ),
                 );
               },
             ),

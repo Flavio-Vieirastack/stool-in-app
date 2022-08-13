@@ -107,17 +107,16 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                   ),
                 ),
                  SizedBox(
-                  height: 10.h,
+                  height: 2.h,
                 ),
-                SizedBox(
-                  height: constraints.maxHeight,
-                  child: Stack(
-                    children: [
-                      BlocBuilder<SignInUserDataCubit, SignInUserDataState>(
-                        builder: (context, state) {
-                          if (state is SignInUserDataLoading) {
-                            return IgnorePointer(
-                              ignoring: true,
+                Stack(
+                  children: [
+                    BlocBuilder<SignInUserDataCubit, SignInUserDataState>(
+                      builder: (context, state) {
+                        if (state is SignInUserDataLoading) {
+                          return IgnorePointer(
+                            ignoring: true,
+                            child: Center(
                               child: _SignInDataCard(
                                 formKey: formKey,
                                 statesDropDownLabel: stateInitialName,
@@ -133,9 +132,11 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                 userNameController: userNameController,
                                 signInCallBack: () {},
                               ),
-                            );
-                          } else {
-                            return _SignInDataCard(
+                            ),
+                          );
+                        } else {
+                          return Center(
+                            child: _SignInDataCard(
                               formKey: formKey,
                               statesDropDownLabel: stateInitialName,
                               onChanged: (value) {
@@ -170,37 +171,37 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                                   userState: stateInitialName,
                                 ),
                               ),
-                            );
-                          }
-                        },
+                            ),
+                          );
+                        }
+                      },
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 10.w,
+                        left: 55.w
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: 5.w,
-                          left: 55.w
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.buttonLeftGradientColor,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(30.dp),
-                            ),
-                          ),
-                          child: IconButton(
-                            onPressed: () async =>
-                                firebaseStorageCubit.pickAndUploadImage(
-                              imageFrom: ImageFrom.gallery,
-                            ),
-                            icon: Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 30.dp,
-                            ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.buttonLeftGradientColor,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.dp),
                           ),
                         ),
-                      )
-                    ],
-                  ),
+                        child: IconButton(
+                          onPressed: () async =>
+                              firebaseStorageCubit.pickAndUploadImage(
+                            imageFrom: ImageFrom.gallery,
+                          ),
+                          icon: Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 30.dp,
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ],
             );
