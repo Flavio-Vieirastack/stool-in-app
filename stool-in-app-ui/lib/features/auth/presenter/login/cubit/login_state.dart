@@ -54,3 +54,5 @@ class LoginError extends LoginState {
   @override
   List<Object?> get props => [message, urlImage];
 }
+
+class LoginEmailNotVerified extends LoginState {}

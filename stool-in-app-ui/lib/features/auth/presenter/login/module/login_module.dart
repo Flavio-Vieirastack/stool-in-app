@@ -91,6 +91,7 @@ class LoginModule extends AppModule {
             ),
             Provider<LoginCubit>(
               create: (context) => LoginCubit(
+                firebaseAuth: Inject<FirebaseAuth>(context).get(),
                 geoLocatorCubit: Inject<GeoLocatorCubit>(context).get(),
                 writeLocalSecurityStorage:
                     Inject<WriteLocalSecurityStorage>(context).get(),

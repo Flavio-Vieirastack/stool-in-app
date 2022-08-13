@@ -92,6 +92,12 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                   duration: 3,
                   type: SnackBarType.error,
                 );
+              } else if (state is LoginEmailNotVerified) {
+                showAppSnackbar(
+                  message: 'Você ainda não verificou o seu email',
+                  context: context,
+                  type: SnackBarType.error,
+                );
               }
             },
           ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
@@ -15,11 +16,14 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   final AuthUseCase _authUseCase;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
   final GeoLocatorCubit _geoLocatorCubit;
+  final FirebaseAuth _firebaseAuth;
   LoginCubit({
     required AuthUseCase authUseCase,
+    required FirebaseAuth firebaseAuth,
     required WriteLocalSecurityStorage writeLocalSecurityStorage,
     required GeoLocatorCubit geoLocatorCubit,
   })  : _authUseCase = authUseCase,
+        _firebaseAuth = firebaseAuth,
         _geoLocatorCubit = geoLocatorCubit,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         super(LoginInitial());
@@ -32,6 +36,13 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
       emit(
         LoginEnableApiPasswordReset(urlImage: userImageUrl),
       );
+    }
+  }
+
+  Future<void> verifyUserEmailOnInit() async {
+    final emailVerified = await _firebaseAuth.currentUser?.emailVerified;
+    if (emailVerified == null || emailVerified == false) {
+      emit(LoginEmailNotVerified());
     }
   }
 
