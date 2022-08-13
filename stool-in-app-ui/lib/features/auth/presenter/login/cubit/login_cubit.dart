@@ -10,23 +10,30 @@ import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locat
 import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
+import 'package:stool_in/features/auth/presenter/sign_in/cubit/sign_in_cubit.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   final AuthUseCase _authUseCase;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
+  final ReadLocalSecurityStorage _readLocalSecurityStorage;
   final GeoLocatorCubit _geoLocatorCubit;
   final FirebaseAuth _firebaseAuth;
+  final SignInCubit _signInCubit;
   final SendVerificationEmailUsecase _sendVerificationEmailUsecase;
   LoginCubit({
     required AuthUseCase authUseCase,
+    required SignInCubit signInCubit,
+    required ReadLocalSecurityStorage readLocalSecurityStorage,
     required FirebaseAuth firebaseAuth,
     required WriteLocalSecurityStorage writeLocalSecurityStorage,
     required SendVerificationEmailUsecase sendVerificationEmailUsecase,
     required GeoLocatorCubit geoLocatorCubit,
   })  : _authUseCase = authUseCase,
         _firebaseAuth = firebaseAuth,
+        _signInCubit = signInCubit,
+        _readLocalSecurityStorage = readLocalSecurityStorage,
         _geoLocatorCubit = geoLocatorCubit,
         _sendVerificationEmailUsecase = sendVerificationEmailUsecase,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
@@ -67,6 +74,16 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     await _firebaseAuth.currentUser?.reload();
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified != null && emailVerified) {
+      final userEmail =
+          await _readLocalSecurityStorage.read(key: KeysConstants.userEmail);
+      final userPassword =
+          await _readLocalSecurityStorage.read(key: KeysConstants.userPassword);
+      await _signInCubit.checkEmailVerifiedAndSaveUserInApi(
+        authEntity: AuthEntity(
+          email: userEmail ?? '',
+          password: userPassword ?? '',
+        ),
+      );
       emit(LoginEmailVerified());
     } else {
       emit(LoginEmailRequestNotVerified());

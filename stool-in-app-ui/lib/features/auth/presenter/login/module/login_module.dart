@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/firebase/push_notifications/firebase_notifications.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
@@ -10,6 +11,7 @@ import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
 import 'package:stool_in/features/auth/presenter/login/pages/login_page.dart';
+import 'package:stool_in/features/auth/presenter/sign_in/cubit/sign_in_cubit.dart';
 
 import '../../../../../core/rest_client/rest_client_contracts.dart';
 import '../../../data/datasource/login/login_datasource.dart';
@@ -90,9 +92,25 @@ class LoginModule extends AppModule {
                     Inject<UserDataSignInRepository>(context).get(),
               ),
             ),
+            Provider(
+              create: (context) => SignInCubit(
+                authUseCase: Inject<AuthUseCase>(context).get(),
+                firebaseAuth: Inject<FirebaseAuth>(context).get(),
+                sendVerificationEmailUsecase:
+                    Inject<SendVerificationEmailUsecase>(context).get(),
+                writeLocalSecurityStorage:
+                    Inject<WriteLocalSecurityStorage>(context).get(),
+                fireBaseNotifications:
+                    Inject<FireBaseNotifications>(context).get(),
+              ),
+            ),
             Provider<LoginCubit>(
               create: (context) => LoginCubit(
-                sendVerificationEmailUsecase: Inject<SendVerificationEmailUsecase>(context).get(),
+                readLocalSecurityStorage:
+                    Inject<ReadLocalSecurityStorage>(context).get(),
+                signInCubit: Inject<SignInCubit>(context).get(),
+                sendVerificationEmailUsecase:
+                    Inject<SendVerificationEmailUsecase>(context).get(),
                 firebaseAuth: Inject<FirebaseAuth>(context).get(),
                 geoLocatorCubit: Inject<GeoLocatorCubit>(context).get(),
                 writeLocalSecurityStorage:

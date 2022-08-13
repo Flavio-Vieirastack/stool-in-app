@@ -113,6 +113,11 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                   message: 'Parabéns seu email foi verificado com sucesso',
                   context: context,
                 );
+                await Future.delayed(
+                  const Duration(seconds: 3),
+                  () => Navigator.of(context)
+                      .pushReplacementNamed(RoutesConstants.signInDataRoute),
+                );
               } else if (state is LoginEmailSended) {
                 showAppSnackbar(
                   message: 'Enviamos um email para você',
@@ -121,16 +126,14 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
               } else if (state is LoginEmailNoSended) {
                 Navigator.of(context).pop();
                 showAppSnackbar(
-                  message: state.message,
-                  context: context,
-                  type: SnackBarType.error
-                );
+                    message: state.message,
+                    context: context,
+                    type: SnackBarType.error);
               } else if (state is LoginEmailRequestNotVerified) {
                 showAppSnackbar(
-                  message: 'Você ainda não verificou seu email',
-                  context: context,
-                  type: SnackBarType.error
-                );
+                    message: 'Você ainda não verificou seu email',
+                    context: context,
+                    type: SnackBarType.error);
               }
             },
           ),
