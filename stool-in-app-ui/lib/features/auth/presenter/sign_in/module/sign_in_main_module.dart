@@ -7,6 +7,7 @@ import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contr
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
+import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
 import 'package:stool_in/features/auth/data/datasource/login/login_datasource.dart';
 import 'package:stool_in/features/auth/data/datasource/login/login_datasource_impl.dart';
 import 'package:stool_in/features/auth/data/datasource/password_reset/password_reset_datasource.dart';
@@ -27,7 +28,6 @@ import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_usecase_impl.dart';
 import 'package:stool_in/features/auth/presenter/sign_in/cubit/sign_in_cubit.dart';
 import 'package:stool_in/features/auth/presenter/sign_in/page/sign_in_main_page.dart';
-
 
 class SignInMainModule extends AppModule {
   SignInMainModule()
@@ -90,6 +90,8 @@ class SignInMainModule extends AppModule {
             ),
             Provider<SignInCubit>(
               create: (context) => SignInCubit(
+                sendVerificationEmailUsecase:
+                    Inject<SendVerificationEmailUsecase>(context).get(),
                 fireBaseNotifications:
                     Inject<FireBaseNotifications>(context).get(),
                 writeLocalSecurityStorage:

@@ -22,3 +22,4 @@ class SignInStateError extends SignInState {
   List<Object?> get props => [message];
 }
 class SignInStateSucess extends SignInState {}
+class SignInStateSendVerificationEmailError extends SignInState {}

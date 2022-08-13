@@ -8,6 +8,7 @@ import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/firebase/push_notifications/firebase_notifications.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 
@@ -18,13 +19,16 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
   final FirebaseAuth _firebaseAuth;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
   final FireBaseNotifications _fireBaseNotifications;
+  final SendVerificationEmailUsecase _sendVerificationEmailUsecase;
   SignInCubit({
     required AuthUseCase authUseCase,
     required FirebaseAuth firebaseAuth,
+    required SendVerificationEmailUsecase sendVerificationEmailUsecase,
     required WriteLocalSecurityStorage writeLocalSecurityStorage,
     required FireBaseNotifications fireBaseNotifications,
   })  : _authUseCase = authUseCase,
         _firebaseAuth = firebaseAuth,
+        _sendVerificationEmailUsecase = sendVerificationEmailUsecase,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         _fireBaseNotifications = fireBaseNotifications,
         super(SignInInitial());
@@ -42,14 +46,15 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         ),
         (sucess) async {
           await sendVerificationEmail();
-          emit(SignInStateEmailSended());
-          timer = Timer.periodic(
-            const Duration(seconds: 3),
-            (_) => _checkEmailVerifiedAndSaveUserInApi(
-              timer,
-              authEntity: authEntity,
-            ),
-          );
+          if (state is SignInStateEmailSended) {
+            timer = Timer.periodic(
+              const Duration(seconds: 3),
+              (_) => _checkEmailVerifiedAndSaveUserInApi(
+                timer,
+                authEntity: authEntity,
+              ),
+            );
+          }
         },
       );
     }
@@ -97,7 +102,16 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
   Future<void> sendVerificationEmail() async {
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified == null || !emailVerified) {
-      await _firebaseAuth.currentUser?.sendEmailVerification();
+      final result = await _sendVerificationEmailUsecase.call();
+      result.fold(
+        (error) async {
+          emit(SignInStateSendVerificationEmailError());
+          await _firebaseAuth.currentUser?.delete();
+        },
+        (sucess) {
+          emit(SignInStateEmailSended());
+        },
+      );
     }
   }
 
