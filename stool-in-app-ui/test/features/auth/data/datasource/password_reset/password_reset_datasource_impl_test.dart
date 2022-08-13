@@ -6,6 +6,7 @@ import 'package:stool_in/core/rest_client/rest_client_response.dart';
 import 'package:stool_in/features/auth/data/datasource/password_reset/password_reset_datasource.dart';
 import 'package:stool_in/features/auth/data/datasource/password_reset/password_reset_datasource_impl.dart';
 import 'package:stool_in/features/auth/data/model/auth_model.dart';
+import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
 
 class PatchMock extends Mock implements RestClientPatch {}
 
@@ -33,6 +34,15 @@ void main() {
     );
     final sut = passwordResetDatasource.apiPasswordReset(authModel: authModel);
     expect(sut, isA<Future<void>>());
+  });
+  test('Deve retornar um erro ao fazer reset de senha', () async {
+    when(
+      () => patchMock.patch(path: any(named: 'path'), data: any(named: 'data')),
+    ).thenThrow(
+      ApiAuthError(message: 'message'),
+    );
+    final sut = passwordResetDatasource.apiPasswordReset;
+    expect(() async => sut(authModel: authModel), throwsException);
   });
   test('Deve chamar o metodo patch ao fazer reset de senha', () async {
     when(
