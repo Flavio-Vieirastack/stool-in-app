@@ -123,15 +123,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               child: _SignInDataCard(
                                 formKey: formKey,
                                 statesDropDownLabel: stateInitialName,
-                                onChanged: (value) {
-                                  if (value != null) {
-                                    log(value);
-                                    setState(() {
-                                      stateInitialName = value;
-                                    });
-                                    log(stateInitialName);
-                                  }
-                                },
+                                onChanged: (value) {},
                                 buttonTypes: ButtonTypes.loading,
                                 cepController: cepController,
                                 cityController: cityController,
@@ -151,15 +143,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               formKey: formKey,
                               urlImage: state.userUrlImage,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {
-                                if (value != null) {
-                                  log(value);
-                                  setState(() {
-                                    stateInitialName = value;
-                                  });
-                                  log(stateInitialName);
-                                }
-                              },
+                              onChanged: (value) {},
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -193,15 +177,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               formKey: formKey,
                               urlImage: state.userUrlImage,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {
-                                if (value != null) {
-                                  log(value);
-                                  setState(() {
-                                    stateInitialName = value;
-                                  });
-                                  log(stateInitialName);
-                                }
-                              },
+                              onChanged: (value) {},
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -235,15 +211,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               formKey: formKey,
                               urlImage: state.userUrlImage,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {
-                                if (value != null) {
-                                  log(value);
-                                  setState(() {
-                                    stateInitialName = value;
-                                  });
-                                  log(stateInitialName);
-                                }
-                              },
+                              onChanged: (value) {},
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -277,15 +245,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               formKey: formKey,
                               urlImage: state.userUrlImage,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {
-                                if (value != null) {
-                                  log(value);
-                                  setState(() {
-                                    stateInitialName = value;
-                                  });
-                                  log(stateInitialName);
-                                }
-                              },
+                              onChanged: (value) {},
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -318,15 +278,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                             child: _SignInDataCard(
                               formKey: formKey,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {
-                                if (value != null) {
-                                  log(value);
-                                  setState(() {
-                                    stateInitialName = value;
-                                  });
-                                  log(stateInitialName);
-                                }
-                              },
+                              onChanged: (value) {},
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
