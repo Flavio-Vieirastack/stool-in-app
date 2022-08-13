@@ -4,13 +4,13 @@ class _DialogBlocked {
     return  Column(
       children: [
         LottieBuilder.asset(
-          width: 100.w,
+          width: 50.w,
           LottieConstants.lottieBlcoked,
         ),
          SizedBox(
-          height: 10.h,
+          height: 2.h,
         ),
-        Text(message)
+        Text(message, style: AppTextStyles.headLine2,)
       ],
     );
   }
