@@ -98,16 +98,17 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                   context: context,
                   barrierDismissible: false,
                   builder: (context) => AppDialog(
-                    title: 'Verifique seu email',
+                    title: 'Você não verificou seu email',
                     context: context,
                     dialogTypes: DialogTypes.info,
                     yesButtonMessage: 'Enviar email',
-                    noButtonMessage: 'Confirmei meu email',
+                    noButtonMessage: 'Confirmei',
                     yesCallBack: () => cubit.sendEmailVerification(),
                     noCallBack: () => cubit.checkEmailVerified(),
                   ),
                 );
               } else if (state is LoginEmailVerified) {
+                Navigator.of(context).pop();
                 showAppSnackbar(
                   message: 'Parabéns seu email foi verificado com sucesso',
                   context: context,

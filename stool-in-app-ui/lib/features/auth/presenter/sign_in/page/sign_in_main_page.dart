@@ -47,7 +47,7 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
       body: LayoutBuilder(
         builder: (context, constraints) {
           return BlocListener<SignInCubit, SignInState>(
-            listener: (context, state) {
+            listener: (context, state) async {
               if (state is SignInStateEmailSended) {
                 showDialog(
                   context: context,
@@ -87,8 +87,12 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                   ),
                 );
               } else if (state is SignInStateSucess) {
-                Navigator.of(context)
-                    .pushReplacementNamed(RoutesConstants.signInDataRoute);
+                await Future.delayed(
+                  const Duration(seconds: 3),
+                  () => Navigator.of(context).pushReplacementNamed(
+                    RoutesConstants.signInDataRoute,
+                  ),
+                );
               } else if (state is SignInStateSendVerificationEmailError) {
                 Navigator.of(context).pop();
                 showAppSnackbar(
@@ -98,6 +102,16 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                 );
                 Navigator.of(context)
                     .pushReplacementNamed(RoutesConstants.loginRoute);
+              } else if (state is SignInEmailNotVerified) {
+                showAppSnackbar(
+                  message: 'Você ainda não verificou seu email',
+                  context: context,
+                  type: SnackBarType.error,
+                );
+                await Future.delayed(
+                  const Duration(seconds: 3),
+                  () => Navigator.of(context).pop(),
+                );
               }
             },
             child: ListView(

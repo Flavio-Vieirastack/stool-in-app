@@ -79,10 +79,18 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         value: authEntity.password ?? '',
       );
 
-      emit(SignInStateEmailAccepted());
       await _makeSignInInApi(
         userEmail: authEntity.email,
         userPassword: authEntity.password ?? '',
+      );
+      emit(SignInStateEmailAccepted());
+    } else {
+      emit(SignInEmailNotVerified());
+      await Future.delayed(
+        const Duration(seconds: 3),
+        () => emit(
+          SignInStateEmailSended(),
+        ),
       );
     }
   }

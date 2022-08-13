@@ -32,3 +32,5 @@ class SignInStateSendVerificationEmailError extends SignInState {
   @override
   List<Object?> get props => [message];
 }
+
+class SignInEmailNotVerified extends SignInState {}

@@ -59,6 +59,7 @@ class AppDialog extends Dialog {
                   Text(
                     title,
                     style: AppTextStyles.headLine0,
+                    textAlign: TextAlign.center,
                   ),
                   SizedBox(
                     height: 2.h,
