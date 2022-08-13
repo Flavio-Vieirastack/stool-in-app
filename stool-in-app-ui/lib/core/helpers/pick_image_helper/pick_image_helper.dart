@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:image_picker/image_picker.dart';
 
 enum ImageFrom {
@@ -18,6 +20,7 @@ class PickImageHelper {
     } else {
       final XFile? image =
           await _imagePicker.pickImage(source: ImageSource.gallery);
+      log(image?.path ?? 'Sem imagem');
       return image;
     }
   }

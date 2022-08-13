@@ -35,6 +35,7 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState>
   }) async {
     emit(FirebaseStorageLoading());
     File file = File(path);
+    log(file.absolute.path.toString());
     final tempPath = await _directoryHelper.getTemmporaryPath();
     final compressedFile = await _compressAndGetFile(file, tempPath);
     try {
@@ -52,12 +53,21 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState>
   }
 
   Future<File?> _compressAndGetFile(File file, String targetPath) async {
-    var result = await FlutterImageCompress.compressAndGetFile(
-      file.absolute.path,
-      targetPath,
-      quality: 88,
-    );
-
+    File? result;
+    try {
+      result = await FlutterImageCompress.compressAndGetFile(
+        file.absolute.path,
+        targetPath,
+        quality: 88,
+      );
+    } catch (e, s) {
+      log('Erro na compressão de imagens', error: e, stackTrace: s);
+      emit(
+        FirebaseStorageCompressError(
+          errorMessage: 'Erro ao enviar sua foto, por favor escolha outra',
+        ),
+      );
+    }
     return result;
   }
 

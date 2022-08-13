@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> {
           );
         } else if (state is SplashGoToLoginPage) {
           Navigator.of(context)
-              .pushReplacementNamed(RoutesConstants.loginRoute);
+              .pushReplacementNamed(RoutesConstants.signInDataRoute);
         }
       },
       child: Scaffold(
