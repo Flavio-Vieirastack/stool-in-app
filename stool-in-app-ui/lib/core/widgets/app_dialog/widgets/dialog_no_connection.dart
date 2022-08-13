@@ -5,15 +5,15 @@ class _DialogNoConnection {
     return Column(
       children: [
         LottieBuilder.asset(
-          width: 150.w,
+          width: 50.w,
           LottieConstants.lottieNoConnection,
         ),
         SizedBox(
-          height: 10.h,
+          height: 2.h,
         ),
         const Text('Você não tem conexão'),
         SizedBox(
-          height: 10.h,
+          height: 2.h,
         ),
         Center(
           child: DialogButton(

@@ -217,7 +217,7 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                                     return AppDialog(
                                       title: 'title',
                                       context: context,
-                                      dialogTypes: DialogTypes.info,
+                                      dialogTypes: DialogTypes.noConnection,
                                       message: 'Mensagem teste',
                                     );
                                   },
