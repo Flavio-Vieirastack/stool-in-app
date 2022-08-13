@@ -69,7 +69,7 @@ void main() {
   });
   test('Deve retornar a key correta para userMakePasswordResetSolicitation', () {
     const key = KeysConstants.userMakePasswordResetSolicitation;
-    const keyName = 'user-pass-firebase';
+    const keyName = 'user-make-password-solicitation-firebase';
     expect(key, keyName);
   });
 }

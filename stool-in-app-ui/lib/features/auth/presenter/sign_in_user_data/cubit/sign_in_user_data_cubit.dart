@@ -138,6 +138,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
           value: sucess.token,
         );
         saveBool(key: KeysConstants.userPassLoginToApi, value: true);
+        log('Passou pelo login');
         final urlimage = await _getUserUrlImage();
         await _loginInToFirebase(userUrlImage: urlimage);
         emit(SignInUserDataLoginApiSucess(userUrlImage: urlimage));
@@ -168,6 +169,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         emit(
           SignInUserDataLoginFirebaseSucess(userUrlImage: userUrlImage),
         );
+        log('Passou pelo firebase');
       },
     );
   }
