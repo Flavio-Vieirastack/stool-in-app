@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
+import 'package:stool_in/core/helpers/directory_helper/directory_helper.dart';
 import 'package:stool_in/core/helpers/pick_image_helper/pick_image_helper.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'package:stool_in/core/helpers/storage_ref/user_storage_ref.dart';
@@ -18,12 +19,15 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState>
   final FirebaseStorage _firebaseStorage;
   final PickImageHelper _pickImageHelper;
   final UserStorageRef _userStorageRef;
+  final DirectoryHelper _directoryHelper;
   FirebaseStorageCubit({
     required FirebaseStorage firebaseStorage,
     required PickImageHelper pickImageHelper,
     required UserStorageRef userStorageRef,
+    required DirectoryHelper directoryHelper,
   })  : _firebaseStorage = firebaseStorage,
         _userStorageRef = userStorageRef,
+        _directoryHelper = directoryHelper,
         _pickImageHelper = pickImageHelper,
         super(FirebaseStorageInitial());
   Future<void> _uploadImage({
@@ -31,7 +35,8 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState>
   }) async {
     emit(FirebaseStorageLoading());
     File file = File(path);
-    final compressedFile = await _compressAndGetFile(file, file.path);
+    final tempPath = await _directoryHelper.getTemmporaryPath();
+    final compressedFile = await _compressAndGetFile(file, tempPath);
     try {
       String ref = await _userStorageRef.getRef();
       final result =
