@@ -50,9 +50,8 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       );
     }
   }
-  
-  Future<void> checkEmailVerifiedAndSaveUserInApi(
-    Timer? timer, {
+
+  Future<void> checkEmailVerifiedAndSaveUserInApi({
     required AuthEntity authEntity,
   }) async {
     await _firebaseAuth.currentUser?.reload();
@@ -85,8 +84,6 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         userEmail: authEntity.email,
         userPassword: authEntity.password ?? '',
       );
-      timer?.cancel();
-      log('function cancelled');
     }
   }
 

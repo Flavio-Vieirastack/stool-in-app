@@ -56,3 +56,14 @@ class LoginError extends LoginState {
 }
 
 class LoginEmailNotVerified extends LoginState {}
+
+class LoginEmailNoSended extends LoginState {
+  final String message;
+  LoginEmailNoSended({required this.message});
+  @override
+  List<Object?> get props => [message];
+}
+
+class LoginEmailSended extends LoginState {}
+
+class LoginEmailVerified extends LoginState {}

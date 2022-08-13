@@ -8,6 +8,7 @@ import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locator_cubit.dart';
+import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 
@@ -18,14 +19,17 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
   final GeoLocatorCubit _geoLocatorCubit;
   final FirebaseAuth _firebaseAuth;
+  final SendVerificationEmailUsecase _sendVerificationEmailUsecase;
   LoginCubit({
     required AuthUseCase authUseCase,
     required FirebaseAuth firebaseAuth,
     required WriteLocalSecurityStorage writeLocalSecurityStorage,
+    required SendVerificationEmailUsecase sendVerificationEmailUsecase,
     required GeoLocatorCubit geoLocatorCubit,
   })  : _authUseCase = authUseCase,
         _firebaseAuth = firebaseAuth,
         _geoLocatorCubit = geoLocatorCubit,
+        _sendVerificationEmailUsecase = sendVerificationEmailUsecase,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
         super(LoginInitial());
 
@@ -44,6 +48,24 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified == false) {
       emit(LoginEmailNotVerified());
+    }
+  }
+
+  Future<void> sendEmailVerification() async {
+    final result = await _sendVerificationEmailUsecase.call();
+    result.fold(
+      (error) => emit(LoginEmailNoSended(message: error.message)),
+      (sucess) => emit(
+        LoginEmailSended(),
+      ),
+    );
+  }
+
+  Future<void> checkEmailVerified() async {
+    await _firebaseAuth.currentUser?.reload();
+    final emailVerified = _firebaseAuth.currentUser?.emailVerified;
+    if (emailVerified != null && emailVerified) {
+      emit(LoginEmailVerified());
     }
   }
 

@@ -6,6 +6,7 @@ import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contr
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
 import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locator_cubit.dart';
+import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
 import 'package:stool_in/features/auth/presenter/login/pages/login_page.dart';
@@ -91,6 +92,7 @@ class LoginModule extends AppModule {
             ),
             Provider<LoginCubit>(
               create: (context) => LoginCubit(
+                sendVerificationEmailUsecase: Inject<SendVerificationEmailUsecase>(context).get(),
                 firebaseAuth: Inject<FirebaseAuth>(context).get(),
                 geoLocatorCubit: Inject<GeoLocatorCubit>(context).get(),
                 writeLocalSecurityStorage:

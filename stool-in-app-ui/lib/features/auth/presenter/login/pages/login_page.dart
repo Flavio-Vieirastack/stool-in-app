@@ -4,6 +4,8 @@ import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locator_cubit.dart';
 import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
+import 'package:stool_in/core/widgets/app_dialog/app_dialog.dart';
+import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
@@ -92,10 +94,24 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                   type: SnackBarType.error,
                 );
               } else if (state is LoginEmailNotVerified) {
-                showAppSnackbar(
-                    message: 'Você ainda não verificou o seu email',
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => AppDialog(
+                    title: 'Verifique seu email',
                     context: context,
-                    type: SnackBarType.error);
+                    dialogTypes: DialogTypes.info,
+                    yesButtonMessage: 'Enviar email',
+                    noButtonMessage: 'Confirmei meu email',
+                    yesCallBack: () => cubit.sendEmailVerification(),
+                    noCallBack: () => cubit.checkEmailVerified(),
+                  ),
+                );
+              } else if (state is LoginEmailVerified) {
+                showAppSnackbar(
+                  message: 'Parabéns seu email foi verificado com sucesso',
+                  context: context,
+                );
               }
             },
           ),

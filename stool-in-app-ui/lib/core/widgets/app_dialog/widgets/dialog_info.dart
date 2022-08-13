@@ -4,6 +4,8 @@ class _DialogInfo {
   Widget info({
     required VoidCallback yesOnPressed,
     required VoidCallback noOnPressed,
+    required String yesButtonMessage,
+    required String noButtonMessage,
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -11,12 +13,12 @@ class _DialogInfo {
         DialogButton(
           onPressed: yesOnPressed,
           dialogButtonType: DialogButtonType.yes,
-          buttonText: 'Sim',
+          buttonText: yesButtonMessage
         ),
         DialogButton(
           onPressed: noOnPressed,
           dialogButtonType: DialogButtonType.no,
-          buttonText: 'Não',
+          buttonText: noButtonMessage,
         )
       ],
     );

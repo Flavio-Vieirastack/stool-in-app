@@ -29,6 +29,8 @@ class AppDialog extends Dialog {
   final String message;
   final BuildContext context;
   final TextEditingController? rattingController;
+  final String yesButtonMessage;
+  final String noButtonMessage;
   AppDialog(
       {Key? key,
       this.dialogTypes = DialogTypes.sucess,
@@ -38,6 +40,8 @@ class AppDialog extends Dialog {
       this.value = 0,
       this.message = '',
       this.rattingController,
+      this.yesButtonMessage = 'Sim',
+      this.noButtonMessage = 'Não',
       required this.title,
       required this.context})
       : super(
@@ -67,6 +71,8 @@ class AppDialog extends Dialog {
                     _DialogNoConnection().noConnection(context: context)
                   else if (dialogTypes == DialogTypes.info)
                     _DialogInfo().info(
+                      yesButtonMessage: yesButtonMessage,
+                      noButtonMessage: noButtonMessage,
                       yesOnPressed: yesCallBack ?? () {},
                       noOnPressed: noCallBack ?? () {},
                     )
