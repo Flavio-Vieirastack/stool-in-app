@@ -7,7 +7,7 @@ abstract class SignInUserDataState extends Equatable {
 
 class SignInUserDataInitial extends SignInUserDataState {
   final String? userPhotoUrl;
-  SignInUserDataInitial({ this.userPhotoUrl});
+  SignInUserDataInitial({this.userPhotoUrl});
   @override
   List<Object?> get props => [userPhotoUrl];
 }
@@ -47,4 +47,11 @@ class SignInUserDataSucess extends SignInUserDataState {
   SignInUserDataSucess({required this.userUrlImage});
   @override
   List<Object?> get props => [userUrlImage];
+}
+
+class SignInDropDownChanged extends SignInUserDataState {
+  final String? userSelectedState;
+  SignInDropDownChanged({this.userSelectedState = 'Estado'});
+  @override
+  List<Object?> get props => [userSelectedState];
 }

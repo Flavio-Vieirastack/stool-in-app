@@ -50,8 +50,6 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
     formKey.currentState?.dispose();
   }
 
- 
-
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignInUserDataCubit>();
@@ -79,6 +77,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
               } else if (state is SignInUserDataSucess) {
                 Navigator.of(context)
                     .pushReplacementNamed(RoutesConstants.homeRoute);
+              } else if (state is SignInDropDownChanged) {
+                stateInitialName = state.userSelectedState ?? 'Estado';
               }
             },
           ),
@@ -125,7 +125,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               child: _SignInDataCard(
                                 formKey: formKey,
                                 statesDropDownLabel: stateInitialName,
-                                onChanged: (value) {},
+                                onChanged: (value) =>
+                                    cubit.changeStateDropDown(value: value),
                                 buttonTypes: ButtonTypes.loading,
                                 cepController: cepController,
                                 cityController: cityController,
@@ -145,7 +146,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               formKey: formKey,
                               urlImage: state.userUrlImage,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {},
+                              onChanged: (value) =>
+                                  cubit.changeStateDropDown(value: value),
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -179,7 +181,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               formKey: formKey,
                               urlImage: state.userUrlImage,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {},
+                              onChanged: (value) =>
+                                  cubit.changeStateDropDown(value: value),
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -213,7 +216,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               formKey: formKey,
                               urlImage: state.userUrlImage,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {},
+                              onChanged: (value) =>
+                                  cubit.changeStateDropDown(value: value),
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -247,7 +251,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               formKey: formKey,
                               urlImage: state.userUrlImage,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {},
+                              onChanged: (value) =>
+                                  cubit.changeStateDropDown(value: value),
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -275,12 +280,13 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               ),
                             ),
                           );
-                        } else if(state is SignInUserDataInitial) {
+                        } else if (state is SignInUserDataInitial) {
                           return Center(
                             child: _SignInDataCard(
                               formKey: formKey,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {},
+                              onChanged: (value) =>
+                                  cubit.changeStateDropDown(value: value),
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
@@ -313,7 +319,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                             child: _SignInDataCard(
                               formKey: formKey,
                               statesDropDownLabel: stateInitialName,
-                              onChanged: (value) {},
+                              onChanged: (value) =>
+                                  cubit.changeStateDropDown(value: value),
                               cepController: cepController,
                               cityController: cityController,
                               districtController: districtController,
