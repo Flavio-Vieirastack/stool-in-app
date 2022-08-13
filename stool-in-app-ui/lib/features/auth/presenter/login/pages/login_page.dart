@@ -42,6 +42,7 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
       (_) async {
+        context.read<LoginCubit>().verifyUserEmailOnInit();
         await context.read<LoginCubit>().enableApiPasswordResetOnInit().then(
               (_) async =>
                   context.read<GeoLocatorCubit>().requestUserPermition(),
@@ -94,10 +95,9 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                 );
               } else if (state is LoginEmailNotVerified) {
                 showAppSnackbar(
-                  message: 'Você ainda não verificou o seu email',
-                  context: context,
-                  type: SnackBarType.error,
-                );
+                    message: 'Você ainda não verificou o seu email',
+                    context: context,
+                    type: SnackBarType.error);
               }
             },
           ),
