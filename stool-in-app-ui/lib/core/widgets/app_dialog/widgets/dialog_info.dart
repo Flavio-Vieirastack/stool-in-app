@@ -5,7 +5,8 @@ class _DialogInfo {
     required VoidCallback yesOnPressed,
     required VoidCallback noOnPressed,
   }) {
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         DialogButton(
           onPressed: yesOnPressed,
