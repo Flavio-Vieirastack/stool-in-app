@@ -91,6 +91,8 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                   context: context,
                   type: SnackBarType.error,
                 );
+                Navigator.of(context)
+                    .pushReplacementNamed(RoutesConstants.loginRoute);
               }
             },
             child: ListView(
