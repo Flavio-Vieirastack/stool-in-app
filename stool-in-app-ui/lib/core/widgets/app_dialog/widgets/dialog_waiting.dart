@@ -1,17 +1,31 @@
 part of '../app_dialog.dart';
 
 class _DialogWaiting {
-  Widget waiting({required String message}) {
+  Widget waiting({
+    required String message,
+    required VoidCallback onPressed,
+  }) {
     return Column(
       children: [
         LottieBuilder.asset(
-          width: 100.w,
+          width: 50.w,
           LottieConstants.lottieWaiting,
         ),
         SizedBox(
-          height: 10.h,
+          height: 2.h,
         ),
-        Text(message)
+        Text(
+          message,
+          style: AppTextStyles.headLine2,
+        ),
+        SizedBox(
+          height: 2.h,
+        ),
+        DialogButton(
+          onPressed: onPressed,
+          dialogButtonType: DialogButtonType.yes,
+          buttonText: 'Reenviar email',
+        )
       ],
     );
   }

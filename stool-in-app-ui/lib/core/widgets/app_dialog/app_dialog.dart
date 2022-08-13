@@ -46,41 +46,47 @@ class AppDialog extends Dialog {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  title,
-                  style: AppTextStyles.headLine0,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                if (dialogTypes == DialogTypes.sucess)
-                  _DialogSucess().sucess(message: message)
-                else if (dialogTypes == DialogTypes.error)
-                  _DialogError().error(message: message)
-                else if (dialogTypes == DialogTypes.noConnection)
-                  _DialogNoConnection().noConnection(context: context)
-                else if (dialogTypes == DialogTypes.info)
-                  _DialogInfo().info(
-                    yesOnPressed: yesCallBack ?? () {},
-                    noOnPressed: noCallBack ?? () {},
-                  )
-                else if (dialogTypes == DialogTypes.waiting)
-                  _DialogWaiting().waiting(message: message)
-                else if (dialogTypes == DialogTypes.blocked)
-                  _DialogBlocked().blocked(message: message)
-                else if (dialogTypes == DialogTypes.voteRatting)
-                  _DialogVote(
-                    yesCallBack: yesCallBack ?? () {},
-                    noCallBack: noCallBack ?? () {},
-                    onValueChanged: onValueChanged,
-                    value: value,
-                    rattingController: rattingController,
-                  )
-              ],
+            padding: EdgeInsets.all(8.dp),
+            child: SizedBox(
+              width: Adaptive.w(90),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    title,
+                    style: AppTextStyles.headLine0,
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  if (dialogTypes == DialogTypes.sucess)
+                    _DialogSucess().sucess(message: message)
+                  else if (dialogTypes == DialogTypes.error)
+                    _DialogError().error(message: message)
+                  else if (dialogTypes == DialogTypes.noConnection)
+                    _DialogNoConnection().noConnection(context: context)
+                  else if (dialogTypes == DialogTypes.info)
+                    _DialogInfo().info(
+                      yesOnPressed: yesCallBack ?? () {},
+                      noOnPressed: noCallBack ?? () {},
+                    )
+                  else if (dialogTypes == DialogTypes.waiting)
+                    _DialogWaiting().waiting(
+                      message: message,
+                      onPressed: yesCallBack ?? () {},
+                    )
+                  else if (dialogTypes == DialogTypes.blocked)
+                    _DialogBlocked().blocked(message: message)
+                  else if (dialogTypes == DialogTypes.voteRatting)
+                    _DialogVote(
+                      yesCallBack: yesCallBack ?? () {},
+                      noCallBack: noCallBack ?? () {},
+                      onValueChanged: onValueChanged,
+                      value: value,
+                      rattingController: rattingController,
+                    )
+                ],
+              ),
             ),
           ),
         );

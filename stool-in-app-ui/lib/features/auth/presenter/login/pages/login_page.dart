@@ -4,6 +4,8 @@ import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/shared/cubit/geo_locator_cubit/geo_locator_cubit.dart';
 import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
+import 'package:stool_in/core/widgets/app_dialog/app_dialog.dart';
+import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
@@ -154,23 +156,20 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                                 loginOrPasswordResetCallback: () =>
                                     cubit.makeLogin(
                                   validate:
-                                      formKey.currentState?.validate() ??
-                                          false,
+                                      formKey.currentState?.validate() ?? false,
                                   authEntity: AuthEntity(
                                     email: emailController.text.trim(),
                                     password: passwordController.text.trim(),
                                   ),
                                 ),
                                 passwordResetCallback: () =>
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(
+                                    Navigator.of(context).pushReplacementNamed(
                                   RoutesConstants.passwordRecoveryRoute,
                                 ),
                                 signInCallback: () => cubit
                                     .goToSignInMainPageWithGeoLocationPermition(
-                                  navigateToSignIn: () =>
-                                      Navigator.of(context)
-                                          .pushReplacementNamed(
+                                  navigateToSignIn: () => Navigator.of(context)
+                                      .pushReplacementNamed(
                                     RoutesConstants.signInMainRoute,
                                   ),
                                 ),
@@ -186,23 +185,20 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                                 loginOrPasswordResetCallback: () =>
                                     cubit.apiPasswordReset(
                                   validate:
-                                      formKey.currentState?.validate() ??
-                                          false,
+                                      formKey.currentState?.validate() ?? false,
                                   authEntity: AuthEntity(
                                     email: emailController.text.trim(),
                                   ),
                                 ),
                                 buttonText: 'Login com nova senha',
                                 passwordResetCallback: () =>
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(
+                                    Navigator.of(context).pushReplacementNamed(
                                   RoutesConstants.passwordRecoveryRoute,
                                 ),
                                 signInCallback: () => cubit
                                     .goToSignInMainPageWithGeoLocationPermition(
-                                  navigateToSignIn: () =>
-                                      Navigator.of(context)
-                                          .pushReplacementNamed(
+                                  navigateToSignIn: () => Navigator.of(context)
+                                      .pushReplacementNamed(
                                     RoutesConstants.signInMainRoute,
                                   ),
                                 ),
@@ -215,26 +211,35 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                             return Center(
                               child: _LoginCard(
                                 formKey: formKey,
-                                loginOrPasswordResetCallback: () =>
-                                    cubit.makeLogin(
-                                  validate:
-                                      formKey.currentState?.validate() ??
-                                          false,
-                                  authEntity: AuthEntity(
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
-                                  ),
+                                loginOrPasswordResetCallback: () => showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AppDialog(
+                                      title: 'title',
+                                      context: context,
+                                      dialogTypes: DialogTypes.waiting,
+                                      message: 'Mensagem teste',
+                                    );
+                                  },
                                 ),
+                                // () =>
+                                //     cubit.makeLogin(
+                                //   validate:
+                                //       formKey.currentState?.validate() ??
+                                //           false,
+                                //   authEntity: AuthEntity(
+                                //     email: emailController.text.trim(),
+                                //     password: passwordController.text.trim(),
+                                //   ),
+                                // ),
                                 passwordResetCallback: () =>
-                                    Navigator.of(context)
-                                        .pushReplacementNamed(
+                                    Navigator.of(context).pushReplacementNamed(
                                   RoutesConstants.passwordRecoveryRoute,
                                 ),
                                 signInCallback: () => cubit
                                     .goToSignInMainPageWithGeoLocationPermition(
-                                  navigateToSignIn: () =>
-                                      Navigator.of(context)
-                                          .pushReplacementNamed(
+                                  navigateToSignIn: () => Navigator.of(context)
+                                      .pushReplacementNamed(
                                     RoutesConstants.signInMainRoute,
                                   ),
                                 ),

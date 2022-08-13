@@ -26,7 +26,6 @@ class DialogButton extends StatelessWidget {
         primary: dialogButtonType == DialogButtonType.yes
             ? Colors.green
             : Colors.red,
-        fixedSize: Size(150.w, 20.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.dp),
         ),
