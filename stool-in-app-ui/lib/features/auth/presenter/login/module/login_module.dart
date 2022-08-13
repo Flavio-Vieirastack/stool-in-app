@@ -97,7 +97,7 @@ class LoginModule extends AppModule {
                     Inject<WriteLocalSecurityStorage>(context).get(),
                 authUseCase: Inject<AuthUseCase>(context).get(),
               ),
-            )
+            ),
           ],
           routers: {
             RoutesConstants.loginRoute: (context) => const LoginPage(),

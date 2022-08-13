@@ -50,6 +50,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
     formKey.currentState?.dispose();
   }
 
+ 
+
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<SignInUserDataCubit>();
@@ -244,6 +246,39 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                             child: _SignInDataCard(
                               formKey: formKey,
                               urlImage: state.userUrlImage,
+                              statesDropDownLabel: stateInitialName,
+                              onChanged: (value) {},
+                              cepController: cepController,
+                              cityController: cityController,
+                              districtController: districtController,
+                              houseNumberController: houseNumberController,
+                              referencePointController:
+                                  referencePointController,
+                              streetController: streetController,
+                              userNameController: userNameController,
+                              signInCallBack: () => cubit.sendUserDataToApi(
+                                validate:
+                                    formKey.currentState?.validate() ?? false,
+                                userState: stateInitialName,
+                                userDataEntity: UserDataEntity(
+                                  cep: cepController.text.trim(),
+                                  city: cityController.text.trim(),
+                                  district: districtController.text.trim(),
+                                  houseNumber:
+                                      houseNumberController.text.trim(),
+                                  referencePoint:
+                                      referencePointController.text.trim(),
+                                  street: streetController.text.trim(),
+                                  userName: userNameController.text.trim(),
+                                  userState: stateInitialName,
+                                ),
+                              ),
+                            ),
+                          );
+                        } else if(state is SignInUserDataInitial) {
+                          return Center(
+                            child: _SignInDataCard(
+                              formKey: formKey,
                               statesDropDownLabel: stateInitialName,
                               onChanged: (value) {},
                               cepController: cepController,

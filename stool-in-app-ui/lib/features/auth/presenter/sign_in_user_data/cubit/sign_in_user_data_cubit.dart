@@ -1,3 +1,4 @@
+
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +35,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         _firebaseAuth = firebaseAuth,
         _readLocalSecurityStorage = readLocalSecurityStorage,
         super(SignInUserDataInitial());
+
   Future<String?> _getUserUrlImage() async {
     final urlImage = await getString(key: KeysConstants.userPhotoUrl);
     return urlImage;

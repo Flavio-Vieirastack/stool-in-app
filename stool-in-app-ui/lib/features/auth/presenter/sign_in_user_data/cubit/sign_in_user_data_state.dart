@@ -5,7 +5,12 @@ abstract class SignInUserDataState extends Equatable {
   List<Object?> get props => [];
 }
 
-class SignInUserDataInitial extends SignInUserDataState {}
+class SignInUserDataInitial extends SignInUserDataState {
+  final String? userPhotoUrl;
+  SignInUserDataInitial({ this.userPhotoUrl});
+  @override
+  List<Object?> get props => [userPhotoUrl];
+}
 
 class SignInUserDataLoading extends SignInUserDataState {
   final String? userUrlImage;
