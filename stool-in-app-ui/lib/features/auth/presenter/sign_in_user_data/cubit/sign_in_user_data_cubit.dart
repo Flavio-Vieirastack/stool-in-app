@@ -18,7 +18,6 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
     with SharedPreferencesHelper {
   final AuthUseCase _authUseCase;
   final ReadLocalSecurityStorage _readLocalSecurityStorage;
-  final RemoveLocalSecurityStorage _removeLocalSecurityStorage;
   final WriteLocalSecurityStorage _writeLocalSecurityStorage;
   final FirebaseAuth _firebaseAuth;
   final FireBaseNotifications _fireBaseNotifications;
@@ -28,10 +27,8 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
     required WriteLocalSecurityStorage writeLocalSecurityStorage,
     required FirebaseAuth firebaseAuth,
     required FireBaseNotifications fireBaseNotifications,
-    required RemoveLocalSecurityStorage removeLocalSecurityStorage,
   })  : _authUseCase = authUseCase,
         _writeLocalSecurityStorage = writeLocalSecurityStorage,
-        _removeLocalSecurityStorage = removeLocalSecurityStorage,
         _fireBaseNotifications = fireBaseNotifications,
         _firebaseAuth = firebaseAuth,
         _readLocalSecurityStorage = readLocalSecurityStorage,
@@ -103,9 +100,6 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             log(loginApiSucess.toString());
             log(loginFirebaseSucess.toString());
             if (loginApiSucess! && loginFirebaseSucess!) {
-              await _removeLocalSecurityStorage.delete(
-                key: KeysConstants.userPassword,
-              );
               final urlimage = await _getUserUrlImage();
               emit(SignInUserDataSucess(userUrlImage: urlimage));
             }
@@ -156,7 +150,8 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         await _readLocalSecurityStorage.read(key: KeysConstants.userEmail);
     final userPassword =
         await _readLocalSecurityStorage.read(key: KeysConstants.userPassword);
-
+    log('user email: $userEmail');
+    log('senha: $userPassword');
     final result = await _authUseCase.firebaseLogin(
       authEntity: AuthEntity(
         email: userEmail ?? '',
