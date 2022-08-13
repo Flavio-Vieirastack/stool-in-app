@@ -31,13 +31,13 @@ class _DialogVoteState extends State<_DialogVote> {
           ),
         ),
          SizedBox(
-          height: 30.h,
+          height: 3.h,
         ),
         Container(
           constraints: BoxConstraints(
-            maxHeight: 100.h,
-            minWidth: 300.w,
-            maxWidth: 400.w,
+            maxHeight: 10.h,
+            minWidth: 200.w,
+            maxWidth: 300.w,
           ),
           child: AppTextFormField(
             expands: true,
@@ -54,9 +54,10 @@ class _DialogVoteState extends State<_DialogVote> {
           ),
         ),
          SizedBox(
-          height: 30.h,
+          height: 3.h,
         ),
-        Column(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             DialogButton(
               onPressed: widget.yesCallBack,
