@@ -106,7 +106,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                     style: AppTextStyles.headLine0,
                   ),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 2.h,
                 ),
                 Stack(
@@ -177,10 +177,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                       },
                     ),
                     Padding(
-                      padding: EdgeInsets.only(
-                        top: 10.w,
-                        left: 55.w
-                      ),
+                      padding: EdgeInsets.only(top: 10.w, left: 55.w),
                       child: Container(
                         decoration: BoxDecoration(
                           color: AppColors.buttonLeftGradientColor,

@@ -48,7 +48,6 @@ dependencies:
   geolocator: ^9.0.1
   firebase_auth: ^3.6.2
   image_picker: ^0.8.5+3
-  flutter_image_compress: ^1.1.1
   #firebase_remote_config: ^2.0.13
   firebase_messaging: ^12.0.1
   flutter_local_notifications: ^9.7.0
@@ -56,7 +55,6 @@ dependencies:
   flutter_sizer: ^1.0.5
   dio: ^4.0.6
   firebase_storage: ^10.3.4
-  path_provider: ^2.0.11
   #firebase_analytics: ^9.3.0
   #firebase_crashlytics: ^2.8.6
   #purchases_flutter: ^3.10.0
