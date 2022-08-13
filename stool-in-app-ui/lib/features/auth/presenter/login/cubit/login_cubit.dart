@@ -90,6 +90,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
       if (result) {
         emit(LoginSignInStateSucess());
       } else {
+        await _firebaseAuth.currentUser?.delete();
         emit(LoginSignInStateError());
       }
       emit(LoginEmailVerified());

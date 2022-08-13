@@ -134,6 +134,29 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                     message: 'Você ainda não verificou seu email',
                     context: context,
                     type: SnackBarType.error);
+              } else if (state is LoginSignInStateError) {
+                showAppSnackbar(
+                    message:
+                        'Ops! Ocorreu um erro ao fazer seu cadastro, por favor se cadastre novamente.',
+                    context: context,
+                    type: SnackBarType.error,
+                    duration: 4);
+                await Future.delayed(
+                  const Duration(seconds: 4),
+                  () => Navigator.of(context)
+                      .pushReplacementNamed(RoutesConstants.signInMainRoute),
+                );
+              } else if (state is LoginSignInStateSucess) {
+                showAppSnackbar(
+                  message: 'Cadastro realizado com sucesso, vamos ao próximo passo.',
+                  context: context,
+                  duration: 4
+                );
+                await Future.delayed(
+                  const Duration(seconds: 4),
+                  () => Navigator.of(context)
+                      .pushReplacementNamed(RoutesConstants.signInDataRoute),
+                );
               }
             },
           ),
