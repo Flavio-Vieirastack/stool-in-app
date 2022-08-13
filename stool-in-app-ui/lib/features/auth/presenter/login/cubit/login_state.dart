@@ -68,3 +68,6 @@ class LoginEmailSended extends LoginState {}
 
 class LoginEmailVerified extends LoginState {}
 class LoginEmailRequestNotVerified extends LoginState {}
+
+class LoginSignInStateError extends LoginState {}
+class LoginSignInStateSucess extends LoginState{}

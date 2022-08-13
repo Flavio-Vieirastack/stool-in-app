@@ -1,7 +1,9 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+
 class TryCatchHelper {
-  static Future<bool> makeRequest({required Function function}) async {
+  static Future<bool> makeRequest({required AsyncCallback function}) async {
     try {
       await function.call();
       return true;

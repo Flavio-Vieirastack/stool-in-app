@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/helpers/try_catch_helper.dart/try_catch_helper.dart';
 import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locator_cubit.dart';
 import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
@@ -78,12 +79,19 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
           await _readLocalSecurityStorage.read(key: KeysConstants.userEmail);
       final userPassword =
           await _readLocalSecurityStorage.read(key: KeysConstants.userPassword);
-      await _signInCubit.checkEmailVerifiedAndSaveUserInApi(
-        authEntity: AuthEntity(
-          email: userEmail ?? '',
-          password: userPassword ?? '',
+      final result = await TryCatchHelper.makeRequest(
+        function: () async => _signInCubit.checkEmailVerifiedAndSaveUserInApi(
+          authEntity: AuthEntity(
+            email: userEmail ?? '',
+            password: userPassword ?? '',
+          ),
         ),
       );
+      if (result) {
+        emit(LoginSignInStateSucess());
+      } else {
+        emit(LoginSignInStateError());
+      }
       emit(LoginEmailVerified());
     } else {
       emit(LoginEmailRequestNotVerified());
