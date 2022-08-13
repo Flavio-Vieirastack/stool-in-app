@@ -211,27 +211,15 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                             return Center(
                               child: _LoginCard(
                                 formKey: formKey,
-                                loginOrPasswordResetCallback: () => showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AppDialog(
-                                      title: 'title',
-                                      context: context,
-                                      dialogTypes: DialogTypes.voteRatting,
-                                      message: 'Mensagem teste',
-                                    );
-                                  },
+                                loginOrPasswordResetCallback: () =>
+                                    cubit.makeLogin(
+                                  validate:
+                                      formKey.currentState?.validate() ?? false,
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
                                 ),
-                                // () =>
-                                //     cubit.makeLogin(
-                                //   validate:
-                                //       formKey.currentState?.validate() ??
-                                //           false,
-                                //   authEntity: AuthEntity(
-                                //     email: emailController.text.trim(),
-                                //     password: passwordController.text.trim(),
-                                //   ),
-                                // ),
                                 passwordResetCallback: () =>
                                     Navigator.of(context).pushReplacementNamed(
                                   RoutesConstants.passwordRecoveryRoute,
