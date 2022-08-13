@@ -42,8 +42,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
 
   void verifyUserEmailOnInit() {
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
-    log(emailVerified.toString());
-    if (emailVerified == null || emailVerified == false) {
+    if (emailVerified == false) {
       emit(LoginEmailNotVerified());
     }
   }
