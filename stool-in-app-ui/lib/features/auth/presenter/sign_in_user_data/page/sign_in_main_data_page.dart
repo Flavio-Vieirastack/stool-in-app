@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,7 +84,8 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
             listener: (context, state) {
               if (state is FirebaseStorageError) {
                 showAppSnackbar(
-                  message: 'Ops! Ocorreu um erro ao salvar sua foto',
+                  message:
+                      'Ops! Ocorreu um erro ao salvar sua foto, escolha outra ou tente mais tarde.',
                   type: SnackBarType.error,
                   context: context,
                 );
@@ -120,7 +123,15 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               child: _SignInDataCard(
                                 formKey: formKey,
                                 statesDropDownLabel: stateInitialName,
-                                onChanged: (value) {},
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    log(value);
+                                    setState(() {
+                                      stateInitialName = value;
+                                    });
+                                    log(stateInitialName);
+                                  }
+                                },
                                 buttonTypes: ButtonTypes.loading,
                                 cepController: cepController,
                                 cityController: cityController,
@@ -134,6 +145,174 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               ),
                             ),
                           );
+                        } else if (state is SignInUserDataSucess) {
+                          return Center(
+                            child: _SignInDataCard(
+                              formKey: formKey,
+                              urlImage: state.userUrlImage,
+                              statesDropDownLabel: stateInitialName,
+                              onChanged: (value) {
+                                if (value != null) {
+                                  log(value);
+                                  setState(() {
+                                    stateInitialName = value;
+                                  });
+                                  log(stateInitialName);
+                                }
+                              },
+                              cepController: cepController,
+                              cityController: cityController,
+                              districtController: districtController,
+                              houseNumberController: houseNumberController,
+                              referencePointController:
+                                  referencePointController,
+                              streetController: streetController,
+                              userNameController: userNameController,
+                              signInCallBack: () => cubit.sendUserDataToApi(
+                                validate:
+                                    formKey.currentState?.validate() ?? false,
+                                userState: stateInitialName,
+                                userDataEntity: UserDataEntity(
+                                  cep: cepController.text.trim(),
+                                  city: cityController.text.trim(),
+                                  district: districtController.text.trim(),
+                                  houseNumber:
+                                      houseNumberController.text.trim(),
+                                  referencePoint:
+                                      referencePointController.text.trim(),
+                                  street: streetController.text.trim(),
+                                  userName: userNameController.text.trim(),
+                                  userState: stateInitialName,
+                                ),
+                              ),
+                            ),
+                          );
+                        } else if (state is SignInUserDataLoginApiSucess) {
+                          return Center(
+                            child: _SignInDataCard(
+                              formKey: formKey,
+                              urlImage: state.userUrlImage,
+                              statesDropDownLabel: stateInitialName,
+                              onChanged: (value) {
+                                if (value != null) {
+                                  log(value);
+                                  setState(() {
+                                    stateInitialName = value;
+                                  });
+                                  log(stateInitialName);
+                                }
+                              },
+                              cepController: cepController,
+                              cityController: cityController,
+                              districtController: districtController,
+                              houseNumberController: houseNumberController,
+                              referencePointController:
+                                  referencePointController,
+                              streetController: streetController,
+                              userNameController: userNameController,
+                              signInCallBack: () => cubit.sendUserDataToApi(
+                                validate:
+                                    formKey.currentState?.validate() ?? false,
+                                userState: stateInitialName,
+                                userDataEntity: UserDataEntity(
+                                  cep: cepController.text.trim(),
+                                  city: cityController.text.trim(),
+                                  district: districtController.text.trim(),
+                                  houseNumber:
+                                      houseNumberController.text.trim(),
+                                  referencePoint:
+                                      referencePointController.text.trim(),
+                                  street: streetController.text.trim(),
+                                  userName: userNameController.text.trim(),
+                                  userState: stateInitialName,
+                                ),
+                              ),
+                            ),
+                          );
+                        } else if (state is SignInUserDataLoginFirebaseSucess) {
+                          return Center(
+                            child: _SignInDataCard(
+                              formKey: formKey,
+                              urlImage: state.userUrlImage,
+                              statesDropDownLabel: stateInitialName,
+                              onChanged: (value) {
+                                if (value != null) {
+                                  log(value);
+                                  setState(() {
+                                    stateInitialName = value;
+                                  });
+                                  log(stateInitialName);
+                                }
+                              },
+                              cepController: cepController,
+                              cityController: cityController,
+                              districtController: districtController,
+                              houseNumberController: houseNumberController,
+                              referencePointController:
+                                  referencePointController,
+                              streetController: streetController,
+                              userNameController: userNameController,
+                              signInCallBack: () => cubit.sendUserDataToApi(
+                                validate:
+                                    formKey.currentState?.validate() ?? false,
+                                userState: stateInitialName,
+                                userDataEntity: UserDataEntity(
+                                  cep: cepController.text.trim(),
+                                  city: cityController.text.trim(),
+                                  district: districtController.text.trim(),
+                                  houseNumber:
+                                      houseNumberController.text.trim(),
+                                  referencePoint:
+                                      referencePointController.text.trim(),
+                                  street: streetController.text.trim(),
+                                  userName: userNameController.text.trim(),
+                                  userState: stateInitialName,
+                                ),
+                              ),
+                            ),
+                          );
+                        } else if (state is SignInUserDataLoading) {
+                          return Center(
+                            child: _SignInDataCard(
+                              formKey: formKey,
+                              urlImage: state.userUrlImage,
+                              statesDropDownLabel: stateInitialName,
+                              onChanged: (value) {
+                                if (value != null) {
+                                  log(value);
+                                  setState(() {
+                                    stateInitialName = value;
+                                  });
+                                  log(stateInitialName);
+                                }
+                              },
+                              cepController: cepController,
+                              cityController: cityController,
+                              districtController: districtController,
+                              houseNumberController: houseNumberController,
+                              referencePointController:
+                                  referencePointController,
+                              streetController: streetController,
+                              userNameController: userNameController,
+                              signInCallBack: () => cubit.sendUserDataToApi(
+                                validate:
+                                    formKey.currentState?.validate() ?? false,
+                                userState: stateInitialName,
+                                userDataEntity: UserDataEntity(
+                                  cep: cepController.text.trim(),
+                                  city: cityController.text.trim(),
+                                  district: districtController.text.trim(),
+                                  houseNumber:
+                                      houseNumberController.text.trim(),
+                                  referencePoint:
+                                      referencePointController.text.trim(),
+                                  street: streetController.text.trim(),
+                                  userName: userNameController.text.trim(),
+                                  userState: stateInitialName,
+                                ),
+                              ),
+                            ),
+                          );
                         } else {
                           return Center(
                             child: _SignInDataCard(
@@ -141,9 +320,11 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                               statesDropDownLabel: stateInitialName,
                               onChanged: (value) {
                                 if (value != null) {
+                                  log(value);
                                   setState(() {
                                     stateInitialName = value;
                                   });
+                                  log(stateInitialName);
                                 }
                               },
                               cepController: cepController,

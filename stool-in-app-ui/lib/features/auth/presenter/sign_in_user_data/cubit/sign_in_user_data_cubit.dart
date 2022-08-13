@@ -34,6 +34,11 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         _firebaseAuth = firebaseAuth,
         _readLocalSecurityStorage = readLocalSecurityStorage,
         super(SignInUserDataInitial());
+  Future<String?> _getUserUrlImage() async {
+    final urlImage = await getString(key: KeysConstants.userPhotoUrl);
+    return urlImage;
+  }
+
   Future<void> sendUserDataToApi({
     required UserDataEntity userDataEntity,
     required bool validate,
@@ -41,7 +46,8 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
   }) async {
     if (validate) {
       if (userState != 'Estado') {
-        emit(SignInUserDataLoading());
+        final urlimage = await _getUserUrlImage();
+        emit(SignInUserDataLoading(userUrlImage: urlimage));
         final userFirebaseToken = _firebaseAuth.currentUser?.uid;
         final userLatitude =
             await getDouble(key: KeysConstants.userLocationLatitude);
@@ -94,8 +100,9 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             if (loginApiSucess! && loginFirebaseSucess!) {
               await _removeLocalSecurityStorage.delete(
                 key: KeysConstants.userPassword,
-              ); // TODO verificar essa necessidade
-              emit(SignInUserDataSucess());
+              );
+              final urlimage = await _getUserUrlImage();
+              emit(SignInUserDataSucess(userUrlImage: urlimage));
             }
           },
         );
@@ -132,13 +139,14 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
           value: sucess.token,
         );
         saveBool(key: KeysConstants.userPassLoginToApi, value: true);
-        await _loginInToFirebase();
-        emit(SignInUserDataLoginApiSucess());
+        final urlimage = await _getUserUrlImage();
+        await _loginInToFirebase(userUrlImage: urlimage);
+        emit(SignInUserDataLoginApiSucess(userUrlImage: urlimage));
       },
     );
   }
 
-  Future<void> _loginInToFirebase() async {
+  Future<void> _loginInToFirebase({required String? userUrlImage}) async {
     final userEmail =
         await _readLocalSecurityStorage.read(key: KeysConstants.userEmail);
     final userPassword =
@@ -158,7 +166,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
       (sucess) {
         saveBool(key: KeysConstants.userPassLoginToFirebase, value: true);
         emit(
-          SignInUserDataLoginFirebaseSucess(),
+          SignInUserDataLoginFirebaseSucess(userUrlImage: userUrlImage),
         );
       },
     );

@@ -7,7 +7,12 @@ abstract class SignInUserDataState extends Equatable {
 
 class SignInUserDataInitial extends SignInUserDataState {}
 
-class SignInUserDataLoading extends SignInUserDataState {}
+class SignInUserDataLoading extends SignInUserDataState {
+  final String? userUrlImage;
+  SignInUserDataLoading({required this.userUrlImage});
+  @override
+  List<Object?> get props => [userUrlImage];
+}
 
 class SignInUserDataStateNotSelected extends SignInUserDataState {}
 
@@ -18,8 +23,23 @@ class SignInUserDataError extends SignInUserDataState {
   List<Object?> get props => [message];
 }
 
-class SignInUserDataLoginApiSucess extends SignInUserDataState {}
+class SignInUserDataLoginApiSucess extends SignInUserDataState {
+  final String? userUrlImage;
+  SignInUserDataLoginApiSucess({required this.userUrlImage});
+  @override
+  List<Object?> get props => [userUrlImage];
+}
 
-class SignInUserDataLoginFirebaseSucess extends SignInUserDataState {}
+class SignInUserDataLoginFirebaseSucess extends SignInUserDataState {
+  final String? userUrlImage;
+  SignInUserDataLoginFirebaseSucess({required this.userUrlImage});
+  @override
+  List<Object?> get props => [userUrlImage];
+}
 
-class SignInUserDataSucess extends SignInUserDataState {}
+class SignInUserDataSucess extends SignInUserDataState {
+  final String? userUrlImage;
+  SignInUserDataSucess({required this.userUrlImage});
+  @override
+  List<Object?> get props => [userUrlImage];
+}

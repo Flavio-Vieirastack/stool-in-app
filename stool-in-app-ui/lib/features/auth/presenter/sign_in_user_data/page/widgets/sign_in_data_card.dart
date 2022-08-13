@@ -13,6 +13,7 @@ class _SignInDataCard extends StatelessWidget {
   final VoidCallback signInCallBack;
   final ButtonTypes buttonTypes;
   final GlobalKey<FormState> formKey;
+  final String? urlImage;
   const _SignInDataCard({
     Key? key,
     required this.userNameController,
@@ -27,6 +28,7 @@ class _SignInDataCard extends StatelessWidget {
     required this.formKey,
     this.buttonTypes = ButtonTypes.primary,
     this.onChanged,
+    this.urlImage
   }) : super(key: key);
 
   @override
@@ -66,6 +68,7 @@ class _SignInDataCard extends StatelessWidget {
                           child: AppAvatar(
                             size: 80.dp,
                             isLoading: true,
+                            urlImage: urlImage,
                           ),
                         ),
                       if (state is FirebaseStorageInitial)
