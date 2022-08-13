@@ -113,6 +113,24 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                   message: 'Parabéns seu email foi verificado com sucesso',
                   context: context,
                 );
+              } else if (state is LoginEmailSended) {
+                showAppSnackbar(
+                  message: 'Enviamos um email para você',
+                  context: context,
+                );
+              } else if (state is LoginEmailNoSended) {
+                Navigator.of(context).pop();
+                showAppSnackbar(
+                  message: state.message,
+                  context: context,
+                  type: SnackBarType.error
+                );
+              } else if (state is LoginEmailRequestNotVerified) {
+                showAppSnackbar(
+                  message: 'Você ainda não verificou seu email',
+                  context: context,
+                  type: SnackBarType.error
+                );
               }
             },
           ),

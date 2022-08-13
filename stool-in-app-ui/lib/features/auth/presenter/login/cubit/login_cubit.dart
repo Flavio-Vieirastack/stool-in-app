@@ -47,13 +47,14 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   void verifyUserEmailOnInit() async {
     await _firebaseAuth.currentUser?.reload();
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
-    
-    if (emailVerified == false) {
+
+    if (emailVerified != null && emailVerified == false) {
       emit(LoginEmailNotVerified());
     }
   }
 
   Future<void> sendEmailVerification() async {
+    await _firebaseAuth.currentUser?.reload();
     final result = await _sendVerificationEmailUsecase.call();
     result.fold(
       (error) => emit(LoginEmailNoSended(message: error.message)),
@@ -68,6 +69,8 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified != null && emailVerified) {
       emit(LoginEmailVerified());
+    } else {
+      emit(LoginEmailRequestNotVerified());
     }
   }
 
