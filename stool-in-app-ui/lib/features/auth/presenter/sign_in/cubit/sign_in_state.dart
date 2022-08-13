@@ -21,5 +21,14 @@ class SignInStateError extends SignInState {
   @override
   List<Object?> get props => [message];
 }
+
 class SignInStateSucess extends SignInState {}
-class SignInStateSendVerificationEmailError extends SignInState {}
+
+class SignInStateSendVerificationEmailError extends SignInState {
+  final String message;
+  SignInStateSendVerificationEmailError({
+    required this.message,
+  });
+  @override
+  List<Object?> get props => [message];
+}

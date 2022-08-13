@@ -105,7 +105,9 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       final result = await _sendVerificationEmailUsecase.call();
       result.fold(
         (error) async {
-          emit(SignInStateSendVerificationEmailError());
+          emit(
+            SignInStateSendVerificationEmailError(message: error.message),
+          );
           await _firebaseAuth.currentUser?.delete();
         },
         (sucess) {

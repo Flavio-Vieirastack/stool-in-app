@@ -84,6 +84,13 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
               } else if (state is SignInStateSucess) {
                 Navigator.of(context)
                     .pushReplacementNamed(RoutesConstants.signInDataRoute);
+              } else if (state is SignInStateSendVerificationEmailError) {
+                Navigator.of(context).pop();
+                showAppSnackbar(
+                  message: state.message,
+                  context: context,
+                  type: SnackBarType.error,
+                );
               }
             },
             child: ListView(
