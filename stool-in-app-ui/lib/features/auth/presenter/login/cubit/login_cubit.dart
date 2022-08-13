@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
@@ -41,7 +42,8 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
 
   void verifyUserEmailOnInit() {
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
-    if (emailVerified != null || emailVerified == false) {
+    log(emailVerified.toString());
+    if (emailVerified == null || emailVerified == false) {
       emit(LoginEmailNotVerified());
     }
   }

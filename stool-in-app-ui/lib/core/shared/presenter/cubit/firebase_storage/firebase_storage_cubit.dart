@@ -37,6 +37,7 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState>
       final result =
           await _firebaseStorage.ref(ref).putFile(compressedFile ?? file);
       final urlImage = await result.ref.getDownloadURL();
+      log(urlImage);
       saveString(key: KeysConstants.userPhotoUrl, value: urlImage);
       emit(FirebaseStorageSucess(userUrlImage: urlImage));
     } catch (e, s) {
