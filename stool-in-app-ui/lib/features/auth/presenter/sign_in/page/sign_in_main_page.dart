@@ -51,11 +51,13 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
               if (state is SignInStateEmailSended) {
                 showDialog(
                   context: context,
+                  barrierDismissible: false,
                   builder: (context) => AppDialog(
                     title: 'Muito bem!',
                     message: 'Verifique seu email',
                     context: context,
                     dialogTypes: DialogTypes.waiting,
+                    yesCallBack: () => cubit.sendVerificationEmail(),
                   ),
                 );
               } else if (state is SignInStateError) {
@@ -71,6 +73,7 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                 Navigator.of(context).pop();
                 showDialog(
                   context: context,
+                  barrierDismissible: false,
                   builder: (context) => AppDialog(
                     title: 'Parabéns!',
                     message: 'Aguarde, só falta mais um passo',
