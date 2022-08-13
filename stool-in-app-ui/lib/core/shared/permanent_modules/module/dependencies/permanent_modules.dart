@@ -8,7 +8,8 @@ import 'package:stool_in/core/helpers/secure_storage_helper/module/secure_storag
 import 'package:stool_in/core/helpers/storage_ref/module/user_storage_ref_module.dart';
 import 'package:stool_in/core/helpers/vote_ratting/module/vote_ratting_module.dart';
 
-import '../../../core_modules/firebase_auth/firebase_auth_module.dart';
+import '../../../../core_modules/firebase_auth/firebase_auth_module.dart';
+
 
 @immutable
 class PermanentModules {
