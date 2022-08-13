@@ -11,9 +11,6 @@ class _DialogWaiting {
           width: 50.w,
           LottieConstants.lottieWaiting,
         ),
-        SizedBox(
-          height: 2.h,
-        ),
         Text(
           message,
           style: AppTextStyles.headLine2,
@@ -24,8 +21,8 @@ class _DialogWaiting {
         DialogButton(
           onPressed: onPressed,
           dialogButtonType: DialogButtonType.yes,
-          buttonText: 'Reenviar email',
-        )
+          buttonText: 'Confirmei meu email',
+        ),
       ],
     );
   }
