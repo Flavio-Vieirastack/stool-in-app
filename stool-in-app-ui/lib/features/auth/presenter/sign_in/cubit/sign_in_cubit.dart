@@ -46,21 +46,12 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         ),
         (sucess) async {
           await sendVerificationEmail(timer: timer);
-          if (state is SignInStateEmailSended) {
-            timer = Timer.periodic(
-              const Duration(seconds: 6),
-              (_) => _checkEmailVerifiedAndSaveUserInApi(
-                timer,
-                authEntity: authEntity,
-              ),
-            );
-          }
         },
       );
     }
   }
-
-  Future<void> _checkEmailVerifiedAndSaveUserInApi(
+  
+  Future<void> checkEmailVerifiedAndSaveUserInApi(
     Timer? timer, {
     required AuthEntity authEntity,
   }) async {
