@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -98,6 +100,8 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
                 await getBool(key: KeysConstants.userPassLoginToApi);
             final loginFirebaseSucess =
                 await getBool(key: KeysConstants.userPassLoginToFirebase);
+            log(loginApiSucess.toString());
+            log(loginFirebaseSucess.toString());
             if (loginApiSucess! && loginFirebaseSucess!) {
               await _removeLocalSecurityStorage.delete(
                 key: KeysConstants.userPassword,
