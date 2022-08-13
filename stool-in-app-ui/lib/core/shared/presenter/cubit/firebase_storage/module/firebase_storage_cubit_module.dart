@@ -5,7 +5,7 @@ import 'package:stool_in/core/helpers/pick_image_helper/pick_image_helper.dart';
 import 'package:stool_in/core/helpers/storage_ref/user_storage_ref.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
 import 'package:stool_in/core/module/permanent_dependencies/permanent_cubit.dart';
-import 'package:stool_in/core/shared/cubit/firebase_storage/firebase_storage_cubit.dart';
+import 'package:stool_in/core/shared/presenter/cubit/firebase_storage/firebase_storage_cubit.dart';
 
 class FirebaseStorageCubitModule implements PermanentCubit {
   @override

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/helpers/pick_image_helper/pick_image_helper.dart';
-import 'package:stool_in/core/shared/cubit/firebase_storage/firebase_storage_cubit.dart';
+import 'package:stool_in/core/shared/presenter/cubit/firebase_storage/firebase_storage_cubit.dart';
 import 'package:stool_in/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in/features/auth/presenter/sign_in_user_data/cubit/sign_in_user_data_cubit.dart';

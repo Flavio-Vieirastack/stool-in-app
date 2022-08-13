@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/shared/cubit/geo_locator_cubit/geo_locator_cubit.dart';
+import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locator_cubit.dart';
 import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
-import 'package:stool_in/core/widgets/app_dialog/app_dialog.dart';
-import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';

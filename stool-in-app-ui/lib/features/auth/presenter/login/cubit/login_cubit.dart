@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
-import 'package:stool_in/core/shared/cubit/geo_locator_cubit/geo_locator_cubit.dart';
+import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locator_cubit.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 

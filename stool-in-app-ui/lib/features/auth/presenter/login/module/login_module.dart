@@ -5,7 +5,7 @@ import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
-import 'package:stool_in/core/shared/cubit/geo_locator_cubit/geo_locator_cubit.dart';
+import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locator_cubit.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in/features/auth/presenter/login/cubit/login_cubit.dart';
 import 'package:stool_in/features/auth/presenter/login/pages/login_page.dart';
