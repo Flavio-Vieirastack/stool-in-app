@@ -60,6 +60,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     required AuthEntity authEntity,
   }) async {
     await _firebaseAuth.currentUser?.reload();
+    log('Call _checkEmailVerifiedAndSaveUserInApi');
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified!) {
       saveBool(key: KeysConstants.userPassByDataPage, value: false);
