@@ -1,5 +1,3 @@
-
-
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 
 class AuthModel extends AuthEntity {
@@ -9,10 +7,12 @@ class AuthModel extends AuthEntity {
     super.firebaseUuid,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap({bool isInResetRequest = false}) {
     final result = <String, dynamic>{};
 
-    result.addAll({'email': email});
+    if (isInResetRequest == false) {
+      result.addAll({'email': email});
+    }
     if (password != null) {
       result.addAll({'password': password});
     }

@@ -22,7 +22,7 @@ class PasswordResetDatasourceImpl implements PasswordResetDatasource {
     try {
       await _restClientPatch.patch(
         path: '${EndpointConstants.passwordReset}/${authModel.email}',
-        data: authModel.toMap(),
+        data: authModel.toMap(isInResetRequest: true),
       );
     } on ApiAuthError catch (e, s) {
       log(

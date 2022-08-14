@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
+import 'package:stool_in/core/widgets/app_snackbar/app_snackbar.dart';
 import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/presenter/password_reset/cubit/password_reset_cubit.dart';
 import 'package:validatorless/validatorless.dart';
@@ -19,7 +20,8 @@ class PasswordResetPage extends StatefulWidget {
   State<PasswordResetPage> createState() => _PasswordResetPageState();
 }
 
-class _PasswordResetPageState extends State<PasswordResetPage> {
+class _PasswordResetPageState extends State<PasswordResetPage>
+    with AppSnackBar {
   final TextEditingController emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
@@ -40,6 +42,12 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
           if (state is PasswordResetRedirectToLogin) {
             Navigator.of(context)
                 .pushReplacementNamed(RoutesConstants.loginRoute);
+          } else if (state is PasswordResetError) {
+            showAppSnackbar(
+              message: 'Esse email não existe na nossa base de dados',
+              context: context,
+              type: SnackBarType.error,
+            );
           }
         },
         child: LayoutBuilder(
@@ -61,38 +69,36 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
                         ),
                       ),
                       BlocBuilder<PasswordResetCubit, PasswordResetState>(
-                          builder: (context, state) {
-                      if (state is PasswordResetLoading) {
-                        return IgnorePointer(
-                          ignoring: true,
-                          child: Center(
-                            child: _PasswordResetCard(
-                              buttonTypes: ButtonTypes.loading,
-                              formKey: formKey,
-                              sendCallback: () {},
-                              emailController: emailController,
-                            ),
-                          ),
-                        );
-                      } else {
-                        return Center(
-                          child: _PasswordResetCard(
-                            formKey: formKey,
-                            sendCallback: () =>
-                                cubit.firebasePasswordReset(
-                              validate:
-                                  formKey.currentState?.validate() ??
-                                      false,
-                              authEntity: AuthEntity(
-                                email: emailController.text.trim(),
+                        builder: (context, state) {
+                          if (state is PasswordResetLoading) {
+                            return IgnorePointer(
+                              ignoring: true,
+                              child: Center(
+                                child: _PasswordResetCard(
+                                  buttonTypes: ButtonTypes.loading,
+                                  formKey: formKey,
+                                  sendCallback: () {},
+                                  emailController: emailController,
+                                ),
                               ),
-                            ),
-                            emailController: emailController,
-                          ),
-                        );
-                      }
-                          },
-                        ),
+                            );
+                          } else {
+                            return Center(
+                              child: _PasswordResetCard(
+                                formKey: formKey,
+                                sendCallback: () => cubit.firebasePasswordReset(
+                                  validate:
+                                      formKey.currentState?.validate() ?? false,
+                                  authEntity: AuthEntity(
+                                    email: emailController.text.trim(),
+                                  ),
+                                ),
+                                emailController: emailController,
+                              ),
+                            );
+                          }
+                        },
+                      ),
                     ],
                   ),
                 ),

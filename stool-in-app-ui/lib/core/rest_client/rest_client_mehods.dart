@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
+import 'package:stool_in/core/rest_client/interceptors/authorization/authorization_interceptor.dart';
+import 'package:stool_in/core/rest_client/interceptors/internet_check/internet_check_interceptor.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
 
@@ -17,6 +19,10 @@ class RestClientOptions {
 class RestClientInitialize extends RestClientOptions {
   RestClientInitialize({BaseOptions? options}) {
     dio = Dio(options ?? baseOptions);
+    dio.interceptors.addAll([
+      AuthorizationRestClientInterceptor(),
+      InternetCheckInterceptor(),
+    ]);
   }
 }
 

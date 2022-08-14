@@ -54,7 +54,11 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
 
   Future<String?> getUserImageOnInit() async {
     final urlImage = await getString(key: KeysConstants.userPhotoUrl);
-    emit(LoginInitial(urlImage: urlImage));
+    final userMakeResetSolicitation =
+        await getBool(key: KeysConstants.userMakePasswordResetSolicitation);
+    if (userMakeResetSolicitation == null) {
+      emit(LoginInitial(urlImage: urlImage));
+    }
     return urlImage;
   }
 
@@ -139,6 +143,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
       emit(LoginLoading(urlImage: userImageUrl));
       final result =
           await _authUseCase.apiPasswordReset(authEntity: authEntity);
+      
       result.fold(
         (error) => emit(
           LoginError(
@@ -148,6 +153,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
         ),
         (sucess) async {
           await _makeApiLogin(authEntity: authEntity);
+          removeCache(key: KeysConstants.userMakePasswordResetSolicitation);
           emit(
             LoginSucess(urlImage: userImageUrl),
           );
