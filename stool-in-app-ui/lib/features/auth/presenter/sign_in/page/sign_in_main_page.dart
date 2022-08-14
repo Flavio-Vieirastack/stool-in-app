@@ -95,7 +95,7 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                 //     RoutesConstants.signInDataRoute,
                 //   ),
                 // );
-                DelayedHelper.delay(
+               await DelayedHelper.delay(
                   seconds: 3,
                   function: () => Navigator.of(context).pushReplacementNamed(
                     RoutesConstants.signInDataRoute,

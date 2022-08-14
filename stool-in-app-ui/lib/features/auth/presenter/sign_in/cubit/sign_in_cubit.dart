@@ -93,7 +93,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       //     SignInStateEmailSended(),
       //   ),
       // );
-      DelayedHelper.delay(
+     await DelayedHelper.delay(
         seconds: 3,
         function: () => emit(
           SignInStateEmailSended(),
@@ -145,7 +145,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       (sucess) async {
         // await Future.delayed(const Duration(seconds: 3));
         // emit(SignInStateSucess());
-        DelayedHelper.delay(
+       await DelayedHelper.delay(
           seconds: 3,
           function: () => emit(
             SignInStateSucess(),

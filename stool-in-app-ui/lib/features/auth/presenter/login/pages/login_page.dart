@@ -196,7 +196,7 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                 );
                 // await Future.delayed(const Duration(seconds: 3));
                 // await geolocatorCubit.requestPermition();
-                DelayedHelper.delay(
+                await DelayedHelper.delay(
                   seconds: 3,
                   function: () async => geolocatorCubit.requestPermition(),
                 );
@@ -208,7 +208,7 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                 );
                 // await Future.delayed(const Duration(seconds: 3));
                 // await geolocatorCubit.requestPermition();
-                DelayedHelper.delay(
+                await DelayedHelper.delay(
                   seconds: 3,
                   function: () async => geolocatorCubit.requestPermition(),
                 );

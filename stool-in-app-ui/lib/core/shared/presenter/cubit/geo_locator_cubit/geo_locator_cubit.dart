@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/helpers/try_catch_helper.dart/try_catch_helper.dart';
 
 part 'geo_locator_state.dart';
 
@@ -20,14 +21,25 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
   }
 
   Future<bool> requestUserPermition() async {
-    try {
-      await requestPermition();
-      emit(GeoLocatorSucess());
-      return true;
-    } catch (e) {
-      await _emitErrorStates();
-      return false;
-    }
+    // TODO retirar quando estiver testado
+    // try {
+    //   await requestPermition();
+    //   emit(GeoLocatorSucess());
+    //   return true;
+    // } catch (e) {
+    //   await _emitErrorStates();
+    //   return false;
+    // }
+    final result = await TryCatchHelper.makeRequest(
+      function: () async {
+        await requestPermition();
+        emit(GeoLocatorSucess());
+      },
+      onError: () async {
+        await _emitErrorStates();
+      },
+    );
+    return result;
   }
 
   Future<void> requestPermition() async {
