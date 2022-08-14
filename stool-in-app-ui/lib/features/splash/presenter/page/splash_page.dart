@@ -46,7 +46,7 @@ class _SplashPageState extends State<SplashPage> {
             ),
             const Spacer(),
             CircularProgressIndicator.adaptive(
-              backgroundColor: AppColors.buttonLeftGradientColor,
+              backgroundColor: AppColors.black,
             ),
             SizedBox(
               height: 20.h,

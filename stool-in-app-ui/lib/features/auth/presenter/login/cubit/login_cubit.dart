@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
@@ -95,7 +96,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
           ),
         ),
       );
-      
+
       if (result) {
         emit(LoginSignInStateSucess(urlImage: urlImage));
       } else {
@@ -120,7 +121,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
       );
       result.fold(
         (error) => emit(
-          LoginError(message: error.message),
+          LoginError(message: error.message, urlImage: userImageUrl),
         ),
         (sucess) async {
           await _makeApiLogin(authEntity: authEntity);
