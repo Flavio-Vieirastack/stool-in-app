@@ -51,7 +51,7 @@ class SplashCubit extends Cubit<SplashState> with SharedPreferencesHelper {
     }
     return false;
   }
-  // TODO descomentar em release (Adicionando logica para ir para a home)
+  // TODO descomentar em release (Adicionando logica para ir para a home e data)
   // Future<void> goToOnBoardingPage() async {
   //   await Future.delayed(const Duration(seconds: 2));
   //   final blockDevice = await _securityAcessHelper.blockDevice();

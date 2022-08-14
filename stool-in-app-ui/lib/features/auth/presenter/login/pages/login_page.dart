@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/helpers/delayed_helper/delayed_helper.dart';
 import 'package:stool_in/core/shared/presenter/cubit/geo_locator_cubit/geo_locator_cubit.dart';
 import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/app_button/enum/button_types.dart';
@@ -87,8 +88,13 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                   duration: 3,
                   type: SnackBarType.error,
                 );
-                await Future.delayed(const Duration(seconds: 3));
-                await geolocatorCubit.requestPermition();
+                //TODO retirar quando estiver testado
+                // await Future.delayed(const Duration(seconds: 3));
+                // await geolocatorCubit.requestPermition();
+                await DelayedHelper.delay(
+                  seconds: 3,
+                  function: () async => geolocatorCubit.requestPermition(),
+                );
               } else if (state is LoginGeoLocatorNotEnabledForever) {
                 showAppSnackbar(
                   message:
@@ -117,9 +123,15 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                   message: 'Parabéns seu email foi verificado com sucesso',
                   context: context,
                 );
-                await Future.delayed(
-                  const Duration(seconds: 3),
-                  () => Navigator.of(context)
+                //TODO retirar quando estiver testado
+                // await Future.delayed(
+                //   const Duration(seconds: 3),
+                //   () => Navigator.of(context)
+                //       .pushReplacementNamed(RoutesConstants.signInDataRoute),
+                // );
+                await DelayedHelper.delay(
+                  seconds: 3,
+                  function: () => Navigator.of(context)
                       .pushReplacementNamed(RoutesConstants.signInDataRoute),
                 );
               } else if (state is LoginEmailSended) {
@@ -145,9 +157,14 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                     context: context,
                     type: SnackBarType.error,
                     duration: 4);
-                await Future.delayed(
-                  const Duration(seconds: 4),
-                  () => Navigator.of(context)
+                // await Future.delayed(
+                //   const Duration(seconds: 4),
+                //   () => Navigator.of(context)
+                //       .pushReplacementNamed(RoutesConstants.signInMainRoute),
+                // );
+                await DelayedHelper.delay(
+                  seconds: 4,
+                  function: () => Navigator.of(context)
                       .pushReplacementNamed(RoutesConstants.signInMainRoute),
                 );
               } else if (state is LoginSignInStateSucess) {
@@ -156,9 +173,14 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                         'Cadastro realizado com sucesso, vamos ao próximo passo.',
                     context: context,
                     duration: 4);
-                await Future.delayed(
-                  const Duration(seconds: 4),
-                  () => Navigator.of(context)
+                // await Future.delayed(
+                //   const Duration(seconds: 4),
+                //   () => Navigator.of(context)
+                //       .pushReplacementNamed(RoutesConstants.signInDataRoute),
+                // );
+                await DelayedHelper.delay(
+                  seconds: 4,
+                  function: () => Navigator.of(context)
                       .pushReplacementNamed(RoutesConstants.signInDataRoute),
                 );
               }
@@ -172,16 +194,24 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                   context: context,
                   type: SnackBarType.error,
                 );
-                await Future.delayed(const Duration(seconds: 3));
-                await geolocatorCubit.requestPermition();
+                // await Future.delayed(const Duration(seconds: 3));
+                // await geolocatorCubit.requestPermition();
+                DelayedHelper.delay(
+                  seconds: 3,
+                  function: () async => geolocatorCubit.requestPermition(),
+                );
               } else if (state is GeoLocatorDenied) {
                 showAppSnackbar(
                   message: 'Por favor, habilite a sua localização',
                   context: context,
                   type: SnackBarType.error,
                 );
-                await Future.delayed(const Duration(seconds: 3));
-                await geolocatorCubit.requestPermition();
+                // await Future.delayed(const Duration(seconds: 3));
+                // await geolocatorCubit.requestPermition();
+                DelayedHelper.delay(
+                  seconds: 3,
+                  function: () async => geolocatorCubit.requestPermition(),
+                );
               } else if (state is GeoLocatorDeniedForever) {
                 showAppSnackbar(
                   message:

@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/firebase/push_notifications/firebase_notifications.dart';
+import 'package:stool_in/core/helpers/delayed_helper/delayed_helper.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
@@ -55,7 +56,6 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     required AuthEntity authEntity,
   }) async {
     await _firebaseAuth.currentUser?.reload();
-    log('Call _checkEmailVerifiedAndSaveUserInApi');
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified!) {
       saveBool(key: KeysConstants.userPassByDataPage, value: false);
@@ -86,9 +86,16 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       emit(SignInStateEmailAccepted());
     } else {
       emit(SignInEmailNotVerified());
-      await Future.delayed(
-        const Duration(seconds: 3),
-        () => emit(
+      // TODO retirar quando estiver testado
+      // await Future.delayed(
+      //   const Duration(seconds: 3),
+      //   () => emit(
+      //     SignInStateEmailSended(),
+      //   ),
+      // );
+      DelayedHelper.delay(
+        seconds: 3,
+        function: () => emit(
           SignInStateEmailSended(),
         ),
       );
@@ -136,8 +143,14 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         );
       },
       (sucess) async {
-        await Future.delayed(const Duration(seconds: 3));
-        emit(SignInStateSucess());
+        // await Future.delayed(const Duration(seconds: 3));
+        // emit(SignInStateSucess());
+        DelayedHelper.delay(
+          seconds: 3,
+          function: () => emit(
+            SignInStateSucess(),
+          ),
+        );
       },
     );
   }
