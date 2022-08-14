@@ -23,6 +23,7 @@ class AppSchedulingCard extends StatelessWidget {
   final String houseNumber;
   final String district;
   final String referencePoint;
+  final String userState;
   final VoidCallback cancelOnPressed;
   const AppSchedulingCard({
     Key? key,
@@ -41,6 +42,7 @@ class AppSchedulingCard extends StatelessWidget {
     required this.userComentaryVisible,
     required this.userName,
     required this.userUrlImage,
+    required this.userState,
   }) : super(key: key);
   //! Esse card vai ser usado para o prestador de serviço ver os serviços que ele tem que executar
   @override
@@ -60,6 +62,7 @@ class AppSchedulingCard extends StatelessWidget {
         ),
       ),
       child: _ShcedulingContent(
+        userState: userState,
         cancelOnPressed: cancelOnPressed,
         city: city,
         district: district,

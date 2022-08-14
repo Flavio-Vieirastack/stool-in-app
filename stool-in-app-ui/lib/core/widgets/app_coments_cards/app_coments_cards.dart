@@ -5,6 +5,7 @@ import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/ratting_stars/app_ratting_stars.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+
 class AppComentsCards extends StatelessWidget {
   final String userUrlImage;
   final String userName;
@@ -41,8 +42,10 @@ class AppComentsCards extends StatelessWidget {
           children: [
             Row(
               children: [
-                 AppAvatar(urlImage: userUrlImage),
-                 SizedBox(
+                AppAvatar(
+                  urlImage: userUrlImage,
+                ),
+                SizedBox(
                   width: 5.w,
                 ),
                 Expanded(
@@ -51,14 +54,14 @@ class AppComentsCards extends StatelessWidget {
                     style: AppTextStyles.headLine1,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    maxFontSize: 18.dp,
-                    minFontSize: 17.dp,
+                    maxFontSize: 18,
+                    minFontSize: 17,
                   ),
                 ),
               ],
             ),
-             SizedBox(
-              height: 10.h,
+            SizedBox(
+              height: 1.h,
             ),
             Text(
               'Comentário:',
@@ -66,16 +69,16 @@ class AppComentsCards extends StatelessWidget {
                   color: AppColors.buttonLeftGradientColor,
                   decoration: TextDecoration.underline),
             ),
-             SizedBox(
-              height: 5.w,
+            SizedBox(
+              height: 2.w,
             ),
             Text(
               userComent,
               style: AppTextStyles.headLine2,
               textAlign: TextAlign.justify,
             ),
-             SizedBox(
-              height: 10.h,
+            SizedBox(
+              height: 2.h,
             ),
             Align(
               alignment: Alignment.bottomRight,

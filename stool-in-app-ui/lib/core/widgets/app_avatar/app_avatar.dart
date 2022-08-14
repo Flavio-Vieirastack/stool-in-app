@@ -33,13 +33,11 @@ class AppAvatar extends StatelessWidget {
                 backgroundColor: AppColors.grey,
                 child: !isLoading
                     ? Icon(
-                        Icons.person,
+                        Icons.access_alarm,
                         size: 50.dp,
                         color: AppColors.black,
                       )
-                    : CircularProgressIndicator.adaptive(
-                        backgroundColor: AppColors.buttonLeftGradientColor,
-                      ),
+                    : const CircularProgressIndicator.adaptive(),
               ),
       ),
     );

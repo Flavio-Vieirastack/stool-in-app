@@ -15,6 +15,7 @@ class _ShcedulingContent extends StatelessWidget {
   final String houseNumber;
   final String district;
   final String referencePoint;
+  final String userState;
   final VoidCallback cancelOnPressed;
 
   const _ShcedulingContent({
@@ -34,6 +35,7 @@ class _ShcedulingContent extends StatelessWidget {
     required this.district,
     required this.referencePoint,
     required this.cancelOnPressed,
+    required this.userState
   }) : super(key: key);
 
   @override
@@ -56,8 +58,8 @@ class _ShcedulingContent extends StatelessWidget {
                   style: AppTextStyles.headLine1,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  maxFontSize: 18.dp,
-                  minFontSize: 17.dp,
+                  maxFontSize: 18,
+                  minFontSize: 17,
                 ),
               ),
               SizedBox(
@@ -70,7 +72,7 @@ class _ShcedulingContent extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 10.h,
+            height: 2.h,
           ),
           Align(
             alignment: Alignment.bottomRight,
@@ -80,7 +82,7 @@ class _ShcedulingContent extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10.h,
+            height: 1.h,
           ),
           Center(
             child: Text(
@@ -88,8 +90,8 @@ class _ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine4Gold,
             ),
           ),
-           SizedBox(
-            height: 2.h,
+          SizedBox(
+            height: 1.h,
           ),
           Text(
             serviceDescription,
@@ -106,8 +108,8 @@ class _ShcedulingContent extends StatelessWidget {
                   'Comentário:',
                   style: AppTextStyles.headLine4Gold,
                 ),
-                 SizedBox(
-                  height: 2.h,
+                SizedBox(
+                  height: 1.h,
                 ),
                 Text(
                   userComentary,
@@ -125,8 +127,8 @@ class _ShcedulingContent extends StatelessWidget {
               style: AppTextStyles.headLine4Gold,
             ),
           ),
-           SizedBox(
-            height: 2.h,
+          SizedBox(
+            height: 1.h,
           ),
           Text(
             servicesTodo,
@@ -189,6 +191,18 @@ class _ShcedulingContent extends StatelessWidget {
           ),
           RichText(
             text: TextSpan(
+              text: 'Estado: ',
+              style: AppTextStyles.headLine2,
+              children: <TextSpan>[
+                TextSpan(
+                  text: userState,
+                  style: AppTextStyles.headLine4,
+                ),
+              ],
+            ),
+          ),
+          RichText(
+            text: TextSpan(
               text: 'Ponto de referência: ',
               style: AppTextStyles.headLine2,
               children: <TextSpan>[
@@ -199,8 +213,8 @@ class _ShcedulingContent extends StatelessWidget {
               ],
             ),
           ),
-           SizedBox(
-            height: 10.h,
+          SizedBox(
+            height: 2.h,
           ),
           Center(
             child: DialogButton(
