@@ -5,5 +5,6 @@ class LottieConstants {
   static const lottieNoConnection = 'assets/lotties/84872-disconnected.json';
   static const lottieWaiting = 'assets/lotties/21421-waiting.json';
   static const lottieBlcoked = 'assets/lotties/76732-locked-icon.json';
+  static const lottiePremium = 'assets/lotties/premium.json';
 }
 

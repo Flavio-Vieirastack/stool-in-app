@@ -20,8 +20,8 @@ class AppAvatar extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(50.dp)),
       child: SizedBox(
-        height: size.dp,
-        width: size.dp,
+        height: size,
+        width: size,
         child: urlImage != null
             ? CachedNetworkImage(
                 imageUrl: urlImage ?? '',
@@ -32,16 +32,18 @@ class AppAvatar extends StatelessWidget {
                 ),
                 errorWidget: (context, url, error) => const Icon(Icons.person),
               )
-            : CircleAvatar(
-                backgroundColor: AppColors.grey,
-                child: !isLoading
-                    ? Icon(
-                        Icons.access_alarm,
-                        size: 50.dp,
-                        color: AppColors.black,
-                      )
-                    : const AppProgressIndicator(),
-              ),
+            : SizedBox(
+              child: CircleAvatar(
+                  backgroundColor: AppColors.grey,
+                  child: !isLoading
+                      ? Icon(
+                          Icons.person,
+                          size: size -10,
+                          color: AppColors.black,
+                        )
+                      : const AppProgressIndicator(),
+                ),
+            ),
       ),
     );
   }
