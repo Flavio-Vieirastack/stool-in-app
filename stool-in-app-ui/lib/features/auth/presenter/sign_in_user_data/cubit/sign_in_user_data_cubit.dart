@@ -100,8 +100,6 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             if (loginApiSucess! && loginFirebaseSucess!) {
               final urlimage = await _getUserUrlImage();
               emit(SignInUserDataSucess(userUrlImage: urlimage));
-              removeCache(key: KeysConstants.userPassLoginToApi);
-              removeCache(key: KeysConstants.userPassLoginToFirebase);
             }
           },
         );
@@ -138,7 +136,6 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
           value: sucess.token,
         );
         saveBool(key: KeysConstants.userPassLoginToApi, value: true);
-        log('Passou pelo login');
         final urlimage = await _getUserUrlImage();
         await _loginInToFirebase(userUrlImage: urlimage);
         emit(SignInUserDataLoginApiSucess(userUrlImage: urlimage));
