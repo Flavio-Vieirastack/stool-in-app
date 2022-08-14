@@ -159,6 +159,7 @@ class _SignInDataCard extends StatelessWidget {
                         hint: 'Ex: 985',
                         controller: houseNumberController,
                         color: Colors.transparent,
+                        textInputType: TextInputType.number,
                         validator: Validatorless.multiple(
                           [
                             Validatorless.required(
@@ -215,6 +216,7 @@ class _SignInDataCard extends StatelessWidget {
                         label: 'Cep',
                         hint: 'Ex: 63100000',
                         color: Colors.transparent,
+                        textInputType: TextInputType.number,
                         controller: cepController,
                       ),
                       SizedBox(

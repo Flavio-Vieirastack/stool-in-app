@@ -11,6 +11,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
   final String label;
   final String hint;
   final Color? color;
+  final TextInputType textInputType;
   const AppTextFormField({
     Key? key,
     this.validator,
@@ -20,6 +21,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
     this.label = 'Label',
     this.hint = 'Hint',
     this.color,
+    this.textInputType = TextInputType.text,
   }) : super(key: key);
 
   @override
@@ -35,6 +37,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
             validator: validator,
             obscureText: obscureText,
             controller: controller,
+            keyboardType: textInputType,
             decoration: InputDecoration(
               labelText: label,
               hintText: hint,

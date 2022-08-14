@@ -100,284 +100,264 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
             },
           ),
         ],
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return ListView(
+        child: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
+              child: Text(
+                'Para finalizar,',
+                style: AppTextStyles.headLine0,
+              ),
+            ),
+            SizedBox(
+              height: 2.h,
+            ),
+            Stack(
               children: [
+                BlocBuilder<SignInUserDataCubit, SignInUserDataState>(
+                  builder: (context, state) {
+                    if (state is SignInUserDataLoading) {
+                      return IgnorePointer(
+                        ignoring: true,
+                        child: Center(
+                          child: _SignInDataCard(
+                            formKey: formKey,
+                            statesDropDownLabel: stateInitialName,
+                            onChanged: (value) =>
+                                cubit.changeStateDropDown(value: value),
+                            buttonTypes: ButtonTypes.loading,
+                            cepController: cepController,
+                            cityController: cityController,
+                            districtController: districtController,
+                            houseNumberController: houseNumberController,
+                            referencePointController: referencePointController,
+                            streetController: streetController,
+                            userNameController: userNameController,
+                            signInCallBack: () {},
+                          ),
+                        ),
+                      );
+                    } else if (state is SignInUserDataSucess) {
+                      return Center(
+                        child: _SignInDataCard(
+                          formKey: formKey,
+                          urlImage: state.userUrlImage,
+                          statesDropDownLabel: stateInitialName,
+                          onChanged: (value) =>
+                              cubit.changeStateDropDown(value: value),
+                          cepController: cepController,
+                          cityController: cityController,
+                          districtController: districtController,
+                          houseNumberController: houseNumberController,
+                          referencePointController: referencePointController,
+                          streetController: streetController,
+                          userNameController: userNameController,
+                          signInCallBack: () => cubit.sendUserDataToApi(
+                            validate: formKey.currentState?.validate() ?? false,
+                            userState: stateInitialName,
+                            userDataEntity: UserDataEntity(
+                              cep: cepController.text.trim(),
+                              city: cityController.text.trim(),
+                              district: districtController.text.trim(),
+                              houseNumber: houseNumberController.text.trim(),
+                              referencePoint:
+                                  referencePointController.text.trim(),
+                              street: streetController.text.trim(),
+                              userName: userNameController.text.trim(),
+                              userState: stateInitialName,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else if (state is SignInUserDataLoginApiSucess) {
+                      return Center(
+                        child: _SignInDataCard(
+                          formKey: formKey,
+                          urlImage: state.userUrlImage,
+                          statesDropDownLabel: stateInitialName,
+                          onChanged: (value) =>
+                              cubit.changeStateDropDown(value: value),
+                          cepController: cepController,
+                          cityController: cityController,
+                          districtController: districtController,
+                          houseNumberController: houseNumberController,
+                          referencePointController: referencePointController,
+                          streetController: streetController,
+                          userNameController: userNameController,
+                          signInCallBack: () => cubit.sendUserDataToApi(
+                            validate: formKey.currentState?.validate() ?? false,
+                            userState: stateInitialName,
+                            userDataEntity: UserDataEntity(
+                              cep: cepController.text.trim(),
+                              city: cityController.text.trim(),
+                              district: districtController.text.trim(),
+                              houseNumber: houseNumberController.text.trim(),
+                              referencePoint:
+                                  referencePointController.text.trim(),
+                              street: streetController.text.trim(),
+                              userName: userNameController.text.trim(),
+                              userState: stateInitialName,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else if (state is SignInUserDataLoginFirebaseSucess) {
+                      return Center(
+                        child: _SignInDataCard(
+                          formKey: formKey,
+                          urlImage: state.userUrlImage,
+                          statesDropDownLabel: stateInitialName,
+                          onChanged: (value) =>
+                              cubit.changeStateDropDown(value: value),
+                          cepController: cepController,
+                          cityController: cityController,
+                          districtController: districtController,
+                          houseNumberController: houseNumberController,
+                          referencePointController: referencePointController,
+                          streetController: streetController,
+                          userNameController: userNameController,
+                          signInCallBack: () => cubit.sendUserDataToApi(
+                            validate: formKey.currentState?.validate() ?? false,
+                            userState: stateInitialName,
+                            userDataEntity: UserDataEntity(
+                              cep: cepController.text.trim(),
+                              city: cityController.text.trim(),
+                              district: districtController.text.trim(),
+                              houseNumber: houseNumberController.text.trim(),
+                              referencePoint:
+                                  referencePointController.text.trim(),
+                              street: streetController.text.trim(),
+                              userName: userNameController.text.trim(),
+                              userState: stateInitialName,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else if (state is SignInUserDataLoading) {
+                      return Center(
+                        child: _SignInDataCard(
+                          formKey: formKey,
+                          urlImage: state.userUrlImage,
+                          statesDropDownLabel: stateInitialName,
+                          onChanged: (value) =>
+                              cubit.changeStateDropDown(value: value),
+                          cepController: cepController,
+                          cityController: cityController,
+                          districtController: districtController,
+                          houseNumberController: houseNumberController,
+                          referencePointController: referencePointController,
+                          streetController: streetController,
+                          userNameController: userNameController,
+                          signInCallBack: () => cubit.sendUserDataToApi(
+                            validate: formKey.currentState?.validate() ?? false,
+                            userState: stateInitialName,
+                            userDataEntity: UserDataEntity(
+                              cep: cepController.text.trim(),
+                              city: cityController.text.trim(),
+                              district: districtController.text.trim(),
+                              houseNumber: houseNumberController.text.trim(),
+                              referencePoint:
+                                  referencePointController.text.trim(),
+                              street: streetController.text.trim(),
+                              userName: userNameController.text.trim(),
+                              userState: stateInitialName,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else if (state is SignInUserDataInitial) {
+                      return Center(
+                        child: _SignInDataCard(
+                          formKey: formKey,
+                          statesDropDownLabel: stateInitialName,
+                          onChanged: (value) =>
+                              cubit.changeStateDropDown(value: value),
+                          cepController: cepController,
+                          cityController: cityController,
+                          districtController: districtController,
+                          houseNumberController: houseNumberController,
+                          referencePointController: referencePointController,
+                          streetController: streetController,
+                          userNameController: userNameController,
+                          signInCallBack: () => cubit.sendUserDataToApi(
+                            validate: formKey.currentState?.validate() ?? false,
+                            userState: stateInitialName,
+                            userDataEntity: UserDataEntity(
+                              cep: cepController.text.trim(),
+                              city: cityController.text.trim(),
+                              district: districtController.text.trim(),
+                              houseNumber: houseNumberController.text.trim(),
+                              referencePoint:
+                                  referencePointController.text.trim(),
+                              street: streetController.text.trim(),
+                              userName: userNameController.text.trim(),
+                              userState: stateInitialName,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Center(
+                        child: _SignInDataCard(
+                          formKey: formKey,
+                          statesDropDownLabel: stateInitialName,
+                          onChanged: (value) =>
+                              cubit.changeStateDropDown(value: value),
+                          cepController: cepController,
+                          cityController: cityController,
+                          districtController: districtController,
+                          houseNumberController: houseNumberController,
+                          referencePointController: referencePointController,
+                          streetController: streetController,
+                          userNameController: userNameController,
+                          signInCallBack: () => cubit.sendUserDataToApi(
+                            validate: formKey.currentState?.validate() ?? false,
+                            userState: stateInitialName,
+                            userDataEntity: UserDataEntity(
+                              cep: cepController.text.trim(),
+                              city: cityController.text.trim(),
+                              district: districtController.text.trim(),
+                              houseNumber: houseNumberController.text.trim(),
+                              referencePoint:
+                                  referencePointController.text.trim(),
+                              street: streetController.text.trim(),
+                              userName: userNameController.text.trim(),
+                              userState: stateInitialName,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.w),
-                  child: Text(
-                    'Para finalizar,',
-                    style: AppTextStyles.headLine0,
+                  padding: EdgeInsets.only(top: 10.w, left: 55.w),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: AppColors.buttonLeftGradientColor,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(30.dp),
+                      ),
+                    ),
+                    child: IconButton(
+                      onPressed: () async =>
+                          firebaseStorageCubit.pickAndUploadImage(
+                        imageFrom: ImageFrom.gallery,
+                      ),
+                      icon: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30.dp,
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 2.h,
-                ),
-                Stack(
-                  children: [
-                    BlocBuilder<SignInUserDataCubit, SignInUserDataState>(
-                      builder: (context, state) {
-                        if (state is SignInUserDataLoading) {
-                          return IgnorePointer(
-                            ignoring: true,
-                            child: Center(
-                              child: _SignInDataCard(
-                                formKey: formKey,
-                                statesDropDownLabel: stateInitialName,
-                                onChanged: (value) =>
-                                    cubit.changeStateDropDown(value: value),
-                                buttonTypes: ButtonTypes.loading,
-                                cepController: cepController,
-                                cityController: cityController,
-                                districtController: districtController,
-                                houseNumberController: houseNumberController,
-                                referencePointController:
-                                    referencePointController,
-                                streetController: streetController,
-                                userNameController: userNameController,
-                                signInCallBack: () {},
-                              ),
-                            ),
-                          );
-                        } else if (state is SignInUserDataSucess) {
-                          return Center(
-                            child: _SignInDataCard(
-                              formKey: formKey,
-                              urlImage: state.userUrlImage,
-                              statesDropDownLabel: stateInitialName,
-                              onChanged: (value) =>
-                                  cubit.changeStateDropDown(value: value),
-                              cepController: cepController,
-                              cityController: cityController,
-                              districtController: districtController,
-                              houseNumberController: houseNumberController,
-                              referencePointController:
-                                  referencePointController,
-                              streetController: streetController,
-                              userNameController: userNameController,
-                              signInCallBack: () => cubit.sendUserDataToApi(
-                                validate:
-                                    formKey.currentState?.validate() ?? false,
-                                userState: stateInitialName,
-                                userDataEntity: UserDataEntity(
-                                  cep: cepController.text.trim(),
-                                  city: cityController.text.trim(),
-                                  district: districtController.text.trim(),
-                                  houseNumber:
-                                      houseNumberController.text.trim(),
-                                  referencePoint:
-                                      referencePointController.text.trim(),
-                                  street: streetController.text.trim(),
-                                  userName: userNameController.text.trim(),
-                                  userState: stateInitialName,
-                                ),
-                              ),
-                            ),
-                          );
-                        } else if (state is SignInUserDataLoginApiSucess) {
-                          return Center(
-                            child: _SignInDataCard(
-                              formKey: formKey,
-                              urlImage: state.userUrlImage,
-                              statesDropDownLabel: stateInitialName,
-                              onChanged: (value) =>
-                                  cubit.changeStateDropDown(value: value),
-                              cepController: cepController,
-                              cityController: cityController,
-                              districtController: districtController,
-                              houseNumberController: houseNumberController,
-                              referencePointController:
-                                  referencePointController,
-                              streetController: streetController,
-                              userNameController: userNameController,
-                              signInCallBack: () => cubit.sendUserDataToApi(
-                                validate:
-                                    formKey.currentState?.validate() ?? false,
-                                userState: stateInitialName,
-                                userDataEntity: UserDataEntity(
-                                  cep: cepController.text.trim(),
-                                  city: cityController.text.trim(),
-                                  district: districtController.text.trim(),
-                                  houseNumber:
-                                      houseNumberController.text.trim(),
-                                  referencePoint:
-                                      referencePointController.text.trim(),
-                                  street: streetController.text.trim(),
-                                  userName: userNameController.text.trim(),
-                                  userState: stateInitialName,
-                                ),
-                              ),
-                            ),
-                          );
-                        } else if (state is SignInUserDataLoginFirebaseSucess) {
-                          return Center(
-                            child: _SignInDataCard(
-                              formKey: formKey,
-                              urlImage: state.userUrlImage,
-                              statesDropDownLabel: stateInitialName,
-                              onChanged: (value) =>
-                                  cubit.changeStateDropDown(value: value),
-                              cepController: cepController,
-                              cityController: cityController,
-                              districtController: districtController,
-                              houseNumberController: houseNumberController,
-                              referencePointController:
-                                  referencePointController,
-                              streetController: streetController,
-                              userNameController: userNameController,
-                              signInCallBack: () => cubit.sendUserDataToApi(
-                                validate:
-                                    formKey.currentState?.validate() ?? false,
-                                userState: stateInitialName,
-                                userDataEntity: UserDataEntity(
-                                  cep: cepController.text.trim(),
-                                  city: cityController.text.trim(),
-                                  district: districtController.text.trim(),
-                                  houseNumber:
-                                      houseNumberController.text.trim(),
-                                  referencePoint:
-                                      referencePointController.text.trim(),
-                                  street: streetController.text.trim(),
-                                  userName: userNameController.text.trim(),
-                                  userState: stateInitialName,
-                                ),
-                              ),
-                            ),
-                          );
-                        } else if (state is SignInUserDataLoading) {
-                          return Center(
-                            child: _SignInDataCard(
-                              formKey: formKey,
-                              urlImage: state.userUrlImage,
-                              statesDropDownLabel: stateInitialName,
-                              onChanged: (value) =>
-                                  cubit.changeStateDropDown(value: value),
-                              cepController: cepController,
-                              cityController: cityController,
-                              districtController: districtController,
-                              houseNumberController: houseNumberController,
-                              referencePointController:
-                                  referencePointController,
-                              streetController: streetController,
-                              userNameController: userNameController,
-                              signInCallBack: () => cubit.sendUserDataToApi(
-                                validate:
-                                    formKey.currentState?.validate() ?? false,
-                                userState: stateInitialName,
-                                userDataEntity: UserDataEntity(
-                                  cep: cepController.text.trim(),
-                                  city: cityController.text.trim(),
-                                  district: districtController.text.trim(),
-                                  houseNumber:
-                                      houseNumberController.text.trim(),
-                                  referencePoint:
-                                      referencePointController.text.trim(),
-                                  street: streetController.text.trim(),
-                                  userName: userNameController.text.trim(),
-                                  userState: stateInitialName,
-                                ),
-                              ),
-                            ),
-                          );
-                        } else if (state is SignInUserDataInitial) {
-                          return Center(
-                            child: _SignInDataCard(
-                              formKey: formKey,
-                              statesDropDownLabel: stateInitialName,
-                              onChanged: (value) =>
-                                  cubit.changeStateDropDown(value: value),
-                              cepController: cepController,
-                              cityController: cityController,
-                              districtController: districtController,
-                              houseNumberController: houseNumberController,
-                              referencePointController:
-                                  referencePointController,
-                              streetController: streetController,
-                              userNameController: userNameController,
-                              signInCallBack: () => cubit.sendUserDataToApi(
-                                validate:
-                                    formKey.currentState?.validate() ?? false,
-                                userState: stateInitialName,
-                                userDataEntity: UserDataEntity(
-                                  cep: cepController.text.trim(),
-                                  city: cityController.text.trim(),
-                                  district: districtController.text.trim(),
-                                  houseNumber:
-                                      houseNumberController.text.trim(),
-                                  referencePoint:
-                                      referencePointController.text.trim(),
-                                  street: streetController.text.trim(),
-                                  userName: userNameController.text.trim(),
-                                  userState: stateInitialName,
-                                ),
-                              ),
-                            ),
-                          );
-                        } else {
-                          return Center(
-                            child: _SignInDataCard(
-                              formKey: formKey,
-                              statesDropDownLabel: stateInitialName,
-                              onChanged: (value) =>
-                                  cubit.changeStateDropDown(value: value),
-                              cepController: cepController,
-                              cityController: cityController,
-                              districtController: districtController,
-                              houseNumberController: houseNumberController,
-                              referencePointController:
-                                  referencePointController,
-                              streetController: streetController,
-                              userNameController: userNameController,
-                              signInCallBack: () => cubit.sendUserDataToApi(
-                                validate:
-                                    formKey.currentState?.validate() ?? false,
-                                userState: stateInitialName,
-                                userDataEntity: UserDataEntity(
-                                  cep: cepController.text.trim(),
-                                  city: cityController.text.trim(),
-                                  district: districtController.text.trim(),
-                                  houseNumber:
-                                      houseNumberController.text.trim(),
-                                  referencePoint:
-                                      referencePointController.text.trim(),
-                                  street: streetController.text.trim(),
-                                  userName: userNameController.text.trim(),
-                                  userState: stateInitialName,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.w, left: 55.w),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.buttonLeftGradientColor,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30.dp),
-                          ),
-                        ),
-                        child: IconButton(
-                          onPressed: () async =>
-                              firebaseStorageCubit.pickAndUploadImage(
-                            imageFrom: ImageFrom.gallery,
-                          ),
-                          icon: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 30.dp,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+                 SizedBox(
+                   height: 200.h,
                 ),
               ],
-            );
-          },
+            ),
+          ],
         ),
       ),
     );
