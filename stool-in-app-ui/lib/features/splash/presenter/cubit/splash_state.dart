@@ -13,6 +13,6 @@ class SplashGoToLoginPage extends SplashState {}
 
 class SplashGoToHomePage extends SplashState {}
 
-class SplashGoToUseDataPage extends SplashState {}
+class SplashGoToUserDataPage extends SplashState {}
 
 class SplashStateBlockDevice extends SplashState {}

@@ -78,7 +78,6 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             SignInUserDataError(message: error.message),
           ),
           (sucess) async {
-            saveBool(key: KeysConstants.userPassByDataPage, value: true);
             saveString(
                 key: KeysConstants.userName, value: sucess.userName ?? '');
             saveDouble(
@@ -99,7 +98,12 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
                 await getBool(key: KeysConstants.userPassLoginToFirebase);
             if (loginApiSucess! && loginFirebaseSucess!) {
               final urlimage = await _getUserUrlImage();
+              saveBool(key: KeysConstants.userPassByDataPage, value: true);
               emit(SignInUserDataSucess(userUrlImage: urlimage));
+            } else {
+              emit(
+                SignInUserDataError(message: 'Erro interno, tente mais tarde'),
+              );
             }
           },
         );

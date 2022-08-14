@@ -33,6 +33,12 @@ class _SplashPageState extends State<SplashPage> {
         } else if (state is SplashGoToLoginPage) {
           Navigator.of(context)
               .pushReplacementNamed(RoutesConstants.loginRoute);
+        } else if(state is SplashGoToHomePage) {
+          Navigator.of(context)
+              .pushReplacementNamed(RoutesConstants.homeRoute);
+        } else if (state is SplashGoToUserDataPage) {
+          Navigator.of(context)
+              .pushReplacementNamed(RoutesConstants.signInDataRoute);
         }
       },
       child: Scaffold(
