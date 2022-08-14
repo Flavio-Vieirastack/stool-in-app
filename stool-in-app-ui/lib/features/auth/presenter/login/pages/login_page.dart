@@ -257,6 +257,7 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                                       formKey.currentState?.validate() ?? false,
                                   authEntity: AuthEntity(
                                     email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
                                   ),
                                 ),
                                 buttonText: 'Login com nova senha',
