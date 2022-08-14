@@ -74,7 +74,7 @@ class _ContractedServicesContent extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 10.h,
+            height: 2.h,
           ),
           Center(
             child: Text(
@@ -146,14 +146,14 @@ class _ContractedServicesContent extends StatelessWidget {
             color: AppColors.black,
           ),
           Visibility(
-            visible: showUserProviderData,
+            visible: !showUserProviderData,
             replacement: const Center(
               child: CircularProgressIndicator.adaptive(),
             ),
             child: Center(
               child: TextButton(
                 onPressed: showUserProviderDataCallBack,
-                child: const Text('Prestador do serviço'),
+                child: const Text('Ver prestador do serviço'),
               ),
             ),
           ),
@@ -164,7 +164,7 @@ class _ContractedServicesContent extends StatelessWidget {
               children: [
                 AppAvatar(urlImage: serviceProviderImageUrl),
                 SizedBox(
-                  width: 10.w,
+                  width: 2.w,
                 ),
                 Text(
                   serviceProviderName,

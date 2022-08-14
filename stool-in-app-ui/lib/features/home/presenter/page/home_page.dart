@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:stool_in/core/widgets/app_coments_cards/app_coments_cards.dart';
 import 'package:stool_in/core/widgets/app_scheduling_card/app_scheduling_card.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_in/core/widgets/contracted_services_card/contracted_services_card.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -53,8 +55,23 @@ class _HomePageState extends State<HomePage> {
             userUrlImage: 'userUrlImage',
             userState: 'CE',
           ),
-           SizedBox(
-             height: 50.h,
+          SizedBox(
+            height: 10,
+          ),
+          ContractedServicesCard(
+            date: 'date',
+            description: 'description',
+            hour: 'hour',
+            serviceProviderImageUrl: 'serviceProviderImageUrl',
+            serviceProviderName: 'serviceProviderName',
+            serviceTodo: 'serviceTodo',
+            status: 'status',
+            total: 'total',
+            userComent: 'userComent',
+            showUserProviderDataCallBack: () {},
+          ),
+          SizedBox(
+            height: 50.h,
           ),
         ],
       ),
