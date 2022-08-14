@@ -97,11 +97,11 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
                 await getBool(key: KeysConstants.userPassLoginToApi);
             final loginFirebaseSucess =
                 await getBool(key: KeysConstants.userPassLoginToFirebase);
-            log('passou pela api $loginApiSucess');
-            log('passou pelo firebase $loginFirebaseSucess');
             if (loginApiSucess! && loginFirebaseSucess!) {
               final urlimage = await _getUserUrlImage();
               emit(SignInUserDataSucess(userUrlImage: urlimage));
+              removeCache(key: KeysConstants.userPassLoginToApi);
+              removeCache(key: KeysConstants.userPassLoginToFirebase);
             }
           },
         );
