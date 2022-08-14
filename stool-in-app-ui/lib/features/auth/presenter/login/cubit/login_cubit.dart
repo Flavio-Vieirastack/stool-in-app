@@ -51,22 +51,29 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     }
   }
 
-  void verifyUserEmailOnInit() async {
+  Future<String?> getUserImageOnInit() async {
+    final urlImage = await getString(key: KeysConstants.userPhotoUrl);
+    emit(LoginInitial(urlImage: urlImage));
+    return urlImage;
+  }
+
+  Future<void> verifyUserEmailOnInit() async {
     await _firebaseAuth.currentUser?.reload();
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
-
+    final urlImage = await getUserImageOnInit();
     if (emailVerified != null && emailVerified == false) {
-      emit(LoginEmailNotVerified());
+      emit(LoginEmailNotVerified(urlImage: urlImage));
     }
   }
 
   Future<void> sendEmailVerification() async {
     await _firebaseAuth.currentUser?.reload();
     final result = await _sendVerificationEmailUsecase.call();
+    final urlImage = await getUserImageOnInit();
     result.fold(
       (error) => emit(LoginEmailNoSended(message: error.message)),
       (sucess) => emit(
-        LoginEmailSended(),
+        LoginEmailSended(urlImage: urlImage),
       ),
     );
   }
@@ -74,6 +81,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   Future<void> checkEmailVerified() async {
     await _firebaseAuth.currentUser?.reload();
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
+    final urlImage = await getUserImageOnInit();
     if (emailVerified != null && emailVerified) {
       final userEmail =
           await _readLocalSecurityStorage.read(key: KeysConstants.userEmail);
@@ -87,15 +95,16 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
           ),
         ),
       );
+      
       if (result) {
-        emit(LoginSignInStateSucess());
+        emit(LoginSignInStateSucess(urlImage: urlImage));
       } else {
         await _firebaseAuth.currentUser?.delete();
-        emit(LoginSignInStateError());
+        emit(LoginSignInStateError(urlImage: urlImage));
       }
-      emit(LoginEmailVerified());
+      emit(LoginEmailVerified(urlImage: urlImage));
     } else {
-      emit(LoginEmailRequestNotVerified());
+      emit(LoginEmailRequestNotVerified(urlImage: urlImage));
     }
   }
 
@@ -131,12 +140,15 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
           await _authUseCase.apiPasswordReset(authEntity: authEntity);
       result.fold(
         (error) => emit(
-          LoginError(message: error.message),
+          LoginError(
+            message: error.message,
+            urlImage: userImageUrl,
+          ),
         ),
         (sucess) async {
           await _makeApiLogin(authEntity: authEntity);
           emit(
-            LoginSucess(),
+            LoginSucess(urlImage: userImageUrl),
           );
         },
       );
@@ -171,12 +183,13 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
     required Function navigateToSignIn,
   }) async {
     final userImageUrl = await getString(key: KeysConstants.userPhotoUrl);
+    final urlImage = await getUserImageOnInit();
     final isGeolocationEnabled = await _geoLocatorCubit.requestUserPermition();
     if (isGeolocationEnabled) {
       navigateToSignIn.call();
     } else {
       if (Platform.isIOS) {
-        emit(LoginGeoLocatorNotEnabledForever());
+        emit(LoginGeoLocatorNotEnabledForever(urlImage: urlImage));
       } else {
         emit(LoginGeoLocatorNotEnabled(urlImage: userImageUrl));
       }

@@ -55,19 +55,52 @@ class LoginError extends LoginState {
   List<Object?> get props => [message, urlImage];
 }
 
-class LoginEmailNotVerified extends LoginState {}
+class LoginEmailNotVerified extends LoginState {
+  final String? urlImage;
+  LoginEmailNotVerified({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
 
 class LoginEmailNoSended extends LoginState {
   final String message;
-  LoginEmailNoSended({required this.message});
+  final String? urlImage;
+  LoginEmailNoSended({required this.message, this.urlImage});
   @override
   List<Object?> get props => [message];
 }
 
-class LoginEmailSended extends LoginState {}
+class LoginEmailSended extends LoginState {
+  final String? urlImage;
+  LoginEmailSended({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
 
-class LoginEmailVerified extends LoginState {}
-class LoginEmailRequestNotVerified extends LoginState {}
+class LoginEmailVerified extends LoginState {
+  final String? urlImage;
+  LoginEmailVerified({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
 
-class LoginSignInStateError extends LoginState {}
-class LoginSignInStateSucess extends LoginState{}
+class LoginEmailRequestNotVerified extends LoginState {
+  final String? urlImage;
+  LoginEmailRequestNotVerified({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
+
+class LoginSignInStateError extends LoginState {
+  final String? urlImage;
+  LoginSignInStateError({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}
+
+class LoginSignInStateSucess extends LoginState {
+  final String? urlImage;
+  LoginSignInStateSucess({this.urlImage});
+  @override
+  List<Object?> get props => [urlImage];
+}

@@ -42,7 +42,9 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback(
       (_) async {
-        context.read<LoginCubit>().verifyUserEmailOnInit();
+        context.read<LoginCubit>().verifyUserEmailOnInit().whenComplete(
+              () => context.read<LoginCubit>().getUserImageOnInit(),
+            );
         await context.read<LoginCubit>().enableApiPasswordResetOnInit().then(
               (_) async =>
                   context.read<GeoLocatorCubit>().requestUserPermition(),
@@ -148,10 +150,10 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                 );
               } else if (state is LoginSignInStateSucess) {
                 showAppSnackbar(
-                  message: 'Cadastro realizado com sucesso, vamos ao próximo passo.',
-                  context: context,
-                  duration: 4
-                );
+                    message:
+                        'Cadastro realizado com sucesso, vamos ao próximo passo.',
+                    context: context,
+                    duration: 4);
                 await Future.delayed(
                   const Duration(seconds: 4),
                   () => Navigator.of(context)
@@ -306,16 +308,163 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                       ),
                       BlocBuilder<LoginCubit, LoginState>(
                         builder: (context, state) {
-                          return Padding(
-                            padding: EdgeInsets.only(
-                              bottom: 50.h,
-                            ),
-                            child: Center(
-                              child: AppAvatar(
-                                size: 90.dp,
+                          if (state is LoginInitial) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
                               ),
-                            ),
-                          );
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginEmailNoSended) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginEmailNotVerified) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginEmailRequestNotVerified) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginEmailSended) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginEmailVerified) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginEnableApiPasswordReset) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginError) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginGeoLocatorNotEnabled) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state
+                              is LoginGeoLocatorNotEnabledForever) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginLoading) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else if (state is LoginSignInStateError) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                  urlImage: state.urlImage,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                bottom: 50.h,
+                              ),
+                              child: Center(
+                                child: AppAvatar(
+                                  size: 90.dp,
+                                ),
+                              ),
+                            );
+                          }
                         },
                       ),
                     ],
