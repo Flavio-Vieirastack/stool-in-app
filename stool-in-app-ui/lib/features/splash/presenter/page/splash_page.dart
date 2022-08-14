@@ -33,9 +33,8 @@ class _SplashPageState extends State<SplashPage> {
         } else if (state is SplashGoToLoginPage) {
           Navigator.of(context)
               .pushReplacementNamed(RoutesConstants.loginRoute);
-        } else if(state is SplashGoToHomePage) {
-          Navigator.of(context)
-              .pushReplacementNamed(RoutesConstants.homeRoute);
+        } else if (state is SplashGoToHomePage) {
+          Navigator.of(context).pushReplacementNamed(RoutesConstants.homeRoute);
         } else if (state is SplashGoToUserDataPage) {
           Navigator.of(context)
               .pushReplacementNamed(RoutesConstants.signInDataRoute);
@@ -52,7 +51,9 @@ class _SplashPageState extends State<SplashPage> {
             ),
             const Spacer(),
             CircularProgressIndicator.adaptive(
-              backgroundColor: AppColors.black,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                AppColors.buttonLeftGradientColor,
+              ),
             ),
             SizedBox(
               height: 20.h,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:stool_in/core/widgets/app_coments_cards/app_coments_cards.dart';
 import 'package:stool_in/core/widgets/app_scheduling_card/app_scheduling_card.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
@@ -82,6 +83,7 @@ class _HomePageState extends State<HomePage> {
             userVotes: '5',
             onPressed: () {},
           ),
+          CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(AppColors.buttonLeftGradientColor)),
           SizedBox(
             height: 50.h,
           ),
