@@ -48,7 +48,7 @@ class _ServiceProviderContent extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 10.h,
+            height: 2.h,
           ),
           Text(
             'Serviços:',
@@ -57,20 +57,15 @@ class _ServiceProviderContent extends StatelessWidget {
               color: AppColors.buttonLeftGradientColor,
             ),
           ),
-          SizedBox(
-            width: 350.w,
-            child: AutoSizeText(
-              userServicesExecuted,
-              textAlign: TextAlign.left,
-              maxLines: 3,
-              maxFontSize: 15.dp,
-              minFontSize: 14.dp,
-              overflow: TextOverflow.ellipsis,
-              style: AppTextStyles.headLine2,
-            ),
+          AutoSizeText(
+            userServicesExecuted,
+            textAlign: TextAlign.left,
+            maxFontSize: 15,
+            minFontSize: 14,
+            style: AppTextStyles.headLine2,
           ),
           SizedBox(
-            height: 10.h,
+            height: 2.h,
           ),
           Align(
             alignment: Alignment.bottomRight,

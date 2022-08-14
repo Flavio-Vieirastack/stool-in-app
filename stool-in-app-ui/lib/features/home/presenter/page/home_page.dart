@@ -3,6 +3,7 @@ import 'package:stool_in/core/widgets/app_coments_cards/app_coments_cards.dart';
 import 'package:stool_in/core/widgets/app_scheduling_card/app_scheduling_card.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_in/core/widgets/contracted_services_card/contracted_services_card.dart';
+import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -69,6 +70,17 @@ class _HomePageState extends State<HomePage> {
             total: 'total',
             userComent: 'userComent',
             showUserProviderDataCallBack: () {},
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ServiceProviderCards(
+            userDistance: 'userDistance',
+            userName: 'userName',
+            userServicesExecuted: 'five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+            userUrlImage: 'userUrlImage',
+            userVotes: '5',
+            onPressed: () {},
           ),
           SizedBox(
             height: 50.h,
