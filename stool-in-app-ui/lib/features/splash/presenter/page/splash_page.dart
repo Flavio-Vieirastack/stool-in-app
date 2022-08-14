@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/assets_constants.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
+import 'package:stool_in/core/widgets/app_progress_indicator/app_progress_indicator.dart';
 import 'package:stool_in/features/splash/presenter/cubit/splash_cubit.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 
@@ -50,11 +51,7 @@ class _SplashPageState extends State<SplashPage> {
               height: 20.h,
             ),
             const Spacer(),
-            CircularProgressIndicator.adaptive(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                AppColors.buttonLeftGradientColor,
-              ),
-            ),
+            const AppProgressIndicator(),
             SizedBox(
               height: 20.h,
             ),

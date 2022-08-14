@@ -98,7 +98,7 @@ class _ShcedulingContent extends StatelessWidget {
             style: AppTextStyles.headLine4,
           ),
           Visibility(
-            visible: true,
+            visible: userComentaryVisible,
             child: Column(
               children: [
                 Divider(

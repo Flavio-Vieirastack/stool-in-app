@@ -41,10 +41,8 @@ class _Loading extends StatelessWidget {
               shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),
             onPressed: () {},
-            child: Center(
-              child: CircularProgressIndicator.adaptive(
-                backgroundColor: AppColors.black,
-              ),
+            child: const Center(
+              child: AppProgressIndicator()
             ),
           ),
         );

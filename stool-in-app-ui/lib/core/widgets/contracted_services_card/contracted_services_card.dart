@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
+import 'package:stool_in/core/widgets/app_progress_indicator/app_progress_indicator.dart';
 
 import '../../helpers/theme/colors/app_colors.dart';
 import '../../helpers/theme/text_styles/app_text_styles.dart';

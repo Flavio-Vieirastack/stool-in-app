@@ -148,7 +148,7 @@ class _ContractedServicesContent extends StatelessWidget {
           Visibility(
             visible: !showUserProviderData,
             replacement: const Center(
-              child: CircularProgressIndicator.adaptive(),
+              child: AppProgressIndicator(),
             ),
             child: Center(
               child: TextButton(
