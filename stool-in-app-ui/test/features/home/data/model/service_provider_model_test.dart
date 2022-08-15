@@ -308,14 +308,14 @@ void main() {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.userName, 'Flavio emerson 5689');
   });
   test('Deve retornar o userPhotoUrl no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.userPhotoUrl,
         'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png');
   });
@@ -323,77 +323,77 @@ void main() {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.userFirebasePushToken, 'push');
   });
   test('Deve retornar o userFirebaseUuid no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.userFirebaseUuid, 'UUid');
   });
   test('Deve retornar o userLocationLatitude no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.userLocationLatitude, 2565);
   });
   test('Deve retornar o userLocationaLogintude no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.userLocationLongitude, 58741);
   });
   test('Deve retornar o street no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.street, 'Rua monsenhor esmeraldo');
   });
   test('Deve retornar o City no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.city, 'crato');
   });
   test('Deve retornar o houseNumber no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.houseNumber, '255');
   });
   test('Deve retornar o district no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.district, 'Pinto madeira');
   });
   test('Deve retornar o cep no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.cep, '63101220');
   });
   test('Deve retornar o referencePoint no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.referencePoint, 'Próximo a x');
   });
   test('Deve retornar o userState no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
+    final sut = model[0].authEntity;
     expect(sut.userState, 'CE');
   });
   test('Deve retornar a distância correta', () {

@@ -35,7 +35,7 @@ void main() {
       password: password,
       userFirebaseUuid: uuid
     ).toMap();
-    final sut = model['firebaseUuid'];
+    final sut = model['userFirebaseUuid'];
     expect(sut, uuid);
   });
 }

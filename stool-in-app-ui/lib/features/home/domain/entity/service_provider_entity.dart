@@ -1,5 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
+import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in/features/home/domain/entity/coments_entity.dart';
 import 'package:stool_in/features/home/domain/entity/execution_services_entity.dart';
@@ -18,7 +19,7 @@ class ServiceProviderEntity {
   final List<ExecutionServicesEntity> executionServices;
   final List<ServicesToExecuteEntity> servicesToExecute;
   final List<ComentsEntity> coments;
-  final UserDataEntity userData;
+  final AuthEntity authEntity;
   ServiceProviderEntity({
     required this.id,
     required this.distance,
@@ -32,7 +33,7 @@ class ServiceProviderEntity {
     required this.executionServices,
     required this.servicesToExecute,
     required this.coments,
-    required this.userData,
+    required this.authEntity,
   });
 
   String distanceFormat() {
@@ -66,7 +67,7 @@ class ServiceProviderEntity {
         listEquals(other.executionServices, executionServices) &&
         listEquals(other.servicesToExecute, servicesToExecute) &&
         listEquals(other.coments, coments) &&
-        other.userData == userData;
+        other.authEntity == authEntity;
   }
 
   @override
@@ -83,6 +84,6 @@ class ServiceProviderEntity {
         executionServices.hashCode ^
         servicesToExecute.hashCode ^
         coments.hashCode ^
-        userData.hashCode;
+        authEntity.hashCode;
   }
 }

@@ -68,11 +68,11 @@ class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
         )
         .toList();
     final serviceProviderLatitude = serviceProviderData
-        ?.map((e) => e.userData.userLocationLatitude)
+        ?.map((e) => e.authEntity.userLocationLatitude)
         .toList()
         .first;
     final serviceProviderLongitude = serviceProviderData
-        ?.map((e) => e.userData.userLocationLongitude)
+        ?.map((e) => e.authEntity.userLocationLongitude)
         .toList()
         .first;
     final distance = _distanceHelperCalculate.caculateDistanceToInt(

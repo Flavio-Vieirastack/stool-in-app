@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in/features/home/domain/entity/coments_entity.dart';
 import 'package:stool_in/features/home/domain/entity/execution_services_entity.dart';
@@ -23,7 +24,7 @@ class ServicesToExecuteEntityMock extends Mock
 
 class ComentsEntityMock extends Mock implements ComentsEntity {}
 
-class UserDataEntityMock extends Mock implements UserDataEntity {}
+class AuthEntityMock extends Mock implements AuthEntity {}
 
 class ServiceRepositoryMock extends Mock implements ServiceProviderRepository {}
 
@@ -32,7 +33,7 @@ void main() {
   late ExecutionServicesEntityMock executionServicesEntityMock;
   late ServicesToExecuteEntityMock servicesToExecuteEntityMock;
   late ComentsEntityMock comentsEntityMock;
-  late UserDataEntityMock userDataEntityMock;
+  late AuthEntityMock authEntityMock;
   late ServiceRepositoryMock serviceRepositoryMock;
   late List<ServiceProviderEntity> serviceProviderEntity;
   late GetServiceProvidersParams params;
@@ -46,7 +47,7 @@ void main() {
       executionServicesEntityMock = ExecutionServicesEntityMock();
       servicesToExecuteEntityMock = ServicesToExecuteEntityMock();
       comentsEntityMock = ComentsEntityMock();
-      userDataEntityMock = UserDataEntityMock();
+      authEntityMock = AuthEntityMock();
       serviceRepositoryMock = ServiceRepositoryMock();
       serviceProviderEntity = [
         ServiceProviderEntity(
@@ -62,7 +63,7 @@ void main() {
           executionServices: [executionServicesEntityMock],
           servicesToExecute: [servicesToExecuteEntityMock],
           coments: [comentsEntityMock],
-          userData: userDataEntityMock,
+          authEntity: authEntityMock,
         ),
       ];
     },

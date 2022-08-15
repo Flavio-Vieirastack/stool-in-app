@@ -1,6 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import 'package:stool_in/features/auth/data/model/user_data_model.dart';
+import 'package:stool_in/features/auth/data/model/auth_model.dart';
 import 'package:stool_in/features/home/data/model/coments_model.dart';
 import 'package:stool_in/features/home/data/model/execution_services_model.dart';
 import 'package:stool_in/features/home/data/model/services_to_execute_model.dart';
@@ -22,7 +22,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
     required this.executionServicesModel,
     required this.servicesToExecuteModel,
     required this.comentsModel,
-    required super.userData,
+    required super.authEntity,
     required super.distance,
   }) : super(
           coments: comentsModel,
@@ -46,7 +46,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
       'servicesToExecute': servicesToExecuteModel.map((x) => x.toMap()).toList()
     });
     result.addAll({'coments': comentsModel.map((x) => x.toMap()).toList()});
-    result.addAll({'UserData': userData});
+    result.addAll({'UserData': authEntity});
 
     return result;
   }
@@ -73,7 +73,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
               ?.map((x) => ServicesToExecuteModel.fromMap(x))),
       comentsModel: List<ComentsModel>.from(
           map['coments']?.map((x) => ComentsModel.fromMap(x))),
-      userData: UserDataModel.fromMap(map['UserData']),
+      authEntity: AuthModel.fromMap(map['UserData']),
       distance: distance ?? 0,
     );
   }
@@ -87,7 +87,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
         listEquals(other.executionServicesModel, executionServicesModel) &&
         listEquals(other.servicesToExecuteModel, servicesToExecuteModel) &&
         listEquals(other.comentsModel, comentsModel) &&
-        listEquals(other.userData, userData);
+        listEquals(other.authEntity, authEntity);
   }
 
   @override
@@ -95,6 +95,6 @@ class ServiceProviderModel extends ServiceProviderEntity {
     return executionServicesModel.hashCode ^
         servicesToExecuteModel.hashCode ^
         comentsModel.hashCode ^
-        userData.hashCode;
+        authEntity.hashCode;
   }
 }

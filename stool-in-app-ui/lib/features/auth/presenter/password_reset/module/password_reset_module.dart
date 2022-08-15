@@ -14,12 +14,9 @@ import '../../../data/datasource/password_reset/password_reset_datasource.dart';
 import '../../../data/datasource/password_reset/password_reset_datasource_impl.dart';
 import '../../../data/datasource/sign_in/sign_in_datasource.dart';
 import '../../../data/datasource/sign_in/sign_in_datasource_impl.dart';
-import '../../../data/datasource/user_data/user_data_sign_in_datasource.dart';
-import '../../../data/datasource/user_data/user_data_sign_in_datasource_impl.dart';
 import '../../../data/repository/login/login_repository_impl.dart';
 import '../../../data/repository/password_reset/password_reset_repository_impl.dart';
 import '../../../data/repository/sign_in/sign_in_repository_impl.dart';
-import '../../../data/repository/user_data/user_data_sign_in_repository_impl.dart';
 import '../../../domain/repository/login/login_repository.dart';
 import '../../../domain/repository/password_reset/password_reset_repository.dart';
 import '../../../domain/repository/sign_in/sign_in_repository.dart';
@@ -30,17 +27,6 @@ class PasswordResetModule extends AppModule {
   PasswordResetModule()
       : super(
           dependencies: [
-            Provider<UserDataSignInDatasource>(
-              create: (context) => UserDataSignInDatasourceImpl(
-                restClientPost: Inject<RestClientPost>(context).get(),
-              ),
-            ),
-            Provider<UserDataSignInRepository>(
-              create: (context) => UserDataSignInRepositoryImpl(
-                userDataSignInDatasource:
-                    Inject<UserDataSignInDatasource>(context).get(),
-              ),
-            ),
             Provider<PasswordResetDatasource>(
               create: (context) => PasswordResetDatasourceImpl(
                 firebaseAuth: Inject<FirebaseAuth>(context).get(),
