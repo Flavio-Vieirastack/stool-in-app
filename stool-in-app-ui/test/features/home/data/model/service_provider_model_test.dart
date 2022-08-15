@@ -308,93 +308,93 @@ void main() {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.userName, 'Flavio emerson 5689');
+    final sut = model[0].userData.map((e) => e.userName).toList().first;
+    expect(sut, 'Flavio emerson 5689');
   });
   test('Deve retornar o userPhotoUrl no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.userPhotoUrl,
+    final sut = model[0].userData.map((e) => e.userPhotoUrl).toList().first;
+    expect(sut,
         'https://love.doghero.com.br/wp-content/uploads/2018/12/golden-retriever-1.png');
   });
   test('Deve retornar o userFirebasePushToken no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.userFirebasePushToken, 'push');
+    final sut = model[0].userData.map((e) => e.userFirebasePushToken).toList().first;
+    expect(sut, 'push');
   });
   test('Deve retornar o userFirebaseUuid no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.userFirebaseUuid, 'UUid');
+    final sut = model[0].userData.map((e) => e.userFirebaseUuid).toList().first;
+    expect(sut, 'UUid');
   });
   test('Deve retornar o userLocationLatitude no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.userLocationLatitude, 2565);
+    final sut = model[0].userData.map((e) => e.userLocationLatitude).toList().first;
+    expect(sut, 2565);
   });
   test('Deve retornar o userLocationaLogintude no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.userLocationLongitude, 58741);
+    final sut = model[0].userData.map((e) => e.userLocationLongitude).toList().first;
+    expect(sut, 58741);
   });
   test('Deve retornar o street no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.street, 'Rua monsenhor esmeraldo');
+    final sut = model[0].userData.map((e) => e.street).toList().first;
+    expect(sut, 'Rua monsenhor esmeraldo');
   });
   test('Deve retornar o City no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.city, 'crato');
+    final sut = model[0].userData.map((e) => e.city).toList().first;
+    expect(sut, 'crato');
   });
   test('Deve retornar o houseNumber no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.houseNumber, '255');
+    final sut = model[0].userData.map((e) => e.houseNumber).toList().first;
+    expect(sut, '255');
   });
   test('Deve retornar o district no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.district, 'Pinto madeira');
+    final sut = model[0].userData.map((e) => e.district).toList().first;
+    expect(sut, 'Pinto madeira');
   });
   test('Deve retornar o cep no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.cep, '63101220');
+    final sut = model[0].userData.map((e) => e.cep).toList().first;
+    expect(sut, '63101220');
   });
   test('Deve retornar o referencePoint no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.referencePoint, 'Próximo a x');
+    final sut = model[0].userData.map((e) => e.referencePoint).toList().first;
+    expect(sut, 'Próximo a x');
   });
   test('Deve retornar o userState no userData', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    final sut = model[0].userData;
-    expect(sut.userState, 'CE');
+    final sut = model[0].userData.map((e) => e.userState).toList().first;
+    expect(sut, 'CE');
   });
   test('Deve retornar a distância correta', () {
     final model = serviceProviderPayload

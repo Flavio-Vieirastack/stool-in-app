@@ -73,7 +73,8 @@ class ServiceProviderModel extends ServiceProviderEntity {
               ?.map((x) => ServicesToExecuteModel.fromMap(x))),
       comentsModel: List<ComentsModel>.from(
           map['coments']?.map((x) => ComentsModel.fromMap(x))),
-      userData: UserDataModel.fromMap(map['UserData']),
+      userData: List<UserDataModel>.from(
+          map['userData']?.map((x) => UserDataModel.fromMap(x))),
       distance: distance ?? 0,
     );
   }

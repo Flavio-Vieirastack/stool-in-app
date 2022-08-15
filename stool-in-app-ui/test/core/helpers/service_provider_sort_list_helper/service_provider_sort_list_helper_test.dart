@@ -35,7 +35,7 @@ void main() {
           executionServices: [ExectionServicesMock()],
           servicesToExecute: [ServicesToExecuteMock()],
           coments: [ComentsMock()],
-          userData: UserDataMock(),
+          userData: [UserDataMock()],
         ),
         ServiceProviderEntity(
           id: 1,
@@ -50,7 +50,7 @@ void main() {
           executionServices: [ExectionServicesMock()],
           servicesToExecute: [ServicesToExecuteMock()],
           coments: [ComentsMock()],
-          userData: UserDataMock(),
+          userData: [UserDataMock()],
         ),
         ServiceProviderEntity(
           id: 1,
@@ -65,7 +65,7 @@ void main() {
           executionServices: [ExectionServicesMock()],
           servicesToExecute: [ServicesToExecuteMock()],
           coments: [ComentsMock()],
-          userData: UserDataMock(),
+          userData: [UserDataMock()],
         ),
         ServiceProviderEntity(
           id: 1,
@@ -80,7 +80,7 @@ void main() {
           executionServices: [ExectionServicesMock()],
           servicesToExecute: [ServicesToExecuteMock()],
           coments: [ComentsMock()],
-          userData: UserDataMock(),
+          userData: [UserDataMock()],
         ),
       ];
     },
