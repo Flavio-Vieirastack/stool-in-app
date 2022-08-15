@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:stool_in/core/shared/presenter/cubit/internet_connection_cubit/internet_connection_cubit.dart';
 import 'package:stool_in/core/widgets/app_dialog/app_dialog.dart';
 import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
