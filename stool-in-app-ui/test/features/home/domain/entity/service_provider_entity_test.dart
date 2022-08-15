@@ -21,6 +21,7 @@ void main() {
   setUp(() {
     serviceProviderEntityMeters = ServiceProviderEntity(
       id: 1,
+      votes: 3,
       distance: 435,
       serviceProviderDescription: 'serviceProviderDescription',
       status: 'status',
@@ -28,41 +29,43 @@ void main() {
       endDisponibleTime: 'endDisponibleTime',
       disponibleDays: 'disponibleDays',
       createdAt: DateTime.now(),
-      userDataId: 1,
+      userLoginId: 1,
       executionServices: [ExectionServicesMock()],
       servicesToExecute: [ServicesToExecuteMock()],
       coments: [ComentsMock()],
-      userData: UserDataMock(),
+      userData: [UserDataMock()],
     );
     serviceProviderEntityKm = ServiceProviderEntity(
       id: 1,
       distance: 1000,
+      votes: 3,
       serviceProviderDescription: 'serviceProviderDescription',
       status: 'status',
       initialDisponibleTime: 'initialDisponibleTime',
       endDisponibleTime: 'endDisponibleTime',
       disponibleDays: 'disponibleDays',
       createdAt: DateTime.now(),
-      userDataId: 1,
+      userLoginId: 1,
       executionServices: [ExectionServicesMock()],
       servicesToExecute: [ServicesToExecuteMock()],
       coments: [ComentsMock()],
-      userData: UserDataMock(),
+      userData: [UserDataMock()],
     );
     serviceProviderEntityKmDecimal = ServiceProviderEntity(
       id: 1,
       distance: 10000,
+      votes: 3,
       serviceProviderDescription: 'serviceProviderDescription',
       status: 'status',
       initialDisponibleTime: 'initialDisponibleTime',
       endDisponibleTime: 'endDisponibleTime',
       disponibleDays: 'disponibleDays',
       createdAt: DateTime.now(),
-      userDataId: 1,
+      userLoginId: 1,
       executionServices: [ExectionServicesMock()],
       servicesToExecute: [ServicesToExecuteMock()],
       coments: [ComentsMock()],
-      userData: UserDataMock(),
+      userData: [UserDataMock()],
     );
   });
   test('Deve retornar a distância formatada corretamente em KM', () {

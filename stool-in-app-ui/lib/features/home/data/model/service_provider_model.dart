@@ -18,7 +18,8 @@ class ServiceProviderModel extends ServiceProviderEntity {
     required super.endDisponibleTime,
     required super.disponibleDays,
     required super.createdAt,
-    required super.userDataId,
+    required super.userLoginId,
+    required super.votes,
     required this.executionServicesModel,
     required this.servicesToExecuteModel,
     required this.comentsModel,
@@ -64,7 +65,8 @@ class ServiceProviderModel extends ServiceProviderEntity {
       endDisponibleTime: map['endDisponibleTime'] ?? '',
       disponibleDays: map['disponibleDays'] ?? '',
       createdAt: createdAt,
-      userDataId: map['userDataId'] ?? '',
+      userLoginId: map['userLoginId'] ?? '',
+      votes: map['votes']?.toInt() ?? 0,
       executionServicesModel: List<ExecutionServicesModel>.from(
           map['executionServices']
               ?.map((x) => ExecutionServicesModel.fromMap(x))),

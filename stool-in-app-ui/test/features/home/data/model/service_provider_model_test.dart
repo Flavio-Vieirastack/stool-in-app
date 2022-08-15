@@ -14,6 +14,12 @@ void main() {
         .toList();
     expect(model[0].id, 1);
   });
+  test('Deve retornar o user login id corretamente', () {
+    final model = serviceProviderPayload
+        .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
+        .toList();
+    expect(model[0].userLoginId, 1);
+  });
   test('Deve retornar a descrição corretamente', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
@@ -49,13 +55,13 @@ void main() {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    expect(model[0].createdAt, DateTime.parse("2022-08-08 15:44:02.468Z"));
+    expect(model[0].createdAt, DateTime.parse("2022-08-15T18:27:34.106Z"));
   });
   test('Deve retornar o user data id corretamente', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    expect(model[0].userDataId, 1);
+    expect(model[0].userLoginId, 1);
   });
   test('Deve retornar o id do execution services corretamente', () {
     final model = serviceProviderPayload
@@ -112,14 +118,14 @@ void main() {
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
     final sut = model[0].servicesToExecuteModel;
-    expect(sut[0].serviceDate, DateTime.parse('2022-08-09 10:40:25.397291'));
+    expect(sut[0].serviceDate, DateTime.parse('2022-08-15 16:12:36.566044'));
   });
   test('Deve retornar o serviceHour no servicesToExecute', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
     final sut = model[0].servicesToExecuteModel;
-    expect(sut[0].serviceHour, DateTime.parse('2022-08-09 10:40:25.397291'));
+    expect(sut[0].serviceHour, DateTime.parse('2022-08-15 16:12:36.620860'));
   });
   test('Deve retornar o userComent no servicesToExecute', () {
     final model = serviceProviderPayload
