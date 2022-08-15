@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import '../../../../core/helpers/security_acess_helper/security_acess_helper.dart';
@@ -8,8 +9,12 @@ part 'splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> with SharedPreferencesHelper {
   final SecurityAcessHelper _securityAcessHelper;
-  SplashCubit({required SecurityAcessHelper securityAcessHelper})
-      : _securityAcessHelper = securityAcessHelper,
+  final FirebaseAuth _firebaseAuth;
+  SplashCubit({
+    required SecurityAcessHelper securityAcessHelper,
+    required FirebaseAuth firebaseAuth,
+  })  : _securityAcessHelper = securityAcessHelper,
+        _firebaseAuth = firebaseAuth,
         super(SplashInitial());
 
   Future<void> goToOnBoardingPage() async {
@@ -33,7 +38,10 @@ class SplashCubit extends Cubit<SplashState> with SharedPreferencesHelper {
   Future<bool> _userPassToDataPage() async {
     final userPassToDataPage =
         await getBool(key: KeysConstants.userPassByDataPage);
-    if (userPassToDataPage != null && userPassToDataPage) {
+    final currentUser = _firebaseAuth.currentUser;
+    if (userPassToDataPage != null &&
+        userPassToDataPage &&
+        currentUser != null) {
       return true;
     }
     return false;

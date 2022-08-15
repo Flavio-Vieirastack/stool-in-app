@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
@@ -17,6 +18,7 @@ class SplashModule extends AppModule {
             ),
             Provider<SplashCubit>(
               create: (context) => SplashCubit(
+                firebaseAuth: Inject<FirebaseAuth>(context).get(),
                 securityAcessHelper: Inject<SecurityAcessHelper>(context).get(),
               ),
             ),
