@@ -11,7 +11,7 @@ class TryCatchHelper {
       await function.call();
       return true;
     } catch (e, s) {
-      log('Erro no try catch helper', error: e, stackTrace: s);
+      log('Erro no try catch helper $function', error: e, stackTrace: s);
       onError?.call();
       return false;
     }
