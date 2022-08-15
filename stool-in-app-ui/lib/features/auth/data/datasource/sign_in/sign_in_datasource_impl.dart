@@ -53,7 +53,7 @@ class SignInDatasourceImpl implements SignInDatasource {
   Future<void> firebaseSignIn({required AuthModel authModel}) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
-        email: authModel.email,
+        email: authModel.email ?? '',
         password: authModel.password ?? '',
       );
     } on FirebaseAuthException catch (e, s) {

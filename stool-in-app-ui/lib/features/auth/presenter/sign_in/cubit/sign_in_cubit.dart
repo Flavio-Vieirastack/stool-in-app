@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -80,7 +79,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       );
 
       await _makeSignInInApi(
-        userEmail: authEntity.email,
+        userEmail: authEntity.email ?? '',
         userPassword: authEntity.password ?? '',
       );
       emit(SignInStateEmailAccepted());
@@ -130,7 +129,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       authEntity: AuthEntity(
         email: userEmail,
         password: userPassword,
-        firebaseUuid: userUuid,
+        userFirebaseUuid: userUuid,
       ),
     );
     result.fold(

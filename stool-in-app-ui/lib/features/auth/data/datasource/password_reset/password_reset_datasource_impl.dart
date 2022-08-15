@@ -48,7 +48,7 @@ class PasswordResetDatasourceImpl implements PasswordResetDatasource {
   @override
   Future<void> firebasePasswordReset({required AuthModel authModel}) async {
     try {
-      await _firebaseAuth.sendPasswordResetEmail(email: authModel.email);
+      await _firebaseAuth.sendPasswordResetEmail(email: authModel.email ?? '');
     } on FirebaseAuthError catch (e, s) {
       log(
         'Erro ao resetar senha do usuario no firebase, no datasource impl',

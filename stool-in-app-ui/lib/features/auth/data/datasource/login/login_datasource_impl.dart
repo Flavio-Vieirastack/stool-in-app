@@ -49,7 +49,7 @@ class LoginDatasourceImpl implements LoginDatasource {
   Future<void> firebaseLogin({required AuthModel authModel}) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-        email: authModel.email,
+        email: authModel.email ?? '',
         password: authModel.password ?? '',
       );
     } on FirebaseAuthException catch (e, s) {

@@ -33,7 +33,7 @@ void main() {
     final model = AuthModel(
       email: email,
       password: password,
-      firebaseUuid: uuid
+      userFirebaseUuid: uuid
     ).toMap();
     final sut = model['firebaseUuid'];
     expect(sut, uuid);

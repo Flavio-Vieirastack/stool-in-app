@@ -124,7 +124,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
       authEntity: AuthEntity(
         email: userEmail ?? '',
         password: userPassword,
-        firebaseUuid: userFirebaseToken,
+        userFirebaseUuid: userFirebaseToken,
       ),
     );
     result.fold(
