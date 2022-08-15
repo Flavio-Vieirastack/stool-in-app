@@ -3,9 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/constants/lottie_constants.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
 part './widgets/home_body.dart';
 
