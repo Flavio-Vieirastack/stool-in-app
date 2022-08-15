@@ -113,7 +113,8 @@ void main() {
             "houseNumber": "255",
             "district": "Pinto madeira",
             "cep": "63101220",
-            "referencePoint": "Próximo a x"
+            "referencePoint": "Próximo a x",
+            "userState" : "CE"
           };
         },
       );
@@ -125,6 +126,11 @@ void main() {
         final model = UserDataModel.fromMap(apiMap);
         final sut = model.cep;
         expect(sut, '63101220');
+      });
+      test('Deve retornar o valor correto para o estado do usuario', () {
+        final model = UserDataModel.fromMap(apiMap);
+        final sut = model.userState;
+        expect(sut, 'CE');
       });
       test('Deve retornar o valor correto para cidade', () {
         final model = UserDataModel.fromMap(apiMap);
