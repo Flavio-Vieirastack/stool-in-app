@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
-import 'package:stool_in/core/constants/lottie_constants.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
+import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
+import 'package:stool_in/core/widgets/app_category_card/app_category_card.dart';
+import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
 
-import '../../../../core/widgets/app_category_card/app_category_card.dart';
+import '../../../../core/helpers/theme/colors/app_colors.dart';
 part './widgets/home_body.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,73 +31,38 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            expandedHeight: 15.h,
-            centerTitle: true,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(30.dp),
-              ),
-            ),
-            floating: true,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.pin,
-              title: const Text('UserName'),
-              background: ClipRRect(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(30.dp),
-                ),
-                child: Image.network(
-                  userImage ??
-                      'https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236_960_720.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            actions: [
-              Padding(
-                // Esse icone deve aparecer para provedores
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Visibility(
-                      visible: true,
-                      replacement: Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.grey,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30.dp),
-                          ),
-                        ),
-                        child: LottieBuilder.asset(
-                          LottieConstants.lottieWarring,
-                          width: 40.dp,
-                        ),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30.dp),
-                          ),
-                        ),
-                        child: LottieBuilder.asset(
-                          LottieConstants.lottiePremium,
-                          width: 40.dp,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+      appBar: AppBar(
+        title: Text(
+          'Flavio Vieira',
+          style: AppTextStyles.headLine1,
+        ),
+        elevation: 22,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(100.dp),
           ),
-          const _HomeBody()
-        ],
+        ),
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(15.h),
+          child: Container(
+            color: Colors.red,
+          ),
+        ),
+        flexibleSpace: ClipRRect(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(100.dp),
+          ),
+          child: const Image(
+            fit: BoxFit.cover,
+            image: NetworkImage(
+              'https://www.petz.com.br/blog/wp-content/uploads/2020/07/raca-de-cachorro-muito-popular-no-brasil-3-1280x720.jpg',
+            ),
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(8.0.dp),
+        child: const _HomeBody(),
       ),
     );
   }

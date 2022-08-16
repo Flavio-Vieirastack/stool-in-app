@@ -5,8 +5,27 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
-      child: AppCategoryCard(),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 3.h,
+        ),
+        SizedBox(
+          height: 24.h,
+          child: ListView.builder(
+            itemCount: 10,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return AppCategoryCard();
+            },
+          ),
+        ),
+        SizedBox(
+          height: 2.h,
+        ),
+        
+      ],
     );
   }
 }
