@@ -5,6 +5,8 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fixedLengthList =
+        List<int>.generate(10, (int index) => index * index, growable: false);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -17,14 +19,54 @@ class _HomeBody extends StatelessWidget {
             itemCount: 10,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return AppCategoryCard();
+              return const AppCategoryCard();
             },
           ),
         ),
         SizedBox(
+          height: 3.h,
+        ),
+        SizedBox(
+          height: 10.h,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: const [
+              AppMenuButton(
+                buttonName: 'Ajustes',
+                icon: Icons.settings,
+              ),
+              AppMenuButton(
+                buttonName: 'Ajustes',
+                icon: Icons.settings,
+              ),
+              AppMenuButton(
+                buttonName: 'Ajustes',
+                icon: Icons.settings,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 3.h,
+        ),
+        Text('Principais escolhas:', style: AppTextStyles.headLine3Gold,),
+        SizedBox(
           height: 2.h,
         ),
-        
+        Column(
+          children: fixedLengthList
+              .map(
+                (e) => ServiceProviderCards(
+                  userDistance: 'userDistance',
+                  userName: 'userName',
+                  userServicesExecuted: 'userServicesExecuted',
+                  userUrlImage: 'userUrlImage',
+                  userVotes: '5',
+                  onPressed: () {},
+                ),
+              )
+              .toList(),
+        ),
       ],
     );
   }

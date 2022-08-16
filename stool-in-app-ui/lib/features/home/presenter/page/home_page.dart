@@ -4,6 +4,7 @@ import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_help
 import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_in/core/widgets/app_category_card/app_category_card.dart';
+import 'package:stool_in/core/widgets/menu_buttons/app_menu_button.dart';
 import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
 
 import '../../../../core/helpers/theme/colors/app_colors.dart';
@@ -60,9 +61,13 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(8.0.dp),
-        child: const _HomeBody(),
+      body: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(8.0.dp),
+            child: const _HomeBody(),
+          ),
+        ],
       ),
     );
   }

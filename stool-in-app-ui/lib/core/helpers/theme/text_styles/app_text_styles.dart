@@ -40,6 +40,13 @@ class AppTextStyles {
     fontFamily: GoogleFonts.openSans().fontFamily,
     fontSize: 16.dp,
   );
+  static TextStyle headLine3Gold = TextStyle(
+    color: AppColors.buttonRightGradientColor,
+    fontFamily: GoogleFonts.openSans().fontFamily,
+    fontWeight: FontWeight.bold,
+    decoration: TextDecoration.underline,
+    fontSize: 16.dp,
+  );
   static TextStyle headLine4 = TextStyle(
     color: AppColors.white,
     fontFamily: GoogleFonts.openSans().fontFamily,
