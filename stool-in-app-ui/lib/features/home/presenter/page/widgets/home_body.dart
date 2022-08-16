@@ -5,25 +5,8 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: ListView.builder(
-        itemCount: 10,
-        shrinkWrap: true,
-        primary: false,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0.dp),
-            child: ServiceProviderCards(
-              userDistance: '45 M',
-              userName: 'Nome do servidor',
-              userServicesExecuted: 'userServicesExecuted',
-              userUrlImage: 'userUrlImage',
-              userVotes: '5',
-              onPressed: () {},
-            ),
-          );
-        },
-      ),
+    return const SliverToBoxAdapter(
+      child: AppCategoryCard()
     );
   }
 }

@@ -12,4 +12,7 @@ class AppColors {
   static Color grey = const Color(0xff969696);
   static Color greyDisabled = const Color.fromARGB(255, 95, 95, 95);
   static Color blackInnedRadial = const Color(0xff181818);
+  static Color cardPink = const Color(0xffffe9eb);
+  static Color cardPurple = const Color(0xffebeaf8);
+  static Color cardBlue = const Color(0xffddfeff);
 }

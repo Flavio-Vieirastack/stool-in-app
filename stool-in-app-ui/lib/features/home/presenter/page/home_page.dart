@@ -6,6 +6,8 @@ import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_help
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
+
+import '../../../../core/widgets/app_category_card/app_category_card.dart';
 part './widgets/home_body.dart';
 
 class HomePage extends StatefulWidget {
