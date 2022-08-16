@@ -34,20 +34,24 @@ class ServiceProviderModel extends ServiceProviderEntity {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'id': id});
-    result.addAll({'userDescription': serviceProviderDescription});
-    result.addAll({'status': status});
-    result.addAll({'initialDisponibleTime': initialDisponibleTime});
-    result.addAll({'endDisponibleTime': endDisponibleTime});
-    result.addAll({'disponibleDays': disponibleDays});
-    result.addAll({
-      'executionServices': executionServicesModel.map((x) => x.toMap()).toList()
-    });
-    result.addAll({
-      'servicesToExecute': servicesToExecuteModel.map((x) => x.toMap()).toList()
-    });
-    result.addAll({'coments': comentsModel.map((x) => x.toMap()).toList()});
-    result.addAll({'UserData': userData});
+    if (serviceProviderDescription != null) {
+      result.addAll({'userDescription': serviceProviderDescription});
+    }
+    if (status != null) {
+      result.addAll({'status': status});
+    }
+    if (votes != null) {
+      result.addAll({'votes': votes});
+    }
+    if (initialDisponibleTime != null) {
+      result.addAll({'initialDisponibleTime': initialDisponibleTime});
+    }
+    if (endDisponibleTime != null) {
+      result.addAll({'endDisponibleTime': endDisponibleTime});
+    }
+    if (disponibleDays != null) {
+      result.addAll({'disponibleDays': disponibleDays});
+    }
 
     return result;
   }

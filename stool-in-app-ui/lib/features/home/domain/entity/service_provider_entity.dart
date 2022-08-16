@@ -7,12 +7,12 @@ import 'package:stool_in/features/home/domain/entity/services_to_execute_entity.
 
 class ServiceProviderEntity {
   final int id;
-  final String serviceProviderDescription;
-  final int votes;
-  final String status;
-  final String initialDisponibleTime;
-  final String endDisponibleTime;
-  final String disponibleDays;
+  final String? serviceProviderDescription;
+  final int? votes;
+  final String? status;
+  final String? initialDisponibleTime;
+  final String? endDisponibleTime;
+  final String? disponibleDays;
   final DateTime createdAt;
   final int userLoginId;
   final int distance;
