@@ -48,7 +48,7 @@ class _ServiceProviderContent extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 2.h,
+            height: 1.h,
           ),
           Text(
             'Serviços:',
@@ -65,7 +65,7 @@ class _ServiceProviderContent extends StatelessWidget {
             style: AppTextStyles.headLine2,
           ),
           SizedBox(
-            height: 2.h,
+            height: 1.h,
           ),
           Align(
             alignment: Alignment.bottomRight,

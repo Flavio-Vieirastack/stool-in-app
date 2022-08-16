@@ -11,13 +11,16 @@ class _HomeBody extends StatelessWidget {
         shrinkWrap: true,
         primary: false,
         itemBuilder: (context, index) {
-          return ServiceProviderCards(
-            userDistance: '45 M',
-            userName: 'Nome do servidor',
-            userServicesExecuted: 'userServicesExecuted',
-            userUrlImage: 'userUrlImage',
-            userVotes: '5',
-            onPressed: () {},
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0.dp),
+            child: ServiceProviderCards(
+              userDistance: '45 M',
+              userName: 'Nome do servidor',
+              userServicesExecuted: 'userServicesExecuted',
+              userUrlImage: 'userUrlImage',
+              userVotes: '5',
+              onPressed: () {},
+            ),
           );
         },
       ),
