@@ -36,12 +36,11 @@ class SplashCubit extends Cubit<SplashState> with SharedPreferencesHelper {
   }
 
   Future<bool> _userPassToDataPage() async {
+    // TODO melhorar esse tratamento
     final userPassToDataPage =
         await getBool(key: KeysConstants.userPassByDataPage);
-    final currentUser = _firebaseAuth.currentUser;
     if (userPassToDataPage != null &&
-        userPassToDataPage &&
-        currentUser != null) {
+        userPassToDataPage) {
       return true;
     }
     return false;
