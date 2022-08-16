@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
                       ),
                       child: LottieBuilder.asset(
                         LottieConstants.lottiePremium,
-                        width: 30.dp,
+                        width: 40.dp,
                       ),
                     ),
                   ),

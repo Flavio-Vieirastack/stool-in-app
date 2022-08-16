@@ -56,6 +56,11 @@ class AppTextStyles {
     fontFamily: GoogleFonts.prata().fontFamily,
     fontSize: 14.dp,
   );
+  static TextStyle headLine4Small = TextStyle(
+    color: AppColors.grey,
+    fontFamily: GoogleFonts.prata().fontFamily,
+    fontSize: 11.dp,
+  );
   static TextStyle headLine4Gold = TextStyle(
     color: AppColors.buttonLeftGradientColor,
     fontFamily: GoogleFonts.openSans().fontFamily,

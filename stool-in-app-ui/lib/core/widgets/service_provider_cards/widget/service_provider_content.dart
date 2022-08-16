@@ -73,7 +73,25 @@ class _ServiceProviderContent extends StatelessWidget {
               'Distância: $userDistance',
               style: TextStyle(color: AppColors.buttonLeftGradientColor),
             ),
-          )
+          ),
+          Visibility(
+            visible: true,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Column(
+                children: [
+                  LottieBuilder.asset(
+                    LottieConstants.lottieQuality,
+                    width: 35.dp,
+                  ),
+                  Text(
+                    'Premium',
+                    style: AppTextStyles.headLine4Small,
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
