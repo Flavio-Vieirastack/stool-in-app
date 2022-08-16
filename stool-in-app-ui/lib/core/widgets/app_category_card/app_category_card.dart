@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'dart:math' as math;
 
@@ -19,12 +20,15 @@ class AppCategoryCard extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              tileMode: TileMode.decal,
+              tileMode: TileMode.repeated,
               colors: [
-                Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                    .withOpacity(1.0),
-                Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                    .withOpacity(1.0),
+                // Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                //     .withOpacity(1.0),
+                // Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                //     .withOpacity(1.0),
+                AppColors.black.withOpacity(0.5),
+                 Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                    .withOpacity(0.2),
               ],
             ),
             borderRadius: const BorderRadius.all(
