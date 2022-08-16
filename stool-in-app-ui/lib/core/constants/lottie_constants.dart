@@ -7,4 +7,5 @@ class LottieConstants {
   static const lottieBlcoked = 'assets/lotties/76732-locked-icon.json';
   static const lottiePremium = 'assets/lotties/premium.json';
   static const lottieQuality = 'assets/lotties/quality.json';
+  static const lottieWarring = 'assets/lotties/warring.json';
 }

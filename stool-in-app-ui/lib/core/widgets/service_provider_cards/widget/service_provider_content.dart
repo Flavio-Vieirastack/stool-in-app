@@ -26,7 +26,7 @@ class _ServiceProviderContent extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              AppAvatar(urlImage: userUrlImage),
+              AppAvatar(urlImage: userUrlImage,),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(5.0.dp),

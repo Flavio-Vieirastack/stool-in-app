@@ -4,6 +4,7 @@ import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/constants/lottie_constants.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
 part './widgets/home_body.dart';
 
@@ -64,6 +65,18 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
                 children: [
                   Visibility(
                     visible: true,
+                    replacement: Container(
+                      decoration: BoxDecoration(
+                        color: AppColors.grey,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30.dp),
+                        ),
+                      ),
+                      child: LottieBuilder.asset(
+                        LottieConstants.lottieWarring,
+                        width: 40.dp,
+                      ),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.red,
