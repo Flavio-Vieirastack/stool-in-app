@@ -45,6 +45,11 @@ class AppTextStyles {
     fontFamily: GoogleFonts.openSans().fontFamily,
     fontSize: 14.dp,
   );
+  static TextStyle headLine4Black = TextStyle(
+    color: AppColors.black,
+    fontFamily: GoogleFonts.openSans().fontFamily,
+    fontSize: 14.dp,
+  );
   static TextStyle headLine4Italic = TextStyle(
     color: AppColors.white,
     fontFamily: GoogleFonts.openSans().fontFamily,
