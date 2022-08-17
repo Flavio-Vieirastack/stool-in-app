@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
                 ),
                 child: Text(
                   'ATIVO',
-                  style: AppTextStyles.headLine4,
+                  style: AppTextStyles.headLine3White,
                 ),
               ),
               SizedBox(
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
                 ),
                 child: Text(
                   '800',
-                  style: AppTextStyles.headLine3GoldClean,
+                  style: AppTextStyles.headLine3White,
                 ),
               ),
               SizedBox(
