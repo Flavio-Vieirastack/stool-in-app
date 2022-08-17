@@ -18,16 +18,32 @@ class RulesDatasourceImpl implements RulesDatasource {
     try {
       final result = await _restClientGet.get(path: EndpointConstants.getRules);
       final data =
-          result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
-      return data ?? <InfoModel>[];
+          result.data?.map<InfoEntity>((e) => InfoModel.fromMap(e)).toList();
+      return data as List<InfoEntity>;
     } on RestClientException catch (e, s) {
-      log('Erro desconhecido ao fazer get das rules', error: e, stackTrace: s);
-      throw InfoError(message: 'Erro ao pegar regras, tente mais tarde');
+      log(
+        'Erro desconhecido ao fazer get das rules',
+        error: e,
+        stackTrace: s,
+      );
+      throw InfoError(
+        message: 'Erro ao pegar regras, tente mais tarde',
+      );
     } on InfoError catch (e, s) {
-      log('Erro ao fazer get das rules', error: e, stackTrace: s);
-      throw InfoError(message: 'Erro ao pegar regras, tente mais tarde');
+      log(
+        'Erro ao fazer get das rules',
+        error: e,
+        stackTrace: s,
+      );
+      throw InfoError(
+        message: 'Erro ao pegar regras, tente mais tarde',
+      );
     } catch (e, s) {
-      log('Erro desconhecido ao fazer get das rules', error: e, stackTrace: s);
+      log(
+        'Erro desconhecido ao fazer get das rules',
+        error: e,
+        stackTrace: s,
+      );
       throw Exception();
     }
   }
