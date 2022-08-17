@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/widgets/info_card/info_card.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 
@@ -18,7 +19,9 @@ class InfoPage extends StatelessWidget {
           ),
           InfoCard(
             cardTitle: 'Dúvidas',
-            onPressed: () {},
+            onPressed: () => Navigator.of(context).pushNamed(
+              RoutesConstants.doubtRoute,
+            ),
           ),
           SizedBox(
             height: 2.h,

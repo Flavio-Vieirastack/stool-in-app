@@ -16,4 +16,5 @@ class RoutesConstants {
   static const String serviceProviderDetailRoute = '/service-provider-detail';
   static const String userProfileRoute = '/user-profile';
   static const String infoRoute = '/user-profile';
+  static const String doubtRoute = '/user-profile';
 }
