@@ -28,7 +28,7 @@ class InfoPage extends StatelessWidget {
           ),
           InfoCard(
             cardTitle: 'Regras',
-            onPressed: () {},
+            onPressed: () => Navigator.of(context).pushNamed(RoutesConstants.rulesRoute),
           ),
           SizedBox(
             height: 2.h,
