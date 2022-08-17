@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in/core/widgets/doubt_card/doubt_card.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+
+import '../../../../../core/widgets/info_expansion_card/info_expansion_card.dart';
 
 class DoubtPage extends StatelessWidget {
   const DoubtPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class DoubtPage extends StatelessWidget {
               .map(
                 (e) => Padding(
                   padding: EdgeInsets.only(top: 0.5.h, bottom: 0.5.h),
-                  child: const DoubtCard(
+                  child: const InfoExpansionCard(
                     content:
                         'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
                     title: 'Duvida X',
