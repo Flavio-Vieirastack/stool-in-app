@@ -5,7 +5,7 @@ import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 class InfoModel extends InfoEntity {
   InfoModel({
     required super.id,
-    required super.titile,
+    required super.title,
     required super.body,
   });
 
@@ -13,7 +13,7 @@ class InfoModel extends InfoEntity {
     final result = <String, dynamic>{};
 
     result.addAll({'id': id});
-    result.addAll({'titile': titile});
+    result.addAll({'titile': title});
     result.addAll({'body': body});
 
     return result;
@@ -22,7 +22,7 @@ class InfoModel extends InfoEntity {
   factory InfoModel.fromMap(Map<String, dynamic> map) {
     return InfoModel(
       id: map['id']?.toInt() ?? 0,
-      titile: map['title'] ?? '',
+      title: map['title'] ?? '',
       body: map['body'] ?? '',
     );
   }
@@ -31,4 +31,17 @@ class InfoModel extends InfoEntity {
 
   factory InfoModel.fromJson(String source) =>
       InfoModel.fromMap(json.decode(source));
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is InfoModel &&
+        other.id == id &&
+        other.title == title &&
+        other.body == body;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ title.hashCode ^ body.hashCode;
 }

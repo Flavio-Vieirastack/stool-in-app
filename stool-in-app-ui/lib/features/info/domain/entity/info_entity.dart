@@ -1,23 +1,23 @@
 class InfoEntity {
   final int id;
-  final String titile;
+  final String title;
   final String body;
   InfoEntity({
     required this.id,
-    required this.titile,
+    required this.title,
     required this.body,
   });
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is InfoEntity &&
-      other.id == id &&
-      other.titile == titile &&
-      other.body == body;
+        other.id == id &&
+        other.title == title &&
+        other.body == body;
   }
 
   @override
-  int get hashCode => id.hashCode ^ titile.hashCode ^ body.hashCode;
+  int get hashCode => id.hashCode ^ title.hashCode ^ body.hashCode;
 }

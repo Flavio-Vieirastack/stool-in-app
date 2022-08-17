@@ -16,10 +16,10 @@ class RulesDatasourceImpl implements RulesDatasource {
   @override
   Future<List<InfoEntity>> getRules() async {
     try {
-      final result =
-          await _restClientGet.get<List>(path: EndpointConstants.getRules);
-      final data = result.data?.map((e) => InfoModel.fromMap(e)).toList();
-      return data ?? <InfoEntity>[];
+      final result = await _restClientGet.get(path: EndpointConstants.getRules);
+      final data =
+          result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
+      return data ?? <InfoModel>[];
     } on RestClientException catch (e, s) {
       log('Erro desconhecido ao fazer get das rules', error: e, stackTrace: s);
       throw InfoError(message: 'Erro ao pegar regras, tente mais tarde');

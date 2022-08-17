@@ -8,7 +8,7 @@ void main() {
   test('Deve retornar os valores corretamente para titulo do rules model',
       () async {
     final sut = rules.map((e) => InfoModel.fromMap(e)).toList();
-    expect(sut[0].titile, 'Teste');
+    expect(sut[0].title, 'Teste');
   });
   test('Deve retornar os valores corretamente para titulo do rules model',
       () async {
@@ -23,6 +23,6 @@ void main() {
   test('Deve retornar os valores corretamente para titulo de duvidas model',
       () async {
     final sut = doubts.map((e) => InfoModel.fromMap(e)).toList();
-    expect(sut[0].titile, 'Teste');
+    expect(sut[0].title, 'Teste');
   });
 }
