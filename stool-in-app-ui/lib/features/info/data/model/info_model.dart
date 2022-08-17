@@ -22,7 +22,7 @@ class InfoModel extends InfoEntity {
   factory InfoModel.fromMap(Map<String, dynamic> map) {
     return InfoModel(
       id: map['id']?.toInt() ?? 0,
-      titile: map['titile'] ?? '',
+      titile: map['title'] ?? '',
       body: map['body'] ?? '',
     );
   }
