@@ -61,20 +61,7 @@ class _HomeBody extends StatelessWidget {
         SizedBox(
           height: 2.h,
         ),
-        Column(
-          children: fixedLengthList
-              .map(
-                (e) => ServiceProviderCards(
-                  userDistance: 'userDistance',
-                  userName: 'userName',
-                  userServicesExecuted: 'userServicesExecuted',
-                  userUrlImage: 'userUrlImage',
-                  userVotes: '5',
-                  onPressed: () {},
-                ),
-              )
-              .toList(),
-        ),
+        
       ],
     );
   }
