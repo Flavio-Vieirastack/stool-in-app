@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
+import 'package:stool_in/core/constants/lottie_constants.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
@@ -37,6 +39,59 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
           'Flavio Vieira',
           style: AppTextStyles.headLine1,
         ),
+        actions: [
+          Row(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30.dp),
+                  ),
+                ),
+                child: LottieBuilder.asset(
+                  LottieConstants.lottiePremium,
+                  width: 30.dp,
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20.dp),
+                  ),
+                ),
+                child: Text(
+                  'ATIVO',
+                  style: AppTextStyles.headLine4,
+                ),
+              ),
+              SizedBox(
+                width: 1.w,
+              ),
+              LottieBuilder.asset(
+                LottieConstants.lottieCoin,
+                width: 35.dp,
+              ),
+              Container(
+                padding: EdgeInsets.all(1.dp),
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20.dp),
+                  ),
+                ),
+                child: Text(
+                  '800',
+                  style: AppTextStyles.headLine3GoldClean,
+                ),
+              ),
+              SizedBox(
+                width: 3.w,
+              ),
+            ],
+          ),
+        ],
         elevation: 22,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

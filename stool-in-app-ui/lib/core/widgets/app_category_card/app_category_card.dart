@@ -22,10 +22,6 @@ class AppCategoryCard extends StatelessWidget {
               end: Alignment.bottomRight,
               tileMode: TileMode.repeated,
               colors: [
-                // Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                //     .withOpacity(1.0),
-                // Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                //     .withOpacity(1.0),
                 AppColors.black.withOpacity(0.5),
                  Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
                     .withOpacity(0.2),

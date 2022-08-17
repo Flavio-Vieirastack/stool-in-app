@@ -26,6 +26,10 @@ class _HomeBody extends StatelessWidget {
         SizedBox(
           height: 3.h,
         ),
+        const Divider(thickness: 2),
+        SizedBox(
+          height: 3.h,
+        ),
         SizedBox(
           height: 10.h,
           child: ListView(
@@ -36,8 +40,8 @@ class _HomeBody extends StatelessWidget {
                 icon: Icons.settings,
               ),
               AppMenuButton(
-                buttonName: 'Ajustes',
-                icon: Icons.settings,
+                buttonName: 'Duvidas',
+                icon: Icons.info,
               ),
               AppMenuButton(
                 buttonName: 'Ajustes',
@@ -49,7 +53,11 @@ class _HomeBody extends StatelessWidget {
         SizedBox(
           height: 3.h,
         ),
-        Text('Principais escolhas:', style: AppTextStyles.headLine3Gold,),
+        const Divider(thickness: 2),
+        Text(
+          'Principais escolhas:',
+          style: AppTextStyles.headLine3Gold,
+        ),
         SizedBox(
           height: 2.h,
         ),
