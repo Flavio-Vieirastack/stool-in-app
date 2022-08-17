@@ -14,20 +14,23 @@ class DoubtCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: ExpansionTile(
-        title: Text(
-          title,
-          style: AppTextStyles.headLine3Gold,
-        ),
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(8.0.dp),
-            child: Text(
-              content,
-              style: AppTextStyles.headLine4,
-            ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 2.h),
+        child: ExpansionTile(
+          title: Text(
+            title,
+            style: AppTextStyles.headLine3Gold,
           ),
-        ],
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(8.0.dp),
+              child: Text(
+                content,
+                style: AppTextStyles.headLine4,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
