@@ -1,3 +1,4 @@
+import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:stool_in/features/info/domain/error/info_error.dart';
 import 'package:dartz/dartz.dart';
 import 'package:stool_in/features/info/domain/repository/doubt/doubt_repository.dart';
@@ -13,12 +14,12 @@ class InfoUsecaseImpl implements InfoUsecase {
       : _doubtRepository = doubtRepository,
         _rulesRepository = rulesRepository;
   @override
-  Future<Either<InfoError, void>> getDoubts() async {
+  Future<Either<InfoError, List<InfoEntity>>> getDoubts() async {
     return await _doubtRepository.getDoubts();
   }
 
   @override
-  Future<Either<InfoError, void>> getRules() async {
+  Future<Either<InfoError, List<InfoEntity>>> getRules() async {
     return await _rulesRepository.getRules();
   }
 }
