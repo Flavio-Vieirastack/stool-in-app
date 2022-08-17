@@ -18,7 +18,7 @@ class InfoPage extends StatelessWidget {
             height: 3.h,
           ),
           InfoCard(
-            cardTitle: 'Dúvidas',
+            cardTitle: 'Dúvidas frequentes',
             onPressed: () => Navigator.of(context).pushNamed(
               RoutesConstants.doubtRoute,
             ),
