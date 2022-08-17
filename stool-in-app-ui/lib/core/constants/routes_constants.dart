@@ -17,4 +17,5 @@ class RoutesConstants {
   static const String userProfileRoute = '/user-profile';
   static const String infoRoute = '/user-info';
   static const String doubtRoute = '/user-doubt';
+  static const String rulesRoute = '/user-rules';
 }

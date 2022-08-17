@@ -14,6 +14,7 @@ import 'package:stool_in/features/auth/presenter/sign_in_user_data/module/sign_i
 import 'package:stool_in/features/home/presenter/module/home_module.dart';
 import 'package:stool_in/features/info/module/doubt/doubt_page_module.dart';
 import 'package:stool_in/features/info/module/info/info_page_module.dart';
+import 'package:stool_in/features/info/module/rules/rules_page_modules.dart';
 import 'package:stool_in/features/onboarding/module/onboarding_module.dart';
 import 'package:stool_in/features/splash/module/splash_module.dart';
 
@@ -70,6 +71,7 @@ class MyApp extends StatelessWidget {
                 ...HomeModule().routers,
                 ...InfoPageModule().routers,
                 ...DoubtPageModule().routers,
+                ...RulesPageModules().routers,
               },
             );
           },
