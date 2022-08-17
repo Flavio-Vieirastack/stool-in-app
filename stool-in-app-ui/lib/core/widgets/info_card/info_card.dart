@@ -6,12 +6,12 @@ import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 class InfoCard extends StatelessWidget {
   final VoidCallback onPressed;
   final String cardTitle;
-  final Color? cardColor;
+  final Color? cardIconColor;
   const InfoCard({
     Key? key,
     required this.onPressed,
     required this.cardTitle,
-    this.cardColor,
+    this.cardIconColor,
   }) : super(key: key);
 
   @override
@@ -20,7 +20,6 @@ class InfoCard extends StatelessWidget {
       onTap: onPressed,
       child: Card(
         margin: EdgeInsets.symmetric(horizontal: 20.dp),
-        color: cardColor ?? AppColors.buttonRightGradientColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(20.dp),
@@ -35,7 +34,10 @@ class InfoCard extends StatelessWidget {
                 cardTitle,
                 style: AppTextStyles.headLine2,
               ),
-              const Icon(Icons.arrow_forward_ios)
+              Icon(
+                Icons.arrow_forward_ios,
+                color: cardIconColor ?? AppColors.buttonRightGradientColor,
+              )
             ],
           ),
         ),

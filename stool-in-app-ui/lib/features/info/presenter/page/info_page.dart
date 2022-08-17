@@ -40,7 +40,7 @@ class InfoPage extends StatelessWidget {
           InfoCard(
             cardTitle: 'Sobre',
             onPressed: () {},
-            cardColor: Colors.blue.shade900,
+            cardIconColor: Colors.blue,
           ),
           SizedBox(
             height: 2.h,
