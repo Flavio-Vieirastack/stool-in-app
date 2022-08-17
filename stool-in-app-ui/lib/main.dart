@@ -12,6 +12,7 @@ import 'package:stool_in/features/auth/presenter/password_reset/module/password_
 import 'package:stool_in/features/auth/presenter/sign_in/module/sign_in_main_module.dart';
 import 'package:stool_in/features/auth/presenter/sign_in_user_data/module/sign_in_main_data_module.dart';
 import 'package:stool_in/features/home/presenter/module/home_module.dart';
+import 'package:stool_in/features/info/module/info_page_module.dart';
 import 'package:stool_in/features/onboarding/module/onboarding_module.dart';
 import 'package:stool_in/features/splash/module/splash_module.dart';
 
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
                 ...SignInMainDataModule().routers,
                 ...PasswordResetModule().routers,
                 ...HomeModule().routers,
+                ...InfoPageModule().routers,
               },
             );
           },

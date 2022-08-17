@@ -32,18 +32,21 @@ class _HomeBody extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const [
+          children:  [
             AppMenuButton(
               buttonName: 'Ajustes',
               icon: Icons.settings,
+              onPressed: (){},
             ),
             AppMenuButton(
               buttonName: 'Duvidas',
               icon: Icons.info,
+              onPressed: () => Navigator.of(context).pushNamed(RoutesConstants.infoRoute),
             ),
             AppMenuButton(
               buttonName: 'Ajustes',
               icon: Icons.settings,
+              onPressed: (){},
             ),
           ],
         ),
