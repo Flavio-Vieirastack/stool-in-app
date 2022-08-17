@@ -30,25 +30,22 @@ class _HomeBody extends StatelessWidget {
         SizedBox(
           height: 3.h,
         ),
-        SizedBox(
-          height: 10.h,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: const [
-              AppMenuButton(
-                buttonName: 'Ajustes',
-                icon: Icons.settings,
-              ),
-              AppMenuButton(
-                buttonName: 'Duvidas',
-                icon: Icons.info,
-              ),
-              AppMenuButton(
-                buttonName: 'Ajustes',
-                icon: Icons.settings,
-              ),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: const [
+            AppMenuButton(
+              buttonName: 'Ajustes',
+              icon: Icons.settings,
+            ),
+            AppMenuButton(
+              buttonName: 'Duvidas',
+              icon: Icons.info,
+            ),
+            AppMenuButton(
+              buttonName: 'Ajustes',
+              icon: Icons.settings,
+            ),
+          ],
         ),
         SizedBox(
           height: 3.h,

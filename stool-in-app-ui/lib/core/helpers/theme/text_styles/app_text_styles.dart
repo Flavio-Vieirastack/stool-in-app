@@ -11,6 +11,12 @@ class AppTextStyles {
     fontFamily: GoogleFonts.exo2().fontFamily,
     fontSize: 32.dp,
   );
+  static TextStyle headLine0Gold = TextStyle(
+    color: AppColors.buttonLeftGradientColor,
+    fontWeight: FontWeight.bold,
+    fontFamily: GoogleFonts.exo2().fontFamily,
+    fontSize: 32.dp,
+  );
   static TextStyle headLine1 = TextStyle(
     color: AppColors.white,
     fontWeight: FontWeight.bold,
