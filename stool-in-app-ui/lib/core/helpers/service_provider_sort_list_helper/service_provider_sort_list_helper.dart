@@ -1,4 +1,5 @@
-import 'package:stool_in/features/home/domain/entity/service_provider_entity.dart';
+
+import '../../../features/home/domain/entity/service_provider/service_provider_entity.dart';
 
 class ServiceProviderSortListHelper {
   List<ServiceProviderEntity> sortList({

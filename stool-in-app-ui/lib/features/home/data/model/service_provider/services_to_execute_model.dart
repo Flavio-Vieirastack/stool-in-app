@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:stool_in/features/home/domain/entity/services_to_execute_entity.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
+
 
 class ServicesToExecuteModel extends ServicesToExecuteEntity {
   ServicesToExecuteModel({

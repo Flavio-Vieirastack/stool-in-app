@@ -2,10 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/features/home/data/datasource/service_provider_datasource.dart';
-import 'package:stool_in/features/home/domain/entity/get_service_providers_params.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider_entity.dart';
-import 'package:stool_in/features/home/domain/error/service_provider_error.dart';
+import 'package:stool_in/features/home/data/datasource/service_provider/service_provider_datasource.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/get_service_providers_params.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
+import 'package:stool_in/features/home/domain/error/service_provider/service_provider_error.dart';
 
 import '../../../../mock/service_provider_payload.dart';
 import '../../../../mock/service_provider_payload_diferent_location_data.dart';

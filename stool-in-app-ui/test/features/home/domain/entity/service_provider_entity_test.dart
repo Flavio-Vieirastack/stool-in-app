@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
-import 'package:stool_in/features/home/domain/entity/coments_entity.dart';
-import 'package:stool_in/features/home/domain/entity/execution_services_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider_entity.dart';
-import 'package:stool_in/features/home/domain/entity/services_to_execute_entity.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/coments_entity.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/execution_services_entity.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
 
 class ExectionServicesMock extends Mock implements ExecutionServicesEntity {}
 

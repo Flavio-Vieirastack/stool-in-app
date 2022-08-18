@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:stool_in/features/home/domain/entity/execution_services_entity.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/execution_services_entity.dart';
+
 
 class ExecutionServicesModel extends ExecutionServicesEntity {
   ExecutionServicesModel({
