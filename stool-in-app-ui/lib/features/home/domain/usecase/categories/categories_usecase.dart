@@ -4,5 +4,5 @@ import 'package:stool_in/features/home/domain/error/categories/categories_error.
 import '../../entity/categories/categories_entity.dart';
 
 abstract class CategoriesUsecase {
-  Future<Either<CategoriesError, CategoriesEntity>> call();
+  Future<Either<CategoriesError, List<CategoriesEntity>>> call();
 }

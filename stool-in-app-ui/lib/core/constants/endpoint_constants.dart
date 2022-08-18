@@ -7,4 +7,5 @@ class EndpointConstants {
   static const getServiceProvider = '/service-provider';
   static const getRules = '/rules';
   static const getFrequentDoubts = '/frequent-doubts';
+  static const getCategories = '/categories';
 }

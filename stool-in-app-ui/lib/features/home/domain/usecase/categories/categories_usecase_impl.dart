@@ -10,7 +10,7 @@ class CategoriesUsecaseImpl implements CategoriesUsecase {
     required CategoriesRepository categoriesRepository,
   }) : _categoriesRepository = categoriesRepository;
   @override
-  Future<Either<CategoriesError, CategoriesEntity>> call() async {
+  Future<Either<CategoriesError, List<CategoriesEntity>>> call() async {
     return await _categoriesRepository.call();
   }
 }
