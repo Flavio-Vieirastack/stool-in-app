@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
-import 'package:stool_in/core/constants/lottie_constants.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_in/core/widgets/app_category_card/app_category_card.dart';
 import 'package:stool_in/core/widgets/menu_buttons/app_menu_button.dart';
-import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
 
 import '../../../../core/constants/routes_constants.dart';
-import '../../../../core/helpers/theme/colors/app_colors.dart';
 part './widgets/home_body.dart';
 
 class HomePage extends StatefulWidget {
@@ -68,7 +64,7 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
         children: [
           Padding(
             padding: EdgeInsets.all(8.0.dp),
-            child:  _HomeBody(),
+            child:  const _HomeBody(),
           ),
         ],
       ),

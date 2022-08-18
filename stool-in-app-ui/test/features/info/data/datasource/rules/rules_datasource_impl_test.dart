@@ -4,7 +4,6 @@ import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
 import 'package:stool_in/features/info/data/datasource/rules/rules_datasource.dart';
 import 'package:stool_in/features/info/data/datasource/rules/rules_datasource_impl.dart';
-import 'package:stool_in/features/info/data/model/info_model.dart';
 import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:stool_in/features/info/domain/error/info_error.dart';
 
