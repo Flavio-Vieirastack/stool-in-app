@@ -16,20 +16,34 @@ class DoubtsDatasourceImpl implements DoubtsDatasource {
   @override
   Future<List<InfoEntity>> getDoubts() async {
     try {
-      final result = await _restClientGet.get<List>(
+      final result = await _restClientGet.get(
           path: EndpointConstants.getFrequentDoubts);
-      final data = result.data?.map((e) => InfoModel.fromMap(e)).toList();
+      final data = result.data?.map<InfoEntity>((e) => InfoModel.fromMap(e)).toList();
       return data ?? <InfoEntity>[];
     } on RestClientException catch (e, s) {
-      log('Erro ao pegar duvidas no datasource impl', error: e, stackTrace: s);
+      log(
+        'Erro ao pegar duvidas no datasource impl',
+        error: e,
+        stackTrace: s,
+      );
       throw InfoError(
-          message: 'Erro ao buscar duvidas frequentes, tente mais tarde');
+        message: 'Erro ao buscar duvidas frequentes, tente mais tarde',
+      );
     } on InfoError catch (e, s) {
-      log('Erro ao pegar duvidas no datasource impl', error: e, stackTrace: s);
+      log(
+        'Erro ao pegar duvidas no datasource impl',
+        error: e,
+        stackTrace: s,
+      );
       throw InfoError(
-          message: 'Erro ao buscar duvidas frequentes, tente mais tarde');
+        message: 'Erro ao buscar duvidas frequentes, tente mais tarde',
+      );
     } catch (e, s) {
-      log('Erro ao pegar duvidas no datasource impl', error: e, stackTrace: s);
+      log(
+        'Erro ao pegar duvidas no datasource impl',
+        error: e,
+        stackTrace: s,
+      );
       throw InfoError(
         message: 'Erro ao buscar duvidas frequentes, tente mais tarde',
       );
