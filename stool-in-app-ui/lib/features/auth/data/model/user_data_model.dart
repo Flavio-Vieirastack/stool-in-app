@@ -88,19 +88,21 @@ class UserDataModel extends UserDataEntity {
   }
   factory UserDataModel.fromEntity({required UserDataEntity userDataEntity}) {
     return UserDataModel(
-        cep: userDataEntity.cep,
-        city: userDataEntity.city,
-        district: userDataEntity.district,
-        houseNumber: userDataEntity.houseNumber,
-        referencePoint: userDataEntity.referencePoint,
-        street: userDataEntity.street,
-        userFirebasePushToken: userDataEntity.userFirebasePushToken,
-        userFirebaseUuid: userDataEntity.userFirebaseUuid,
-        userLocationLatitude: userDataEntity.userLocationLatitude,
-        userLocationLongitude: userDataEntity.userLocationLongitude,
-        userName: userDataEntity.userName,
-        userPhotoUrl: userDataEntity.userPhotoUrl,
-        userState: userDataEntity.userState);
+      cep: userDataEntity.cep,
+      city: userDataEntity.city,
+      district: userDataEntity.district,
+      houseNumber: userDataEntity.houseNumber,
+      referencePoint: userDataEntity.referencePoint,
+      street: userDataEntity.street,
+      userFirebasePushToken: userDataEntity.userFirebasePushToken,
+      userFirebaseUuid: userDataEntity.userFirebaseUuid,
+      userLocationLatitude: userDataEntity.userLocationLatitude,
+      userLocationLongitude: userDataEntity.userLocationLongitude,
+      userName: userDataEntity.userName,
+      userPhotoUrl: userDataEntity.userPhotoUrl,
+      userState: userDataEntity.userState,
+      serviceProviderId: userDataEntity.serviceProviderId,
+    );
   }
 
   String toJson() => json.encode(toMap());

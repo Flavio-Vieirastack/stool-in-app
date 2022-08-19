@@ -80,6 +80,20 @@ class CreateAndUpdateServiceProviderModel
     );
   }
 
+  factory CreateAndUpdateServiceProviderModel.fromEntity(
+      {required CreateAndUpdateServiceProviderEntity
+          createAndUpdateServiceProviderEntity}) {
+    return CreateAndUpdateServiceProviderModel(
+        disponibleDays: createAndUpdateServiceProviderEntity.disponibleDays,
+        endDisponibleTime:
+            createAndUpdateServiceProviderEntity.endDisponibleTime,
+        initialDisponibleTime:
+            createAndUpdateServiceProviderEntity.initialDisponibleTime,
+        status: createAndUpdateServiceProviderEntity.status,
+        userDescription: createAndUpdateServiceProviderEntity.userDescription,
+        votes: createAndUpdateServiceProviderEntity.votes);
+  }
+
   String toJson() => json.encode(toMap());
 
   factory CreateAndUpdateServiceProviderModel.fromJson(String source) =>
