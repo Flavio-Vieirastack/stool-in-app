@@ -11,7 +11,7 @@ abstract class CreateServiceProviderUsecase {
     required CreateAndUpdateServiceProviderEntity
         createAndUpdateServiceProviderEntity,
   });
-  Future<Either<CreateServiceProviderError, void>> updateUserData({
+  Future<Either<CreateServiceProviderError, void>> sendServiceProviderIdToUserData({
     required UserDataEntity serviceProviderId,
   });
 }

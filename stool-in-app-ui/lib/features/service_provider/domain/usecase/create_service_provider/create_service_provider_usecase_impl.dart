@@ -23,7 +23,7 @@ class CreateServiceProviderUsecaseImpl implements CreateServiceProviderUsecase {
   }
 
   @override
-  Future<Either<CreateServiceProviderError, void>> updateUserData({
+  Future<Either<CreateServiceProviderError, void>> sendServiceProviderIdToUserData({
     required UserDataEntity serviceProviderId,
   }) async {
     return await _createServiceProviderRepository
