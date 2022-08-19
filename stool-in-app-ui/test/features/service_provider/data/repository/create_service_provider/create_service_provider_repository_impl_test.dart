@@ -46,10 +46,7 @@ void main() {
         when(
           () => createServiceProviderDatasourceMock.createServiceProvider(
             createAndUpdateServiceProviderModel:
-                CreateAndUpdateServiceProviderModel.fromEntity(
-              createAndUpdateServiceProviderEntity:
-                  createServiceProviderEntityMock,
-            ),
+                any(named: 'createAndUpdateServiceProviderModel'),
           ),
         ).thenAnswer((_) async => serviceProviderReturnEntityMock);
 
@@ -68,10 +65,7 @@ void main() {
         when(
           () => createServiceProviderDatasourceMock.createServiceProvider(
             createAndUpdateServiceProviderModel:
-                CreateAndUpdateServiceProviderModel.fromEntity(
-              createAndUpdateServiceProviderEntity:
-                  createServiceProviderEntityMock,
-            ),
+                any(named: 'createAndUpdateServiceProviderModel'),
           ),
         ).thenThrow(CreateServiceProviderError(
             message: 'Erro ao criar sua conta, tente mais tarde'));
