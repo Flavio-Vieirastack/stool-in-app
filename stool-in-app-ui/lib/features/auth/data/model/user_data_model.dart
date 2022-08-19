@@ -2,22 +2,23 @@ import 'dart:convert';
 
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 
-
 class UserDataModel extends UserDataEntity {
-  UserDataModel(
-      {super.userName,
-      super.userPhotoUrl,
-      super.userFirebasePushToken,
-      super.userFirebaseUuid,
-      super.userLocationLatitude,
-      super.userLocationLongitude,
-      super.street,
-      super.city,
-      super.houseNumber,
-      super.district,
-      super.cep,
-      super.referencePoint,
-      super.userState});
+  UserDataModel({
+    super.userName,
+    super.userPhotoUrl,
+    super.userFirebasePushToken,
+    super.userFirebaseUuid,
+    super.userLocationLatitude,
+    super.userLocationLongitude,
+    super.street,
+    super.city,
+    super.houseNumber,
+    super.district,
+    super.cep,
+    super.referencePoint,
+    super.userState,
+    super.serviceProviderId,
+  });
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
@@ -59,7 +60,10 @@ class UserDataModel extends UserDataEntity {
       result.addAll({'referencePoint': referencePoint});
     }
     if (userState != null) {
-      result.addAll({'userState' : userState});
+      result.addAll({'userState': userState});
+    }
+    if (serviceProviderId != null) {
+      result.addAll({'serviceProviderId': serviceProviderId});
     }
 
     return result;
@@ -84,20 +88,19 @@ class UserDataModel extends UserDataEntity {
   }
   factory UserDataModel.fromEntity({required UserDataEntity userDataEntity}) {
     return UserDataModel(
-      cep: userDataEntity.cep,
-      city: userDataEntity.city,
-      district: userDataEntity.district,
-      houseNumber: userDataEntity.houseNumber,
-      referencePoint: userDataEntity.referencePoint,
-      street: userDataEntity.street,
-      userFirebasePushToken: userDataEntity.userFirebasePushToken,
-      userFirebaseUuid: userDataEntity.userFirebaseUuid,
-      userLocationLatitude: userDataEntity.userLocationLatitude,
-      userLocationLongitude: userDataEntity.userLocationLongitude,
-      userName: userDataEntity.userName,
-      userPhotoUrl: userDataEntity.userPhotoUrl,
-      userState: userDataEntity.userState
-    );
+        cep: userDataEntity.cep,
+        city: userDataEntity.city,
+        district: userDataEntity.district,
+        houseNumber: userDataEntity.houseNumber,
+        referencePoint: userDataEntity.referencePoint,
+        street: userDataEntity.street,
+        userFirebasePushToken: userDataEntity.userFirebasePushToken,
+        userFirebaseUuid: userDataEntity.userFirebaseUuid,
+        userLocationLatitude: userDataEntity.userLocationLatitude,
+        userLocationLongitude: userDataEntity.userLocationLongitude,
+        userName: userDataEntity.userName,
+        userPhotoUrl: userDataEntity.userPhotoUrl,
+        userState: userDataEntity.userState);
   }
 
   String toJson() => json.encode(toMap());
