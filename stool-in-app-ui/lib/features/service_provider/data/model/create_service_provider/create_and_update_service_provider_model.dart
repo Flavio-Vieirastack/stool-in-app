@@ -50,12 +50,12 @@ class CreateAndUpdateServiceProviderModel
     }
     if (initialDisponibleTime != null) {
       result.addAll({
-        'initialDisponibleTime': initialDisponibleTime!.millisecondsSinceEpoch
+        'initialDisponibleTime': initialDisponibleTime!
       });
     }
     if (endDisponibleTime != null) {
       result.addAll(
-          {'endDisponibleTime': endDisponibleTime!.millisecondsSinceEpoch});
+          {'endDisponibleTime': endDisponibleTime!});
     }
     if (disponibleDays != null) {
       result.addAll({'disponibleDays': disponibleDays});
