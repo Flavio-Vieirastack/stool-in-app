@@ -15,7 +15,9 @@ class RulesCubit extends Cubit<RulesState> {
     final result = await _infoUsecase.getRules();
 
     result.fold(
-      (error) => emit(RulesError(errorMessage: error.message)),
+      (error) => emit(
+        RulesError(errorMessage: error.message),
+      ),
       (sucess) => emit(
         RulesSucess(rules: sucess),
       ),

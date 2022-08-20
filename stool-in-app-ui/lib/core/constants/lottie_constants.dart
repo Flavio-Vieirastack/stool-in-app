@@ -9,4 +9,5 @@ class LottieConstants {
   static const lottieQuality = 'assets/lotties/quality.json';
   static const lottieWarring = 'assets/lotties/warring.json';
   static const lottieCoin = 'assets/lotties/coin.json';
+  static const lottieErrorPage = 'assets/lotties/error_page.json';
 }

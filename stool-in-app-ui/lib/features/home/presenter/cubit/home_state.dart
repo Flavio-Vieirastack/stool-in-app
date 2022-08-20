@@ -17,8 +17,12 @@ class HomeError extends HomeState {
 }
 
 class HomeSucess extends HomeState {
-  final List<ServiceProviderEntity> serviceProvider;
-  HomeSucess({required this.serviceProvider});
-   @override
-  List<Object?> get props => [serviceProvider];
+  final List<ServiceProviderEntity>? serviceProvider;
+  final List<CategoriesEntity>? categories;
+  HomeSucess({
+    this.serviceProvider,
+    this.categories,
+  });
+  @override
+  List<Object?> get props => [serviceProvider, categories];
 }
