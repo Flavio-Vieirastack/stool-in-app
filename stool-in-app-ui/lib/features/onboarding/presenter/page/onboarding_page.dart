@@ -32,7 +32,7 @@ class OnboardingPage extends StatelessWidget {
         centerText:
             'Deseja contratar um profissional más não sabe onde encontra-lo? Ou deseja mostrar o seu talento e ainda ganhar aquele dinheiro extra?',
         showButton: true,
-        onPressed: () => cubit.gotToLoginPageAndSaveOnBoardingFlow(),
+        onPressed: () async => cubit.gotToLoginPageAndSaveOnBoardingFlow(),
       ),
     ];
     return BlocListener<OnboardingCubit, OnboardingState>(

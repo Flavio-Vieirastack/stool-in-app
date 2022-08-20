@@ -78,7 +78,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             SignInUserDataError(message: error.message),
           ),
           (sucess) async {
-            saveString(
+           await saveString(
                 key: KeysConstants.userName, value: sucess.userName ?? '');
             saveDouble(
               key: KeysConstants.userLocationLatitude,
@@ -88,7 +88,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
               key: KeysConstants.userLocationaLogintude,
               value: sucess.userLocationLongitude ?? 0.0,
             );
-            saveString(
+            await saveString(
                 key: KeysConstants.userPhotoUrl,
                 value: sucess.userPhotoUrl ?? '');
             await _loginInToApiAndFirebase();
@@ -98,7 +98,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
                 await getBool(key: KeysConstants.userPassLoginToFirebase);
             if (loginApiSucess! && loginFirebaseSucess!) {
               final urlimage = await _getUserUrlImage();
-              saveBool(key: KeysConstants.userPassByDataPage, value: true);
+             await saveBool(key: KeysConstants.userPassByDataPage, value: true);
               emit(SignInUserDataSucess(userUrlImage: urlimage));
             } else {
               emit(

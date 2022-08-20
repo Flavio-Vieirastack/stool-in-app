@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
 import 'package:stool_in/core/firebase/push_notifications/firebase_notifications.dart';
-import 'package:stool_in/core/helpers/delayed_helper/delayed_helper.dart';
 import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
@@ -57,7 +56,7 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     await _firebaseAuth.currentUser?.reload();
     final emailVerified = _firebaseAuth.currentUser?.emailVerified;
     if (emailVerified!) {
-      saveBool(key: KeysConstants.userPassByDataPage, value: false);
+      await saveBool(key: KeysConstants.userPassByDataPage, value: false);
       final userPushToken = await _fireBaseNotifications.getTokenFirebase();
       await _writeLocalSecurityStorage.write(
         key: KeysConstants.userFirebasePushToken,
@@ -85,16 +84,9 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
       emit(SignInStateEmailAccepted());
     } else {
       emit(SignInEmailNotVerified());
-      // TODO retirar quando estiver testado
-      // await Future.delayed(
-      //   const Duration(seconds: 3),
-      //   () => emit(
-      //     SignInStateEmailSended(),
-      //   ),
-      // );
-     await DelayedHelper.delay(
-        seconds: 3,
-        function: () => emit(
+      await Future.delayed(
+        const Duration(seconds: 3),
+        () => emit(
           SignInStateEmailSended(),
         ),
       );
@@ -142,14 +134,8 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         );
       },
       (sucess) async {
-        // await Future.delayed(const Duration(seconds: 3));
-        // emit(SignInStateSucess());
-       await DelayedHelper.delay(
-          seconds: 3,
-          function: () => emit(
-            SignInStateSucess(),
-          ),
-        );
+        await Future.delayed(const Duration(seconds: 3));
+        emit(SignInStateSucess());
       },
     );
   }

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/helpers/delayed_helper/delayed_helper.dart';
 import 'package:stool_in/core/widgets/app_dialog/app_dialog.dart';
 import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
 import 'package:stool_in/core/widgets/app_snackbar/app_snackbar.dart';
@@ -88,16 +87,9 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                   ),
                 );
               } else if (state is SignInStateSucess) {
-                // TODO retirar quando estiver testado
-                // await Future.delayed(
-                //   const Duration(seconds: 3),
-                //   () => Navigator.of(context).pushReplacementNamed(
-                //     RoutesConstants.signInDataRoute,
-                //   ),
-                // );
-               await DelayedHelper.delay(
-                  seconds: 3,
-                  function: () => Navigator.of(context).pushReplacementNamed(
+                await Future.delayed(
+                  const Duration(seconds: 3),
+                  () => Navigator.of(context).pushReplacementNamed(
                     RoutesConstants.signInDataRoute,
                   ),
                 );
@@ -116,13 +108,9 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                   context: context,
                   type: SnackBarType.error,
                 );
-                // await Future.delayed(
-                //   const Duration(seconds: 3),
-                //   () => Navigator.of(context).pop(),
-                // );
-                DelayedHelper.delay(
-                  seconds: 3,
-                  function: () => Navigator.of(context).pop(),
+                await Future.delayed(
+                  const Duration(seconds: 3),
+                  () => Navigator.of(context).pop(),
                 );
               }
             },

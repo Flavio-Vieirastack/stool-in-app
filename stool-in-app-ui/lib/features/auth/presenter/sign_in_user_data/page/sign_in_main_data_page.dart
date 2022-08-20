@@ -236,6 +236,7 @@ class _SignInMainDataPageState extends State<SignInMainDataPage>
                       return Center(
                         child: _SignInDataCard(
                           formKey: formKey,
+                          ignoring: true,
                           urlImage: state.userUrlImage,
                           statesDropDownLabel: stateInitialName,
                           onChanged: (value) =>
