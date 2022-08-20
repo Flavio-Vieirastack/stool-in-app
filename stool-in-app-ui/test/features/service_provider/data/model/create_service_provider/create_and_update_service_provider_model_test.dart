@@ -2,6 +2,8 @@ import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:stool_in/features/service_provider/data/model/create_service_provider/create_and_update_service_provider_model.dart';
 
+import '../../../../../mock/service_provider_create_mock.dart';
+
 void main() {
   group('to map', () {
     late Faker faker;
@@ -129,7 +131,50 @@ void main() {
       final sut = model['disponibleDays'];
       expect(sut, disponibleDays);
     });
+  });
 
-
+  group('From map', () {
+    test('Deve retornar o valor correto para disponibleDays', () {
+      final model = CreateAndUpdateServiceProviderModel.fromMap(
+          serviceProviderCreateMock);
+      final sut = model.disponibleDays;
+      const matcher = 'segunda a sexta';
+      expect(sut, matcher);
+    });
+    test('Deve retornar o valor correto para endDisponibleTime', () {
+      final model = CreateAndUpdateServiceProviderModel.fromMap(
+          serviceProviderCreateMock);
+      final sut = model.endDisponibleTime;
+      final matcher = DateTime.parse('2022-08-18T18:54:59.725Z');
+      expect(sut, matcher);
+    });
+    test('Deve retornar o valor correto para initialDisponibleTime', () {
+      final model = CreateAndUpdateServiceProviderModel.fromMap(
+          serviceProviderCreateMock);
+      final sut = model.initialDisponibleTime;
+      final matcher = DateTime.parse('2022-08-18T18:54:59.725Z');
+      expect(sut, matcher);
+    });
+    test('Deve retornar o valor correto para status', () {
+      final model = CreateAndUpdateServiceProviderModel.fromMap(
+          serviceProviderCreateMock);
+      final sut = model.status;
+      const matcher = 'ATIVO';
+      expect(sut, matcher);
+    });
+    test('Deve retornar o valor correto para userDescription', () {
+      final model = CreateAndUpdateServiceProviderModel.fromMap(
+          serviceProviderCreateMock);
+      final sut = model.userDescription;
+      const matcher = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+      expect(sut, matcher);
+    });
+    test('Deve retornar o valor correto para votes', () {
+      final model = CreateAndUpdateServiceProviderModel.fromMap(
+          serviceProviderCreateMock);
+      final sut = model.votes;
+      const matcher = 0;
+      expect(sut, matcher);
+    });
   });
 }

@@ -71,10 +71,10 @@ class CreateAndUpdateServiceProviderModel
       votes: map['votes']?.toInt(),
       status: map['status'],
       initialDisponibleTime: map['initialDisponibleTime'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['initialDisponibleTime'])
+          ? DateTime.parse(map['initialDisponibleTime'])
           : null,
       endDisponibleTime: map['endDisponibleTime'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['endDisponibleTime'])
+          ? DateTime.parse(map['endDisponibleTime'])
           : null,
       disponibleDays: map['disponibleDays'],
     );
