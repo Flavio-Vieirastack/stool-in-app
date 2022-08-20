@@ -26,7 +26,7 @@ class LoginDatasourceImpl implements LoginDatasource {
         path: EndpointConstants.login,
         data: authModel.toMap(),
       );
-
+      log('login: ${result.data.toString()}');
       return UserTokenModel.fromMap(result.data);
     } on ApiAuthError catch (e, s) {
       log(

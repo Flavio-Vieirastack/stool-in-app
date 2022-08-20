@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
@@ -179,6 +180,9 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
           key: KeysConstants.userToken,
           value: sucess.token,
         );
+        final token =
+            await _readLocalSecurityStorage.read(key: KeysConstants.userToken);
+        log(token ?? 'Token nulo');
         removeCache(
           key: KeysConstants.userMakePasswordResetSolicitation,
         );

@@ -20,10 +20,11 @@ class SignInDatasourceImpl implements SignInDatasource {
   @override
   Future<void> apiSignIn({required AuthModel authModel}) async {
     try {
-      await _restClientPost.post(
+      final result = await _restClientPost.post(
         path: EndpointConstants.signIn,
         data: authModel.toMap(),
       );
+      log(result.statucCode.toString());
     } on ApiAuthError catch (e, s) {
       log(
         'Erro ao postar dados na api, no datsource impl',

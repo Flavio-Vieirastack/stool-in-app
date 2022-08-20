@@ -22,17 +22,9 @@ class UserDataSignInDatasourceImpl implements UserDataSignInDatasource {
         path: EndpointConstants.postUserData,
         data: userDataModel.toMap(),
       );
+      log(result.data.toString());
       return UserDataModel.fromMap(
-        result.data ?? {},
-      );
-    } on UserDataError catch (e, s) {
-      log(
-        'Erro ao postar dados do usuário no datasource impl',
-        error: e,
-        stackTrace: s,
-      );
-      throw UserDataError(
-        message: 'Erro no servidor, tente mais tarde',
+        result.data,
       );
     } on RestClientException catch (e, s) {
       log(
@@ -45,6 +37,22 @@ class UserDataSignInDatasourceImpl implements UserDataSignInDatasource {
           message: 'Usuário já existente',
         );
       }
+      throw UserDataError(
+        message: 'Erro no servidor, tente mais tarde',
+      );
+    } on UserDataError catch (e, s) {
+      log(
+        'Erro ao postar dados do usuário no datasource impl',
+        error: e,
+        stackTrace: s,
+      );
+
+      throw UserDataError(
+        message: 'Erro ao fazer cadastro, tente mais tarde',
+      );
+    } catch (e, s) {
+      log('erro desconhecido ao enviar user data a api',
+          error: e, stackTrace: s);
       throw UserDataError(
         message: 'Erro ao fazer cadastro, tente mais tarde',
       );

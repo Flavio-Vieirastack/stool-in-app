@@ -56,6 +56,7 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         final userFirebasePushToken =
             await _fireBaseNotifications.getTokenFirebase();
         final userUrlImage = await getString(key: KeysConstants.userPhotoUrl);
+        await _loginInToApiAndFirebase();
         final result = await _authUseCase.sendUserData(
           userDataEntity: UserDataEntity(
             cep: userDataEntity.cep,
@@ -78,27 +79,30 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
             SignInUserDataError(message: error.message),
           ),
           (sucess) async {
-           await saveString(
+            await saveString(
                 key: KeysConstants.userName, value: sucess.userName ?? '');
-            saveDouble(
+            await saveDouble(
               key: KeysConstants.userLocationLatitude,
               value: sucess.userLocationLatitude ?? 0.0,
             );
-            saveDouble(
+            await saveDouble(
               key: KeysConstants.userLocationaLogintude,
               value: sucess.userLocationLongitude ?? 0.0,
             );
             await saveString(
                 key: KeysConstants.userPhotoUrl,
                 value: sucess.userPhotoUrl ?? '');
-            await _loginInToApiAndFirebase();
             final loginApiSucess =
                 await getBool(key: KeysConstants.userPassLoginToApi);
             final loginFirebaseSucess =
                 await getBool(key: KeysConstants.userPassLoginToFirebase);
-            if (loginApiSucess! && loginFirebaseSucess!) {
+            log('login firebase sucess: $loginFirebaseSucess');
+            log('login api sucess: $loginApiSucess');
+            if (loginApiSucess! || loginFirebaseSucess!) {
               final urlimage = await _getUserUrlImage();
-             await saveBool(key: KeysConstants.userPassByDataPage, value: true);
+              log('SignIn Sucess');
+              await saveBool(
+                  key: KeysConstants.userPassByDataPage, value: true);
               emit(SignInUserDataSucess(userUrlImage: urlimage));
             } else {
               emit(
@@ -128,8 +132,8 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
       ),
     );
     result.fold(
-      (error) {
-        saveBool(key: KeysConstants.userPassLoginToApi, value: false);
+      (error) async {
+        await saveBool(key: KeysConstants.userPassLoginToApi, value: false);
         emit(
           SignInUserDataError(message: error.message),
         );
@@ -139,7 +143,8 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
           key: KeysConstants.userToken,
           value: sucess.token,
         );
-        saveBool(key: KeysConstants.userPassLoginToApi, value: true);
+        log('user data token: ${sucess.token}');
+        await saveBool(key: KeysConstants.userPassLoginToApi, value: true);
         final urlimage = await _getUserUrlImage();
         await _loginInToFirebase(userUrlImage: urlimage);
         emit(SignInUserDataLoginApiSucess(userUrlImage: urlimage));
@@ -161,12 +166,13 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
       ),
     );
     result.fold(
-      (error) {
+      (error) async {
         emit(SignInUserDataError(message: error.message));
-        saveBool(key: KeysConstants.userPassLoginToFirebase, value: false);
+        await saveBool(
+            key: KeysConstants.userPassLoginToFirebase, value: false);
       },
-      (sucess) {
-        saveBool(key: KeysConstants.userPassLoginToFirebase, value: true);
+      (sucess) async {
+        await saveBool(key: KeysConstants.userPassLoginToFirebase, value: true);
         emit(
           SignInUserDataLoginFirebaseSucess(userUrlImage: userUrlImage),
         );
