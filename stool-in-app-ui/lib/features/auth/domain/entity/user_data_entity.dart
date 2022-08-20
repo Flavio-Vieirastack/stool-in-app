@@ -12,7 +12,7 @@ class UserDataEntity {
   final String? cep;
   final String? referencePoint;
   final String? userState;
-  final String? serviceProviderId;
+  final int? serviceProviderId;
   UserDataEntity(
       {this.userName,
       this.serviceProviderId,

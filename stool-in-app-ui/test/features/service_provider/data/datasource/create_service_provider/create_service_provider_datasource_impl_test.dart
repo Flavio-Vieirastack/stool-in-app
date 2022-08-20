@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
+import 'package:stool_in/features/auth/data/model/user_data_model.dart';
 import 'package:stool_in/features/service_provider/data/datasource/create_service_provider/create_service_provider_datasource.dart';
 import 'package:stool_in/features/service_provider/data/datasource/create_service_provider/create_service_provider_datasource_impl.dart';
 import 'package:stool_in/features/service_provider/data/model/create_service_provider/create_and_update_service_provider_model.dart';
@@ -19,12 +20,16 @@ void main() {
   late CreateServiceProviderDatasource createServiceProviderDatasource;
   late CreateAndUpdateServiceProviderModel data;
   late ServiceProviderReturnEntity serviceProviderReturnEntity;
+  late UserDataModel userDataModel;
   setUp(() {
     restclientPostImplMock = RestclientPostImplMock();
     restClientPatchMock = RestClientPatchMock();
     createServiceProviderDatasource = CreateServiceProviderDatasourceImpl(
       restClientPost: restclientPostImplMock,
       restClientPatch: restClientPatchMock,
+    );
+    userDataModel = UserDataModel(
+      serviceProviderId: 1,
     );
     data = CreateAndUpdateServiceProviderModel(
       userDescription:
@@ -63,6 +68,52 @@ void main() {
       final sut = await createServiceProviderDatasource.createServiceProvider(
           createAndUpdateServiceProviderModel: data);
       expect(sut, serviceProviderReturnEntity);
+    });
+    test('deve chamar o restclient post no createServiceProviderDatasource',
+        () async {
+      when(
+        () => restclientPostImplMock.post(
+            path: any(named: 'path'), data: data.toMap()),
+      ).thenAnswer(
+        (_) async => RestClientResponse(
+          data: serviceProviderCreateMock,
+          statucCode: 200,
+        ),
+      );
+      final sut = await createServiceProviderDatasource.createServiceProvider(
+          createAndUpdateServiceProviderModel: data);
+      expect(sut, serviceProviderReturnEntity);
+      verify(
+        () => restclientPostImplMock.post(
+            path: any(named: 'path'), data: data.toMap()),
+      ).called(1);
+    });
+  });
+
+  group('sendServiceProviderIdToUserData', () {
+    test('Deve retornar void ao dar patch no id do service provider', () async {
+      when(
+        () => restClientPatchMock.patch(
+            path: any(named: 'path'), data: userDataModel.toMap()),
+      ).thenAnswer(
+          (_) async => RestClientResponse(data: null, statucCode: 200));
+      final sut = createServiceProviderDatasource
+          .sendServiceProviderIdToUserData(userDataModel: userDataModel);
+      expect(sut, isA<Future<void>>());
+    });
+    test('Deve chamar o patch para atualizar o id do service provider', () async {
+      when(
+        () => restClientPatchMock.patch(
+            path: any(named: 'path'), data: userDataModel.toMap()),
+      ).thenAnswer(
+          (_) async => RestClientResponse(data: null, statucCode: 200));
+      final sut = createServiceProviderDatasource
+          .sendServiceProviderIdToUserData(userDataModel: userDataModel);
+      expect(sut, isA<Future<void>>());
+      verify(
+        () => restClientPatchMock.patch(
+            path: any(named: 'path'), data: userDataModel.toMap()),
+      ).called(1);
     });
   });
 }

@@ -72,6 +72,7 @@ class UserDataModel extends UserDataEntity {
   factory UserDataModel.fromMap(Map<String, dynamic> map) {
     return UserDataModel(
       userName: map['userName'],
+      serviceProviderId: map['userLoginId'],
       userPhotoUrl: map['userPhotoUrl'],
       userFirebasePushToken: map['userFirebasePushToken'],
       userFirebaseUuid: map['userFirebaseUuid'],
