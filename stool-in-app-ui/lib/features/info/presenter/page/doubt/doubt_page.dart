@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_in/core/widgets/app_progress_indicator/app_progress_indicator.dart';
+import 'package:stool_in/features/info/presenter/page/cubits/doubt/doubts_cubit.dart';
 
 import '../../../../../core/widgets/info_expansion_card/info_expansion_card.dart';
 
@@ -8,27 +11,46 @@ class DoubtPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fixedLengthList =
-        List<int>.generate(10, (int index) => index * index, growable: false);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dúvidas'),
       ),
       body: Padding(
         padding: EdgeInsets.all(8.0.dp),
-        child: ListView(
-          children: fixedLengthList
-              .map(
-                (e) => Padding(
-                  padding: EdgeInsets.only(top: 0.5.h, bottom: 0.5.h),
-                  child: const InfoExpansionCard(
-                    content:
-                        'but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-                    title: 'Duvida X',
-                  ),
+        child: BlocBuilder<DoubtsCubit, DoubtsState>(
+          bloc: context.read<DoubtsCubit>()..getDoubts(),
+          builder: (context, state) {
+            if (state is DoubtsLoading) {
+              return const Center(
+                child: AppProgressIndicator(),
+              );
+            } else if (state is DoubtsErro) {
+              return const Center(
+                child: Text('Ocorreu um erro tente mais tarde'),
+              );
+            } else if (state is DoubtsSucess) {
+              return Padding(
+                padding: EdgeInsets.all(2.0.dp),
+                child: ListView(
+                  children: state.doubts
+                      .map(
+                        (e) => Padding(
+                          padding: EdgeInsets.only(top: 0.5.h, bottom: 0.5.h),
+                          child: InfoExpansionCard(
+                            content: e.body,
+                            title: e.title,
+                          ),
+                        ),
+                      )
+                      .toList(),
                 ),
-              )
-              .toList(),
+              );
+            } else {
+              return const Center(
+                child: AppProgressIndicator(),
+              );
+            }
+          },
         ),
       ),
     );

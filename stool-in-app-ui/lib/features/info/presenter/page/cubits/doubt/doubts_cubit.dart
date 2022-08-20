@@ -7,21 +7,17 @@ part 'doubts_state.dart';
 
 class DoubtsCubit extends Cubit<DoubtsState> {
   final InfoUsecase _infoUsecase;
-  DoubtsCubit({required InfoUsecase infoUsecase})
-      : _infoUsecase = infoUsecase,
-        super(DoubtsStates());
+  DoubtsCubit({
+    required InfoUsecase infoUsecase,
+  })  : _infoUsecase = infoUsecase,
+        super(DoubtsInitial());
   Future<void> getDoubts() async {
-    emit(DoubtsStates().copyWith(isLoading: true));
+    emit(DoubtsLoading());
     final result = await _infoUsecase.getDoubts();
     result.fold(
-      (error) => emit(
-        DoubtsStates().copyWith(
-          hasError: true,
-          errorMessage: error.message,
-        ),
-      ),
+      (error) => emit(DoubtsErro(errorMessage: error.message)),
       (sucess) => emit(
-        DoubtsStates().copyWith(doubts: sucess),
+        DoubtsSucess(doubts: sucess),
       ),
     );
   }
