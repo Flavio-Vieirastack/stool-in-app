@@ -49,7 +49,7 @@ class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
 
     result.addAll({'id': id});
     result.addAll({'userLoginId': userLoginId});
-    result.addAll({'createdAt': createdAt.millisecondsSinceEpoch});
+    result.addAll({'createdAt': createdAt});
     if (userDescription != null) {
       result.addAll({'userDescription': userDescription});
     }
@@ -61,12 +61,12 @@ class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
     }
     if (initialDisponibleTime != null) {
       result.addAll({
-        'initialDisponibleTime': initialDisponibleTime!.millisecondsSinceEpoch
+        'initialDisponibleTime': initialDisponibleTime
       });
     }
     if (endDisponibleTime != null) {
       result.addAll(
-          {'endDisponibleTime': endDisponibleTime!.millisecondsSinceEpoch});
+          {'endDisponibleTime': endDisponibleTime});
     }
     if (disponibleDays != null) {
       result.addAll({'disponibleDays': disponibleDays});
@@ -79,15 +79,15 @@ class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
     return ServiceProviderReturnModel(
       id: map['id']?.toInt() ?? 0,
       userLoginId: map['userLoginId']?.toInt() ?? 0,
-      createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt']),
+      createdAt: DateTime.parse(map['createdAt']),
       userDescription: map['userDescription'],
       votes: map['votes']?.toInt(),
       status: map['status'],
       initialDisponibleTime: map['initialDisponibleTime'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['initialDisponibleTime'])
+          ? DateTime.parse(map['initialDisponibleTime'])
           : null,
       endDisponibleTime: map['endDisponibleTime'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['endDisponibleTime'])
+          ? DateTime.parse(map['endDisponibleTime'])
           : null,
       disponibleDays: map['disponibleDays'],
     );
