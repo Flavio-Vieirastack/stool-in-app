@@ -18,11 +18,11 @@ class DoubtsCubit extends Cubit<DoubtsState> {
   Future<void> getDoubts() async {
     emit(DoubtsLoading());
     final result = await _infoUsecase.getDoubts();
-    await _doubtsCachedDatasource.getCachedData();
+    final cachedDoubts = await _doubtsCachedDatasource.getCachedData();
     result.fold(
       (error) => emit(DoubtsErro(errorMessage: error.message)),
       (sucess) => emit(
-        DoubtsSucess(doubts: sucess),
+        DoubtsSucess(doubts: cachedDoubts),
       ),
     );
   }
