@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/helpers/security_acess_helper/security_acess_helper.dart';
+import 'package:stool_in/core/helpers/user_actions_helper/cache/cache_user_actions_helper.dart';
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
 import 'package:stool_in/features/splash/presenter/cubit/splash_cubit.dart';
@@ -18,6 +19,8 @@ class SplashModule extends AppModule {
             ),
             Provider<SplashCubit>(
               create: (context) => SplashCubit(
+                cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
                 firebaseAuth: Inject<FirebaseAuth>(context).get(),
                 securityAcessHelper: Inject<SecurityAcessHelper>(context).get(),
               ),
