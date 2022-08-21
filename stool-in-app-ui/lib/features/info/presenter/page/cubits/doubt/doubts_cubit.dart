@@ -22,7 +22,7 @@ class DoubtsCubit extends Cubit<DoubtsState> {
     result.fold(
       (error) => emit(DoubtsErro(errorMessage: error.message)),
       (sucess) => emit(
-        DoubtsSucess(doubts: cachedDoubts),
+        DoubtsSucess(doubts: sucess),
       ),
     );
   }

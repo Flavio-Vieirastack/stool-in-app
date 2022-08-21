@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/constants/keys_constants.dart';
-import 'package:stool_in/core/helpers/user_actions_helper/cache/cache_user_actions_helper.dart';
 import '../../../../core/helpers/security_acess_helper/security_acess_helper.dart';
 import '../../../../core/helpers/shared_preferences/shared_preferences_helper.dart';
 
@@ -11,14 +10,11 @@ part 'splash_state.dart';
 class SplashCubit extends Cubit<SplashState> with SharedPreferencesHelper {
   final SecurityAcessHelper _securityAcessHelper;
   final FirebaseAuth _firebaseAuth;
-  final CacheUserActionsHelper _cacheUserActionsHelper;
   SplashCubit({
-    required CacheUserActionsHelper cacheUserActionsHelper,
     required SecurityAcessHelper securityAcessHelper,
     required FirebaseAuth firebaseAuth,
   })  : _securityAcessHelper = securityAcessHelper,
         _firebaseAuth = firebaseAuth,
-        _cacheUserActionsHelper = cacheUserActionsHelper,
         super(SplashInitial());
 
   Future<void> goToOnBoardingPage() async {
@@ -31,7 +27,6 @@ class SplashCubit extends Cubit<SplashState> with SharedPreferencesHelper {
     if (onboardingIsFinished == null) {
       emit(SplashGoToOnBoardingPage());
     } else if (userPassToData) {
-      _cacheUserActionsHelper.copyWith(userPassBySplashPage: true);
       emit(SplashGoToHomePage());
     } else if (userBeenInDataPageAndNotComplete) {
       emit(SplashGoToUserDataPage());
@@ -44,7 +39,8 @@ class SplashCubit extends Cubit<SplashState> with SharedPreferencesHelper {
     // TODO melhorar esse tratamento
     final userPassToDataPage =
         await getBool(key: KeysConstants.userPassByDataPage);
-    if (userPassToDataPage != null && userPassToDataPage) {
+    if (userPassToDataPage != null &&
+        userPassToDataPage) {
       return true;
     }
     return false;

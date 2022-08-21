@@ -1,54 +1,22 @@
-import 'dart:developer';
+import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 
-class CacheUserActionsHelper {
-  final bool userPassBySplashPage;
-  final bool userGetHomeData;
-  final bool userGetDoubtsData;
-  final bool userGetRulesData;
-  CacheUserActionsHelper({
-    this.userPassBySplashPage = false,
-    this.userGetHomeData = false,
-    this.userGetDoubtsData = false,
-    this.userGetRulesData = false,
-  });
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is CacheUserActionsHelper &&
-        other.userPassBySplashPage == userPassBySplashPage &&
-        other.userGetHomeData == userGetHomeData &&
-        other.userGetDoubtsData == userGetDoubtsData &&
-        other.userGetRulesData == userGetRulesData;
+class CacheUserActionsHelper with SharedPreferencesHelper {
+  final String userPassBySplashKey = 'user-pass-by-splash';
+  final String userGetDoubtsDataKey = 'user-get-doubts-data';
+  Future<void> setUserPassBySplash() async {
+    await saveBool(key: userPassBySplashKey, value: true);
+  }
+  Future<void> setUserGetDoubtsData() async {
+    await saveBool(key: userGetDoubtsDataKey, value: true);
+  }
+  Future<void> getUserGetDoubtsData() async {
+    await getBool(key: userGetDoubtsDataKey,);
   }
 
-  @override
-  int get hashCode {
-    return userPassBySplashPage.hashCode ^
-        userGetHomeData.hashCode ^
-        userGetDoubtsData.hashCode ^
-        userGetRulesData.hashCode;
-  }
-
-  @override
-  String toString() {
-    return 'CacheUserActionsHelper(userPassBySplashPage: $userPassBySplashPage, userGetHomeData: $userGetHomeData, userGetDoubtsData: $userGetDoubtsData, userGetRulesData: $userGetRulesData)';
-  }
-
-  CacheUserActionsHelper copyWith({
-    bool? userPassBySplashPage,
-    bool? userGetHomeData,
-    bool? userGetDoubtsData,
-    bool? userGetRulesData,
-  }) {
-    final result = CacheUserActionsHelper(
-      userPassBySplashPage: userPassBySplashPage ?? this.userPassBySplashPage,
-      userGetHomeData: userGetHomeData ?? this.userGetHomeData,
-      userGetDoubtsData: userGetDoubtsData ?? this.userGetDoubtsData,
-      userGetRulesData: userGetRulesData ?? this.userGetRulesData,
+  Future<bool> getUserPassBySplash() async {
+    final result = await getBool(
+      key: userPassBySplashKey,
     );
-    log(result.toString());
-    return result;
+    return result ?? false;
   }
 }
