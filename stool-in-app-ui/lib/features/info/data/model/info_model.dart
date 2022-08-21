@@ -44,4 +44,6 @@ class InfoModel extends InfoEntity {
 
   factory InfoModel.fromJson(String source) =>
       InfoModel.fromMap(json.decode(source));
+  @override
+  String toString() => 'InfoEntity(id: $id, title: $title, body: $body)';
 }

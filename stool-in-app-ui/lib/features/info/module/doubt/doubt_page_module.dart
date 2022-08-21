@@ -3,6 +3,7 @@ import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
+import 'package:stool_in/features/info/data/datasource/doubts/cache/doubts_cached_datasource.dart';
 import 'package:stool_in/features/info/data/datasource/doubts/doubts_datasource.dart';
 import 'package:stool_in/features/info/data/datasource/doubts/doubts_datasource_impl.dart';
 import 'package:stool_in/features/info/data/datasource/rules/rules_datasource.dart';
@@ -46,8 +47,13 @@ class DoubtPageModule extends AppModule {
                 doubtRepository: Inject<DoubtRepository>(context).get(),
               ),
             ),
+            Provider<DoubtsCachedDatasource>(
+              create: (context) => DoubtsCachedDatasource(),
+            ),
             Provider<DoubtsCubit>(
               create: (context) => DoubtsCubit(
+                doubtsCachedDatasource:
+                    Inject<DoubtsCachedDatasource>(context).get(),
                 infoUsecase: Inject<InfoUsecase>(context).get(),
               ),
             ),

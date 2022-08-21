@@ -22,4 +22,7 @@ class InfoEntity {
 
   @override
   int get hashCode => id.hashCode ^ title.hashCode ^ body.hashCode;
+
+  @override
+  String toString() => 'InfoEntity(id: $id, title: $title, body: $body)';
 }
