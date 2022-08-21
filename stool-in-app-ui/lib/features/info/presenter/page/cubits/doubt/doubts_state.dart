@@ -4,7 +4,9 @@ abstract class DoubtsState extends Equatable {
   @override
   List<Object?> get props => [];
 }
-class DoubtsInitial extends DoubtsState{}
+
+class DoubtsInitial extends DoubtsState {}
+
 class DoubtsLoading extends DoubtsState {}
 
 class DoubtsErro extends DoubtsState {
@@ -18,5 +20,5 @@ class DoubtsSucess extends DoubtsState {
   final List<InfoEntity> doubts;
   DoubtsSucess({required this.doubts});
   @override
-  List<Object?> get props => [doubts];
+  List<Object?> get props => [doubts,];
 }

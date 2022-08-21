@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:stool_in/core/cache/cache_datasource_helper.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/helpers/user_actions_helper/cache/cache_user_actions_helper.dart';
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
@@ -56,6 +57,8 @@ class DoubtPageModule extends AppModule {
             ),
             Provider<DoubtsCubit>(
               create: (context) => DoubtsCubit(
+                cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
                 doubtsCachedDatasource:
                     Inject<DoubtsCachedDatasource>(context).get(),
                 infoUsecase: Inject<InfoUsecase>(context).get(),

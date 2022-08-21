@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
 
 class CacheUserActionsHelper with SharedPreferencesHelper {
@@ -6,11 +8,16 @@ class CacheUserActionsHelper with SharedPreferencesHelper {
   Future<void> setUserPassBySplash() async {
     await saveBool(key: userPassBySplashKey, value: true);
   }
-  Future<void> setUserGetDoubtsData() async {
-    await saveBool(key: userGetDoubtsDataKey, value: true);
+
+  Future<void> setUserGetDoubtsData({required bool value}) async {
+    await saveBool(key: userGetDoubtsDataKey, value: value);
   }
-  Future<void> getUserGetDoubtsData() async {
-    await getBool(key: userGetDoubtsDataKey,);
+
+  Future<bool> getUserGetDoubtsData() async {
+    final result = await getBool(
+      key: userGetDoubtsDataKey,
+    );
+    return result ?? false;
   }
 
   Future<bool> getUserPassBySplash() async {
