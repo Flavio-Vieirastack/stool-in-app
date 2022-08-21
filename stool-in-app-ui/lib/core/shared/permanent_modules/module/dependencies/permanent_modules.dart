@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:stool_in/core/cache/module/cached_datasource_helper_module.dart';
 import 'package:stool_in/core/core_modules/firebase_storage/firebase_storage_module.dart';
 import 'package:stool_in/core/firebase/push_notifications/module/firebase_notifications_module.dart';
 import 'package:stool_in/core/helpers/distance_helper/module/distance_helper_module.dart';
@@ -25,6 +26,7 @@ class PermanentModules {
       ...FirebaseStorageModule().inject(),
       ...UserStorageRefModule().inject(),
       ...SendEmailVerificationModule().inject(),
+      ...CachedDatasourceHelperModule().inject(),
     ];
   }
 }
