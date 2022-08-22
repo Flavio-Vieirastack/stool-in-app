@@ -12,10 +12,10 @@ import 'package:stool_in/features/home/domain/error/service_provider/service_pro
 import '../../../domain/entity/service_provider/service_provider_entity.dart';
 
 
-class ServiceProviderDatasourceImpl implements ServiceProviderDatasource {
+class GetServiceProviderDatasourceImpl implements GetServiceProviderDatasource {
   final RestClientGet _restClientGet;
   final DistanceHelperCalculate _distanceHelperCalculate;
-  ServiceProviderDatasourceImpl({
+  GetServiceProviderDatasourceImpl({
     required RestClientGet restClientGet,
     required DistanceHelperCalculate distanceHelperCalculate,
   })  : _restClientGet = restClientGet,

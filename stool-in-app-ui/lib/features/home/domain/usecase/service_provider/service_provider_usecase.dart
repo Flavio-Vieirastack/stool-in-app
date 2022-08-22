@@ -4,7 +4,7 @@ import 'package:stool_in/features/home/domain/entity/service_provider/service_pr
 import 'package:stool_in/features/home/domain/error/service_provider/service_provider_error.dart';
 
 
-abstract class ServiceProviderUsecase {
+abstract class GetServiceProviderUsecase {
 Future<Either<ServiceProviderError, List<ServiceProviderEntity>>> call({
     required GetServiceProvidersParams providersParams,
   });

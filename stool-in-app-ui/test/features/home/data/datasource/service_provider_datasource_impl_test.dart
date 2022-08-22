@@ -11,7 +11,7 @@ import '../../../../mock/service_provider_payload.dart';
 import '../../../../mock/service_provider_payload_diferent_location_data.dart';
 
 class ServiceProviderDataSourceMock extends Mock
-    implements ServiceProviderDatasource {}
+    implements GetServiceProviderDatasource {}
 
 class ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {}
 

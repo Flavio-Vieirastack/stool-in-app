@@ -8,10 +8,10 @@ import 'package:dartz/dartz.dart';
 import 'package:stool_in/features/home/domain/repository/service_provider/service_provider_repository.dart';
 
 
-class ServiceProviderRepositoryImpl implements ServiceProviderRepository {
-  final ServiceProviderDatasource _serviceProviderDatasource;
-  ServiceProviderRepositoryImpl({
-    required ServiceProviderDatasource serviceProviderDatasource,
+class GetServiceProviderRepositoryImpl implements GetServiceProviderRepository {
+  final GetServiceProviderDatasource _serviceProviderDatasource;
+  GetServiceProviderRepositoryImpl({
+    required GetServiceProviderDatasource serviceProviderDatasource,
   }) : _serviceProviderDatasource = serviceProviderDatasource;
   @override
   Future<Either<ServiceProviderError, List<ServiceProviderEntity>>> call({

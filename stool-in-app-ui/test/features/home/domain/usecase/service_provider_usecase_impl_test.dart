@@ -13,7 +13,7 @@ import 'package:stool_in/features/home/domain/usecase/service_provider/service_p
 import 'package:stool_in/features/home/domain/usecase/service_provider/service_provider_usecase_impl.dart';
 
 class ServiceProviderUseCaseMock extends Mock
-    implements ServiceProviderUsecase {}
+    implements GetServiceProviderUsecase {}
 
 class ExecutionServicesEntityMock extends Mock
     implements ExecutionServicesEntity {}
@@ -25,7 +25,7 @@ class ComentsEntityMock extends Mock implements ComentsEntity {}
 
 class UserDataEntityMock extends Mock implements UserDataEntity {}
 
-class ServiceRepositoryMock extends Mock implements ServiceProviderRepository {}
+class ServiceRepositoryMock extends Mock implements GetServiceProviderRepository {}
 
 void main() {
   late ServiceProviderUseCaseMock usecaseMock;
@@ -100,7 +100,7 @@ void main() {
   test(
     'Deve chamar o repository correto',
     () async {
-      final useCaseImpl = ServiceProviderUsecaseImpl(
+      final useCaseImpl = GetServiceProviderUsecaseImpl(
           serviceProviderRepository: serviceRepositoryMock);
       when(
         () => serviceRepositoryMock.call(providersParams: params),

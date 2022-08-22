@@ -9,18 +9,18 @@ import 'package:stool_in/features/home/domain/error/service_provider/service_pro
 import 'package:stool_in/features/home/domain/repository/service_provider/service_provider_repository.dart';
 
 class ServiceProviderRepositoryMock extends Mock
-    implements ServiceProviderRepository {}
+    implements GetServiceProviderRepository {}
 
 class ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {}
 
 class ServiceProviderDataSourceMock extends Mock
-    implements ServiceProviderDatasource {}
+    implements GetServiceProviderDatasource {}
 
 void main() {
   late ServiceProviderRepositoryMock serviceProviderrepositoryMock;
   late List<ServiceProviderEntityMock> serviceProviderEntityMock;
   late ServiceProviderDataSourceMock serviceProviderDatasourceMock;
-  late ServiceProviderRepositoryImpl serviceProviderRepositoryImpl;
+  late GetServiceProviderRepositoryImpl serviceProviderRepositoryImpl;
   late GetServiceProvidersParams params;
   setUp(
     () {
@@ -31,7 +31,7 @@ void main() {
       serviceProviderrepositoryMock = ServiceProviderRepositoryMock();
       serviceProviderEntityMock = [ServiceProviderEntityMock()];
       serviceProviderDatasourceMock = ServiceProviderDataSourceMock();
-      serviceProviderRepositoryImpl = ServiceProviderRepositoryImpl(
+      serviceProviderRepositoryImpl = GetServiceProviderRepositoryImpl(
           serviceProviderDatasource: serviceProviderDatasourceMock);
     },
   );

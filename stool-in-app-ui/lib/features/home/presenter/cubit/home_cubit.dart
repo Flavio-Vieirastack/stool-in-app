@@ -10,10 +10,10 @@ import '../../domain/entity/categories/categories_entity.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  final ServiceProviderUsecase _serviceProviderUsecase;
+  final GetServiceProviderUsecase _serviceProviderUsecase;
   final CategoriesUsecase _categoriesUsecase;
   HomeCubit({
-    required ServiceProviderUsecase serviceProviderUsecase,
+    required GetServiceProviderUsecase serviceProviderUsecase,
     required CategoriesUsecase categoriesUsecase,
   })  : _serviceProviderUsecase = serviceProviderUsecase,
         _categoriesUsecase = categoriesUsecase,

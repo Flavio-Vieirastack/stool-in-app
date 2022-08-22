@@ -23,23 +23,23 @@ class HomeModule extends AppModule {
   HomeModule()
       : super(
           dependencies: [
-            Provider<ServiceProviderDatasource>(
-              create: (context) => ServiceProviderDatasourceImpl(
+            Provider<GetServiceProviderDatasource>(
+              create: (context) => GetServiceProviderDatasourceImpl(
                 distanceHelperCalculate:
                     Inject<DistanceHelperCalculate>(context).get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),
-            Provider<ServiceProviderRepository>(
-              create: (context) => ServiceProviderRepositoryImpl(
+            Provider<GetServiceProviderRepository>(
+              create: (context) => GetServiceProviderRepositoryImpl(
                 serviceProviderDatasource:
-                    Inject<ServiceProviderDatasource>(context).get(),
+                    Inject<GetServiceProviderDatasource>(context).get(),
               ),
             ),
-            Provider<ServiceProviderUsecase>(
-              create: (context) => ServiceProviderUsecaseImpl(
+            Provider<GetServiceProviderUsecase>(
+              create: (context) => GetServiceProviderUsecaseImpl(
                 serviceProviderRepository:
-                    Inject<ServiceProviderRepository>(context).get(),
+                    Inject<GetServiceProviderRepository>(context).get(),
               ),
             ),
             Provider<CategoriesDatasource>(
@@ -63,7 +63,7 @@ class HomeModule extends AppModule {
               create: (context) => HomeCubit(
                 categoriesUsecase: Inject<CategoriesUsecase>(context).get(),
                 serviceProviderUsecase:
-                    Inject<ServiceProviderUsecase>(context).get(),
+                    Inject<GetServiceProviderUsecase>(context).get(),
               ),
             )
           ],

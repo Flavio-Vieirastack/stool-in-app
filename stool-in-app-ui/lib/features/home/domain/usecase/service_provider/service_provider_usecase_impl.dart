@@ -6,10 +6,10 @@ import 'package:stool_in/features/home/domain/repository/service_provider/servic
 import 'package:stool_in/features/home/domain/usecase/service_provider/service_provider_usecase.dart';
 
 
-class ServiceProviderUsecaseImpl implements ServiceProviderUsecase {
-  final ServiceProviderRepository _serviceProviderRepository;
-  ServiceProviderUsecaseImpl({
-    required ServiceProviderRepository serviceProviderRepository,
+class GetServiceProviderUsecaseImpl implements GetServiceProviderUsecase {
+  final GetServiceProviderRepository _serviceProviderRepository;
+  GetServiceProviderUsecaseImpl({
+    required GetServiceProviderRepository serviceProviderRepository,
   }) : _serviceProviderRepository = serviceProviderRepository;
   @override
   Future<Either<ServiceProviderError, List<ServiceProviderEntity>>> call({
