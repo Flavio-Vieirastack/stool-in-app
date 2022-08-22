@@ -53,3 +53,4 @@ class DoubtsCubit extends Cubit<DoubtsState> {
     );
   }
 }
+
