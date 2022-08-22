@@ -1,7 +1,7 @@
 import 'package:provider/provider.dart';
-import 'package:stool_in/core/cache/cache_datasource_helper.dart';
+import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
+import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/helpers/user_actions_helper/cache/cache_user_actions_helper.dart';
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
@@ -52,7 +52,7 @@ class DoubtPageModule extends AppModule {
             Provider<DoubtsCachedDatasource>(
               create: (context) => DoubtsCachedDatasource(
                 cacheDatasourceHelper:
-                    Inject<CacheDatasourceHelper>(context).get(),
+                    Inject<DecodedListCacheHelper>(context).get(),
               ),
             ),
             Provider<DoubtsCubit>(

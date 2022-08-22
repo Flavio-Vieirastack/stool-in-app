@@ -1,8 +1,8 @@
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stool_in/core/helpers/user_actions_helper/cache/cache_user_actions_helper.dart';
-import 'package:stool_in/core/helpers/user_actions_helper/cache/cubit_emit_cache_data_helper.dart';
+import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
+import 'package:stool_in/core/cache/helpers/cubit_emit_cache_data_helper.dart';
 import 'package:stool_in/features/info/data/datasource/doubts/cache/doubts_cached_datasource.dart';
 import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:stool_in/features/info/domain/usecase/info_usecase.dart';
