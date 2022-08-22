@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
@@ -23,28 +22,34 @@ class DoubtsCubit extends Cubit<DoubtsState> {
         super(DoubtsInitial());
   Future<void> getDoubts() async {
     emit(DoubtsLoading());
-    final result = await _infoUsecase.getDoubts();
+
     final cachedDoubts = await _doubtsCachedDatasource.getCachedData();
-    result.fold((error) {
-      emit(
-        DoubtsErro(
-          errorMessage: error.message,
-        ),
-      );
-    }, (sucess) async {
-      final getUserGetDoubtsData =
-          await _cacheUserActionsHelper.getUserGetDoubtsData();
-      CubitEmitCacheDataHelper.returnCachedDataOrApiData(
-        falseCondition: getUserGetDoubtsData,
-        apiEmition: () => emit(
-          DoubtsSucess(doubts: sucess),
-        ),
-        cacheEmition: () => emit(
-          DoubtsSucess(doubts: cachedDoubts),
-        ),
-        setConditionToTrue: () async =>
-            _cacheUserActionsHelper.setUserGetDoubtsData(value: true),
-      );
-    });
+    final getUserGetDoubtsData =
+        await _cacheUserActionsHelper.getUserGetDoubtsData();
+    CubitEmitCacheDataHelper.returnCachedDataOrApiData(
+      falseCondition: getUserGetDoubtsData,
+      apiEmition: () async {
+        final result = await _infoUsecase.getDoubts();
+        result.fold(
+          (error) {
+            emit(
+              DoubtsErro(
+                errorMessage: error.message,
+              ),
+            );
+          },
+          (sucess) async {
+            emit(
+              DoubtsSucess(doubts: sucess),
+            );
+          },
+        );
+      },
+      cacheEmition: () => emit(
+        DoubtsSucess(doubts: cachedDoubts),
+      ),
+      setConditionToTrue: () async =>
+          _cacheUserActionsHelper.setUserGetDoubtsData(value: true),
+    );
   }
 }

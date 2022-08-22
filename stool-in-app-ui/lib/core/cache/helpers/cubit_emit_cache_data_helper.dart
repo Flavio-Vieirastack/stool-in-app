@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 class CubitEmitCacheDataHelper {
   static returnCachedDataOrApiData({
     required bool falseCondition,
-    required VoidCallback apiEmition,
+    required AsyncCallback apiEmition,
     required VoidCallback cacheEmition,
     required AsyncCallback setConditionToTrue,
   }) {
