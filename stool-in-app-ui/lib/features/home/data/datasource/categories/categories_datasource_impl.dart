@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:stool_in/core/cache/keys/cache_datasource_keys.dart';
+import 'package:stool_in/core/cache/save_json_in_cache_datasource.dart';
 import 'package:stool_in/core/constants/endpoint_constants.dart';
 import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
@@ -8,7 +10,8 @@ import 'package:stool_in/features/home/data/model/categories/categories_model.da
 import 'package:stool_in/features/home/domain/entity/categories/categories_entity.dart';
 import 'package:stool_in/features/home/domain/error/categories/categories_error.dart';
 
-class CategoriesDatasourceImpl implements CategoriesDatasource {
+class CategoriesDatasourceImpl extends SaveJsonInCacheDatasource
+    implements CategoriesDatasource {
   final RestClientGet _restClientGet;
   CategoriesDatasourceImpl({
     required RestClientGet restClientGet,
@@ -18,6 +21,10 @@ class CategoriesDatasourceImpl implements CategoriesDatasource {
     try {
       final result =
           await _restClientGet.get(path: EndpointConstants.getCategories);
+     await saveJsonInCache(
+        data: CacheDatasourceKeys.categoriesCacheKey,
+        key: result.data,
+      );
       final data = result.data
           .map<CategoriesModel>(
             (model) => CategoriesModel.fromMap(model),

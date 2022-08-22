@@ -7,5 +7,6 @@ class SplashExecuteCacheActionsHelper extends CacheUserActionsHelper {
     log('Splash actions executed', name: 'INFO');
     await setUserGetDoubtsData(value: false);
     await setUserGetRulesData(value: false);
+    await setUserGetCategoriesData(value: false);
   }
 }
