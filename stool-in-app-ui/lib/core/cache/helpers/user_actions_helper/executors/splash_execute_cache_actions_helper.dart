@@ -6,5 +6,6 @@ class SplashExecuteCacheActionsHelper extends CacheUserActionsHelper {
   Future<void> execute() async {
     log('Splash actions executed', name: 'INFO');
     await setUserGetDoubtsData(value: false);
+    await setUserGetRulesData(value: false);
   }
 }

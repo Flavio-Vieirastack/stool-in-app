@@ -1,6 +1,9 @@
 import 'package:provider/provider.dart';
+import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
+import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
 import 'package:stool_in/core/constants/routes_constants.dart';
 import 'package:stool_in/core/module/main_module/app_module.dart';
+import 'package:stool_in/features/info/data/datasource/rules/cache/rules_cached_datasource.dart';
 import 'package:stool_in/features/info/presenter/page/cubits/rules/rules_cubit.dart';
 import 'package:stool_in/features/info/presenter/page/rules/rules_page.dart';
 
@@ -47,8 +50,18 @@ class RulesPageModules extends AppModule {
                 doubtRepository: Inject<DoubtRepository>(context).get(),
               ),
             ),
+            Provider<RulesCachedDatasource>(
+              create: (context) => RulesCachedDatasource(
+                decodedListCacheHelper:
+                    Inject<DecodedListCacheHelper>(context).get(),
+              ),
+            ),
             Provider(
               create: (context) => RulesCubit(
+                cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
+                rulesCachedDatasource:
+                    Inject<RulesCachedDatasource>(context).get(),
                 infoUsecase: Inject<InfoUsecase>(context).get(),
               ),
             )
