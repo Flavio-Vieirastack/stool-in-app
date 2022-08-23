@@ -65,7 +65,7 @@ void main() {
       (_) async => categories,
     );
     when(
-      () => saveJsonCacheMock.saveJsonInCache(data: 'data', key: 'key'),
+      () => saveJsonCacheMock.saveJsonInCache(data: 'data2', key: 'key2'),
     ).thenAnswer((_) async => categories);
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
