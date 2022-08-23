@@ -31,6 +31,10 @@ class RulesPageModules extends AppModule {
             ),
             Provider<DoubtsDatasource>(
               create: (context) => DoubtsDatasourceImpl(
+               cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
+                decodedListCacheHelper:
+                    Inject<DecodedListCacheHelper>(context).get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),
