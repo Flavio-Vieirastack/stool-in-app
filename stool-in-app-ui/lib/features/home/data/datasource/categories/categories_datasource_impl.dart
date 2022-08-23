@@ -28,7 +28,7 @@ class CategoriesDatasourceImpl extends SaveJsonInCacheDatasource
           .toList();
       await saveJsonInCache(
         data: CacheDatasourceKeys.categoriesCacheKey,
-        key: result.data,
+        key: result.data.toString(),
       );
       return finalDatadata ?? <CategoriesEntity>[];
     } on RestClientException catch (e, s) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stool_in/core/cache/keys/cache_datasource_keys.dart';
 import 'package:stool_in/core/cache/save_json_in_cache_datasource.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
@@ -14,7 +15,9 @@ import '../../../../../mock/categories_mock.dart';
 import '../../../../info/data/datasource/doubts/doubts_datasource_impl_test.dart';
 
 class RestClientGetMock extends Mock implements RestClientGet {}
+
 class SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
+
 void main() {
   late RestclientGetMock restclientGetMock;
   late CategoriesDatasource categoriesDatasource;
@@ -39,7 +42,8 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
     when(
-      () => saveJsonCacheMock.saveJsonInCache(data: 'data', key: 'key'),
+      () => saveJsonCacheMock.saveJsonInCache(
+          data: categories, key: CacheDatasourceKeys.categoriesCacheKey),
     ).thenAnswer((_) async => Future.value());
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
@@ -51,6 +55,12 @@ void main() {
     expect(sut, categoriesEntity);
   });
   test('Deve chamar o rest client get corretamente para categorias', () async {
+    WidgetsFlutterBinding.ensureInitialized();
+    SharedPreferences.setMockInitialValues({});
+    when(
+      () => saveJsonCacheMock.saveJsonInCache(
+          data: categories, key: CacheDatasourceKeys.categoriesCacheKey),
+    ).thenAnswer((_) async => Future.value());
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
     ).thenAnswer((_) async => RestClientResponse(
@@ -64,11 +74,17 @@ void main() {
     ).called(1);
   });
   test('Deve retornar um erro no datasource impl', () async {
+    WidgetsFlutterBinding.ensureInitialized();
+    SharedPreferences.setMockInitialValues({});
+    when(
+      () => saveJsonCacheMock.saveJsonInCache(
+          data: categories, key: CacheDatasourceKeys.categoriesCacheKey),
+    ).thenAnswer((_) async => Future.value());
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
-    ).thenThrow(CategoriesError(message: 'Erro ao buscar categorias, tente mais tarde'));
+    ).thenThrow(CategoriesError(
+        message: 'Erro ao buscar categorias, tente mais tarde'));
     final sut = categoriesDatasource.call;
     expect(() async => sut(), throwsException);
-
   });
 }
