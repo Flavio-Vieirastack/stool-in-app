@@ -21,16 +21,16 @@ class CategoriesDatasourceImpl extends SaveJsonInCacheDatasource
     try {
       final result =
           await _restClientGet.get(path: EndpointConstants.getCategories);
-     await saveJsonInCache(
-        data: CacheDatasourceKeys.categoriesCacheKey,
-        key: result.data,
-      );
-      final data = result.data
+      final finalDatadata = result.data
           .map<CategoriesModel>(
             (model) => CategoriesModel.fromMap(model),
           )
           .toList();
-      return data ?? <CategoriesEntity>[];
+      await saveJsonInCache(
+        data: CacheDatasourceKeys.categoriesCacheKey,
+        key: result.data,
+      );
+      return finalDatadata ?? <CategoriesEntity>[];
     } on RestClientException catch (e, s) {
       log('Erro ao pegar categorias no datasource impl',
           error: e, stackTrace: s);
