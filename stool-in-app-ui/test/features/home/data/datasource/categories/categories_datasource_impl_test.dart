@@ -77,6 +77,18 @@ void main() {
     expect(sut, categoriesEntity);
   });
   test('Deve chamar o rest client get corretamente para categorias', () async {
+     WidgetsFlutterBinding.ensureInitialized();
+    SharedPreferences.setMockInitialValues({});
+    when(
+      () => cachedUserDataHelperMock.getUserGetCategoriesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
+    ).thenAnswer(
+      (_) async => categories,
+    );
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
     ).thenAnswer((_) async => RestClientResponse(
@@ -90,6 +102,18 @@ void main() {
     ).called(1);
   });
   test('Deve retornar um erro no datasource impl', () async {
+     WidgetsFlutterBinding.ensureInitialized();
+    SharedPreferences.setMockInitialValues({});
+    when(
+      () => cachedUserDataHelperMock.getUserGetCategoriesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
+    ).thenAnswer(
+      (_) async => categories,
+    );
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
     ).thenThrow(CategoriesError(
