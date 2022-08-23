@@ -12,6 +12,8 @@ import 'package:stool_in/features/info/data/datasource/rules/rules_datasource_im
 import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:stool_in/features/info/domain/error/info_error.dart';
 
+import '../../../../../mock/rules_mock.dart';
+
 class RestclientGetMock extends Mock implements RestClientGet {}
 
 class SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
@@ -48,6 +50,16 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
     when(
+      () => cachedUserDataHelperMock.getUserGetRulesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
+    ).thenAnswer(
+      (_) async => rules,
+    );
+    when(
       () => saveJsonCacheMock.saveJsonInCache(data: 'data', key: 'key'),
     ).thenAnswer((_) async => Future.value());
     when(
@@ -62,6 +74,16 @@ void main() {
   test('Deve chamar o restclient get', () async {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
+    when(
+      () => cachedUserDataHelperMock.getUserGetRulesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
+    ).thenAnswer(
+      (_) async => rules,
+    );
     when(
       () => saveJsonCacheMock.saveJsonInCache(data: 'data', key: 'key'),
     ).thenAnswer((_) async => Future.value());
@@ -80,6 +102,16 @@ void main() {
   test('Deve retornar um erro', () async {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
+    when(
+      () => cachedUserDataHelperMock.getUserGetRulesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
+    ).thenAnswer(
+      (_) async => rules,
+    );
     when(
       () => saveJsonCacheMock.saveJsonInCache(data: 'data', key: 'key'),
     ).thenAnswer((_) async => Future.value());

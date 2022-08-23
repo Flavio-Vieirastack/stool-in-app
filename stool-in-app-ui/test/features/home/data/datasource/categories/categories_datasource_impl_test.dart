@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
 import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
@@ -44,6 +46,18 @@ void main() {
     ];
   });
   test('Deve retornar uma lista de categorias no datasource', () async {
+    WidgetsFlutterBinding.ensureInitialized();
+    SharedPreferences.setMockInitialValues({});
+    when(
+      () => cachedUserDataHelperMock.getUserGetCategoriesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'Key')),
+    ).thenAnswer(
+      (_) async => categories,
+    );
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
     ).thenAnswer((_) async => RestClientResponse(
