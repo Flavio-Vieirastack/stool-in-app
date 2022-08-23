@@ -47,6 +47,10 @@ class HomeModule extends AppModule {
             ),
             Provider<CategoriesDatasource>(
               create: (context) => CategoriesDatasourceImpl(
+                cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
+                decodedListCacheHelper:
+                    Inject<DecodedListCacheHelper>(context).get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),
@@ -70,10 +74,6 @@ class HomeModule extends AppModule {
             ),
             Provider<HomeCubit>(
               create: (context) => HomeCubit(
-                cacheUserActionsHelper:
-                    Inject<CacheUserActionsHelper>(context).get(),
-                categoriesCachedDatasource:
-                    Inject<CategoriesCachedDatasource>(context).get(),
                 categoriesUsecase: Inject<CategoriesUsecase>(context).get(),
                 serviceProviderUsecase:
                     Inject<GetServiceProviderUsecase>(context).get(),

@@ -10,27 +10,46 @@ import 'package:stool_in/features/home/data/model/categories/categories_model.da
 import 'package:stool_in/features/home/domain/entity/categories/categories_entity.dart';
 import 'package:stool_in/features/home/domain/error/categories/categories_error.dart';
 
+import '../../../../../core/cache/helpers/decoded_list_cache_helper.dart';
+import '../../../../../core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
+
 class CategoriesDatasourceImpl extends SaveJsonInCacheDatasource
     implements CategoriesDatasource {
   final RestClientGet _restClientGet;
+  final DecodedListCacheHelper _decodedListCacheHelper;
+  final CacheUserActionsHelper _cacheUserActionsHelper;
   CategoriesDatasourceImpl({
     required RestClientGet restClientGet,
-  }) : _restClientGet = restClientGet;
+    required CacheUserActionsHelper cacheUserActionsHelper,
+    required DecodedListCacheHelper decodedListCacheHelper,
+  })  : _restClientGet = restClientGet,
+        _cacheUserActionsHelper = cacheUserActionsHelper,
+        _decodedListCacheHelper = decodedListCacheHelper;
   @override
   Future<List<CategoriesEntity>> call() async {
     try {
       final result =
           await _restClientGet.get(path: EndpointConstants.getCategories);
-     await saveJsonInCache(
+      await saveJsonInCache(
         data: CacheDatasourceKeys.categoriesCacheKey,
         key: result.data,
       );
+      final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
+          key: CacheDatasourceKeys.categoriesCacheKey);
+      final entityCached =
+          decodedCacheList.map((e) => CategoriesModel.fromMap(e)).toList();
+      final unlockCachedData =
+          await _cacheUserActionsHelper.getUserGetCategoriesData();
       final data = result.data
           .map<CategoriesModel>(
             (model) => CategoriesModel.fromMap(model),
           )
           .toList();
-      return data ?? <CategoriesEntity>[];
+      if (unlockCachedData == false) {
+        return data ?? <CategoriesEntity>[];
+      } else {
+        return entityCached;
+      }
     } on RestClientException catch (e, s) {
       log('Erro ao pegar categorias no datasource impl',
           error: e, stackTrace: s);

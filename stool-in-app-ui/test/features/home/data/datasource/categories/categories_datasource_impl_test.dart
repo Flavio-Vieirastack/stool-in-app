@@ -1,5 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
+import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
 import 'package:stool_in/features/home/data/datasource/categories/categories_datasource.dart';
@@ -10,16 +12,27 @@ import 'package:stool_in/features/home/domain/error/categories/categories_error.
 import '../../../../../mock/categories_mock.dart';
 import '../../../../info/data/datasource/doubts/doubts_datasource_impl_test.dart';
 
+class DecodedListCacheHelperMock extends Mock
+    implements DecodedListCacheHelper {}
+
 class RestClientGetMock extends Mock implements RestClientGet {}
+
+class CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {}
 
 void main() {
   late RestclientGetMock restclientGetMock;
   late CategoriesDatasource categoriesDatasource;
   late List<CategoriesEntity> categoriesEntity;
+  late CachedUserDataHelperMock cachedUserDataHelperMock;
+  late DecodedListCacheHelperMock decodedListCacheHelperMock;
   setUp(() {
+    cachedUserDataHelperMock = CachedUserDataHelperMock();
+    decodedListCacheHelperMock = DecodedListCacheHelperMock();
     restclientGetMock = RestclientGetMock();
-    categoriesDatasource =
-        CategoriesDatasourceImpl(restClientGet: restclientGetMock);
+    categoriesDatasource = CategoriesDatasourceImpl(
+        restClientGet: restclientGetMock,
+        cacheUserActionsHelper: cachedUserDataHelperMock,
+        decodedListCacheHelper: decodedListCacheHelperMock);
     categoriesEntity = [
       CategoriesEntity(
         id: 1,
@@ -56,9 +69,9 @@ void main() {
   test('Deve retornar um erro no datasource impl', () async {
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
-    ).thenThrow(CategoriesError(message: 'Erro ao buscar categorias, tente mais tarde'));
+    ).thenThrow(CategoriesError(
+        message: 'Erro ao buscar categorias, tente mais tarde'));
     final sut = categoriesDatasource.call;
     expect(() async => sut(), throwsException);
-
   });
 }
