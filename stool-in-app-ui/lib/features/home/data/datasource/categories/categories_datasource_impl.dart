@@ -28,28 +28,27 @@ class CategoriesDatasourceImpl extends SaveJsonInCacheDatasource
   @override
   Future<List<CategoriesEntity>> call() async {
     try {
-      final result =
-          await _restClientGet.get(path: EndpointConstants.getCategories);
-      final data = result.data
-          .map<CategoriesEntity>(
-            (model) => CategoriesModel.fromMap(model),
-          )
-          .toList();
-
-      final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
-          key: CacheDatasourceKeys.categoriesCacheKey);
-      final entityCached =
-          decodedCacheList.map((e) => CategoriesModel.fromMap(e)).toList();
       final unlockCachedData =
           await _cacheUserActionsHelper.getUserGetCategoriesData();
-
       if (unlockCachedData == false) {
-        return data ?? <CategoriesEntity>[];
-      } else {
+        final result =
+            await _restClientGet.get(path: EndpointConstants.getCategories);
+        final data = result.data
+            .map<CategoriesEntity>(
+              (model) => CategoriesModel.fromMap(model),
+            )
+            .toList();
         await saveJsonInCache(
           data: CacheDatasourceKeys.categoriesCacheKey,
-          key: result.data,
+          key: result.data.toString(),
         );
+        return data ?? <CategoriesEntity>[];
+      } else {
+        final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
+            key: CacheDatasourceKeys.categoriesCacheKey);
+        final entityCached =
+            decodedCacheList.map((e) => CategoriesModel.fromMap(e)).toList();
+        await _cacheUserActionsHelper.setUserGetCategoriesData(value: true);
         return entityCached;
       }
     } on RestClientException catch (e, s) {
