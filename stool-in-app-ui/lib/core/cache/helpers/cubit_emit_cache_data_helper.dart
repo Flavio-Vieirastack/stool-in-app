@@ -17,5 +17,5 @@ class CubitEmitCacheDataHelper {
       log('Call data from cache', name: 'INFO');
       cacheEmition.call();
     }
-  }
+  } // TODO excluir
 }

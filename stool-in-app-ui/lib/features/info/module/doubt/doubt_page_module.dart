@@ -24,6 +24,10 @@ class DoubtPageModule extends AppModule {
           dependencies: [
             Provider<RulesDatasource>(
               create: (context) => RulesDatasourceImpl(
+                cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
+                decodedListCacheHelper:
+                    Inject<DecodedListCacheHelper>(context).get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),

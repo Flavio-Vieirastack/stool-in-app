@@ -10,21 +10,42 @@ import 'package:stool_in/features/info/data/model/info_model.dart';
 import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:stool_in/features/info/domain/error/info_error.dart';
 
+import '../../../../../core/cache/helpers/decoded_list_cache_helper.dart';
+import '../../../../../core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
+
 class RulesDatasourceImpl extends SaveJsonInCacheDatasource
     implements RulesDatasource {
   final RestClientGet _restClientGet;
+  final DecodedListCacheHelper _decodedListCacheHelper;
+  final CacheUserActionsHelper _cacheUserActionsHelper;
   RulesDatasourceImpl({
     required RestClientGet restClientGet,
-  }) : _restClientGet = restClientGet;
+    required CacheUserActionsHelper cacheUserActionsHelper,
+    required DecodedListCacheHelper decodedListCacheHelper,
+  })  : _restClientGet = restClientGet,
+        _decodedListCacheHelper = decodedListCacheHelper,
+        _cacheUserActionsHelper = cacheUserActionsHelper;
   @override
   Future<List<InfoEntity>> getRules() async {
     try {
       final result = await _restClientGet.get(path: EndpointConstants.getRules);
-     await saveJsonInCache(
+      await saveJsonInCache(
         data: result.data,
         key: CacheDatasourceKeys.rulesCacheKey,
       );
-      return result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
+      final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
+          key: CacheDatasourceKeys.rulesCacheKey);
+      final entityCached =
+          decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
+      final unlockCachedData =
+          await _cacheUserActionsHelper.getUserGetRulesData();
+      final apiData =
+          result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
+      if (unlockCachedData == false) {
+        return apiData;
+      } else {
+        return entityCached;
+      }
     } on RestClientException catch (e, s) {
       log(
         'Erro desconhecido ao fazer get das rules',
