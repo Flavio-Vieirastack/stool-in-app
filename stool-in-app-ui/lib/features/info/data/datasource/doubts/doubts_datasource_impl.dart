@@ -27,23 +27,24 @@ class DoubtsDatasourceImpl extends SaveJsonInCacheDatasource
   @override
   Future<List<InfoEntity>> getDoubts() async {
     try {
-      final result =
-          await _restClientGet.get(path: EndpointConstants.getFrequentDoubts);
-      final data =
-          result.data?.map<InfoEntity>((e) => InfoModel.fromMap(e)).toList();
-      await saveJsonInCache(
-        data: result.data,
-        key: CacheDatasourceKeys.doubtsCacheKey,
-      );
-      final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
-          key: CacheDatasourceKeys.doubtsCacheKey);
-      final entityCached =
-          decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
       final unlockCachedData =
           await _cacheUserActionsHelper.getUserGetDoubtsData();
       if (unlockCachedData == false) {
+        final result =
+            await _restClientGet.get(path: EndpointConstants.getFrequentDoubts);
+        final data =
+            result.data?.map<InfoEntity>((e) => InfoModel.fromMap(e)).toList();
+        await saveJsonInCache(
+          data: result.data,
+          key: CacheDatasourceKeys.doubtsCacheKey,
+        );
         return data ?? <InfoEntity>[];
       } else {
+        final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
+            key: CacheDatasourceKeys.doubtsCacheKey);
+        final entityCached =
+            decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
+        await _cacheUserActionsHelper.setUserGetDoubtsData(value: true);
         return entityCached;
       }
     } on RestClientException catch (e, s) {
