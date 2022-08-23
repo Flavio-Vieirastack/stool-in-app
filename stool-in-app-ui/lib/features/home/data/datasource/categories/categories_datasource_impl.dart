@@ -30,6 +30,11 @@ class CategoriesDatasourceImpl extends SaveJsonInCacheDatasource
     try {
       final result =
           await _restClientGet.get(path: EndpointConstants.getCategories);
+      final data = result.data
+          .map<CategoriesModel>(
+            (model) => CategoriesModel.fromMap(model),
+          )
+          .toList();
       await saveJsonInCache(
         data: CacheDatasourceKeys.categoriesCacheKey,
         key: result.data,
@@ -40,11 +45,7 @@ class CategoriesDatasourceImpl extends SaveJsonInCacheDatasource
           decodedCacheList.map((e) => CategoriesModel.fromMap(e)).toList();
       final unlockCachedData =
           await _cacheUserActionsHelper.getUserGetCategoriesData();
-      final data = result.data
-          .map<CategoriesModel>(
-            (model) => CategoriesModel.fromMap(model),
-          )
-          .toList();
+
       if (unlockCachedData == false) {
         return data ?? <CategoriesEntity>[];
       } else {

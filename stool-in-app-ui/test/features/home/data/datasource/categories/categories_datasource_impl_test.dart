@@ -1,9 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
 import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
+import 'package:stool_in/core/cache/save_json_in_cache_datasource.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
 import 'package:stool_in/features/home/data/datasource/categories/categories_datasource.dart';
@@ -21,15 +23,19 @@ class RestClientGetMock extends Mock implements RestClientGet {}
 
 class CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {}
 
+class SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
+
 void main() {
   late RestclientGetMock restclientGetMock;
   late CategoriesDatasource categoriesDatasource;
   late List<CategoriesEntity> categoriesEntity;
+  late SaveJsonCacheMock saveJsonCacheMock;
   late CachedUserDataHelperMock cachedUserDataHelperMock;
   late DecodedListCacheHelperMock decodedListCacheHelperMock;
   setUp(() {
     cachedUserDataHelperMock = CachedUserDataHelperMock();
     decodedListCacheHelperMock = DecodedListCacheHelperMock();
+    saveJsonCacheMock = SaveJsonCacheMock();
     restclientGetMock = RestclientGetMock();
     categoriesDatasource = CategoriesDatasourceImpl(
         restClientGet: restclientGetMock,
@@ -54,10 +60,13 @@ void main() {
       (_) async => false,
     );
     when(
-      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'Key')),
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
     ).thenAnswer(
       (_) async => categories,
     );
+    when(
+      () => saveJsonCacheMock.saveJsonInCache(data: 'data', key: 'key'),
+    ).thenAnswer((_) async => categories);
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
     ).thenAnswer((_) async => RestClientResponse(
