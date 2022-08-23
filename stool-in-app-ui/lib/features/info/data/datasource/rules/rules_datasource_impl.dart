@@ -28,22 +28,25 @@ class RulesDatasourceImpl extends SaveJsonInCacheDatasource
   @override
   Future<List<InfoEntity>> getRules() async {
     try {
-      final result = await _restClientGet.get(path: EndpointConstants.getRules);
-      await saveJsonInCache(
-        data: result.data,
-        key: CacheDatasourceKeys.rulesCacheKey,
-      );
-      final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
-          key: CacheDatasourceKeys.rulesCacheKey);
-      final entityCached =
-          decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
       final unlockCachedData =
           await _cacheUserActionsHelper.getUserGetRulesData();
-      final apiData =
-          result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
       if (unlockCachedData == false) {
+        final result = await _restClientGet.get(
+          path: EndpointConstants.getRules,
+        );
+        await saveJsonInCache(
+          data: result.data,
+          key: CacheDatasourceKeys.rulesCacheKey,
+        );
+        final apiData =
+            result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
         return apiData;
       } else {
+        final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
+            key: CacheDatasourceKeys.rulesCacheKey);
+        final entityCached =
+            decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
+        await _cacheUserActionsHelper.setUserGetRulesData(value: true);
         return entityCached;
       }
     } on RestClientException catch (e, s) {
