@@ -2,13 +2,14 @@ import 'dart:developer';
 
 import 'package:stool_in/features/auth/data/model/user_data_model.dart';
 import 'package:stool_in/features/service_provider/data/datasource/create_service_provider/create_service_provider_datasource.dart';
-import 'package:stool_in/features/service_provider/data/model/create_service_provider/create_and_update_service_provider_model.dart';
 import 'package:stool_in/features/service_provider/domain/error/create_service_provider_error.dart';
 import 'package:stool_in/features/service_provider/domain/entity/service_provider/service_provider_return_entity.dart';
 import 'package:stool_in/features/service_provider/domain/entity/service_provider/create_and_update_service_provider_entity.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:stool_in/features/service_provider/domain/repository/create_service_provider/create_service_provider_repository.dart';
+
+import '../../model/service_provider/create_and_update_service_provider_model.dart';
 
 class CreateServiceProviderRepositoryImpl
     implements CreateServiceProviderRepository {

@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/service_provider/data/model/create_service_provider/create_and_update_service_provider_model.dart';
+import 'package:stool_in/features/service_provider/data/model/service_provider/create_and_update_service_provider_model.dart';
 
 import '../../../../../mock/service_provider_create_mock.dart';
 

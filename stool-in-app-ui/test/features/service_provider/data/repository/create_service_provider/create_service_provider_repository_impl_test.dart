@@ -4,7 +4,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/features/auth/data/model/user_data_model.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in/features/service_provider/data/datasource/create_service_provider/create_service_provider_datasource.dart';
-import 'package:stool_in/features/service_provider/data/model/create_service_provider/create_and_update_service_provider_model.dart';
+import 'package:stool_in/features/service_provider/data/model/service_provider/create_and_update_service_provider_model.dart';
 import 'package:stool_in/features/service_provider/data/repository/create_service_provider/create_service_provider_repository_impl.dart';
 import 'package:stool_in/features/service_provider/domain/entity/service_provider/create_and_update_service_provider_entity.dart';
 import 'package:stool_in/features/service_provider/domain/entity/service_provider/service_provider_return_entity.dart';

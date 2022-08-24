@@ -5,7 +5,7 @@ import 'package:stool_in/core/rest_client/rest_client_response.dart';
 import 'package:stool_in/features/home/domain/error/service_provider/service_provider_error.dart';
 import 'package:stool_in/features/service_provider/data/datasource/update_service_provider/update_service_provider_datasource.dart';
 import 'package:stool_in/features/service_provider/data/datasource/update_service_provider/update_service_provider_datasource_impl.dart';
-import 'package:stool_in/features/service_provider/data/model/create_service_provider/create_and_update_service_provider_model.dart';
+import 'package:stool_in/features/service_provider/data/model/service_provider/create_and_update_service_provider_model.dart';
 
 class RestClientPatchMock extends Mock implements RestClientPatch {}
 
