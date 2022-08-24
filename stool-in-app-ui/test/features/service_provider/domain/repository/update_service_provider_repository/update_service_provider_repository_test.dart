@@ -19,13 +19,11 @@ void main() {
   late UpdateServiceProviderRepository updateServiceProviderRepository;
   late CreateAndUpdateServiceProviderEntityMock
       createAndUpdateServiceProviderEntityMock;
-  late CreateAndUpdateServiceProviderModel createAndUpdateServiceProviderModel;
 
   setUpAll(() {
     updateServiceProviderDatasourceMock = UpdateServiceProviderDatasourceMock();
     updateServiceProviderRepository = UpdateServiceProviderRepositoryImpl(
         updateServiceProviderDatasource: updateServiceProviderDatasourceMock);
-    createAndUpdateServiceProviderModel = CreateAndUpdateServiceProviderModel();
     createAndUpdateServiceProviderEntityMock =
         CreateAndUpdateServiceProviderEntityMock();
     registerFallbackValue(
