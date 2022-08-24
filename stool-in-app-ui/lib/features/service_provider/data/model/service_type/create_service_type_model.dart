@@ -1,0 +1,52 @@
+
+import 'package:stool_in/features/service_provider/domain/entity/service_types/create_service_types_entity.dart';
+
+class CreateServiceTypeModel {
+  final String? serviceName;
+  final double? price;
+  final int? estimatedHours;
+  CreateServiceTypeModel({
+    this.serviceName,
+    this.price,
+    this.estimatedHours,
+  });
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is CreateServiceTypeModel &&
+        other.serviceName == serviceName &&
+        other.price == price &&
+        other.estimatedHours == estimatedHours;
+  }
+
+  @override
+  int get hashCode =>
+      serviceName.hashCode ^ price.hashCode ^ estimatedHours.hashCode;
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    if (serviceName != null) {
+      result.addAll({'serviceName': serviceName});
+    }
+    if (price != null) {
+      result.addAll({'price': price});
+    }
+    if (estimatedHours != null) {
+      result.addAll({'estimatedHours': estimatedHours});
+    }
+
+    return result;
+  }
+
+  factory CreateServiceTypeModel.fromEntity(
+      {required CreateServiceTypesEntity createServiceTypesEntity}) {
+    return CreateServiceTypeModel(
+      estimatedHours: createServiceTypesEntity.estimatedHours,
+      price: createServiceTypesEntity.price,
+      serviceName: createServiceTypesEntity.serviceName,
+    );
+  }
+}
