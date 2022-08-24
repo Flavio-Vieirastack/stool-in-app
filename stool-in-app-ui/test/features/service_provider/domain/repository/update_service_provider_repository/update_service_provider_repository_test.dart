@@ -101,6 +101,6 @@ void main() {
               any(named: 'createAndUpdateServiceProviderModel'),
         ),
       ),
-    ).called(1);
+    ).called(3);
   });
 }
