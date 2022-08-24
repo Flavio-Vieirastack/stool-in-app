@@ -34,14 +34,13 @@ class ServiceTypeReturnModel extends ServiceTypesReturnEntity {
 
   factory ServiceTypeReturnModel.fromMap(Map<String, dynamic> map) {
     return ServiceTypeReturnModel(
-      serviceTypeId: map['serviceTypeId']?.toInt() ?? 0,
+      serviceTypeId: map['id']?.toInt() ?? 0,
       serviceProviderId: map['serviceProviderId']?.toInt() ?? 0,
       serviceName: map['serviceName'],
-      price: map['price']?.toDouble(),
+      price: double.parse(map['price']),
       estimatedHours: map['estimatedHours']?.toInt(),
     );
   }
-
 
   factory ServiceTypeReturnModel.fromJson(String source) =>
       ServiceTypeReturnModel.fromMap(json.decode(source));
