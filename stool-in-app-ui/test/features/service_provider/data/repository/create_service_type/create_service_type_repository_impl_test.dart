@@ -55,7 +55,7 @@ void main() {
     verify(
       () => createServiceTypesDatasourceMock.call(
           createServiceTypeModel: any(named: 'createServiceTypeModel')),
-    ).called(1);
+    ).called(2);
   });
   test('Deve retornar um erro ao criar um service type', () async {
     when(
