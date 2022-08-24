@@ -1,0 +1,50 @@
+import 'dart:developer';
+
+import 'package:stool_in/core/constants/endpoint_constants.dart';
+import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
+import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
+import 'package:stool_in/features/home/domain/error/service_provider/service_provider_error.dart';
+import 'package:stool_in/features/service_provider/data/datasource/update_service_provider/update_service_provider_datasource.dart';
+import 'package:stool_in/features/service_provider/data/model/create_service_provider/create_and_update_service_provider_model.dart';
+
+class UpdateServiceProviderDatasourceImpl
+    implements UpdateServiceProviderDatasource {
+  final RestClientPatch _restClientPatch;
+  UpdateServiceProviderDatasourceImpl({
+    required RestClientPatch restClientPatch,
+  }) : _restClientPatch = restClientPatch;
+  @override
+  Future<void> call({
+    required CreateAndUpdateServiceProviderModel
+        createAndUpdateServiceProviderModel,
+  }) async {
+    try {
+      await _restClientPatch.patch(
+          path: EndpointConstants.updateServiceProvider,
+          data: createAndUpdateServiceProviderModel.toMap());
+    } on RestClientException catch (e, s) {
+      log(
+        'RestClientException ao fazer update do service provider no datasource impl',
+        error: e,
+        stackTrace: s,
+      );
+      throw ServiceProviderError(
+          message: 'Erro ao fazer update dos seus dados, tente mais tarde');
+    } on ServiceProviderError catch (e, s) {
+      log(
+        'ServiceProviderError ao fazer update do service provider no datasource impl',
+        error: e,
+        stackTrace: s,
+      );
+      throw ServiceProviderError(
+          message: 'Erro ao fazer update dos seus dados, tente mais tarde');
+    } catch (e, s) {
+      log(
+        'Erro desconhecido ao fazer update do service provider no datasource impl',
+        error: e,
+        stackTrace: s,
+      );
+      throw ServiceProviderError(message: 'Erro no servidor, tente mais tarde');
+    }
+  }
+}
