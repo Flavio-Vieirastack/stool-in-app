@@ -2,9 +2,8 @@ import 'package:stool_in/features/service_provider/domain/entity/service_types/c
 
 class ServiceTypesReturnEntity extends CreateServiceTypesEntity {
   final int serviceTypeId;
-  final int serviceProviderId;
   ServiceTypesReturnEntity({
-    required this.serviceProviderId,
+    required super.serviceProviderId,
     required this.serviceTypeId,
     super.serviceName,
     super.price,

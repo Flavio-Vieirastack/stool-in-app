@@ -1,14 +1,11 @@
-
 import 'package:stool_in/features/service_provider/domain/entity/service_types/create_service_types_entity.dart';
 
-class CreateServiceTypeModel {
-  final String? serviceName;
-  final double? price;
-  final int? estimatedHours;
+class CreateServiceTypeModel extends CreateServiceTypesEntity {
   CreateServiceTypeModel({
-    this.serviceName,
-    this.price,
-    this.estimatedHours,
+    super.serviceName,
+    super.price,
+    super.estimatedHours,
+    required super.serviceProviderId,
   });
 
   @override
@@ -47,6 +44,7 @@ class CreateServiceTypeModel {
       estimatedHours: createServiceTypesEntity.estimatedHours,
       price: createServiceTypesEntity.price,
       serviceName: createServiceTypesEntity.serviceName,
+      serviceProviderId: createServiceTypesEntity.serviceProviderId,
     );
   }
 }
