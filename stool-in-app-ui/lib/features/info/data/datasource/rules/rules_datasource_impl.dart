@@ -40,13 +40,14 @@ class RulesDatasourceImpl extends SaveJsonInCacheDatasource
         );
         final apiData =
             result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
+        await _cacheUserActionsHelper.setUserGetRulesData(value: true);
         return apiData;
       } else {
         final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
             key: CacheDatasourceKeys.rulesCacheKey);
         final entityCached =
             decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
-        await _cacheUserActionsHelper.setUserGetRulesData(value: true);
+
         return entityCached;
       }
     } on RestClientException catch (e, s) {

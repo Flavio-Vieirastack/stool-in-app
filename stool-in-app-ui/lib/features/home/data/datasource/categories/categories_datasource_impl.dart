@@ -42,13 +42,14 @@ class CategoriesDatasourceImpl extends SaveJsonInCacheDatasource
           data: CacheDatasourceKeys.categoriesCacheKey,
           key: result.data.toString(),
         );
+        await _cacheUserActionsHelper.setUserGetCategoriesData(value: true);
         return data ?? <CategoriesEntity>[];
       } else {
         final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
             key: CacheDatasourceKeys.categoriesCacheKey);
         final entityCached =
             decodedCacheList.map((e) => CategoriesModel.fromMap(e)).toList();
-        await _cacheUserActionsHelper.setUserGetCategoriesData(value: true);
+
         return entityCached;
       }
     } on RestClientException catch (e, s) {

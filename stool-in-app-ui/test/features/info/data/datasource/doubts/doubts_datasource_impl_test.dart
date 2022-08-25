@@ -18,7 +18,8 @@ class _RestclientGetMock extends Mock implements RestClientGet {}
 
 class _SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
 
-class _CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {}
+class _CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {
+}
 
 class _DecodedListCacheHelperMock extends Mock
     implements DecodedListCacheHelper {}
@@ -55,6 +56,11 @@ void main() {
       (_) async => false,
     );
     when(
+      () => cachedUserDataHelperMock.setUserGetDoubtsData(value: true),
+    ).thenAnswer(
+      (_) async => true,
+    );
+    when(
       () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
     ).thenAnswer(
       (_) async => doubts,
@@ -78,6 +84,11 @@ void main() {
       () => cachedUserDataHelperMock.getUserGetDoubtsData(),
     ).thenAnswer(
       (_) async => false,
+    );
+    when(
+      () => cachedUserDataHelperMock.setUserGetDoubtsData(value: true),
+    ).thenAnswer(
+      (_) async => true,
     );
     when(
       () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
@@ -106,6 +117,11 @@ void main() {
       () => cachedUserDataHelperMock.getUserGetDoubtsData(),
     ).thenAnswer(
       (_) async => false,
+    );
+    when(
+      () => cachedUserDataHelperMock.setUserGetDoubtsData(value: true),
+    ).thenAnswer(
+      (_) async => true,
     );
     when(
       () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),

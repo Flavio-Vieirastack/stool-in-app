@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -20,7 +19,8 @@ class _DecodedListCacheHelperMock extends Mock
 
 class _RestClientGetMock extends Mock implements RestClientGet {}
 
-class _CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {}
+class _CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {
+}
 
 class _SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
 
@@ -59,6 +59,11 @@ void main() {
       (_) async => false,
     );
     when(
+      () => cachedUserDataHelperMock.setUserGetCategoriesData(value: true),
+    ).thenAnswer(
+      (_) async => true,
+    );
+    when(
       () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
     ).thenAnswer(
       (_) async => categories,
@@ -76,12 +81,17 @@ void main() {
     expect(sut, categoriesEntity);
   });
   test('Deve chamar o rest client get corretamente para categorias', () async {
-     WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
     when(
       () => cachedUserDataHelperMock.getUserGetCategoriesData(),
     ).thenAnswer(
       (_) async => false,
+    );
+    when(
+      () => cachedUserDataHelperMock.setUserGetCategoriesData(value: true),
+    ).thenAnswer(
+      (_) async => true,
     );
     when(
       () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
@@ -101,12 +111,17 @@ void main() {
     ).called(1);
   });
   test('Deve retornar um erro no datasource impl', () async {
-     WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
     when(
       () => cachedUserDataHelperMock.getUserGetCategoriesData(),
     ).thenAnswer(
       (_) async => false,
+    );
+    when(
+      () => cachedUserDataHelperMock.setUserGetCategoriesData(value: true),
+    ).thenAnswer(
+      (_) async => true,
     );
     when(
       () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),

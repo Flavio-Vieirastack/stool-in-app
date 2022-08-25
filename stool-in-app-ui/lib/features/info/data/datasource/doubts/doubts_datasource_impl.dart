@@ -38,13 +38,14 @@ class DoubtsDatasourceImpl extends SaveJsonInCacheDatasource
           data: result.data,
           key: CacheDatasourceKeys.doubtsCacheKey,
         );
+        await _cacheUserActionsHelper.setUserGetDoubtsData(value: true);
         return data ?? <InfoEntity>[];
       } else {
         final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
             key: CacheDatasourceKeys.doubtsCacheKey);
         final entityCached =
             decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
-        await _cacheUserActionsHelper.setUserGetDoubtsData(value: true);
+
         return entityCached;
       }
     } on RestClientException catch (e, s) {
