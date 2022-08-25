@@ -9,15 +9,15 @@ import 'package:stool_in/features/auth/data/datasource/sign_in/sign_in_datasourc
 import 'package:stool_in/features/auth/data/model/auth_model.dart';
 import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
 
-class RestClientPostMock extends Mock implements RestClientPost {}
+class _RestClientPostMock extends Mock implements RestClientPost {}
 
-class FirebabseAuthMock extends Mock implements FirebaseAuth {}
+class _FirebabseAuthMock extends Mock implements FirebaseAuth {}
 
 void main() {
-  late RestClientPostMock restClientPostMock;
+  late _RestClientPostMock restClientPostMock;
   late AuthModel authModel;
   late SignInDatasource signInDatasource;
-  late FirebabseAuthMock firebabseAuthMock;
+  late _FirebabseAuthMock firebabseAuthMock;
   setUp(
     () {
       final faker = Faker();
@@ -25,8 +25,8 @@ void main() {
         email: faker.internet.email(),
         password: faker.internet.password(),
       );
-      firebabseAuthMock = FirebabseAuthMock();
-      restClientPostMock = RestClientPostMock();
+      firebabseAuthMock = _FirebabseAuthMock();
+      restClientPostMock = _RestClientPostMock();
       signInDatasource = SignInDatasourceImpl(
           firebaseAuth: firebabseAuthMock, restClientPost: restClientPostMock);
     },

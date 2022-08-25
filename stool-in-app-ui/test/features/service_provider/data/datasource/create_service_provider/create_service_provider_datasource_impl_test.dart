@@ -10,20 +10,20 @@ import 'package:stool_in/features/service_provider/domain/entity/service_provide
 
 import '../../../../../mock/service_provider_create_mock.dart';
 
-class RestclientPostImplMock extends Mock implements RestClientPost {}
+class _RestclientPostImplMock extends Mock implements RestClientPost {}
 
-class RestClientPatchMock extends Mock implements RestClientPatch {}
+class _RestClientPatchMock extends Mock implements RestClientPatch {}
 
 void main() {
-  late RestclientPostImplMock restclientPostImplMock;
-  late RestClientPatchMock restClientPatchMock;
+  late _RestclientPostImplMock restclientPostImplMock;
+  late _RestClientPatchMock restClientPatchMock;
   late CreateServiceProviderDatasource createServiceProviderDatasource;
   late CreateAndUpdateServiceProviderModel data;
   late ServiceProviderReturnEntity serviceProviderReturnEntity;
   late UserDataModel userDataModel;
   setUp(() {
-    restclientPostImplMock = RestclientPostImplMock();
-    restClientPatchMock = RestClientPatchMock();
+    restclientPostImplMock = _RestclientPostImplMock();
+    restClientPatchMock = _RestClientPatchMock();
     createServiceProviderDatasource = CreateServiceProviderDatasourceImpl(
       restClientPost: restclientPostImplMock,
       restClientPatch: restClientPatchMock,

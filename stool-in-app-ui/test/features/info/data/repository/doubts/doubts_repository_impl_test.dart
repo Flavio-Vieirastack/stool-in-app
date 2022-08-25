@@ -7,17 +7,17 @@ import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:stool_in/features/info/domain/error/info_error.dart';
 import 'package:stool_in/features/info/domain/repository/doubt/doubt_repository.dart';
 
-class DoubtsDatasourceMock extends Mock implements DoubtsDatasource {}
+class _DoubtsDatasourceMock extends Mock implements DoubtsDatasource {}
 
-class InfoEntityMock extends Mock implements InfoEntity {}
+class _InfoEntityMock extends Mock implements InfoEntity {}
 
 void main() {
-  late DoubtsDatasourceMock doubtsDatasourceMock;
-  late List<InfoEntityMock> infoEntiyMock;
+  late _DoubtsDatasourceMock doubtsDatasourceMock;
+  late List<_InfoEntityMock> infoEntiyMock;
   late DoubtRepository doubtRepository;
   setUp(() {
-    doubtsDatasourceMock = DoubtsDatasourceMock();
-    infoEntiyMock = [InfoEntityMock()];
+    doubtsDatasourceMock = _DoubtsDatasourceMock();
+    infoEntiyMock = [_InfoEntityMock()];
     doubtRepository =
         DoubtsRepositoryImpl(doubtsDatasource: doubtsDatasourceMock);
   });

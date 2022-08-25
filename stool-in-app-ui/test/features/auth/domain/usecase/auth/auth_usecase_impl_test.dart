@@ -15,23 +15,22 @@ import 'package:stool_in/features/auth/domain/repository/user_data/user_data_sig
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
 import 'package:stool_in/features/auth/domain/usecase/auth/auth_usecase_impl.dart';
 
-class AuthUseCaseMock extends Mock implements AuthUseCase {}
 
-class LoginRepositoryMock extends Mock implements LoginRepository {}
+class _LoginRepositoryMock extends Mock implements LoginRepository {}
 
-class SignInRepositoryMock extends Mock implements SignInRepository {}
+class _SignInRepositoryMock extends Mock implements SignInRepository {}
 
-class PasswordResetRepostoryMock extends Mock
+class _PasswordResetRepostoryMock extends Mock
     implements PasswordResetRepository {}
 
-class UserDataSignInRepositoryMock extends Mock
+class _UserDataSignInRepositoryMock extends Mock
     implements UserDataSignInRepository {}
 
-class AuthEntityMock extends Mock implements AuthEntity {}
+class _AuthEntityMock extends Mock implements AuthEntity {}
 
-class UserTokenEntityMock extends Mock implements UserTokenEntity {}
+class _UserTokenEntityMock extends Mock implements UserTokenEntity {}
 
-class UserDataEntityMock extends Mock implements UserDataEntity {}
+class _UserDataEntityMock extends Mock implements UserDataEntity {}
 
 void main() {
   late LoginRepository loginRepository;
@@ -43,19 +42,19 @@ void main() {
   late UserTokenEntity userTokenEntity;
   late UserDataEntity userDataEntity;
   setUp(() {
-    loginRepository = LoginRepositoryMock();
-    signInRepository = SignInRepositoryMock();
-    passwordResetRepository = PasswordResetRepostoryMock();
-    userDataSignInRepository = UserDataSignInRepositoryMock();
+    loginRepository = _LoginRepositoryMock();
+    signInRepository = _SignInRepositoryMock();
+    passwordResetRepository = _PasswordResetRepostoryMock();
+    userDataSignInRepository = _UserDataSignInRepositoryMock();
     authUseCaseIml = AuthUsecaseImpl(
       loginRepository: loginRepository,
       signInRepository: signInRepository,
       passwordResetRepository: passwordResetRepository,
       userDataSignInRepository: userDataSignInRepository,
     );
-    authEntity = AuthEntityMock();
-    userTokenEntity = UserTokenEntityMock();
-    userDataEntity = UserDataEntityMock();
+    authEntity = _AuthEntityMock();
+    userTokenEntity = _UserTokenEntityMock();
+    userDataEntity = _UserDataEntityMock();
   });
   group('api login tests', () {
     test('Deve retornar uma entidade de token', () async {

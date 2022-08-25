@@ -8,26 +8,26 @@ import 'package:stool_in/features/info/domain/repository/rules/rules_repository.
 import 'package:stool_in/features/info/domain/usecase/info_usecase.dart';
 import 'package:stool_in/features/info/domain/usecase/info_usecase_impl.dart';
 
-class DoubtRepositoryMock extends Mock implements DoubtRepository {}
+class _DoubtRepositoryMock extends Mock implements DoubtRepository {}
 
-class RulesRepositoryMock extends Mock implements RulesRepository {}
+class _RulesRepositoryMock extends Mock implements RulesRepository {}
 
-class InfoEntityMock extends Mock implements InfoEntity {}
+class _InfoEntityMock extends Mock implements InfoEntity {}
 
 void main() {
-  late DoubtRepositoryMock doubtRepositoryMock;
-  late RulesRepositoryMock rulesRepositoryMock;
-  late List<InfoEntityMock> infoEntityMock;
+  late _DoubtRepositoryMock doubtRepositoryMock;
+  late _RulesRepositoryMock rulesRepositoryMock;
+  late List<_InfoEntityMock> infoEntityMock;
   late InfoUsecase infoUsecase;
   setUp(() {
-    doubtRepositoryMock = DoubtRepositoryMock();
-    rulesRepositoryMock = RulesRepositoryMock();
+    doubtRepositoryMock = _DoubtRepositoryMock();
+    rulesRepositoryMock = _RulesRepositoryMock();
     infoUsecase = InfoUsecaseImpl(
       rulesRepository: rulesRepositoryMock,
       doubtRepository: doubtRepositoryMock,
     );
     infoEntityMock = [
-      InfoEntityMock(),
+      _InfoEntityMock(),
     ];
   });
   group('doubts tests', () {

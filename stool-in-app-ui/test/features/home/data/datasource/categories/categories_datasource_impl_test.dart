@@ -14,29 +14,28 @@ import 'package:stool_in/features/home/domain/entity/categories/categories_entit
 import 'package:stool_in/features/home/domain/error/categories/categories_error.dart';
 
 import '../../../../../mock/categories_mock.dart';
-import '../../../../info/data/datasource/doubts/doubts_datasource_impl_test.dart';
 
-class DecodedListCacheHelperMock extends Mock
+class _DecodedListCacheHelperMock extends Mock
     implements DecodedListCacheHelper {}
 
-class RestClientGetMock extends Mock implements RestClientGet {}
+class _RestClientGetMock extends Mock implements RestClientGet {}
 
-class CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {}
+class _CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {}
 
-class SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
+class _SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
 
 void main() {
-  late RestclientGetMock restclientGetMock;
+  late _RestClientGetMock restclientGetMock;
   late CategoriesDatasource categoriesDatasource;
   late List<CategoriesEntity> categoriesEntity;
-  late SaveJsonCacheMock saveJsonCacheMock;
-  late CachedUserDataHelperMock cachedUserDataHelperMock;
-  late DecodedListCacheHelperMock decodedListCacheHelperMock;
+  late _SaveJsonCacheMock saveJsonCacheMock;
+  late _CachedUserDataHelperMock cachedUserDataHelperMock;
+  late _DecodedListCacheHelperMock decodedListCacheHelperMock;
   setUp(() {
-    cachedUserDataHelperMock = CachedUserDataHelperMock();
-    decodedListCacheHelperMock = DecodedListCacheHelperMock();
-    saveJsonCacheMock = SaveJsonCacheMock();
-    restclientGetMock = RestclientGetMock();
+    cachedUserDataHelperMock = _CachedUserDataHelperMock();
+    decodedListCacheHelperMock = _DecodedListCacheHelperMock();
+    saveJsonCacheMock = _SaveJsonCacheMock();
+    restclientGetMock = _RestClientGetMock();
     categoriesDatasource = CategoriesDatasourceImpl(
         restClientGet: restclientGetMock,
         cacheUserActionsHelper: cachedUserDataHelperMock,

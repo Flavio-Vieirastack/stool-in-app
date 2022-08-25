@@ -10,15 +10,15 @@ import 'package:stool_in/features/service_provider/domain/error/create_service_t
 
 import '../../../../../mock/service_types_return_enty_payload_mock.dart';
 
-class RestclientPostMock extends Mock implements RestClientPost {}
+class _RestclientPostMock extends Mock implements RestClientPost {}
 
 void main() {
-  late RestclientPostMock restclientPostMock;
+  late _RestclientPostMock restclientPostMock;
   late CreateServiceTypeModel data;
   late CreateServiceTypeDatasource createServiceTypeDatasource;
   late ServiceTypesReturnEntity serviceTypesReturnEntity;
   setUp(() {
-    restclientPostMock = RestclientPostMock();
+    restclientPostMock = _RestclientPostMock();
     createServiceTypeDatasource =
         CreateServiceTypeDatasourceImpl(restClientPost: restclientPostMock);
     data = CreateServiceTypeModel(

@@ -9,22 +9,22 @@ import 'package:stool_in/features/service_provider/domain/entity/service_types/s
 import 'package:stool_in/features/service_provider/domain/error/create_service_type_error.dart';
 import 'package:stool_in/features/service_provider/domain/repository/create_service_type/create_service_type_repository.dart';
 
-class CreateServiceTypesDatasourceMock extends Mock
+class _CreateServiceTypesDatasourceMock extends Mock
     implements CreateServiceTypeDatasource {}
 
-class CreateServiceTyeReturnEntityMock extends Mock
+class _CreateServiceTyeReturnEntityMock extends Mock
     implements ServiceTypesReturnEntity {}
 
 void main() {
-  late CreateServiceTypesDatasourceMock createServiceTypesDatasourceMock;
+  late _CreateServiceTypesDatasourceMock createServiceTypesDatasourceMock;
   late CreateServiceTypeRepository createServiceTypeRepository;
   late CreateServiceTypesEntity createServiceTypeEntityMock;
-  late CreateServiceTyeReturnEntityMock createServiceTyeReturnEntityMock;
+  late _CreateServiceTyeReturnEntityMock createServiceTyeReturnEntityMock;
   setUpAll(() {
-    createServiceTyeReturnEntityMock = CreateServiceTyeReturnEntityMock();
+    createServiceTyeReturnEntityMock = _CreateServiceTyeReturnEntityMock();
     createServiceTypeEntityMock =
         CreateServiceTypesEntity(serviceProviderId: 1);
-    createServiceTypesDatasourceMock = CreateServiceTypesDatasourceMock();
+    createServiceTypesDatasourceMock = _CreateServiceTypesDatasourceMock();
     createServiceTypeRepository = CreateServiceTypeRepositoryImpl(
         createServiceTypeDatasource: createServiceTypesDatasourceMock);
     registerFallbackValue(CreateServiceTypeModel.fromEntity(

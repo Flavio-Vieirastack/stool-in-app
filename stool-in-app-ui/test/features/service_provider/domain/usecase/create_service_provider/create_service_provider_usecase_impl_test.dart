@@ -9,28 +9,28 @@ import 'package:stool_in/features/service_provider/domain/repository/create_serv
 import 'package:stool_in/features/service_provider/domain/usecase/create_service_provider/create_service_provider_usecase.dart';
 import 'package:stool_in/features/service_provider/domain/usecase/create_service_provider/create_service_provider_usecase_impl.dart';
 
-class CreateServiceProviderrepositoryMock extends Mock
+class _CreateServiceProviderrepositoryMock extends Mock
     implements CreateServiceProviderRepository {}
 
-class CreateServiceProviderEntityMock extends Mock
+class _CreateServiceProviderEntityMock extends Mock
     implements CreateAndUpdateServiceProviderEntity {}
 
-class ServiceProviderReturnEntityMock extends Mock
+class _ServiceProviderReturnEntityMock extends Mock
     implements ServiceProviderReturnEntity {}
 
-class UserDataEntityMock extends Mock implements UserDataEntity {}
+class _UserDataEntityMock extends Mock implements UserDataEntity {}
 
 void main() {
-  late CreateServiceProviderrepositoryMock createServiceProviderrepositoryMock;
-  late CreateServiceProviderEntityMock createServiceProviderEntityMock;
-  late ServiceProviderReturnEntityMock serviceProviderReturnEntityMock;
+  late _CreateServiceProviderrepositoryMock createServiceProviderrepositoryMock;
+  late _CreateServiceProviderEntityMock createServiceProviderEntityMock;
+  late _ServiceProviderReturnEntityMock serviceProviderReturnEntityMock;
   late CreateServiceProviderUsecase createServiceProviderUsecase;
-  late UserDataEntityMock userDataEntityMock;
+  late _UserDataEntityMock userDataEntityMock;
   setUp(() {
-    createServiceProviderEntityMock = CreateServiceProviderEntityMock();
-    createServiceProviderrepositoryMock = CreateServiceProviderrepositoryMock();
-    serviceProviderReturnEntityMock = ServiceProviderReturnEntityMock();
-    userDataEntityMock = UserDataEntityMock();
+    createServiceProviderEntityMock = _CreateServiceProviderEntityMock();
+    createServiceProviderrepositoryMock = _CreateServiceProviderrepositoryMock();
+    serviceProviderReturnEntityMock = _ServiceProviderReturnEntityMock();
+    userDataEntityMock = _UserDataEntityMock();
     createServiceProviderUsecase = CreateServiceProviderUsecaseImpl(
       createServiceProviderRepository: createServiceProviderrepositoryMock,
     );

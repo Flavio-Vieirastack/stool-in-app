@@ -8,19 +8,19 @@ import 'package:stool_in/features/auth/data/datasource/password_reset/password_r
 import 'package:stool_in/features/auth/data/model/auth_model.dart';
 import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
 
-class PatchMock extends Mock implements RestClientPatch {}
+class _PatchMock extends Mock implements RestClientPatch {}
 
-class FirebaseAuthMock extends Mock implements FirebaseAuth {}
+class _FirebaseAuthMock extends Mock implements FirebaseAuth {}
 
 void main() {
-  late PatchMock patchMock;
+  late _PatchMock patchMock;
   late PasswordResetDatasource passwordResetDatasource;
-  late FirebaseAuthMock firebaseAuthMock;
+  late _FirebaseAuthMock firebaseAuthMock;
   late AuthModel authModel;
   setUp(
     () {
-      patchMock = PatchMock();
-      firebaseAuthMock = FirebaseAuthMock();
+      patchMock = _PatchMock();
+      firebaseAuthMock = _FirebaseAuthMock();
       passwordResetDatasource = PasswordResetDatasourceImpl(
           firebaseAuth: firebaseAuthMock, restClientPatch: patchMock);
       authModel = AuthModel(email: 'email', password: 'password');

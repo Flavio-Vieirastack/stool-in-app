@@ -11,26 +11,25 @@ import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
 import 'package:stool_in/features/auth/domain/error/firebase_auth_error.dart';
 import 'package:stool_in/features/auth/domain/repository/login/login_repository.dart';
 
-class LoginDatasourceMock extends Mock implements LoginDatasource {}
+class _LoginDatasourceMock extends Mock implements LoginDatasource {}
 
-class AuthModelMock extends Mock implements AuthModel {}
 
-class UserTokenEntityMock extends Mock implements UserTokenEntity {}
+class _UserTokenEntityMock extends Mock implements UserTokenEntity {}
 
 void main() {
-  late LoginDatasourceMock loginDatasourceMock;
+  late _LoginDatasourceMock loginDatasourceMock;
   late AuthEntity authEntity;
   late LoginRepository loginRepository;
-  late UserTokenEntityMock userTokenEntityMock;
+  late _UserTokenEntityMock userTokenEntityMock;
   setUp(
     () {
       final faker = Faker();
-      loginDatasourceMock = LoginDatasourceMock();
+      loginDatasourceMock = _LoginDatasourceMock();
       authEntity = AuthEntity(
         email: faker.internet.email(),
         password: faker.internet.password(),
       );
-      userTokenEntityMock = UserTokenEntityMock();
+      userTokenEntityMock = _UserTokenEntityMock();
       loginRepository =
           LoginRepositoryImpl(loginDatasource: loginDatasourceMock);
     },

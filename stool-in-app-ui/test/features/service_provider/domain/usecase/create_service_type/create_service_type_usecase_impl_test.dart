@@ -8,26 +8,26 @@ import 'package:stool_in/features/service_provider/domain/repository/create_serv
 import 'package:stool_in/features/service_provider/domain/usecase/create_service_type/create_service_type_usecase.dart';
 import 'package:stool_in/features/service_provider/domain/usecase/create_service_type/create_service_type_usecase_impl.dart';
 
-class CreateServiceTypeRepositoryMock extends Mock
+class _CreateServiceTypeRepositoryMock extends Mock
     implements CreateServiceTypeRepository {}
 
-class CreateServiceTyeReturnEntityMock extends Mock
+class _CreateServiceTyeReturnEntityMock extends Mock
     implements ServiceTypesReturnEntity {}
 
-class CreateServiceTypeEntityMock extends Mock
+class _CreateServiceTypeEntityMock extends Mock
     implements CreateServiceTypesEntity {}
 
 void main() {
-  late CreateServiceTypeRepositoryMock createServiceTypeRepositoryMock;
+  late _CreateServiceTypeRepositoryMock createServiceTypeRepositoryMock;
   late CreateServiceTypeUsecase createServiceTypeUsecase;
-  late CreateServiceTypeEntityMock createServiceTypeEntityMock;
-  late CreateServiceTyeReturnEntityMock createServiceTyeReturnEntityMock;
+  late _CreateServiceTypeEntityMock createServiceTypeEntityMock;
+  late _CreateServiceTyeReturnEntityMock createServiceTyeReturnEntityMock;
   setUp(() {
-    createServiceTypeRepositoryMock = CreateServiceTypeRepositoryMock();
+    createServiceTypeRepositoryMock = _CreateServiceTypeRepositoryMock();
     createServiceTypeUsecase = CreateServiceTypeUsecaseImpl(
         createServiceTypeRepository: createServiceTypeRepositoryMock);
-    createServiceTypeEntityMock = CreateServiceTypeEntityMock();
-    createServiceTyeReturnEntityMock = CreateServiceTyeReturnEntityMock();
+    createServiceTypeEntityMock = _CreateServiceTypeEntityMock();
+    createServiceTyeReturnEntityMock = _CreateServiceTyeReturnEntityMock();
   });
   test('Deve retornar uma entidade de service type return entity', () async {
     when(

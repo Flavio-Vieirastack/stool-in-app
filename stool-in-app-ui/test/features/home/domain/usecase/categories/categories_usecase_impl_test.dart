@@ -7,19 +7,19 @@ import 'package:stool_in/features/home/domain/repository/categories/categories_r
 import 'package:stool_in/features/home/domain/usecase/categories/categories_usecase.dart';
 import 'package:stool_in/features/home/domain/usecase/categories/categories_usecase_impl.dart';
 
-class CategoriesRepositoryMock extends Mock implements CategoriesRepository {}
+class _CategoriesRepositoryMock extends Mock implements CategoriesRepository {}
 
-class CategoryEntityMock extends Mock implements CategoriesEntity {}
+class _CategoryEntityMock extends Mock implements CategoriesEntity {}
 
 void main() {
-  late CategoriesRepositoryMock categoriesRepositoryMock;
-  late List<CategoryEntityMock> categoryEntityMock;
+  late _CategoriesRepositoryMock categoriesRepositoryMock;
+  late List<_CategoryEntityMock> categoryEntityMock;
   late CategoriesUsecase categoriesUsecase;
   setUp(() {
-    categoriesRepositoryMock = CategoriesRepositoryMock();
+    categoriesRepositoryMock = _CategoriesRepositoryMock();
     categoriesUsecase =
         CategoriesUsecaseImpl(categoriesRepository: categoriesRepositoryMock);
-    categoryEntityMock = [CategoryEntityMock()];
+    categoryEntityMock = [_CategoryEntityMock()];
   });
   test('Deve retornar uma lista de categorias corretamente', () async {
     when(

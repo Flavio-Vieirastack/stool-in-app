@@ -9,15 +9,15 @@ import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
 import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
 import 'package:stool_in/features/auth/domain/repository/sign_in/sign_in_repository.dart';
 
-class SignInDataSourceMock extends Mock implements SignInDatasource {}
+class _SignInDataSourceMock extends Mock implements SignInDatasource {}
 
 void main() {
-  late SignInDataSourceMock signInDataSourceMock;
+  late _SignInDataSourceMock signInDataSourceMock;
   late SignInRepository signInRepository;
   late AuthEntity authEntity;
   setUp(() {
     final faker = Faker();
-    signInDataSourceMock = SignInDataSourceMock();
+    signInDataSourceMock = _SignInDataSourceMock();
     authEntity = AuthEntity(
       email: faker.internet.email(),
       password: faker.internet.password(),

@@ -7,21 +7,21 @@ import 'package:stool_in/features/service_provider/domain/repository/update_serv
 import 'package:stool_in/features/service_provider/domain/usecase/update_service_provider/update_service_provider_usecase.dart';
 import 'package:stool_in/features/service_provider/domain/usecase/update_service_provider/update_service_provider_usercase_impl.dart';
 
-class UpdateServiceProviderRepositoryMock extends Mock
+class _UpdateServiceProviderRepositoryMock extends Mock
     implements UpdateServiceProviderRepository {}
 
-class CreateAndUpdateServiceProviderEntityMock extends Mock
+class _CreateAndUpdateServiceProviderEntityMock extends Mock
     implements CreateAndUpdateServiceProviderEntity {}
 
 void main() {
-  late UpdateServiceProviderRepositoryMock updateServiceProviderRepositoryMock;
-  late CreateAndUpdateServiceProviderEntityMock
+  late _UpdateServiceProviderRepositoryMock updateServiceProviderRepositoryMock;
+  late _CreateAndUpdateServiceProviderEntityMock
       createAndUpdateServiceProviderEntityMock;
   late UpdateServiceProviderUsecase updateServiceProviderUsecase;
   setUp(() {
-    updateServiceProviderRepositoryMock = UpdateServiceProviderRepositoryMock();
+    updateServiceProviderRepositoryMock = _UpdateServiceProviderRepositoryMock();
     createAndUpdateServiceProviderEntityMock =
-        CreateAndUpdateServiceProviderEntityMock();
+        _CreateAndUpdateServiceProviderEntityMock();
     updateServiceProviderUsecase = UpdateServiceProviderUsecaseImpl(
         updateServiceProviderRepository: updateServiceProviderRepositoryMock);
   });

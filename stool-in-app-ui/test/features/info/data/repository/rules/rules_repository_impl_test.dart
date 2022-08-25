@@ -7,17 +7,17 @@ import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:stool_in/features/info/domain/error/info_error.dart';
 import 'package:stool_in/features/info/domain/repository/rules/rules_repository.dart';
 
-class RulesDatasourceMock extends Mock implements RulesDatasource {}
+class _RulesDatasourceMock extends Mock implements RulesDatasource {}
 
-class InfoEntityMock extends Mock implements InfoEntity {}
+class _InfoEntityMock extends Mock implements InfoEntity {}
 
 void main() {
-  late RulesDatasourceMock rulesDatasourceMock;
-  late List<InfoEntityMock> infoEntityMock;
+  late _RulesDatasourceMock rulesDatasourceMock;
+  late List<_InfoEntityMock> infoEntityMock;
   late RulesRepository rulesRepository;
   setUp(() {
-    rulesDatasourceMock = RulesDatasourceMock();
-    infoEntityMock = [InfoEntityMock()];
+    rulesDatasourceMock = _RulesDatasourceMock();
+    infoEntityMock = [_InfoEntityMock()];
     rulesRepository = RulesRepositoryImpl(rulesDatasource: rulesDatasourceMock);
   });
   test('Deve retornar a entidade corretamente para o repository', () async {

@@ -8,24 +8,24 @@ import 'package:stool_in/features/service_provider/data/repository/update_servic
 import 'package:stool_in/features/service_provider/domain/entity/service_provider/create_and_update_service_provider_entity.dart';
 import 'package:stool_in/features/service_provider/domain/repository/update_service_provider_repository/update_service_provider_repository.dart';
 
-class UpdateServiceProviderDatasourceMock extends Mock
+class _UpdateServiceProviderDatasourceMock extends Mock
     implements UpdateServiceProviderDatasource {}
 
-class CreateAndUpdateServiceProviderEntityMock extends Mock
+class _CreateAndUpdateServiceProviderEntityMock extends Mock
     implements CreateAndUpdateServiceProviderEntity {}
 
 void main() {
-  late UpdateServiceProviderDatasourceMock updateServiceProviderDatasourceMock;
+  late _UpdateServiceProviderDatasourceMock updateServiceProviderDatasourceMock;
   late UpdateServiceProviderRepository updateServiceProviderRepository;
-  late CreateAndUpdateServiceProviderEntityMock
+  late _CreateAndUpdateServiceProviderEntityMock
       createAndUpdateServiceProviderEntityMock;
 
   setUpAll(() {
-    updateServiceProviderDatasourceMock = UpdateServiceProviderDatasourceMock();
+    updateServiceProviderDatasourceMock = _UpdateServiceProviderDatasourceMock();
     updateServiceProviderRepository = UpdateServiceProviderRepositoryImpl(
         updateServiceProviderDatasource: updateServiceProviderDatasourceMock);
     createAndUpdateServiceProviderEntityMock =
-        CreateAndUpdateServiceProviderEntityMock();
+        _CreateAndUpdateServiceProviderEntityMock();
     registerFallbackValue(
       CreateAndUpdateServiceProviderModel.fromEntity(
         createAndUpdateServiceProviderEntity:

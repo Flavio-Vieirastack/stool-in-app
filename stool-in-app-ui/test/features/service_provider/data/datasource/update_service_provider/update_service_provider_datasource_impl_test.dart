@@ -7,14 +7,14 @@ import 'package:stool_in/features/service_provider/data/datasource/update_servic
 import 'package:stool_in/features/service_provider/data/datasource/update_service_provider/update_service_provider_datasource_impl.dart';
 import 'package:stool_in/features/service_provider/data/model/service_provider/create_and_update_service_provider_model.dart';
 
-class RestClientPatchMock extends Mock implements RestClientPatch {}
+class _RestClientPatchMock extends Mock implements RestClientPatch {}
 
 void main() {
-  late RestClientPatchMock restClientPatchMock;
+  late _RestClientPatchMock restClientPatchMock;
   late UpdateServiceProviderDatasource updateServiceProviderDatasource;
   late CreateAndUpdateServiceProviderModel createAndUpdateServiceProviderModel;
   setUp(() {
-    restClientPatchMock = RestClientPatchMock();
+    restClientPatchMock = _RestClientPatchMock();
     createAndUpdateServiceProviderModel = CreateAndUpdateServiceProviderModel();
     updateServiceProviderDatasource = UpdateServiceProviderDatasourceImpl(
         restClientPatch: restClientPatchMock);

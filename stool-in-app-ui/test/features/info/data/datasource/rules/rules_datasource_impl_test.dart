@@ -14,30 +14,30 @@ import 'package:stool_in/features/info/domain/error/info_error.dart';
 
 import '../../../../../mock/rules_mock.dart';
 
-class RestclientGetMock extends Mock implements RestClientGet {}
+class _RestclientGetMock extends Mock implements RestClientGet {}
 
-class SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
+class _SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
 
-class CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {}
+class _CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {}
 
-class DecodedListCacheHelperMock extends Mock
+class _DecodedListCacheHelperMock extends Mock
     implements DecodedListCacheHelper {}
 
 void main() {
-  late RestclientGetMock restclientGetMock;
+  late _RestclientGetMock restclientGetMock;
   late RulesDatasource rulesDatasource;
-  late SaveJsonCacheMock saveJsonCacheMock;
+  late _SaveJsonCacheMock saveJsonCacheMock;
   late List<InfoEntity> infoEntity;
   late List<Map<String, dynamic>> response;
-  late CachedUserDataHelperMock cachedUserDataHelperMock;
-  late DecodedListCacheHelperMock decodedListCacheHelperMock;
+  late _CachedUserDataHelperMock cachedUserDataHelperMock;
+  late _DecodedListCacheHelperMock decodedListCacheHelperMock;
 
   setUp(() {
-    cachedUserDataHelperMock = CachedUserDataHelperMock();
-    decodedListCacheHelperMock = DecodedListCacheHelperMock();
+    cachedUserDataHelperMock = _CachedUserDataHelperMock();
+    decodedListCacheHelperMock = _DecodedListCacheHelperMock();
     infoEntity = [InfoEntity(id: 1, title: 'title', body: 'body')];
-    restclientGetMock = RestclientGetMock();
-    saveJsonCacheMock = SaveJsonCacheMock();
+    restclientGetMock = _RestclientGetMock();
+    saveJsonCacheMock = _SaveJsonCacheMock();
     rulesDatasource = RulesDatasourceImpl(
         restClientGet: restclientGetMock,
         cacheUserActionsHelper: cachedUserDataHelperMock,

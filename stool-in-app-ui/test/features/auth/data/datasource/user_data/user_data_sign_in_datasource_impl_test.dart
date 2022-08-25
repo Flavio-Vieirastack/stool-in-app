@@ -10,17 +10,16 @@ import 'package:stool_in/features/auth/data/model/user_data_model.dart';
 
 import '../../../../../mock/user_data_sign_in_mock.dart';
 
-class UserSignInDataSourceMock extends Mock
-    implements UserDataSignInDatasource {}
 
-class RestClientPostMock extends Mock implements RestClientPost {}
+
+class _RestClientPostMock extends Mock implements RestClientPost {}
 
 void main() {
   late UserDataSignInDatasource userDataSignInDatasource;
-  late RestClientPostMock restClientPostMock;
+  late _RestClientPostMock restClientPostMock;
   setUp(
     () {
-      restClientPostMock = RestClientPostMock();
+      restClientPostMock = _RestClientPostMock();
       userDataSignInDatasource =
           UserDataSignInDatasourceImpl(restClientPost: restClientPostMock);
     },
