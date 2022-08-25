@@ -12,14 +12,14 @@ class _UpdateServiceTypesDatasourceMock extends Mock
     implements UpdateServiceTypeDatasource {}
 
 void main() {
-  late _UpdateServiceTypesDatasourceMock _updateServiceTypesDatasourceMock;
+  late _UpdateServiceTypesDatasourceMock updateServiceTypesDatasourceMock;
   late UpdateServiceTypesRepository updateServiceTypesRepository;
   late CreateServiceTypesEntity createServiceTypeEntity;
   setUpAll(() {
     createServiceTypeEntity = CreateServiceTypesEntity(serviceProviderId: 1);
-    _updateServiceTypesDatasourceMock = _UpdateServiceTypesDatasourceMock();
+    updateServiceTypesDatasourceMock = _UpdateServiceTypesDatasourceMock();
     updateServiceTypesRepository = UpdateServicesTypeRepositoryImpl(
-        updateServiceTypeDatasource: _updateServiceTypesDatasourceMock);
+        updateServiceTypeDatasource: updateServiceTypesDatasourceMock);
     registerFallbackValue(CreateServiceTypeModel.fromEntity(
         createServiceTypesEntity: createServiceTypeEntity));
   });
@@ -27,7 +27,7 @@ void main() {
       'Deve retornar void ao chamar o repositoy para fazer update do service type',
       () async {
     when(
-      () => _updateServiceTypesDatasourceMock.call(
+      () => updateServiceTypesDatasourceMock.call(
           createServiceTypeModel: any(named: 'createServiceTypeModel')),
     ).thenAnswer((_) async => Future.value());
     final sut = await updateServiceTypesRepository.call(
@@ -38,14 +38,14 @@ void main() {
       'Deve chamar o datasource ao retornar void quando chamar o repositoy para fazer update do service type',
       () async {
     when(
-      () => _updateServiceTypesDatasourceMock.call(
+      () => updateServiceTypesDatasourceMock.call(
           createServiceTypeModel: any(named: 'createServiceTypeModel')),
     ).thenAnswer((_) async => Future.value());
     final sut = await updateServiceTypesRepository.call(
         createServiceTypesEntity: createServiceTypeEntity);
     expect(sut, const Right(null));
     verify(
-      () => _updateServiceTypesDatasourceMock.call(
+      () => updateServiceTypesDatasourceMock.call(
           createServiceTypeModel: any(named: 'createServiceTypeModel')),
     ).called(2);
   });
@@ -53,7 +53,7 @@ void main() {
       'Deve retornar um erro quando chamar o repositoy para fazer update do service type',
       () async {
     when(
-      () => _updateServiceTypesDatasourceMock.call(
+      () => updateServiceTypesDatasourceMock.call(
           createServiceTypeModel: any(named: 'createServiceTypeModel')),
     ).thenThrow(UpdateServiceTypesError(message: 'message'));
     final sut = await updateServiceTypesRepository.call(
