@@ -16,7 +16,7 @@ class GetSerServiceTypeUsecaseImpl implements GetUserServiceTyesUseCase {
       call({
     required CreateServiceTypesEntity serviceProviderId,
   }) async {
-    return await _getUserServiceTypesRepository.call(
+    return await _getUserServiceTypesRepository(
       serviceProviderId: serviceProviderId,
     );
   }

@@ -15,7 +15,7 @@ class CreateServiceTypeUsecaseImpl implements CreateServiceTypeUsecase {
   Future<Either<CreateServiceTypeError, ServiceTypesReturnEntity>> call({
     required CreateServiceTypesEntity createServiceTypesEntity,
   }) async {
-    return await _createServiceTypeRepository.call(
+    return await _createServiceTypeRepository(
         createServiceTypesEntity: createServiceTypesEntity);
   }
 }

@@ -18,7 +18,7 @@ class CreateServiceTypeRepositoryImpl implements CreateServiceTypeRepository {
     required CreateServiceTypesEntity createServiceTypesEntity,
   }) async {
     try {
-      final result = await _createServiceTypeDatasource.call(
+      final result = await _createServiceTypeDatasource(
         createServiceTypeModel: CreateServiceTypeModel.fromEntity(
           createServiceTypesEntity: createServiceTypesEntity,
         ),

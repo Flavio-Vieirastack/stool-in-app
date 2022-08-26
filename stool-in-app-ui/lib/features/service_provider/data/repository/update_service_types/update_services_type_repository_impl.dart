@@ -17,7 +17,7 @@ class UpdateServicesTypeRepositoryImpl implements UpdateServiceTypesRepository {
     required CreateServiceTypesEntity createServiceTypesEntity,
   }) async {
     try {
-      final result = await _updateServiceTypeDatasource.call(
+      final result = await _updateServiceTypeDatasource(
           createServiceTypeModel: CreateServiceTypeModel.fromEntity(
               createServiceTypesEntity: createServiceTypesEntity));
       return Right(result);

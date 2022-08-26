@@ -11,6 +11,6 @@ class DeleteUserServiceTypeUsecaseImpl implements DeleteUserServiceTypeUsecase {
   }) : _deleteUserServiceTypeRepository = deleteUserServiceTypeRepository;
   @override
   Future<Either<DeleteServiceTypeError, void>> call({required int id}) async {
-    return await _deleteUserServiceTypeRepository.call(id: id);
+    return await _deleteUserServiceTypeRepository(id: id);
   }
 }

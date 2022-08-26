@@ -15,7 +15,7 @@ class UpdateServiceProviderUsecaseImpl implements UpdateServiceProviderUsecase {
     required CreateAndUpdateServiceProviderEntity
         createAndUpdateServiceProviderEntity,
   }) async {
-    return await _updateServiceProviderRepository.call(
+    return await _updateServiceProviderRepository(
       createAndUpdateServiceProviderEntity:
           createAndUpdateServiceProviderEntity,
     );

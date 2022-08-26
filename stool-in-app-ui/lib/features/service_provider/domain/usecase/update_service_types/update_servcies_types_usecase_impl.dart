@@ -14,7 +14,7 @@ class UpdateServciesTypesUsecaseImpl implements UpdateServiceTypesUsecase {
   Future<Either<UpdateServiceTypesError, void>> call({
     required CreateServiceTypesEntity createServiceTypesEntity,
   }) async {
-    return await _updateServiceTypesRepository.call(
+    return await _updateServiceTypesRepository(
         createServiceTypesEntity: createServiceTypesEntity);
   }
 }

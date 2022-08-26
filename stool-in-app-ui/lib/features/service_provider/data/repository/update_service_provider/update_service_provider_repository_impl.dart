@@ -20,7 +20,7 @@ class UpdateServiceProviderRepositoryImpl
         createAndUpdateServiceProviderEntity,
   }) async {
     try {
-      final result = await _updateServiceProviderDatasource.call(
+      final result = await _updateServiceProviderDatasource(
         createAndUpdateServiceProviderModel:
             CreateAndUpdateServiceProviderModel.fromEntity(
           createAndUpdateServiceProviderEntity:
