@@ -116,7 +116,7 @@ class RestClientDeleteImpl extends RestClientInitialize
   @override
   Future<RestClientResponse<T>> delete<T>(
       {required String path,
-      required data,
+      data,
       Map<String, dynamic>? queryParams,
       Map<String, dynamic>? headers}) async {
     try {
