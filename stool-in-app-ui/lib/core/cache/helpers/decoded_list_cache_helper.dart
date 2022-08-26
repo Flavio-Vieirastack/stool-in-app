@@ -7,17 +7,10 @@ class DecodedListCacheHelper extends ReadLocalSecureStorageMethodImpl
     with SharedPreferencesHelper {
   Future<List<dynamic>> getDecodedList({
     required String key,
-    bool isCryptedData = false,
   }) async {
-    if (isCryptedData == false) {
-      final data = await getString(key: key);
-      final dataDecoded = jsonDecode(data!) as List;
+    final data = await getString(key: key);
+    final dataDecoded = jsonDecode(data!) as List;
 
-      return dataDecoded;
-    } else {
-      final data = await read(key: key);
-      final decodedData = jsonDecode(data!) as List;
-      return decodedData;
-    }
+    return dataDecoded;
   }
 }

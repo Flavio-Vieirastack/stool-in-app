@@ -39,10 +39,9 @@ class GetUserServiceTypesDatasourceImpl extends SaveJsonInCacheDatasource
               '${EndpointConstants.getUserServiceTypes}/${serviceProviderId.serviceProviderId}',
         );
         final data =
-            result.data.map((e) => ServiceTypeReturnModel.fromMap(e)).toList();
+            result.data.map<ServiceTypesReturnEntity>((e) => ServiceTypeReturnModel.fromMap(e)).toList();
         await saveJsonInCache(
-          data: result.data,
-          encryptData: true,
+          data: result.data.toString(),
           key: CacheDatasourceKeys.userServiceTypeCryptCacheKey,
         );
         await _cacheUserActionsHelper.setUserGetUserServiceTypesData(
@@ -51,7 +50,6 @@ class GetUserServiceTypesDatasourceImpl extends SaveJsonInCacheDatasource
         return data;
       } else {
         final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
-          isCryptedData: true,
           key: CacheDatasourceKeys.userServiceTypeCryptCacheKey,
         );
         final entityCached = decodedCacheList

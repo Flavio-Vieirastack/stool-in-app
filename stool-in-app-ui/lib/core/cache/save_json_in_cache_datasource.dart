@@ -9,20 +9,11 @@ abstract class SaveJsonInCacheDatasource
   Future<void> saveJsonInCache({
     required dynamic data,
     required String key,
-    bool encryptData = false,
   }) async {
-    if (encryptData == false) {
-      log('Saved no crypt data $data', name: 'Cache');
-      await saveString(
-        key: key,
-        value: jsonEncode(data),
-      );
-    } else {
-      log('Saved crypt data $data', name: 'CryptCache');
-      await write(
-        key: key,
-        value: data,
-      );
-    }
+    log('Saved no crypt data $data', name: 'Cache');
+    await saveString(
+      key: key,
+      value: jsonEncode(data),
+    );
   }
 }
