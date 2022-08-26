@@ -27,7 +27,7 @@ class GetUserServiceTypesDatasourceImpl extends SaveJsonInCacheDatasource
         _decodedListCacheHelper = decodedListCacheHelper,
         _cacheUserActionsHelper = cacheUserActionsHelper;
   @override
-  Future<List<ServiceTypesReturnEntity>> call({
+  Future<List<ServiceTypesReturnEntity>> getUserServicesTypes({
     required CreateServiceTypesEntity serviceProviderId,
   }) async {
     try {

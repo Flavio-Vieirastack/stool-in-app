@@ -33,7 +33,7 @@ void main() {
       'Deve retornar uma lista de entidade correta ao fazer get do service types',
       () async {
     when(
-      () => getUserServiceTypesDatasourceMock.call(
+      () => getUserServiceTypesDatasourceMock.getUserServicesTypes(
           serviceProviderId: createServiceTypeEntityMock),
     ).thenAnswer((_) async => serviceTypesReturnEntityMock);
     final sut = await getUserServiceTypesRepository.call(
@@ -44,20 +44,20 @@ void main() {
       'Deve chamar o datasource ao retornar uma lista de entidade correta ao fazer get do service types',
       () async {
     when(
-      () => getUserServiceTypesDatasourceMock.call(
+      () => getUserServiceTypesDatasourceMock.getUserServicesTypes(
           serviceProviderId: createServiceTypeEntityMock),
     ).thenAnswer((_) async => serviceTypesReturnEntityMock);
     final sut = await getUserServiceTypesRepository.call(
         serviceProviderId: createServiceTypeEntityMock);
     expect(sut, Right(serviceTypesReturnEntityMock));
     verify(
-      () => getUserServiceTypesDatasourceMock.call(
+      () => getUserServiceTypesDatasourceMock.getUserServicesTypes(
           serviceProviderId: createServiceTypeEntityMock),
     ).called(1);
   });
   test('Deve um erro do tipo correto ao fazer get do service types', () async {
     when(
-      () => getUserServiceTypesDatasourceMock.call(
+      () => getUserServiceTypesDatasourceMock.getUserServicesTypes(
           serviceProviderId: createServiceTypeEntityMock),
     ).thenThrow(GetUserServiceTypesError(message: 'message'));
     final sut = await getUserServiceTypesRepository.call(

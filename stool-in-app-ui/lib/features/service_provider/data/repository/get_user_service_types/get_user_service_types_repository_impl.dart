@@ -19,7 +19,7 @@ class GetUserServiceTypesRepositoryImpl
     required CreateServiceTypesEntity serviceProviderId,
   }) async {
     try {
-      final result = await _getUserServiceTypesDatasource.call(
+      final result = await _getUserServiceTypesDatasource.getUserServicesTypes(
           serviceProviderId: serviceProviderId);
       return Right(result);
     } on GetUserServiceTypesError catch (e, s) {

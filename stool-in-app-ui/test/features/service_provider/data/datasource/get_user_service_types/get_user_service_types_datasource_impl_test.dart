@@ -93,7 +93,7 @@ void main() {
       ),
     );
 
-    final sut = await getUserServiceTypesDatasource.call(
+    final sut = await getUserServiceTypesDatasource.getUserServicesTypes(
         serviceProviderId: createServiceTypeEntity);
     expect(sut[0], serviceTypesReturnEntity[0]);
   });
@@ -135,16 +135,14 @@ void main() {
       ),
     );
 
-    final sut = await getUserServiceTypesDatasource.call(
+    final sut = await getUserServiceTypesDatasource.getUserServicesTypes(
         serviceProviderId: createServiceTypeEntity);
     expect(sut[0], serviceTypesReturnEntity[0]);
     verify(
       () => restClientGetMock.get(path: any(named: 'path')),
     ).called(1);
   });
-  test(
-      'Deve chamar o rest client ao retornar uma lista de ServiceTypesReturnEntity',
-      () async {
+  test('Deve retornar um erro ao tentar buscar user sevice types', () async {
     binding;
     SharedPreferences.setMockInitialValues({});
     when(
@@ -173,19 +171,14 @@ void main() {
     ).thenAnswer((_) async => Future.value());
     when(
       () => restClientGetMock.get(path: any(named: 'path')),
-    ).thenAnswer(
-      (_) async => RestClientResponse(
-        data: servicesTypePayloadList,
-        statucCode: 200,
-      ),
+    ).thenThrow(
+      GetUserServiceTypesError(message: 'message'),
     );
 
-    final sut = await getUserServiceTypesDatasource.call(
-        serviceProviderId: createServiceTypeEntity);
-    expect(sut[0], serviceTypesReturnEntity[0]);
-    verify(
-      () => restClientGetMock.get(path: any(named: 'path')),
-    ).called(1);
+    final sut = getUserServiceTypesDatasource.getUserServicesTypes;
+    expect(
+      () async => sut(serviceProviderId: createServiceTypeEntity),
+      throwsA(isA<GetUserServiceTypesError>()),
+    );
   });
-
 }
