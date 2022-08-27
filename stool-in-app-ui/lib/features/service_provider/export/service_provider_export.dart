@@ -55,3 +55,4 @@ export '../domain/entity/service_provider/service_provider_entity.dart';
 export '../domain/entity/service_provider/user_login_entity.dart';
 export '../domain/error/get_service_provider_error.dart';
 export '../domain/usecase/get_service_provider/get_service_provider_usecase.dart';
+export '../domain/repository/get_service_provider/get_service_provider_repository.dart';
