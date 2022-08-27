@@ -5,6 +5,6 @@ import '../../../../exports/app_exports.dart';
 abstract class SearchServiceProviderRepository {
 Future<Either<SearchServiceProviderError, List<ServiceProviderEntity>>>
       call({
-    required String query,
+    required SearchServiceProviderQueryEntity searchServiceProviderQueryEntity,
   });
 }

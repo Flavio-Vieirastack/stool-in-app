@@ -253,9 +253,14 @@ export '../features/service_provider/domain/error/get_service_provider_error.dar
 export '../features/splash/module/splash_module.dart';
 export '../features/splash/presenter/cubit/splash_cubit.dart';
 export '../features/splash/presenter/page/splash_page.dart';
-//search
+//!search
 export '../features/search/domain/error/search_service_provider_error.dart';
 export '../features/search/domain/usecase/serarch_service_provider_usecase.dart';
 export '../features/search/domain/usecase/serarch_service_provider_usecase.dart';
 export '../features/search/domain/usecase/search_service_provider_usecase_impl.dart';
 export '../features/search/domain/repository/search_service_provider_repository.dart';
+export '../features/search/data/datasource/search_service_provider_datasource.dart';
+export '../features/search/data/repository/search_service_provider_repository_impl.dart';
+export '../features/search/data/datasource/search_service_provider_datasource_impl.dart';
+export '../features/search/domain/entity/search_service_provider_query_entity.dart';
+export '../features/search/data/model/search_service_provider_model.dart';

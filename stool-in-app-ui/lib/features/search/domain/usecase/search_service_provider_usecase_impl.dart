@@ -10,8 +10,8 @@ class SearchServiceProviderUsecaseImpl
   @override
   Future<Either<SearchServiceProviderError, List<ServiceProviderEntity>>>
       call({
-    required String query,
+    required SearchServiceProviderQueryEntity searchServiceProviderQueryEntity,
   }) async {
-    return await _searchServiceProviderRepository.call(query: query);
+    return await _searchServiceProviderRepository.call(searchServiceProviderQueryEntity: searchServiceProviderQueryEntity);
   }
 }
