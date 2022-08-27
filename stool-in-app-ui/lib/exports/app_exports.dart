@@ -193,9 +193,6 @@ export '../features/onboarding/module/onboarding_module.dart';
 export '../features/onboarding/presenter/cubit/onboarding_cubit.dart';
 export '../features/onboarding/presenter/page/onboarding_page.dart';
 //!service provider
-export '../features/service_provider/domain/repository/get_service_provider/get_service_provider_data_repository.dart';
-export '../features/service_provider/domain/usecase/get_service_provider/get_service_provider_data_usecase_impl.dart';
-export '../features/service_provider/domain/usecase/get_service_provider/get_service_provider_data_usecase.dart';
 export '../features/service_provider/data/repository/delete_user_service_type/delete_user_service_type_repository_impl.dart';
 export '../features/service_provider/domain/usecase/delete_user_service_type/delete_user_service_type_usecase_impl.dart';
 export '../features/service_provider/domain/usecase/delete_user_service_type/delete_user_service_type_usecase.dart';
@@ -256,3 +253,9 @@ export '../features/service_provider/domain/error/get_service_provider_error.dar
 export '../features/splash/module/splash_module.dart';
 export '../features/splash/presenter/cubit/splash_cubit.dart';
 export '../features/splash/presenter/page/splash_page.dart';
+//search
+export '../features/search/domain/error/search_service_provider_error.dart';
+export '../features/search/domain/usecase/serarch_service_provider_usecase.dart';
+export '../features/search/domain/usecase/serarch_service_provider_usecase.dart';
+export '../features/search/domain/usecase/search_service_provider_usecase_impl.dart';
+export '../features/search/domain/repository/search_service_provider_repository.dart';
