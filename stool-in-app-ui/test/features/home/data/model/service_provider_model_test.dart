@@ -38,13 +38,13 @@ void main() {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    expect(model[0].initialDisponibleTime, "06:00");
+    expect(model[0].initialDisponibleTime, "2022-08-15 16:12:36.566044");
   });
   test('Deve retornar o o horario final corretamente', () {
     final model = serviceProviderPayload
         .map((e) => ServiceProviderModel.fromDataSource(e, distance: distance))
         .toList();
-    expect(model[0].endDisponibleTime, "17:30");
+    expect(model[0].endDisponibleTime, "2022-08-15 16:12:36.566044");
   });
   test('Deve retornar o os dias da semana corretamente', () {
     final model = serviceProviderPayload

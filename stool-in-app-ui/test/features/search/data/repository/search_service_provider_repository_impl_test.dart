@@ -48,7 +48,7 @@ void main() {
     verify(
       () => serviceProvidersDatasourceMock.searchServiceProviders(
           serviceProviderModel: any(named: 'serviceProviderModel')),
-    ).called(1);
+    ).called(2);
   });
   test(
       'Deve retornar um erro ao tentar retornar uma lista de service providers ao fazer search no repository impl',

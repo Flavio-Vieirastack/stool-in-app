@@ -18,10 +18,10 @@ class SearchServiceProviderDatasourceImpl
         queryParams: serviceProviderModel.toMap(),
       );
       final data = result.data
-          .map<SearchServiceProviderModel>(
-              (e) => ServiceProviderReturnModel.fromMap(e))
+          ?.map<ServiceProviderEntity>(
+              (e) => ServiceProviderModel.fromDataSource(e))
           .toList();
-      return data ?? <ServiceProviderModel>[];
+      return data ?? <ServiceProviderEntity>[];
     } on RestClientException catch (e, s) {
       log(
         'Erro ao fazer busca do service provider no datasource impl',
