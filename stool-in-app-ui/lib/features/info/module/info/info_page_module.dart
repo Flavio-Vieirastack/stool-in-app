@@ -1,8 +1,4 @@
-
-
-import '../../../../core/constants/export/constants_export.dart';
-import '../../../../core/module/export/module_export.dart';
-import '../../export/info_export.dart';
+import '../../../../../exports/app_exports.dart';
 
 class InfoPageModule extends AppModule {
   InfoPageModule()

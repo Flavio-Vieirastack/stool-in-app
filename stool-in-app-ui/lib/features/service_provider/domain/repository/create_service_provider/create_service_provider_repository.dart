@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../auth/export/auth_exports.dart';
-import '../../../export/service_provider_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 
 abstract class CreateServiceProviderRepository {

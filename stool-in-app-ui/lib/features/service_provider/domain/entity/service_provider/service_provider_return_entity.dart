@@ -1,6 +1,6 @@
 
 
-import '../../../export/service_provider_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 class ServiceProviderReturnEntity extends CreateAndUpdateServiceProviderEntity {
   final int id;

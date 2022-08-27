@@ -1,13 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../../../core/constants/export/constants_export.dart';
-import '../../../../../core/firebase/export/firebase_export.dart';
-import '../../../../../core/helpers/export/helpers_export.dart';
-import '../../../../../core/module/export/module_export.dart';
-import '../../../../../core/rest_client/export/rest_client_export.dart';
-import '../../../../../core/shared/export/shared_export.dart';
-import '../../../export/auth_exports.dart';
+import '../../../../../exports/app_exports.dart';
 
 @immutable
 class LoginModule extends AppModule {

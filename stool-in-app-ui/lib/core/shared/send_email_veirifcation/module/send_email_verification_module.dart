@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-import '../../../module/export/module_export.dart';
-import '../../export/shared_export.dart';
+import '../../../../exports/app_exports.dart';
+
 
 
 class SendEmailVerificationModule implements PermanentModule {

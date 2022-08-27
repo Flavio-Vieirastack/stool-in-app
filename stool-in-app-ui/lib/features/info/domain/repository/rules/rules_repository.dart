@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import '../../../export/info_export.dart';
+import '../../../../../exports/app_exports.dart';
 
 abstract class RulesRepository {
   Future<Either<InfoError, List<InfoEntity>>> getRules();

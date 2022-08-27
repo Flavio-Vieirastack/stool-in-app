@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
-import '../../../helpers/export/helpers_export.dart';
-import '../../../shared/export/shared_export.dart';
+import '../../../../exports/app_exports.dart';
+
 
 
 class InternetCheckInterceptor

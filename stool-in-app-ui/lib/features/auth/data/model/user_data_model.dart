@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../export/auth_exports.dart';
+import '../../../../../exports/app_exports.dart';
 
 
 class UserDataModel extends UserDataEntity {

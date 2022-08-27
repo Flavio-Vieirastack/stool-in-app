@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:lottie/lottie.dart';
-import 'package:stool_in/features/info/export/info_export.dart';
-
-import '../../../../../core/constants/export/constants_export.dart';
-import '../../../../../core/widgets/export/widgets_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 
 class RulesPage extends StatelessWidget with AppSnackBar {

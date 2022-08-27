@@ -1,6 +1,6 @@
 
 
-import '../../../export/service_provider_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 class ServiceTypesReturnEntity extends CreateServiceTypesEntity {
   final int serviceTypeId;

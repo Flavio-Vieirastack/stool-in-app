@@ -1,8 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-
-import '../../../../auth/export/auth_exports.dart';
-import '../../../export/home_export.dart';
+import '../../../../../exports/app_exports.dart';
 
 
 class ServiceProviderModel extends ServiceProviderEntity {

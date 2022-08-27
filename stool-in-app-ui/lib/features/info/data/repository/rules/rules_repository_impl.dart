@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../export/info_export.dart';
+import '../../../../../exports/app_exports.dart';
 
 class RulesRepositoryImpl implements RulesRepository {
   final RulesDatasource _rulesDatasource;

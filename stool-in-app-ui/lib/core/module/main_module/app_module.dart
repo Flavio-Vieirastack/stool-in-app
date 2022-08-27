@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
 
-import '../export/module_export.dart';
+import '../../../exports/app_exports.dart';
+
 
 @immutable
 abstract class AppModule {

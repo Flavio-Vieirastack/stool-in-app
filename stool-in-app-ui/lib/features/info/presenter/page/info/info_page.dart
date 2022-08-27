@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_sizer/flutter_sizer.dart';
-
-import '../../../../../core/constants/export/constants_export.dart';
-import '../../../../../core/widgets/export/widgets_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 class InfoPage extends StatelessWidget {
   const InfoPage({Key? key}) : super(key: key);

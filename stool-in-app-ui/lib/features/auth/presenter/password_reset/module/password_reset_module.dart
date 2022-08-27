@@ -1,10 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/features/auth/export/auth_exports.dart';
-
-import '../../../../../core/module/export/module_export.dart';
-import '../../../../../core/rest_client/export/rest_client_export.dart';
+import '../../../../../exports/app_exports.dart';
 
 
 class PasswordResetModule extends AppModule {

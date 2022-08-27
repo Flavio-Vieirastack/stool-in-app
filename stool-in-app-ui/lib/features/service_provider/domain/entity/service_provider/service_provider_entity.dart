@@ -1,10 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import 'package:stool_in/features/auth/export/auth_exports.dart';
-import 'package:stool_in/features/home/export/home_export.dart';
-import 'package:stool_in/features/service_provider/domain/entity/service_provider/acepted_payments_entity.dart';
-import 'package:stool_in/features/service_provider/domain/entity/service_provider/create_and_update_service_provider_entity.dart';
-import 'package:stool_in/features/service_provider/domain/entity/service_provider/user_login_entity.dart';
+import '../../../../../../exports/app_exports.dart';
 
 class ServiceProviderEntity extends CreateAndUpdateServiceProviderEntity {
   final int id;

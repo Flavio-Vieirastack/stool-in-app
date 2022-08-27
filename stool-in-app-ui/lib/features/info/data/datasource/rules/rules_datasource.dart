@@ -1,4 +1,4 @@
-import '../../../export/info_export.dart';
+import '../../../../../exports/app_exports.dart';
 
 abstract class RulesDatasource {
   Future<List<InfoEntity>> getRules();

@@ -1,6 +1,7 @@
 
 
-import 'export/rest_client_export.dart';
+
+import 'package:stool_in/exports/app_exports.dart';
 
 abstract class DioRestClient extends RestClientOptions {
   DioRestClient auth();

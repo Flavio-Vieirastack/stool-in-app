@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-import '../../../constants/export/constants_export.dart';
-import '../../../helpers/export/helpers_export.dart';
+import '../../../../exports/app_exports.dart';
+
 
 
 class AuthorizationRestClientInterceptor extends Interceptor {

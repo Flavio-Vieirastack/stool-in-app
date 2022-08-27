@@ -1,6 +1,7 @@
 
 
-import 'export/rest_client_export.dart';
+
+import '../../exports/app_exports.dart';
 
 class DioRestClientImpl extends RestClientOptions implements DioRestClient {
   final RestClientGet _get;

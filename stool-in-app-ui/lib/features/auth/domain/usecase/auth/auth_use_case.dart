@@ -1,6 +1,6 @@
 
 import 'package:dartz/dartz.dart';
-import '../../../export/auth_exports.dart';
+import '../../../../../exports/app_exports.dart';
 
 abstract class AuthUseCase {
   Future<Either<FirebaseAuthError, void>> firebaseLogin({

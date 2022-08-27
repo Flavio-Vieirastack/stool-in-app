@@ -3,17 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
-
-import 'core/constants/export/constants_export.dart';
-import 'core/firebase/export/firebase_export.dart';
-import 'core/module/export/module_export.dart';
-import 'core/shared/export/shared_export.dart';
-import 'core/widgets/export/widgets_export.dart';
-import 'features/auth/export/auth_exports.dart';
-import 'features/home/export/home_export.dart';
-import 'features/info/export/info_export.dart';
-import 'features/onboarding/export/onboarding_export.dart';
-import 'features/splash/export/splash_export.dart';
+import 'exports/app_exports.dart';
 import 'firebase_options.dart';
 
 void main() async {

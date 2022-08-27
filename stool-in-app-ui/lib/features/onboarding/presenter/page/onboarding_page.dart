@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-
-import '../../../../core/constants/export/constants_export.dart';
-import '../../../../core/helpers/export/helpers_export.dart';
-import '../../../../core/widgets/export/widgets_export.dart';
-import '../../export/onboarding_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 part './widgets/onboarding_pages.dart';
 class OnboardingPage extends StatelessWidget {

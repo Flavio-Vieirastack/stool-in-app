@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import '../../../export/auth_exports.dart';
+import '../../../../../exports/app_exports.dart';
 
 class PasswordResetRepositoryImpl implements PasswordResetRepository {
   final PasswordResetDatasource _passwordResetDatasource;

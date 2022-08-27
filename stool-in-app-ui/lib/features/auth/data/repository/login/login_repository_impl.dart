@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../export/auth_exports.dart';
+import '../../../../../exports/app_exports.dart';
 
 
 class LoginRepositoryImpl implements LoginRepository {

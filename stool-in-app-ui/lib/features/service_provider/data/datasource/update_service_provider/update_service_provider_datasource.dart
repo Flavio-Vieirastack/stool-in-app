@@ -1,7 +1,4 @@
-
-
-
-import '../../../export/service_provider_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 abstract class UpdateServiceProviderDatasource {
   Future<void> call({required CreateAndUpdateServiceProviderModel createAndUpdateServiceProviderModel});

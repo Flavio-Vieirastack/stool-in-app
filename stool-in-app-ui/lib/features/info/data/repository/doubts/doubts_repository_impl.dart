@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../export/info_export.dart';
+import '../../../../../exports/app_exports.dart';
 
 class DoubtsRepositoryImpl implements DoubtRepository {
   final DoubtsDatasource _doubtsDatasource;

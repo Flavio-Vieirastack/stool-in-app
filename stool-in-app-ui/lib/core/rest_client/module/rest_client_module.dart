@@ -1,8 +1,8 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-import '../../module/export/module_export.dart';
-import '../export/rest_client_export.dart';
+import '../../../exports/app_exports.dart';
+
 
 
 class RestClientModule implements PermanentModule {

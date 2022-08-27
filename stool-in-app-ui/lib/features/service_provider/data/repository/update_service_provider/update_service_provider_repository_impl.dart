@@ -2,8 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../../home/export/home_export.dart';
-import '../../../export/service_provider_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 
 class UpdateServiceProviderRepositoryImpl

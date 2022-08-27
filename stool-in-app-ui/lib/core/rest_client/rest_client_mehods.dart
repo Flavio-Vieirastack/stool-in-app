@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import 'export/rest_client_export.dart';
+import '../../exports/app_exports.dart';
 
 
 class RestClientOptions {

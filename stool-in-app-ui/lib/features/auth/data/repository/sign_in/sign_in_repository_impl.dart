@@ -2,8 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../../../../core/rest_client/export/rest_client_export.dart';
-import '../../../export/auth_exports.dart';
+import '../../../../../exports/app_exports.dart';
 
 class SignInRepositoryImpl implements SignInRepository {
   final SignInDatasource _signInDatasource;

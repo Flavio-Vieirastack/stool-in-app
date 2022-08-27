@@ -1,8 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../../core/cache/export/cache_export.dart';
-import '../../../../export/info_export.dart';
+import '../../../../../../exports/app_exports.dart';
 
 
 part 'rules_state.dart';

@@ -1,12 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in/features/auth/export/auth_exports.dart';
-
-import '../../../../../core/constants/export/constants_export.dart';
-import '../../../../../core/firebase/export/firebase_export.dart';
-import '../../../../../core/helpers/export/helpers_export.dart';
-import '../../../../../core/module/export/module_export.dart';
-import '../../../../../core/rest_client/export/rest_client_export.dart';
+import '../../../../../exports/app_exports.dart';
 
 
 class SignInMainDataModule extends AppModule {

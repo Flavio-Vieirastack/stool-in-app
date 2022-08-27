@@ -1,7 +1,8 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-import '../../../../export/shared_export.dart';
+import '../../../../../../exports/app_exports.dart';
+
 
 
 class GeoLocatorCubitModule implements PermanentCubits {
