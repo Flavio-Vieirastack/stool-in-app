@@ -47,3 +47,11 @@ export '../data/repository/delete_user_service_type/delete_user_service_type_rep
 export '../data/repository/get_user_service_types/get_user_service_types_repository_impl.dart';
 export '../data/repository/update_service_provider/update_service_provider_repository_impl.dart';
 export '../data/repository/update_service_types/update_services_type_repository_impl.dart';
+export '../domain/entity/service_provider/acepted_payments_entity.dart';
+export '../domain/entity/service_provider/coments_entity.dart';
+export '../domain/entity/service_provider/create_and_update_service_provider_entity.dart';
+export '../domain/entity/service_provider/execution_services_entity.dart';
+export '../domain/entity/service_provider/service_provider_entity.dart';
+export '../domain/entity/service_provider/user_login_entity.dart';
+export '../domain/error/get_service_provider_error.dart';
+export '../domain/usecase/get_service_provider/get_service_provider_usecase.dart';
