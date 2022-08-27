@@ -1,9 +1,6 @@
 
 
-
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_mehods.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
+import 'export/rest_client_export.dart';
 
 class DioRestClientImpl extends RestClientOptions implements DioRestClient {
   final RestClientGet _get;

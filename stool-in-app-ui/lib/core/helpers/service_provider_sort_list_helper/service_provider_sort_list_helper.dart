@@ -1,5 +1,6 @@
 
-import '../../../features/home/domain/entity/service_provider/service_provider_entity.dart';
+
+import '../../../features/home/export/home_export.dart';
 
 class ServiceProviderSortListHelper {
   List<ServiceProviderEntity> sortList({

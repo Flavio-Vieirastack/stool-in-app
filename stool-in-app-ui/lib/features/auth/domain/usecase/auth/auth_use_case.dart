@@ -1,12 +1,6 @@
 
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
-import 'package:stool_in/features/auth/domain/error/firebase_auth_error.dart';
-
-import '../../entity/auth_entity.dart';
-import '../../entity/user_data_entity.dart';
-import '../../entity/user_token_entity.dart';
-import '../../error/user_data_error.dart';
+import '../../../export/auth_exports.dart';
 
 abstract class AuthUseCase {
   Future<Either<FirebaseAuthError, void>> firebaseLogin({

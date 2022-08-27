@@ -1,12 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
-import 'package:stool_in/features/info/domain/error/info_error.dart';
-import 'package:stool_in/features/info/domain/repository/doubt/doubt_repository.dart';
-import 'package:stool_in/features/info/domain/repository/rules/rules_repository.dart';
-import 'package:stool_in/features/info/domain/usecase/info_usecase.dart';
-import 'package:stool_in/features/info/domain/usecase/info_usecase_impl.dart';
+import 'package:stool_in/features/info/export/info_export.dart';
+
 
 class _DoubtRepositoryMock extends Mock implements DoubtRepository {}
 

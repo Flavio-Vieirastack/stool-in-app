@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:stool_in/core/firebase/push_notifications/local_notifications.dart';
+
+import '../export/firebase_export.dart';
 
 class FireBaseNotifications {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

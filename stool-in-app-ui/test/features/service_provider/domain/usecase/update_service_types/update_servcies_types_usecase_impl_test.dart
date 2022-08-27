@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/service_provider/domain/entity/service_types/create_service_types_entity.dart';
-import 'package:stool_in/features/service_provider/domain/error/update_service_types_error.dart';
-import 'package:stool_in/features/service_provider/domain/repository/update_service_types/update_service_types_repository.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/update_service_types/update_servcies_types_usecase_impl.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/update_service_types/update_service_types_usecase.dart';
+import 'package:stool_in/features/service_provider/export/service_provider_export.dart';
+
 
 class _UpdateServiceTypeRepositoryMock extends Mock
     implements UpdateServiceTypesRepository {}

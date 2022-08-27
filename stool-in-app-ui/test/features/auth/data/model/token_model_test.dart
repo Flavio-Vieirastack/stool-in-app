@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/auth/data/model/user_token_model.dart';
+import 'package:stool_in/features/auth/export/auth_exports.dart';
 
 void main() {
   test('Deve retornar o valor correto do token', () {

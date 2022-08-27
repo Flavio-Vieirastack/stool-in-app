@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
-import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
-import 'package:stool_in/core/cache/save_json_in_cache_datasource.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/features/info/data/datasource/rules/rules_datasource.dart';
-import 'package:stool_in/features/info/data/datasource/rules/rules_datasource_impl.dart';
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
-import 'package:stool_in/features/info/domain/error/info_error.dart';
+import 'package:stool_in/core/cache/export/cache_export.dart';
+import 'package:stool_in/core/rest_client/export/rest_client_export.dart';
+import 'package:stool_in/features/info/export/info_export.dart';
 
 import '../../../../../mock/rules_mock.dart';
+
 
 class _RestclientGetMock extends Mock implements RestClientGet {}
 

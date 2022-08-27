@@ -1,7 +1,8 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
-import 'package:stool_in/core/module/permanent_dependencies/permanent_module.dart';
+
+import '../../../../module/export/module_export.dart';
+import '../../../export/cache_export.dart';
 
 class CacheUserActionsModule extends PermanentModule {
   @override

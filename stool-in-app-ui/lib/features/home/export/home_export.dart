@@ -19,3 +19,8 @@ export '../domain/usecase/categories/categories_usecase_impl.dart';
 export '../domain/usecase/service_provider/service_provider_usecase_impl.dart';
 export '../presenter/cubit/home_cubit.dart';
 export '../presenter/module/home_module.dart';
+export '../data/model/categories/categories_model.dart';
+export '../data/model/service_provider/coments_model.dart';
+export '../data/model/service_provider/execution_services_model.dart';
+export '../data/model/service_provider/service_provider_model.dart';
+export '../data/model/service_provider/services_to_execute_model.dart';

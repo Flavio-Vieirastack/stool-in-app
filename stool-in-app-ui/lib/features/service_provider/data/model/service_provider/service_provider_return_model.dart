@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:stool_in/features/service_provider/domain/entity/service_provider/service_provider_return_entity.dart';
+import '../../../export/service_provider_export.dart';
+
 
 class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
   ServiceProviderReturnModel({

@@ -1,10 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/coments_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/execution_services_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
+import 'package:stool_in/features/auth/export/auth_exports.dart';
+import 'package:stool_in/features/home/export/home_export.dart';
+
 
 class _ExectionServicesMock extends Mock implements ExecutionServicesEntity {}
 

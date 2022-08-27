@@ -1,5 +1,7 @@
-import 'package:stool_in/features/service_provider/data/model/service_type/create_service_type_model.dart';
 
+
+
+import '../../../export/service_provider_export.dart';
 
 abstract class UpdateServiceTypeDatasource {
   Future<void> call(

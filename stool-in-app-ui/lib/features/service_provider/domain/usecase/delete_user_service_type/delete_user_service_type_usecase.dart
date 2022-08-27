@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/error/delete_service_type_error.dart';
+import '../../../export/service_provider_export.dart';
 
 abstract class DeleteUserServiceTypeUsecase {
   Future<Either<DeleteServiceTypeError, void>> call({required int id});

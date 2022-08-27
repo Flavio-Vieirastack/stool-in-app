@@ -1,4 +1,4 @@
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
+import '../../../export/info_export.dart';
 
 abstract class DoubtsDatasource {
   Future<List<InfoEntity>> getDoubts();

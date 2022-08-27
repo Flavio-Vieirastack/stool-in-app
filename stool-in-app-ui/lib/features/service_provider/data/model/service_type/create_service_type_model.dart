@@ -1,4 +1,6 @@
-import 'package:stool_in/features/service_provider/domain/entity/service_types/create_service_types_entity.dart';
+
+
+import '../../../export/service_provider_export.dart';
 
 class CreateServiceTypeModel extends CreateServiceTypesEntity {
   CreateServiceTypeModel({

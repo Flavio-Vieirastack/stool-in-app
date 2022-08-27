@@ -2,7 +2,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/helpers/pick_image_helper/pick_image_helper.dart';
+import 'package:stool_in/core/helpers/export/helpers_export.dart';
 
 class PickImageHelperMock extends Mock implements PickImageHelper {}
 

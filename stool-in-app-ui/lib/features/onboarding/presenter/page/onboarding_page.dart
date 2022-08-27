@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:stool_in/core/constants/assets_constants.dart';
-import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/features/onboarding/presenter/cubit/onboarding_cubit.dart';
 
-import '../../../../core/helpers/theme/colors/app_colors.dart';
-import '../../../../core/helpers/theme/text_styles/app_text_styles.dart';
-import '../../../../core/widgets/app_button/app_button.dart';
+import '../../../../core/constants/export/constants_export.dart';
+import '../../../../core/helpers/export/helpers_export.dart';
+import '../../../../core/widgets/export/widgets_export.dart';
+import '../../export/onboarding_export.dart';
+
 part './widgets/onboarding_pages.dart';
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);

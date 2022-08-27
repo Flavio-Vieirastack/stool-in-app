@@ -2,12 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/auth/data/datasource/sign_in/sign_in_datasource.dart';
-import 'package:stool_in/features/auth/data/model/auth_model.dart';
-import 'package:stool_in/features/auth/data/repository/sign_in/sign_in_repository_impl.dart';
-import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
-import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
-import 'package:stool_in/features/auth/domain/repository/sign_in/sign_in_repository.dart';
+import 'package:stool_in/features/auth/export/auth_exports.dart';
+
 
 class _SignInDataSourceMock extends Mock implements SignInDatasource {}
 

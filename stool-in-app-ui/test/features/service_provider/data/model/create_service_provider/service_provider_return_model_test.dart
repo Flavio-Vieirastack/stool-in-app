@@ -1,8 +1,9 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/service_provider/data/model/service_provider/service_provider_return_model.dart';
+import 'package:stool_in/features/service_provider/export/service_provider_export.dart';
 
 import '../../../../../mock/service_provider_create_mock.dart';
+
 
 void main() {
   late Faker faker;

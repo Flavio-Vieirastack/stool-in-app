@@ -1,6 +1,8 @@
-import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/module/main_module/app_module.dart';
-import 'package:stool_in/features/info/presenter/page/info/info_page.dart';
+
+
+import '../../../../core/constants/export/constants_export.dart';
+import '../../../../core/module/export/module_export.dart';
+import '../../export/info_export.dart';
 
 class InfoPageModule extends AppModule {
   InfoPageModule()

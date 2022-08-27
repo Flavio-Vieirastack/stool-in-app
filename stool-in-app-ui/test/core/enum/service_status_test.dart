@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:stool_in/core/enum/service_status.dart';
 
+
 void main() {
   test('Deve retornar o status correto para active', () {
     const sut = ServiceStatus.active;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
+
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_in/core/helpers/export/helpers_export.dart';
 
 void main() {
   test('Deve retornar o estilo correto para headLine0', () {

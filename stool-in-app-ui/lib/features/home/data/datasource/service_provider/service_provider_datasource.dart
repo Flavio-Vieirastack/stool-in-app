@@ -1,8 +1,7 @@
 
 
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/get_service_providers_params.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
+import '../../../../../core/rest_client/export/rest_client_export.dart';
+import '../../../export/home_export.dart';
 
 abstract class GetServiceProviderDatasource {
   Future<List<ServiceProviderEntity>> call({

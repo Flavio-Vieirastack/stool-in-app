@@ -1,6 +1,7 @@
 
 
-import 'package:stool_in/features/auth/data/model/auth_model.dart';
+
+import '../../../export/auth_exports.dart';
 
 abstract class SignInDatasource {
   Future<void> firebaseSignIn({

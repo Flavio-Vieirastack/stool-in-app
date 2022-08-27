@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/core/helpers/try_catch_helper.dart/try_catch_helper.dart';
+import 'package:stool_in/core/helpers/export/helpers_export.dart';
 
 void main() {
   test('Deve retornar um sucesso', () async {

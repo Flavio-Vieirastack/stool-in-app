@@ -1,7 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/home/data/model/categories/categories_model.dart';
+import 'package:stool_in/features/home/export/home_export.dart';
 
 import '../../../../../mock/categories_mock.dart';
+
 
 void main() {
   test('Deve retornar o id da categoria corretamente', () {

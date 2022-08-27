@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/info/data/datasource/rules/rules_datasource.dart';
-import 'package:stool_in/features/info/data/repository/rules/rules_repository_impl.dart';
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
-import 'package:stool_in/features/info/domain/error/info_error.dart';
-import 'package:stool_in/features/info/domain/repository/rules/rules_repository.dart';
+import 'package:stool_in/features/info/export/info_export.dart';
+
 
 class _RulesDatasourceMock extends Mock implements RulesDatasource {}
 

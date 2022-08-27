@@ -1,8 +1,9 @@
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:stool_in/core/module/permanent_dependencies/permanent_module.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_mehods.dart';
+
+import '../../module/export/module_export.dart';
+import '../export/rest_client_export.dart';
+
 
 class RestClientModule implements PermanentModule {
   @override

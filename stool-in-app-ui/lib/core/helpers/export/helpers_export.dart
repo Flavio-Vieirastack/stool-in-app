@@ -17,3 +17,4 @@ export '../theme/text_styles/app_text_styles.dart';
 export '../try_catch_helper.dart/try_catch_helper.dart';
 export '../vote_ratting/module/vote_ratting_module.dart';
 export '../vote_ratting/vote_ratting_calculate.dart';
+export '../security_acess_helper/security_acess_helper.dart';
