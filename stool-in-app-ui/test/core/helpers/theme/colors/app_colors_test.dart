@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
+import 'package:stool_in/core/helpers/export/helpers_export.dart';
+
 
 void main() {
   test('Deve retornar a cor correta para buttonRightGradientColor', () {

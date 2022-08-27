@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
-import 'package:stool_in/core/widgets/app_progress_indicator/app_progress_indicator.dart';
-import 'package:stool_in/core/widgets/app_snackbar/app_snackbar.dart';
-import 'package:stool_in/core/widgets/info_expansion_card/info_expansion_card.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/features/info/presenter/page/cubits/rules/rules_cubit.dart';
+import 'package:lottie/lottie.dart';
+import 'package:stool_in/features/info/export/info_export.dart';
 
-import '../../../../../core/constants/lottie_constants.dart';
+import '../../../../../core/constants/export/constants_export.dart';
+import '../../../../../core/widgets/export/widgets_export.dart';
+
 
 class RulesPage extends StatelessWidget with AppSnackBar {
   const RulesPage({Key? key}) : super(key: key);

@@ -1,33 +1,47 @@
 import 'dart:developer';
 
-import 'package:stool_in/core/cache/save_json_in_cache_datasource.dart';
-import 'package:stool_in/core/cache/keys/cache_datasource_keys.dart';
-import 'package:stool_in/core/constants/endpoint_constants.dart';
-import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/features/info/data/datasource/doubts/doubts_datasource.dart';
-import 'package:stool_in/features/info/data/model/info_model.dart';
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
-import 'package:stool_in/features/info/domain/error/info_error.dart';
+import '../../../../../core/cache/export/cache_export.dart';
+import '../../../../../core/constants/export/constants_export.dart';
+import '../../../../../core/rest_client/export/rest_client_export.dart';
+import '../../../export/info_export.dart';
+
 
 class DoubtsDatasourceImpl extends SaveJsonInCacheDatasource
     implements DoubtsDatasource {
   final RestClientGet _restClientGet;
+  final DecodedListCacheHelper _decodedListCacheHelper;
+  final CacheUserActionsHelper _cacheUserActionsHelper;
   DoubtsDatasourceImpl({
     required RestClientGet restClientGet,
-  }) : _restClientGet = restClientGet;
+    required CacheUserActionsHelper cacheUserActionsHelper,
+    required DecodedListCacheHelper decodedListCacheHelper,
+  })  : _restClientGet = restClientGet,
+        _cacheUserActionsHelper = cacheUserActionsHelper,
+        _decodedListCacheHelper = decodedListCacheHelper;
   @override
   Future<List<InfoEntity>> getDoubts() async {
     try {
-      final result =
-          await _restClientGet.get(path: EndpointConstants.getFrequentDoubts);
-      final data =
-          result.data?.map<InfoEntity>((e) => InfoModel.fromMap(e)).toList();
-      await saveJsonInCache(
-        data: result.data,
-        key: CacheDatasourceKeys.doubtsCacheKey,
-      );
-      return data ?? <InfoEntity>[];
+      final unlockCachedData =
+          await _cacheUserActionsHelper.getUserGetDoubtsData();
+      if (unlockCachedData == false) {
+        final result =
+            await _restClientGet.get(path: EndpointConstants.getFrequentDoubts);
+        final data =
+            result.data?.map<InfoEntity>((e) => InfoModel.fromMap(e)).toList();
+        await saveJsonInCache(
+          data: result.data,
+          key: CacheDatasourceKeys.doubtsCacheKey,
+        );
+        await _cacheUserActionsHelper.setUserGetDoubtsData(value: true);
+        return data ?? <InfoEntity>[];
+      } else {
+        final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
+            key: CacheDatasourceKeys.doubtsCacheKey);
+        final entityCached =
+            decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
+
+        return entityCached;
+      }
     } on RestClientException catch (e, s) {
       log(
         'Erro ao pegar duvidas no datasource impl',

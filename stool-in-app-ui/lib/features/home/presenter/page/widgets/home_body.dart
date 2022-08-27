@@ -5,8 +5,7 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fixedLengthList =
-        List<int>.generate(10, (int index) => index * index, growable: false);
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

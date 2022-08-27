@@ -2,22 +2,19 @@ import 'package:faker/faker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/features/auth/data/datasource/sign_in/sign_in_datasource.dart';
-import 'package:stool_in/features/auth/data/datasource/sign_in/sign_in_datasource_impl.dart';
-import 'package:stool_in/features/auth/data/model/auth_model.dart';
-import 'package:stool_in/features/auth/domain/error/api_auth_error.dart';
+import 'package:stool_in/core/rest_client/export/rest_client_export.dart';
+import 'package:stool_in/features/auth/export/auth_exports.dart';
 
-class RestClientPostMock extends Mock implements RestClientPost {}
 
-class FirebabseAuthMock extends Mock implements FirebaseAuth {}
+class _RestClientPostMock extends Mock implements RestClientPost {}
+
+class _FirebabseAuthMock extends Mock implements FirebaseAuth {}
 
 void main() {
-  late RestClientPostMock restClientPostMock;
+  late _RestClientPostMock restClientPostMock;
   late AuthModel authModel;
   late SignInDatasource signInDatasource;
-  late FirebabseAuthMock firebabseAuthMock;
+  late _FirebabseAuthMock firebabseAuthMock;
   setUp(
     () {
       final faker = Faker();
@@ -25,8 +22,8 @@ void main() {
         email: faker.internet.email(),
         password: faker.internet.password(),
       );
-      firebabseAuthMock = FirebabseAuthMock();
-      restClientPostMock = RestClientPostMock();
+      firebabseAuthMock = _FirebabseAuthMock();
+      restClientPostMock = _RestClientPostMock();
       signInDatasource = SignInDatasourceImpl(
           firebaseAuth: firebabseAuthMock, restClientPost: restClientPostMock);
     },

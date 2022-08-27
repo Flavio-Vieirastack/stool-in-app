@@ -1,22 +1,18 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/auth/data/datasource/user_data/user_data_sign_in_datasource.dart';
-import 'package:stool_in/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in/features/auth/data/repository/user_data/user_data_sign_in_repository_impl.dart';
-import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
-import 'package:stool_in/features/auth/domain/error/user_data_error.dart';
-import 'package:stool_in/features/auth/domain/repository/user_data/user_data_sign_in_respository.dart';
+import 'package:stool_in/features/auth/export/auth_exports.dart';
 
-class UserDataSignInDatasourceMock extends Mock
+
+class _UserDataSignInDatasourceMock extends Mock
     implements UserDataSignInDatasource {}
 
 void main() {
-  late UserDataSignInDatasourceMock userDataSignInDatasourceMock;
+  late _UserDataSignInDatasourceMock userDataSignInDatasourceMock;
   late UserDataEntity userDataEntity;
   late UserDataSignInRepository userDataSignInRepository;
   setUp(() {
-    userDataSignInDatasourceMock = UserDataSignInDatasourceMock();
+    userDataSignInDatasourceMock = _UserDataSignInDatasourceMock();
     userDataEntity = UserDataEntity();
     userDataSignInRepository = UserDataSignInRepositoryImpl(
         userDataSignInDatasource: userDataSignInDatasourceMock);

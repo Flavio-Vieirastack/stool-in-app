@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in/core/cache/helpers/user_actions_helper/executors/splash_execute_cache_actions_helper.dart';
-import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/helpers/security_acess_helper/security_acess_helper.dart';
-import 'package:stool_in/core/module/main_module/app_module.dart';
-import 'package:stool_in/core/module/main_module/inject.dart';
-import 'package:stool_in/features/splash/presenter/cubit/splash_cubit.dart';
-import 'package:stool_in/features/splash/presenter/page/splash_page.dart';
+
+import '../../../core/cache/export/cache_export.dart';
+import '../../../core/constants/export/constants_export.dart';
+import '../../../core/helpers/export/helpers_export.dart';
+import '../../../core/module/export/module_export.dart';
+import '../export/splash_export.dart';
+
 
 @immutable
 class SplashModule extends AppModule {

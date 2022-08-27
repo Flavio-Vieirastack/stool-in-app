@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:stool_in/core/shared/send_email_veirifcation/data/datasource/send_verification_email_datasource.dart';
 
-import '../../domain/error/send_verification_email_error.dart';
+import '../../../export/shared_export.dart';
+
 
 class SendVerificationEmailDatasourceImpl
     implements SendVerificationEmailDatasource {

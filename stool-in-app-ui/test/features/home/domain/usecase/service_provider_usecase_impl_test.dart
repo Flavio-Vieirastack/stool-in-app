@@ -1,39 +1,32 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/coments_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/execution_services_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/get_service_providers_params.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
-import 'package:stool_in/features/home/domain/error/service_provider/service_provider_error.dart';
-import 'package:stool_in/features/home/domain/repository/service_provider/service_provider_repository.dart';
-import 'package:stool_in/features/home/domain/usecase/service_provider/service_provider_usecase.dart';
-import 'package:stool_in/features/home/domain/usecase/service_provider/service_provider_usecase_impl.dart';
+import 'package:stool_in/features/auth/export/auth_exports.dart';
+import 'package:stool_in/features/home/export/home_export.dart';
 
-class ServiceProviderUseCaseMock extends Mock
+
+class _ServiceProviderUseCaseMock extends Mock
     implements GetServiceProviderUsecase {}
 
-class ExecutionServicesEntityMock extends Mock
+class _ExecutionServicesEntityMock extends Mock
     implements ExecutionServicesEntity {}
 
-class ServicesToExecuteEntityMock extends Mock
+class _ServicesToExecuteEntityMock extends Mock
     implements ServicesToExecuteEntity {}
 
-class ComentsEntityMock extends Mock implements ComentsEntity {}
+class _ComentsEntityMock extends Mock implements ComentsEntity {}
 
-class UserDataEntityMock extends Mock implements UserDataEntity {}
+class _UserDataEntityMock extends Mock implements UserDataEntity {}
 
-class ServiceRepositoryMock extends Mock implements GetServiceProviderRepository {}
+class _ServiceRepositoryMock extends Mock implements GetServiceProviderRepository {}
 
 void main() {
-  late ServiceProviderUseCaseMock usecaseMock;
-  late ExecutionServicesEntityMock executionServicesEntityMock;
-  late ServicesToExecuteEntityMock servicesToExecuteEntityMock;
-  late ComentsEntityMock comentsEntityMock;
-  late UserDataEntityMock userDataEntityMock;
-  late ServiceRepositoryMock serviceRepositoryMock;
+  late _ServiceProviderUseCaseMock usecaseMock;
+  late _ExecutionServicesEntityMock executionServicesEntityMock;
+  late _ServicesToExecuteEntityMock servicesToExecuteEntityMock;
+  late _ComentsEntityMock comentsEntityMock;
+  late _UserDataEntityMock userDataEntityMock;
+  late _ServiceRepositoryMock serviceRepositoryMock;
   late List<ServiceProviderEntity> serviceProviderEntity;
   late GetServiceProvidersParams params;
   setUp(
@@ -42,12 +35,12 @@ void main() {
           pageQuantity: 5,
           currentUserLocationLatitude: 50.0,
           currentUserLocationLongitude: 50.0);
-      usecaseMock = ServiceProviderUseCaseMock();
-      executionServicesEntityMock = ExecutionServicesEntityMock();
-      servicesToExecuteEntityMock = ServicesToExecuteEntityMock();
-      comentsEntityMock = ComentsEntityMock();
-      userDataEntityMock = UserDataEntityMock();
-      serviceRepositoryMock = ServiceRepositoryMock();
+      usecaseMock = _ServiceProviderUseCaseMock();
+      executionServicesEntityMock = _ExecutionServicesEntityMock();
+      servicesToExecuteEntityMock = _ServicesToExecuteEntityMock();
+      comentsEntityMock = _ComentsEntityMock();
+      userDataEntityMock = _UserDataEntityMock();
+      serviceRepositoryMock = _ServiceRepositoryMock();
       serviceProviderEntity = [
         ServiceProviderEntity(
           id: 1,

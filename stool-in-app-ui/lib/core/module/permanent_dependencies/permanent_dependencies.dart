@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:stool_in/core/rest_client/module/rest_client_module.dart';
 
-import '../../shared/permanent_modules/module/cubits/permanent_cubits.dart';
-import '../../shared/permanent_modules/module/dependencies/permanent_modules.dart';
+import '../../rest_client/export/rest_client_export.dart';
+import '../../shared/export/shared_export.dart';
+
 
 @immutable
 class PermanentDependencies {

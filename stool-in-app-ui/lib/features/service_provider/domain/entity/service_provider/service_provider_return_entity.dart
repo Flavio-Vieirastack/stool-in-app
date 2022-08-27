@@ -1,4 +1,6 @@
-import 'package:stool_in/features/service_provider/domain/entity/service_provider/create_and_update_service_provider_entity.dart';
+
+
+import '../../../export/service_provider_export.dart';
 
 class ServiceProviderReturnEntity extends CreateAndUpdateServiceProviderEntity {
   final int id;

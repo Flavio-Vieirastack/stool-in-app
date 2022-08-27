@@ -1,25 +1,22 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/home/domain/entity/categories/categories_entity.dart';
-import 'package:stool_in/features/home/domain/error/categories/categories_error.dart';
-import 'package:stool_in/features/home/domain/repository/categories/categories_repository.dart';
-import 'package:stool_in/features/home/domain/usecase/categories/categories_usecase.dart';
-import 'package:stool_in/features/home/domain/usecase/categories/categories_usecase_impl.dart';
+import 'package:stool_in/features/home/export/home_export.dart';
 
-class CategoriesRepositoryMock extends Mock implements CategoriesRepository {}
 
-class CategoryEntityMock extends Mock implements CategoriesEntity {}
+class _CategoriesRepositoryMock extends Mock implements CategoriesRepository {}
+
+class _CategoryEntityMock extends Mock implements CategoriesEntity {}
 
 void main() {
-  late CategoriesRepositoryMock categoriesRepositoryMock;
-  late List<CategoryEntityMock> categoryEntityMock;
+  late _CategoriesRepositoryMock categoriesRepositoryMock;
+  late List<_CategoryEntityMock> categoryEntityMock;
   late CategoriesUsecase categoriesUsecase;
   setUp(() {
-    categoriesRepositoryMock = CategoriesRepositoryMock();
+    categoriesRepositoryMock = _CategoriesRepositoryMock();
     categoriesUsecase =
         CategoriesUsecaseImpl(categoriesRepository: categoriesRepositoryMock);
-    categoryEntityMock = [CategoryEntityMock()];
+    categoryEntityMock = [_CategoryEntityMock()];
   });
   test('Deve retornar uma lista de categorias corretamente', () async {
     when(

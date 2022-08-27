@@ -1,10 +1,8 @@
 import 'dart:developer';
 
-import 'package:stool_in/features/info/data/datasource/doubts/doubts_datasource.dart';
-import 'package:stool_in/features/info/domain/error/info_error.dart';
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/info/domain/repository/doubt/doubt_repository.dart';
+
+import '../../../export/info_export.dart';
 
 class DoubtsRepositoryImpl implements DoubtRepository {
   final DoubtsDatasource _doubtsDatasource;

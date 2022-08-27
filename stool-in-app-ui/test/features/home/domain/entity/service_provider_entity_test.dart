@@ -1,18 +1,16 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/coments_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/execution_services_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
+import 'package:stool_in/features/auth/export/auth_exports.dart';
+import 'package:stool_in/features/home/export/home_export.dart';
 
-class ExectionServicesMock extends Mock implements ExecutionServicesEntity {}
 
-class ServicesToExecuteMock extends Mock implements ServicesToExecuteEntity {}
+class _ExectionServicesMock extends Mock implements ExecutionServicesEntity {}
 
-class ComentsMock extends Mock implements ComentsEntity {}
+class _ServicesToExecuteMock extends Mock implements ServicesToExecuteEntity {}
 
-class UserDataMock extends Mock implements UserDataEntity {}
+class _ComentsMock extends Mock implements ComentsEntity {}
+
+class _UserDataMock extends Mock implements UserDataEntity {}
 
 void main() {
   late ServiceProviderEntity serviceProviderEntityMeters;
@@ -30,10 +28,10 @@ void main() {
       disponibleDays: 'disponibleDays',
       createdAt: DateTime.now(),
       userLoginId: 1,
-      executionServices: [ExectionServicesMock()],
-      servicesToExecute: [ServicesToExecuteMock()],
-      coments: [ComentsMock()],
-      userData: [UserDataMock()],
+      executionServices: [_ExectionServicesMock()],
+      servicesToExecute: [_ServicesToExecuteMock()],
+      coments: [_ComentsMock()],
+      userData: [_UserDataMock()],
     );
     serviceProviderEntityKm = ServiceProviderEntity(
       id: 1,
@@ -46,10 +44,10 @@ void main() {
       disponibleDays: 'disponibleDays',
       createdAt: DateTime.now(),
       userLoginId: 1,
-      executionServices: [ExectionServicesMock()],
-      servicesToExecute: [ServicesToExecuteMock()],
-      coments: [ComentsMock()],
-      userData: [UserDataMock()],
+      executionServices: [_ExectionServicesMock()],
+      servicesToExecute: [_ServicesToExecuteMock()],
+      coments: [_ComentsMock()],
+      userData: [_UserDataMock()],
     );
     serviceProviderEntityKmDecimal = ServiceProviderEntity(
       id: 1,
@@ -62,10 +60,10 @@ void main() {
       disponibleDays: 'disponibleDays',
       createdAt: DateTime.now(),
       userLoginId: 1,
-      executionServices: [ExectionServicesMock()],
-      servicesToExecute: [ServicesToExecuteMock()],
-      coments: [ComentsMock()],
-      userData: [UserDataMock()],
+      executionServices: [_ExectionServicesMock()],
+      servicesToExecute: [_ServicesToExecuteMock()],
+      coments: [_ComentsMock()],
+      userData: [_UserDataMock()],
     );
   });
   test('Deve retornar a distância formatada corretamente em KM', () {

@@ -1,6 +1,8 @@
 import 'dart:developer';
 
-import '../cache_user_actions_helper.dart';
+import '../../../export/cache_export.dart';
+
+
 
 class SplashExecuteCacheActionsHelper extends CacheUserActionsHelper {
   Future<void> execute() async {
@@ -8,5 +10,6 @@ class SplashExecuteCacheActionsHelper extends CacheUserActionsHelper {
     await setUserGetDoubtsData(value: false);
     await setUserGetRulesData(value: false);
     await setUserGetCategoriesData(value: false);
+    await setUserGetUserServiceTypesData(value: false);
   }
 }

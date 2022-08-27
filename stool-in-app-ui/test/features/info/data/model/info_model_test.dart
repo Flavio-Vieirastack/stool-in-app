@@ -1,8 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/info/data/model/info_model.dart';
+import 'package:stool_in/features/info/export/info_export.dart';
 
 import '../../../../mock/doubts_mock.dart';
 import '../../../../mock/rules_mock.dart';
+
 
 void main() {
   test('Deve retornar os valores corretamente para titulo do rules model',

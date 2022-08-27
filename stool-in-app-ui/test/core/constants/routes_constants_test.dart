@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/core/constants/routes_constants.dart';
+import 'package:stool_in/core/constants/export/constants_export.dart';
+
 
 void main() {
   test('Deve retornar a rota correta para splashRoute', () {

@@ -1,11 +1,9 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
-import 'package:stool_in/core/rest_client/interceptors/authorization/authorization_interceptor.dart';
-import 'package:stool_in/core/rest_client/interceptors/internet_check/internet_check_interceptor.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
+
+import 'export/rest_client_export.dart';
+
 
 class RestClientOptions {
   late Dio dio;
@@ -116,7 +114,7 @@ class RestClientDeleteImpl extends RestClientInitialize
   @override
   Future<RestClientResponse<T>> delete<T>(
       {required String path,
-      required data,
+      data,
       Map<String, dynamic>? queryParams,
       Map<String, dynamic>? headers}) async {
     try {

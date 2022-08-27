@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stool_in/core/cache/keys/cache_datasource_keys.dart';
+import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
+import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
 import 'package:stool_in/core/cache/save_json_in_cache_datasource.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
 import 'package:stool_in/core/rest_client/rest_client_response.dart';
@@ -12,22 +13,33 @@ import 'package:stool_in/features/home/domain/entity/categories/categories_entit
 import 'package:stool_in/features/home/domain/error/categories/categories_error.dart';
 
 import '../../../../../mock/categories_mock.dart';
-import '../../../../info/data/datasource/doubts/doubts_datasource_impl_test.dart';
 
-class RestClientGetMock extends Mock implements RestClientGet {}
+class _DecodedListCacheHelperMock extends Mock
+    implements DecodedListCacheHelper {}
 
-class SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
+class _RestClientGetMock extends Mock implements RestClientGet {}
+
+class _CachedUserDataHelperMock extends Mock implements CacheUserActionsHelper {
+}
+
+class _SaveJsonCacheMock extends Mock implements SaveJsonInCacheDatasource {}
 
 void main() {
-  late RestclientGetMock restclientGetMock;
+  late _RestClientGetMock restclientGetMock;
   late CategoriesDatasource categoriesDatasource;
   late List<CategoriesEntity> categoriesEntity;
-  late SaveJsonCacheMock saveJsonCacheMock;
+  late _SaveJsonCacheMock saveJsonCacheMock;
+  late _CachedUserDataHelperMock cachedUserDataHelperMock;
+  late _DecodedListCacheHelperMock decodedListCacheHelperMock;
   setUp(() {
-    restclientGetMock = RestclientGetMock();
-    saveJsonCacheMock = SaveJsonCacheMock();
-    categoriesDatasource =
-        CategoriesDatasourceImpl(restClientGet: restclientGetMock);
+    cachedUserDataHelperMock = _CachedUserDataHelperMock();
+    decodedListCacheHelperMock = _DecodedListCacheHelperMock();
+    saveJsonCacheMock = _SaveJsonCacheMock();
+    restclientGetMock = _RestClientGetMock();
+    categoriesDatasource = CategoriesDatasourceImpl(
+        restClientGet: restclientGetMock,
+        cacheUserActionsHelper: cachedUserDataHelperMock,
+        decodedListCacheHelper: decodedListCacheHelperMock);
     categoriesEntity = [
       CategoriesEntity(
         id: 1,
@@ -42,9 +54,23 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
     when(
-      () => saveJsonCacheMock.saveJsonInCache(
-          data: categories, key: CacheDatasourceKeys.categoriesCacheKey),
-    ).thenAnswer((_) async => Future.value());
+      () => cachedUserDataHelperMock.getUserGetCategoriesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => cachedUserDataHelperMock.setUserGetCategoriesData(value: true),
+    ).thenAnswer(
+      (_) async => true,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
+    ).thenAnswer(
+      (_) async => categories,
+    );
+    when(
+      () => saveJsonCacheMock.saveJsonInCache(data: 'data2', key: 'key2'),
+    ).thenAnswer((_) async => categories);
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
     ).thenAnswer((_) async => RestClientResponse(
@@ -58,9 +84,20 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
     when(
-      () => saveJsonCacheMock.saveJsonInCache(
-          data: categories, key: CacheDatasourceKeys.categoriesCacheKey),
-    ).thenAnswer((_) async => Future.value());
+      () => cachedUserDataHelperMock.getUserGetCategoriesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => cachedUserDataHelperMock.setUserGetCategoriesData(value: true),
+    ).thenAnswer(
+      (_) async => true,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
+    ).thenAnswer(
+      (_) async => categories,
+    );
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
     ).thenAnswer((_) async => RestClientResponse(
@@ -77,9 +114,20 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences.setMockInitialValues({});
     when(
-      () => saveJsonCacheMock.saveJsonInCache(
-          data: categories, key: CacheDatasourceKeys.categoriesCacheKey),
-    ).thenAnswer((_) async => Future.value());
+      () => cachedUserDataHelperMock.getUserGetCategoriesData(),
+    ).thenAnswer(
+      (_) async => false,
+    );
+    when(
+      () => cachedUserDataHelperMock.setUserGetCategoriesData(value: true),
+    ).thenAnswer(
+      (_) async => true,
+    );
+    when(
+      () => decodedListCacheHelperMock.getDecodedList(key: any(named: 'key')),
+    ).thenAnswer(
+      (_) async => categories,
+    );
     when(
       () => restclientGetMock.get(path: any(named: 'path')),
     ).thenThrow(CategoriesError(

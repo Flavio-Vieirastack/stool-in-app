@@ -1,10 +1,8 @@
 import 'dart:developer';
 
-import 'package:stool_in/features/info/data/datasource/rules/rules_datasource.dart';
-import 'package:stool_in/features/info/domain/error/info_error.dart';
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/info/domain/repository/rules/rules_repository.dart';
+
+import '../../../export/info_export.dart';
 
 class RulesRepositoryImpl implements RulesRepository {
   final RulesDatasource _rulesDatasource;

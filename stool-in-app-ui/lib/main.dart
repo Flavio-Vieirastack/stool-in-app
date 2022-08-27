@@ -3,23 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/shared/presenter/cubit/internet_connection_cubit/internet_connection_cubit.dart';
-import 'package:stool_in/core/widgets/app_dialog/app_dialog.dart';
-import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
-import 'package:stool_in/features/auth/presenter/login/module/login_module.dart';
-import 'package:stool_in/features/auth/presenter/password_reset/module/password_reset_module.dart';
-import 'package:stool_in/features/auth/presenter/sign_in/module/sign_in_main_module.dart';
-import 'package:stool_in/features/auth/presenter/sign_in_user_data/module/sign_in_main_data_module.dart';
-import 'package:stool_in/features/home/presenter/module/home_module.dart';
-import 'package:stool_in/features/info/module/doubt/doubt_page_module.dart';
-import 'package:stool_in/features/info/module/info/info_page_module.dart';
-import 'package:stool_in/features/info/module/rules/rules_page_modules.dart';
-import 'package:stool_in/features/onboarding/module/onboarding_module.dart';
-import 'package:stool_in/features/splash/module/splash_module.dart';
 
-import 'core/firebase/push_notifications/firebase_notifications.dart';
-import 'core/module/permanent_dependencies/permanent_dependencies.dart';
+import 'core/constants/export/constants_export.dart';
+import 'core/firebase/export/firebase_export.dart';
+import 'core/module/export/module_export.dart';
+import 'core/shared/export/shared_export.dart';
+import 'core/widgets/export/widgets_export.dart';
+import 'features/auth/export/auth_exports.dart';
+import 'features/home/export/home_export.dart';
+import 'features/info/export/info_export.dart';
+import 'features/onboarding/export/onboarding_export.dart';
+import 'features/splash/export/splash_export.dart';
 import 'firebase_options.dart';
 
 void main() async {

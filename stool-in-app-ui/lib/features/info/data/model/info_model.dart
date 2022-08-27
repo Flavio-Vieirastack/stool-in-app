@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
+import '../../export/info_export.dart';
+
+
 
 class InfoModel extends InfoEntity {
   InfoModel({

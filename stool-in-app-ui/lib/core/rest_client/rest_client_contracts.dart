@@ -1,6 +1,6 @@
 
-import 'package:stool_in/core/rest_client/rest_client_mehods.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
+
+import 'export/rest_client_export.dart';
 
 abstract class DioRestClient extends RestClientOptions {
   DioRestClient auth();
@@ -78,7 +78,7 @@ abstract class RestClientPut {
 abstract class RestClientDelete {
   Future<RestClientResponse<T>> delete<T>({
     required String path,
-    required dynamic data,
+    dynamic data,
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? headers,
   });

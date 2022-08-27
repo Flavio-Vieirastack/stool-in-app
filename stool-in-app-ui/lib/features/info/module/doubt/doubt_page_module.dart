@@ -1,23 +1,11 @@
 import 'package:provider/provider.dart';
-import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
-import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
-import 'package:stool_in/core/constants/routes_constants.dart';
-import 'package:stool_in/core/module/main_module/app_module.dart';
-import 'package:stool_in/core/module/main_module/inject.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/features/info/data/datasource/doubts/cache/doubts_cached_datasource.dart';
-import 'package:stool_in/features/info/data/datasource/doubts/doubts_datasource.dart';
-import 'package:stool_in/features/info/data/datasource/doubts/doubts_datasource_impl.dart';
-import 'package:stool_in/features/info/data/datasource/rules/rules_datasource.dart';
-import 'package:stool_in/features/info/data/datasource/rules/rules_datasource_impl.dart';
-import 'package:stool_in/features/info/data/repository/doubts/doubts_repository_impl.dart';
-import 'package:stool_in/features/info/data/repository/rules/rules_repository_impl.dart';
-import 'package:stool_in/features/info/domain/repository/doubt/doubt_repository.dart';
-import 'package:stool_in/features/info/domain/repository/rules/rules_repository.dart';
-import 'package:stool_in/features/info/domain/usecase/info_usecase.dart';
-import 'package:stool_in/features/info/domain/usecase/info_usecase_impl.dart';
-import 'package:stool_in/features/info/presenter/page/cubits/doubt/doubts_cubit.dart';
-import 'package:stool_in/features/info/presenter/page/doubt/doubt_page.dart';
+
+import '../../../../core/cache/export/cache_export.dart';
+import '../../../../core/constants/export/constants_export.dart';
+import '../../../../core/module/export/module_export.dart';
+import '../../../../core/rest_client/export/rest_client_export.dart';
+import '../../export/info_export.dart';
+
 
 class DoubtPageModule extends AppModule {
   DoubtPageModule()
@@ -25,11 +13,19 @@ class DoubtPageModule extends AppModule {
           dependencies: [
             Provider<RulesDatasource>(
               create: (context) => RulesDatasourceImpl(
+                cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
+                decodedListCacheHelper:
+                    Inject<DecodedListCacheHelper>(context).get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),
             Provider<DoubtsDatasource>(
               create: (context) => DoubtsDatasourceImpl(
+                cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
+                decodedListCacheHelper:
+                    Inject<DecodedListCacheHelper>(context).get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),
@@ -49,18 +45,10 @@ class DoubtPageModule extends AppModule {
                 doubtRepository: Inject<DoubtRepository>(context).get(),
               ),
             ),
-            Provider<DoubtsCachedDatasource>(
-              create: (context) => DoubtsCachedDatasource(
-                cacheDatasourceHelper:
-                    Inject<DecodedListCacheHelper>(context).get(),
-              ),
-            ),
             Provider<DoubtsCubit>(
               create: (context) => DoubtsCubit(
                 cacheUserActionsHelper:
                     Inject<CacheUserActionsHelper>(context).get(),
-                doubtsCachedDatasource:
-                    Inject<DoubtsCachedDatasource>(context).get(),
                 infoUsecase: Inject<InfoUsecase>(context).get(),
               ),
             ),

@@ -1,8 +1,6 @@
-import 'package:stool_in/features/home/domain/error/categories/categories_error.dart';
-import 'package:stool_in/features/home/domain/entity/categories/categories_entity.dart';
+import '../../../export/home_export.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/home/domain/repository/categories/categories_repository.dart';
-import 'package:stool_in/features/home/domain/usecase/categories/categories_usecase.dart';
+
 
 class CategoriesUsecaseImpl implements CategoriesUsecase {
   final CategoriesRepository _categoriesRepository;

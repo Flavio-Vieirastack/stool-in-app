@@ -1,30 +1,47 @@
 import 'dart:developer';
 
-import 'package:stool_in/core/cache/keys/cache_datasource_keys.dart';
-import 'package:stool_in/core/cache/save_json_in_cache_datasource.dart';
-import 'package:stool_in/core/constants/endpoint_constants.dart';
-import 'package:stool_in/core/rest_client/error/rest_client_exception.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/features/info/data/datasource/rules/rules_datasource.dart';
-import 'package:stool_in/features/info/data/model/info_model.dart';
-import 'package:stool_in/features/info/domain/entity/info_entity.dart';
-import 'package:stool_in/features/info/domain/error/info_error.dart';
+import '../../../../../core/cache/export/cache_export.dart';
+import '../../../../../core/constants/export/constants_export.dart';
+import '../../../../../core/rest_client/export/rest_client_export.dart';
+import '../../../export/info_export.dart';
 
 class RulesDatasourceImpl extends SaveJsonInCacheDatasource
     implements RulesDatasource {
   final RestClientGet _restClientGet;
+  final DecodedListCacheHelper _decodedListCacheHelper;
+  final CacheUserActionsHelper _cacheUserActionsHelper;
   RulesDatasourceImpl({
     required RestClientGet restClientGet,
-  }) : _restClientGet = restClientGet;
+    required CacheUserActionsHelper cacheUserActionsHelper,
+    required DecodedListCacheHelper decodedListCacheHelper,
+  })  : _restClientGet = restClientGet,
+        _decodedListCacheHelper = decodedListCacheHelper,
+        _cacheUserActionsHelper = cacheUserActionsHelper;
   @override
   Future<List<InfoEntity>> getRules() async {
     try {
-      final result = await _restClientGet.get(path: EndpointConstants.getRules);
-     await saveJsonInCache(
-        data: result.data,
-        key: CacheDatasourceKeys.rulesCacheKey,
-      );
-      return result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
+      final unlockCachedData =
+          await _cacheUserActionsHelper.getUserGetRulesData();
+      if (unlockCachedData == false) {
+        final result = await _restClientGet.get(
+          path: EndpointConstants.getRules,
+        );
+        await saveJsonInCache(
+          data: result.data,
+          key: CacheDatasourceKeys.rulesCacheKey,
+        );
+        final apiData =
+            result.data?.map<InfoModel>((e) => InfoModel.fromMap(e)).toList();
+        await _cacheUserActionsHelper.setUserGetRulesData(value: true);
+        return apiData;
+      } else {
+        final decodedCacheList = await _decodedListCacheHelper.getDecodedList(
+            key: CacheDatasourceKeys.rulesCacheKey);
+        final entityCached =
+            decodedCacheList.map((e) => InfoModel.fromMap(e)).toList();
+
+        return entityCached;
+      }
     } on RestClientException catch (e, s) {
       log(
         'Erro desconhecido ao fazer get das rules',

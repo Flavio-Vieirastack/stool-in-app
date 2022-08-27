@@ -1,33 +1,30 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/features/home/data/datasource/service_provider/service_provider_datasource.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/get_service_providers_params.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
-import 'package:stool_in/features/home/domain/error/service_provider/service_provider_error.dart';
+import 'package:stool_in/core/rest_client/export/rest_client_export.dart';
+import 'package:stool_in/features/home/export/home_export.dart';
 
 import '../../../../mock/service_provider_payload.dart';
 import '../../../../mock/service_provider_payload_diferent_location_data.dart';
 
-class ServiceProviderDataSourceMock extends Mock
+
+class _ServiceProviderDataSourceMock extends Mock
     implements GetServiceProviderDatasource {}
 
-class ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {}
+class _ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {}
 
-class RestClientGetMock extends Mock implements RestClientGet {}
+class _RestClientGetMock extends Mock implements RestClientGet {}
 
 void main() {
-  late ServiceProviderDataSourceMock serviceProviderDataSourceMock;
-  late RestClientGetMock restClientGetMock;
-  late List<ServiceProviderEntityMock> serViceProviderEntity;
+  late _ServiceProviderDataSourceMock serviceProviderDataSourceMock;
+  late _RestClientGetMock restClientGetMock;
+  late List<_ServiceProviderEntityMock> serViceProviderEntity;
   late GetServiceProvidersParams params;
   late GetServiceProvidersParams paramsMeters;
   setUp(
     () {
-      serviceProviderDataSourceMock = ServiceProviderDataSourceMock();
-      serViceProviderEntity = [ServiceProviderEntityMock()];
-      restClientGetMock = RestClientGetMock();
+      serviceProviderDataSourceMock = _ServiceProviderDataSourceMock();
+      serViceProviderEntity = [_ServiceProviderEntityMock()];
+      restClientGetMock = _RestClientGetMock();
       params = GetServiceProvidersParams(
         pageQuantity: 5,
         currentUserLocationLatitude: -7.231148136572121,

@@ -1,25 +1,22 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/home/data/datasource/service_provider/service_provider_datasource.dart';
 import 'package:stool_in/features/home/data/repository/service_provider/service_provider_repository_impl.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/get_service_providers_params.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
-import 'package:stool_in/features/home/domain/error/service_provider/service_provider_error.dart';
-import 'package:stool_in/features/home/domain/repository/service_provider/service_provider_repository.dart';
+import 'package:stool_in/features/home/export/home_export.dart';
 
-class ServiceProviderRepositoryMock extends Mock
+
+class _ServiceProviderRepositoryMock extends Mock
     implements GetServiceProviderRepository {}
 
-class ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {}
+class _ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {}
 
-class ServiceProviderDataSourceMock extends Mock
+class _ServiceProviderDataSourceMock extends Mock
     implements GetServiceProviderDatasource {}
 
 void main() {
-  late ServiceProviderRepositoryMock serviceProviderrepositoryMock;
-  late List<ServiceProviderEntityMock> serviceProviderEntityMock;
-  late ServiceProviderDataSourceMock serviceProviderDatasourceMock;
+  late _ServiceProviderRepositoryMock serviceProviderrepositoryMock;
+  late List<_ServiceProviderEntityMock> serviceProviderEntityMock;
+  late _ServiceProviderDataSourceMock serviceProviderDatasourceMock;
   late GetServiceProviderRepositoryImpl serviceProviderRepositoryImpl;
   late GetServiceProvidersParams params;
   setUp(
@@ -28,9 +25,9 @@ void main() {
           pageQuantity: 5,
           currentUserLocationLatitude: 50.0,
           currentUserLocationLongitude: 50.0);
-      serviceProviderrepositoryMock = ServiceProviderRepositoryMock();
-      serviceProviderEntityMock = [ServiceProviderEntityMock()];
-      serviceProviderDatasourceMock = ServiceProviderDataSourceMock();
+      serviceProviderrepositoryMock = _ServiceProviderRepositoryMock();
+      serviceProviderEntityMock = [_ServiceProviderEntityMock()];
+      serviceProviderDatasourceMock = _ServiceProviderDataSourceMock();
       serviceProviderRepositoryImpl = GetServiceProviderRepositoryImpl(
           serviceProviderDatasource: serviceProviderDatasourceMock);
     },

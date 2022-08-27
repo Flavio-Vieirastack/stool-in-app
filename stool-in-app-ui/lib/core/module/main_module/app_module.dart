@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
 
-import 'app_dispose_module.dart';
+import '../export/module_export.dart';
+
 @immutable
 abstract class AppModule {
   final Map<String, WidgetBuilder> _routers;

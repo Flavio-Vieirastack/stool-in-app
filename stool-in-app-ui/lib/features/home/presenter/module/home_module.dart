@@ -6,7 +6,6 @@ import 'package:stool_in/core/helpers/distance_helper/distance_helper_calculate.
 import 'package:stool_in/core/module/main_module/app_module.dart';
 import 'package:stool_in/core/module/main_module/inject.dart';
 import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/features/home/data/datasource/categories/cache/categories_cached_datasource.dart';
 import 'package:stool_in/features/home/data/datasource/categories/categories_datasource.dart';
 import 'package:stool_in/features/home/data/datasource/categories/categories_datasource_impl.dart';
 import 'package:stool_in/features/home/data/datasource/service_provider/service_provider_datasource.dart';
@@ -47,6 +46,10 @@ class HomeModule extends AppModule {
             ),
             Provider<CategoriesDatasource>(
               create: (context) => CategoriesDatasourceImpl(
+                cacheUserActionsHelper:
+                    Inject<CacheUserActionsHelper>(context).get(),
+                decodedListCacheHelper:
+                    Inject<DecodedListCacheHelper>(context).get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),
@@ -62,18 +65,8 @@ class HomeModule extends AppModule {
                     Inject<CategoriesRepository>(context).get(),
               ),
             ),
-            Provider<CategoriesCachedDatasource>(
-              create: (context) => CategoriesCachedDatasource(
-                cacheDatasourceHelper:
-                    Inject<DecodedListCacheHelper>(context).get(),
-              ),
-            ),
             Provider<HomeCubit>(
               create: (context) => HomeCubit(
-                cacheUserActionsHelper:
-                    Inject<CacheUserActionsHelper>(context).get(),
-                categoriesCachedDatasource:
-                    Inject<CategoriesCachedDatasource>(context).get(),
                 categoriesUsecase: Inject<CategoriesUsecase>(context).get(),
                 serviceProviderUsecase:
                     Inject<GetServiceProviderUsecase>(context).get(),

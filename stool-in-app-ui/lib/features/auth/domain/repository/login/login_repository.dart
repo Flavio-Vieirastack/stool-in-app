@@ -1,10 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/auth/domain/entity/auth_entity.dart';
-import 'package:stool_in/features/auth/domain/entity/user_token_entity.dart';
-
-
-import '../../error/api_auth_error.dart';
-import '../../error/firebase_auth_error.dart';
+import '../../../export/auth_exports.dart';
 
 abstract class LoginRepository {
   Future<Either<FirebaseAuthError, void>> firebaseLogin({

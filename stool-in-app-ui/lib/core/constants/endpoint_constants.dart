@@ -10,4 +10,9 @@ class EndpointConstants {
   static const getCategories = '/categories';
   static const createServiceProvider = '/service-provider';
   static const updateUserData = '/user-data/user-patch';
+  static const createServiceType = '/service-types';
+  static const updateServiceProvider =
+      '/service-provider/update-service-provider';
+  static const getUserServiceTypes = '/service-types/get-all-my-services';
+  static const deleteUserServiceTypes = '//service-types';
 }

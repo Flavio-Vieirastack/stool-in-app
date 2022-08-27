@@ -1,29 +1,26 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in/features/service_provider/data/datasource/create_service_provider/create_service_provider_datasource.dart';
-import 'package:stool_in/features/service_provider/data/datasource/create_service_provider/create_service_provider_datasource_impl.dart';
-import 'package:stool_in/features/service_provider/data/model/create_service_provider/create_and_update_service_provider_model.dart';
-import 'package:stool_in/features/service_provider/domain/entity/service_provider/service_provider_return_entity.dart';
+import 'package:stool_in/core/rest_client/export/rest_client_export.dart';
+import 'package:stool_in/features/auth/export/auth_exports.dart';
+import 'package:stool_in/features/service_provider/export/service_provider_export.dart';
 
 import '../../../../../mock/service_provider_create_mock.dart';
 
-class RestclientPostImplMock extends Mock implements RestClientPost {}
 
-class RestClientPatchMock extends Mock implements RestClientPatch {}
+class _RestclientPostImplMock extends Mock implements RestClientPost {}
+
+class _RestClientPatchMock extends Mock implements RestClientPatch {}
 
 void main() {
-  late RestclientPostImplMock restclientPostImplMock;
-  late RestClientPatchMock restClientPatchMock;
+  late _RestclientPostImplMock restclientPostImplMock;
+  late _RestClientPatchMock restClientPatchMock;
   late CreateServiceProviderDatasource createServiceProviderDatasource;
   late CreateAndUpdateServiceProviderModel data;
   late ServiceProviderReturnEntity serviceProviderReturnEntity;
   late UserDataModel userDataModel;
   setUp(() {
-    restclientPostImplMock = RestclientPostImplMock();
-    restClientPatchMock = RestClientPatchMock();
+    restclientPostImplMock = _RestclientPostImplMock();
+    restClientPatchMock = _RestClientPatchMock();
     createServiceProviderDatasource = CreateServiceProviderDatasourceImpl(
       restClientPost: restclientPostImplMock,
       restClientPatch: restClientPatchMock,

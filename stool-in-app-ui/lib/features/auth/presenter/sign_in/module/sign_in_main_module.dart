@@ -1,33 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in/core/constants/routes_constants.dart';
 
-import 'package:stool_in/core/firebase/push_notifications/firebase_notifications.dart';
-import 'package:stool_in/core/helpers/secure_storage_helper/secure_storage_contracts.dart';
-import 'package:stool_in/core/module/main_module/app_module.dart';
-import 'package:stool_in/core/module/main_module/inject.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/shared/send_email_veirifcation/domain/usecase/send_verification_email/send_verification_email_usecase.dart';
-import 'package:stool_in/features/auth/data/datasource/login/login_datasource.dart';
-import 'package:stool_in/features/auth/data/datasource/login/login_datasource_impl.dart';
-import 'package:stool_in/features/auth/data/datasource/password_reset/password_reset_datasource.dart';
-import 'package:stool_in/features/auth/data/datasource/password_reset/password_reset_datasource_impl.dart';
-import 'package:stool_in/features/auth/data/datasource/sign_in/sign_in_datasource.dart';
-import 'package:stool_in/features/auth/data/datasource/sign_in/sign_in_datasource_impl.dart';
-import 'package:stool_in/features/auth/data/datasource/user_data/user_data_sign_in_datasource.dart';
-import 'package:stool_in/features/auth/data/datasource/user_data/user_data_sign_in_datasource_impl.dart';
-import 'package:stool_in/features/auth/data/repository/login/login_repository_impl.dart';
-import 'package:stool_in/features/auth/data/repository/password_reset/password_reset_repository_impl.dart';
-import 'package:stool_in/features/auth/data/repository/sign_in/sign_in_repository_impl.dart';
-import 'package:stool_in/features/auth/data/repository/user_data/user_data_sign_in_repository_impl.dart';
-import 'package:stool_in/features/auth/domain/repository/login/login_repository.dart';
-import 'package:stool_in/features/auth/domain/repository/password_reset/password_reset_repository.dart';
-import 'package:stool_in/features/auth/domain/repository/sign_in/sign_in_repository.dart';
-import 'package:stool_in/features/auth/domain/repository/user_data/user_data_sign_in_respository.dart';
-import 'package:stool_in/features/auth/domain/usecase/auth/auth_use_case.dart';
-import 'package:stool_in/features/auth/domain/usecase/auth/auth_usecase_impl.dart';
-import 'package:stool_in/features/auth/presenter/sign_in/cubit/sign_in_cubit.dart';
-import 'package:stool_in/features/auth/presenter/sign_in/page/sign_in_main_page.dart';
+import '../../../../../core/constants/export/constants_export.dart';
+import '../../../../../core/firebase/export/firebase_export.dart';
+import '../../../../../core/helpers/export/helpers_export.dart';
+import '../../../../../core/module/export/module_export.dart';
+import '../../../../../core/rest_client/export/rest_client_export.dart';
+import '../../../../../core/shared/export/shared_export.dart';
+import '../../../export/auth_exports.dart';
+
 
 class SignInMainModule extends AppModule {
   SignInMainModule()
