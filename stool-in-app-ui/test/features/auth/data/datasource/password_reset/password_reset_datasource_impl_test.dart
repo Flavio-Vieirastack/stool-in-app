@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/rest_client/export/rest_client_export.dart';
-import 'package:stool_in/features/auth/export/auth_exports.dart';
+import 'package:stool_in/exports/app_exports.dart';
 
 
 class _PatchMock extends Mock implements RestClientPatch {}

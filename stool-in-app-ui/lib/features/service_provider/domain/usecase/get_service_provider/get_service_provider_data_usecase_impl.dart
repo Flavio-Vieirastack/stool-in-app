@@ -3,9 +3,9 @@ import 'package:dartz/dartz.dart';
 import '../../../../../../exports/app_exports.dart';
 
 class GetServiceProviderDataUsecaseImpl implements GetServiceProviderDataUsecase {
-  final GetServiceProviderRepository _getServiceProviderRepository;
+  final GetServiceProviderDataRepository _getServiceProviderRepository;
   GetServiceProviderDataUsecaseImpl({
-    required GetServiceProviderRepository getServiceProviderRepository,
+    required GetServiceProviderDataRepository getServiceProviderRepository,
   }) : _getServiceProviderRepository = getServiceProviderRepository;
   @override
   Future<Either<GetServiceProviderError, List<ServiceProviderEntity>>>

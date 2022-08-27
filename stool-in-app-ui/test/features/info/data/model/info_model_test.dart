@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/info/export/info_export.dart';
+import 'package:stool_in/exports/app_exports.dart';
 
 import '../../../../mock/doubts_mock.dart';
 import '../../../../mock/rules_mock.dart';

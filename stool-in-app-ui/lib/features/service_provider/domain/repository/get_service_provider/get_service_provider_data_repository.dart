@@ -2,6 +2,6 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../../../exports/app_exports.dart';
 
-abstract class GetServiceProviderRepository {
+abstract class GetServiceProviderDataRepository {
 Future<Either<GetServiceProviderError, List<ServiceProviderEntity>>> call();
 }

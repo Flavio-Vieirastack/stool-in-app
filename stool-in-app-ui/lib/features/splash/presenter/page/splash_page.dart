@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_sizer/flutter_sizer.dart';
 
-import '../../../../core/constants/export/constants_export.dart';
-import '../../../../core/widgets/export/widgets_export.dart';
-import '../../export/splash_export.dart';
+import '../../../../exports/app_exports.dart';
+
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

@@ -2,11 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/cache/export/cache_export.dart';
-import '../../../core/constants/export/constants_export.dart';
-import '../../../core/helpers/export/helpers_export.dart';
-import '../../../core/module/export/module_export.dart';
-import '../export/splash_export.dart';
+import '../../../exports/app_exports.dart';
+
 
 
 @immutable

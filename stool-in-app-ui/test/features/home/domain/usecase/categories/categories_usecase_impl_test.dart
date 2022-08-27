@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/home/export/home_export.dart';
+import 'package:stool_in/exports/app_exports.dart';
 
 
 class _CategoriesRepositoryMock extends Mock implements CategoriesRepository {}

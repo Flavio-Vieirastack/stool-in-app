@@ -1,8 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/rest_client/export/rest_client_export.dart';
-import 'package:stool_in/features/home/export/home_export.dart';
-import 'package:stool_in/features/service_provider/export/service_provider_export.dart';
+import 'package:stool_in/exports/app_exports.dart';
 
 
 class _RestClientPatchMock extends Mock implements RestClientPatch {}

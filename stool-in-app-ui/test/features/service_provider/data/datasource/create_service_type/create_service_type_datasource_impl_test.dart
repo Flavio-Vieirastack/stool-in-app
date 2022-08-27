@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/rest_client/export/rest_client_export.dart';
-import 'package:stool_in/features/service_provider/export/service_provider_export.dart';
+import 'package:stool_in/exports/app_exports.dart';
 
 import '../../../../../mock/service_types_return_enty_payload_mock.dart';
 

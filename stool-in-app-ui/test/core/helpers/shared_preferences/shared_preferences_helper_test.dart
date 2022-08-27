@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stool_in/core/helpers/export/helpers_export.dart';
+import 'package:stool_in/exports/app_exports.dart';
 
 
 class MockMixin with SharedPreferencesHelper {}
