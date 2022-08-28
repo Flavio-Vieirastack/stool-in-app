@@ -6,9 +6,11 @@ class _ServiceProviderContent extends StatelessWidget {
   final double userVotes;
   final String userServicesExecuted;
   final String userDistance;
+  final VoidCallback agendOnTap;
   const _ServiceProviderContent({
     Key? key,
     required this.userUrlImage,
+    required this.agendOnTap,
     required this.userName,
     required this.userVotes,
     required this.userServicesExecuted,
@@ -97,7 +99,7 @@ class _ServiceProviderContent extends StatelessWidget {
             height: 1.h,
           ),
           GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: Align(
               alignment: Alignment.centerRight,
               child: LottieBuilder.asset(

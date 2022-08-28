@@ -29,6 +29,40 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.dp),
+          topRight: Radius.circular(20.dp),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: AppColors.black,
+          enableFeedback: true,
+          type: BottomNavigationBarType.fixed,
+          unselectedItemColor: AppColors.white,
+          selectedItemColor: AppColors.buttonRightGradientColor,
+          items: [
+            const BottomNavigationBarItem(
+              label: 'Home',
+              icon: Icon(Icons.home),
+            ),
+            const BottomNavigationBarItem(
+              label: 'Perfil',
+              icon: Icon(Icons.person),
+            ),
+            const BottomNavigationBarItem(
+              label: 'Info',
+              icon: Icon(Icons.info),
+            ),
+            BottomNavigationBarItem(
+              label: 'Premium',
+              icon: LottieBuilder.asset(
+                LottieConstants.lottieBecomePremium,
+                width: 10.w,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: ListView(
         children: [
           Padding(
@@ -122,7 +156,7 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
           SizedBox(
             height: 4.h,
           ),
-           const _HomeBody()
+          const _HomeBody()
         ],
       ),
     );

@@ -16,9 +16,11 @@ class ServiceProviderCards extends StatelessWidget {
   final String userServicesExecuted;
   final String userDistance;
   final VoidCallback onPressed;
+  final VoidCallback agendOnTap;
   const ServiceProviderCards(
       {Key? key,
       required this.userDistance,
+      required this.agendOnTap,
       required this.userName,
       required this.userServicesExecuted,
       required this.userUrlImage,
@@ -50,6 +52,7 @@ class ServiceProviderCards extends StatelessWidget {
           ),
           child: _ServiceProviderContent(
             userDistance: userDistance,
+            agendOnTap: agendOnTap,
             userName: userName,
             userServicesExecuted: userServicesExecuted,
             userUrlImage: userUrlImage,
