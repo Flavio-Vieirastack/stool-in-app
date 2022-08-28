@@ -25,8 +25,8 @@ class _HomeBody extends StatelessWidget {
           SizedBox(
             height: 2.h,
           ),
-          SizedBox(
-            height: 22.h,
+          LimitedBox(
+            maxHeight: 22.h,
             child: ListView.builder(
               itemCount: 10,
               shrinkWrap: true,
@@ -36,6 +36,35 @@ class _HomeBody extends StatelessWidget {
               },
             ),
           ),
+          SizedBox(
+            height: 2.h,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Melhor avaliados',
+              style: AppTextStyles.headLine1,
+            ),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          ListView.builder(
+            itemCount: 10,
+            shrinkWrap: true,
+            primary: false,
+            itemBuilder: (context, index) {
+              return ServiceProviderCards(
+                userDistance: '1 Km',
+                userName: 'João pedro',
+                userServicesExecuted: 'Lavagem de carro',
+                userUrlImage:
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK9gqFKRn28xKHD1CAbEevdzsLmsv5yQkGnQ&usqp=CAU',
+                userVotes: '4',
+                onPressed: () {},
+              );
+            },
+          )
         ],
       ),
     );
