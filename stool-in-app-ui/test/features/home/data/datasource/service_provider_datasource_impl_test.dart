@@ -5,11 +5,11 @@ import 'package:stool_in/exports/app_exports.dart';
 import '../../../../mock/service_provider_payload.dart';
 import '../../../../mock/service_provider_payload_diferent_location_data.dart';
 
-
 class _ServiceProviderDataSourceMock extends Mock
     implements GetServiceProviderDatasource {}
 
-class _ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {}
+class _ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {
+}
 
 class _RestClientGetMock extends Mock implements RestClientGet {}
 
@@ -68,7 +68,9 @@ void main() {
         result: result, params: params);
     expect(sut, 1);
   });
-  test('Deve retornar a distância correta baseado no payload em Metros negativos', () async {
+  test(
+      'Deve retornar a distância correta baseado no payload em Metros negativos',
+      () async {
     final payload = serviceProviderPayloadWithDiferentLocationInMeters;
     when(
       () => restClientGetMock.get<List>(path: 'path'),
