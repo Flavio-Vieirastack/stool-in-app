@@ -64,6 +64,11 @@ class AppTextStyles {
     fontFamily: GoogleFonts.openSans().fontFamily,
     fontSize: 15.dp,
   );
+  static TextStyle headLine4Blue = TextStyle(
+    color: AppColors.linkTextColor,
+    fontFamily: GoogleFonts.openSans().fontFamily,
+    fontSize: 15.dp,
+  );
   static TextStyle headLine4Green = TextStyle(
     color: Colors.green,
     fontFamily: GoogleFonts.openSans().fontFamily,
