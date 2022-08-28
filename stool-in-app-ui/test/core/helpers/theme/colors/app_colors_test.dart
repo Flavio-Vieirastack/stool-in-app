@@ -26,7 +26,7 @@ void main() {
   });
   test('Deve retornar a cor correta para black', () {
     final sut = AppColors.black;
-    const matcher =  Color(0xff060606);
+    const matcher =  Color(0xff1c2238);
     expect(sut, matcher);
   });
   test('Deve retornar a cor correta para blackOpaque', () {
@@ -36,12 +36,12 @@ void main() {
   });
   test('Deve retornar a cor correta para white', () {
     final sut = AppColors.white;
-    const matcher =  Color(0xffffffff);
+    const matcher =  Color(0xffc9cee1);
     expect(sut, matcher);
   });
   test('Deve retornar a cor correta para grey', () {
     final sut = AppColors.grey;
-    const matcher =  Color(0xff969696);
+    const matcher =  Color(0xff4c5573);
     expect(sut, matcher);
   });
   test('Deve retornar a cor correta para greyDisabled', () {
