@@ -42,6 +42,41 @@ class _HomeBody extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
+              'Navegue',
+              style: AppTextStyles.headLine1,
+            ),
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              AppMenuButton(
+                buttonName: 'Perfil',
+                icon: Icons.person,
+                onPressed: () {
+                  log('message');
+                },
+              ),
+              AppMenuButton(
+                buttonName: 'Info',
+                icon: Icons.info,
+                onPressed: () {},
+              ),
+              AppMenuButton(
+                buttonName: 'Premium',
+                lottieAsset: LottieConstants.lottieBecomePremium,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
               'Melhor avaliados',
               style: AppTextStyles.headLine1,
             ),
@@ -62,7 +97,7 @@ class _HomeBody extends StatelessWidget {
                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK9gqFKRn28xKHD1CAbEevdzsLmsv5yQkGnQ&usqp=CAU',
                 userVotes: 4,
                 onPressed: () {},
-                agendOnTap: (){},
+                agendOnTap: () {},
               );
             },
           )
