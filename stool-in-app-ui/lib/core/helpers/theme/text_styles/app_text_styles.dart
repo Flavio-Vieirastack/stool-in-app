@@ -33,7 +33,7 @@ class AppTextStyles {
   static TextStyle headLine2 = TextStyle(
     color: AppColors.white,
     fontFamily: GoogleFonts.exo2().fontFamily,
-    fontSize: 17.dp,
+    fontSize: 18.dp,
   );
   static TextStyle headLine2UnderLine = TextStyle(
     color: AppColors.white,

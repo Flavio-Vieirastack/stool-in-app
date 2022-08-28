@@ -119,7 +119,11 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
           ),
           SearchWidget(
             onTap: () {},
-          )
+          ),
+          SizedBox(
+            height: 4.h,
+          ),
+          const _HomeBody()
         ],
       ),
     );

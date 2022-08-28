@@ -5,70 +5,21 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 3.h,
-        ),
-        SizedBox(
-          height: 22.h,
-          child: ListView.builder(
-            itemCount: 10,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return const AppCategoryCard();
-            },
+    return Padding(
+      padding: EdgeInsets.all(8.0.dp),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Categorias',
+            style: AppTextStyles.headLine1,
           ),
-        ),
-        SizedBox(
-          height: 3.h,
-        ),
-        const Divider(thickness: 2),
-        SizedBox(
-          height: 3.h,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            AppMenuButton(
-              buttonName: 'Ajustes',
-              icon: Icons.settings,
-              onPressed: () {},
-            ),
-            AppMenuButton(
-              buttonName: 'Duvidas',
-              icon: Icons.info,
-              onPressed: () =>
-                  Navigator.of(context).pushNamed(RoutesConstants.infoRoute),
-            ),
-            AppMenuButton(
-              buttonName: 'Ajustes',
-              icon: Icons.settings,
-              onPressed: () {},
-            ),
-          ],
-        ),
-        SizedBox(
-          height: 3.h,
-        ),
-        const Divider(thickness: 2),
-        Text(
-          'Principais escolhas:',
-          style: AppTextStyles.headLine3Gold,
-        ),
-        SizedBox(
-          height: 2.h,
-        ),
-        ServiceProviderCards(
-            userDistance: 'userDistance',
-            userName: 'userName',
-            userServicesExecuted: 'userServicesExecuted',
-            userUrlImage:
-                'https://skycms.s3.amazonaws.com/images/5495100/cachorro-card-1.png',
-            userVotes: 'userVotes',
-            onPressed: () {})
-      ],
+          Text(
+            'Ver todas',
+            style: AppTextStyles.headLine4Blue,
+          )
+        ],
+      ),
     );
   }
 }
