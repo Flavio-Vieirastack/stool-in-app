@@ -142,6 +142,9 @@ export '../features/auth/data/repository/login/login_repository_impl.dart';
 //!home
 export '../features/home/data/datasource/categories/categories_datasource.dart';
 export '../features/home/data/datasource/categories/categories_datasource_impl.dart';
+export '../features/home/data/repository/service_provider/service_provider_repository_impl.dart';
+export '../features/home/data/repository/categories/categories_repository_impl.dart';
+export '../features/home/presenter/page/home_page.dart';
 export '../features/home/data/datasource/service_provider/service_provider_datasource.dart';
 export '../features/home/data/datasource/service_provider/service_provider_datasource_impl.dart';
 export '../features/home/domain/entity/categories/categories_entity.dart';

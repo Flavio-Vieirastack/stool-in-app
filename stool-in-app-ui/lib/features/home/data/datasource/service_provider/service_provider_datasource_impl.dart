@@ -1,17 +1,18 @@
 import 'dart:developer';
 import '../../../../../exports/app_exports.dart';
 
-
-
-
 class GetServiceProviderDatasourceImpl implements GetServiceProviderDatasource {
   final RestClientGet _restClientGet;
-  final DistanceHelperCalculate _distanceHelperCalculate;
-  GetServiceProviderDatasourceImpl({
-    required RestClientGet restClientGet,
-    required DistanceHelperCalculate distanceHelperCalculate,
-  })  : _restClientGet = restClientGet,
-        _distanceHelperCalculate = distanceHelperCalculate;
+  final ServiceProviderDatasourceCalculateDistance
+      _serviceProviderDatasourceCalculateDistance;
+  GetServiceProviderDatasourceImpl(
+      {required RestClientGet restClientGet,
+      required ServiceProviderDatasourceCalculateDistance
+          serviceProviderDatasourceCalculateDistance})
+      : _restClientGet = restClientGet,
+        _serviceProviderDatasourceCalculateDistance =
+            serviceProviderDatasourceCalculateDistance;
+
   @override
   Future<List<ServiceProviderEntity>> call({
     required GetServiceProvidersParams providersParams,
@@ -23,7 +24,8 @@ class GetServiceProviderDatasourceImpl implements GetServiceProviderDatasource {
           'pages': providersParams.pageQuantity,
         },
       );
-      final distance = calculateDistance(
+      final distance =
+          _serviceProviderDatasourceCalculateDistance.calculateDistance(
         result: result,
         params: providersParams,
       );
@@ -48,39 +50,5 @@ class GetServiceProviderDatasourceImpl implements GetServiceProviderDatasource {
       throw ServiceProviderError(
           message: 'Erro desconhecido ao pegar dados do usuário');
     }
-  }
-
-  @override
-  int calculateDistance({
-    required RestClientResponse<List<dynamic>> result,
-    required GetServiceProvidersParams params,
-  }) {
-    final serviceProviderData = result.data
-        ?.map(
-          (e) => ServiceProviderModel.fromDataSource(e),
-        )
-        .toList();
-    final serviceProviderLatitude = serviceProviderData
-        ?.map(
-            (e) => e.userData.map((e) => e.userLocationLatitude).toList().first)
-        .toList()
-        .first;
-    final serviceProviderLongitude = serviceProviderData
-        ?.map((e) =>
-            e.userData.map((e) => e.userLocationLongitude).toList().first)
-        .toList()
-        .first;
-
-    final distance = _distanceHelperCalculate.caculateDistanceToInt(
-      currentUserLocation: Location(
-        latitude: params.currentUserLocationLatitude,
-        longitude: params.currentUserLocationLongitude,
-      ),
-      serviceProviderLocation: Location(
-        latitude: serviceProviderLatitude ?? 0.0,
-        longitude: serviceProviderLongitude ?? 0.0,
-      ),
-    );
-    return distance;
   }
 }
