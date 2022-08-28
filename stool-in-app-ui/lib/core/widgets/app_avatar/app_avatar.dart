@@ -27,23 +27,23 @@ class AppAvatar extends StatelessWidget {
                 imageUrl: urlImage ?? '',
                 fit: BoxFit.cover,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    AppProgressIndicator(
+                    CircularProgressIndicator(
                   value: downloadProgress.progress,
                 ),
                 errorWidget: (context, url, error) => const Icon(Icons.person),
               )
             : SizedBox(
-              child: CircleAvatar(
+                child: CircleAvatar(
                   backgroundColor: AppColors.grey,
                   child: !isLoading
                       ? Icon(
                           Icons.person,
-                          size: size -10,
+                          size: size - 10,
                           color: AppColors.black,
                         )
                       : const AppProgressIndicator(),
                 ),
-            ),
+              ),
       ),
     );
   }

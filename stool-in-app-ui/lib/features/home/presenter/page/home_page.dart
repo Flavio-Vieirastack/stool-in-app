@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in/core/constants/keys_constants.dart';
-import 'package:stool_in/core/helpers/shared_preferences/shared_preferences_helper.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
+import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/core/widgets/app_category_card/app_category_card.dart';
-import 'package:stool_in/core/widgets/menu_buttons/app_menu_button.dart';
-import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
+import 'package:stool_in/exports/app_exports.dart';
 
-import '../../../../core/constants/routes_constants.dart';
 part './widgets/home_body.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,41 +27,43 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Flavio Vieira',
-          style: AppTextStyles.headLine1,
-        ),
-        elevation: 22,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(100.dp),
-          ),
-        ),
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(15.h),
-          child: Container(
-            color: Colors.red,
-          ),
-        ),
-        flexibleSpace: ClipRRect(
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(100.dp),
-          ),
-          child: const Image(
-            fit: BoxFit.cover,
-            image: NetworkImage(
-              'https://www.petz.com.br/blog/wp-content/uploads/2020/07/raca-de-cachorro-muito-popular-no-brasil-3-1280x720.jpg',
-            ),
-          ),
-        ),
-      ),
-      body: ListView(
+      body: Column(
         children: [
           Padding(
             padding: EdgeInsets.all(8.0.dp),
-            child:  const _HomeBody(),
-          ),
+            child: SafeArea(
+              child: Row(
+                children: [
+                  const AppAvatar(
+                    urlImage:
+                        'https://skycms.s3.amazonaws.com/images/5495100/cachorro-card-1.png',
+                  ),
+                  SizedBox(
+                    width: 2.w,
+                  ),
+                  Text(
+                    'Flavio Vieira',
+                    style: AppTextStyles.headLine0,
+                  ),
+                  const Spacer(),
+                  Visibility(
+                    child: Row(
+                      children: [
+                        LottieBuilder.asset(
+                          LottieConstants.lottieCoin,
+                          width: 38.dp,
+                        ),
+                        Text(
+                          '800',
+                          style: AppTextStyles.headLine3,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
