@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/exports/app_exports.dart';
 
-
 class ExectionServicesMock extends Mock implements ExecutionServicesEntity {}
 
 class ServicesToExecuteMock extends Mock implements ServicesToExecuteEntity {}
@@ -28,7 +27,7 @@ void main() {
           disponibleDays: 'disponibleDays',
           createdAt: DateTime.now(),
           userLoginId: 1,
-          votes: 3,
+          votes: 5,
           executionServices: [ExectionServicesMock()],
           servicesToExecute: [ServicesToExecuteMock()],
           coments: [ComentsMock()],
@@ -39,7 +38,7 @@ void main() {
           distance: 1,
           serviceProviderDescription: 'serviceProviderDescription',
           status: 'status',
-          votes: 3,
+          votes: 4,
           initialDisponibleTime: 'initialDisponibleTime',
           endDisponibleTime: 'endDisponibleTime',
           disponibleDays: 'disponibleDays',
@@ -69,7 +68,7 @@ void main() {
         ServiceProviderEntity(
           id: 1,
           distance: 10000,
-          votes: 3,
+          votes: 2,
           serviceProviderDescription: 'serviceProviderDescription',
           status: 'status',
           initialDisponibleTime: 'initialDisponibleTime',
@@ -86,9 +85,21 @@ void main() {
     },
   );
   test('Deve ordernar corretamente a lista baseado na distãncia', () {
-    final sut = serviceProviderSortListHelper.sortList(
-        providers: serviceProviderEntity).map((e) => e.distance).toList();
+    final sut = serviceProviderSortListHelper
+        .sortList(providers: serviceProviderEntity)
+        .map((e) => e.distance)
+        .toList();
     final matcher = [1, 435, 1000, 10000];
     expect(sut, matcher);
   });
+
+  test('Deve retornar os service providers baseados nos votos', () {
+    final sut = serviceProviderSortListHelper
+        .sortByVotes(providers: serviceProviderEntity)
+        .map((e) => e.votes)
+        .toList();
+    final matcher = [5, 4, 3, 2];
+    expect(sut, matcher);
+  });
+ 
 }
