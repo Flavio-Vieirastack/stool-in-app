@@ -60,7 +60,7 @@ class _HomeBody extends StatelessWidget {
                 userServicesExecuted: 'Lavagem de carro',
                 userUrlImage:
                     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK9gqFKRn28xKHD1CAbEevdzsLmsv5yQkGnQ&usqp=CAU',
-                userVotes: '4',
+                userVotes: 4,
                 onPressed: () {},
               );
             },

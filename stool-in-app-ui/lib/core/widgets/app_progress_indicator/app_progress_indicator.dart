@@ -11,7 +11,7 @@ class AppProgressIndicator extends StatelessWidget {
     return CircularProgressIndicator.adaptive(
       value: value,
       valueColor:
-          AlwaysStoppedAnimation<Color>(AppColors.buttonLeftGradientColor),
+          AlwaysStoppedAnimation<Color>(AppColors.buttonRightGradientColor),
     );
   }
 }

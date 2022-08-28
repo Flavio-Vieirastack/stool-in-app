@@ -3,7 +3,7 @@ part of '../service_provider_cards.dart';
 class _ServiceProviderContent extends StatelessWidget {
   final String userUrlImage;
   final String userName;
-  final String userVotes;
+  final double userVotes;
   final String userServicesExecuted;
   final String userDistance;
   const _ServiceProviderContent({
@@ -26,7 +26,9 @@ class _ServiceProviderContent extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              AppAvatar(urlImage: userUrlImage,),
+              AppAvatar(
+                urlImage: userUrlImage,
+              ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(5.0.dp),
@@ -41,10 +43,27 @@ class _ServiceProviderContent extends StatelessWidget {
                 ),
               ),
               AppRattingStars(
-                value: 3,
+                value: userVotes,
                 size: 10.dp,
                 onValueChanged: (value) {},
-              )
+              ),
+              SizedBox(
+                width: 1.w,
+              ),
+              Visibility(
+                visible: userVotes >= 4,
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Column(
+                    children: [
+                      LottieBuilder.asset(
+                        LottieConstants.lottieQuality,
+                        width: 35.dp,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
           SizedBox(
@@ -74,24 +93,19 @@ class _ServiceProviderContent extends StatelessWidget {
               style: TextStyle(color: AppColors.buttonLeftGradientColor),
             ),
           ),
-          Visibility(
-            visible: true,
+          SizedBox(
+            height: 1.h,
+          ),
+          GestureDetector(
+            onTap: (){},
             child: Align(
               alignment: Alignment.centerRight,
-              child: Column(
-                children: [
-                  LottieBuilder.asset(
-                    LottieConstants.lottieQuality,
-                    width: 35.dp,
-                  ),
-                  Text(
-                    'Premium',
-                    style: AppTextStyles.headLine4Small,
-                  ),
-                ],
+              child: LottieBuilder.asset(
+                LottieConstants.lottieAgend,
+                height: 5.h,
               ),
             ),
-          ),
+          )
         ],
       ),
     );

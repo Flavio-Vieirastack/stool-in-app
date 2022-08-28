@@ -12,7 +12,7 @@ part './widget/service_provider_content.dart';
 class ServiceProviderCards extends StatelessWidget {
   final String userUrlImage;
   final String userName;
-  final String userVotes;
+  final double userVotes;
   final String userServicesExecuted;
   final String userDistance;
   final VoidCallback onPressed;
