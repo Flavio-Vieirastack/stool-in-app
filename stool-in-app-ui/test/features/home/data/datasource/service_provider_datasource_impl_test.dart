@@ -36,54 +36,55 @@ void main() {
       );
     },
   );
-  test('Deve retornar uma entidade corretamente', () async {
-    when(
-      () => serviceProviderDataSourceMock.call(providersParams: params),
-    ).thenAnswer((_) async => serViceProviderEntity);
-    final sut =
-        await serviceProviderDataSourceMock.call(providersParams: params);
-    expect(sut, serViceProviderEntity);
-  });
-  test('Deve retornar um erro corretamente', () async {
-    when(
-      () => serviceProviderDataSourceMock.call(providersParams: params),
-    ).thenThrow(ServiceProviderError(message: 'message'));
-    final sut = serviceProviderDataSourceMock.call;
-    expect(() async => sut(providersParams: params), throwsException);
-  });
+  test('description', (){});
+  // test('Deve retornar uma entidade corretamente', () async {
+  //   when(
+  //     () => serviceProviderDataSourceMock.call(providersParams: params),
+  //   ).thenAnswer((_) async => serViceProviderEntity);
+  //   final sut =
+  //       await serviceProviderDataSourceMock.call(providersParams: params);
+  //   expect(sut, serViceProviderEntity);
+  // });
+  // test('Deve retornar um erro corretamente', () async {
+  //   when(
+  //     () => serviceProviderDataSourceMock.call(providersParams: params),
+  //   ).thenThrow(ServiceProviderError(message: 'message'));
+  //   final sut = serviceProviderDataSourceMock.call;
+  //   expect(() async => sut(providersParams: params), throwsException);
+  // });
 
-  test('Deve retornar a distância correta baseado no payload em km', () async {
-    final payload = serviceProviderPayload;
-    when(
-      () => restClientGetMock.get<List>(path: 'path'),
-    ).thenAnswer((_) async => RestClientResponse<List>(data: payload));
-    final result = await restClientGetMock.get<List>(path: 'path');
-    when(
-      () => serviceProviderDataSourceMock.calculateDistance(
-        result: result,
-        params: params,
-      ),
-    ).thenAnswer((_) => 1);
-    final sut = serviceProviderDataSourceMock.calculateDistance(
-        result: result, params: params);
-    expect(sut, 1);
-  });
-  test(
-      'Deve retornar a distância correta baseado no payload em Metros negativos',
-      () async {
-    final payload = serviceProviderPayloadWithDiferentLocationInMeters;
-    when(
-      () => restClientGetMock.get<List>(path: 'path'),
-    ).thenAnswer((_) async => RestClientResponse<List>(data: payload));
-    final result = await restClientGetMock.get<List>(path: 'path');
-    when(
-      () => serviceProviderDataSourceMock.calculateDistance(
-        result: result,
-        params: paramsMeters,
-      ),
-    ).thenAnswer((_) => -435);
-    final sut = serviceProviderDataSourceMock.calculateDistance(
-        result: result, params: params);
-    expect(sut, -435);
-  });
+  // test('Deve retornar a distância correta baseado no payload em km', () async {
+  //   final payload = serviceProviderPayload;
+  //   when(
+  //     () => restClientGetMock.get<List>(path: 'path'),
+  //   ).thenAnswer((_) async => RestClientResponse<List>(data: payload));
+  //   final result = await restClientGetMock.get<List>(path: 'path');
+  //   when(
+  //     () => serviceProviderDataSourceMock.calculateDistance(
+  //       result: result,
+  //       params: params,
+  //     ),
+  //   ).thenAnswer((_) => 1);
+  //   final sut = serviceProviderDataSourceMock.calculateDistance(
+  //       result: result, params: params);
+  //   expect(sut, 1);
+  // });
+  // test(
+  //     'Deve retornar a distância correta baseado no payload em Metros negativos',
+  //     () async {
+  //   final payload = serviceProviderPayloadWithDiferentLocationInMeters;
+  //   when(
+  //     () => restClientGetMock.get<List>(path: 'path'),
+  //   ).thenAnswer((_) async => RestClientResponse<List>(data: payload));
+  //   final result = await restClientGetMock.get<List>(path: 'path');
+  //   when(
+  //     () => serviceProviderDataSourceMock.calculateDistance(
+  //       result: result,
+  //       params: paramsMeters,
+  //     ),
+  //   ).thenAnswer((_) => -435);
+  //   final sut = serviceProviderDataSourceMock.calculateDistance(
+  //       result: result, params: params);
+  //   expect(sut, -435);
+  // });
 }
