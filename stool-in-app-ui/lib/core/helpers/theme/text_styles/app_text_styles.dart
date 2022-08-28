@@ -86,7 +86,7 @@ class AppTextStyles {
     fontSize: 14.dp,
   );
   static TextStyle headLine4Small = TextStyle(
-    color: AppColors.grey,
+    color: AppColors.white,
     fontFamily: GoogleFonts.prata().fontFamily,
     fontSize: 11.dp,
   );

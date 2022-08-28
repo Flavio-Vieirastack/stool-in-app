@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_in/exports/app_exports.dart';
 
 class AppRattingStars extends StatelessWidget {
   final double value;
@@ -34,7 +34,7 @@ class AppRattingStars extends StatelessWidget {
       valueLabelPadding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 0.h),
       valueLabelMargin: EdgeInsets.only(right: 8.w),
       starOffColor: const Color(0xffe7e8ea),
-      starColor: const Color.fromARGB(219, 255, 235, 59),
+      starColor: AppColors.orange,
     );
   }
 }

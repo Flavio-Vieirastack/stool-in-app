@@ -5,6 +5,7 @@ import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_in/core/widgets/app_category_card/app_category_card.dart';
 import 'package:stool_in/core/widgets/menu_buttons/app_menu_button.dart';
+import 'package:stool_in/core/widgets/service_provider_cards/service_provider_cards.dart';
 
 import '../../../../core/constants/routes_constants.dart';
 part './widgets/home_body.dart';

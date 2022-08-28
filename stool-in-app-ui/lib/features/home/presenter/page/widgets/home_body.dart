@@ -5,7 +5,6 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -31,21 +30,22 @@ class _HomeBody extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children:  [
+          children: [
             AppMenuButton(
               buttonName: 'Ajustes',
               icon: Icons.settings,
-              onPressed: (){},
+              onPressed: () {},
             ),
             AppMenuButton(
               buttonName: 'Duvidas',
               icon: Icons.info,
-              onPressed: () => Navigator.of(context).pushNamed(RoutesConstants.infoRoute),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(RoutesConstants.infoRoute),
             ),
             AppMenuButton(
               buttonName: 'Ajustes',
               icon: Icons.settings,
-              onPressed: (){},
+              onPressed: () {},
             ),
           ],
         ),
@@ -60,7 +60,14 @@ class _HomeBody extends StatelessWidget {
         SizedBox(
           height: 2.h,
         ),
-        
+        ServiceProviderCards(
+            userDistance: 'userDistance',
+            userName: 'userName',
+            userServicesExecuted: 'userServicesExecuted',
+            userUrlImage:
+                'https://skycms.s3.amazonaws.com/images/5495100/cachorro-card-1.png',
+            userVotes: 'userVotes',
+            onPressed: () {})
       ],
     );
   }
