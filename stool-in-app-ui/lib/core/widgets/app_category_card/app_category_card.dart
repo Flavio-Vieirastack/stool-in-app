@@ -1,9 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:lottie/lottie.dart';
 import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
-import 'dart:math' as math;
+import 'package:stool_in/exports/app_exports.dart';
 
 class AppCategoryCard extends StatelessWidget {
   const AppCategoryCard({Key? key}) : super(key: key);
@@ -12,56 +12,58 @@ class AppCategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              tileMode: TileMode.repeated,
-              colors: [
-                AppColors.black.withOpacity(0.5),
-                 Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                    .withOpacity(0.2),
-              ],
-            ),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(20),
+      child: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0.dp),
+            child: Container(
+              width: 33.w,
+              height: 16.h,
+              decoration: BoxDecoration(
+                color: AppColors.black,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.dp),
+                  topRight: Radius.circular(20.dp),
+                ),
+              ),
+              child: Padding(
+                padding:  EdgeInsets.only(right: 5.w, top: 3.h, bottom: 1.h),
+                child: LottieBuilder.network(
+                  'https://assets2.lottiefiles.com/packages/lf20_xn3noiae.json',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
-          child: Padding(
-            padding: EdgeInsets.all(5.0.dp),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 2.h,
-                ),
-                LottieBuilder.network(
-                  'https://assets5.lottiefiles.com/packages/lf20_7ifso9nc.json',
-                  width: 30.w,
-                ),
-                SizedBox(
-                  height: 1.5.h,
-                ),
-                SizedBox(
-                  width: 33.w,
-                  child: Center(
-                    child: Text(
-                      'Lavagem de carro',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.headLine4,
-                    ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0.dp),
+              child: Container(
+                height: 7.h,
+                width: 33.w,
+                decoration: BoxDecoration(
+                  color: AppColors.grey,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20.dp),
+                    bottomRight: Radius.circular(20.dp),
                   ),
                 ),
-                SizedBox(
-                  height: 2.h,
+                child: Center(
+                  child: AutoSizeText(
+                    'Faxina',
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    maxFontSize: 18,
+                    minFontSize: 13,
+                    style: AppTextStyles.headLine2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }

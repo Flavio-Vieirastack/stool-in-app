@@ -13,7 +13,7 @@ class _HomeBody extends StatelessWidget {
           height: 3.h,
         ),
         SizedBox(
-          height: 24.h,
+          height: 22.h,
           child: ListView.builder(
             itemCount: 10,
             scrollDirection: Axis.horizontal,

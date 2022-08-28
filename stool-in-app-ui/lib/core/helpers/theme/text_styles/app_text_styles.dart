@@ -62,7 +62,7 @@ class AppTextStyles {
   static TextStyle headLine4 = TextStyle(
     color: AppColors.white,
     fontFamily: GoogleFonts.openSans().fontFamily,
-    fontSize: 14.dp,
+    fontSize: 15.dp,
   );
   static TextStyle headLine4Green = TextStyle(
     color: Colors.green,
