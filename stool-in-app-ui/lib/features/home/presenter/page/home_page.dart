@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_in/core/widgets/search/search_widget.dart';
 import 'package:stool_in/exports/app_exports.dart';
 
 part './widgets/home_body.dart';
@@ -114,8 +115,11 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
             ),
           ),
           SizedBox(
-            height: 1.h,
+            height: 4.h,
           ),
+          SearchWidget(
+            onTap: () {},
+          )
         ],
       ),
     );
