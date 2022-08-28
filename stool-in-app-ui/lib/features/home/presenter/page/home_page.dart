@@ -29,11 +29,10 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(8.dp, 70.dp, 8.dp, 0),
+            padding: EdgeInsets.fromLTRB(8.dp, 30.dp, 8.dp, 0),
             child: Row(
               children: [
                 const AppAvatar(
@@ -123,7 +122,7 @@ class _HomePageState extends State<HomePage> with SharedPreferencesHelper {
           SizedBox(
             height: 4.h,
           ),
-          const _HomeBody()
+           const _HomeBody()
         ],
       ),
     );
