@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
 import 'package:stool_in/core/helpers/theme/app_theme/app_theme.dart';
+import 'package:stool_in/features/service_provider/module/service_provider_onboarding_module.dart';
 import 'exports/app_exports.dart';
 import 'firebase_options.dart';
 
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
                 ...InfoPageModule().routers,
                 ...DoubtPageModule().routers,
                 ...RulesPageModules().routers,
+                ...ServiceProviderOnboardingModule().routers,
               },
             );
           },

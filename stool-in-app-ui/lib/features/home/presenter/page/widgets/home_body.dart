@@ -67,7 +67,8 @@ class _HomeBody extends StatelessWidget {
               AppMenuButton(
                 buttonName: 'Premium',
                 lottieAsset: LottieConstants.lottieBecomePremium,
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).pushReplacementNamed(
+                    RoutesConstants.serviceProviderOnboardingRoute),
               ),
             ],
           ),

@@ -18,4 +18,5 @@ class RoutesConstants {
   static const String infoRoute = '/user-info';
   static const String doubtRoute = '/user-doubt';
   static const String rulesRoute = '/user-rules';
+  static const String serviceProviderOnboardingRoute = '/service-provider-onboarding';
 }
