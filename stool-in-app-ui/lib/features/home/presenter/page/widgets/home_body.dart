@@ -9,6 +9,35 @@ class _HomeBody extends StatelessWidget {
       padding: EdgeInsets.all(8.0.dp),
       child: Column(
         children: [
+          SizedBox(
+            height: 2.h,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              AppMenuButton(
+                buttonName: 'Perfil',
+                icon: Icons.person,
+                onPressed: () {
+                  log('message');
+                },
+              ),
+              AppMenuButton(
+                buttonName: 'Info',
+                icon: Icons.info,
+                onPressed: () {},
+              ),
+              AppMenuButton(
+                buttonName: 'Cadastro',
+                lottieAsset: LottieConstants.lottieBecomePremium,
+                onPressed: () => Navigator.of(context).pushReplacementNamed(
+                    RoutesConstants.serviceProviderOnboardingRoute),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 2.h,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -35,42 +64,6 @@ class _HomeBody extends StatelessWidget {
                 return const AppCategoryCard();
               },
             ),
-          ),
-          SizedBox(
-            height: 2.h,
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Navegue',
-              style: AppTextStyles.headLine1,
-            ),
-          ),
-          SizedBox(
-            height: 2.h,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              AppMenuButton(
-                buttonName: 'Perfil',
-                icon: Icons.person,
-                onPressed: () {
-                  log('message');
-                },
-              ),
-              AppMenuButton(
-                buttonName: 'Info',
-                icon: Icons.info,
-                onPressed: () {},
-              ),
-              AppMenuButton(
-                buttonName: 'Premium',
-                lottieAsset: LottieConstants.lottieBecomePremium,
-                onPressed: () => Navigator.of(context).pushReplacementNamed(
-                    RoutesConstants.serviceProviderOnboardingRoute),
-              ),
-            ],
           ),
           SizedBox(
             height: 2.h,
