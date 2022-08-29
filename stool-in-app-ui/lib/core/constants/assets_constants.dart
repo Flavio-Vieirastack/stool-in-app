@@ -4,4 +4,6 @@ class AssetsConstants {
   static const String onboardingFirstImage = 'assets/images/woman_1.jpeg';
   static const String onboardingSecondImage = 'assets/images/man_1.jpeg';
   static const String onboardingLastImage = 'assets/images/woman_2.jpeg';
+  static const String serviceProviderImage =
+      'assets/images/service-provider.jpeg';
 }
