@@ -13,18 +13,12 @@ class _Secondary extends StatelessWidget {
       builder: (context, constraints) {
         return Container(
           width: Adaptive.w(85),
-           height: 6.h,
+          height: 6.h,
           decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.greyScaleDark,
-                offset: const Offset(0, 4),
-                blurRadius: 5.0,
-              )
-            ],
             borderRadius: BorderRadius.circular(20.dp),
             border: Border.all(
-              color: AppColors.textFormFieldBackgroundColor,
+              width: 2,
+              color: AppColors.white,
             ),
           ),
           child: ElevatedButton(

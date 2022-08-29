@@ -49,7 +49,7 @@ class _Primary extends StatelessWidget {
             onPressed: onPressed,
             child: Text(
               buttonText,
-              style: AppTextStyles.headLine1,
+              style: AppTextStyles.headLine1.copyWith(color: Colors.white),
             ),
           ),
         );

@@ -24,7 +24,7 @@ class SearchWidget extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding:  EdgeInsets.symmetric(horizontal: 20.0.dp),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

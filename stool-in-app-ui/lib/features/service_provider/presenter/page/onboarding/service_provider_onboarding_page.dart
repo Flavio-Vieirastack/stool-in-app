@@ -2,10 +2,37 @@ import 'dart:developer';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_in/exports/app_exports.dart';
 
-class ServiceProviderOnboardingPage extends StatelessWidget {
+class ServiceProviderOnboardingPage extends StatefulWidget {
   const ServiceProviderOnboardingPage({Key? key}) : super(key: key);
+
+  @override
+  State<ServiceProviderOnboardingPage> createState() =>
+      _ServiceProviderOnboardingPageState();
+}
+
+class _ServiceProviderOnboardingPageState
+    extends State<ServiceProviderOnboardingPage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  bool visible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 500));
+    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +89,38 @@ class ServiceProviderOnboardingPage extends StatelessWidget {
               ],
               isRepeatingAnimation: false,
               onFinished: () {
-                log('finished');
+                _controller.forward();
+                setState(() {
+                  visible = true;
+                });
               },
             ),
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 75.h),
+            child: Center(
+              child: Visibility(
+                visible: visible,
+                child: FadeTransition(
+                  opacity: _animation,
+                  child: Column(
+                    children: [
+                      const AppButton(buttonText: 'Sim'),
+                      SizedBox(
+                        height: 1.h,
+                      ),
+                      AppButton(
+                        buttonText: 'Não',
+                        buttonTypes: ButtonTypes.secondary,
+                        onPressed: () => Navigator.of(context)
+                            .pushReplacementNamed(RoutesConstants.homeRoute),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
