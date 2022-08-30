@@ -17,4 +17,5 @@ class EndpointConstants {
   static const deleteUserServiceTypes = '/service-types';
   static const searchServiceProvider =
       '/service-provider/service-provider-search';
+  static const getUserDataUnique = '/user-data/user-data-unique';
 }

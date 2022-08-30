@@ -7,6 +7,20 @@ class UserDataUniqueEntity extends UserDataEntity {
   final List<ServicesContractedEntity> servicesContacted;
   UserDataUniqueEntity({
     required this.servicesContacted,
+    required super.cep,
+    required super.city,
+    required super.district,
+    required super.houseNumber,
+    required super.referencePoint,
+    required super.serviceProviderId,
+    required super.street,
+    required super.userFirebasePushToken,
+    required super.userFirebaseUuid,
+    required super.userLocationLatitude,
+    required super.userLocationLongitude,
+    required super.userName,
+    required super.userPhotoUrl,
+    required super.userState,
   });
 
   @override
