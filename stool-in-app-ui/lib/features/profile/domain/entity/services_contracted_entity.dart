@@ -1,8 +1,8 @@
 class ServicesContractedEntity {
   final int id;
   final String serviceDescription;
-  final String serviceDate;
-  final String serviceHour;
+  final DateTime serviceDate;
+  final DateTime serviceHour;
   final String userComent;
   final String status;
   final String userName;

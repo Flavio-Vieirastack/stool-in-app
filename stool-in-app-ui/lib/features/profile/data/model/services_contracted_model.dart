@@ -91,8 +91,8 @@ class ServicesContractedModel extends ServicesContractedEntity {
     return ServicesContractedModel(
       id: map['id']?.toInt() ?? 0,
       serviceDescription: map['serviceDescription'] ?? '',
-      serviceDate: map['serviceDate'] ?? '',
-      serviceHour: map['serviceHour'] ?? '',
+      serviceDate: DateTime.parse(map['serviceDate'] ?? ''),
+      serviceHour: DateTime.parse(map['serviceHour'] ?? ''),
       userComent: map['userComent'] ?? '',
       status: map['status'] ?? '',
       userName: map['userName'] ?? '',
