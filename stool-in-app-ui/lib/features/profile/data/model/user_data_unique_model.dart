@@ -59,13 +59,13 @@ class UserDataUniqueModel extends UserDataUniqueEntity {
       street: map['street'],
       userFirebasePushToken: map['userFirebasePushToken'],
       userFirebaseUuid: map['userFirebaseUuid'],
-      userLocationLatitude: double.parse(map['userLocationLatitude']),
-      userLocationLongitude: double.parse(map['userLocationLongitude']),
+      userLocationLatitude: map['userLocationLatitude'],
+      userLocationLongitude: map['userLocationaLogintude'],
       userName: map['userName'],
       userPhotoUrl: map['userPhotoUrl'],
       userState: map['userState'],
       servicesContracted: List<ServicesContractedModel>.from(
-        map['servicesContracted']?.map(
+        map['servicesContrated']?.map(
           (x) => ServicesContractedModel.fromMap(
             x,
             distance: distance,
