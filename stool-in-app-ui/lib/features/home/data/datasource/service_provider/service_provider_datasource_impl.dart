@@ -5,11 +5,11 @@ class GetServiceProviderDatasourceImpl implements GetServiceProviderDatasource {
   final RestClientGet _restClientGet;
   final ServiceProviderDatasourceCalculateDistance
       _serviceProviderDatasourceCalculateDistance;
-  GetServiceProviderDatasourceImpl(
-      {required RestClientGet restClientGet,
-      required ServiceProviderDatasourceCalculateDistance
-          serviceProviderDatasourceCalculateDistance})
-      : _restClientGet = restClientGet,
+  GetServiceProviderDatasourceImpl({
+    required RestClientGet restClientGet,
+    required ServiceProviderDatasourceCalculateDistance
+        serviceProviderDatasourceCalculateDistance,
+  })  : _restClientGet = restClientGet,
         _serviceProviderDatasourceCalculateDistance =
             serviceProviderDatasourceCalculateDistance;
 
