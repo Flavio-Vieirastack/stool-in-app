@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/helpers/distance_helper/distance_helper_calculate.dart';
 import 'package:stool_in/features/auth/data/model/user_data_model.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
 import 'package:stool_in/features/profile/data/datasource/user_data_unique_datasource.dart';
@@ -83,7 +82,7 @@ void main() {
         () => uniqueDatasourceMock.getUserDataUnique(
           userDataUniqueLocation: location,
         ),
-      ).called(1);
+      ).called(2);
     });
     test(
         'Deve retornar um erro ao retornar uma entidade correta de user data unique',
@@ -125,7 +124,7 @@ void main() {
       expect(sut, const Right(null));
       verify(
         () => uniqueDatasourceMock.updateUserData(userDataModel: userDataModel),
-      ).called(1);
+      ).called(2);
     });
     test(
         'Deve retornar um erro ao retornar um valor void para o repository do update user data',
