@@ -1,3 +1,4 @@
+import 'package:stool_in/features/profile/domain/entity/user_data_unique_location.dart';
 import 'package:stool_in/features/profile/domain/error/user_data_unique_error.dart';
 import 'package:stool_in/features/profile/domain/error/update_user_data_error.dart';
 import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.dart';
@@ -12,13 +13,10 @@ class UserDataUniqueUsecaseImpl implements UserDataUniqueUsecase {
     required UserDataUniqueRepository userDataUniqueRepository,
   }) : _userDataUniqueRepository = userDataUniqueRepository;
   @override
-  Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique({
-    required double latitude,
-    required double longitude,
-  }) async {
+  Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique(
+      {required UserDataUniqueLocation userDataUniqueLocation}) async {
     return await _userDataUniqueRepository.getUserDataUnique(
-      latitude: latitude,
-      longitude: longitude,
+      userDataUniqueLocation: userDataUniqueLocation,
     );
   }
 

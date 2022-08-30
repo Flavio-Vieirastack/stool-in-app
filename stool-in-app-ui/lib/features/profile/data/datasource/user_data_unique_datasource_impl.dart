@@ -7,6 +7,8 @@ import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.
 import 'package:stool_in/features/profile/domain/error/update_user_data_error.dart';
 import 'package:stool_in/features/profile/domain/error/user_data_unique_error.dart';
 
+import '../../domain/entity/user_data_unique_location.dart';
+
 class UserDataUniqueDatasourceImpl implements UserDataUniqueDatasource {
   final RestClientGet _restClientGet;
   final RestClientPatch _restClientPatch;
@@ -21,15 +23,16 @@ class UserDataUniqueDatasourceImpl implements UserDataUniqueDatasource {
             calculateDistanceForUserDataUnique,
         _restClientPatch = restClientPatch;
   @override
-  Future<UserDataUniqueEntity> getUserDataUnique(
-      {required Location location}) async {
+  Future<UserDataUniqueEntity> getUserDataUnique({
+    required UserDataUniqueLocation userDataUniqueLocation,
+  }) async {
     try {
       final result = await _restClientGet.get(
         path: EndpointConstants.getUserDataUnique,
       );
       final distance = _calculateDistanceForUserDataUnique.calculateDistance(
         result: result,
-        userLocation: location,
+        userLocation: userDataUniqueLocation,
       );
       final data = UserDataUniqueModel.fromMap(
         result.data,

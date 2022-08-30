@@ -3,10 +3,11 @@ import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.
 
 import '../../../../core/helpers/distance_helper/distance_helper_calculate.dart';
 import '../../../../core/rest_client/rest_client_response.dart';
+import '../../domain/entity/user_data_unique_location.dart';
 import '../model/services_contracted_model.dart';
 
 abstract class UserDataUniqueDatasource {
-  Future<UserDataUniqueEntity> getUserDataUnique({required Location location});
+  Future<UserDataUniqueEntity> getUserDataUnique({required UserDataUniqueLocation userDataUniqueLocation});
   Future<void> updateUserData({required UserDataModel userDataModel});
 }
 

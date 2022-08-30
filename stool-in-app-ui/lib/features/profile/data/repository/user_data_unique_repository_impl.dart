@@ -8,6 +8,8 @@ import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.
 import 'package:dartz/dartz.dart';
 import 'package:stool_in/features/profile/domain/repository/user_data_unique_repository.dart';
 
+import '../../domain/entity/user_data_unique_location.dart';
+
 class UserDataUniqueRepositoryImpl implements UserDataUniqueRepository {
   final UserDataUniqueDatasource _userDataUniqueDatasource;
   UserDataUniqueRepositoryImpl({
@@ -15,13 +17,10 @@ class UserDataUniqueRepositoryImpl implements UserDataUniqueRepository {
   }) : _userDataUniqueDatasource = userDataUniqueDatasource;
   @override
   Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique(
-      {required double latitude, required double longitude}) async {
+      {required UserDataUniqueLocation userDataUniqueLocation}) async {
     try {
       final result = await _userDataUniqueDatasource.getUserDataUnique(
-        location: Location(
-          latitude: latitude,
-          longitude: longitude,
-        ),
+        userDataUniqueLocation: userDataUniqueLocation,
       );
       return Right(result);
     } on UserDataUniqueError catch (e, s) {

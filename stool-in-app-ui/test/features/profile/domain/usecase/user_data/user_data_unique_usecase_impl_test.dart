@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.dart';
+import 'package:stool_in/features/profile/domain/entity/user_data_unique_location.dart';
 import 'package:stool_in/features/profile/domain/error/update_user_data_error.dart';
 import 'package:stool_in/features/profile/domain/error/user_data_unique_error.dart';
 import 'package:stool_in/features/profile/domain/repository/user_data_unique_repository.dart';
@@ -17,11 +18,13 @@ void main() {
   late _UserDataUniqueRepositoryMock userDataUniqueRepositoryMock;
   late UserDataUniqueUsecase userDataUniqueUsecase;
   late _UserDataUniqueEntityMock uniqueEntityMock;
+  late UserDataUniqueLocation location;
   setUp(() {
     userDataUniqueRepositoryMock = _UserDataUniqueRepositoryMock();
     userDataUniqueUsecase = UserDataUniqueUsecaseImpl(
       userDataUniqueRepository: userDataUniqueRepositoryMock,
     );
+    location = UserDataUniqueLocation(latitude: 1, longitude: 1);
     uniqueEntityMock = _UserDataUniqueEntityMock();
   });
 
@@ -29,40 +32,34 @@ void main() {
     test('Deve retornar uma entidade de userDataUnique', () async {
       when(
         () => userDataUniqueRepositoryMock.getUserDataUnique(
-          latitude: 1,
-          longitude: 1,
-        ),
+            userDataUniqueLocation: location),
       ).thenAnswer((_) async => Right(uniqueEntityMock));
       final sut = await userDataUniqueUsecase.getUserDataUnique(
-          latitude: 1, longitude: 1);
+          userDataUniqueLocation: location);
       expect(sut, Right(uniqueEntityMock));
     });
     test('Deve chamar o repository ao retornar uma entidade de userDataUnique',
         () async {
       when(
         () => userDataUniqueRepositoryMock.getUserDataUnique(
-          latitude: 1,
-          longitude: 1,
-        ),
+            userDataUniqueLocation: location),
       ).thenAnswer((_) async => Right(uniqueEntityMock));
       final sut = await userDataUniqueUsecase.getUserDataUnique(
-          latitude: 1, longitude: 1);
+          userDataUniqueLocation: location);
       expect(sut, Right(uniqueEntityMock));
       verify(
         () => userDataUniqueRepositoryMock.getUserDataUnique(
-            latitude: 1, longitude: 1),
+            userDataUniqueLocation: location),
       ).called(1);
     });
-    test('Deve chamar o repository ao retornar uma entidade de userDataUnique',
+    test('Deve retornar um erro ao chamar o repository ao retornar uma entidade de userDataUnique',
         () async {
       when(
         () => userDataUniqueRepositoryMock.getUserDataUnique(
-          latitude: 1,
-          longitude: 1,
-        ),
+            userDataUniqueLocation: location),
       ).thenAnswer((_) async => Right(uniqueEntityMock));
       final sut = await userDataUniqueUsecase.getUserDataUnique(
-          latitude: 1, longitude: 1);
+          userDataUniqueLocation: location);
       expect(sut, Right(uniqueEntityMock));
     });
     test(
@@ -70,12 +67,12 @@ void main() {
         () async {
       when(
         () => userDataUniqueRepositoryMock.getUserDataUnique(
-          latitude: 1,
-          longitude: 1,
+          userDataUniqueLocation: location,
         ),
       ).thenAnswer((_) async => Left(UserDataUniqueError(message: 'message')));
       final sut = await userDataUniqueUsecase.getUserDataUnique(
-          latitude: 1, longitude: 1);
+        userDataUniqueLocation: location,
+      );
       expect(sut, Left(UserDataUniqueError(message: 'message')));
     });
   });
@@ -90,7 +87,8 @@ void main() {
           userDataEntity: uniqueEntityMock);
       expect(sut, const Right(null));
     });
-    test('Deve chamar o repository retornar void ao fazer update do usuário', () async {
+    test('Deve chamar o repository retornar void ao fazer update do usuário',
+        () async {
       when(
         () => userDataUniqueRepositoryMock.updateUserData(
             userDataEntity: uniqueEntityMock),
