@@ -12,15 +12,21 @@ class UserDataUniqueUsecaseImpl implements UserDataUniqueUsecase {
     required UserDataUniqueRepository userDataUniqueRepository,
   }) : _userDataUniqueRepository = userDataUniqueRepository;
   @override
-  Future<Either<UserDataUniqueError, UserDataUniqueEntity>>
-      getUserDataUnique() async {
-    return await _userDataUniqueRepository.getUserDataUnique();
+  Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique({
+    required double latitude,
+    required double longitude,
+  }) async {
+    return await _userDataUniqueRepository.getUserDataUnique(
+      latitude: latitude,
+      longitude: longitude,
+    );
   }
 
   @override
   Future<Either<UpdateUserDataError, void>> updateUserData({
     required UserDataEntity userDataEntity,
   }) async {
-    return await _userDataUniqueRepository.updateUserData(userDataEntity: userDataEntity);
+    return await _userDataUniqueRepository.updateUserData(
+        userDataEntity: userDataEntity);
   }
 }

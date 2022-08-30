@@ -5,7 +5,7 @@ import 'package:stool_in/features/profile/domain/error/update_user_data_error.da
 import 'package:stool_in/features/profile/domain/error/user_data_unique_error.dart';
 
 abstract class UserDataUniqueUsecase {
-  Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique();
+  Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique({required double latitude, required double longitude});
   Future<Either<UpdateUserDataError, void>> updateUserData({
     required UserDataEntity userDataEntity,
   });

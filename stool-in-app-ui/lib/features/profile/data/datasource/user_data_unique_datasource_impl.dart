@@ -10,18 +10,31 @@ import 'package:stool_in/features/profile/domain/error/user_data_unique_error.da
 class UserDataUniqueDatasourceImpl implements UserDataUniqueDatasource {
   final RestClientGet _restClientGet;
   final RestClientPatch _restClientPatch;
+  final CalculateDistanceForUserDataUnique _calculateDistanceForUserDataUnique;
   UserDataUniqueDatasourceImpl({
     required RestClientGet restClientGet,
     required RestClientPatch restClientPatch,
+    required CalculateDistanceForUserDataUnique
+        calculateDistanceForUserDataUnique,
   })  : _restClientGet = restClientGet,
+        _calculateDistanceForUserDataUnique =
+            calculateDistanceForUserDataUnique,
         _restClientPatch = restClientPatch;
   @override
-  Future<UserDataUniqueEntity> getUserDataUnique() async {
+  Future<UserDataUniqueEntity> getUserDataUnique(
+      {required Location location}) async {
     try {
       final result = await _restClientGet.get(
         path: EndpointConstants.getUserDataUnique,
       );
-      final data = UserDataUniqueModel.fromMap(result.data);
+      final distance = _calculateDistanceForUserDataUnique.calculateDistance(
+        result: result,
+        userLocation: location,
+      );
+      final data = UserDataUniqueModel.fromMap(
+        result.data,
+        distance: distance,
+      );
       return data;
     } on RestClientException catch (e, s) {
       log(

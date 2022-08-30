@@ -14,10 +14,15 @@ class UserDataUniqueRepositoryImpl implements UserDataUniqueRepository {
     required UserDataUniqueDatasource userDataUniqueDatasource,
   }) : _userDataUniqueDatasource = userDataUniqueDatasource;
   @override
-  Future<Either<UserDataUniqueError, UserDataUniqueEntity>>
-      getUserDataUnique() async {
+  Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique(
+      {required double latitude, required double longitude}) async {
     try {
-      final result = await _userDataUniqueDatasource.getUserDataUnique();
+      final result = await _userDataUniqueDatasource.getUserDataUnique(
+        location: Location(
+          latitude: latitude,
+          longitude: longitude,
+        ),
+      );
       return Right(result);
     } on UserDataUniqueError catch (e, s) {
       log(
