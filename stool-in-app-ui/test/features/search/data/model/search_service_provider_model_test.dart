@@ -14,7 +14,8 @@ void main() {
     restclientGetMock = _RestclientGetMock();
     searchServiceProviderDatasource =
         SearchServiceProviderDatasourceImpl(restClientGet: restclientGetMock);
-    searchServiceProviderModel = SearchServiceProviderModel(query: 'query');
+    searchServiceProviderModel =
+        SearchServiceProviderModel(query: 'query', pages: 'pages');
   });
   test('Deve retornar uma lista de service provider entity ao fazer search',
       () async {

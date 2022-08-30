@@ -16,7 +16,7 @@ void main() {
   late SearchServiceProviderQueryEntity serviceProviderEntityMock;
   setUpAll(() {
     serviceProviderEntityMock =
-        SearchServiceProviderQueryEntity(query: 'query');
+        SearchServiceProviderQueryEntity(query: 'query', pages: 'pages');
     serviceProviderEntityMockList = [_ServiceProviderReturnEntityMock()];
     serviceProvidersDatasourceMock = _SearchServiceProvidersDatasourceMock();
     searchServiceProviderRepository = SearchServiceProviderRepositoryImpl(
