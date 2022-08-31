@@ -213,8 +213,7 @@ void main() {
             serviceToExecuteId: 1),
       ).called(1);
     });
-    test(
-        'Deve retornar um erro ao fazer update do services to execute',
+    test('Deve retornar um erro ao fazer update do services to execute',
         () async {
       when(
         () => servicesToExecuteRepositoryMock.updateServicesToExecute(
