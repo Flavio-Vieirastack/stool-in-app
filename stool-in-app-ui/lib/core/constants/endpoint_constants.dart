@@ -18,4 +18,6 @@ class EndpointConstants {
   static const searchServiceProvider =
       '/service-provider/service-provider-search';
   static const getUserDataUnique = '/user-data/user-data-unique';
+  static const getServiceProviderDataUnique =
+      '/service-provider/service-provider-search/unique';
 }
