@@ -6,9 +6,11 @@ import '../../../../../exports/app_exports.dart';
 abstract class ServicesToExecuteRepository {
   Future<Either<ServicesToExecuteError, void>> createServiceToExecute({
     required ServicesToExecuteEntity servicesToExecuteEntity,
+    required int serviceProviderId,
   });
   Future<Either<ServicesToExecuteError, void>> updateServicesToExecute({
     required ServicesToExecuteEntity servicesToExecuteEntity,
+    required int serviceToExecuteId,
   });
   Future<Either<ServicesToExecuteError, List<ServicesToExecuteEntity>>>
       getAllServicesToExecute();
