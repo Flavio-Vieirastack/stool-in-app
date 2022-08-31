@@ -3,11 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/exports/app_exports.dart';
 
-
 class _ServiceProviderRepositoryMock extends Mock
     implements GetServiceProviderRepository {}
 
-class _ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {}
+class _ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {
+}
 
 class _ServiceProviderDataSourceMock extends Mock
     implements GetServiceProviderDatasource {}
@@ -16,7 +16,7 @@ void main() {
   late _ServiceProviderRepositoryMock serviceProviderrepositoryMock;
   late List<_ServiceProviderEntityMock> serviceProviderEntityMock;
   late _ServiceProviderDataSourceMock serviceProviderDatasourceMock;
-  late GetServiceProviderRepositoryImpl serviceProviderRepositoryImpl;
+  late GetServiceProviderRepository serviceProviderRepositoryImpl;
   late GetServiceProvidersParams params;
   setUp(
     () {
@@ -33,10 +33,10 @@ void main() {
   );
   test('Deve retornar uma entidade corretamente', () async {
     when(
-      () => serviceProviderrepositoryMock.call(providersParams: params),
-    ).thenAnswer((_) async => Right(serviceProviderEntityMock));
+      () => serviceProviderDatasourceMock.call(providersParams: params),
+    ).thenAnswer((_) async => serviceProviderEntityMock);
     final sut =
-        await serviceProviderrepositoryMock.call(providersParams: params);
+        await serviceProviderRepositoryImpl.call(providersParams: params);
     expect(
       sut,
       Right(serviceProviderEntityMock),
@@ -44,9 +44,9 @@ void main() {
   });
   test('Deve retornar um erro da instância correta', () async {
     when(
-      () => serviceProviderrepositoryMock.call(providersParams: params),
-    ).thenAnswer((_) async => Left(ServiceProviderError(message: 'message')));
-    final sut = serviceProviderrepositoryMock.call;
+      () => serviceProviderDatasourceMock.call(providersParams: params),
+    ).thenThrow(ServiceProviderError(message: 'message'));
+    final sut = serviceProviderRepositoryImpl.call;
     expect(
       await sut(providersParams: params),
       Left(
