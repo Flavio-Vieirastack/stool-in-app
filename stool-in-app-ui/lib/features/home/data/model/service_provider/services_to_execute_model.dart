@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import '../../../../../exports/app_exports.dart';
 
-
-
 class ServicesToExecuteModel extends ServicesToExecuteEntity {
   ServicesToExecuteModel({
     required super.id,
@@ -34,29 +32,66 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'id': id});
-    result.addAll({'serviceDescription': serviceDescription});
-    result.addAll({'serviceDate': serviceDate.millisecondsSinceEpoch});
-    result.addAll({'serviceHour': serviceHour.millisecondsSinceEpoch});
-    result.addAll({'userComent': userComent});
-    result.addAll({'status': status});
-    result.addAll({'userName': userName});
-    result.addAll({'userPhotoUrl': userPhotoUrl});
-    result.addAll({'userFirebasePushToken': userFirebasePushToken});
-    result.addAll({'userFirebaseUuid': userFirebaseUuid});
-    result.addAll({'userLocationLatitude': userLocationLatitude});
-    result.addAll({'userLocationaLogintude': userLocationLongintude});
-    result.addAll({'street': street});
-    result.addAll({'City': city});
-    result.addAll({'userState': userState});
-    result.addAll({'houseNumber': houseNumber});
-    result.addAll({'district': district});
-    result.addAll({'cep': cep});
-    result.addAll({'referencePoint': referencePoint});
-    result.addAll({'servicesToDo': servicesTodo});
-    result.addAll({'total': total});
-    result.addAll({'serviceProviderId': serviceProviderId});
-    result.addAll({'userDataId': userDataId});
+    if (serviceDescription != null) {
+      result.addAll({'serviceDescription': serviceDescription});
+    }
+    if (serviceDate != null) {
+      result.addAll({'serviceDate': serviceDate.toString()});
+    }
+    if (serviceHour != null) {
+      result.addAll({'serviceHour': serviceHour.toString()});
+    }
+    if (userComent != null) {
+      result.addAll({'userComent': userComent});
+    }
+    if (status != null) {
+      result.addAll({'status': status});
+    }
+    if (userName != null) {
+      result.addAll({'userName': userName});
+    }
+    if (userPhotoUrl != null) {
+      result.addAll({'userPhotoUrl': userPhotoUrl});
+    }
+    if (userFirebasePushToken != null) {
+      result.addAll({'userFirebasePushToken': userFirebasePushToken});
+    }
+    if (userFirebaseUuid != null) {
+      result.addAll({'userFirebaseUuid': userFirebaseUuid});
+    }
+    if (userLocationLatitude != null) {
+      result.addAll({'userLocationLatitude': userLocationLatitude});
+    }
+    if (userLocationLongintude != null) {
+      result.addAll({'userLocationaLogintude': userLocationLongintude});
+    }
+    if (street != null) {
+      result.addAll({'street': street});
+    }
+    if (city != null) {
+      result.addAll({'City': city});
+    }
+    if (userState != null) {
+      result.addAll({'userState': userState});
+    }
+    if (houseNumber != null) {
+      result.addAll({'houseNumber': houseNumber});
+    }
+    if (district != null) {
+      result.addAll({'district': district});
+    }
+    if (cep != null) {
+      result.addAll({'cep': cep});
+    }
+    if (referencePoint != null) {
+      result.addAll({'referencePoint': referencePoint});
+    }
+    if (servicesTodo != null) {
+      result.addAll({'servicesToDo': servicesTodo});
+    }
+    if (total != null) {
+      result.addAll({'total': total});
+    }
 
     return result;
   }
