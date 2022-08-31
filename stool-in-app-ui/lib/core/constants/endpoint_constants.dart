@@ -20,4 +20,9 @@ class EndpointConstants {
   static const getUserDataUnique = '/user-data/user-data-unique';
   static const getServiceProviderDataUnique =
       '/service-provider/service-provider-search/unique';
+  static const createServicesToExecute = '/service-to-execute';
+  static const updateServicesToExecute = '/service-to-execute';
+  static const getMyServicesToExecute = '/service-to-execute/search-my';
+  static const getServicesToExecuteUnique = '/service-to-execute';
+  static const deleteServicesToExecute = '/service-to-execute';
 }

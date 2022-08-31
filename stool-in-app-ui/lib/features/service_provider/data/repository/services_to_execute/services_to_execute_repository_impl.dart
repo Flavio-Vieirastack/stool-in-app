@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:stool_in/features/home/data/model/service_provider/services_to_execute_model.dart';
 import 'package:stool_in/features/service_provider/data/datasource/services_to_execute/services_to_execute_datasource.dart';
 import 'package:stool_in/features/service_provider/domain/error/services_to_execute_error.dart';
 import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
@@ -20,7 +21,9 @@ class ServicesToExecuteRepositoryImpl implements ServicesToExecuteRepository {
   }) async {
     try {
       final result = await _servicesToExecuteDatasource.createServiceToExecute(
-        servicesToExecuteEntity: servicesToExecuteEntity,
+        servicesToExecuteModel: ServicesToExecuteModel.fromEntity(
+          servicesToExecuteEntity: servicesToExecuteEntity,
+        ),
         serviceProviderId: serviceProviderId,
       );
       return Right(result);
@@ -149,8 +152,10 @@ class ServicesToExecuteRepositoryImpl implements ServicesToExecuteRepository {
   }) async {
     try {
       final result = await _servicesToExecuteDatasource.updateServicesToExecute(
-        servicesToExecuteEntity: servicesToExecuteEntity,
         serviceToExecuteId: serviceToExecuteId,
+        servicesToExecuteModel: ServicesToExecuteModel.fromEntity(
+          servicesToExecuteEntity: servicesToExecuteEntity,
+        ),
       );
       return Right(result);
     } on ServicesToExecuteError catch (e, s) {

@@ -4,7 +4,7 @@ import '../../../../../exports/app_exports.dart';
 
 class ServicesToExecuteModel extends ServicesToExecuteEntity {
   ServicesToExecuteModel({
-    required super.id,
+    super.id,
     required super.serviceDescription,
     required super.serviceDate,
     required super.serviceHour,
@@ -25,8 +25,8 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
     required super.referencePoint,
     required super.servicesTodo,
     required super.total,
-    required super.serviceProviderId,
-    required super.userDataId,
+    super.serviceProviderId,
+    super.userDataId,
   });
 
   Map<String, dynamic> toMap() {
@@ -94,6 +94,32 @@ class ServicesToExecuteModel extends ServicesToExecuteEntity {
     }
 
     return result;
+  }
+
+  factory ServicesToExecuteModel.fromEntity(
+      {required ServicesToExecuteEntity servicesToExecuteEntity}) {
+    return ServicesToExecuteModel(
+      serviceDescription: servicesToExecuteEntity.serviceDescription,
+      serviceDate: servicesToExecuteEntity.serviceDate,
+      serviceHour: servicesToExecuteEntity.serviceHour,
+      userComent: servicesToExecuteEntity.userComent,
+      status: servicesToExecuteEntity.status,
+      userName: servicesToExecuteEntity.userName,
+      userPhotoUrl: servicesToExecuteEntity.userPhotoUrl,
+      userFirebasePushToken: servicesToExecuteEntity.userFirebasePushToken,
+      userFirebaseUuid: servicesToExecuteEntity.userFirebaseUuid,
+      userLocationLatitude: servicesToExecuteEntity.userLocationLatitude,
+      userLocationLongintude: servicesToExecuteEntity.userLocationLongintude,
+      street: servicesToExecuteEntity.street,
+      city: servicesToExecuteEntity.city,
+      userState: servicesToExecuteEntity.userState,
+      houseNumber: servicesToExecuteEntity.houseNumber,
+      district: servicesToExecuteEntity.district,
+      cep: servicesToExecuteEntity.cep,
+      referencePoint: servicesToExecuteEntity.referencePoint,
+      servicesTodo: servicesToExecuteEntity.servicesTodo,
+      total: servicesToExecuteEntity.total,
+    );
   }
 
   factory ServicesToExecuteModel.fromMap(Map<String, dynamic> map) {

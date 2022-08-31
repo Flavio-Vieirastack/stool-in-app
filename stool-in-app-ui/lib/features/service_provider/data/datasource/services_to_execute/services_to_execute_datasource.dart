@@ -2,11 +2,11 @@ import '../../../../../exports/app_exports.dart';
 
 abstract class ServicesToExecuteDatasource {
   Future<void> createServiceToExecute({
-    required ServicesToExecuteEntity servicesToExecuteEntity,
+    required ServicesToExecuteModel servicesToExecuteModel,
     required int serviceProviderId,
   });
   Future<void> updateServicesToExecute({
-    required ServicesToExecuteEntity servicesToExecuteEntity,
+    required ServicesToExecuteModel servicesToExecuteModel,
     required int serviceToExecuteId,
   });
   Future<List<ServicesToExecuteEntity>> getAllServicesToExecute();
