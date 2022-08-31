@@ -70,4 +70,42 @@ void main() {
       expect(sut, Left(ServicesToExecuteError(message: 'message')));
     });
   });
+
+  group('deleteServiceToExecute', () {
+    test('Deve retornar void ao fazer delete do service to execute', () async {
+      when(
+        () => servicesToExecuteRepositoryMock.deleteServiceToExecute(
+            serviceToExecuteid: 1),
+      ).thenAnswer((_) async => const Right(null));
+      final sut = await servicesToExecuteUsecase.deleteServiceToExecute(
+          serviceToExecuteid: 1);
+      expect(sut, const Right(null));
+    });
+    test(
+        'Deve chamar o repository ao retornar void ao fazer delete do service to execute',
+        () async {
+      when(
+        () => servicesToExecuteRepositoryMock.deleteServiceToExecute(
+            serviceToExecuteid: 1),
+      ).thenAnswer((_) async => const Right(null));
+      final sut = await servicesToExecuteUsecase.deleteServiceToExecute(
+          serviceToExecuteid: 1);
+      expect(sut, const Right(null));
+      verify(
+        () => servicesToExecuteRepositoryMock.deleteServiceToExecute(
+            serviceToExecuteid: 1),
+      ).called(1);
+    });
+    test('Deve retornar um erro ao fazer delete do service to execute',
+        () async {
+      when(
+        () => servicesToExecuteRepositoryMock.deleteServiceToExecute(
+            serviceToExecuteid: 1),
+      ).thenAnswer(
+          (_) async => Left(ServicesToExecuteError(message: 'message')));
+      final sut = await servicesToExecuteUsecase.deleteServiceToExecute(
+          serviceToExecuteid: 1);
+      expect(sut, Left(ServicesToExecuteError(message: 'message')));
+    });
+  });
 }
