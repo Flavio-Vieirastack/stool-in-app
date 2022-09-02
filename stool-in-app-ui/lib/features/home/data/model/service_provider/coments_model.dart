@@ -2,32 +2,42 @@ import 'dart:convert';
 
 import '../../../../../exports/app_exports.dart';
 
-
-
-
 class ComentsModel extends ComentsEntity {
-  
   ComentsModel({
-    required super.id,
-    required super.coment,
-    required super.userName,
-    required super.userPhotoUrl,
-    required super.vote,
-    required super.servicesExecuted,
-    required super.serviceProviderId,
+    super.id,
+    super.coment,
+    super.userName,
+    super.userPhotoUrl,
+    super.vote,
+    super.servicesExecuted,
+    super.serviceProviderId,
   });
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
-  
-    result.addAll({'id': id});
-    result.addAll({'coment': coment});
-    result.addAll({'userName': userName});
-    result.addAll({'userPhotoUrl': userPhotoUrl});
-    result.addAll({'vote': vote});
-    result.addAll({'serviceExecuted': servicesExecuted});
-    result.addAll({'serviceProviderId': serviceProviderId});
-  
+
+    if (id != null) {
+      result.addAll({'id': id});
+    }
+    if (coment != null) {
+      result.addAll({'coment': coment});
+    }
+    if (userName != null) {
+      result.addAll({'userName': userName});
+    }
+    if (userPhotoUrl != null) {
+      result.addAll({'userPhotoUrl': userPhotoUrl});
+    }
+    if (vote != null) {
+      result.addAll({'vote': vote});
+    }
+    if (servicesExecuted != null) {
+      result.addAll({'serviceExecuted': servicesExecuted});
+    }
+    if (servicesExecuted != null) {
+      result.addAll({'serviceProviderId': serviceProviderId});
+    }
+
     return result;
   }
 
@@ -45,5 +55,6 @@ class ComentsModel extends ComentsEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory ComentsModel.fromJson(String source) => ComentsModel.fromMap(json.decode(source));
+  factory ComentsModel.fromJson(String source) =>
+      ComentsModel.fromMap(json.decode(source));
 }
