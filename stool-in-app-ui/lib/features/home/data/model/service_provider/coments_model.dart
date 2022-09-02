@@ -53,6 +53,18 @@ class ComentsModel extends ComentsEntity {
     );
   }
 
+  factory ComentsModel.fromEntity({required ComentsEntity comentsEntity}) {
+    return ComentsModel(
+      coment: comentsEntity.coment,
+      id: comentsEntity.id,
+      serviceProviderId: comentsEntity.serviceProviderId,
+      servicesExecuted: comentsEntity.servicesExecuted,
+      userName: comentsEntity.userName,
+      userPhotoUrl: comentsEntity.userPhotoUrl,
+      vote: comentsEntity.vote,
+    );
+  }
+
   String toJson() => json.encode(toMap());
 
   factory ComentsModel.fromJson(String source) =>
