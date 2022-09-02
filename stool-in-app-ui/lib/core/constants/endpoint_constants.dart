@@ -25,4 +25,9 @@ class EndpointConstants {
   static const getMyServicesToExecute = '/service-to-execute/search-my';
   static const getServicesToExecuteUnique = '/service-to-execute';
   static const deleteServicesToExecute = '/service-to-execute';
+  static const createComent = '/service-provider-coments';
+  static const updateComent = '/service-provider-coments';
+  static const myComents = '/service-provider-coments/my-coments';
+  static const myComent = '/service-provider-coments';
+  static const deletemyComent = '/service-provider-coments/my-coments/';
 }
