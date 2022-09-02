@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/error/coments_error.dart';
 
 import '../../../../../exports/app_exports.dart';
+import '../../error/coments_error.dart';
 
-abstract class ServiceProviderComentsRepository {
-  Future<Either<ComentsError, void>> createComent({
+abstract class ServiceProviderComentsUsecase {
+   Future<Either<ComentsError, void>> createComent({
     required ComentsEntity comentsEntity,
     required int serviceProviderId,
   });
