@@ -174,9 +174,7 @@ void main() {
             comentsEntity: comentsEntityMock, serviceProviderId: 1),
       ).called(1);
     });
-    test(
-        'Deve retornar um erro ao fazer update de um comentario',
-        () async {
+    test('Deve retornar um erro ao fazer update de um comentario', () async {
       when(
         () => comentsRepositoryMock.updateComent(
             comentsEntity: comentsEntityMock, serviceProviderId: 1),
@@ -184,7 +182,6 @@ void main() {
       final sut = await serviceProviderComentsUsecase.updateComent(
           comentsEntity: comentsEntityMock, serviceProviderId: 1);
       expect(sut, Left(ComentsError(message: 'message')));
-     
     });
   });
 }
