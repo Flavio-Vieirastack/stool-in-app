@@ -55,13 +55,11 @@ class ServiceProviderAcceptedPaymentsRepositoryImpl
   Future<Either<AcceptedPaymentsError, AcceptedPaymentsEntity>>
       getAcceptedPaymentUnique({
     required int paymentId,
-    required AcceptedPaymentsEntity acceptedPaymentsEntity,
   }) async {
     try {
       final result = await _serviceProviderAcceptedPaymentsDatasource
           .getAcceptedPaymentUnique(
         paymentId: paymentId,
-        acceptedPaymentsEntity: acceptedPaymentsEntity,
       );
       return Right(result);
     } on AcceptedPaymentsError catch (e, s) {

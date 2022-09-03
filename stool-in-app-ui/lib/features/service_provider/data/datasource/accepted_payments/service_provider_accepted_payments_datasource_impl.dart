@@ -104,7 +104,6 @@ class ServiceProviderAcceptedPaymentsDatasourceImpl
   @override
   Future<AcceptedPaymentsEntity> getAcceptedPaymentUnique({
     required int paymentId,
-    required AcceptedPaymentsEntity acceptedPaymentsEntity,
   }) async {
     try {
       final result = await _restClientGet.get(

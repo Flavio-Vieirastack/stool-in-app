@@ -17,6 +17,5 @@ abstract class ServiceProviderAcceptedPaymentsRepository {
   Future<Either<AcceptedPaymentsError, AcceptedPaymentsEntity>>
       getAcceptedPaymentUnique({
     required int paymentId,
-    required AcceptedPaymentsEntity acceptedPaymentsEntity,
   });
 }

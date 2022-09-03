@@ -29,12 +29,10 @@ class AcceptedPaymentsUsecaseImpl implements AcceptedPaymentsUsecase {
   Future<Either<AcceptedPaymentsError, AcceptedPaymentsEntity>>
       getAcceptedPaymentUnique({
     required int paymentId,
-    required AcceptedPaymentsEntity acceptedPaymentsEntity,
   }) async {
     return await _serviceProviderAcceptedPaymentsRepository
         .getAcceptedPaymentUnique(
       paymentId: paymentId,
-      acceptedPaymentsEntity: acceptedPaymentsEntity,
     );
   }
 

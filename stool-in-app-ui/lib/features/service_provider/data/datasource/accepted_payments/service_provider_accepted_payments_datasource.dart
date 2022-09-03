@@ -16,6 +16,5 @@ abstract class ServiceProviderAcceptedPaymentsDatasource {
   });
   Future<AcceptedPaymentsEntity> getAcceptedPaymentUnique({
     required int paymentId,
-    required AcceptedPaymentsEntity acceptedPaymentsEntity,
   });
 }
