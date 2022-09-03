@@ -269,3 +269,13 @@ final List<Map<String, dynamic>> comentsModelListPayload = [
     "serviceProviderId": 2
   }
 ];
+final Map<String, dynamic> comentsModelPayload = {
+  "id": 27,
+  "coment": "Bibendum enim facilisis gravida neque.",
+  "userName": "RayBergnaum",
+  "userPhotoUrl": "https://source.unsplash.com/640x480",
+  "vote": 2,
+  "userId": "2",
+  "serviceExecuted": "Orci a scelerisque purus semper eget duis at tellus.",
+  "serviceProviderId": 2
+};
