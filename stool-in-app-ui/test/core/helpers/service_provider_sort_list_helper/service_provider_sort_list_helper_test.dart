@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
 
 class ExectionServicesMock extends Mock implements ExecutionServicesEntity {}
 
@@ -9,7 +10,7 @@ class ServicesToExecuteMock extends Mock implements ServicesToExecuteEntity {}
 class ComentsMock extends Mock implements ComentsEntity {}
 
 class UserDataMock extends Mock implements UserDataEntity {}
-
+class AcceptedPaymentsMock extends Mock implements AcceptedPaymentsEntity{}
 void main() {
   late List<ServiceProviderEntity> serviceProviderEntity;
   late ServiceProviderSortListHelper serviceProviderSortListHelper;
@@ -19,6 +20,7 @@ void main() {
       serviceProviderEntity = [
         ServiceProviderEntity(
           id: 1,
+          acceptedPayments: [AcceptedPaymentsMock()],
           distance: 435,
           serviceProviderDescription: 'serviceProviderDescription',
           status: 'status',
@@ -35,6 +37,7 @@ void main() {
         ),
         ServiceProviderEntity(
           id: 1,
+          acceptedPayments: [AcceptedPaymentsMock()],
           distance: 1,
           serviceProviderDescription: 'serviceProviderDescription',
           status: 'status',
@@ -53,6 +56,7 @@ void main() {
           id: 1,
           distance: 1000,
           votes: 3,
+          acceptedPayments: [AcceptedPaymentsMock()],
           serviceProviderDescription: 'serviceProviderDescription',
           status: 'status',
           initialDisponibleTime: 'initialDisponibleTime',
@@ -69,6 +73,7 @@ void main() {
           id: 1,
           distance: 10000,
           votes: 2,
+          acceptedPayments: [AcceptedPaymentsMock()],
           serviceProviderDescription: 'serviceProviderDescription',
           status: 'status',
           initialDisponibleTime: 'initialDisponibleTime',

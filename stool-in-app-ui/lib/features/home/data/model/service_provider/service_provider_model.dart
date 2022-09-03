@@ -1,12 +1,13 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
+import 'package:stool_in/features/home/data/model/service_provider/accepted_payments_model.dart';
 import '../../../../../exports/app_exports.dart';
-
 
 class ServiceProviderModel extends ServiceProviderEntity {
   final List<ExecutionServicesModel> executionServicesModel;
   final List<ServicesToExecuteModel> servicesToExecuteModel;
   final List<ComentsModel> comentsModel;
+  final List<AcceptedPaymentsModel> acceptedPayments;
   ServiceProviderModel({
     required super.id,
     required super.serviceProviderDescription,
@@ -19,6 +20,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
     required super.votes,
     required this.executionServicesModel,
     required this.servicesToExecuteModel,
+    required this.acceptedPayments,
     required this.comentsModel,
     required super.userData,
     required super.distance,
@@ -26,6 +28,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
           coments: comentsModel,
           executionServices: executionServicesModel,
           servicesToExecute: servicesToExecuteModel,
+          acceptedPayments: acceptedPayments,
         );
 
   Map<String, dynamic> toMap() {
@@ -68,6 +71,8 @@ class ServiceProviderModel extends ServiceProviderEntity {
       createdAt: createdAt,
       userLoginId: map['userLoginId'] ?? '',
       votes: map['votes']?.toInt() ?? 0,
+      acceptedPayments: List<AcceptedPaymentsModel>.from(map['acceptedPaymnets']
+          ?.map((x) => AcceptedPaymentsModel.fromMap(x))),
       executionServicesModel: List<ExecutionServicesModel>.from(
           map['executionServices']
               ?.map((x) => ExecutionServicesModel.fromMap(x))),

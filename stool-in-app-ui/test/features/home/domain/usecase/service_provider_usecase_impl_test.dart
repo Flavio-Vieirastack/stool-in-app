@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
 
 
 class _ServiceProviderUseCaseMock extends Mock
@@ -18,7 +19,7 @@ class _ComentsEntityMock extends Mock implements ComentsEntity {}
 class _UserDataEntityMock extends Mock implements UserDataEntity {}
 
 class _ServiceRepositoryMock extends Mock implements GetServiceProviderRepository {}
-
+class _AcceptedPaymentsMock extends Mock implements AcceptedPaymentsEntity{}
 void main() {
   late _ServiceProviderUseCaseMock usecaseMock;
   late _ExecutionServicesEntityMock executionServicesEntityMock;
@@ -44,6 +45,7 @@ void main() {
         ServiceProviderEntity(
           id: 1,
           distance: 50,
+          acceptedPayments: [_AcceptedPaymentsMock()],
           serviceProviderDescription: 'serviceProviderDescription',
           status: 'status',
           initialDisponibleTime: 'initialDisponibleTime',

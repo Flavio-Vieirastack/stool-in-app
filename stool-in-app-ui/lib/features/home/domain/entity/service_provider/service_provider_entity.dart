@@ -1,6 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
+import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
 import 'package:stool_in/features/home/domain/entity/service_provider/coments_entity.dart';
 import 'package:stool_in/features/home/domain/entity/service_provider/execution_services_entity.dart';
 import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
@@ -20,6 +21,7 @@ class ServiceProviderEntity {
   final List<ServicesToExecuteEntity> servicesToExecute;
   final List<ComentsEntity> coments;
   final List<UserDataEntity> userData;
+  final List<AcceptedPaymentsEntity> acceptedPayments;
   ServiceProviderEntity({
     required this.id,
     required this.distance,
@@ -35,6 +37,7 @@ class ServiceProviderEntity {
     required this.servicesToExecute,
     required this.coments,
     required this.userData,
+    required this.acceptedPayments,
   });
 
   String distanceFormat() {
@@ -71,7 +74,8 @@ class ServiceProviderEntity {
       listEquals(other.executionServices, executionServices) &&
       listEquals(other.servicesToExecute, servicesToExecute) &&
       listEquals(other.coments, coments) &&
-      listEquals(other.userData, userData);
+      listEquals(other.userData, userData) &&
+      listEquals(other.acceptedPayments, acceptedPayments);
   }
 
   @override
@@ -89,6 +93,7 @@ class ServiceProviderEntity {
       executionServices.hashCode ^
       servicesToExecute.hashCode ^
       coments.hashCode ^
-      userData.hashCode;
+      userData.hashCode ^
+      acceptedPayments.hashCode;
   }
 }
