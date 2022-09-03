@@ -3,8 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/exports/app_exports.dart';
 
-class _ServiceProviderRepositoryMock extends Mock
-    implements GetServiceProviderRepository {}
 
 class _ServiceProviderEntityMock extends Mock implements ServiceProviderEntity {
 }
@@ -13,7 +11,6 @@ class _ServiceProviderDataSourceMock extends Mock
     implements GetServiceProviderDatasource {}
 
 void main() {
-  late _ServiceProviderRepositoryMock serviceProviderrepositoryMock;
   late List<_ServiceProviderEntityMock> serviceProviderEntityMock;
   late _ServiceProviderDataSourceMock serviceProviderDatasourceMock;
   late GetServiceProviderRepository serviceProviderRepositoryImpl;
@@ -24,7 +21,6 @@ void main() {
           pageQuantity: 5,
           currentUserLocationLatitude: 50.0,
           currentUserLocationLongitude: 50.0);
-      serviceProviderrepositoryMock = _ServiceProviderRepositoryMock();
       serviceProviderEntityMock = [_ServiceProviderEntityMock()];
       serviceProviderDatasourceMock = _ServiceProviderDataSourceMock();
       serviceProviderRepositoryImpl = GetServiceProviderRepositoryImpl(

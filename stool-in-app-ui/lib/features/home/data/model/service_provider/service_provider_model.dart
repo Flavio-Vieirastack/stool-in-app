@@ -7,7 +7,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
   final List<ExecutionServicesModel> executionServicesModel;
   final List<ServicesToExecuteModel> servicesToExecuteModel;
   final List<ComentsModel> comentsModel;
-  final List<AcceptedPaymentsModel> acceptedPayments;
+  
   ServiceProviderModel({
     required super.id,
     required super.serviceProviderDescription,
@@ -20,7 +20,7 @@ class ServiceProviderModel extends ServiceProviderEntity {
     required super.votes,
     required this.executionServicesModel,
     required this.servicesToExecuteModel,
-    required this.acceptedPayments,
+    required super.acceptedPayments,
     required this.comentsModel,
     required super.userData,
     required super.distance,
@@ -28,7 +28,6 @@ class ServiceProviderModel extends ServiceProviderEntity {
           coments: comentsModel,
           executionServices: executionServicesModel,
           servicesToExecute: servicesToExecuteModel,
-          acceptedPayments: acceptedPayments,
         );
 
   Map<String, dynamic> toMap() {
