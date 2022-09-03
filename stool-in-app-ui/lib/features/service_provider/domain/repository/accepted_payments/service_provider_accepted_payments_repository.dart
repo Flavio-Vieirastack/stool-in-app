@@ -11,7 +11,11 @@ abstract class ServiceProviderAcceptedPaymentsRepository {
     required int paymentId,
     required AcceptedPaymentsEntity acceptedPaymentsEntity,
   });
-  Future<Either<AcceptedPaymentsError, AcceptedPaymentsEntity>> getAcceptedPaymentUnique({
+  Future<Either<AcceptedPaymentsError, void>> deleteAcceptedPayment({
+    required int paymentId,
+  });
+  Future<Either<AcceptedPaymentsError, AcceptedPaymentsEntity>>
+      getAcceptedPaymentUnique({
     required int paymentId,
     required AcceptedPaymentsEntity acceptedPaymentsEntity,
   });

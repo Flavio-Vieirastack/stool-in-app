@@ -40,6 +40,14 @@ class AcceptedPaymentsModel extends AcceptedPaymentsEntity {
     );
   }
 
+  factory AcceptedPaymentsModel.fromEntity(
+      {required AcceptedPaymentsEntity acceptedPaymentsEntity}) {
+    return AcceptedPaymentsModel(
+      id: acceptedPaymentsEntity.id,
+      payment: acceptedPaymentsEntity.payment,
+    );
+  }
+
   String toJson() => json.encode(toMap());
 
   factory AcceptedPaymentsModel.fromJson(String source) =>

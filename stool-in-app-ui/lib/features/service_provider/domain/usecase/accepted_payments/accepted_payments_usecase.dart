@@ -4,7 +4,7 @@ import 'package:stool_in/features/home/domain/entity/service_provider/accepted_p
 import '../../error/accepted_payments_error.dart';
 
 abstract class AcceptedPaymentsUsecase {
-Future<Either<AcceptedPaymentsError, void>> createAcceptedPayment({
+  Future<Either<AcceptedPaymentsError, void>> createAcceptedPayment({
     required int serviceProviderid,
     required AcceptedPaymentsEntity acceptedPaymentsEntity,
   });
@@ -12,7 +12,11 @@ Future<Either<AcceptedPaymentsError, void>> createAcceptedPayment({
     required int paymentId,
     required AcceptedPaymentsEntity acceptedPaymentsEntity,
   });
-  Future<Either<AcceptedPaymentsError, AcceptedPaymentsEntity>> getAcceptedPaymentUnique({
+  Future<Either<AcceptedPaymentsError, void>> deleteAcceptedPayment({
+    required int paymentId,
+  });
+  Future<Either<AcceptedPaymentsError, AcceptedPaymentsEntity>>
+      getAcceptedPaymentUnique({
     required int paymentId,
     required AcceptedPaymentsEntity acceptedPaymentsEntity,
   });

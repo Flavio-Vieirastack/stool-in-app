@@ -29,5 +29,6 @@ class EndpointConstants {
   static const updateComent = '/service-provider-coments';
   static const myComents = '/service-provider-coments/my-coments';
   static const myComent = '/service-provider-coments';
-  static const deletemyComent = '/service-provider-coments/my-coments/';
+  static const deletemyComent = '/service-provider-coments/my-coments';
+  static const acceptedPayments = '/accepted-payments';
 }

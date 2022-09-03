@@ -49,4 +49,12 @@ class AcceptedPaymentsUsecaseImpl implements AcceptedPaymentsUsecase {
       acceptedPaymentsEntity: acceptedPaymentsEntity,
     );
   }
+
+  @override
+  Future<Either<AcceptedPaymentsError, void>> deleteAcceptedPayment({
+    required int paymentId,
+  }) async {
+    return await _serviceProviderAcceptedPaymentsRepository
+        .deleteAcceptedPayment(paymentId: paymentId);
+  }
 }
