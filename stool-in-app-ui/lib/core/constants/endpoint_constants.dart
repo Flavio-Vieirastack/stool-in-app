@@ -31,4 +31,5 @@ class EndpointConstants {
   static const myComent = '/service-provider-coments';
   static const deletemyComent = '/service-provider-coments/my-coments';
   static const acceptedPayments = '/accepted-payments';
+  static const pushNotifications = '/push-notifications';
 }
