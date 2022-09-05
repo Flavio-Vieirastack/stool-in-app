@@ -6,7 +6,7 @@ void main() {
     final model = SendPushNotificationModel(
             pushToken: 'pushToken', title: 'title', body: 'body')
         .toMap();
-    final sut = model['pushToken'];
+    final sut = model['token'];
     const matcher = 'pushToken';
     expect(sut, matcher);
   });
