@@ -1,5 +1,6 @@
 
-import 'package:stool_in/core/shared/domain/push_notifications/entity/push_notification_params.dart';
+
+import '../../domain/entity/push_notification_params.dart';
 
 class SendPushNotificationModel extends PushNotificationParams {
   SendPushNotificationModel({
