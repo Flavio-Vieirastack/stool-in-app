@@ -10,6 +10,7 @@ void main() {
       final sut = model.toMap()['paymenct'];
       const matcher = 'Teste';
       expect(sut, matcher);
+      expect(sut, isA<String>());
     });
   });
 

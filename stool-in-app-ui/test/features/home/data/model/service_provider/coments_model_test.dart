@@ -33,6 +33,7 @@ void main() {
       final sut = model.coment;
       final matcher = coment;
       expect(sut, matcher);
+      expect(sut, isA<String>());
     });
     test(
         'Deve retornar o valor correto do to map dos coments model no campo de servicesExecuted',
@@ -47,6 +48,7 @@ void main() {
       final sut = model.servicesExecuted;
       final matcher = servicesExecuted;
       expect(sut, matcher);
+      expect(sut, isA<String>());
     });
     test(
         'Deve retornar o valor correto do to map dos coments model no campo de userName',
@@ -61,6 +63,7 @@ void main() {
       final sut = model.userName;
       final matcher = userName;
       expect(sut, matcher);
+      expect(sut, isA<String>());
     });
     test(
         'Deve retornar o valor correto do to map dos coments model no campo de userPhotoUrl',
@@ -75,6 +78,7 @@ void main() {
       final sut = model.userPhotoUrl;
       final matcher = userPhotoUrl;
       expect(sut, matcher);
+      expect(sut, isA<String>());
     });
     test(
         'Deve retornar o valor correto do to map dos coments model no campo de vote',
@@ -89,6 +93,7 @@ void main() {
       final sut = model.vote;
       final matcher = votes;
       expect(sut, matcher);
+      expect(sut, isA<int>());
     });
   });
   group('from-map', () {
@@ -98,6 +103,7 @@ void main() {
       final sut = model.length;
       const matcher = 26;
       expect(sut, matcher);
+      expect(sut, isA<int>());
     });
     test(
         'Deve retornar o valor correto da lista de payloads de coments no campo de coment',

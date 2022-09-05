@@ -8,6 +8,7 @@ void main() {
     final token = faker.jwt.valid();
     final model = UserTokenModel(token: token);
     expect(model.token, token);
+    expect(model.token, isA<String>());
   });
   test('Deve retornar o valor correto do token pelo from map', () {
     final faker = Faker();
@@ -15,5 +16,6 @@ void main() {
     final mapMock = {"access_token": token};
     final model = UserTokenModel.fromMap(mapMock);
     expect(model.token, token);
+    expect(model.token, isA<String>());
   });
 }
