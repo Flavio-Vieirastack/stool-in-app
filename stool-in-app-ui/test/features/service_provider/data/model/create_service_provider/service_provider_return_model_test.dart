@@ -35,6 +35,7 @@ void main() {
       ).toMap();
       final sut = model['id'];
       expect(sut, id);
+      expect(sut, isA<int>());
     });
     test(
         'Deve retornar o userLoginId correto para o service provider return model',
@@ -61,6 +62,7 @@ void main() {
       ).toMap();
       final sut = model['userLoginId'];
       expect(sut, userLoginId);
+      expect(sut, isA<int>());
     });
     test(
         'Deve retornar o createdAt correto para o service provider return model',
@@ -87,6 +89,7 @@ void main() {
       ).toMap();
       final sut = model['createdAt'];
       expect(sut, createdAt);
+      expect(sut, isA<DateTime>());
     });
     test(
         'Deve retornar o userDescription correto para o service provider return model',
@@ -113,6 +116,7 @@ void main() {
       ).toMap();
       final sut = model['userDescription'];
       expect(sut, userDescription);
+      expect(sut, isA<String>());
     });
     test('Deve retornar o votes correto para o service provider return model',
         () async {
@@ -138,6 +142,7 @@ void main() {
       ).toMap();
       final sut = model['votes'];
       expect(sut, votes);
+      expect(sut, isA<int>());
     });
     test('Deve retornar o status correto para o service provider return model',
         () async {
@@ -163,6 +168,7 @@ void main() {
       ).toMap();
       final sut = model['status'];
       expect(sut, status);
+      expect(sut, isA<String>());
     });
     test(
         'Deve retornar o initialDisponibleTime correto para o service provider return model',
@@ -189,6 +195,7 @@ void main() {
       ).toMap();
       final sut = model['initialDisponibleTime'];
       expect(sut, initialDisponibleTime);
+      expect(sut, isA<DateTime>());
     });
     test(
         'Deve retornar o endDisponibleTime correto para o service provider return model',
@@ -215,6 +222,7 @@ void main() {
       ).toMap();
       final sut = model['endDisponibleTime'];
       expect(sut, endDisponibleTime);
+      expect(sut, isA<DateTime>());
     });
     test(
         'Deve retornar o disponibleDays correto para o service provider return model',
@@ -241,6 +249,7 @@ void main() {
       ).toMap();
       final sut = model['disponibleDays'];
       expect(sut, disponibleDays);
+      expect(sut, isA<String>());
     });
   });
 
@@ -253,6 +262,7 @@ void main() {
       final sut = model.id;
       const matcher = 1;
       expect(sut, matcher);
+      expect(sut, isA<int>());
     });
     test(
         'deve retornar o createdAt correto para o from map do service provider return',
@@ -262,6 +272,7 @@ void main() {
       final sut = model.createdAt;
       final matcher = DateTime.parse('2022-08-18T18:54:59.725Z');
       expect(sut, matcher);
+      expect(sut, isA<DateTime>());
     });
     test(
         'deve retornar o userLoginId correto para o from map do service provider return',
@@ -271,6 +282,7 @@ void main() {
       final sut = model.userLoginId;
       const matcher = 1;
       expect(sut, matcher);
+      expect(sut, isA<int>());
     });
     test(
         'deve retornar o disponibleDays correto para o from map do service provider return',
@@ -280,6 +292,7 @@ void main() {
       final sut = model.disponibleDays;
       const matcher = 'segunda a sexta';
       expect(sut, matcher);
+      expect(sut, isA<String>());
     });
     test(
         'deve retornar o endDisponibleTime correto para o from map do service provider return',
@@ -289,6 +302,7 @@ void main() {
       final sut = model.endDisponibleTime;
       final matcher = DateTime.parse('2022-08-18T18:54:59.725Z');
       expect(sut, matcher);
+      expect(sut, isA<DateTime>());
     });
     test(
         'deve retornar o initialDisponibleTime correto para o from map do service provider return',
@@ -298,6 +312,7 @@ void main() {
       final sut = model.initialDisponibleTime;
       final matcher = DateTime.parse('2022-08-18T18:54:59.725Z');
       expect(sut, matcher);
+      expect(sut, isA<DateTime>());
     });
     test(
         'deve retornar o status correto para o from map do service provider return',
@@ -307,6 +322,7 @@ void main() {
       final sut = model.status;
       const matcher = 'ATIVO';
       expect(sut, matcher);
+      expect(sut, isA<String>());
     });
     test(
         'deve retornar o userDescription correto para o from map do service provider return',
@@ -316,6 +332,7 @@ void main() {
       final sut = model.userDescription;
       const matcher = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
       expect(sut, matcher);
+      expect(sut, isA<String>());
     });
     test(
         'deve retornar o votes correto para o from map do service provider return',
@@ -325,6 +342,7 @@ void main() {
       final sut = model.votes;
       const matcher = 0;
       expect(sut, matcher);
+      expect(sut, isA<int>());
     });
   });
 }
