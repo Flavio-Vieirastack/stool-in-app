@@ -3,9 +3,6 @@ import 'package:mocktail/mocktail.dart';
 import 'package:stool_in/exports/app_exports.dart';
 import 'package:stool_in/features/home/data/model/service_provider/accepted_payments_model.dart';
 import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
-import 'package:stool_in/features/service_provider/data/datasource/accepted_payments/service_provider_accepted_payments_datasource.dart';
-import 'package:stool_in/features/service_provider/data/datasource/accepted_payments/service_provider_accepted_payments_datasource_impl.dart';
-import 'package:stool_in/features/service_provider/domain/error/accepted_payments_error.dart';
 
 import '../../../../../mock/accepted_payments_payload_mock.dart';
 
