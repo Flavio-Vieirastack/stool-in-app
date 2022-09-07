@@ -41,8 +41,9 @@ class OnboardingPage extends StatelessWidget {
       child: LiquidSwipe(
         pages: pages,
         enableSideReveal: true,
-        slideIconWidget: const Icon(
+        slideIconWidget: Icon(
           Icons.arrow_back_ios,
+          color: AppColors.white,
         ),
         waveType: WaveType.circularReveal,
         fullTransitionValue: 880,

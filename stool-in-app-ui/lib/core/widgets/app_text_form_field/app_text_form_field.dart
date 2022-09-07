@@ -38,6 +38,7 @@ class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
             obscureText: obscureText,
             controller: controller,
             keyboardType: textInputType,
+            style: AppTextStyles.headLine4Black.copyWith(color: Colors.white),
             decoration: InputDecoration(
               labelText: label,
               hintText: hint,

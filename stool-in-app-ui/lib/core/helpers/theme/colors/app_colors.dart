@@ -7,6 +7,7 @@ class AppColors {
   static Color textFormFieldBackgroundColor = const Color(0xff424242);
   static Color greyScaleDark = const Color(0xff2a2a2a);
   static Color black = const Color(0xff1c2238);
+  static Color pureBlack = Colors.black;
   static Color blackOpaque = const Color(0xff060606);
   static Color white = const Color(0xffc9cee1);
   static Color grey = const Color(0xff4c5573);

@@ -39,7 +39,7 @@ mixin AppSnackBar {
             Expanded(
               child: Text(
                 message,
-                style: AppTextStyles.headLine4,
+                style: AppTextStyles.headLine4.copyWith(color: Colors.white),
               ),
             ),
             Icon(
