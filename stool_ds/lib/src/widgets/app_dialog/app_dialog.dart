@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:stool_in/core/constants/lottie_constants.dart';
-import 'package:stool_in/core/helpers/internet_helper/dialog_button_internet_checker.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
-import 'package:stool_in/core/widgets/app_dialog/enum/dailog_types.dart';
-import 'package:stool_in/core/widgets/app_text_form_field/app_text_form_field.dart';
-import 'package:stool_in/core/widgets/ratting_stars/app_ratting_stars.dart';
-
+import 'package:stool_in_core/stool_in_core.dart';
 import 'package:validatorless/validatorless.dart';
 
+
+import '../../theme/text_styles/app_text_styles.dart';
+import '../app_text_form_field/app_text_form_field.dart';
 import '../dialog_button/dialog_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import '../ratting_stars/app_ratting_stars.dart';
+import 'enum/dailog_types.dart';
 part './widgets/dialog_blocked.dart';
 part './widgets/dialog_error.dart';
 part './widgets/dialog_info.dart';

@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../helpers/theme/colors/app_colors.dart';
-import '../../helpers/theme/text_styles/app_text_styles.dart';
+import '../../theme/colors/app_colors.dart';
+import '../../theme/text_styles/app_text_styles.dart';
 import '../app_avatar/app_avatar.dart';
 import '../dialog_button/dialog_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';

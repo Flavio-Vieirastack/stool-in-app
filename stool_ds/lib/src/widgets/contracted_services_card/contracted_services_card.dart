@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
-import 'package:stool_in/core/widgets/app_progress_indicator/app_progress_indicator.dart';
 
-import '../../helpers/theme/colors/app_colors.dart';
-import '../../helpers/theme/text_styles/app_text_styles.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+
+import '../../theme/colors/app_colors.dart';
+import '../../theme/text_styles/app_text_styles.dart';
+import '../app_avatar/app_avatar.dart';
+import '../app_progress_indicator/app_progress_indicator.dart';
 part './widgets/contracted_services_content.dart';
 
 class ContractedServicesCard extends StatelessWidget {

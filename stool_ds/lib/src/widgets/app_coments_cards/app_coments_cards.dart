@@ -1,10 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
-import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
-import 'package:stool_in/core/widgets/ratting_stars/app_ratting_stars.dart';
+
 import 'package:flutter_sizer/flutter_sizer.dart';
+
+import '../../theme/colors/app_colors.dart';
+import '../../theme/text_styles/app_text_styles.dart';
+import '../app_avatar/app_avatar.dart';
+import '../ratting_stars/app_ratting_stars.dart';
 
 class AppComentsCards extends StatelessWidget {
   final String userUrlImage;

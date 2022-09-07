@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/core/widgets/app_progress_indicator/app_progress_indicator.dart';
+
+import '../../theme/colors/app_colors.dart';
+import '../app_progress_indicator/app_progress_indicator.dart';
 
 class AppAvatar extends StatelessWidget {
   final String? urlImage;

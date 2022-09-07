@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../helpers/theme/colors/app_colors.dart';
+import '../../theme/colors/app_colors.dart';
+
 
 class AppProgressIndicator extends StatelessWidget {
   final double? value;

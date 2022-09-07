@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
+
+import '../../theme/colors/app_colors.dart';
+import '../../theme/text_styles/app_text_styles.dart';
 
 class InfoCard extends StatelessWidget {
   final VoidCallback onPressed;

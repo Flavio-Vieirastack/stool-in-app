@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in/core/helpers/responsive/responsive_helper_mixin.dart';
-import 'package:stool_in/core/widgets/app_progress_indicator/app_progress_indicator.dart';
 
-import '../../helpers/theme/colors/app_colors.dart';
-import '../../helpers/theme/text_styles/app_text_styles.dart';
+import '../../theme/colors/app_colors.dart';
+import '../../theme/text_styles/app_text_styles.dart';
+import '../app_progress_indicator/app_progress_indicator.dart';
 import 'enum/button_types.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 part './button_types_widget.dart/disabled.dart';
@@ -11,7 +10,7 @@ part './button_types_widget.dart/loading.dart';
 part './button_types_widget.dart/primary.dart';
 part './button_types_widget.dart/secondary.dart';
 
-class AppButton extends StatelessWidget with ResponsiveHelperMixin {
+class AppButton extends StatelessWidget {
   final ButtonTypes buttonTypes;
   final String buttonText;
   final VoidCallback? onPressed;

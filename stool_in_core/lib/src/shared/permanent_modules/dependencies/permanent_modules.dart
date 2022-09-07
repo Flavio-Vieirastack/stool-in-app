@@ -3,6 +3,8 @@ import 'package:provider/single_child_widget.dart';
 
 import '../../../cache/helpers/user_actions_helper/module/cache_user_actions_module.dart';
 import '../../../cache/module/cached_datasource_helper_module.dart';
+import '../../../core_modules/firebase_auth/firebase_auth_module.dart';
+import '../../../core_modules/firebase_storage/firebase_storage_module.dart';
 import '../../../firebase/push_notifications/module/firebase_notifications_module.dart';
 import '../../../helpers/distance_helper/module/distance_helper_module.dart';
 import '../../../helpers/pick_image_helper/module/pick_image_helper_module.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:stool_in/core/helpers/responsive/responsive_helper_mixin.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in/core/helpers/theme/text_styles/app_text_styles.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-class AppTextFormField extends StatelessWidget with ResponsiveHelperMixin {
+
+import '../../theme/colors/app_colors.dart';
+import '../../theme/text_styles/app_text_styles.dart';
+class AppTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final bool obscureText;

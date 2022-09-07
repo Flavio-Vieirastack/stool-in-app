@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import '../../helpers/theme/text_styles/app_text_styles.dart';
+
+import '../../theme/text_styles/app_text_styles.dart';
 
 enum DialogButtonType {
   yes,

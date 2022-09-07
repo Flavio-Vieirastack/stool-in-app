@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:stool_in/core/helpers/theme/colors/app_colors.dart';
-import 'package:stool_in/core/widgets/app_avatar/app_avatar.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import '../../constants/lottie_constants.dart';
-import '../../helpers/theme/text_styles/app_text_styles.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import '../../theme/colors/app_colors.dart';
+import '../../theme/text_styles/app_text_styles.dart';
+import '../app_avatar/app_avatar.dart';
 import '../ratting_stars/app_ratting_stars.dart';
 part './widget/service_provider_content.dart';
 

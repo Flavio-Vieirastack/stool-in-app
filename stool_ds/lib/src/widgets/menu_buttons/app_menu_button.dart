@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:lottie/lottie.dart';
-import 'package:stool_in/exports/app_exports.dart';
+
+import '../../theme/colors/app_colors.dart';
+import '../../theme/text_styles/app_text_styles.dart';
 
 class AppMenuButton extends StatelessWidget {
   final String buttonName;

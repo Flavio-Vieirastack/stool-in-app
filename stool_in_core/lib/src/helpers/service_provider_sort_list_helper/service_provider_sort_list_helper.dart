@@ -1,4 +1,6 @@
 
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 class ServiceProviderSortListHelper {
   List<ServiceProviderEntity> sortList({
     required List<ServiceProviderEntity> providers,
