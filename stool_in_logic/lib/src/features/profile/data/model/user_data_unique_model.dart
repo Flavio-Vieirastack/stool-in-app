@@ -2,8 +2,9 @@ import 'dart:convert';
 
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import 'package:stool_in/features/profile/data/model/services_contracted_model.dart';
-import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.dart';
+import 'package:stool_in_logic/src/features/profile/data/model/services_contracted_model.dart';
+
+import '../../domain/entity/user_data_unique_entity.dart';
 
 class UserDataUniqueModel extends UserDataUniqueEntity {
   final List<ServicesContractedModel> servicesContracted;

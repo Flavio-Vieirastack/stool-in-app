@@ -1,4 +1,7 @@
-import '../../../../../../exports/app_exports.dart';
+
+import '../../../../auth/data/model/user_data_model.dart';
+import '../../../domain/entity/service_provider/service_provider_return_entity.dart';
+import '../../model/service_provider/create_and_update_service_provider_model.dart';
 
 abstract class CreateServiceProviderDatasource {
   Future<ServiceProviderReturnEntity> createServiceProvider({

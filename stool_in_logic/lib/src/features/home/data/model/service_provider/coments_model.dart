@@ -1,6 +1,10 @@
 import 'dart:convert';
 
-import '../../../../../exports/app_exports.dart';
+import '../../../domain/entity/service_provider/coments_entity.dart';
+
+
+
+
 
 class ComentsModel extends ComentsEntity {
   ComentsModel({

@@ -1,7 +1,13 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_in_logic/src/features/search/data/model/search_service_provider_model.dart';
+
+import '../../../home/domain/entity/service_provider/service_provider_entity.dart';
+import '../../domain/entity/search_service_provider_query_entity.dart';
+import '../../domain/error/search_service_provider_error.dart';
+import '../../domain/repository/search_service_provider_repository.dart';
+import '../datasource/search_service_provider_datasource.dart';
 
 class SearchServiceProviderRepositoryImpl
     implements SearchServiceProviderRepository {

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import '../../../../../../exports/app_exports.dart';
+import '../../../domain/entity/service_provider/create_and_update_service_provider_entity.dart';
+
 
 
 class CreateAndUpdateServiceProviderModel

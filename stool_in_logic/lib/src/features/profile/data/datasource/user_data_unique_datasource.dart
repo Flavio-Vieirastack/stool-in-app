@@ -1,8 +1,8 @@
-import 'package:stool_in/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.dart';
 
-import '../../../../core/helpers/distance_helper/distance_helper_calculate.dart';
-import '../../../../core/rest_client/rest_client_response.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+
+import '../../../auth/data/model/user_data_model.dart';
+import '../../domain/entity/user_data_unique_entity.dart';
 import '../../domain/entity/user_data_unique_location.dart';
 import '../model/services_contracted_model.dart';
 

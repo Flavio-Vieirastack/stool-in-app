@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../exports/app_exports.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+
+import '../../../domain/entity/auth_entity.dart';
+import '../../../domain/usecase/auth/auth_use_case.dart';
 
 
 part 'password_reset_state.dart';

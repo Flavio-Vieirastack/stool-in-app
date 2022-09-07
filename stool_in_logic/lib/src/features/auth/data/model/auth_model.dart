@@ -1,4 +1,5 @@
-import '../../../../../exports/app_exports.dart';
+
+import '../../domain/entity/auth_entity.dart';
 
 class AuthModel extends AuthEntity {
   AuthModel({

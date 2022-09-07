@@ -1,4 +1,5 @@
-import '../../../../../../exports/app_exports.dart';
+
+import '../../../domain/entity/service_types/create_service_types_entity.dart';
 
 class CreateServiceTypeModel extends CreateServiceTypesEntity {
   CreateServiceTypeModel({

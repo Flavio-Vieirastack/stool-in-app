@@ -1,13 +1,15 @@
 import 'dart:developer';
 
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/profile/data/datasource/user_data_unique_datasource.dart';
-import 'package:stool_in/features/profile/data/model/user_data_unique_model.dart';
-import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.dart';
-import 'package:stool_in/features/profile/domain/error/update_user_data_error.dart';
-import 'package:stool_in/features/profile/domain/error/user_data_unique_error.dart';
 
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/src/features/profile/data/datasource/user_data_unique_datasource.dart';
+
+import '../../../auth/data/model/user_data_model.dart';
+import '../../domain/entity/user_data_unique_entity.dart';
 import '../../domain/entity/user_data_unique_location.dart';
+import '../../domain/error/update_user_data_error.dart';
+import '../../domain/error/user_data_unique_error.dart';
+import '../model/user_data_unique_model.dart';
 
 class UserDataUniqueDatasourceImpl implements UserDataUniqueDatasource {
   final RestClientGet _restClientGet;

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
 
+import '../../../../home/domain/entity/service_provider/accepted_payments_entity.dart';
 import '../../error/accepted_payments_error.dart';
 
 abstract class AcceptedPaymentsUsecase {

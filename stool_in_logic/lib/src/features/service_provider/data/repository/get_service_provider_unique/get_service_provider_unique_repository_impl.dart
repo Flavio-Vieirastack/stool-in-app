@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../../../exports/app_exports.dart';
+import '../../../../home/domain/entity/service_provider/service_provider_entity.dart';
 import '../../../domain/error/get_service_provider_unique_error.dart';
 import '../../../domain/repository/get_service_provider_unique/get_service_provider_unique_repository.dart';
 import '../../datasource/get_service_provider_unique/get_service_provider_unique_datasource.dart';

@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/error/get_service_provider_unique_error.dart';
 
-import '../../../../../exports/app_exports.dart';
+import '../../../../home/domain/entity/service_provider/service_provider_entity.dart';
+import '../../error/get_service_provider_unique_error.dart';
+
 
 abstract class GetServiceProviderUniqueRepository {
   Future<Either<GetServiceProviderUniqueError, ServiceProviderEntity>> call({

@@ -1,6 +1,11 @@
 import 'package:dartz/dartz.dart';
+import 'package:stool_in_logic/src/features/info/domain/usecase/info_usecase.dart';
 
-import '../../../../../exports/app_exports.dart';
+import '../entity/info_entity.dart';
+import '../error/info_error.dart';
+import '../repository/doubt/doubt_repository.dart';
+import '../repository/rules/rules_repository.dart';
+
 
 
 class InfoUsecaseImpl implements InfoUsecase {

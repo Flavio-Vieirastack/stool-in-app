@@ -1,8 +1,10 @@
-import 'package:stool_in/features/service_provider/domain/error/services_to_execute_error.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
+
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/repository/services_to_execute/services_to_execute_repository.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/services_to_execute/services_to_execute_usecase.dart';
+import 'package:stool_in_logic/src/features/service_provider/domain/usecase/services_to_execute/services_to_execute_usecase.dart';
+
+import '../../../../home/domain/entity/service_provider/services_to_execute_entity.dart';
+import '../../error/services_to_execute_error.dart';
+import '../../repository/services_to_execute/services_to_execute_repository.dart';
 
 class ServicesToExecuteUsecaseImpl implements ServicesToExecuteUsecase {
   final ServicesToExecuteRepository _servicesToExecuteRepository;

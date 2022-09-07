@@ -1,11 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/get_service_providers_params.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/service_provider_entity.dart';
-import 'package:stool_in/features/home/domain/usecase/categories/categories_usecase.dart';
-import 'package:stool_in/features/home/domain/usecase/service_provider/service_provider_usecase.dart';
-
+import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/service_provider_entity.dart';
 import '../../domain/entity/categories/categories_entity.dart';
+import '../../domain/entity/service_provider/get_service_providers_params.dart';
+import '../../domain/usecase/categories/categories_usecase.dart';
+import '../../domain/usecase/service_provider/service_provider_usecase.dart';
 
 part 'home_state.dart';
 

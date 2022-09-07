@@ -2,7 +2,11 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 
-import '../../../../../exports/app_exports.dart';
+import '../../../domain/entity/categories/categories_entity.dart';
+import '../../../domain/error/categories/categories_error.dart';
+import '../../../domain/repository/categories/categories_repository.dart';
+import '../../datasource/categories/categories_datasource.dart';
+
 
 
 class CategoriesRepositoryImpl implements CategoriesRepository {

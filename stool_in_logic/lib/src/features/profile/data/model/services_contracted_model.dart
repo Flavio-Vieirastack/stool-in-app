@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:stool_in/features/profile/domain/entity/services_contracted_entity.dart';
+import '../../domain/entity/services_contracted_entity.dart';
+
 
 class ServicesContractedModel extends ServicesContractedEntity {
   ServicesContractedModel({

@@ -1,7 +1,12 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import 'package:stool_in/features/home/data/model/service_provider/accepted_payments_model.dart';
-import '../../../../../exports/app_exports.dart';
+import 'package:stool_in_logic/src/features/auth/data/model/user_data_model.dart';
+import 'package:stool_in_logic/src/features/home/data/model/service_provider/accepted_payments_model.dart';
+import 'package:stool_in_logic/src/features/home/data/model/service_provider/coments_model.dart';
+import 'package:stool_in_logic/src/features/home/data/model/service_provider/services_to_execute_model.dart';
+import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/service_provider_entity.dart';
+
+import 'execution_services_model.dart';
 
 class ServiceProviderModel extends ServiceProviderEntity {
   final List<ExecutionServicesModel> executionServicesModel;

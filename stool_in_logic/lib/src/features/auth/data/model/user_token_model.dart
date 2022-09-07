@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import '../../../../../exports/app_exports.dart';
+import '../../domain/entity/user_token_entity.dart';
+
 
 
 class UserTokenModel extends UserTokenEntity {

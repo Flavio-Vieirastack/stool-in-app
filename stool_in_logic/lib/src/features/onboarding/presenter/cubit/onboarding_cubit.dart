@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../../exports/app_exports.dart';
+import 'package:stool_in_core/stool_in_core.dart';
 
 
 part 'onboarding_state.dart';

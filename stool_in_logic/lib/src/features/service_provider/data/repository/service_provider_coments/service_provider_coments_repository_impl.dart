@@ -1,11 +1,14 @@
 import 'dart:developer';
 
-import 'package:stool_in/features/home/data/model/service_provider/coments_model.dart';
-import 'package:stool_in/features/service_provider/data/datasource/service_provider_coments/service_provider_coments_datasource.dart';
-import 'package:stool_in/features/service_provider/domain/error/coments_error.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/coments_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/repository/service_provider_coments/service_provider_coments_repository.dart';
+
+import '../../../../home/data/model/service_provider/coments_model.dart';
+import '../../../../home/domain/entity/service_provider/coments_entity.dart';
+import '../../../domain/error/coments_error.dart';
+import '../../../domain/repository/service_provider_coments/service_provider_coments_repository.dart';
+import '../../datasource/service_provider_coments/service_provider_coments_datasource.dart';
+
+
 
 class ServiceProviderComentsRepositoryImpl
     implements ServiceProviderComentsRepository {

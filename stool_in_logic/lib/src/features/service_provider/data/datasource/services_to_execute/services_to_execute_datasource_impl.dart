@@ -1,8 +1,12 @@
 import 'dart:developer';
 
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/service_provider/data/datasource/services_to_execute/services_to_execute_datasource.dart';
-import 'package:stool_in/features/service_provider/domain/error/services_to_execute_error.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/src/features/service_provider/data/datasource/services_to_execute/services_to_execute_datasource.dart';
+
+import '../../../../home/data/model/service_provider/services_to_execute_model.dart';
+import '../../../../home/domain/entity/service_provider/services_to_execute_entity.dart';
+import '../../../domain/error/services_to_execute_error.dart';
+
 
 class ServicesToExecuteDatasourceImpl implements ServicesToExecuteDatasource {
   final RestClientGet _restClientGet;

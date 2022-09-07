@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/error/coments_error.dart';
 
-import '../../../../../exports/app_exports.dart';
+import '../../../../home/domain/entity/service_provider/coments_entity.dart';
+import '../../error/coments_error.dart';
+
 
 abstract class ServiceProviderComentsRepository {
   Future<Either<ComentsError, void>> createComent({

@@ -3,7 +3,11 @@ import 'dart:developer';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../exports/app_exports.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+
+import '../../../domain/entity/auth_entity.dart';
+import '../../../domain/entity/user_data_entity.dart';
+import '../../../domain/usecase/auth/auth_use_case.dart';
 
 
 part 'sign_in_user_data_state.dart';

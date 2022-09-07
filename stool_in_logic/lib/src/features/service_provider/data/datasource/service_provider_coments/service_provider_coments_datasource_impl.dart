@@ -1,8 +1,12 @@
 import 'dart:developer';
 
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/service_provider/data/datasource/service_provider_coments/service_provider_coments_datasource.dart';
-import 'package:stool_in/features/service_provider/domain/error/coments_error.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/src/features/service_provider/data/datasource/service_provider_coments/service_provider_coments_datasource.dart';
+
+import '../../../../home/data/model/service_provider/coments_model.dart';
+import '../../../../home/domain/entity/service_provider/coments_entity.dart';
+import '../../../domain/error/coments_error.dart';
+
 
 class ServiceProviderComentsDatasourceImpl
     implements ServiceProviderComentsDatasource {

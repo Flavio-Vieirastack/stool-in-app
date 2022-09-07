@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import '../../../../../../exports/app_exports.dart';
+import '../../../domain/entity/service_types/service_types_return_entity.dart';
+
 
 
 class ServiceTypeReturnModel extends ServiceTypesReturnEntity {

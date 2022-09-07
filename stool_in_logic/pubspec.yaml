@@ -1,6 +1,7 @@
 name: stool_in_logic
 description: A new Flutter package project.
 version: 0.0.1
+publish_to: none
 homepage:
 
 environment:
@@ -11,6 +12,11 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_auth: ^3.6.2
+  dartz: ^0.10.1
+  equatable: ^2.0.3
+  flutter_bloc: ^8.0.1
+  stool_in_core:
+    path: ../stool_in_core/
 
 dev_dependencies:
   flutter_test:

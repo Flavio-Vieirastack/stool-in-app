@@ -1,6 +1,13 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import '../../../../../../exports/app_exports.dart';
+import 'package:stool_in_logic/src/features/service_provider/domain/entity/service_provider/user_login_entity.dart';
+
+import '../../../../auth/domain/entity/user_data_entity.dart';
+import '../../../../home/domain/entity/service_provider/coments_entity.dart';
+import '../../../../home/domain/entity/service_provider/execution_services_entity.dart';
+import '../../../../home/domain/entity/service_provider/services_to_execute_entity.dart';
+import 'acepted_payments_entity.dart';
+import 'create_and_update_service_provider_entity.dart';
 
 class ServiceProviderEntity extends CreateAndUpdateServiceProviderEntity {
   final int id;

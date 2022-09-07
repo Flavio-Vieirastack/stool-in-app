@@ -1,14 +1,15 @@
 import 'dart:developer';
-
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/profile/data/datasource/user_data_unique_datasource.dart';
-import 'package:stool_in/features/profile/domain/error/user_data_unique_error.dart';
-import 'package:stool_in/features/profile/domain/error/update_user_data_error.dart';
-import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/profile/domain/repository/user_data_unique_repository.dart';
+import 'package:stool_in_logic/src/features/auth/domain/entity/user_data_entity.dart';
 
+
+import '../../../auth/data/model/user_data_model.dart';
+import '../../domain/entity/user_data_unique_entity.dart';
 import '../../domain/entity/user_data_unique_location.dart';
+import '../../domain/error/update_user_data_error.dart';
+import '../../domain/error/user_data_unique_error.dart';
+import '../../domain/repository/user_data_unique_repository.dart';
+import '../datasource/user_data_unique_datasource.dart';
 
 class UserDataUniqueRepositoryImpl implements UserDataUniqueRepository {
   final UserDataUniqueDatasource _userDataUniqueDatasource;

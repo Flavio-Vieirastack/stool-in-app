@@ -1,9 +1,9 @@
-import 'package:stool_in/features/service_provider/domain/error/accepted_payments_error.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/accepted_payments/accepted_payments_usecase.dart';
 
+import '../../../../home/domain/entity/service_provider/accepted_payments_entity.dart';
+import '../../error/accepted_payments_error.dart';
 import '../../repository/accepted_payments/service_provider_accepted_payments_repository.dart';
+import 'accepted_payments_usecase.dart';
 
 class AcceptedPaymentsUsecaseImpl implements AcceptedPaymentsUsecase {
   final ServiceProviderAcceptedPaymentsRepository

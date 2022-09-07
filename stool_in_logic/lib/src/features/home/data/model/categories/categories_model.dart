@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import '../../../../../exports/app_exports.dart';
+import '../../../domain/entity/categories/categories_entity.dart';
+
 
 
 class CategoriesModel extends CategoriesEntity {

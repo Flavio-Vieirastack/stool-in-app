@@ -1,7 +1,13 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import '../../../../../exports/app_exports.dart';
+
+import '../../../domain/entity/auth_entity.dart';
+import '../../../domain/error/api_auth_error.dart';
+import '../../../domain/error/firebase_auth_error.dart';
+import '../../../domain/repository/password_reset/password_reset_repository.dart';
+import '../../datasource/password_reset/password_reset_datasource.dart';
+import '../../model/auth_model.dart';
 
 class PasswordResetRepositoryImpl implements PasswordResetRepository {
   final PasswordResetDatasource _passwordResetDatasource;

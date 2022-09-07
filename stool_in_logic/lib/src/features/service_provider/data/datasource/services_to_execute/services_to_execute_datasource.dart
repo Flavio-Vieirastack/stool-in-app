@@ -1,4 +1,6 @@
-import '../../../../../exports/app_exports.dart';
+
+import '../../../../home/data/model/service_provider/services_to_execute_model.dart';
+import '../../../../home/domain/entity/service_provider/services_to_execute_entity.dart';
 
 abstract class ServicesToExecuteDatasource {
   Future<void> createServiceToExecute({

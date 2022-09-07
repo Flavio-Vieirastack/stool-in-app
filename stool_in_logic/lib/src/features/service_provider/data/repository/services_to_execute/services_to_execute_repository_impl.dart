@@ -1,11 +1,12 @@
 import 'dart:developer';
 
-import 'package:stool_in/features/home/data/model/service_provider/services_to_execute_model.dart';
-import 'package:stool_in/features/service_provider/data/datasource/services_to_execute/services_to_execute_datasource.dart';
-import 'package:stool_in/features/service_provider/domain/error/services_to_execute_error.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/repository/services_to_execute/services_to_execute_repository.dart';
+
+import '../../../../home/data/model/service_provider/services_to_execute_model.dart';
+import '../../../../home/domain/entity/service_provider/services_to_execute_entity.dart';
+import '../../../domain/error/services_to_execute_error.dart';
+import '../../../domain/repository/services_to_execute/services_to_execute_repository.dart';
+import '../../datasource/services_to_execute/services_to_execute_datasource.dart';
 
 class ServicesToExecuteRepositoryImpl implements ServicesToExecuteRepository {
   final ServicesToExecuteDatasource _servicesToExecuteDatasource;

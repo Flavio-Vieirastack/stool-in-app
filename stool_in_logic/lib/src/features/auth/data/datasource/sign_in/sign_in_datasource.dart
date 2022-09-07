@@ -1,6 +1,7 @@
 
 
-import '../../../../../exports/app_exports.dart';
+
+import '../../model/auth_model.dart';
 
 abstract class SignInDatasource {
   Future<void> firebaseSignIn({

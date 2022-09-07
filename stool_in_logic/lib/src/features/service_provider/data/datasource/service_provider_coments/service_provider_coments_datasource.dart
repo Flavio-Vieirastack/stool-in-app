@@ -1,4 +1,6 @@
-import '../../../../../exports/app_exports.dart';
+
+import '../../../../home/data/model/service_provider/coments_model.dart';
+import '../../../../home/domain/entity/service_provider/coments_entity.dart';
 
 abstract class ServiceProviderComentsDatasource {
   Future<void> createComent({

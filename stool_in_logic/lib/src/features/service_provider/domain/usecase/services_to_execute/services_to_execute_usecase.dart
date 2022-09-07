@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../../exports/app_exports.dart';
+import '../../../../home/domain/entity/service_provider/services_to_execute_entity.dart';
 import '../../error/services_to_execute_error.dart';
 
 abstract class ServicesToExecuteUsecase {

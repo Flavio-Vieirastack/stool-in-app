@@ -1,4 +1,5 @@
-import 'package:stool_in/core/helpers/distance_helper/distance_helper_calculate.dart';
+
+import 'package:stool_in_core/stool_in_core.dart';
 
 class UserDataUniqueLocation extends Location {
   UserDataUniqueLocation({

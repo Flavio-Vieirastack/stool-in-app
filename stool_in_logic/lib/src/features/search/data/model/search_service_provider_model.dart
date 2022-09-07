@@ -1,4 +1,5 @@
-import 'package:stool_in/exports/app_exports.dart';
+
+import '../../domain/entity/search_service_provider_query_entity.dart';
 
 class SearchServiceProviderModel {
   final String query;

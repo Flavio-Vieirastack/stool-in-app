@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
+import '../../../domain/entity/service_provider/accepted_payments_entity.dart';
+
 
 class AcceptedPaymentsModel extends AcceptedPaymentsEntity {
   AcceptedPaymentsModel({

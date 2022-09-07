@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:stool_in/features/service_provider/domain/error/get_service_provider_unique_error.dart';
-import 'package:stool_in/features/service_provider/domain/repository/get_service_provider_unique/get_service_provider_unique_repository.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/get_service_provider_unique/get_service_provider_unique_usecase.dart';
 
-import '../../../../../exports/app_exports.dart';
+import '../../../../home/domain/entity/service_provider/service_provider_entity.dart';
+import '../../error/get_service_provider_unique_error.dart';
+import '../../repository/get_service_provider_unique/get_service_provider_unique_repository.dart';
+import 'get_service_provider_unique_usecase.dart';
 
 class GetServiceProviderUniqueUsecaseImpl
     implements GetServiceProviderUniqueUsecase {
