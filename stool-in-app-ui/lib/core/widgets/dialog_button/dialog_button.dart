@@ -32,7 +32,7 @@ class DialogButton extends StatelessWidget {
       ),
       child: Text(
         buttonText,
-        style: AppTextStyles.headLine2,
+        style: AppTextStyles.headLine2.copyWith(color: Colors.white),
       ),
     );
   }

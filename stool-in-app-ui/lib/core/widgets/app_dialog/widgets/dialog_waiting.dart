@@ -3,7 +3,8 @@ part of '../app_dialog.dart';
 class _DialogWaiting {
   Widget waiting({
     required String message,
-    required VoidCallback onPressed,
+    required VoidCallback yesOnPressed,
+    required VoidCallback noOnpressed,
   }) {
     return Column(
       children: [
@@ -19,9 +20,14 @@ class _DialogWaiting {
           height: 2.h,
         ),
         DialogButton(
-          onPressed: onPressed,
+          onPressed: yesOnPressed,
           dialogButtonType: DialogButtonType.yes,
           buttonText: 'Confirmei meu email',
+        ),
+        DialogButton(
+          onPressed: noOnpressed,
+          dialogButtonType: DialogButtonType.no,
+          buttonText: 'Não recebi o email',
         ),
       ],
     );

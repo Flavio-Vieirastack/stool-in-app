@@ -55,6 +55,7 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                         password: passwordController.text.trim(),
                       ),
                     ),
+                    noCallBack: () => cubit.notRecievedEmail(),
                   ),
                 );
               } else if (state is SignInStateError) {
@@ -104,6 +105,13 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                   const Duration(seconds: 3),
                   () => Navigator.of(context).pop(),
                 );
+              } else if (state is SignInStateEmailNotRecieved) {
+                Navigator.of(context).pop();
+                showAppSnackbar(
+                  message: 'Por favor, tente novamente',
+                  context: context,
+                );
+                emailController.clear();
               }
             },
             child: ListView(

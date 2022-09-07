@@ -44,6 +44,7 @@ mixin AppSnackBar {
             ),
             Icon(
               getSnackBarIcon(type),
+              color: Colors.white,
             ),
           ],
         ),

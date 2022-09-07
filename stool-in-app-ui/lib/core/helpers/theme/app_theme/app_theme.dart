@@ -9,5 +9,6 @@ class AppTheme {
         primaryColorDark: AppColors.buttonRightGradientColor,
         appBarTheme: const AppBarTheme(backgroundColor: Color(0xff1c2238)),
         scaffoldBackgroundColor: const Color(0xff252d49),
+        dialogTheme: DialogTheme(backgroundColor: AppColors.black),
       );
 }

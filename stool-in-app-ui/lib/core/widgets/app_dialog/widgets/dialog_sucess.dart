@@ -11,7 +11,11 @@ class _DialogSucess {
         SizedBox(
           height: 2.h,
         ),
-        Text(message, style: AppTextStyles.headLine2,)
+        Text(
+          message,
+          style: AppTextStyles.headLine2,
+          textAlign: TextAlign.center,
+        )
       ],
     );
   }

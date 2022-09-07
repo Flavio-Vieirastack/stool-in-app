@@ -80,7 +80,8 @@ class AppDialog extends Dialog {
                   else if (dialogTypes == DialogTypes.waiting)
                     _DialogWaiting().waiting(
                       message: message,
-                      onPressed: yesCallBack ?? () {},
+                      yesOnPressed: yesCallBack ?? () {},
+                      noOnpressed: noCallBack ?? (){}
                     )
                   else if (dialogTypes == DialogTypes.blocked)
                     _DialogBlocked().blocked(message: message)

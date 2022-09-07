@@ -15,23 +15,23 @@ class _SignInDataCard extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final String? urlImage;
   final bool ignoring;
-  const _SignInDataCard({
-    Key? key,
-    required this.userNameController,
-    this.ignoring = false,
-    required this.streetController,
-    required this.cityController,
-    required this.houseNumberController,
-    required this.districtController,
-    required this.cepController,
-    required this.referencePointController,
-    required this.statesDropDownLabel,
-    required this.signInCallBack,
-    required this.formKey,
-    this.buttonTypes = ButtonTypes.primary,
-    this.onChanged,
-    this.urlImage
-  }) : super(key: key);
+  const _SignInDataCard(
+      {Key? key,
+      required this.userNameController,
+      this.ignoring = false,
+      required this.streetController,
+      required this.cityController,
+      required this.houseNumberController,
+      required this.districtController,
+      required this.cepController,
+      required this.referencePointController,
+      required this.statesDropDownLabel,
+      required this.signInCallBack,
+      required this.formKey,
+      this.buttonTypes = ButtonTypes.primary,
+      this.onChanged,
+      this.urlImage})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,11 +64,11 @@ class _SignInDataCard extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                         SizedBox(
+                        SizedBox(
                           height: 1.5.h,
                         ),
                         if (state is FirebaseStorageLoading)
-                           Center(
+                          Center(
                             child: AppAvatar(
                               size: 80.dp,
                               isLoading: true,
@@ -76,7 +76,7 @@ class _SignInDataCard extends StatelessWidget {
                             ),
                           ),
                         if (state is FirebaseStorageInitial)
-                           Center(
+                          Center(
                             child: AppAvatar(
                               size: 80.dp,
                             ),
@@ -196,18 +196,20 @@ class _SignInDataCard extends StatelessWidget {
                           height: 1.5.h,
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20.w
-                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
                           child: DropdownButton<String>(
-                            hint: Text(statesDropDownLabel),
+                            hint: Text(statesDropDownLabel, style: AppTextStyles.headLine4,),
                             isExpanded: true,
                             onChanged: onChanged,
+                            dropdownColor: AppColors.black,
                             items: Estados.listaEstadosSigla.map(
                               (String state) {
                                 return DropdownMenuItem(
                                   value: state,
-                                  child: Text(state),
+                                  child: Text(
+                                    state,
+                                    style: AppTextStyles.headLine4,
+                                  ),
                                 );
                               },
                             ).toList(),
@@ -223,9 +225,7 @@ class _SignInDataCard extends StatelessWidget {
                           textInputType: TextInputType.number,
                           controller: cepController,
                         ),
-                        SizedBox(
-                          height: 1.h
-                        ),
+                        SizedBox(height: 1.h),
                         AppTextFormField(
                           label: 'Ponto de referência',
                           hint: 'Ex: Próximo ao posto de saúde X',
@@ -260,7 +260,6 @@ class _SignInDataCard extends StatelessWidget {
                                   RoutesConstants.signInMainRoute),
                           buttonTypes: ButtonTypes.secondary,
                         ),
-                        
                       ],
                     ),
                   );

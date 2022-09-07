@@ -34,3 +34,5 @@ class SignInStateSendVerificationEmailError extends SignInState {
 }
 
 class SignInEmailNotVerified extends SignInState {}
+
+class SignInStateEmailNotRecieved extends SignInState {}
