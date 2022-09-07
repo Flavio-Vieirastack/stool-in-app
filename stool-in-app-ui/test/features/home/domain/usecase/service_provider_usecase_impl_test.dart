@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 
 
 class _ServiceProviderUseCaseMock extends Mock

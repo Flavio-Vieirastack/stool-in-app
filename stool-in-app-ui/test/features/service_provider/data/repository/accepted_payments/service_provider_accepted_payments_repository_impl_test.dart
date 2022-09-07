@@ -1,12 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/home/data/model/service_provider/accepted_payments_model.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
-import 'package:stool_in/features/service_provider/data/datasource/accepted_payments/service_provider_accepted_payments_datasource.dart';
-import 'package:stool_in/features/service_provider/data/repository/accepted_payments/service_provider_accepted_payments_repository_impl.dart';
-import 'package:stool_in/features/service_provider/domain/error/accepted_payments_error.dart';
-import 'package:stool_in/features/service_provider/domain/repository/accepted_payments/service_provider_accepted_payments_repository.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 
 class _AcceptedPaymentsDatasourceMock extends Mock
     implements ServiceProviderAcceptedPaymentsDatasource {}

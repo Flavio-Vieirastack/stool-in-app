@@ -8,7 +8,7 @@ import 'package:stool_in_core/src/helpers/secure_storage_helper/secure_storage_c
 
 FlutterSecureStorage get _instance => const FlutterSecureStorage();
 
-const options = IOSOptions(accessibility: KeychainAccessibility.first_unlock);
+//const options = IOSOptions(accessibility: KeychainAccessibility.first_unlock);
 
 AndroidOptions _getAndroidOptions() => const AndroidOptions(
       encryptedSharedPreferences: true,
@@ -18,7 +18,7 @@ class ReadLocalSecureStorageMethodImpl implements ReadLocalSecurityStorage {
   @override
   Future<String?> read({required String key}) => _instance.read(
         key: key,
-        iOptions: options,
+        //iOptions: options,
         aOptions: _getAndroidOptions(),
       );
 }
@@ -28,7 +28,7 @@ class ClearLocalSecureStorageMethodsImpl implements ClearLocalSecurityStorage {
   Future<bool> clearAll() async {
     try {
       _instance.deleteAll(
-        iOptions: options,
+        //iOptions: options,
         aOptions: _getAndroidOptions(),
       );
       return true;
@@ -60,7 +60,7 @@ class RemoveLocalSecureStorageMethodsImpl
     try {
       _instance.delete(
         key: key,
-        iOptions: options,
+        //iOptions: options,
         aOptions: _getAndroidOptions(),
       );
       return true;
@@ -77,7 +77,7 @@ class WriteLocalSecureStorageMethodsImpl implements WriteLocalSecurityStorage {
       _instance.write(
         key: key,
         value: value,
-        iOptions: options,
+        //iOptions: options,
         aOptions: _getAndroidOptions(),
       );
 }

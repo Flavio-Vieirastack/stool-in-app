@@ -1,12 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/home/data/model/service_provider/services_to_execute_model.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
-import 'package:stool_in/features/service_provider/data/datasource/services_to_execute/services_to_execute_datasource.dart';
-import 'package:stool_in/features/service_provider/data/repository/services_to_execute/services_to_execute_repository_impl.dart';
-import 'package:stool_in/features/service_provider/domain/error/services_to_execute_error.dart';
-import 'package:stool_in/features/service_provider/domain/repository/services_to_execute/services_to_execute_repository.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 
 class _ServiceToExecuteDatasourceMock extends Mock
     implements ServicesToExecuteDatasource {}

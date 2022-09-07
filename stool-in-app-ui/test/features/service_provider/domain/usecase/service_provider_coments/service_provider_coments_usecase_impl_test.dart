@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/coments_entity.dart';
-import 'package:stool_in/features/service_provider/domain/error/coments_error.dart';
-import 'package:stool_in/features/service_provider/domain/repository/service_provider_coments/service_provider_coments_repository.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/service_provider_coments/service_provider_coments_usecase.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/service_provider_coments/service_provider_coments_usecase_impl.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 
 class _ComentsRepositoryMock extends Mock
     implements ServiceProviderComentsRepository {}

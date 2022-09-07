@@ -1,14 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/profile/data/datasource/user_data_unique_datasource.dart';
-import 'package:stool_in/features/profile/data/datasource/user_data_unique_datasource_impl.dart';
-import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.dart';
-import 'package:stool_in/features/profile/domain/entity/user_data_unique_location.dart';
-import 'package:stool_in/features/profile/domain/error/update_user_data_error.dart';
-import 'package:stool_in/features/profile/domain/error/user_data_unique_error.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../../mock/user_data_unique_model_mock.dart';
+
 
 class _RestCLientGetMock extends Mock implements RestClientGet {}
 

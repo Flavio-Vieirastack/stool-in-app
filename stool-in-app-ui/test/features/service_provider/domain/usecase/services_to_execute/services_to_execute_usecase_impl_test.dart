@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
-import 'package:stool_in/features/service_provider/domain/error/services_to_execute_error.dart';
-import 'package:stool_in/features/service_provider/domain/repository/services_to_execute/services_to_execute_repository.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/services_to_execute/services_to_execute_usecase.dart';
-import 'package:stool_in/features/service_provider/domain/usecase/services_to_execute/services_to_execute_usecase_impl.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 
 class _ServicesToExecuteRepositoryMock extends Mock
     implements ServicesToExecuteRepository {}

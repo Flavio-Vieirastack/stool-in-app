@@ -1,16 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/features/auth/data/model/user_data_model.dart';
-import 'package:stool_in/features/auth/domain/entity/user_data_entity.dart';
-import 'package:stool_in/features/profile/data/datasource/user_data_unique_datasource.dart';
-import 'package:stool_in/features/profile/data/repository/user_data_unique_repository_impl.dart';
-import 'package:stool_in/features/profile/domain/entity/services_contracted_entity.dart';
-import 'package:stool_in/features/profile/domain/entity/user_data_unique_entity.dart';
-import 'package:stool_in/features/profile/domain/entity/user_data_unique_location.dart';
-import 'package:stool_in/features/profile/domain/error/update_user_data_error.dart';
-import 'package:stool_in/features/profile/domain/error/user_data_unique_error.dart';
-import 'package:stool_in/features/profile/domain/repository/user_data_unique_repository.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 
 class _UserDataUniqueDatasourceMock extends Mock
     implements UserDataUniqueDatasource {}
