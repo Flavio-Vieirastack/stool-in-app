@@ -65,9 +65,7 @@ class _LoginCard extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 2.h
-              ),
+              SizedBox(height: 2.h),
               AppTextFormField(
                 label: 'Senha',
                 hint: 'Ex: Abc@123456',
@@ -78,9 +76,7 @@ class _LoginCard extends StatelessWidget {
                   'Esse campo não pode ficar vazio',
                 ),
               ),
-              SizedBox(
-                height: 2.h
-              ),
+              SizedBox(height: 2.h),
               InkWell(
                 onTap: passwordResetCallback,
                 child: Padding(
@@ -94,35 +90,31 @@ class _LoginCard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 2.h
-              ),
+              SizedBox(height: 2.h),
               AppButton(
                 buttonText: buttonText,
                 onPressed: loginOrPasswordResetCallback,
                 buttonTypes: buttonTypes,
               ),
-              SizedBox(
-                height: 2.h
-              ),
-              Padding(
-                padding: EdgeInsets.only(bottom: 5.h),
-                child: InkWell(
-                  onTap: signInCallback,
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Ainda não tem uma conta? ',
-                      style: AppTextStyles.headLine4,
-                      children: [
-                        TextSpan(
-                          text: 'Cadaste-se',
-                          style: AppTextStyles.headLine1,
-                        ),
-                      ],
-                    ),
+              SizedBox(height: 2.h),
+              InkWell(
+                onTap: signInCallback,
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Ainda não tem uma conta? ',
+                    style: AppTextStyles.headLine4,
+                    children: [
+                      TextSpan(
+                        text: 'Cadaste-se',
+                        style: AppTextStyles.headLine1,
+                      ),
+                    ],
                   ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 3.h,
+              ),
             ],
           ),
         ),

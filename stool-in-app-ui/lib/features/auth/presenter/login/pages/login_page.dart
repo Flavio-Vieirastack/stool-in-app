@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:validatorless/validatorless.dart';
@@ -48,6 +49,17 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
     return Scaffold(
       backgroundColor: AppColors.grey.withOpacity(0.12),
       resizeToAvoidBottomInset: false,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => // TODO adicionar email aqui
+            Clipboard.setData(const ClipboardData(text: 'Email')).then(
+          (_) => showAppSnackbar(
+            message: 'Email copiado, por favor entre em contato conosco',
+            context: context,
+            duration: 4
+          ),
+        ),
+        child: const Icon(Icons.email),
+      ),
       body: MultiBlocListener(
         listeners: [
           BlocListener<LoginCubit, LoginState>(
