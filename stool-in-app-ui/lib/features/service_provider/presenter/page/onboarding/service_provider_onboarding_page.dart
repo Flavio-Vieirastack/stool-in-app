@@ -2,7 +2,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_ds/stool_ds.dart';
+import 'package:stool_in_core/stool_in_core.dart';
 
 class ServiceProviderOnboardingPage extends StatefulWidget {
   const ServiceProviderOnboardingPage({Key? key}) : super(key: key);

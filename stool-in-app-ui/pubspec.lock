@@ -917,6 +917,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
+  stool_ds:
+    dependency: "direct main"
+    description:
+      path: "../stool_ds"
+      relative: true
+    source: path
+    version: "0.0.1"
+  stool_in_core:
+    dependency: "direct main"
+    description:
+      path: "../stool_in_core"
+      relative: true
+    source: path
+    version: "0.0.1"
+  stool_in_logic:
+    dependency: "direct main"
+    description:
+      path: "../stool_in_logic"
+      relative: true
+    source: path
+    version: "0.0.1"
   stream_channel:
     dependency: transitive
     description:
@@ -1058,5 +1079,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.17.5 <3.0.0"
+  dart: ">=2.17.6 <3.0.0"
   flutter: ">=3.0.0"

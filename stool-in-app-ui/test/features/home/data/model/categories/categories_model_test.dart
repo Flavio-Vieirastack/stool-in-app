@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 
 import '../../../../../mock/categories_mock.dart';
 

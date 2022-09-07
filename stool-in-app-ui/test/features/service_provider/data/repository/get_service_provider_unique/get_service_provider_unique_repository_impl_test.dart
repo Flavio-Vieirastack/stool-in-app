@@ -1,10 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/service_provider/data/datasource/get_service_provider_unique/get_service_provider_unique_datasource.dart';
-import 'package:stool_in/features/service_provider/domain/error/get_service_provider_unique_error.dart';
-import 'package:stool_in/features/service_provider/domain/repository/get_service_provider_unique/get_service_provider_unique_repository.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 class _UniqueDatasourceMock extends Mock
     implements GetServiceProviderUniqueDatasource {}

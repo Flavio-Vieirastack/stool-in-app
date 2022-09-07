@@ -1,5 +1,8 @@
 import 'package:provider/provider.dart';
-import '../../../../../exports/app_exports.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
+import '../../presenter/page/doubt/doubt_page.dart';
 
 
 class DoubtPageModule extends AppModule {

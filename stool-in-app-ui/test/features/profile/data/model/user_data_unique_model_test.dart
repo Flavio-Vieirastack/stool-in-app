@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/profile/data/model/user_data_unique_model.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../../mock/user_data_unique_model_mock.dart';
 

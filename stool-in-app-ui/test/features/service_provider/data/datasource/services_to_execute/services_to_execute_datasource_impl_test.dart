@@ -1,12 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/features/home/data/model/service_provider/services_to_execute_model.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
-import 'package:stool_in/features/service_provider/data/datasource/services_to_execute/services_to_execute_datasource.dart';
-import 'package:stool_in/features/service_provider/data/datasource/services_to_execute/services_to_execute_datasource_impl.dart';
-import 'package:stool_in/features/service_provider/domain/error/services_to_execute_error.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../../../mock/services_to_execute_return_payload.dart';
 

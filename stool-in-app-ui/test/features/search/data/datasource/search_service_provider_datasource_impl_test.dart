@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 class _RestclientGetMock extends Mock implements RestClientGet {}
 

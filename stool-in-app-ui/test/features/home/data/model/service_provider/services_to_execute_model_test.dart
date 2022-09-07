@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/home/data/model/service_provider/services_to_execute_model.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../../../mock/services_to_execute_return_payload.dart';
 

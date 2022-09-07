@@ -1,9 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/service_provider/data/datasource/service_provider_coments/service_provider_coments_datasource.dart';
-import 'package:stool_in/features/service_provider/data/datasource/service_provider_coments/service_provider_coments_datasource_impl.dart';
-import 'package:stool_in/features/service_provider/domain/error/coments_error.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../../../mock/coments_model_payload_mock.dart';
 

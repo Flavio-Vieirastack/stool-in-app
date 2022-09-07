@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../../../mock/service_provider_create_mock.dart';
 

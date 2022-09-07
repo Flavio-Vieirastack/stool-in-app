@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/core/shared/push_notifications/data/model/send_push_notification_model.dart';
+import 'package:stool_in_core/stool_in_core.dart';
 
 void main() {
   test('Deve retornar o valore correto para push token', () async {

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:lottie/lottie.dart';
-import '../../../../../../exports/app_exports.dart';
+import 'package:stool_ds/stool_ds.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
-
+@immutable
 class DoubtPage extends StatelessWidget with AppSnackBar {
   const DoubtPage({Key? key}) : super(key: key);
 

@@ -1,6 +1,9 @@
 import 'package:provider/provider.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
-import '../../../../exports/app_exports.dart';
+import '../page/home_page.dart';
+
 
 class HomeModule extends AppModule {
   HomeModule()

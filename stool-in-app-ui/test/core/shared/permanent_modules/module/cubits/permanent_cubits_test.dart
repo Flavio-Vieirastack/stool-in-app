@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_in_core/stool_in_core.dart';
 
 
 void main() {

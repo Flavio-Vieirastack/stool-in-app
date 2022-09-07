@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/core/widgets/search/search_widget.dart';
-import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_ds/stool_ds.dart';
+import 'package:stool_in_core/stool_in_core.dart';
 
 part './widgets/home_body.dart';
 part './widgets/coin_widget.dart';

@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:stool_in/exports/app_exports.dart';
+import 'package:stool_ds/stool_ds.dart';
 
 void main() {
   test('Deve retornar o estilo correto para headLine0', () {

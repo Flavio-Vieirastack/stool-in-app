@@ -2,15 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stool_in/core/cache/helpers/decoded_list_cache_helper.dart';
-import 'package:stool_in/core/cache/helpers/user_actions_helper/cache_user_actions_helper.dart';
-import 'package:stool_in/core/cache/save_json_in_cache_datasource.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/features/home/data/datasource/categories/categories_datasource.dart';
-import 'package:stool_in/features/home/data/datasource/categories/categories_datasource_impl.dart';
-import 'package:stool_in/features/home/domain/entity/categories/categories_entity.dart';
-import 'package:stool_in/features/home/domain/error/categories/categories_error.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../../../mock/categories_mock.dart';
 

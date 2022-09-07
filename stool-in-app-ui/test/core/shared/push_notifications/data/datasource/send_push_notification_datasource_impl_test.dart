@@ -1,11 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/rest_client/rest_client_contracts.dart';
-import 'package:stool_in/core/rest_client/rest_client_response.dart';
-import 'package:stool_in/core/shared/push_notifications/data/datasource/send_push_notification_datasource.dart';
-import 'package:stool_in/core/shared/push_notifications/data/datasource/send_push_notification_datasource_impl.dart';
-import 'package:stool_in/core/shared/push_notifications/data/model/send_push_notification_model.dart';
-import 'package:stool_in/core/shared/push_notifications/domain/error/send_push_notification_error.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+
 
 class _RestCLientPostMock extends Mock implements RestClientPost {}
 

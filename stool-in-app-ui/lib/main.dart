@@ -3,9 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:provider/provider.dart';
-import 'package:stool_in/core/helpers/theme/app_theme/app_theme.dart';
+import 'package:stool_ds/stool_ds.dart';
 import 'package:stool_in/features/service_provider/module/service_provider_onboarding_module.dart';
-import 'exports/app_exports.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'features/auth/presenter/login/module/login_module.dart';
+import 'features/auth/presenter/password_reset/module/password_reset_module.dart';
+import 'features/auth/presenter/sign_in/module/sign_in_main_module.dart';
+import 'features/auth/presenter/sign_in_user_data/module/sign_in_main_data_module.dart';
+import 'features/home/presenter/module/home_module.dart';
+import 'features/info/module/doubt/doubt_page_module.dart';
+import 'features/info/module/info/info_page_module.dart';
+import 'features/info/module/rules/rules_page_modules.dart';
+import 'features/onboarding/module/onboarding_module.dart';
+import 'features/splash/module/splash_module.dart';
 import 'firebase_options.dart';
 
 void main() async {

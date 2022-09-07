@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:stool_in/features/search/data/model/search_service_provider_model.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 void main() {
   test('Deve retornar o valor correto para query', () async {

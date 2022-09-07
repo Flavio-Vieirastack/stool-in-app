@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/exports/app_exports.dart';
-import 'package:stool_in/features/home/data/model/service_provider/accepted_payments_model.dart';
-import 'package:stool_in/features/home/domain/entity/service_provider/accepted_payments_entity.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
+
 
 import '../../../../../mock/accepted_payments_payload_mock.dart';
 

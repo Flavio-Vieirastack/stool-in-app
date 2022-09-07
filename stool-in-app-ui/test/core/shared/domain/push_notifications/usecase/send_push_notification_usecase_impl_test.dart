@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:stool_in/core/shared/push_notifications/domain/entity/push_notification_params.dart';
-import 'package:stool_in/core/shared/push_notifications/domain/error/send_push_notification_error.dart';
-import 'package:stool_in/core/shared/push_notifications/domain/repository/send_push_notification_repository.dart';
-import 'package:stool_in/core/shared/push_notifications/domain/usecase/send_push_notification_usecase.dart';
-import 'package:stool_in/core/shared/push_notifications/domain/usecase/send_push_notification_usecase_impl.dart';
+import 'package:stool_in_core/stool_in_core.dart';
+
 
 class _SendPushNotificationsRepositoryMock extends Mock
     implements SendPushNotificationRepository {}
