@@ -92,8 +92,8 @@ class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
                   context: context,
                   type: SnackBarType.error,
                 );
-                Navigator.of(context)
-                    .pushReplacementNamed(RoutesConstants.loginRoute);
+                emailController.clear();
+                passwordController.clear();
               } else if (state is SignInEmailNotVerified) {
                 showAppSnackbar(
                   message: 'Você ainda não verificou seu email',

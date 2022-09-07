@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../exports/app_exports.dart';
 
-
 part 'sign_in_user_data_state.dart';
 
 class SignInUserDataCubit extends Cubit<SignInUserDataState>
@@ -33,89 +32,14 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
     return urlImage;
   }
 
-  Future<void> sendUserDataToApi({
-    required UserDataEntity userDataEntity,
-    required bool validate,
-    required String userState,
-  }) async {
-    if (validate) {
-      if (userState != 'Estado') {
-        final urlimage = await _getUserUrlImage();
-        emit(SignInUserDataLoading(userUrlImage: urlimage));
-        final userFirebaseToken = _firebaseAuth.currentUser?.uid;
-        final userLatitude =
-            await getDouble(key: KeysConstants.userLocationLatitude);
-        final userLogintude =
-            await getDouble(key: KeysConstants.userLocationaLogintude);
-        final userFirebasePushToken =
-            await _fireBaseNotifications.getTokenFirebase();
-        final userUrlImage = await getString(key: KeysConstants.userPhotoUrl);
-        await _loginInToApiAndFirebase();
-        final result = await _authUseCase.sendUserData(
-          userDataEntity: UserDataEntity(
-            cep: userDataEntity.cep,
-            city: userDataEntity.city,
-            district: userDataEntity.district,
-            houseNumber: userDataEntity.houseNumber,
-            referencePoint: userDataEntity.referencePoint,
-            street: userDataEntity.street,
-            userFirebasePushToken: userFirebasePushToken,
-            userFirebaseUuid: userFirebaseToken,
-            userLocationLatitude: userLatitude,
-            userLocationLongitude: userLogintude,
-            userName: userDataEntity.userName,
-            userPhotoUrl: userUrlImage,
-            userState: userDataEntity.userState,
-          ),
-        );
-        result.fold(
-          (error) => emit(
-            SignInUserDataError(message: error.message),
-          ),
-          (sucess) async {
-            await saveString(
-                key: KeysConstants.userName, value: sucess.userName ?? '');
-            await saveDouble(
-              key: KeysConstants.userLocationLatitude,
-              value: sucess.userLocationLatitude ?? 0.0,
-            );
-            await saveDouble(
-              key: KeysConstants.userLocationaLogintude,
-              value: sucess.userLocationLongitude ?? 0.0,
-            );
-            await saveString(
-                key: KeysConstants.userPhotoUrl,
-                value: sucess.userPhotoUrl ?? '');
-            final loginApiSucess =
-                await getBool(key: KeysConstants.userPassLoginToApi);
-            final loginFirebaseSucess =
-                await getBool(key: KeysConstants.userPassLoginToFirebase);
-            log('login firebase sucess: $loginFirebaseSucess');
-            log('login api sucess: $loginApiSucess');
-            if (loginApiSucess! || loginFirebaseSucess!) {
-              final urlimage = await _getUserUrlImage();
-              log('SignIn Sucess');
-              await saveBool(
-                  key: KeysConstants.userPassByDataPage, value: true);
-              emit(SignInUserDataSucess(userUrlImage: urlimage));
-            } else {
-              emit(
-                SignInUserDataError(message: 'Erro interno, tente mais tarde'),
-              );
-            }
-          },
-        );
-      } else {
-        emit(SignInUserDataStateNotSelected());
-      }
-    }
-  }
-
-  Future<void> _loginInToApiAndFirebase() async {
-    final userEmail =
-        await _readLocalSecurityStorage.read(key: KeysConstants.userEmail);
-    final userPassword =
-        await _readLocalSecurityStorage.read(key: KeysConstants.userPassword);
+  Future<bool> _loginInToApiAndFirebase() async {
+    var sucessOrFaliure = false;
+    final userEmail = await _readLocalSecurityStorage.read(
+      key: KeysConstants.userEmail,
+    );
+    final userPassword = await _readLocalSecurityStorage.read(
+      key: KeysConstants.userPassword,
+    );
     final userFirebaseToken = await _readLocalSecurityStorage.read(
         key: KeysConstants.userFirebaseToken);
     final result = await _authUseCase.apiLogin(
@@ -125,11 +49,16 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         firebaseUuid: userFirebaseToken,
       ),
     );
-    result.fold(
+    await result.fold(
       (error) async {
-        await saveBool(key: KeysConstants.userPassLoginToApi, value: false);
+        await saveBool(
+          key: KeysConstants.userPassLoginToApi,
+          value: false,
+        );
         emit(
-          SignInUserDataError(message: error.message),
+          SignInUserDataError(
+            message: error.message,
+          ),
         );
       },
       (sucess) async {
@@ -140,13 +69,115 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         log('user data token: ${sucess.token}');
         await saveBool(key: KeysConstants.userPassLoginToApi, value: true);
         final urlimage = await _getUserUrlImage();
-        await _loginInToFirebase(userUrlImage: urlimage);
-        emit(SignInUserDataLoginApiSucess(userUrlImage: urlimage));
+        final firebaseSucess = await _loginInToFirebase(
+          userUrlImage: urlimage,
+        );
+        if (firebaseSucess) {
+          sucessOrFaliure = true;
+          emit(
+            SignInUserDataLoginApiSucess(
+              userUrlImage: urlimage,
+            ),
+          );
+        } else {
+          emit(
+            SignInUserDataError(message: 'Erro interno, tente mais tarde'),
+          );
+        }
       },
     );
+    return sucessOrFaliure;
   }
 
-  Future<void> _loginInToFirebase({required String? userUrlImage}) async {
+  Future<void> sendUserDataToApi({
+    required UserDataEntity userDataEntity,
+    required bool validate,
+    required String userState,
+  }) async {
+    if (validate) {
+      final loginResult = await _loginInToApiAndFirebase();
+      if (userState != 'Estado') {
+        if (loginResult) {
+          final urlimage = await _getUserUrlImage();
+          emit(SignInUserDataLoading(userUrlImage: urlimage));
+          final userFirebaseToken = _firebaseAuth.currentUser?.uid;
+          final userLatitude =
+              await getDouble(key: KeysConstants.userLocationLatitude);
+          final userLogintude =
+              await getDouble(key: KeysConstants.userLocationaLogintude);
+          final userFirebasePushToken =
+              await _fireBaseNotifications.getTokenFirebase();
+          final userUrlImage = await getString(key: KeysConstants.userPhotoUrl);
+
+          final result = await _authUseCase.sendUserData(
+            userDataEntity: UserDataEntity(
+              cep: userDataEntity.cep,
+              city: userDataEntity.city,
+              district: userDataEntity.district,
+              houseNumber: userDataEntity.houseNumber,
+              referencePoint: userDataEntity.referencePoint,
+              street: userDataEntity.street,
+              userFirebasePushToken: userFirebasePushToken,
+              userFirebaseUuid: userFirebaseToken,
+              userLocationLatitude: userLatitude,
+              userLocationLongitude: userLogintude,
+              userName: userDataEntity.userName,
+              userPhotoUrl: userUrlImage,
+              userState: userDataEntity.userState,
+            ),
+          );
+          result.fold(
+            (error) => emit(
+              SignInUserDataError(message: error.message),
+            ),
+            (sucess) async {
+              await saveString(
+                key: KeysConstants.userName,
+                value: sucess.userName?.substring(
+                      0,
+                      sucess.userName?.indexOf(' '),
+                    ) ??
+                    '',
+              );
+              await saveDouble(
+                key: KeysConstants.userLocationLatitude,
+                value: sucess.userLocationLatitude ?? 0.0,
+              );
+              await saveDouble(
+                key: KeysConstants.userLocationaLogintude,
+                value: sucess.userLocationLongitude ?? 0.0,
+              );
+              await saveString(
+                key: KeysConstants.userPhotoUrl,
+                value: sucess.userPhotoUrl ?? '',
+              );
+
+              final urlimage = await _getUserUrlImage();
+              log('SignIn Sucess');
+              await saveBool(
+                key: KeysConstants.userPassByDataPage,
+                value: true,
+              );
+              emit(
+                SignInUserDataSucess(
+                  userUrlImage: urlimage,
+                ),
+              );
+            },
+          );
+        } else {
+          emit(
+            SignInUserDataError(message: 'Erro interno, tente mais tarde'),
+          );
+        }
+      } else {
+        emit(SignInUserDataStateNotSelected());
+      }
+    }
+  }
+
+  Future<bool> _loginInToFirebase({required String? userUrlImage}) async {
+    var sucessOrFaliure = false;
     final userEmail =
         await _readLocalSecurityStorage.read(key: KeysConstants.userEmail);
     final userPassword =
@@ -159,23 +190,37 @@ class SignInUserDataCubit extends Cubit<SignInUserDataState>
         password: userPassword ?? '',
       ),
     );
-    result.fold(
+    await result.fold(
       (error) async {
-        emit(SignInUserDataError(message: error.message));
+        emit(
+          SignInUserDataError(
+            message: error.message,
+          ),
+        );
         await saveBool(
-            key: KeysConstants.userPassLoginToFirebase, value: false);
+          key: KeysConstants.userPassLoginToFirebase,
+          value: false,
+        );
       },
       (sucess) async {
         await saveBool(key: KeysConstants.userPassLoginToFirebase, value: true);
+        sucessOrFaliure = true;
         emit(
-          SignInUserDataLoginFirebaseSucess(userUrlImage: userUrlImage),
+          SignInUserDataLoginFirebaseSucess(
+            userUrlImage: userUrlImage,
+          ),
         );
         log('Passou pelo firebase');
       },
     );
+    return sucessOrFaliure;
   }
 
   void changeStateDropDown({required String? value}) {
-    emit(SignInDropDownChanged(userSelectedState: value));
+    emit(
+      SignInDropDownChanged(
+        userSelectedState: value,
+      ),
+    );
   }
 }

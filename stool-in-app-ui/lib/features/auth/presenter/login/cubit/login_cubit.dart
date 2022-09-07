@@ -55,7 +55,8 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
   }
 
   Future<void> verifyUserEmailOnInit() async {
-    if (_firebaseAuth.currentUser != null) {
+    final currentUser = _firebaseAuth.currentUser;
+    if (currentUser != null) {
       await _firebaseAuth.currentUser?.reload();
       final emailVerified = _firebaseAuth.currentUser?.emailVerified;
       final urlImage = await getUserImageOnInit();
@@ -164,9 +165,11 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
       authEntity: authEntity,
     );
     result.fold(
-      (error) => emit(
-        LoginError(message: error.message, urlImage: userImageUrl),
-      ),
+      (error) async {
+        emit(
+          LoginError(message: error.message, urlImage: userImageUrl),
+        );
+      },
       (sucess) async {
         await _writeLocalSecurityStorage.write(
           key: KeysConstants.userToken,
@@ -175,7 +178,7 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
         final token =
             await _readLocalSecurityStorage.read(key: KeysConstants.userToken);
         log(token ?? 'Token nulo');
-        removeCache(
+        await removeCache(
           key: KeysConstants.userMakePasswordResetSolicitation,
         );
         emit(LoginSucess(urlImage: userImageUrl));

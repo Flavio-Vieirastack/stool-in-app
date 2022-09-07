@@ -60,6 +60,7 @@ class _LoginPageState extends State<LoginPage> with AppSnackBar {
                 );
                 passwordController.clear();
                 emailController.clear();
+                Navigator.of(context).maybePop();
               } else if (state is LoginEnableApiPasswordReset) {
                 showAppSnackbar(
                   message: 'Faça login com sua nova senha',

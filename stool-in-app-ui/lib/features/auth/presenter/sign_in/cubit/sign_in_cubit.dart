@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../exports/app_exports.dart';
 
-
 part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
@@ -39,7 +38,25 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
           SignInStateError(message: error.message),
         ),
         (sucess) async {
-          await sendVerificationEmail(timer: timer);
+          await sendVerificationEmail();
+        },
+      );
+    }
+  }
+
+  Future<void> sendVerificationEmail() async {
+    final emailVerified = _firebaseAuth.currentUser?.emailVerified;
+    if (emailVerified == null || !emailVerified) {
+      final result = await _sendVerificationEmailUsecase.call();
+      result.fold(
+        (error) async {
+          emit(
+            SignInStateSendVerificationEmailError(message: error.message),
+          );
+          await _firebaseAuth.currentUser?.delete();
+        },
+        (sucess) {
+          emit(SignInStateEmailSended());
         },
       );
     }
@@ -72,11 +89,19 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
         value: authEntity.password ?? '',
       );
 
-      await _makeSignInInApi(
+      final sucessSignIn = await _makeSignInInApi(
         userEmail: authEntity.email,
         userPassword: authEntity.password ?? '',
       );
-      emit(SignInStateEmailAccepted());
+      if (sucessSignIn) {
+        emit(SignInStateEmailAccepted());
+      } else {
+        emit(
+          SignInStateError(
+            message: 'Erro ao criar seu usuário, tente mais tarde',
+          ),
+        );
+      }
     } else {
       emit(SignInEmailNotVerified());
       await Future.delayed(
@@ -88,29 +113,11 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     }
   }
 
-  Future<void> sendVerificationEmail({Timer? timer}) async {
-    final emailVerified = _firebaseAuth.currentUser?.emailVerified;
-    if (emailVerified == null || !emailVerified) {
-      final result = await _sendVerificationEmailUsecase.call();
-      result.fold(
-        (error) async {
-          emit(
-            SignInStateSendVerificationEmailError(message: error.message),
-          );
-          await _firebaseAuth.currentUser?.delete();
-          timer?.cancel();
-        },
-        (sucess) {
-          emit(SignInStateEmailSended());
-        },
-      );
-    }
-  }
-
-  Future<void> _makeSignInInApi({
+  Future<bool> _makeSignInInApi({
     required String userEmail,
     required String userPassword,
   }) async {
+    var sucessOrFaliure = false;
     final userUuid = _firebaseAuth.currentUser?.uid;
     final result = await _authUseCase.apiSignIn(
       authEntity: AuthEntity(
@@ -121,17 +128,18 @@ class SignInCubit extends Cubit<SignInState> with SharedPreferencesHelper {
     );
     result.fold(
       (error) async {
-        if (userUuid == null) {
-          await _firebaseAuth.currentUser?.delete();
-        }
+        await _firebaseAuth.currentUser?.delete();
+
         emit(
           SignInStateError(message: error.message),
         );
       },
       (sucess) async {
         await Future.delayed(const Duration(seconds: 3));
+        sucessOrFaliure = true;
         emit(SignInStateSucess());
       },
     );
+    return sucessOrFaliure;
   }
 }
