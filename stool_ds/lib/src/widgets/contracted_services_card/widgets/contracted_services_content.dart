@@ -1,4 +1,5 @@
 part of '../contracted_services_card.dart';
+
 @immutable
 class _ContractedServicesContent extends StatelessWidget {
   final String total;
@@ -87,7 +88,7 @@ class _ContractedServicesContent extends StatelessWidget {
             style: AppTextStyles.headLine4,
             textAlign: TextAlign.justify,
           ),
-          Divider(
+          const Divider(
             color: AppColors.black,
           ),
           RichText(
@@ -114,7 +115,7 @@ class _ContractedServicesContent extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             color: AppColors.black,
           ),
           Center(
@@ -128,7 +129,7 @@ class _ContractedServicesContent extends StatelessWidget {
             style: AppTextStyles.headLine4,
             textAlign: TextAlign.justify,
           ),
-          Divider(
+          const Divider(
             color: AppColors.black,
           ),
           Center(
@@ -142,7 +143,7 @@ class _ContractedServicesContent extends StatelessWidget {
             style: AppTextStyles.headLine4,
             textAlign: TextAlign.justify,
           ),
-          Divider(
+          const Divider(
             color: AppColors.black,
           ),
           Visibility(

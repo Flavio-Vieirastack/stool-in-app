@@ -18,10 +18,10 @@ class _Loading extends StatelessWidget {
                 blurRadius: 5.0,
               )
             ],
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              stops: const [0.0, 1.0],
+              stops:  [0.0, 1.0],
               colors: [
                 AppColors.buttonRightGradientColor,
                 AppColors.buttonLeftGradientColor,

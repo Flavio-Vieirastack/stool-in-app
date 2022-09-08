@@ -65,7 +65,7 @@ class AppComentsCards extends StatelessWidget {
             SizedBox(
               height: 1.h,
             ),
-            Text(
+            const Text(
               'Comentário:',
               style: TextStyle(
                   color: AppColors.buttonLeftGradientColor,

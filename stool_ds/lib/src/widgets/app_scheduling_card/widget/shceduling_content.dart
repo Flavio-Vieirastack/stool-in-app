@@ -1,4 +1,5 @@
 part of '../app_scheduling_card.dart';
+
 @immutable
 class _ShcedulingContent extends StatelessWidget {
   final String userUrlImage;
@@ -18,25 +19,25 @@ class _ShcedulingContent extends StatelessWidget {
   final String userState;
   final VoidCallback cancelOnPressed;
 
-  const _ShcedulingContent({
-    Key? key,
-    required this.userUrlImage,
-    required this.userName,
-    required this.jobDate,
-    required this.jobHour,
-    required this.totalPrice,
-    required this.serviceDescription,
-    required this.userComentary,
-    required this.userComentaryVisible,
-    required this.servicesTodo,
-    required this.street,
-    required this.city,
-    required this.houseNumber,
-    required this.district,
-    required this.referencePoint,
-    required this.cancelOnPressed,
-    required this.userState
-  }) : super(key: key);
+  const _ShcedulingContent(
+      {Key? key,
+      required this.userUrlImage,
+      required this.userName,
+      required this.jobDate,
+      required this.jobHour,
+      required this.totalPrice,
+      required this.serviceDescription,
+      required this.userComentary,
+      required this.userComentaryVisible,
+      required this.servicesTodo,
+      required this.street,
+      required this.city,
+      required this.houseNumber,
+      required this.district,
+      required this.referencePoint,
+      required this.cancelOnPressed,
+      required this.userState})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +102,7 @@ class _ShcedulingContent extends StatelessWidget {
             visible: userComentaryVisible,
             child: Column(
               children: [
-                Divider(
+                const Divider(
                   color: AppColors.black,
                 ),
                 Text(
@@ -118,7 +119,7 @@ class _ShcedulingContent extends StatelessWidget {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             color: AppColors.black,
           ),
           Center(
@@ -134,7 +135,7 @@ class _ShcedulingContent extends StatelessWidget {
             servicesTodo,
             style: AppTextStyles.headLine4,
           ),
-          Divider(
+          const Divider(
             color: AppColors.black,
           ),
           Text(

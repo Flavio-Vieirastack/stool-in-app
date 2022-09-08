@@ -11,8 +11,7 @@ class AppProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircularProgressIndicator.adaptive(
       value: value,
-      valueColor:
-          AlwaysStoppedAnimation<Color>(AppColors.orange),
+      valueColor: const AlwaysStoppedAnimation<Color>(AppColors.orange),
     );
   }
 }

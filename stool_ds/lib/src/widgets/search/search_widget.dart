@@ -3,6 +3,7 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 
 import '../../theme/colors/app_colors.dart';
 import '../../theme/text_styles/app_text_styles.dart';
+
 @immutable
 class SearchWidget extends StatelessWidget {
   final VoidCallback onTap;
@@ -26,7 +27,7 @@ class SearchWidget extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 20.0.dp),
+            padding: EdgeInsets.symmetric(horizontal: 20.0.dp),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -34,7 +35,7 @@ class SearchWidget extends StatelessWidget {
                   'Buscar no aplicativo',
                   style: AppTextStyles.headLine4,
                 ),
-                Icon(
+                const Icon(
                   Icons.search,
                   color: AppColors.white,
                 )

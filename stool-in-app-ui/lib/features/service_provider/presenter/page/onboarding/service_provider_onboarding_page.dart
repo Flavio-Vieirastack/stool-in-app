@@ -53,11 +53,11 @@ class _ServiceProviderOnboardingPageState
             ),
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
-                stops: const [0.0, 1.0],
+                stops:  [0.0, 1.0],
                 colors: [
                   AppColors.black,
                   Colors.transparent,

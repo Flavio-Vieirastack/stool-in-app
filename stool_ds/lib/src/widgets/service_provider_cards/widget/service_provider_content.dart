@@ -1,4 +1,5 @@
 part of '../service_provider_cards.dart';
+
 @immutable
 class _ServiceProviderContent extends StatelessWidget {
   final String userUrlImage;
@@ -71,7 +72,7 @@ class _ServiceProviderContent extends StatelessWidget {
           SizedBox(
             height: 1.h,
           ),
-          Text(
+          const Text(
             'Serviços:',
             style: TextStyle(
               decoration: TextDecoration.underline,
@@ -92,7 +93,7 @@ class _ServiceProviderContent extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: Text(
               'Distância: $userDistance',
-              style: TextStyle(color: AppColors.buttonLeftGradientColor),
+              style: const TextStyle(color: AppColors.buttonLeftGradientColor),
             ),
           ),
           SizedBox(
