@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import '../colors/app_colors.dart';
+
 @immutable
 class AppTextStyles {
   const AppTextStyles._();
@@ -24,23 +25,21 @@ class AppTextStyles {
     fontSize: 20.dp,
   );
   static TextStyle headLine1Gold = TextStyle(
-    color: AppColors.buttonLeftGradientColor,
-    fontWeight: FontWeight.bold,
-    fontFamily: GoogleFonts.exo2().fontFamily,
-    fontSize: 18.dp,
-    decoration: TextDecoration.underline
-  );
+      color: AppColors.buttonLeftGradientColor,
+      fontWeight: FontWeight.bold,
+      fontFamily: GoogleFonts.exo2().fontFamily,
+      fontSize: 18.dp,
+      decoration: TextDecoration.underline);
   static TextStyle headLine2 = TextStyle(
     color: AppColors.white,
     fontFamily: GoogleFonts.exo2().fontFamily,
     fontSize: 18.dp,
   );
   static TextStyle headLine2UnderLine = TextStyle(
-    color: AppColors.white,
-    fontFamily: GoogleFonts.exo2().fontFamily,
-    fontSize: 17.dp,
-    decoration: TextDecoration.underline
-  );
+      color: AppColors.white,
+      fontFamily: GoogleFonts.exo2().fontFamily,
+      fontSize: 17.dp,
+      decoration: TextDecoration.underline);
   static TextStyle headLine3 = TextStyle(
     color: AppColors.white,
     fontFamily: GoogleFonts.openSans().fontFamily,
@@ -80,11 +79,10 @@ class AppTextStyles {
     fontSize: 14.dp,
   );
   static TextStyle headLine4Italic = TextStyle(
-    color: AppColors.white,
-    fontFamily: GoogleFonts.openSans().fontFamily,
-    fontSize: 14.dp,
-    fontStyle: FontStyle.italic
-  );
+      color: AppColors.white,
+      fontFamily: GoogleFonts.openSans().fontFamily,
+      fontSize: 14.dp,
+      fontStyle: FontStyle.italic);
   static TextStyle headLine4Gray = TextStyle(
     color: AppColors.grey,
     fontFamily: GoogleFonts.prata().fontFamily,
@@ -96,9 +94,8 @@ class AppTextStyles {
     fontSize: 11.dp,
   );
   static TextStyle headLine4Gold = TextStyle(
-    color: AppColors.buttonLeftGradientColor,
-    fontFamily: GoogleFonts.openSans().fontFamily,
-    fontSize: 14.dp,
-    decoration: TextDecoration.underline
-  );
+      color: AppColors.buttonLeftGradientColor,
+      fontFamily: GoogleFonts.openSans().fontFamily,
+      fontSize: 14.dp,
+      decoration: TextDecoration.underline);
 }
