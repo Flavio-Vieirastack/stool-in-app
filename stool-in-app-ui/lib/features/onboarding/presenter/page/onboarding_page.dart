@@ -7,6 +7,7 @@ import 'package:stool_in_core/stool_in_core.dart';
 import 'package:stool_in_logic/stool_in_logic.dart';
 
 part './widgets/onboarding_pages.dart';
+@immutable
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
 

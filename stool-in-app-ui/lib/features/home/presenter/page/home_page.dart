@@ -8,7 +8,7 @@ import 'package:stool_in_core/stool_in_core.dart';
 
 part './widgets/home_body.dart';
 part './widgets/coin_widget.dart';
-
+@immutable
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 

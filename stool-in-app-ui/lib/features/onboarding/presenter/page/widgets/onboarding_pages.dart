@@ -1,5 +1,5 @@
 part of '../onboarding_page.dart';
-
+@immutable
 class OnboardingPages extends StatelessWidget {
   final String backgroundImageAsset;
   final String centerText;

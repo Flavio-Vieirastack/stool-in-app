@@ -1,5 +1,5 @@
 part of '../password_reset_page.dart';
-
+@immutable
 class _PasswordResetCard extends StatelessWidget {
   final TextEditingController emailController;
   final VoidCallback sendCallback;

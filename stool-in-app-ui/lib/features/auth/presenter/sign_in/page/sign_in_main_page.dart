@@ -10,14 +10,14 @@ import 'package:validatorless/validatorless.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 
 part './widget/sign_in_card.dart';
-
+@immutable
 class SignInMainPage extends StatefulWidget {
   const SignInMainPage({Key? key}) : super(key: key);
 
   @override
   State<SignInMainPage> createState() => _SignInMainPageState();
 }
-
+@immutable
 class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();

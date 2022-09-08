@@ -8,14 +8,14 @@ import 'package:stool_in_logic/stool_in_logic.dart';
 import 'package:validatorless/validatorless.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 part './widgets/sign_in_data_card.dart';
-
+@immutable
 class SignInMainDataPage extends StatefulWidget {
   const SignInMainDataPage({Key? key}) : super(key: key);
 
   @override
   State<SignInMainDataPage> createState() => _SignInMainDataPageState();
 }
-
+@immutable
 class _SignInMainDataPageState extends State<SignInMainDataPage>
     with AppSnackBar {
   final TextEditingController userNameController = TextEditingController();

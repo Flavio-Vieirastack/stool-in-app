@@ -7,14 +7,14 @@ import 'package:stool_in_logic/stool_in_logic.dart';
 import 'package:validatorless/validatorless.dart';
 
 part './widgets/login_card.dart';
-
+@immutable
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-
+@immutable
 class _LoginPageState extends State<LoginPage> with AppSnackBar {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();

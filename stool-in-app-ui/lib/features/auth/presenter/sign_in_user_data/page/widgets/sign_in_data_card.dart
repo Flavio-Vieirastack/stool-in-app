@@ -1,5 +1,5 @@
 part of '../sign_in_main_data_page.dart';
-
+@immutable
 class _SignInDataCard extends StatelessWidget {
   final TextEditingController userNameController;
   final TextEditingController streetController;

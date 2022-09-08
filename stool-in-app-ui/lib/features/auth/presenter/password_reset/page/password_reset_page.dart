@@ -7,7 +7,7 @@ import 'package:stool_in_logic/stool_in_logic.dart';
 import 'package:validatorless/validatorless.dart';
 
 part './widget/password_reset_card.dart';
-
+@immutable
 class PasswordResetPage extends StatefulWidget {
   const PasswordResetPage({Key? key}) : super(key: key);
 

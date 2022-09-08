@@ -1,5 +1,5 @@
 part of '../home_page.dart';
-
+@immutable
 class _HomeBody extends StatelessWidget {
   const _HomeBody({Key? key}) : super(key: key);
 
