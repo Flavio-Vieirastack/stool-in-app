@@ -4,7 +4,7 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'enum/app_icon_button_type.dart';
 part './icon_button_types.dart/error.dart';
 part './icon_button_types.dart/sucess.dart';
-
+@immutable
 class AppIconButton extends StatelessWidget {
   final AppIconButtonType appIconButtonType;
   final VoidCallback onPressed;

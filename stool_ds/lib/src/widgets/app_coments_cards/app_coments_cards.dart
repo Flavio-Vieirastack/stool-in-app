@@ -7,7 +7,7 @@ import '../../theme/colors/app_colors.dart';
 import '../../theme/text_styles/app_text_styles.dart';
 import '../app_avatar/app_avatar.dart';
 import '../ratting_stars/app_ratting_stars.dart';
-
+@immutable
 class AppComentsCards extends StatelessWidget {
   final String userUrlImage;
   final String userName;

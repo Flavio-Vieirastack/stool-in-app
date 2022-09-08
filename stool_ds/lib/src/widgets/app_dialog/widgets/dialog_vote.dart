@@ -1,5 +1,5 @@
 part of '../app_dialog.dart';
-
+@immutable
 class _DialogVote extends StatefulWidget {
   final VoidCallback yesCallBack;
   final VoidCallback noCallBack;

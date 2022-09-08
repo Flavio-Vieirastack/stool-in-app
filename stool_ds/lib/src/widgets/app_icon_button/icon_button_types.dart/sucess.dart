@@ -1,5 +1,5 @@
 part of '../app_icon_button.dart';
-
+@immutable
 class _Sucess extends StatelessWidget {
   final VoidCallback onPressed;
   const _Sucess({

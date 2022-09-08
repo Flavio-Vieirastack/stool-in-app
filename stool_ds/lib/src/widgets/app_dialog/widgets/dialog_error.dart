@@ -1,5 +1,5 @@
 part of '../app_dialog.dart';
-
+@immutable
 class _DialogError {
   Widget error({required String message}) {
     return Column(

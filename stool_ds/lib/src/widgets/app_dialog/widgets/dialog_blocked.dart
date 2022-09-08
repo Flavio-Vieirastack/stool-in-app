@@ -1,4 +1,5 @@
 part of '../app_dialog.dart';
+@immutable
 class _DialogBlocked {
   Widget blocked({required String message}) {
     return  Column(

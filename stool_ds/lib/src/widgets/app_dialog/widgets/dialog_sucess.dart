@@ -1,5 +1,5 @@
 part of '../app_dialog.dart';
-
+@immutable
 class _DialogSucess {
   Widget sucess({required String message}) {
     return Column(

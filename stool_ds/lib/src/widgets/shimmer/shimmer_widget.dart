@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+@immutable
 class ShimmerWidget extends StatefulWidget {
   final double height;
   final double width;

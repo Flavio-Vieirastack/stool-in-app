@@ -17,7 +17,7 @@ part './widgets/dialog_no_connection.dart';
 part './widgets/dialog_sucess.dart';
 part './widgets/dialog_vote.dart';
 part './widgets/dialog_waiting.dart';
-
+@immutable
 class AppDialog extends Dialog {
   final DialogTypes dialogTypes;
   final VoidCallback? yesCallBack;

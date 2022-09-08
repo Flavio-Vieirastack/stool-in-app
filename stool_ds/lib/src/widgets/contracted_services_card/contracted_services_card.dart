@@ -7,7 +7,7 @@ import '../../theme/text_styles/app_text_styles.dart';
 import '../app_avatar/app_avatar.dart';
 import '../app_progress_indicator/app_progress_indicator.dart';
 part './widgets/contracted_services_content.dart';
-
+@immutable
 class ContractedServicesCard extends StatelessWidget {
   final String total;
   final String status;

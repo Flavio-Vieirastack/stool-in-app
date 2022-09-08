@@ -1,5 +1,5 @@
 part of '../app_icon_button.dart';
-
+@immutable
 class _Error extends StatelessWidget {
   final VoidCallback onPressed;
   const _Error({

@@ -24,7 +24,7 @@ IconData getSnackBarIcon(SnackBarType type) {
       return Icons.error;
   }
 }
-
+@immutable
 mixin AppSnackBar {
   showAppSnackbar({
     required String message,

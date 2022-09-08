@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import '../colors/app_colors.dart';
-
+@immutable
 class AppTextStyles {
-  AppTextStyles._();
+  const AppTextStyles._();
   static TextStyle headLine0 = TextStyle(
     color: AppColors.white,
     fontWeight: FontWeight.bold,

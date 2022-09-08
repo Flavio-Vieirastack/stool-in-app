@@ -7,7 +7,7 @@ enum DialogButtonType {
   yes,
   no,
 }
-
+@immutable
 class DialogButton extends StatelessWidget {
   final VoidCallback onPressed;
   final DialogButtonType dialogButtonType;

@@ -1,5 +1,5 @@
 part of '../service_provider_cards.dart';
-
+@immutable
 class _ServiceProviderContent extends StatelessWidget {
   final String userUrlImage;
   final String userName;

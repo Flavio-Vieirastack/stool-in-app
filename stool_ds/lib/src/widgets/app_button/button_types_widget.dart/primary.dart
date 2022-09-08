@@ -1,5 +1,5 @@
 part of '../app_button.dart';
-
+@immutable
 class _Primary extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressed;

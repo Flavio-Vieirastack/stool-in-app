@@ -1,5 +1,5 @@
 part of '../contracted_services_card.dart';
-
+@immutable
 class _ContractedServicesContent extends StatelessWidget {
   final String total;
   final String status;

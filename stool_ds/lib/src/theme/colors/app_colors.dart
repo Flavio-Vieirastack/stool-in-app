@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+@immutable
 class AppColors {
-  AppColors._();
+  const AppColors._();
   static Color buttonRightGradientColor = const Color(0xfffcaf24);
   static Color buttonLeftGradientColor = const Color(0xfffcdd80);
   static Color textFormFieldBackgroundColor = const Color(0xff424242);

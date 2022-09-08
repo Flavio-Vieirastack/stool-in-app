@@ -4,7 +4,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../theme/colors/app_colors.dart';
 import '../../theme/text_styles/app_text_styles.dart';
-
+@immutable
 class AppMenuButton extends StatelessWidget {
   final String buttonName;
   final IconData? icon;

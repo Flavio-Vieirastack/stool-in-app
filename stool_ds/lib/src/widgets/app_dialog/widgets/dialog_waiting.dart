@@ -1,5 +1,5 @@
 part of '../app_dialog.dart';
-
+@immutable
 class _DialogWaiting {
   Widget waiting({
     required String message,

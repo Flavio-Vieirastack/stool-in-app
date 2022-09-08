@@ -9,7 +9,7 @@ part './button_types_widget.dart/disabled.dart';
 part './button_types_widget.dart/loading.dart';
 part './button_types_widget.dart/primary.dart';
 part './button_types_widget.dart/secondary.dart';
-
+@immutable
 class AppButton extends StatelessWidget {
   final ButtonTypes buttonTypes;
   final String buttonText;

@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../theme/colors/app_colors.dart';
 import '../../theme/text_styles/app_text_styles.dart';
-
+@immutable
 class AppCategoryCard extends StatelessWidget {
   const AppCategoryCard({Key? key}) : super(key: key);
 

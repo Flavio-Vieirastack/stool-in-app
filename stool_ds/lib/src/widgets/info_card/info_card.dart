@@ -3,7 +3,7 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 
 import '../../theme/colors/app_colors.dart';
 import '../../theme/text_styles/app_text_styles.dart';
-
+@immutable
 class InfoCard extends StatelessWidget {
   final VoidCallback onPressed;
   final String cardTitle;

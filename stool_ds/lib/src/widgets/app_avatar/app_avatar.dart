@@ -4,7 +4,7 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 
 import '../../theme/colors/app_colors.dart';
 import '../app_progress_indicator/app_progress_indicator.dart';
-
+@immutable
 class AppAvatar extends StatelessWidget {
   final String? urlImage;
   final double size;

@@ -7,7 +7,7 @@ import '../app_avatar/app_avatar.dart';
 import '../dialog_button/dialog_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 part './widget/shceduling_content.dart';
-
+@immutable
 class AppSchedulingCard extends StatelessWidget {
   final String userUrlImage;
   final String userName;

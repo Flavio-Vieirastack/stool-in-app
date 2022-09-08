@@ -1,5 +1,5 @@
 part of '../app_button.dart';
-
+@immutable
 class _Disabled extends StatelessWidget {
   final String buttonText;
   const _Disabled({

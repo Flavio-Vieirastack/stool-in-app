@@ -1,5 +1,5 @@
 part of '../app_dialog.dart';
-
+@immutable
 class _DialogInfo {
   Widget info({
     required VoidCallback yesOnPressed,

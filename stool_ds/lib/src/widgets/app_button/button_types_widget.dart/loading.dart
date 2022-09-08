@@ -1,5 +1,5 @@
 part of '../app_button.dart';
-
+@immutable
 class _Loading extends StatelessWidget {
   const _Loading({Key? key}) : super(key: key);
 

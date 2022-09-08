@@ -1,5 +1,5 @@
 part of '../app_dialog.dart';
-
+@immutable
 class _DialogNoConnection {
   Widget noConnection({required BuildContext context}) {
     return Column(

@@ -1,5 +1,5 @@
 part of '../app_scheduling_card.dart';
-
+@immutable
 class _ShcedulingContent extends StatelessWidget {
   final String userUrlImage;
   final String userName;
