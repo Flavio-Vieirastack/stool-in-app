@@ -15,7 +15,6 @@ class SignInMainDataPage extends StatefulWidget {
   @override
   State<SignInMainDataPage> createState() => _SignInMainDataPageState();
 }
-@immutable
 class _SignInMainDataPageState extends State<SignInMainDataPage>
     with AppSnackBar {
   final TextEditingController userNameController = TextEditingController();

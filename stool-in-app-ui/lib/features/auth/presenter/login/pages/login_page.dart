@@ -14,7 +14,6 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-@immutable
 class _LoginPageState extends State<LoginPage> with AppSnackBar {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();

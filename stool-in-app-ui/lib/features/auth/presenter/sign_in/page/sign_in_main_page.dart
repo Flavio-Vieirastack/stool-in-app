@@ -17,7 +17,6 @@ class SignInMainPage extends StatefulWidget {
   @override
   State<SignInMainPage> createState() => _SignInMainPageState();
 }
-@immutable
 class _SignInMainPageState extends State<SignInMainPage> with AppSnackBar {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();

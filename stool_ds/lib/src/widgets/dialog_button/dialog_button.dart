@@ -24,7 +24,7 @@ class DialogButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: dialogButtonType == DialogButtonType.yes
+        backgroundColor: dialogButtonType == DialogButtonType.yes
             ? Colors.green
             : Colors.red,
         shape: RoundedRectangleBorder(
