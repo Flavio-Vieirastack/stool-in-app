@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_core/stool_in_core.dart';
 import 'package:stool_in_logic/src/features/auth/domain/entity/auth_entity.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../domain/usecase/auth/auth_use_case.dart';
 import '../../sign_in/cubit/sign_in_cubit.dart';
@@ -207,5 +208,18 @@ class LoginCubit extends Cubit<LoginState> with SharedPreferencesHelper {
       await Future.delayed(const Duration(seconds: 1));
       emit(LoginInitial(urlImage: userImageUrl));
     }
+  }
+
+  Future<void> launchEmailSubmission() async {
+    final Uri params = Uri(
+        scheme: 'mailto',
+        path: 'myOwnEmailAddress@gmail.com', // TODO adicionar email aqui
+        queryParameters: {
+          'subject': 'Preciso de ajuda',
+          'body': 'Olá, bom dia! Estou com um problema para...'
+        });
+    Uri url = params;
+
+    await launchUrl(url);
   }
 }
