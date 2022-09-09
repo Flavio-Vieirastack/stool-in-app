@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_ds/stool_ds.dart';
+
 @immutable
 class ShimmerWidget extends StatefulWidget {
   final double height;
@@ -25,9 +28,11 @@ class _ShimmerWidgetState extends State<ShimmerWidget>
     controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
+    )..repeat(reverse: true);
+    animation = CurvedAnimation(
+      parent: controller,
+      curve: Curves.easeInOut,
     );
-    animation = Tween<double>(begin: 0.2, end: 1.0).animate(controller);
-    controller.forward();
   }
 
   @override
@@ -44,12 +49,14 @@ class _ShimmerWidgetState extends State<ShimmerWidget>
         height: widget.height,
         width: widget.width,
         decoration: BoxDecoration(
-          color: Colors.grey,
+          color: AppColors.white,
           borderRadius: widget.radius != null
               ? BorderRadius.all(
                   Radius.circular(widget.radius!),
                 )
-              : null,
+              :  BorderRadius.all(
+                  Radius.circular(20.dp),
+                ),
         ),
       ),
     );

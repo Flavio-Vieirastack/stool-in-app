@@ -7,116 +7,131 @@ class HomeShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var shimmerWidget = ShimmerWidget(
-      height: 4.h,
-      width: 2.h,
+    final shimmerWidget = Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ShimmerWidget(
+        height: 25.h,
+        width: 18.h,
+      ),
     );
     return Scaffold(
-      body: ListView(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(18.0.dp),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    ShimmerWidget(
-                      height: 2.h,
-                      width: 2.h,
-                      radius: 50.dp,
+      body: IgnorePointer(
+        ignoring: true,
+        child: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(8.0.dp),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      ShimmerWidget(
+                        height: 6.h,
+                        width: 6.h,
+                        radius: 50.dp,
+                      ),
+                      SizedBox(
+                        width: 1.w,
+                      ),
+                      ShimmerWidget(
+                        height: 3.h,
+                        width: 20.w,
+                      ),
+                      SizedBox(
+                        width: 25.w,
+                      ),
+                      ShimmerWidget(
+                        height: 3.h,
+                        width: 20.w,
+                      ),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      ShimmerWidget(
+                        height: 4.h,
+                        width: 4.h,
+                        radius: 50.dp,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  Center(
+                    child: ShimmerWidget(
+                      height: 5.h,
+                      width: Adaptive.w(90),
                     ),
-                    SizedBox(
-                      width: 1.w,
-                    ),
-                    ShimmerWidget(
-                      height: 2.h,
-                      width: 4.h,
-                    ),
-                    SizedBox(
-                      width: 1.w,
-                    ),
-                    ShimmerWidget(
-                      height: 2.h,
-                      width: 4.h,
-                    ),
-                    SizedBox(
-                      width: 1.w,
-                    ),
-                    ShimmerWidget(
-                      height: 2.h,
-                      width: 2.h,
-                      radius: 50.dp,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 2.h,
-                ),
-                Center(
-                  child: ShimmerWidget(
+                  ),
+                  SizedBox(
                     height: 2.h,
-                    radius: 20.dp,
+                  ),
+                  Center(
+                    child: ShimmerWidget(
+                      height: 5.h,
+                      radius: 20.dp,
+                      width: Adaptive.w(90),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ShimmerWidget(
+                        height: 3.h,
+                        width: 30.w,
+                      ),
+                      ShimmerWidget(
+                        height: 3.h,
+                        width: 25.w,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  SizedBox(
+                    height: 25.h,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        shimmerWidget,
+                        shimmerWidget,
+                        shimmerWidget,
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: ShimmerWidget(
+                      height: 4.h,
+                      width: 40.w,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  ShimmerWidget(
+                    height: 20.h,
                     width: Adaptive.w(90),
                   ),
-                ),
-                SizedBox(
-                  height: 2.h,
-                ),
-                Center(
-                  child: ShimmerWidget(
+                  SizedBox(
                     height: 2.h,
-                    radius: 20.dp,
+                  ),
+                  ShimmerWidget(
+                    height: 20.h,
                     width: Adaptive.w(90),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ShimmerWidget(
-                      height: 1.h,
-                      width: 1.w,
-                    ),
-                    ShimmerWidget(
-                      height: 1.h,
-                      width: 1.w,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 1.h,
-                ),
-                Row(
-                  children: [
-                    shimmerWidget,
-                    shimmerWidget,
-                    shimmerWidget,
-                  ],
-                ),
-                SizedBox(
-                  height: 1.h,
-                ),
-                ShimmerWidget(
-                  height: 1.h,
-                  width: 2.w,
-                ),
-                SizedBox(
-                  height: 1.h,
-                ),
-                ShimmerWidget(
-                  height: 5.h,
-                  width: Adaptive.w(90),
-                ),
-                SizedBox(
-                  height: 1.h,
-                ),
-                ShimmerWidget(
-                  height: 5.h,
-                  width: Adaptive.w(90),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
