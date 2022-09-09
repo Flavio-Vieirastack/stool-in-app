@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stool_in_core/stool_in_core.dart';
@@ -82,6 +84,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
         userLatitude != currentPosition.latitude ||
         userLongitude == null ||
         userLongitude != currentPosition.longitude) {
+      log('Update userLocation');
       await saveDouble(
         key: KeysConstants.userLocationLatitude,
         value: currentPosition.latitude,
@@ -90,11 +93,15 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
         key: KeysConstants.userLocationaLogintude,
         value: currentPosition.longitude,
       );
-      await _userDataUniqueUsecase.updateUserData(
+      final result = await _userDataUniqueUsecase.updateUserData(
         userDataEntity: UserDataEntity(
           userLocationLatitude: currentPosition.latitude,
           userLocationLongitude: currentPosition.longitude,
         ),
+      );
+      result.fold(
+        (erro) => emit(HomeError(message: erro.message)),
+        (sucess) => null,
       );
     }
   }
@@ -116,20 +123,29 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
       final longitude =
           await getDouble(key: KeysConstants.userLocationaLogintude);
       final result = await _userDataUniqueUsecase.getUserDataUnique(
-        userDataUniqueLocation:
-            UserDataUniqueLocation(latitude: latitude!, longitude: longitude!),
+        userDataUniqueLocation: UserDataUniqueLocation(
+          latitude: latitude!,
+          longitude: longitude!,
+        ),
       );
       result.fold(
-        (error) => null,
+        (error) => emit(
+          HomeError(
+            message: error.message,
+          ),
+        ),
         (sucess) async {
-          await saveString(
-            key: KeysConstants.userName,
-            value: sucess.userName ?? '',
-          );
-          await saveString(
-            key: KeysConstants.userPhotoUrl,
-            value: sucess.userPhotoUrl ?? '',
-          );
+          if (sucess.userName != null) {
+            await saveString(
+              key: KeysConstants.userName,
+              value: sucess.userName ?? '',
+            );
+            await saveString(
+              key: KeysConstants.userPhotoUrl,
+              value: sucess.userPhotoUrl ?? '',
+            );
+            log('UserName and photo url updated');
+          }
         },
       );
     }
@@ -144,13 +160,14 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
       ),
     );
     result.fold(
-      (error) async {
-        noDataState();
-        await delay();
-        goToDataPageState();
-      },
+      (error) => emit(
+        HomeError(
+          message: error.message,
+        ),
+      ),
       (sucess) async {
         if (sucess.city?.isEmpty ?? false) {
+          log('Must add user data');
           noDataState();
           await delay();
           goToDataPageState();

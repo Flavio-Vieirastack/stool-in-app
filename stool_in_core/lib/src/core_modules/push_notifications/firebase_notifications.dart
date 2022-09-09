@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -69,6 +70,7 @@ class FireBaseNotifications {
     required Function(String) updateToken,
   }) async {
     FirebaseMessaging.instance.onTokenRefresh.listen((token) async {
+      log('Token refreshed');
       await updateToken.call(token);
     });
   }
