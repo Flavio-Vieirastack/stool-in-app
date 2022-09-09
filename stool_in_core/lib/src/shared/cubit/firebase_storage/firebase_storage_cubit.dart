@@ -31,20 +31,8 @@ class FirebaseStorageCubit extends Cubit<FirebaseStorageState>
   }) async {
     emit(FirebaseStorageLoading());
     File file = File(path);
-    // TODO retirar quando estiver testado
-    // try {
-    //   String ref = await _userStorageRef.getRef();
-    //   final result =
-    //       await _firebaseStorage.ref(ref).putFile(file);
-    //   final urlImage = await result.ref.getDownloadURL();
-    //   log(urlImage);
-    //   saveString(key: KeysConstants.userPhotoUrl, value: urlImage);
-    //   emit(FirebaseStorageSucess(userUrlImage: urlImage));
-    // } catch (e, s) {
-    //   log('Erro ao fazer upload para o firebase', error: e, stackTrace: s);
-    //   emit(FirebaseStorageError());
-    // }
-   await TryCatchHelper.makeRequest(
+
+    await TryCatchHelper.makeRequest(
       function: () async {
         String ref = await _userStorageRef.getRef();
         final result = await _firebaseStorage.ref(ref).putFile(file);

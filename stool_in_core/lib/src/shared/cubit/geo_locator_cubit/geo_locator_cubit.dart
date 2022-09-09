@@ -25,15 +25,7 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
   }
 
   Future<bool> requestUserPermition() async {
-    // TODO retirar quando estiver testado
-    // try {
-    //   await requestPermition();
-    //   emit(GeoLocatorSucess());
-    //   return true;
-    // } catch (e) {
-    //   await _emitErrorStates();
-    //   return false;
-    // }
+   
     final result = await TryCatchHelper.makeRequest(
       function: () async {
         await requestPermition();
