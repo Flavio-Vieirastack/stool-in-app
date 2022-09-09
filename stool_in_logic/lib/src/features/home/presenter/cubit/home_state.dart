@@ -26,3 +26,6 @@ class HomeSucess extends HomeState {
   @override
   List<Object?> get props => [serviceProvider, categories];
 }
+
+class HomeStateGoToDataPage extends HomeState {}
+class HomeStateNoData extends HomeState {}

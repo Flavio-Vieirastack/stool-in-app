@@ -4,7 +4,6 @@ import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../page/home_page.dart';
 
-
 class HomeModule extends AppModule {
   HomeModule()
       : super(
@@ -58,6 +57,11 @@ class HomeModule extends AppModule {
             ),
             Provider<HomeCubit>(
               create: (context) => HomeCubit(
+                fireBaseNotifications:
+                    Inject<FireBaseNotifications>(context).get(),
+                userDataUniqueUsecase:
+                    Inject<UserDataUniqueUsecase>(context).get(),
+                geoLocatorCubit: Inject<GeoLocatorCubit>(context).get(),
                 categoriesUsecase: Inject<CategoriesUsecase>(context).get(),
                 serviceProviderUsecase:
                     Inject<GetServiceProviderUsecase>(context).get(),

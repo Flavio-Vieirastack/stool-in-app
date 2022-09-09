@@ -14,12 +14,16 @@ class PickImageHelper {
   }) : _imagePicker = imagePicker;
   Future<XFile?> getImage({required ImageFrom imageFrom}) async {
     if (imageFrom == ImageFrom.camera) {
-      final XFile? image =
-          await _imagePicker.pickImage(source: ImageSource.camera);
+      final XFile? image = await _imagePicker.pickImage(
+        source: ImageSource.camera,
+        imageQuality: 50,
+      );
       return image;
     } else {
-      final XFile? image =
-          await _imagePicker.pickImage(source: ImageSource.gallery);
+      final XFile? image = await _imagePicker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 50,
+      );
       log(image?.path ?? 'Sem imagem');
       return image;
     }

@@ -6,9 +6,10 @@ import '../../entity/user_data_unique_location.dart';
 import '../../error/update_user_data_error.dart';
 import '../../error/user_data_unique_error.dart';
 
-
 abstract class UserDataUniqueUsecase {
-  Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique({required UserDataUniqueLocation userDataUniqueLocation});
+  Future<Either<UserDataUniqueError, UserDataUniqueEntity>> getUserDataUnique({
+    required UserDataUniqueLocation userDataUniqueLocation,
+  });
   Future<Either<UpdateUserDataError, void>> updateUserData({
     required UserDataEntity userDataEntity,
   });

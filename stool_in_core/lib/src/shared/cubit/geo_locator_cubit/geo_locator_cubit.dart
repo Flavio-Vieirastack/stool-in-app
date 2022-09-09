@@ -8,9 +8,6 @@ import '../../../constants/keys_constants.dart';
 import '../../../helpers/shared_preferences/shared_preferences_helper.dart';
 import '../../../helpers/try_catch_helper.dart/try_catch_helper.dart';
 
-
-
-
 part 'geo_locator_state.dart';
 
 class GeoLocatorCubit extends Cubit<GeoLocatorState>
@@ -25,7 +22,6 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
   }
 
   Future<bool> requestUserPermition() async {
-   
     final result = await TryCatchHelper.makeRequest(
       function: () async {
         await requestPermition();
@@ -55,6 +51,13 @@ class GeoLocatorCubit extends Cubit<GeoLocatorState>
     } else {
       emit(GeoLocatorSucess());
     }
+  }
+
+  Future<Position> getCurrentPosition() async {
+    final position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    return position;
   }
 
   Future<void> _saveCurrentPositionInCache() async {
