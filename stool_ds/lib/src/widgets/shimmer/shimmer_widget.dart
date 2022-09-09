@@ -49,7 +49,7 @@ class _ShimmerWidgetState extends State<ShimmerWidget>
         height: widget.height,
         width: widget.width,
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: AppColors.grey,
           borderRadius: widget.radius != null
               ? BorderRadius.all(
                   Radius.circular(widget.radius!),
