@@ -25,3 +25,5 @@ export 'package:stool_ds/src/widgets/app_dialog/enum/dailog_types.dart';
 export 'package:stool_ds/src/widgets/app_dialog/app_dialog.dart';
 export 'package:stool_ds/src/widgets/app_avatar/app_avatar.dart';
 export 'package:stool_ds/src/widgets/shimmer/shimmer_widget.dart';
+export 'package:stool_ds/src/shimmers/home/home_shimmer.dart';
+export 'package:stool_ds/src/error_page/app_error_page.dart';
