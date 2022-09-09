@@ -14,6 +14,9 @@ class HomeShimmer extends StatelessWidget {
         width: 18.h,
       ),
     );
+    final sizedBox = SizedBox(
+      height: 2.h,
+    );
     return Scaffold(
       body: IgnorePointer(
         ignoring: true,
@@ -30,9 +33,7 @@ class HomeShimmer extends StatelessWidget {
                         width: 6.h,
                         radius: 50.dp,
                       ),
-                      SizedBox(
-                        width: 1.w,
-                      ),
+                      sizedBox,
                       ShimmerWidget(
                         height: 3.h,
                         width: 20.w,
@@ -54,18 +55,14 @@ class HomeShimmer extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 4.h,
-                  ),
+                  sizedBox,
                   Center(
                     child: ShimmerWidget(
                       height: 5.h,
                       width: Adaptive.w(90),
                     ),
                   ),
-                  SizedBox(
-                    height: 2.h,
-                  ),
+                  sizedBox,
                   Center(
                     child: ShimmerWidget(
                       height: 5.h,
@@ -73,9 +70,7 @@ class HomeShimmer extends StatelessWidget {
                       width: Adaptive.w(90),
                     ),
                   ),
-                  SizedBox(
-                    height: 2.h,
-                  ),
+                  sizedBox,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -103,9 +98,7 @@ class HomeShimmer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 2.h,
-                  ),
+                  sizedBox,
                   Align(
                     alignment: Alignment.centerLeft,
                     child: ShimmerWidget(
@@ -113,16 +106,12 @@ class HomeShimmer extends StatelessWidget {
                       width: 40.w,
                     ),
                   ),
-                  SizedBox(
-                    height: 2.h,
-                  ),
+                  sizedBox,
                   ShimmerWidget(
                     height: 20.h,
                     width: Adaptive.w(90),
                   ),
-                  SizedBox(
-                    height: 2.h,
-                  ),
+                  sizedBox,
                   ShimmerWidget(
                     height: 20.h,
                     width: Adaptive.w(90),
