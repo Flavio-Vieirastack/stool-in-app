@@ -26,7 +26,7 @@ class _ShimmerWidgetState extends State<ShimmerWidget>
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-    animation = Tween<double>(begin: 0.0, end: 1.0).animate(controller);
+    animation = Tween<double>(begin: 0.2, end: 1.0).animate(controller);
     controller.forward();
   }
 
