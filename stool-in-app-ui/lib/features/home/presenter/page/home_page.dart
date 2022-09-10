@@ -87,29 +87,11 @@ class _HomePageState extends State<HomePage>
                           ),
                         ),
                         const Spacer(),
-                        Visibility(
-                          visible: state.userUniqueEntity!
-                                  .serViceProviders[uniqueIndex].coins! >
-                              0,
-                          child: Row(
-                            children: [
-                              LottieBuilder.asset(
-                                LottieConstants.lottieCoin,
-                                width: 35.dp,
-                              ),
-                              _coin(
-                                onTap: () {},
-                                coins: state.userUniqueEntity!
-                                    .serViceProviders[uniqueIndex].coins
-                                    .toString(),
-                              )
-                            ],
-                          ),
-                        ),
+                        
                         Visibility(
                           visible: state.userUniqueEntity!
                                   .serViceProviders[uniqueIndex].status ==
-                              ServiceStatus.active.status,
+                              ServiceStatus.active.status && state.userUniqueEntity!.serViceProviders[uniqueIndex].coins == 0,
                           child: Column(
                             children: [
                               LottieBuilder.asset(

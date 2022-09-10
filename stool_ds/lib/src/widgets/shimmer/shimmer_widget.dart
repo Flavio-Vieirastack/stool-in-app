@@ -19,7 +19,7 @@ class ShimmerWidget extends StatefulWidget {
 }
 
 class _ShimmerWidgetState extends State<ShimmerWidget>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late final AnimationController controller;
   late final Animation<double> animation;
   @override
@@ -37,8 +37,8 @@ class _ShimmerWidgetState extends State<ShimmerWidget>
 
   @override
   void dispose() {
-    super.dispose();
     controller.dispose();
+    super.dispose();
   }
 
   @override

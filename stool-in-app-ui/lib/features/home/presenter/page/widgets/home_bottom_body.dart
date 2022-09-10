@@ -70,7 +70,7 @@ class HomeBottomBody extends StatelessWidget {
             const uniqueIndex = 0;
             return ServiceProviderCards(
               serviceProviderCardsParams: ServiceProviderCardsParams(
-                userDistance: serviceProvider.distance.toString(),
+                userDistance: serviceProvider.distanceFormat(),
                 userName: serviceProvider.userData[uniqueIndex].userName ?? '',
                 userServicesExecuted: 'serviceProvider.executionServices',
                 userUrlImage:
