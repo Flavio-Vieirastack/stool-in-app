@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -32,7 +34,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    final uniqueIndex = 0;
+    const uniqueIndex = 0;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(

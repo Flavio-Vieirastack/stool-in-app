@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import '../../domain/entity/services_contracted_entity.dart';
 
-
 class ServicesContractedModel extends ServicesContractedEntity {
   ServicesContractedModel({
     required super.id,
@@ -92,8 +91,10 @@ class ServicesContractedModel extends ServicesContractedEntity {
     return ServicesContractedModel(
       id: map['id']?.toInt() ?? 0,
       serviceDescription: map['serviceDescription'] ?? '',
-      serviceDate: DateTime.parse(map['serviceDate'] ?? ''),
-      serviceHour: DateTime.parse(map['serviceHour'] ?? ''),
+      serviceDate:
+          DateTime.parse(map['serviceDate'] ?? DateTime.now().toString()),
+      serviceHour:
+          DateTime.parse(map['serviceHour'] ?? DateTime.now().toString()),
       userComent: map['userComent'] ?? '',
       status: map['status'] ?? '',
       userName: map['userName'] ?? '',
