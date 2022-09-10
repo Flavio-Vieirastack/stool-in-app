@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:stool_ds/src/widgets/service_provider_cards/params/service_provider_cards_params.dart';
 import 'package:stool_in_core/stool_in_core.dart';
 import '../../theme/colors/app_colors.dart';
 import '../../theme/text_styles/app_text_styles.dart';
@@ -11,30 +12,16 @@ part './widget/service_provider_content.dart';
 
 @immutable
 class ServiceProviderCards extends StatelessWidget {
-  final String userUrlImage;
-  final String userName;
-  final double userVotes;
-  final String userServicesExecuted;
-  final String userDistance;
-  final VoidCallback onPressed;
-  final VoidCallback agendOnTap;
-  final Widget image;
+  final ServiceProviderCardsParams serviceProviderCardsParams;
   const ServiceProviderCards({
     Key? key,
-    required this.userDistance,
-    required this.agendOnTap,
-    required this.userName,
-    required this.userServicesExecuted,
-    required this.userUrlImage,
-    required this.userVotes,
-    required this.onPressed,
-    required this.image,
+    required this.serviceProviderCardsParams,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: serviceProviderCardsParams.cardOnTap,
       child: Padding(
         padding: EdgeInsets.all(8.0.dp),
         child: Container(
@@ -54,13 +41,7 @@ class ServiceProviderCards extends StatelessWidget {
             ),
           ),
           child: _ServiceProviderContent(
-            image: image,
-            userDistance: userDistance,
-            agendOnTap: agendOnTap,
-            userName: userName,
-            userServicesExecuted: userServicesExecuted,
-            userUrlImage: userUrlImage,
-            userVotes: userVotes,
+            serviceProviderCardsParams: serviceProviderCardsParams,
           ),
         ),
       ),

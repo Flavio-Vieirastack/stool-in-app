@@ -27,3 +27,4 @@ export 'package:stool_ds/src/widgets/app_avatar/app_avatar.dart';
 export 'package:stool_ds/src/widgets/shimmer/shimmer_widget.dart';
 export 'package:stool_ds/src/shimmers/home/home_shimmer.dart';
 export 'package:stool_ds/src/error_page/app_error_page.dart';
+export 'package:stool_ds/src/widgets/service_provider_cards/params/service_provider_cards_params.dart';

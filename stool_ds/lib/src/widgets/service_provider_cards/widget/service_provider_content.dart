@@ -2,22 +2,10 @@ part of '../service_provider_cards.dart';
 
 @immutable
 class _ServiceProviderContent extends StatelessWidget {
-  final String userUrlImage;
-  final String userName;
-  final double userVotes;
-  final String userServicesExecuted;
-  final String userDistance;
-  final VoidCallback agendOnTap;
-  final Widget image;
+  final ServiceProviderCardsParams serviceProviderCardsParams;
   const _ServiceProviderContent({
     Key? key,
-    required this.userUrlImage,
-    required this.agendOnTap,
-    required this.userName,
-    required this.userVotes,
-    required this.userServicesExecuted,
-    required this.userDistance,
-    required this.image,
+   required this.serviceProviderCardsParams,
   }) : super(key: key);
 
   @override
@@ -32,13 +20,13 @@ class _ServiceProviderContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               AppAvatar(
-                urlImage: userUrlImage,
+                urlImage: serviceProviderCardsParams.userUrlImage,
               ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(5.0.dp),
                   child: AutoSizeText(
-                    userName,
+                    serviceProviderCardsParams.userName,
                     maxLines: 1,
                     maxFontSize: 16,
                     minFontSize: 15,
@@ -48,7 +36,7 @@ class _ServiceProviderContent extends StatelessWidget {
                 ),
               ),
               AppRattingStars(
-                value: userVotes,
+                value: serviceProviderCardsParams.userVotes,
                 size: 10.dp,
                 onValueChanged: (value) {},
               ),
@@ -56,7 +44,7 @@ class _ServiceProviderContent extends StatelessWidget {
                 width: 1.w,
               ),
               Visibility(
-                visible: userVotes >= 4,
+                visible: serviceProviderCardsParams.userVotes >= 4,
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Column(
@@ -82,7 +70,7 @@ class _ServiceProviderContent extends StatelessWidget {
             ),
           ),
           AutoSizeText(
-            userServicesExecuted,
+            serviceProviderCardsParams.userServicesExecuted,
             textAlign: TextAlign.left,
             maxFontSize: 15,
             minFontSize: 14,
@@ -92,17 +80,17 @@ class _ServiceProviderContent extends StatelessWidget {
             height: 1.h,
           ),
           Text(
-            'Distância: $userDistance',
+            'Distância: ${serviceProviderCardsParams.userDistance}',
             style: const TextStyle(color: AppColors.buttonLeftGradientColor),
           ),
           SizedBox(
             height: 1.h,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: serviceProviderCardsParams.agendOnTap,
             child: Align(
               alignment: Alignment.centerRight,
-              child: image,
+              child: serviceProviderCardsParams.image,
             ),
           )
         ],
