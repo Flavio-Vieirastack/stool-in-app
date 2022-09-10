@@ -25,9 +25,8 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      context.read<HomeCubit>().getServiceProviders(pageQuantity: 5);
       userImage = await getString(key: KeysConstants.userPhotoUrl);
-
-      //context.read<HomeCubit>().getServiceProviders(pageQuantity: 5);
     });
   }
 
@@ -154,9 +153,10 @@ class _HomePageState extends State<HomePage>
               return const HomeShimmer();
             } else if (state is HomeStateNoData) {
               return const IgnorePointer(
-                ignoring: true,
-                child: AppErrorPage(errorMessage: 'Preencha seus dados',)
-              );
+                  ignoring: true,
+                  child: AppErrorPage(
+                    errorMessage: 'Preencha seus dados',
+                  ));
             } else {
               return const AppErrorPage();
             }

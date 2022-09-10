@@ -32,6 +32,8 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
         await getDouble(key: KeysConstants.userLocationLatitude);
     final userlongitude =
         await getDouble(key: KeysConstants.userLocationaLogintude);
+    final userName = await getString(key: KeysConstants.userName);
+    final userImage = await getString(key: KeysConstants.userPhotoUrl);
     final result = await _serviceProviderUsecase.call(
       providersParams: GetServiceProvidersParams(
         pageQuantity: pageQuantity,
@@ -46,7 +48,11 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
       (sucess) async {
         await _getMenuItens();
         emit(
-          HomeSucess(serviceProvider: sucess),
+          HomeSucess(
+            serviceProvider: sucess,
+            userName: userName ?? '',
+            userImage: userImage,
+          ),
         );
       },
     );
