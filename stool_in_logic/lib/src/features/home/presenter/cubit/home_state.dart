@@ -19,6 +19,7 @@ class HomeError extends HomeState {
 class HomeSucess extends HomeState {
   final List<ServiceProviderEntity>? serviceProvider;
   final List<CategoriesEntity>? categories;
+  final UserUniqueEntity? userUniqueEntity;
   final String? userImage;
   final String? userName;
   HomeSucess({
@@ -26,9 +27,16 @@ class HomeSucess extends HomeState {
     this.categories,
     this.userImage,
     this.userName,
+    this.userUniqueEntity,
   });
   @override
-  List<Object?> get props => [serviceProvider, categories, userImage, userName];
+  List<Object?> get props => [
+        serviceProvider,
+        categories,
+        userImage,
+        userName,
+        userUniqueEntity,
+      ];
 }
 
 class HomeStateGoToDataPage extends HomeState {}

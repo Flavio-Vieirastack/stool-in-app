@@ -55,8 +55,24 @@ class HomeModule extends AppModule {
                     Inject<CategoriesRepository>(context).get(),
               ),
             ),
+            Provider<UserUniqueDatasource>(
+              create: (context) => UserUniqueDatasourceImpl(
+                restClientGet: Inject<RestClientGet>(context).get(),
+              ),
+            ),
+            Provider<UserUniqueRepository>(
+              create: (context) => UserUniqueRepositoryImpl(
+                  userUniqueDatasource:
+                      Inject<UserUniqueDatasource>(context).get()),
+            ),
+            Provider<UserUniqueUsecase>(
+              create: (context) => UserUniqueUsecaseImpl(
+                  userUniqueRepository:
+                      Inject<UserUniqueRepository>(context).get()),
+            ),
             Provider<HomeCubit>(
               create: (context) => HomeCubit(
+                userUniqueUsecase: Inject<UserUniqueUsecase>(context).get(),
                 fireBaseNotifications:
                     Inject<FireBaseNotifications>(context).get(),
                 userDataUniqueUsecase:

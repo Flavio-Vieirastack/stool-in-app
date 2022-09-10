@@ -25,8 +25,7 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      context.read<HomeCubit>().getServiceProviders(pageQuantity: 5);
-      userImage = await getString(key: KeysConstants.userPhotoUrl);
+      context.read<HomeCubit>().getAllHomeData(pageQuantity: 5);
     });
   }
 

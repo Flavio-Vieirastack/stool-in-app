@@ -13,20 +13,23 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   final UserDataUniqueUsecase _userDataUniqueUsecase;
   final GeoLocatorCubit _geoLocatorCubit;
   final FireBaseNotifications _fireBaseNotifications;
+  final UserUniqueUsecase _uniqueUsecase;
   HomeCubit({
     required GetServiceProviderUsecase serviceProviderUsecase,
     required CategoriesUsecase categoriesUsecase,
     required UserDataUniqueUsecase userDataUniqueUsecase,
     required GeoLocatorCubit geoLocatorCubit,
     required FireBaseNotifications fireBaseNotifications,
+    required UserUniqueUsecase userUniqueUsecase,
   })  : _serviceProviderUsecase = serviceProviderUsecase,
         _geoLocatorCubit = geoLocatorCubit,
         _fireBaseNotifications = fireBaseNotifications,
+        _uniqueUsecase = userUniqueUsecase,
         _userDataUniqueUsecase = userDataUniqueUsecase,
         _categoriesUsecase = categoriesUsecase,
         super(HomeInitial());
 
-  Future<void> getServiceProviders({required int pageQuantity}) async {
+  Future<void> getAllHomeData({required int pageQuantity}) async {
     emit(HomeLoading());
     final userLatitude =
         await getDouble(key: KeysConstants.userLocationLatitude);
@@ -47,6 +50,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
       ),
       (sucess) async {
         await _getMenuItens();
+        await _getUserUniqueData();
         emit(
           HomeSucess(
             serviceProvider: sucess,
@@ -55,6 +59,15 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
           ),
         );
       },
+    );
+  }
+
+  Future<void> _getUserUniqueData() async {
+    emit(HomeLoading());
+    final data = await _uniqueUsecase.call();
+    data.fold(
+      (error) => emit(HomeError(message: error.error)),
+      (sucess) => emit(HomeSucess(userUniqueEntity: sucess)),
     );
   }
 
@@ -80,6 +93,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   }
 
   Future<void> _updateUserLocation() async {
+    emit(HomeLoading());
     final currentPosition = await _geoLocatorCubit.getCurrentPosition();
     await _geoLocatorCubit.requestUserPermition();
     final userLatitude =
@@ -113,6 +127,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   }
 
   Future<void> _updateUserPushToken() async {
+    emit(HomeLoading());
     await _fireBaseNotifications.refreshTokenFirebase(
       updateToken: (token) async => _userDataUniqueUsecase.updateUserData(
         userDataEntity: UserDataEntity(
@@ -123,6 +138,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   }
 
   Future<void> _updateUserNameAndPhotoUrl() async {
+    emit(HomeLoading());
     final userName = await getString(key: KeysConstants.userName);
     if (userName == null) {
       final latitude = await getDouble(key: KeysConstants.userLocationLatitude);
@@ -158,6 +174,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   }
 
   Future<void> _verifyUserDataIsNull() async {
+    emit(HomeLoading());
     final currentPosition = await _geoLocatorCubit.getCurrentPosition();
     final result = await _userDataUniqueUsecase.getUserDataUnique(
       userDataUniqueLocation: UserDataUniqueLocation(
