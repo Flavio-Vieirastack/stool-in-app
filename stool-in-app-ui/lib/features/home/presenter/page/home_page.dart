@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
@@ -34,99 +33,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    var listView = ListView(
-      children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(8.dp, 30.dp, 8.dp, 0),
-          child: Row(
-            children: [
-              const AppAvatar(
-                urlImage:
-                    'https://skycms.s3.amazonaws.com/images/5495100/cachorro-card-1.png',
-              ),
-              SizedBox(
-                width: 2.w,
-              ),
-              SizedBox(
-                width: 45.w,
-                child: Text(
-                  'Flavio Emerson gomes Vieira',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.headLine0,
-                ),
-              ),
-              const Spacer(),
-              Visibility(
-                visible: false,
-                child: Row(
-                  children: [
-                    LottieBuilder.asset(
-                      LottieConstants.lottieCoin,
-                      width: 35.dp,
-                    ),
-                    _coin(
-                      onTap: () {},
-                      coins: '800',
-                    )
-                  ],
-                ),
-              ),
-              Visibility(
-                visible: false,
-                child: Column(
-                  children: [
-                    LottieBuilder.asset(
-                      LottieConstants.lottiePremium,
-                      width: 10.w,
-                    ),
-                    Text(
-                      'Premium',
-                      style: AppTextStyles.headLine4Blue,
-                    )
-                  ],
-                ),
-              ),
-              Visibility(
-                child: Row(
-                  children: [
-                    LottieBuilder.asset(
-                      LottieConstants.lottiePremium,
-                      width: 8.w,
-                    ),
-                    LottieBuilder.asset(
-                      LottieConstants.lottieCoin,
-                      width: 28.dp,
-                    ),
-                    _coin(
-                      onTap: () {},
-                      coins: '8000000',
-                    ),
-                  ],
-                ),
-              ),
-              Visibility(
-                visible: false,
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    'Cadastrar',
-                    style: AppTextStyles.headLine4Blue,
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 4.h,
-        ),
-        SearchWidget(
-          onTap: () {},
-        ),
-        const _HomeBody()
-      ],
-    );
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(
@@ -151,16 +57,108 @@ class _HomePageState extends State<HomePage>
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state is HomeSucess) {
-              return listView;
+              return ListView(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(8.dp, 30.dp, 8.dp, 0),
+                    child: Row(
+                      children: [
+                        const AppAvatar(
+                          urlImage:
+                              'https://skycms.s3.amazonaws.com/images/5495100/cachorro-card-1.png',
+                        ),
+                        SizedBox(
+                          width: 2.w,
+                        ),
+                        SizedBox(
+                          width: 45.w,
+                          child: Text(
+                            'Flavio Emerson gomes Vieira',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.headLine0,
+                          ),
+                        ),
+                        const Spacer(),
+                        Visibility(
+                          visible: false,
+                          child: Row(
+                            children: [
+                              LottieBuilder.asset(
+                                LottieConstants.lottieCoin,
+                                width: 35.dp,
+                              ),
+                              _coin(
+                                onTap: () {},
+                                coins: '800',
+                              )
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: false,
+                          child: Column(
+                            children: [
+                              LottieBuilder.asset(
+                                LottieConstants.lottiePremium,
+                                width: 10.w,
+                              ),
+                              Text(
+                                'Premium',
+                                style: AppTextStyles.headLine4Blue,
+                              )
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          child: Row(
+                            children: [
+                              LottieBuilder.asset(
+                                LottieConstants.lottiePremium,
+                                width: 8.w,
+                              ),
+                              LottieBuilder.asset(
+                                LottieConstants.lottieCoin,
+                                width: 28.dp,
+                              ),
+                              _coin(
+                                onTap: () {},
+                                coins: '8000000',
+                              ),
+                            ],
+                          ),
+                        ),
+                        Visibility(
+                          visible: false,
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Text(
+                              'Cadastrar',
+                              style: AppTextStyles.headLine4Blue,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  SearchWidget(
+                    onTap: () {},
+                  ),
+                  const _HomeBody()
+                ],
+              );
             } else if (state is HomeLoading) {
               return const HomeShimmer();
             } else if (state is HomeStateNoData) {
-              return IgnorePointer(
+              return const IgnorePointer(
                 ignoring: true,
-                child: listView,
+                child: AppErrorPage(errorMessage: 'Preencha seus dados',)
               );
             } else {
-              return listView;
+              return const AppErrorPage();
             }
           },
         ),

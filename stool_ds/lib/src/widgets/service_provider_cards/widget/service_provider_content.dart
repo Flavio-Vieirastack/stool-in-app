@@ -28,7 +28,7 @@ class _ServiceProviderContent extends StatelessWidget {
                   child: AutoSizeText(
                     serviceProviderCardsParams.userName,
                     maxLines: 1,
-                    maxFontSize: 16,
+                    maxFontSize: 20,
                     minFontSize: 15,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.headLine1,
