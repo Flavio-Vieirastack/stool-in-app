@@ -16,4 +16,5 @@ class AppColors {
   static const Color blackInnedRadial = Color(0xff181818);
   static const Color linkTextColor = Color(0xff41b0ff);
   static const Color orange = Color(0xfffdad35);
+  static const Color categoryCardBackgroundColor = Color(0xff363e5c);
 }

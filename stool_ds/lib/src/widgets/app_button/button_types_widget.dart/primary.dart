@@ -1,12 +1,15 @@
 part of '../app_button.dart';
+
 @immutable
 class _Primary extends StatelessWidget {
   final String buttonText;
   final VoidCallback onPressed;
+  final Color? color;
   const _Primary({
     Key? key,
     required this.buttonText,
     required this.onPressed,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -42,8 +45,9 @@ class _Primary extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0.dp),
                 ),
               ),
-              minimumSize: MaterialStateProperty.all( Size(50.w, 50.h)),
-              backgroundColor: MaterialStateProperty.all(Colors.transparent),
+              minimumSize: MaterialStateProperty.all(Size(50.w, 50.h)),
+              backgroundColor:
+                  MaterialStateProperty.all(color ?? Colors.transparent),
               shadowColor: MaterialStateProperty.all(Colors.transparent),
             ),
             onPressed: onPressed,

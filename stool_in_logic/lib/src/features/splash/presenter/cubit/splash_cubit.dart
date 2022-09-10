@@ -30,7 +30,7 @@ class SplashCubit extends Cubit<SplashState> with SharedPreferencesHelper {
         await _userBeenInDataPageAndGetError();
     if (onboardingIsFinished == null) {
       emit(SplashGoToOnBoardingPage());
-    } else if (userPassToData) {
+    } else if (!userPassToData) { // TODO retirar a negação
       await _splashExecuteCacheActionsHelper.execute();
       emit(SplashGoToHomePage());
     } else if (userBeenInDataPageAndNotComplete) {

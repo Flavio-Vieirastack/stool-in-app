@@ -9,15 +9,18 @@ part './button_types_widget.dart/disabled.dart';
 part './button_types_widget.dart/loading.dart';
 part './button_types_widget.dart/primary.dart';
 part './button_types_widget.dart/secondary.dart';
+
 @immutable
 class AppButton extends StatelessWidget {
   final ButtonTypes buttonTypes;
   final String buttonText;
   final VoidCallback? onPressed;
+  final Color? color;
   const AppButton({
     this.buttonTypes = ButtonTypes.primary,
     required this.buttonText,
     this.onPressed,
+    this.color,
     Key? key,
   }) : super(key: key);
 
@@ -26,6 +29,7 @@ class AppButton extends StatelessWidget {
     switch (buttonTypes) {
       case ButtonTypes.primary:
         return _Primary(
+          color: color,
           buttonText: buttonText,
           onPressed: onPressed ?? () {},
         );

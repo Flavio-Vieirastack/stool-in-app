@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_ds/stool_ds.dart';
+import 'package:stool_in/features/home/presenter/page/widgets/home_bottom_body.dart';
 import 'package:stool_in_core/stool_in_core.dart';
 import 'package:stool_in_logic/stool_in_logic.dart';
 
@@ -101,7 +102,7 @@ class _HomePageState extends State<HomePage>
                     _coin(
                       onTap: () {},
                       coins: '8000000',
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -128,6 +129,13 @@ class _HomePageState extends State<HomePage>
       ],
     );
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(
+          Icons.info,
+        ),
+        onPressed: () =>
+            Navigator.of(context).pushNamed(RoutesConstants.infoRoute),
+      ),
       body: BlocListener<HomeCubit, HomeState>(
         listener: (context, state) {
           if (state is HomeStateNoData) {
@@ -153,7 +161,7 @@ class _HomePageState extends State<HomePage>
                 child: listView,
               );
             } else {
-              return const AppErrorPage();
+              return listView;
             }
           },
         ),

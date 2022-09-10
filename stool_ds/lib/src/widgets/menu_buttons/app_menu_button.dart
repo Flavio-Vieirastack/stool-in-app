@@ -10,7 +10,7 @@ class AppMenuButton extends StatelessWidget {
   final IconData? icon;
   final String? lottieAsset;
   final VoidCallback onPressed;
-  const AppMenuButton({
+  const AppMenuButton({ // TODO ver necessidade de apagar
     Key? key,
     required this.buttonName,
     this.icon,

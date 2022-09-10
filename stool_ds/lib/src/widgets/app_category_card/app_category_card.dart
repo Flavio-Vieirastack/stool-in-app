@@ -21,7 +21,7 @@ class AppCategoryCard extends StatelessWidget {
               width: 33.w,
               height: 16.h,
               decoration: BoxDecoration(
-                color: AppColors.black,
+                color: AppColors.categoryCardBackgroundColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.dp),
                   topRight: Radius.circular(20.dp),

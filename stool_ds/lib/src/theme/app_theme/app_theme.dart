@@ -11,5 +11,6 @@ class AppTheme {
         appBarTheme: const AppBarTheme(backgroundColor: Color(0xff1c2238)),
         scaffoldBackgroundColor: const Color(0xff252d49),
         dialogTheme: const DialogTheme(backgroundColor: AppColors.black),
+        cardColor: AppColors.black
       );
 }

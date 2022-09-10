@@ -54,7 +54,7 @@ class _ShimmerWidgetState extends State<ShimmerWidget>
               ? BorderRadius.all(
                   Radius.circular(widget.radius!),
                 )
-              :  BorderRadius.all(
+              : BorderRadius.all(
                   Radius.circular(20.dp),
                 ),
         ),
