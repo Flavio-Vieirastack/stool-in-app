@@ -8,6 +8,7 @@ import '../../theme/text_styles/app_text_styles.dart';
 import '../app_avatar/app_avatar.dart';
 import '../ratting_stars/app_ratting_stars.dart';
 part './widget/service_provider_content.dart';
+
 @immutable
 class ServiceProviderCards extends StatelessWidget {
   final String userUrlImage;
@@ -17,16 +18,18 @@ class ServiceProviderCards extends StatelessWidget {
   final String userDistance;
   final VoidCallback onPressed;
   final VoidCallback agendOnTap;
-  const ServiceProviderCards(
-      {Key? key,
-      required this.userDistance,
-      required this.agendOnTap,
-      required this.userName,
-      required this.userServicesExecuted,
-      required this.userUrlImage,
-      required this.userVotes,
-      required this.onPressed})
-      : super(key: key);
+  final Widget image;
+  const ServiceProviderCards({
+    Key? key,
+    required this.userDistance,
+    required this.agendOnTap,
+    required this.userName,
+    required this.userServicesExecuted,
+    required this.userUrlImage,
+    required this.userVotes,
+    required this.onPressed,
+    required this.image,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +48,13 @@ class ServiceProviderCards extends StatelessWidget {
             gradient: RadialGradient(
               radius: 2,
               colors: [
-                AppColors.grey.withOpacity(0.5),
-                AppColors.black.withOpacity(0.3),
+                AppColors.categoryCardBackgroundColor,
+                AppColors.black.withOpacity(0.1),
               ],
             ),
           ),
           child: _ServiceProviderContent(
+            image: image,
             userDistance: userDistance,
             agendOnTap: agendOnTap,
             userName: userName,

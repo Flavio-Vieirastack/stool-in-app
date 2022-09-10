@@ -8,6 +8,7 @@ class _ServiceProviderContent extends StatelessWidget {
   final String userServicesExecuted;
   final String userDistance;
   final VoidCallback agendOnTap;
+  final Widget image;
   const _ServiceProviderContent({
     Key? key,
     required this.userUrlImage,
@@ -16,6 +17,7 @@ class _ServiceProviderContent extends StatelessWidget {
     required this.userVotes,
     required this.userServicesExecuted,
     required this.userDistance,
+    required this.image,
   }) : super(key: key);
 
   @override
@@ -89,12 +91,9 @@ class _ServiceProviderContent extends StatelessWidget {
           SizedBox(
             height: 1.h,
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Text(
-              'Distância: $userDistance',
-              style: const TextStyle(color: AppColors.buttonLeftGradientColor),
-            ),
+          Text(
+            'Distância: $userDistance',
+            style: const TextStyle(color: AppColors.buttonLeftGradientColor),
           ),
           SizedBox(
             height: 1.h,
@@ -103,10 +102,7 @@ class _ServiceProviderContent extends StatelessWidget {
             onTap: () {},
             child: Align(
               alignment: Alignment.centerRight,
-              child: LottieBuilder.asset(
-                LottieConstants.lottieAgend,
-                height: 5.h,
-              ),
+              child: image,
             ),
           )
         ],

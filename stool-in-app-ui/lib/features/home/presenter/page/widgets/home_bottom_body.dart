@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_ds/stool_ds.dart';
+import 'package:stool_in_core/stool_in_core.dart';
 
 class HomeBottomBody extends StatelessWidget {
 
@@ -64,6 +65,7 @@ class HomeBottomBody extends StatelessWidget {
                 userVotes: 4,
                 onPressed: () {},
                 agendOnTap: () {},
+                image: Image.asset(AssetsConstants.calendarIcon),
               );
             },
           )
