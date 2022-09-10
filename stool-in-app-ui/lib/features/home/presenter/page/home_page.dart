@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage>
                         ),
                         const Spacer(),
                         Visibility(
-                          visible: false,
+                          visible: state.serviceProvider!.isNotEmpty,
                           child: Row(
                             children: [
                               LottieBuilder.asset(
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage>
                               ),
                               _coin(
                                 onTap: () {},
-                                coins: '800',
+                                coins: 'state.',
                               )
                             ],
                           ),
