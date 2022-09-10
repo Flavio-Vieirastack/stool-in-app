@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    final uniqueIndex = 0;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         child: const Icon(
@@ -49,6 +50,12 @@ class _HomePageState extends State<HomePage>
           } else if (state is HomeStateGoToDataPage) {
             Navigator.of(context).pushReplacementNamed(
               RoutesConstants.signInDataRoute,
+            );
+          } else if (state is HomeError) {
+            showAppSnackbar(
+              message: state.message,
+              context: context,
+              type: SnackBarType.error,
             );
           }
         },
@@ -78,7 +85,9 @@ class _HomePageState extends State<HomePage>
                         ),
                         const Spacer(),
                         Visibility(
-                          visible: state.serviceProvider!.isNotEmpty,
+                          visible: state.userUniqueEntity!
+                                  .serViceProviders[uniqueIndex].coins! >
+                              0,
                           child: Row(
                             children: [
                               LottieBuilder.asset(
@@ -87,13 +96,17 @@ class _HomePageState extends State<HomePage>
                               ),
                               _coin(
                                 onTap: () {},
-                                coins: 'state.',
+                                coins: state.userUniqueEntity!
+                                    .serViceProviders[uniqueIndex].coins
+                                    .toString(),
                               )
                             ],
                           ),
                         ),
                         Visibility(
-                          visible: false,
+                          visible: state.userUniqueEntity!
+                                  .serViceProviders[uniqueIndex].status ==
+                              ServiceStatus.active.status,
                           child: Column(
                             children: [
                               LottieBuilder.asset(
@@ -108,6 +121,12 @@ class _HomePageState extends State<HomePage>
                           ),
                         ),
                         Visibility(
+                          visible: state.userUniqueEntity!
+                                      .serViceProviders[uniqueIndex].status ==
+                                  ServiceStatus.active.status &&
+                              state.userUniqueEntity!
+                                      .serViceProviders[uniqueIndex].coins! >
+                                  0,
                           child: Row(
                             children: [
                               LottieBuilder.asset(
@@ -120,21 +139,13 @@ class _HomePageState extends State<HomePage>
                               ),
                               _coin(
                                 onTap: () {},
-                                coins: '8000000',
+                                coins: state.userUniqueEntity!
+                                    .serViceProviders[uniqueIndex].coins
+                                    .toString(),
                               ),
                             ],
                           ),
                         ),
-                        Visibility(
-                          visible: false,
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Text(
-                              'Cadastrar',
-                              style: AppTextStyles.headLine4Blue,
-                            ),
-                          ),
-                        )
                       ],
                     ),
                   ),
@@ -144,7 +155,11 @@ class _HomePageState extends State<HomePage>
                   SearchWidget(
                     onTap: () {},
                   ),
-                  const _HomeBody()
+                  _HomeBody(
+                    status: state.userUniqueEntity!
+                            .serViceProviders[uniqueIndex].status ??
+                        ServiceStatus.inactive.status,
+                  )
                 ],
               );
             } else if (state is HomeLoading) {

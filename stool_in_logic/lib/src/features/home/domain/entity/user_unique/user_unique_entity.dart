@@ -3,7 +3,7 @@ import 'package:stool_in_logic/stool_in_logic.dart';
 
 class UserUniqueEntity {
   final List<UserDataEntity> userData;
-  final List<ServiceProviderEntity> serViceProviders;
+  final List<ServiceProviderReturnEntity> serViceProviders;
   UserUniqueEntity({
     required this.userData,
     required this.serViceProviders,

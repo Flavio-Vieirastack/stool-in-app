@@ -2,7 +2,11 @@ part of '../home_page.dart';
 
 @immutable
 class _HomeBody extends StatelessWidget {
-  const _HomeBody({Key? key}) : super(key: key);
+  final String status;
+  const _HomeBody({
+    Key? key,
+    required this.status,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +15,20 @@ class _HomeBody extends StatelessWidget {
         SizedBox(
           height: 2.h,
         ),
-        const AppButton(
-          buttonText: 'Seja um prestador',
-          color: Colors.blue,
-        ),
+        if (status == ServiceStatus.inactive.status)
+          const AppButton(
+            buttonText: 'Seja um prestador',
+            color: Colors.blue,
+          ),
+        if (status == ServiceStatus.active.status)
+          const AppButton(
+            buttonText: 'Ver meu perfil',
+          ),
+        if (status == ServiceStatus.completedAndInactive.status)
+          if (status == ServiceStatus.active.status)
+            const AppButton(
+              buttonText: 'Renovar meu cadastro',
+            ),
         SizedBox(
           height: 2.h,
         ),
