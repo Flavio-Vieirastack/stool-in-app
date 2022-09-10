@@ -62,9 +62,8 @@ class _HomePageState extends State<HomePage>
                     padding: EdgeInsets.fromLTRB(8.dp, 30.dp, 8.dp, 0),
                     child: Row(
                       children: [
-                        const AppAvatar(
-                          urlImage:
-                              'https://skycms.s3.amazonaws.com/images/5495100/cachorro-card-1.png',
+                        AppAvatar(
+                          urlImage: state.userImage,
                         ),
                         SizedBox(
                           width: 2.w,
@@ -72,7 +71,7 @@ class _HomePageState extends State<HomePage>
                         SizedBox(
                           width: 45.w,
                           child: Text(
-                            'Flavio Emerson gomes Vieira',
+                            state.userName ?? '',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyles.headLine0,

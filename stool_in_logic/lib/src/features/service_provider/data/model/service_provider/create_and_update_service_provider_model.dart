@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import '../../../domain/entity/service_provider/create_and_update_service_provider_entity.dart';
 
-
-
 class CreateAndUpdateServiceProviderModel
     extends CreateAndUpdateServiceProviderEntity {
   CreateAndUpdateServiceProviderModel({
@@ -13,6 +11,7 @@ class CreateAndUpdateServiceProviderModel
     super.initialDisponibleTime,
     super.endDisponibleTime,
     super.disponibleDays,
+    super.coins,
   });
 
   @override
@@ -51,16 +50,16 @@ class CreateAndUpdateServiceProviderModel
       result.addAll({'status': status});
     }
     if (initialDisponibleTime != null) {
-      result.addAll({
-        'initialDisponibleTime': initialDisponibleTime!
-      });
+      result.addAll({'initialDisponibleTime': initialDisponibleTime!});
     }
     if (endDisponibleTime != null) {
-      result.addAll(
-          {'endDisponibleTime': endDisponibleTime!});
+      result.addAll({'endDisponibleTime': endDisponibleTime!});
     }
     if (disponibleDays != null) {
       result.addAll({'disponibleDays': disponibleDays});
+    }
+    if (coins != null) {
+      result.addAll({'coins': coins});
     }
 
     return result;
@@ -72,6 +71,7 @@ class CreateAndUpdateServiceProviderModel
       userDescription: map['userDescription'],
       votes: map['votes']?.toInt(),
       status: map['status'],
+      coins: map['coins'],
       initialDisponibleTime: map['initialDisponibleTime'] != null
           ? DateTime.parse(map['initialDisponibleTime'])
           : null,

@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import '../../../domain/entity/service_provider/service_provider_return_entity.dart';
 
-
-
 class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
   ServiceProviderReturnModel({
     required super.id,
@@ -15,6 +13,7 @@ class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
     super.initialDisponibleTime,
     super.endDisponibleTime,
     super.disponibleDays,
+    super.coins,
   });
 
   @override
@@ -49,9 +48,6 @@ class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'id': id});
-    result.addAll({'userLoginId': userLoginId});
-    result.addAll({'createdAt': createdAt});
     if (userDescription != null) {
       result.addAll({'userDescription': userDescription});
     }
@@ -62,13 +58,10 @@ class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
       result.addAll({'status': status});
     }
     if (initialDisponibleTime != null) {
-      result.addAll({
-        'initialDisponibleTime': initialDisponibleTime
-      });
+      result.addAll({'initialDisponibleTime': initialDisponibleTime});
     }
     if (endDisponibleTime != null) {
-      result.addAll(
-          {'endDisponibleTime': endDisponibleTime});
+      result.addAll({'endDisponibleTime': endDisponibleTime});
     }
     if (disponibleDays != null) {
       result.addAll({'disponibleDays': disponibleDays});
@@ -85,6 +78,7 @@ class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
       userDescription: map['userDescription'],
       votes: map['votes']?.toInt(),
       status: map['status'],
+      coins: map['coins'],
       initialDisponibleTime: map['initialDisponibleTime'] != null
           ? DateTime.parse(map['initialDisponibleTime'])
           : null,

@@ -39,6 +39,7 @@ void main() {
     serviceProviderReturnEntity = ServiceProviderReturnEntity(
       id: 1,
       userLoginId: 1,
+      coins: 20,
       createdAt: DateTime.parse('2022-08-18T18:54:59.725Z'),
       disponibleDays: 'segunda a sexta',
       endDisponibleTime: DateTime.parse("2022-08-18T18:54:59.725Z"),

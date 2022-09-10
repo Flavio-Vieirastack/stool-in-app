@@ -16,7 +16,8 @@ class ServiceProviderReturnEntity extends CreateAndUpdateServiceProviderEntity {
     required super.initialDisponibleTime,
     required super.status,
     required super.userDescription,
-    required super.votes
+    required super.votes,
+    required super.coins,
   });
 
   @override
