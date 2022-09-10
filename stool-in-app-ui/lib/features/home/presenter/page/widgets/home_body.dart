@@ -3,9 +3,11 @@ part of '../home_page.dart';
 @immutable
 class _HomeBody extends StatelessWidget {
   final String status;
+  final HomeBottomBodyParams homeBottomBodyParams;
   const _HomeBody({
     Key? key,
     required this.status,
+    required this.homeBottomBodyParams
   }) : super(key: key);
 
   @override
@@ -41,7 +43,9 @@ class _HomeBody extends StatelessWidget {
             color: AppColors.black,
             child: Padding(
               padding: EdgeInsets.all(8.0.dp),
-              child: const HomeBottomBody(),
+              child: HomeBottomBody(
+                homeBottomBodyParams: homeBottomBodyParams,
+              ),
             ),
           ),
         )

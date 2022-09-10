@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_ds/stool_ds.dart';
+import 'package:stool_in/features/home/presenter/page/params/home_bottom_body_params.dart';
 import 'package:stool_in/features/home/presenter/page/widgets/home_bottom_body.dart';
 import 'package:stool_in_core/stool_in_core.dart';
 import 'package:stool_in_logic/stool_in_logic.dart';
@@ -156,6 +157,10 @@ class _HomePageState extends State<HomePage>
                     onTap: () {},
                   ),
                   _HomeBody(
+                    homeBottomBodyParams: HomeBottomBodyParams(
+                      categoriesEntity: state.categories ?? [],
+                      serviceProviderEntity: state.serviceProvider ?? [],
+                    ),
                     status: state.userUniqueEntity!
                             .serViceProviders[uniqueIndex].status ??
                         ServiceStatus.inactive.status,

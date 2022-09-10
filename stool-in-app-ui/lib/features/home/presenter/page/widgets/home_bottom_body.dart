@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_ds/stool_ds.dart';
+import 'package:stool_in/features/home/presenter/page/params/home_bottom_body_params.dart';
 import 'package:stool_in_core/stool_in_core.dart';
 
 class HomeBottomBody extends StatelessWidget {
-  const HomeBottomBody({Key? key}) : super(key: key);
+  final HomeBottomBodyParams homeBottomBodyParams;
+  const HomeBottomBody({
+    Key? key,
+    required this.homeBottomBodyParams,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +34,16 @@ class HomeBottomBody extends StatelessWidget {
         LimitedBox(
           maxHeight: 22.h,
           child: ListView.builder(
-            itemCount: 10,
+            itemCount: homeBottomBodyParams.categoriesEntity.length,
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return const AppCategoryCard();
+              final categories = homeBottomBodyParams.categoriesEntity[index];
+              return AppCategoryCard(
+                onPressed: () {},
+                categoryname: categories.categoryName,
+                lottieUrl: categories.lottieUrl,
+              );
             },
           ),
         ),
@@ -51,18 +61,21 @@ class HomeBottomBody extends StatelessWidget {
           height: 2.h,
         ),
         ListView.builder(
-          itemCount: 10,
+          itemCount: homeBottomBodyParams.serviceProviderEntity.length,
           shrinkWrap: true,
           primary: false,
           itemBuilder: (context, index) {
+            final serviceProvider =
+                homeBottomBodyParams.serviceProviderEntity[index];
+            const uniqueIndex = 0;
             return ServiceProviderCards(
               serviceProviderCardsParams: ServiceProviderCardsParams(
-                userDistance: '1 Km',
-                userName: 'João pedro',
-                userServicesExecuted: 'Lavagem de carro',
+                userDistance: serviceProvider.distance.toString(),
+                userName: serviceProvider.userData[uniqueIndex].userName ?? '',
+                userServicesExecuted: 'serviceProvider.executionServices',
                 userUrlImage:
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK9gqFKRn28xKHD1CAbEevdzsLmsv5yQkGnQ&usqp=CAU',
-                userVotes: 4,
+                    serviceProvider.userData[uniqueIndex].userPhotoUrl ?? '',
+                userVotes: serviceProvider.votes!.toDouble(),
                 cardOnTap: () {},
                 agendOnTap: () {},
                 image: Image.asset(AssetsConstants.calendarIcon),

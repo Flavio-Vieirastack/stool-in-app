@@ -5,14 +5,23 @@ import 'package:lottie/lottie.dart';
 
 import '../../theme/colors/app_colors.dart';
 import '../../theme/text_styles/app_text_styles.dart';
+
 @immutable
 class AppCategoryCard extends StatelessWidget {
-  const AppCategoryCard({Key? key}) : super(key: key);
+  final String lottieUrl;
+  final String categoryname;
+  final VoidCallback onPressed;
+  const AppCategoryCard({
+    Key? key,
+    required this.categoryname,
+    required this.lottieUrl,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressed,
       child: Stack(
         children: [
           Padding(
@@ -28,9 +37,9 @@ class AppCategoryCard extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding:  EdgeInsets.only(right: 5.w, top: 3.h, bottom: 1.h),
+                padding: EdgeInsets.only(right: 5.w, top: 3.h, bottom: 1.h),
                 child: LottieBuilder.network(
-                  'https://assets2.lottiefiles.com/packages/lf20_xn3noiae.json',
+                  lottieUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -52,7 +61,7 @@ class AppCategoryCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: AutoSizeText(
-                    'Faxina',
+                    categoryname,
                     maxLines: 2,
                     textAlign: TextAlign.center,
                     maxFontSize: 18,
