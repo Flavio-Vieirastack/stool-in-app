@@ -8,8 +8,17 @@ class HomeModule extends AppModule {
   HomeModule()
       : super(
           dependencies: [
+            Provider<ServiceProviderDatasourceCalculateDistance>(
+              create: (context) => ServiceProviderDatasourceCalculateDistance(
+                distanceHelperCalculate:
+                    Inject<DistanceHelperCalculate>(context).get(),
+              ),
+            ),
             Provider<GetServiceProviderDatasource>(
               create: (context) => GetServiceProviderDatasourceImpl(
+                serviceProviderDatasourceCalculateDistance:
+                    Inject<ServiceProviderDatasourceCalculateDistance>(context)
+                        .get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),
@@ -63,10 +72,6 @@ class HomeModule extends AppModule {
             ),
             Provider<HomeCubit>(
               create: (context) => HomeCubit(
-                serviceProviderSortListHelper:
-                    Inject<ServiceProviderSortListHelper>(context).get(),
-                serviceProviderDistanceListCalculate:
-                    Inject<ServiceProviderDistanceListCalculate>(context).get(),
                 userUniqueUsecase: Inject<UserUniqueUsecase>(context).get(),
                 fireBaseNotifications:
                     Inject<FireBaseNotifications>(context).get(),

@@ -14,27 +14,17 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   final GeoLocatorCubit _geoLocatorCubit;
   final FireBaseNotifications _fireBaseNotifications;
   final UserUniqueUsecase _uniqueUsecase;
-  final ServiceProviderSortListHelper _serviceProviderSortListHelper;
-  final ServiceProviderDistanceListCalculate
-      _serviceProviderDistanceListCalculate;
   late final UserUniqueEntity userUniqueEntity;
   late final List<CategoriesEntity> categories;
-  late final List<String> distances;
   HomeCubit({
     required GetServiceProviderUsecase serviceProviderUsecase,
     required CategoriesUsecase categoriesUsecase,
     required UserDataUniqueUsecase userDataUniqueUsecase,
     required GeoLocatorCubit geoLocatorCubit,
-    required ServiceProviderSortListHelper serviceProviderSortListHelper,
     required FireBaseNotifications fireBaseNotifications,
     required UserUniqueUsecase userUniqueUsecase,
-    required ServiceProviderDistanceListCalculate
-        serviceProviderDistanceListCalculate,
   })  : _serviceProviderUsecase = serviceProviderUsecase,
         _geoLocatorCubit = geoLocatorCubit,
-        _serviceProviderDistanceListCalculate =
-            serviceProviderDistanceListCalculate,
-        _serviceProviderSortListHelper = serviceProviderSortListHelper,
         _fireBaseNotifications = fireBaseNotifications,
         _uniqueUsecase = userUniqueUsecase,
         _userDataUniqueUsecase = userDataUniqueUsecase,
@@ -50,7 +40,11 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
     final userName = await getString(key: KeysConstants.userName);
     final userImage = await getString(key: KeysConstants.userPhotoUrl);
     final result = await _serviceProviderUsecase.call(
-      pageQuantity: pageQuantity,
+      providersParams: GetServiceProvidersParams(
+        pageQuantity: pageQuantity,
+        currentUserLocationLatitude: userLatitude ?? 0.0,
+        currentUserLocationLongitude: userlongitude ?? 0.0,
+      ),
     );
     result.fold(
       (error) => emit(
@@ -59,22 +53,13 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
       (sucess) async {
         await _getMenuItens();
         await _getUserUniqueData();
-        distances = _serviceProviderDistanceListCalculate.calculateDistance(
-          serviceProviders: sucess,
-          params: GetServiceProvidersParams(
-            currentUserLocationLatitude: userLatitude ?? 0,
-            currentUserLocationLongitude: userlongitude ?? 0,
-          ),
-        );
         emit(
           HomeSucess(
-            serviceProvider:
-                _serviceProviderSortListHelper.sortByVotes(providers: sucess),
+            serviceProvider: sucess,
             userName: userName ?? '',
             userImage: userImage,
             categories: categories,
-            userUniqueEntity: userUniqueEntity,
-            distances: distances,
+            userUniqueEntity: userUniqueEntity
           ),
         );
       },

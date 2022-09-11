@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
@@ -69,10 +70,10 @@ class HomeBottomBody extends StatelessWidget {
             final serviceProvider =
                 homeBottomBodyParams.serviceProviderEntity[index];
             const uniqueIndex = 0;
-            final distances = homeBottomBodyParams.distances![index];
             return ServiceProviderCards(
               serviceProviderCardsParams: ServiceProviderCardsParams(
-                userDistance: distances.toString(),
+                userDistance: homeBottomBodyParams.serviceProviderEntity[index]
+                    .distanceFormat(),
                 userName: serviceProvider.userData[uniqueIndex].userName ?? '',
                 userServicesExecuted: 'serviceProvider.executionServices',
                 userUrlImage:

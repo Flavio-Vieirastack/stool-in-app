@@ -2,6 +2,7 @@
 
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
+
 import 'package:stool_in_logic/src/features/auth/data/model/user_data_model.dart';
 import 'package:stool_in_logic/src/features/home/data/model/service_provider/accepted_payments_model.dart';
 import 'package:stool_in_logic/src/features/home/data/model/service_provider/coments_model.dart';
@@ -115,4 +116,26 @@ class ServiceProviderModel extends ServiceProviderEntity {
   @override
   String toString() =>
       'ServiceProviderModel(executionServicesModel: $executionServicesModel, servicesToExecuteModel: $servicesToExecuteModel, comentsModel: $comentsModel), Distance: $distance';
+
+  ServiceProviderModel copyWith() {
+    return ServiceProviderModel(
+      id: id,
+      acceptedPayments: acceptedPayments,
+      createdAt: createdAt,
+      disponibleDays: disponibleDays,
+      distance: distance,
+      endDisponibleTime: endDisponibleTime,
+      initialDisponibleTime: initialDisponibleTime,
+      serviceProviderDescription: serviceProviderDescription,
+      status: status,
+      userData: userData,
+      userLoginId: userLoginId,
+      votes: votes,
+      executionServicesModel:
+          executionServicesModel,
+      servicesToExecuteModel:
+          servicesToExecuteModel ,
+      comentsModel: comentsModel ,
+    );
+  }
 }
