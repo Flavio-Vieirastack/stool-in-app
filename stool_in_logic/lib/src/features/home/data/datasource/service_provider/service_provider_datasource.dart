@@ -45,29 +45,7 @@ class ServiceProviderDatasourceCalculateDistance {
         distanceModel.add(result);
       },
     ).toList();
-    // for (var serviceProviderModel in serviceProviderData!) {
-    //   final distance = _distanceHelperCalculate.caculateDistanceToInt(
-    //     currentUserLocation: Location(
-    //       latitude: params.currentUserLocationLatitude,
-    //       longitude: params.currentUserLocationLongitude,
-    //     ),
-    //     serviceProviderLocation: Location(
-    //       latitude: serviceProviderModel.userData
-    //               .map((e) => e.userLocationLatitude)
-    //               .first ??
-    //           0,
-    //       longitude: serviceProviderModel.userData
-    //               .map((e) => e.userLocationLongitude)
-    //               .first ??
-    //           0,
-    //     ),
-    //   );
-    //   distanceModel.addAll(
-    //     result.data?.map((e) =>
-    //             ServiceProviderModel.fromDataSource(e, distance: distance)) ??
-    //         [],
-    //   );
-    // }
+
     return distanceModel;
   }
 }
