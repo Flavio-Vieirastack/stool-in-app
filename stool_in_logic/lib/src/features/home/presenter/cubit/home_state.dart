@@ -20,6 +20,7 @@ class HomeSucess extends HomeState {
   final List<ServiceProviderEntity>? serviceProvider;
   final List<CategoriesEntity>? categories;
   final UserUniqueEntity? userUniqueEntity;
+  final List<int>? distances;
   final String? userImage;
   final String? userName;
   HomeSucess({
@@ -28,6 +29,7 @@ class HomeSucess extends HomeState {
     this.userImage,
     this.userName,
     this.userUniqueEntity,
+    this.distances,
   });
   @override
   List<Object?> get props => [
@@ -36,6 +38,7 @@ class HomeSucess extends HomeState {
         userImage,
         userName,
         userUniqueEntity,
+        distances,
       ];
 }
 

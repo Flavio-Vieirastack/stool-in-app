@@ -7,17 +7,17 @@ class GetServiceProviderDatasourceImpl implements GetServiceProviderDatasource {
   final RestClientGet _restClientGet;
   GetServiceProviderDatasourceImpl({
     required RestClientGet restClientGet,
-  })  : _restClientGet = restClientGet;
+  }) : _restClientGet = restClientGet;
 
   @override
   Future<List<ServiceProviderEntity>> call({
-    required GetServiceProvidersParams providersParams,
+    required int pageQuantity,
   }) async {
     try {
       final result = await _restClientGet.get<List>(
         path: EndpointConstants.getServiceProvider,
         queryParams: {
-          'pages': providersParams.pageQuantity,
+          'pages': pageQuantity,
         },
       );
       final model = result.data

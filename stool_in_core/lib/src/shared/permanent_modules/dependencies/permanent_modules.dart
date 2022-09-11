@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:stool_in_core/src/core_modules/service_provider_distance_list/service_provider_distance_list_module.dart';
 import 'package:stool_in_core/src/core_modules/user_data_unique/user_data_unique_module.dart';
 
 import '../../../cache/helpers/user_actions_helper/module/cache_user_actions_module.dart';
@@ -34,6 +35,7 @@ class PermanentModules {
       ...CacheUserActionsModule().inject(),
       ...SendPushNotificationModule().inject(),
       ...UserDataUniqueModule().inject(),
+      ...ServiceProviderDistanceListModule().inject(),
     ];
   }
 }

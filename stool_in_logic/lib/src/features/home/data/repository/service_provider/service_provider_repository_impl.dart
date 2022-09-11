@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/service_provider_entity.dart';
 
-import '../../../domain/entity/service_provider/get_service_providers_params.dart';
 import '../../../domain/error/service_provider/service_provider_error.dart';
 import '../../../domain/repository/service_provider/service_provider_repository.dart';
 import '../../datasource/service_provider/service_provider_datasource.dart';
@@ -17,11 +16,11 @@ class GetServiceProviderRepositoryImpl implements GetServiceProviderRepository {
   }) : _serviceProviderDatasource = serviceProviderDatasource;
   @override
   Future<Either<ServiceProviderError, List<ServiceProviderEntity>>> call({
-    required GetServiceProvidersParams providersParams,
+    required int pageQuantity,
   }) async {
     try {
       final result =
-          await _serviceProviderDatasource(providersParams: providersParams);
+          await _serviceProviderDatasource(pageQuantity: pageQuantity);
       return Right(result);
     } on ServiceProviderError catch (e, s) {
       log('Erro ao pegar dados do prestador de serviço no repository',

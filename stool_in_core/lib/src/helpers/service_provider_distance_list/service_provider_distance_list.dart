@@ -4,12 +4,12 @@ import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../stool_in_core.dart';
 
-class ServiceProviderDatasourceCalculateDistance {
+class ServiceProviderDistanceListCalculate {
   final DistanceHelperCalculate _distanceHelperCalculate;
-  ServiceProviderDatasourceCalculateDistance({
+  ServiceProviderDistanceListCalculate({
     required DistanceHelperCalculate distanceHelperCalculate,
   }) : _distanceHelperCalculate = distanceHelperCalculate;
-  List<int>? calculateDistance({
+  List<int> calculateDistance({
     required List<ServiceProviderEntity> serviceProviders,
     required GetServiceProvidersParams params,
   }) {

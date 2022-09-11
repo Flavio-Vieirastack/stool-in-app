@@ -7,6 +7,6 @@ import '../../error/service_provider/service_provider_error.dart';
 
 abstract class GetServiceProviderUsecase {
 Future<Either<ServiceProviderError, List<ServiceProviderEntity>>> call({
-    required GetServiceProvidersParams providersParams,
+    required int pageQuantity,
   });
 }

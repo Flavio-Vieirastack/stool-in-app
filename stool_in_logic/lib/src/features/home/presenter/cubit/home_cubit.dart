@@ -14,8 +14,11 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   final GeoLocatorCubit _geoLocatorCubit;
   final FireBaseNotifications _fireBaseNotifications;
   final UserUniqueUsecase _uniqueUsecase;
+  final ServiceProviderDistanceListCalculate
+      _serviceProviderDistanceListCalculate;
   late final UserUniqueEntity userUniqueEntity;
   late final List<CategoriesEntity> categories;
+  late final List<int> distances;
   HomeCubit({
     required GetServiceProviderUsecase serviceProviderUsecase,
     required CategoriesUsecase categoriesUsecase,
@@ -23,8 +26,12 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
     required GeoLocatorCubit geoLocatorCubit,
     required FireBaseNotifications fireBaseNotifications,
     required UserUniqueUsecase userUniqueUsecase,
+    required ServiceProviderDistanceListCalculate
+        serviceProviderDistanceListCalculate,
   })  : _serviceProviderUsecase = serviceProviderUsecase,
         _geoLocatorCubit = geoLocatorCubit,
+        _serviceProviderDistanceListCalculate =
+            serviceProviderDistanceListCalculate,
         _fireBaseNotifications = fireBaseNotifications,
         _uniqueUsecase = userUniqueUsecase,
         _userDataUniqueUsecase = userDataUniqueUsecase,
@@ -40,11 +47,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
     final userName = await getString(key: KeysConstants.userName);
     final userImage = await getString(key: KeysConstants.userPhotoUrl);
     final result = await _serviceProviderUsecase.call(
-      providersParams: GetServiceProvidersParams(
-        pageQuantity: pageQuantity,
-        currentUserLocationLatitude: userLatitude ?? 0.0,
-        currentUserLocationLongitude: userlongitude ?? 0.0,
-      ),
+      pageQuantity: pageQuantity,
     );
     result.fold(
       (error) => emit(
@@ -53,13 +56,21 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
       (sucess) async {
         await _getMenuItens();
         await _getUserUniqueData();
+        distances = _serviceProviderDistanceListCalculate.calculateDistance(
+          serviceProviders: sucess,
+          params: GetServiceProvidersParams(
+            currentUserLocationLatitude: userLatitude ?? 0,
+            currentUserLocationLongitude: userlongitude ?? 0,
+          ),
+        );
         emit(
           HomeSucess(
             serviceProvider: sucess,
             userName: userName ?? '',
             userImage: userImage,
             categories: categories,
-            userUniqueEntity: userUniqueEntity
+            userUniqueEntity: userUniqueEntity,
+            distances: distances,
           ),
         );
       },
