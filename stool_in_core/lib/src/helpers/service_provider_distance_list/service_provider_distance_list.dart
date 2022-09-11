@@ -6,17 +6,29 @@ import '../../../stool_in_core.dart';
 
 class ServiceProviderDistanceListCalculate {
   final DistanceHelperCalculate _distanceHelperCalculate;
+  final ServiceProviderSortListHelper _serviceProviderSortListHelper;
   ServiceProviderDistanceListCalculate({
     required DistanceHelperCalculate distanceHelperCalculate,
-  }) : _distanceHelperCalculate = distanceHelperCalculate;
+    required ServiceProviderSortListHelper serviceProviderSortListHelper,
+  })  : _distanceHelperCalculate = distanceHelperCalculate,
+        _serviceProviderSortListHelper = serviceProviderSortListHelper;
   List<String> calculateDistance({
     required List<ServiceProviderEntity> serviceProviders,
     required GetServiceProvidersParams params,
+    bool returnSortedByVotes = true,
   }) {
     final distances = <String>[];
     int? distance;
-
-    for (var element in serviceProviders) {
+    late var providers = <ServiceProviderEntity>[];
+    if (returnSortedByVotes) {
+      providers.addAll(_serviceProviderSortListHelper.sortByVotes(
+        providers: serviceProviders,
+      ));
+    } else {
+      providers.addAll(
+          _serviceProviderSortListHelper.sortList(providers: serviceProviders));
+    }
+    for (var element in providers) {
       final latitude =
           element.userData.map((e) => e.userLocationLatitude).first;
       final longitude =

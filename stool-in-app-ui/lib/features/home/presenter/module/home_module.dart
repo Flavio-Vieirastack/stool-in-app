@@ -63,6 +63,8 @@ class HomeModule extends AppModule {
             ),
             Provider<HomeCubit>(
               create: (context) => HomeCubit(
+                serviceProviderSortListHelper:
+                    Inject<ServiceProviderSortListHelper>(context).get(),
                 serviceProviderDistanceListCalculate:
                     Inject<ServiceProviderDistanceListCalculate>(context).get(),
                 userUniqueUsecase: Inject<UserUniqueUsecase>(context).get(),

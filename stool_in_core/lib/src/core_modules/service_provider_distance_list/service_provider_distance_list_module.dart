@@ -8,6 +8,8 @@ class ServiceProviderDistanceListModule implements PermanentModule {
     return [
       Provider<ServiceProviderDistanceListCalculate>(
         create: (context) => ServiceProviderDistanceListCalculate(
+          serviceProviderSortListHelper:
+              Inject<ServiceProviderSortListHelper>(context).get(),
           distanceHelperCalculate:
               Inject<DistanceHelperCalculate>(context).get(),
         ),

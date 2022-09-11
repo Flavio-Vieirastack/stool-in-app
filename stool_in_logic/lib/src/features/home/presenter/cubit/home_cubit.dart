@@ -14,6 +14,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   final GeoLocatorCubit _geoLocatorCubit;
   final FireBaseNotifications _fireBaseNotifications;
   final UserUniqueUsecase _uniqueUsecase;
+  final ServiceProviderSortListHelper _serviceProviderSortListHelper;
   final ServiceProviderDistanceListCalculate
       _serviceProviderDistanceListCalculate;
   late final UserUniqueEntity userUniqueEntity;
@@ -24,6 +25,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
     required CategoriesUsecase categoriesUsecase,
     required UserDataUniqueUsecase userDataUniqueUsecase,
     required GeoLocatorCubit geoLocatorCubit,
+    required ServiceProviderSortListHelper serviceProviderSortListHelper,
     required FireBaseNotifications fireBaseNotifications,
     required UserUniqueUsecase userUniqueUsecase,
     required ServiceProviderDistanceListCalculate
@@ -32,6 +34,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
         _geoLocatorCubit = geoLocatorCubit,
         _serviceProviderDistanceListCalculate =
             serviceProviderDistanceListCalculate,
+        _serviceProviderSortListHelper = serviceProviderSortListHelper,
         _fireBaseNotifications = fireBaseNotifications,
         _uniqueUsecase = userUniqueUsecase,
         _userDataUniqueUsecase = userDataUniqueUsecase,
@@ -65,7 +68,8 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
         );
         emit(
           HomeSucess(
-            serviceProvider: sucess,
+            serviceProvider:
+                _serviceProviderSortListHelper.sortByVotes(providers: sucess),
             userName: userName ?? '',
             userImage: userImage,
             categories: categories,
