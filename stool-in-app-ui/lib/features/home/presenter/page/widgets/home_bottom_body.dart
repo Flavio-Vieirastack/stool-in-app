@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:lottie/lottie.dart';
 import 'package:stool_ds/stool_ds.dart';
 import 'package:stool_in/features/home/presenter/page/params/home_bottom_body_params.dart';
 import 'package:stool_in_core/stool_in_core.dart';
@@ -62,30 +63,47 @@ class HomeBottomBody extends StatelessWidget {
         SizedBox(
           height: 2.h,
         ),
-        ListView.builder(
-          itemCount: homeBottomBodyParams.serviceProviderEntity.length,
-          shrinkWrap: true,
-          primary: false,
-          itemBuilder: (context, index) {
-            final serviceProvider =
-                homeBottomBodyParams.serviceProviderEntity[index];
-            const uniqueIndex = 0;
-            return ServiceProviderCards(
-              serviceProviderCardsParams: ServiceProviderCardsParams(
-                userDistance: homeBottomBodyParams.serviceProviderEntity[index]
-                    .distanceFormat(),
-                userName: serviceProvider.userData[uniqueIndex].userName ?? '',
-                userServicesExecuted: 'serviceProvider.executionServices',
-                userUrlImage:
-                    serviceProvider.userData[uniqueIndex].userPhotoUrl ?? '',
-                userVotes: serviceProvider.votes!.toDouble(),
-                cardOnTap: () {},
-                agendOnTap: () {},
-                image: Image.asset(AssetsConstants.calendarIcon),
-              ),
-            );
-          },
-        )
+        homeBottomBodyParams.serviceProviderEntity.isNotEmpty
+            ? ListView.builder(
+                itemCount: homeBottomBodyParams.serviceProviderEntity.length,
+                shrinkWrap: true,
+                primary: false,
+                itemBuilder: (context, index) {
+                  final serviceProvider =
+                      homeBottomBodyParams.serviceProviderEntity[index];
+                  const uniqueIndex = 0;
+                  return ServiceProviderCards(
+                    serviceProviderCardsParams: ServiceProviderCardsParams(
+                      userDistance: homeBottomBodyParams
+                          .serviceProviderEntity[index]
+                          .distanceFormat(),
+                      userName:
+                          serviceProvider.userData[uniqueIndex].userName ?? '',
+                      userServicesExecuted: 'serviceProvider.executionServices',
+                      userUrlImage:
+                          serviceProvider.userData[uniqueIndex].userPhotoUrl ??
+                              '',
+                      userVotes: serviceProvider.votes!.toDouble(),
+                      cardOnTap: () {},
+                      agendOnTap: () {},
+                      image: Image.asset(AssetsConstants.calendarIcon),
+                    ),
+                  );
+                },
+              )
+            : Column(
+                children: [
+                  LottieBuilder.asset(LottieConstants.lottieErrorPage),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  Text(
+                    'Nenhum provedor de serviço encontrado, por favor, tente mais tarde',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.headLine1,
+                  )
+                ],
+              )
       ],
     );
   }

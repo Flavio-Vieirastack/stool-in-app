@@ -12,7 +12,7 @@ class ServiceProviderSortListHelper {
     required List<ServiceProviderEntity> providers,
   }) {
     providers.sort((a, b) => a.votes!.compareTo(b.votes ?? 0));
-    return providers.reversed.toList().where((e) => e.distance < 14000000000000000).toList();
+    return providers.reversed.toList().where((e) => e.distance < 1400).toList();
     // TODO mudar esse numero depois
   }
 }
