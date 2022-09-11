@@ -3,7 +3,7 @@ import 'package:stool_in_logic/stool_in_logic.dart';
 class HomeBottomBodyParams {
   final List<CategoriesEntity> categoriesEntity;
   final List<ServiceProviderEntity> serviceProviderEntity;
-  final List<int>? distances;
+  final List<String>? distances;
   HomeBottomBodyParams({
     required this.categoriesEntity,
     required this.serviceProviderEntity,

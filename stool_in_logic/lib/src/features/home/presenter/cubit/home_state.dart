@@ -20,7 +20,7 @@ class HomeSucess extends HomeState {
   final List<ServiceProviderEntity>? serviceProvider;
   final List<CategoriesEntity>? categories;
   final UserUniqueEntity? userUniqueEntity;
-  final List<int>? distances;
+  final List<String>? distances;
   final String? userImage;
   final String? userName;
   HomeSucess({

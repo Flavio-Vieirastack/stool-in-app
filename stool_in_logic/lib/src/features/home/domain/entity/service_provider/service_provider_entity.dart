@@ -40,19 +40,6 @@ class ServiceProviderEntity {
     required this.acceptedPayments,
   });
 
-  String distanceFormat() {
-    if (distance >= 1000) {
-      final convert = distance.toString();
-      final lastCharactersRemoved = convert.substring(0, convert.length - 3);
-      final format = '$lastCharactersRemoved KM';
-      return format;
-    } else {
-      final convert = distance.toString();
-      final format = '$convert M';
-      return format;
-    }
-  }
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;

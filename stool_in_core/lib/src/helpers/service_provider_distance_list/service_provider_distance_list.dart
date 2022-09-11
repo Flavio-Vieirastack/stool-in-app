@@ -9,11 +9,11 @@ class ServiceProviderDistanceListCalculate {
   ServiceProviderDistanceListCalculate({
     required DistanceHelperCalculate distanceHelperCalculate,
   }) : _distanceHelperCalculate = distanceHelperCalculate;
-  List<int> calculateDistance({
+  List<String> calculateDistance({
     required List<ServiceProviderEntity> serviceProviders,
     required GetServiceProvidersParams params,
   }) {
-    final distances = <int>[];
+    final distances = <String>[];
     int? distance;
 
     for (var element in serviceProviders) {
@@ -31,7 +31,17 @@ class ServiceProviderDistanceListCalculate {
           longitude: longitude!,
         ),
       );
-      distances.add(distance);
+
+      if (distance >= 1000) {
+        final convert = distance.toString();
+        final lastCharactersRemoved = convert.substring(0, convert.length - 3);
+        final format = '$lastCharactersRemoved KM';
+        distances.add(format);
+      } else {
+        final convert = distance.toString();
+        final format = '$convert M';
+        distances.add(format);
+      }
       log(distances.toString());
     }
 

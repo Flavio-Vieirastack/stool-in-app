@@ -18,7 +18,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
       _serviceProviderDistanceListCalculate;
   late final UserUniqueEntity userUniqueEntity;
   late final List<CategoriesEntity> categories;
-  late final List<int> distances;
+  late final List<String> distances;
   HomeCubit({
     required GetServiceProviderUsecase serviceProviderUsecase,
     required CategoriesUsecase categoriesUsecase,
