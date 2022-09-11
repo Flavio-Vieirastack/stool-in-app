@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class ServiceProviderCardsParams {
@@ -10,9 +9,11 @@ class ServiceProviderCardsParams {
   final VoidCallback agendOnTap;
   final VoidCallback cardOnTap;
   final Widget image;
+  final List<String> servicesExecuted;
   ServiceProviderCardsParams({
     required this.userUrlImage,
     required this.cardOnTap,
+    required this.servicesExecuted,
     required this.userName,
     required this.userVotes,
     required this.userServicesExecuted,

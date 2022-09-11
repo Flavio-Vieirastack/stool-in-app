@@ -64,6 +64,8 @@ class _HomePageState extends State<HomePage>
           builder: (context, state) {
             if (state is HomeSucess) {
               return ListView(
+                physics: const NeverScrollableScrollPhysics(),
+                primary: false,
                 children: [
                   Padding(
                     padding: EdgeInsets.fromLTRB(8.dp, 30.dp, 8.dp, 0),

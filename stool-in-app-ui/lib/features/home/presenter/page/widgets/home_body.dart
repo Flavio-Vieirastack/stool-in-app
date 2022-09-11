@@ -15,7 +15,7 @@ class _HomeBody extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 2.h,
+          height: 3.h,
         ),
         if (status == ServiceStatus.inactive.status)
           const AppButton(
@@ -32,7 +32,7 @@ class _HomeBody extends StatelessWidget {
               buttonText: 'Renovar meu cadastro',
             ),
         SizedBox(
-          height: 2.h,
+          height: 3.h,
         ),
         ClipRRect(
           borderRadius: BorderRadius.only(
@@ -48,7 +48,7 @@ class _HomeBody extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

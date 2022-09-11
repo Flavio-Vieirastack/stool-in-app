@@ -5,7 +5,7 @@ class _ServiceProviderContent extends StatelessWidget {
   final ServiceProviderCardsParams serviceProviderCardsParams;
   const _ServiceProviderContent({
     Key? key,
-   required this.serviceProviderCardsParams,
+    required this.serviceProviderCardsParams,
   }) : super(key: key);
 
   @override
@@ -69,17 +69,33 @@ class _ServiceProviderContent extends StatelessWidget {
               color: AppColors.buttonLeftGradientColor,
             ),
           ),
-          AutoSizeText(
-            serviceProviderCardsParams.userServicesExecuted,
-            textAlign: TextAlign.left,
-            maxFontSize: 15,
-            minFontSize: 14,
-            style: AppTextStyles.headLine2,
+          SizedBox(
+            height: 8.h,
+            child: ListView.builder(
+              itemCount: serviceProviderCardsParams.servicesExecuted.length,
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.all(3.dp),
+                  child: Chip(
+                    backgroundColor: AppColors.orange,
+                    label: Text(
+                      serviceProviderCardsParams.servicesExecuted[index],
+                      style: AppTextStyles.headLine4.copyWith(
+                        color: AppColors.black,
+                      ),
+                    ),
+                    avatar: const Icon(Icons.engineering),
+                  ),
+                );
+              },
+            ),
           ),
           SizedBox(
             height: 1.h,
           ),
-          Text(
+          Text( // TODO adicionar textspan aqui
             'Distância: ${serviceProviderCardsParams.userDistance}',
             style: const TextStyle(color: AppColors.buttonLeftGradientColor),
           ),

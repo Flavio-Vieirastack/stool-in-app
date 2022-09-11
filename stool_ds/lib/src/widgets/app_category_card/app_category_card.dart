@@ -36,12 +36,9 @@ class AppCategoryCard extends StatelessWidget {
                   topRight: Radius.circular(20.dp),
                 ),
               ),
-              child: Padding(
-                padding: EdgeInsets.only(right: 5.w, top: 3.h, bottom: 1.h),
-                child: LottieBuilder.network(
-                  lottieUrl,
-                  fit: BoxFit.cover,
-                ),
+              child: LottieBuilder.network(
+                lottieUrl,
+                fit: BoxFit.cover,
               ),
             ),
           ),

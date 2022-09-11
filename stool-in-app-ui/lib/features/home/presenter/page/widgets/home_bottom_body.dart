@@ -60,13 +60,18 @@ class HomeBottomBody extends StatelessWidget {
             ? ListView.builder(
                 itemCount: homeBottomBodyParams.serviceProviderEntity.length,
                 shrinkWrap: true,
-                primary: false,
+                primary: true,
+                physics: const AlwaysScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   final serviceProvider =
                       homeBottomBodyParams.serviceProviderEntity[index];
                   const uniqueIndex = 0;
                   return ServiceProviderCards(
-                    serviceProviderCardsParams: ServiceProviderCardsParams(
+                    serviceProviderCardsParams:
+                        ServiceProviderCardsParams(
+                      servicesExecuted: serviceProvider.executionServices
+                          .map((e) => e.serviceName)
+                          .toList(),
                       userDistance: homeBottomBodyParams
                           .serviceProviderEntity[index]
                           .distanceFormat(),
