@@ -1,11 +1,4 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:lottie/lottie.dart';
-import 'package:stool_ds/stool_ds.dart';
-import 'package:stool_in/features/home/presenter/page/params/home_bottom_body_params.dart';
-import 'package:stool_in_core/stool_in_core.dart';
+part of '../home_page.dart';
 
 class HomeBottomBody extends StatelessWidget {
   final HomeBottomBodyParams homeBottomBodyParams;

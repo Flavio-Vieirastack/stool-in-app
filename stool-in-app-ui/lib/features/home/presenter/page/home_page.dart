@@ -5,13 +5,12 @@ import 'package:lottie/lottie.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:stool_ds/stool_ds.dart';
 import 'package:stool_in/features/home/presenter/page/params/home_bottom_body_params.dart';
-import 'package:stool_in/features/home/presenter/page/widgets/home_bottom_body.dart';
 import 'package:stool_in_core/stool_in_core.dart';
 import 'package:stool_in_logic/stool_in_logic.dart';
 
 part './widgets/home_body.dart';
 part './widgets/coin_widget.dart';
-
+part './widgets/home_bottom_body.dart';
 @immutable
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
