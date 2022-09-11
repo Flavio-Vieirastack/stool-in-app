@@ -1,4 +1,6 @@
 // ignore: depend_on_referenced_packages
+
+// ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 import 'package:stool_in_logic/src/features/auth/data/model/user_data_model.dart';
 import 'package:stool_in_logic/src/features/home/data/model/service_provider/accepted_payments_model.dart';
@@ -12,7 +14,6 @@ class ServiceProviderModel extends ServiceProviderEntity {
   final List<ExecutionServicesModel> executionServicesModel;
   final List<ServicesToExecuteModel> servicesToExecuteModel;
   final List<ComentsModel> comentsModel;
-  
   ServiceProviderModel({
     required super.id,
     required super.serviceProviderDescription,
@@ -110,4 +111,8 @@ class ServiceProviderModel extends ServiceProviderEntity {
         comentsModel.hashCode ^
         userData.hashCode;
   }
+
+  @override
+  String toString() =>
+      'ServiceProviderModel(executionServicesModel: $executionServicesModel, servicesToExecuteModel: $servicesToExecuteModel, comentsModel: $comentsModel), Distance: $distance';
 }

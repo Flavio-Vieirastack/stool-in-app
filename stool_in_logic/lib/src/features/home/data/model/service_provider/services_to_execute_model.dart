@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
 
-
-
 class ServicesToExecuteModel extends ServicesToExecuteEntity {
   ServicesToExecuteModel({
     super.id,

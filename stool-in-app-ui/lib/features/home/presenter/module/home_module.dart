@@ -16,9 +16,6 @@ class HomeModule extends AppModule {
             ),
             Provider<GetServiceProviderDatasource>(
               create: (context) => GetServiceProviderDatasourceImpl(
-                serviceProviderDatasourceCalculateDistance:
-                    Inject<ServiceProviderDatasourceCalculateDistance>(context)
-                        .get(),
                 restClientGet: Inject<RestClientGet>(context).get(),
               ),
             ),

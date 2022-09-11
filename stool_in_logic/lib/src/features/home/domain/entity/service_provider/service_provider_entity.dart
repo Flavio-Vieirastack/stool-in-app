@@ -6,9 +6,6 @@ import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/
 import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/execution_services_entity.dart';
 import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/services_to_execute_entity.dart';
 
-
-
-
 class ServiceProviderEntity {
   final int id;
   final String? serviceProviderDescription;
@@ -19,7 +16,7 @@ class ServiceProviderEntity {
   final String? disponibleDays;
   final DateTime createdAt;
   final int userLoginId;
-  final int distance;
+  int distance;
   final List<ExecutionServicesEntity> executionServices;
   final List<ServicesToExecuteEntity> servicesToExecute;
   final List<ComentsEntity> coments;
@@ -56,47 +53,45 @@ class ServiceProviderEntity {
     }
   }
 
-  
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     final listEquals = const DeepCollectionEquality().equals;
-  
+
     return other is ServiceProviderEntity &&
-      other.id == id &&
-      other.serviceProviderDescription == serviceProviderDescription &&
-      other.votes == votes &&
-      other.status == status &&
-      other.initialDisponibleTime == initialDisponibleTime &&
-      other.endDisponibleTime == endDisponibleTime &&
-      other.disponibleDays == disponibleDays &&
-      other.createdAt == createdAt &&
-      other.userLoginId == userLoginId &&
-      other.distance == distance &&
-      listEquals(other.executionServices, executionServices) &&
-      listEquals(other.servicesToExecute, servicesToExecute) &&
-      listEquals(other.coments, coments) &&
-      listEquals(other.userData, userData) &&
-      listEquals(other.acceptedPayments, acceptedPayments);
+        other.id == id &&
+        other.serviceProviderDescription == serviceProviderDescription &&
+        other.votes == votes &&
+        other.status == status &&
+        other.initialDisponibleTime == initialDisponibleTime &&
+        other.endDisponibleTime == endDisponibleTime &&
+        other.disponibleDays == disponibleDays &&
+        other.createdAt == createdAt &&
+        other.userLoginId == userLoginId &&
+        other.distance == distance &&
+        listEquals(other.executionServices, executionServices) &&
+        listEquals(other.servicesToExecute, servicesToExecute) &&
+        listEquals(other.coments, coments) &&
+        listEquals(other.userData, userData) &&
+        listEquals(other.acceptedPayments, acceptedPayments);
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      serviceProviderDescription.hashCode ^
-      votes.hashCode ^
-      status.hashCode ^
-      initialDisponibleTime.hashCode ^
-      endDisponibleTime.hashCode ^
-      disponibleDays.hashCode ^
-      createdAt.hashCode ^
-      userLoginId.hashCode ^
-      distance.hashCode ^
-      executionServices.hashCode ^
-      servicesToExecute.hashCode ^
-      coments.hashCode ^
-      userData.hashCode ^
-      acceptedPayments.hashCode;
+        serviceProviderDescription.hashCode ^
+        votes.hashCode ^
+        status.hashCode ^
+        initialDisponibleTime.hashCode ^
+        endDisponibleTime.hashCode ^
+        disponibleDays.hashCode ^
+        createdAt.hashCode ^
+        userLoginId.hashCode ^
+        distance.hashCode ^
+        executionServices.hashCode ^
+        servicesToExecute.hashCode ^
+        coments.hashCode ^
+        userData.hashCode ^
+        acceptedPayments.hashCode;
   }
 }

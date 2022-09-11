@@ -1,24 +1,13 @@
 import 'dart:developer';
 
 import 'package:stool_in_core/stool_in_core.dart';
-import 'package:stool_in_logic/src/features/home/data/datasource/service_provider/service_provider_datasource.dart';
-import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/service_provider_entity.dart';
-
-import '../../../domain/entity/service_provider/get_service_providers_params.dart';
-import '../../../domain/error/service_provider/service_provider_error.dart';
-import '../../model/service_provider/service_provider_model.dart';
+import 'package:stool_in_logic/stool_in_logic.dart';
 
 class GetServiceProviderDatasourceImpl implements GetServiceProviderDatasource {
   final RestClientGet _restClientGet;
-  final ServiceProviderDatasourceCalculateDistance
-      _serviceProviderDatasourceCalculateDistance;
   GetServiceProviderDatasourceImpl({
     required RestClientGet restClientGet,
-    required ServiceProviderDatasourceCalculateDistance
-        serviceProviderDatasourceCalculateDistance,
-  })  : _restClientGet = restClientGet,
-        _serviceProviderDatasourceCalculateDistance =
-            serviceProviderDatasourceCalculateDistance;
+  })  : _restClientGet = restClientGet;
 
   @override
   Future<List<ServiceProviderEntity>> call({
@@ -31,18 +20,11 @@ class GetServiceProviderDatasourceImpl implements GetServiceProviderDatasource {
           'pages': providersParams.pageQuantity,
         },
       );
-      final distance =
-          _serviceProviderDatasourceCalculateDistance.calculateDistance(
-        result: result,
-        params: providersParams,
-      );
-      final serviceProvider = result.data
-          ?.map(
-            (map) =>
-                ServiceProviderModel.fromDataSource(map, distance: distance),
-          )
+      final model = result.data
+          ?.map((e) => ServiceProviderModel.fromDataSource(e))
           .toList();
-      return serviceProvider ?? <ServiceProviderEntity>[];
+
+      return model ?? <ServiceProviderEntity>[];
     } on ServiceProviderError catch (e, s) {
       log('Erro ao pegar dados do prestador de serviço no datasource impl',
           error: e, stackTrace: s);
