@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:stool_in_core/stool_in_core.dart';
 import 'package:stool_in_logic/src/features/home/domain/entity/service_provider/service_provider_entity.dart';
@@ -21,26 +22,52 @@ class ServiceProviderDatasourceCalculateDistance {
     required GetServiceProvidersParams params,
   }) {
     final distanceModel = <ServiceProviderModel>[];
-    final serviceProviderData = result.data
-        ?.map(
-          (e) => ServiceProviderModel.fromDataSource(e),
-        )
-        .toList();
-    for (var serviceProviderModel in serviceProviderData!) {
-      for (var serviceProviderData in serviceProviderModel.userData) {
+    result.data?.map(
+      (e) {
+        var result = ServiceProviderModel.fromDataSource(e);
+
+        final latitude =
+            result.userData.map((e) => e.userLocationLatitude).first;
+        log(latitude.toString());
+        final longitude =
+            result.userData.map((e) => e.userLocationLongitude).first;
         final distance = _distanceHelperCalculate.caculateDistanceToInt(
           currentUserLocation: Location(
             latitude: params.currentUserLocationLatitude,
             longitude: params.currentUserLocationLongitude,
           ),
           serviceProviderLocation: Location(
-            latitude: serviceProviderData.userLocationLatitude ?? 0.0,
-            longitude: serviceProviderData.userLocationLongitude ?? 0.0,
+            latitude: latitude ?? 0,
+            longitude: longitude ?? 0,
           ),
         );
-        distanceModel.addAll(result.data?.map((e) => ServiceProviderModel.fromDataSource(e, distance: distance)) ?? []);
-      }
-    }
+        result = ServiceProviderModel.fromDataSource(e, distance: distance);
+        distanceModel.add(result);
+      },
+    ).toList();
+    // for (var serviceProviderModel in serviceProviderData!) {
+    //   final distance = _distanceHelperCalculate.caculateDistanceToInt(
+    //     currentUserLocation: Location(
+    //       latitude: params.currentUserLocationLatitude,
+    //       longitude: params.currentUserLocationLongitude,
+    //     ),
+    //     serviceProviderLocation: Location(
+    //       latitude: serviceProviderModel.userData
+    //               .map((e) => e.userLocationLatitude)
+    //               .first ??
+    //           0,
+    //       longitude: serviceProviderModel.userData
+    //               .map((e) => e.userLocationLongitude)
+    //               .first ??
+    //           0,
+    //     ),
+    //   );
+    //   distanceModel.addAll(
+    //     result.data?.map((e) =>
+    //             ServiceProviderModel.fromDataSource(e, distance: distance)) ??
+    //         [],
+    //   );
+    // }
     return distanceModel;
   }
 }
