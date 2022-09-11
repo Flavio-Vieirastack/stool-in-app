@@ -14,6 +14,7 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   final GeoLocatorCubit _geoLocatorCubit;
   final FireBaseNotifications _fireBaseNotifications;
   final UserUniqueUsecase _uniqueUsecase;
+  final ServiceProviderSortListHelper _serviceProviderSortListHelper;
   late final UserUniqueEntity userUniqueEntity;
   late final List<CategoriesEntity> categories;
   HomeCubit({
@@ -21,12 +22,14 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
     required CategoriesUsecase categoriesUsecase,
     required UserDataUniqueUsecase userDataUniqueUsecase,
     required GeoLocatorCubit geoLocatorCubit,
+    required ServiceProviderSortListHelper serviceProviderSortListHelper,
     required FireBaseNotifications fireBaseNotifications,
     required UserUniqueUsecase userUniqueUsecase,
   })  : _serviceProviderUsecase = serviceProviderUsecase,
         _geoLocatorCubit = geoLocatorCubit,
         _fireBaseNotifications = fireBaseNotifications,
         _uniqueUsecase = userUniqueUsecase,
+        _serviceProviderSortListHelper = serviceProviderSortListHelper,
         _userDataUniqueUsecase = userDataUniqueUsecase,
         _categoriesUsecase = categoriesUsecase,
         super(HomeInitial());
@@ -55,12 +58,12 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
         await _getUserUniqueData();
         emit(
           HomeSucess(
-            serviceProvider: sucess,
-            userName: userName ?? '',
-            userImage: userImage,
-            categories: categories,
-            userUniqueEntity: userUniqueEntity
-          ),
+              serviceProvider:
+                  _serviceProviderSortListHelper.sortByVotes(providers: sucess),
+              userName: userName ?? '',
+              userImage: userImage,
+              categories: categories,
+              userUniqueEntity: userUniqueEntity),
         );
       },
     );

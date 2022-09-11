@@ -72,6 +72,7 @@ class HomeModule extends AppModule {
             ),
             Provider<HomeCubit>(
               create: (context) => HomeCubit(
+                serviceProviderSortListHelper: Inject<ServiceProviderSortListHelper>(context).get(),
                 userUniqueUsecase: Inject<UserUniqueUsecase>(context).get(),
                 fireBaseNotifications:
                     Inject<FireBaseNotifications>(context).get(),
