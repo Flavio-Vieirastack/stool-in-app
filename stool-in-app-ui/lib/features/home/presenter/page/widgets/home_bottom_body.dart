@@ -69,10 +69,10 @@ class HomeBottomBody extends StatelessWidget {
             final serviceProvider =
                 homeBottomBodyParams.serviceProviderEntity[index];
             const uniqueIndex = 0;
+            final distances = homeBottomBodyParams.distances![index];
             return ServiceProviderCards(
               serviceProviderCardsParams: ServiceProviderCardsParams(
-                userDistance: homeBottomBodyParams.serviceProviderEntity[index]
-                    .distanceFormat(),
+                userDistance: distances.toString(),
                 userName: serviceProvider.userData[uniqueIndex].userName ?? '',
                 userServicesExecuted: 'serviceProvider.executionServices',
                 userUrlImage:

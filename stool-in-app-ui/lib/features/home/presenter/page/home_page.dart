@@ -141,6 +141,7 @@ class _HomePageState extends State<HomePage>
                   ),
                   _HomeBody(
                     homeBottomBodyParams: HomeBottomBodyParams(
+                      distances: state.distances,
                       categoriesEntity: state.categories ?? [],
                       serviceProviderEntity: state.serviceProvider ?? [],
                     ),
