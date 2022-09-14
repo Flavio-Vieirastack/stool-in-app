@@ -5,7 +5,7 @@ class CreateAndUpdateServiceProviderEntity {
   final DateTime? initialDisponibleTime;
   final DateTime? endDisponibleTime;
   final String? disponibleDays;
-  final double? coins;
+  final int? coins;
   CreateAndUpdateServiceProviderEntity({
     this.userDescription,
     this.votes,

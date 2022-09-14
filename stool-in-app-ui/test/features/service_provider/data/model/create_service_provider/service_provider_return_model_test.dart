@@ -4,93 +4,13 @@ import 'package:stool_in_logic/stool_in_logic.dart';
 
 import '../../../../../mock/service_provider_create_mock.dart';
 
-
 void main() {
   late Faker faker;
   setUp(() {
     faker = Faker();
   });
-  group('from map', () {
-    test('Deve retornar o id correto para o service provider return model',
-        () async {
-      final id = faker.randomGenerator.integer(1);
-      final votes = faker.randomGenerator.integer(1);
-      final userLoginId = faker.randomGenerator.integer(1);
-      final disponibleDays = faker.randomGenerator.string(5);
-      final userDescription = faker.randomGenerator.string(5);
-      final status = faker.randomGenerator.string(5);
-      final createdAt = faker.date.dateTime();
-      final endDisponibleTime = faker.date.dateTime();
-      final initialDisponibleTime = faker.date.dateTime();
-      final model = ServiceProviderReturnModel(
-        id: id,
-        userLoginId: userLoginId,
-        createdAt: createdAt,
-        disponibleDays: disponibleDays,
-        endDisponibleTime: endDisponibleTime,
-        initialDisponibleTime: initialDisponibleTime,
-        status: status,
-        userDescription: userDescription,
-        votes: votes,
-      ).toMap();
-      final sut = model['id'];
-      expect(sut, id);
-      expect(sut, isA<int>());
-    });
-    test(
-        'Deve retornar o userLoginId correto para o service provider return model',
-        () async {
-      final id = faker.randomGenerator.integer(1);
-      final votes = faker.randomGenerator.integer(1);
-      final userLoginId = faker.randomGenerator.integer(1);
-      final disponibleDays = faker.randomGenerator.string(5);
-      final userDescription = faker.randomGenerator.string(5);
-      final status = faker.randomGenerator.string(5);
-      final createdAt = faker.date.dateTime();
-      final endDisponibleTime = faker.date.dateTime();
-      final initialDisponibleTime = faker.date.dateTime();
-      final model = ServiceProviderReturnModel(
-        id: id,
-        userLoginId: userLoginId,
-        createdAt: createdAt,
-        disponibleDays: disponibleDays,
-        endDisponibleTime: endDisponibleTime,
-        initialDisponibleTime: initialDisponibleTime,
-        status: status,
-        userDescription: userDescription,
-        votes: votes,
-      ).toMap();
-      final sut = model['userLoginId'];
-      expect(sut, userLoginId);
-      expect(sut, isA<int>());
-    });
-    test(
-        'Deve retornar o createdAt correto para o service provider return model',
-        () async {
-      final id = faker.randomGenerator.integer(1);
-      final votes = faker.randomGenerator.integer(1);
-      final userLoginId = faker.randomGenerator.integer(1);
-      final disponibleDays = faker.randomGenerator.string(5);
-      final userDescription = faker.randomGenerator.string(5);
-      final status = faker.randomGenerator.string(5);
-      final createdAt = faker.date.dateTime();
-      final endDisponibleTime = faker.date.dateTime();
-      final initialDisponibleTime = faker.date.dateTime();
-      final model = ServiceProviderReturnModel(
-        id: id,
-        userLoginId: userLoginId,
-        createdAt: createdAt,
-        disponibleDays: disponibleDays,
-        endDisponibleTime: endDisponibleTime,
-        initialDisponibleTime: initialDisponibleTime,
-        status: status,
-        userDescription: userDescription,
-        votes: votes,
-      ).toMap();
-      final sut = model['createdAt'];
-      expect(sut, createdAt);
-      expect(sut, isA<DateTime>());
-    });
+  group('to map', () {
+    
     test(
         'Deve retornar o userDescription correto para o service provider return model',
         () async {
@@ -265,6 +185,16 @@ void main() {
       expect(sut, isA<int>());
     });
     test(
+        'deve retornar o coins correto para o from map do service provider return',
+        () {
+      final model =
+          ServiceProviderReturnModel.fromMap(serviceProviderCreateMock);
+      final sut = model.coins;
+      const matcher = 25;
+      expect(sut, matcher);
+      expect(sut, isA<int>());
+    });
+    test(
         'deve retornar o createdAt correto para o from map do service provider return',
         () {
       final model =
@@ -330,7 +260,8 @@ void main() {
       final model =
           ServiceProviderReturnModel.fromMap(serviceProviderCreateMock);
       final sut = model.userDescription;
-      const matcher = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
+      const matcher =
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s";
       expect(sut, matcher);
       expect(sut, isA<String>());
     });

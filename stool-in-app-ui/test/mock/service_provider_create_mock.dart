@@ -8,5 +8,6 @@ final Map<String, dynamic> serviceProviderCreateMock = {
   "endDisponibleTime": "2022-08-18T18:54:59.725Z",
   "disponibleDays": "segunda a sexta",
   "createdAt": "2022-08-18T18:54:59.725Z",
-  "userLoginId": 1
+  "userLoginId": 1,
+  "coins" : 25
 };

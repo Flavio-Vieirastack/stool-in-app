@@ -78,7 +78,7 @@ class ServiceProviderReturnModel extends ServiceProviderReturnEntity {
       userDescription: map['userDescription'],
       votes: map['votes']?.toInt(),
       status: map['status'],
-      coins: double.parse(map['coins']),
+      coins: map['coins'] ?? 0,
       initialDisponibleTime: map['initialDisponibleTime'] != null
           ? DateTime.parse(map['initialDisponibleTime'])
           : null,
