@@ -57,38 +57,40 @@ class HomeBottomBody extends StatelessWidget {
           height: 2.h,
         ),
         homeBottomBodyParams.serviceProviderEntity.isNotEmpty
-            ? ListView.builder(
-                itemCount: homeBottomBodyParams.serviceProviderEntity.length,
-                shrinkWrap: true,
-                primary: true,
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final serviceProvider =
-                      homeBottomBodyParams.serviceProviderEntity[index];
-                  const uniqueIndex = 0;
-                  return ServiceProviderCards(
-                    serviceProviderCardsParams:
-                        ServiceProviderCardsParams(
-                      servicesExecuted: serviceProvider.executionServices
-                          .map((e) => e.serviceName)
-                          .toList(),
-                      userDistance: homeBottomBodyParams
-                          .serviceProviderEntity[index]
-                          .distanceFormat(),
-                      userName:
-                          serviceProvider.userData[uniqueIndex].userName ?? '',
-                      userServicesExecuted: 'serviceProvider.executionServices',
-                      userUrlImage:
-                          serviceProvider.userData[uniqueIndex].userPhotoUrl ??
-                              '',
-                      userVotes: serviceProvider.votes!.toDouble(),
-                      cardOnTap: () {},
-                      agendOnTap: () {},
-                      image: Image.asset(AssetsConstants.calendarIcon),
-                    ),
-                  );
-                },
-              )
+            ? SizedBox(
+              height: Adaptive.h(30),
+              child: ListView.builder(
+                  itemCount: homeBottomBodyParams.serviceProviderEntity.length,
+                  primary: true,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    final serviceProvider =
+                        homeBottomBodyParams.serviceProviderEntity[index];
+                    const uniqueIndex = 0;
+                    return ServiceProviderCards(
+                      serviceProviderCardsParams:
+                          ServiceProviderCardsParams(
+                        servicesExecuted: serviceProvider.executionServices
+                            .map((e) => e.serviceName)
+                            .toList(),
+                        userDistance: homeBottomBodyParams
+                            .serviceProviderEntity[index]
+                            .distanceFormat(),
+                        userName:
+                            serviceProvider.userData[uniqueIndex].userName ?? '',
+                        userServicesExecuted: 'serviceProvider.executionServices',
+                        userUrlImage:
+                            serviceProvider.userData[uniqueIndex].userPhotoUrl ??
+                                '',
+                        userVotes: serviceProvider.votes!.toDouble(),
+                        cardOnTap: () {},
+                        agendOnTap: () {},
+                        image: Image.asset(AssetsConstants.calendarIcon),
+                      ),
+                    );
+                  },
+                ),
+            )
             : Column(
                 children: [
                   LottieBuilder.asset(LottieConstants.lottieErrorPage),

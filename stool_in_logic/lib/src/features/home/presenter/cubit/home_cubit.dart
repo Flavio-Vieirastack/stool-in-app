@@ -97,10 +97,12 @@ class HomeCubit extends Cubit<HomeState> with SharedPreferencesHelper {
   }
 
   Future<void> _userDataVerifyAndUpdate() async {
-    await _updateUserLocation();
-    await _updateUserNameAndPhotoUrl();
-    await _updateUserPushToken();
-    await _verifyUserDataIsNull();
+    
+     await _updateUserLocation();
+     await _updateUserNameAndPhotoUrl();
+     await _updateUserPushToken();
+     await _verifyUserDataIsNull();
+    
   }
 
   Future<void> _updateUserLocation() async {
